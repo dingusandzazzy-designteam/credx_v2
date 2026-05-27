@@ -1,0 +1,14 @@
+# Automotive imagery placeholders
+
+Phase 5 (Image Generation) will populate this folder with real assets per the imagery direction locked in:
+- project_imagery_direction (memory) — editorial-cinematic photography of operators in vertical context
+- design/v2-references.md — Path B (Apple Business + Tesla Business + Porsche Newsroom register)
+- copy/automotive.md — per-section image briefs
+
+Expected assets:
+- hero.{jpg,webp} — fallback for cover animation (Trilha B owns the animation; this is the still poster)
+- pain.{jpg,webp} — F&I desk scene
+- quote-portrait.{jpg,webp} — operator portrait for S6 Proof
+- og.png — 1200x630 Open Graph image
+
+All assets generated via Midjourney v6 or commissioned photography per Phase 5 prompts in prompts/automotive.md §C.

@@ -5,3 +5,9 @@ prompts/
 .claude/
 feedbacks/
 seo/
+
+# IDE
+.vscode/
+
+# Intermediate image dumps (Midjourney raw, before scripts/optimize-images.py)
+assets/images/automotive/automotive_frames_named/
