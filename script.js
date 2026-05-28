@@ -241,24 +241,48 @@
         }
       };
 
+      const resolveT = (anchor) => (anchor.t < 0 ? video.duration : anchor.t);
+
       const advanceStep = () => {
         if (introState === 'idle') lockScroll();
         introState = 'playing';
-        const fromP = ANCHORS[currentStep].p;
-        const toP = ANCHORS[currentStep + 1].p;
-        const proxy = { p: fromP };
-        window.gsap.to(proxy, {
-          p: toP,
-          duration: STEP_DURATION,
-          ease: 'none', // smoothstep inside progressToTime handles easing
-          onUpdate: () => queueScrub(proxy.p),
-          onComplete: () => {
+        const fromT = resolveT(ANCHORS[currentStep]);
+        const toT = resolveT(ANCHORS[currentStep + 1]);
+        const distance = Math.max(0.01, toT - fromT);
+        const rate = Math.max(0.25, Math.min(4, distance / STEP_DURATION));
+
+        try {
+          if (Math.abs(video.currentTime - fromT) > 0.05) video.currentTime = fromT;
+          video.playbackRate = rate;
+        } catch (_) {}
+
+        const playPromise = video.play();
+        if (playPromise && typeof playPromise.catch === 'function') {
+          playPromise.catch(() => {});
+        }
+
+        const watchFrame = () => {
+          if (introState !== 'playing') return;
+          const t = video.currentTime;
+          updateBeats(t, video.duration);
+          setActiveDot(beatFromTime(t));
+          if (t >= toT - 0.03 || video.ended) {
+            try {
+              video.pause();
+              video.currentTime = toT;
+              video.playbackRate = 1;
+            } catch (_) {}
+            updateBeats(toT, video.duration);
+            setActiveDot(beatFromTime(toT));
             currentStep += 1;
             introState = 'awaiting';
             cooldown = true;
             setTimeout(() => { cooldown = false; }, COOLDOWN_MS);
-          },
-        });
+            return;
+          }
+          requestAnimationFrame(watchFrame);
+        };
+        requestAnimationFrame(watchFrame);
       };
 
       const exitToHero = () => {
