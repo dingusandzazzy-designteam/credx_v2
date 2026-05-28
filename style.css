@@ -495,18 +495,13 @@ p { line-height: 1.6; max-width: 65ch; }
 }
 
 .cover-scrub__beat {
+  /* Opacity + transform are driven frame-by-frame from JS during the scroll
+     scrub, so no CSS transition here (it would fight the per-frame writes).
+     Reduced-motion path below still uses the static opacity rule. */
   opacity: 0;
   transform: translateY(8px);
-  transition: opacity 700ms var(--ease-out-expo),
-              transform 700ms var(--ease-out-expo);
   will-change: opacity, transform;
   pointer-events: none;
-}
-
-.cover-scrub__beat.is-active {
-  opacity: 1;
-  transform: translateY(0);
-  pointer-events: auto;
 }
 
 /* Quadrant placement per prompt-carved negative space. Beats span wider

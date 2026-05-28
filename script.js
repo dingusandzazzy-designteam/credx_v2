@@ -99,18 +99,20 @@
     const cover = document.querySelector('.cover-scrub');
     const video = cover && cover.querySelector('[data-cover-video]');
     if (cover && video) {
-      const beats = cover.querySelectorAll('.cover-scrub__beat');
+      const beats = Array.from(cover.querySelectorAll('.cover-scrub__beat'));
       const dots = cover.querySelectorAll('.cover-scrub__progress-dot');
 
       // Beat boundaries (seconds) — one entry per beat = start time.
       const BEAT_STARTS = [0, 4.417, 10.167, 13.917];
+      // Per-beat fade tuning (seconds). GAP = time of "video only, no copy"
+      // before the next beat enters.
+      const FADE_IN = 0.45;
+      const FADE_OUT = 0.45;
+      const GAP = 0.55;
 
-      let lastIdx = -1;
-      const setActive = (idx) => {
-        if (idx === lastIdx) return;
-        lastIdx = idx;
-        beats.forEach((el, i) => el.classList.toggle('is-active', i === idx));
-        dots.forEach((el, i) => el.classList.toggle('is-active', i === idx));
+      const smoothstep = (x) => {
+        const c = x < 0 ? 0 : x > 1 ? 1 : x;
+        return c * c * (3 - 2 * c);
       };
 
       const beatFromTime = (t) => {
@@ -118,6 +120,36 @@
           if (t >= BEAT_STARTS[i]) return i;
         }
         return 0;
+      };
+
+      let lastDotIdx = -1;
+      const setActiveDot = (idx) => {
+        if (idx === lastDotIdx) return;
+        lastDotIdx = idx;
+        dots.forEach((el, i) => el.classList.toggle('is-active', i === idx));
+      };
+
+      const updateBeats = (t, duration) => {
+        for (let i = 0; i < beats.length; i++) {
+          const visStart = BEAT_STARTS[i];
+          const nextStart = (i + 1 < BEAT_STARTS.length) ? BEAT_STARTS[i + 1] : duration;
+          // Leave a GAP before the next beat enters (or before the clip ends).
+          const visEnd = Math.max(visStart + FADE_IN + 0.05, nextStart - GAP);
+          let op;
+          if (t < visStart || t >= visEnd) {
+            op = 0;
+          } else if (t < visStart + FADE_IN) {
+            op = smoothstep((t - visStart) / FADE_IN);
+          } else if (t > visEnd - FADE_OUT) {
+            op = smoothstep((visEnd - t) / FADE_OUT);
+          } else {
+            op = 1;
+          }
+          const el = beats[i];
+          el.style.opacity = op.toFixed(3);
+          el.style.transform = 'translateY(' + ((1 - op) * 8).toFixed(2) + 'px)';
+          el.style.pointerEvents = op > 0.5 ? 'auto' : 'none';
+        }
       };
 
       let pendingProgress = 0;
@@ -128,7 +160,8 @@
         const t = Math.max(0, Math.min(video.duration, pendingProgress * video.duration));
         // Setting currentTime triggers an async seek; we don't await it.
         try { video.currentTime = t; } catch (_) {}
-        setActive(beatFromTime(t));
+        updateBeats(t, video.duration);
+        setActiveDot(beatFromTime(t));
       };
       const queueScrub = (progress) => {
         pendingProgress = progress;
