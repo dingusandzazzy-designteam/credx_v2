@@ -87,39 +87,78 @@
     document.querySelectorAll('[data-reveal]').forEach((el) => io.observe(el));
   }
 
-  /* ---- 4a. Cover scrub (Trilha B 4-frame pinned hero) ---- */
+  /* ---- 4a. Cover scrub (Trilha B — video scrubbed by scroll) ----
+     Source timecodes provided by edit (24 fps, HH:MM:SS:FF):
+       00:00:00:00  Intro   → 0.000s
+       00:00:04:10  Cena 1  → 4.417s
+       00:00:10:04  Cena 2  → 10.167s
+       00:00:13:22  Final   → 13.917s
+     Beats are switched when currentTime crosses each marker. */
 
   if (!prefersReducedMotion && window.gsap && window.ScrollTrigger) {
     const cover = document.querySelector('.cover-scrub');
-    if (cover) {
-      const frames = cover.querySelectorAll('.cover-scrub__frame');
+    const video = cover && cover.querySelector('[data-cover-video]');
+    if (cover && video) {
       const beats = cover.querySelectorAll('.cover-scrub__beat');
       const dots = cover.querySelectorAll('.cover-scrub__progress-dot');
-      const frameCount = frames.length;
-      let lastIdx = -1;
 
+      // Beat boundaries (seconds) — one entry per beat = start time.
+      const BEAT_STARTS = [0, 4.417, 10.167, 13.917];
+
+      let lastIdx = -1;
       const setActive = (idx) => {
         if (idx === lastIdx) return;
         lastIdx = idx;
-        frames.forEach((el, i) => el.classList.toggle('is-active', i === idx));
         beats.forEach((el, i) => el.classList.toggle('is-active', i === idx));
         dots.forEach((el, i) => el.classList.toggle('is-active', i === idx));
       };
 
-      window.ScrollTrigger.create({
-        trigger: cover,
-        start: 'top top',
-        end: '+=300%', // 3× viewport scroll for 4 beats
-        pin: true,
-        pinSpacing: true,
-        scrub: 0.5,
-        onUpdate: ({ progress }) => {
-          // Map progress 0..1 to frame index 0..3 with slight bias so each
-          // beat gets its full reading time (12.5% lead-in + 25% hold each).
-          const idx = Math.min(frameCount - 1, Math.floor(progress * frameCount));
-          setActive(idx);
-        },
-      });
+      const beatFromTime = (t) => {
+        for (let i = BEAT_STARTS.length - 1; i >= 0; i--) {
+          if (t >= BEAT_STARTS[i]) return i;
+        }
+        return 0;
+      };
+
+      let pendingProgress = 0;
+      let rafId = null;
+      const applyScrub = () => {
+        rafId = null;
+        if (!isFinite(video.duration) || video.duration <= 0) return;
+        const t = Math.max(0, Math.min(video.duration, pendingProgress * video.duration));
+        // Setting currentTime triggers an async seek; we don't await it.
+        try { video.currentTime = t; } catch (_) {}
+        setActive(beatFromTime(t));
+      };
+      const queueScrub = (progress) => {
+        pendingProgress = progress;
+        if (rafId == null) rafId = requestAnimationFrame(applyScrub);
+      };
+
+      const initScrollTrigger = () => {
+        window.ScrollTrigger.create({
+          trigger: cover,
+          start: 'top top',
+          end: '+=300%', // 3× viewport scroll for the full clip
+          pin: true,
+          pinSpacing: true,
+          scrub: 0.5,
+          onUpdate: ({ progress }) => queueScrub(progress),
+        });
+      };
+
+      const onReady = () => {
+        cover.classList.add('is-video-ready');
+        initScrollTrigger();
+        // Force a first frame paint at t=0.
+        try { video.currentTime = 0; } catch (_) {}
+      };
+
+      if (video.readyState >= 1 && isFinite(video.duration) && video.duration > 0) {
+        onReady();
+      } else {
+        video.addEventListener('loadedmetadata', onReady, { once: true });
+      }
     }
   }
 

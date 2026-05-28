@@ -11,3 +11,8 @@ seo/
 
 # Intermediate image dumps (Midjourney raw, before scripts/optimize-images.py)
 assets/images/automotive/automotive_frames_named/
+
+# Premiere working files + source clips (only cover-video.mp4 ships)
+assets/cover/Adobe Premiere Pro Auto-Save/
+assets/cover/*.prproj
+assets/cover/video-*.mp4
