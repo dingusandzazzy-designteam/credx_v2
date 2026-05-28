@@ -130,18 +130,24 @@
       };
 
       const updateBeats = (t, duration) => {
+        const lastIdx = beats.length - 1;
         for (let i = 0; i < beats.length; i++) {
           // Beat 0 starts fully visible at t=0 (no entry fade) by virtually
           // shifting its window to the left.
           const visStart = (i === 0) ? -FADE_IN : BEAT_STARTS[i];
           const nextStart = (i + 1 < BEAT_STARTS.length) ? BEAT_STARTS[i + 1] : duration;
-          const visEnd = Math.max(visStart + FADE_IN + 0.05, nextStart - GAP);
+          // Last beat: no fade-out — title stays on screen until the next
+          // section scrolls in (pin release).
+          const isLast = (i === lastIdx);
+          const visEnd = isLast
+            ? Number.POSITIVE_INFINITY
+            : Math.max(visStart + FADE_IN + 0.05, nextStart - GAP);
           let op;
           if (t < visStart || t >= visEnd) {
             op = 0;
           } else if (t < visStart + FADE_IN) {
             op = smoothstep((t - visStart) / FADE_IN);
-          } else if (t > visEnd - FADE_OUT) {
+          } else if (!isLast && t > visEnd - FADE_OUT) {
             op = smoothstep((visEnd - t) / FADE_OUT);
           } else {
             op = 1;
@@ -206,7 +212,7 @@
         window.ScrollTrigger.create({
           trigger: cover,
           start: 'top top',
-          end: '+=550%', // 5.5× viewport — long dwells per beat for read time
+          end: '+=800%', // 8× viewport — slower scroll, generous read time per beat
           pin: true,
           pinSpacing: true,
           scrub: 0.5,
