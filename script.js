@@ -208,34 +208,73 @@
         if (rafId == null) rafId = requestAnimationFrame(applyScrub);
       };
 
-      // Snap anchors — one progress value per beat, placed in the middle of
-      // each dwell so the title is fully readable when motion settles.
-      const SNAP_POINTS = [0.00, 0.40, 0.70, 0.95];
+      // One-shot intro: on the very first scroll intent we lock the page,
+      // play the full cover timeline (video + beats), then release and
+      // smooth-scroll to the next section (hero--full). Subsequent scrolls
+      // behave normally — the cover stays in its final state until the user
+      // scrolls back to top.
+      const INTRO_DURATION = 7.0; // seconds — total length of the cover play-through
 
-      const initScrollTrigger = () => {
-        window.ScrollTrigger.create({
-          trigger: cover,
-          start: 'top top',
-          end: '+=800%', // 8× viewport — slower scroll, generous read time per beat
-          pin: true,
-          pinSpacing: true,
-          scrub: 0.5,
-          snap: {
-            snapTo: SNAP_POINTS,
-            duration: { min: 0.4, max: 0.9 },
-            delay: 0.05,
-            directional: true,
-            ease: 'power2.inOut',
+      let introState = 'idle'; // 'idle' | 'playing' | 'done'
+      const intentEvents = ['wheel', 'touchmove', 'keydown'];
+      const KEY_INTENT = new Set(['ArrowDown', 'PageDown', 'Space', ' ', 'End']);
+
+      const onIntent = (e) => {
+        if (introState !== 'idle') return;
+        if (window.scrollY > 4) return; // only at top
+        if (e.type === 'keydown' && !KEY_INTENT.has(e.key)) return;
+        e.preventDefault();
+        playIntro();
+      };
+
+      const lockScroll = () => {
+        if (lenis && typeof lenis.stop === 'function') lenis.stop();
+        document.body.style.overflow = 'hidden';
+        intentEvents.forEach((ev) => window.removeEventListener(ev, onIntent, { passive: false }));
+      };
+      const unlockScroll = () => {
+        document.body.style.overflow = '';
+        if (lenis && typeof lenis.start === 'function') lenis.start();
+      };
+
+      const scrollToHero = () => {
+        const target = document.querySelector('.hero--full') || document.querySelector('#pain');
+        if (!target) return;
+        if (lenis && typeof lenis.scrollTo === 'function') {
+          lenis.scrollTo(target, { offset: 0, duration: 1.0 });
+        } else {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      };
+
+      const playIntro = () => {
+        introState = 'playing';
+        lockScroll();
+        const proxy = { p: 0 };
+        window.gsap.to(proxy, {
+          p: 1,
+          duration: INTRO_DURATION,
+          ease: 'none',
+          onUpdate: () => queueScrub(proxy.p),
+          onComplete: () => {
+            introState = 'done';
+            unlockScroll();
+            // Give Lenis a tick to resume, then glide to the hero section.
+            requestAnimationFrame(scrollToHero);
           },
-          onUpdate: ({ progress }) => queueScrub(progress),
         });
       };
 
       const onReady = () => {
         cover.classList.add('is-video-ready');
-        initScrollTrigger();
         // Force a first frame paint at t=0.
         try { video.currentTime = 0; } catch (_) {}
+        // Make sure beat 1 is visible while we wait for the user.
+        updateBeats(0, video.duration || 14);
+        // Wire scroll-intent listeners (non-passive so we can preventDefault).
+        intentEvents.forEach((ev) =>
+          window.addEventListener(ev, onIntent, { passive: false })
+        );
       };
 
       if (video.readyState >= 1 && isFinite(video.duration) && video.duration > 0) {
