@@ -208,6 +208,10 @@
         if (rafId == null) rafId = requestAnimationFrame(applyScrub);
       };
 
+      // Snap anchors — one progress value per beat, placed in the middle of
+      // each dwell so the title is fully readable when motion settles.
+      const SNAP_POINTS = [0.00, 0.40, 0.70, 0.95];
+
       const initScrollTrigger = () => {
         window.ScrollTrigger.create({
           trigger: cover,
@@ -216,6 +220,13 @@
           pin: true,
           pinSpacing: true,
           scrub: 0.5,
+          snap: {
+            snapTo: SNAP_POINTS,
+            duration: { min: 0.4, max: 0.9 },
+            delay: 0.05,
+            directional: true,
+            ease: 'power2.inOut',
+          },
           onUpdate: ({ progress }) => queueScrub(progress),
         });
       };
