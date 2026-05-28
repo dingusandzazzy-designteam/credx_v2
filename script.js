@@ -159,21 +159,18 @@
         }
       };
 
-      // Progress → video-time anchors. Each segment (hold or transition)
-      // gets an equal 1/7 slice of the intro = ~4s each at INTRO_DURATION=28s.
-      // Holds freeze on the source keyframes (with +0.45s offset on B2/B3
-      // so the title is fully faded in when the freeze starts).
+      // Progress → video-time anchors. One anchor per source keyframe.
+      // The intro is no longer auto-played: each user scroll-intent advances
+      // the video from the current keyframe to the next one and stops there,
+      // waiting for the next action. Title fade-in offsets (+0.45s) on B2/B3
+      // ensure the title is fully on at each stop.
       // Source keyframes (24fps): 0.000 / 4.417 / 10.167 / 13.917.
       // -1 in t means "clamp to video duration at runtime".
       const ANCHORS = [
-        { p: 0.000, t: 0.000  },  // B1 enter (00:00:00:00)
-        { p: 0.143, t: 0.000  },  // B1 HOLD end (~4s)
-        { p: 0.286, t: 4.867  },  // → transition to B2 (~4s)
-        { p: 0.429, t: 4.867  },  // B2 HOLD end (~4s)
-        { p: 0.571, t: 10.617 },  // → transition to B3 (~4s)
-        { p: 0.714, t: 10.617 },  // B3 HOLD end (~4s)
-        { p: 0.857, t: -1     },  // → transition to B4 (~4s)
-        { p: 1.000, t: -1     },  // B4 HOLD end (~4s)
+        { p: 0.000, t: 0.000  },  // Step 0 — B1 keyframe
+        { p: 0.333, t: 4.867  },  // Step 1 — B2 keyframe (+ fade-in offset)
+        { p: 0.667, t: 10.617 },  // Step 2 — B3 keyframe (+ fade-in offset)
+        { p: 1.000, t: -1     },  // Step 3 — B4 final frame
       ];
 
       const progressToTime = (p, duration) => {
@@ -212,29 +209,22 @@
         if (rafId == null) rafId = requestAnimationFrame(applyScrub);
       };
 
-      // One-shot intro: on the very first scroll intent we lock the page,
-      // play the full cover timeline (video + beats), then release and
-      // smooth-scroll to the next section (hero--full). Subsequent scrolls
-      // behave normally — the cover stays in its final state until the user
-      // scrolls back to top.
-      const INTRO_DURATION = 28.0; // seconds — 4 holds + 3 transitions, ~4s each
+      // Step-driven intro: page is locked while the cover holds focus. Each
+      // scroll/touch/key intent advances the video from one keyframe to the
+      // next over STEP_DURATION seconds, then stops and waits. After the
+      // last keyframe a final intent releases scroll and glides to the hero.
+      const STEP_DURATION = 3.0; // seconds per keyframe-to-keyframe transition
+      const COOLDOWN_MS = 350;   // ignore residual scroll inertia after a step
 
-      let introState = 'idle'; // 'idle' | 'playing' | 'done'
+      let currentStep = 0;       // index into ANCHORS — last keyframe reached
+      let introState = 'idle';   // 'idle' | 'playing' | 'awaiting' | 'done'
+      let cooldown = false;
       const intentEvents = ['wheel', 'touchmove', 'keydown'];
       const KEY_INTENT = new Set(['ArrowDown', 'PageDown', 'Space', ' ', 'End']);
-
-      const onIntent = (e) => {
-        if (introState !== 'idle') return;
-        if (window.scrollY > 4) return; // only at top
-        if (e.type === 'keydown' && !KEY_INTENT.has(e.key)) return;
-        e.preventDefault();
-        playIntro();
-      };
 
       const lockScroll = () => {
         if (lenis && typeof lenis.stop === 'function') lenis.stop();
         document.body.style.overflow = 'hidden';
-        intentEvents.forEach((ev) => window.removeEventListener(ev, onIntent, { passive: false }));
       };
       const unlockScroll = () => {
         document.body.style.overflow = '';
@@ -251,31 +241,51 @@
         }
       };
 
-      const playIntro = () => {
+      const advanceStep = () => {
+        if (introState === 'idle') lockScroll();
         introState = 'playing';
-        lockScroll();
-        const proxy = { p: 0 };
+        const fromP = ANCHORS[currentStep].p;
+        const toP = ANCHORS[currentStep + 1].p;
+        const proxy = { p: fromP };
         window.gsap.to(proxy, {
-          p: 1,
-          duration: INTRO_DURATION,
-          ease: 'none',
+          p: toP,
+          duration: STEP_DURATION,
+          ease: 'none', // smoothstep inside progressToTime handles easing
           onUpdate: () => queueScrub(proxy.p),
           onComplete: () => {
-            introState = 'done';
-            unlockScroll();
-            // Give Lenis a tick to resume, then glide to the hero section.
-            requestAnimationFrame(scrollToHero);
+            currentStep += 1;
+            introState = 'awaiting';
+            cooldown = true;
+            setTimeout(() => { cooldown = false; }, COOLDOWN_MS);
           },
         });
       };
 
+      const exitToHero = () => {
+        introState = 'done';
+        intentEvents.forEach((ev) => window.removeEventListener(ev, onIntent));
+        unlockScroll();
+        // Give Lenis a tick to resume, then glide to the hero section.
+        requestAnimationFrame(scrollToHero);
+      };
+
+      const onIntent = (e) => {
+        if (introState === 'playing' || cooldown) return;
+        if (e.type === 'keydown' && !KEY_INTENT.has(e.key)) return;
+        // Lock applies once intro starts; before that, only respond when at top.
+        if (introState === 'idle' && window.scrollY > 4) return;
+        e.preventDefault();
+        if (currentStep < ANCHORS.length - 1) {
+          advanceStep();
+        } else {
+          exitToHero();
+        }
+      };
+
       const onReady = () => {
         cover.classList.add('is-video-ready');
-        // Force a first frame paint at t=0.
         try { video.currentTime = 0; } catch (_) {}
-        // Make sure beat 1 is visible while we wait for the user.
         updateBeats(0, video.duration || 14);
-        // Wire scroll-intent listeners (non-passive so we can preventDefault).
         intentEvents.forEach((ev) =>
           window.addEventListener(ev, onIntent, { passive: false })
         );
