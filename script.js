@@ -158,15 +158,15 @@
       // currentTime advances slowly (long read); between dwells it crosses
       // the inter-scene gap quickly. Anchor times are clamped to the actual
       // video duration at apply-time.
-      // Layout: dwell ~18% · jump ~10% · dwell ~18% · jump ~10% · dwell ~18% · jump ~10% · dwell ~16%
+      // Layout: dwell ~26% · jump ~4% · dwell ~26% · jump ~4% · dwell ~26% · jump ~4% · dwell ~10%
       const ANCHORS = [
         { p: 0.00, t: 0.00 },   // B1 already on screen
-        { p: 0.18, t: 3.60 },   // end of B1 dwell
-        { p: 0.28, t: 4.80 },   // landed in B2 (past the gap)
-        { p: 0.46, t: 9.40 },   // end of B2 dwell
-        { p: 0.56, t: 10.50 },  // landed in B3
-        { p: 0.74, t: 13.20 },  // end of B3 dwell
-        { p: 0.84, t: 13.95 },  // landed in B4
+        { p: 0.26, t: 3.60 },   // end of B1 dwell
+        { p: 0.30, t: 4.80 },   // landed in B2 (past the gap)
+        { p: 0.56, t: 9.40 },   // end of B2 dwell
+        { p: 0.60, t: 10.50 },  // landed in B3
+        { p: 0.86, t: 13.20 },  // end of B3 dwell
+        { p: 0.90, t: 13.95 },  // landed in B4
         { p: 1.00, t: -1 },     // clamp to duration at runtime
       ];
 
@@ -206,7 +206,7 @@
         window.ScrollTrigger.create({
           trigger: cover,
           start: 'top top',
-          end: '+=400%', // 4× viewport — extra room so each beat has reading time
+          end: '+=550%', // 5.5× viewport — long dwells per beat for read time
           pin: true,
           pinSpacing: true,
           scrub: 0.5,
