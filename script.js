@@ -159,21 +159,19 @@
         }
       };
 
-      // Scroll-progress → video-time remap with dwell at each beat. Each
-      // pair = (progress 0..1, video time seconds). Inside a dwell window
-      // currentTime advances slowly (long read); between dwells it crosses
-      // the inter-scene gap quickly. Anchor times are clamped to the actual
-      // video duration at apply-time.
-      // Layout: dwell ~26% · jump ~4% · dwell ~26% · jump ~4% · dwell ~26% · jump ~4% · dwell ~10%
+      // Progress → video-time anchors. Each scene boundary from the source
+      // edit gets its own anchor; scroll is split into 4 equal chunks (one
+      // per beat). Source timecodes (24fps, HH:MM:SS:FF):
+      //   00:00:00:00  Intro   → 0.000s
+      //   00:00:04:10  Cena 1  → 4.417s
+      //   00:00:10:04  Cena 2  → 10.167s
+      //   00:00:13:22  Final   → 13.917s
       const ANCHORS = [
-        { p: 0.00, t: 0.00 },   // B1 already on screen
-        { p: 0.26, t: 3.60 },   // end of B1 dwell
-        { p: 0.30, t: 4.80 },   // landed in B2 (past the gap)
-        { p: 0.56, t: 9.40 },   // end of B2 dwell
-        { p: 0.60, t: 10.50 },  // landed in B3
-        { p: 0.86, t: 13.20 },  // end of B3 dwell
-        { p: 0.90, t: 13.95 },  // landed in B4
-        { p: 1.00, t: -1 },     // clamp to duration at runtime
+        { p: 0.00, t: 0.000  },  // 00:00:00:00 — B1 Intro
+        { p: 0.25, t: 4.417  },  // 00:00:04:10 — B2 Cena 1
+        { p: 0.50, t: 10.167 },  // 00:00:10:04 — B3 Cena 2
+        { p: 0.75, t: 13.917 },  // 00:00:13:22 — B4 Final
+        { p: 1.00, t: -1     },  // clamp to duration at runtime
       ];
 
       const progressToTime = (p, duration) => {
