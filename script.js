@@ -159,23 +159,21 @@
         }
       };
 
-      // Progress → video-time anchors. Each beat is structured as:
-      //   play-in (video advances quickly to the beat's hold frame)
-      //   → HOLD (currentTime constant, title fully on for reading)
-      //   → transition (video advances through scene end + gap + next fade-in)
-      // Hold frames sit inside each beat's full-opacity range so the title
-      // is fully visible during the read. -1 in t means "clamp to duration".
-      // Source timecodes (24fps): 0.000 / 4.417 / 10.167 / 13.917.
+      // Progress → video-time anchors. Each beat freezes on its source
+      // keyframe (with a tiny offset on B2-B4 so the title finishes fading
+      // in before the freeze starts). Holds are ~4s each, transitions
+      // between holds are ~1s and traverse fade-out + gap + fade-in.
+      // Source keyframes (24fps): 0.000 / 4.417 / 10.167 / 13.917.
+      // -1 in t means "clamp to video duration at runtime".
       const ANCHORS = [
-        { p: 0.00, t: 0.000  },  // B1 enter (00:00:00:00)
-        { p: 0.04, t: 1.500  },  // B1 reached hold frame
-        { p: 0.22, t: 1.500  },  // B1 HOLD
-        { p: 0.27, t: 6.500  },  // → cross scene 1 end, gap, into B2 hold
-        { p: 0.45, t: 6.500  },  // B2 HOLD
-        { p: 0.50, t: 12.000 },  // → into B3 hold
-        { p: 0.68, t: 12.000 },  // B3 HOLD
-        { p: 0.75, t: 13.917 },  // → into B4 (00:00:13:22)
-        { p: 1.00, t: -1     },  // B4 HOLD on last frame
+        { p: 0.00, t: 0.000  },  // B1 enter on keyframe (00:00:00:00)
+        { p: 0.21, t: 0.000  },  // B1 HOLD on keyframe (~4s)
+        { p: 0.26, t: 4.867  },  // → cross to B2 (~1s)
+        { p: 0.47, t: 4.867  },  // B2 HOLD on keyframe + fade-in offset (~4s)
+        { p: 0.53, t: 10.617 },  // → cross to B3 (~1s)
+        { p: 0.74, t: 10.617 },  // B3 HOLD (~4s)
+        { p: 0.79, t: -1     },  // → cross to B4 (~1s, clamps to duration)
+        { p: 1.00, t: -1     },  // B4 HOLD on final frame (~4s)
       ];
 
       const progressToTime = (p, duration) => {
@@ -219,7 +217,7 @@
       // smooth-scroll to the next section (hero--full). Subsequent scrolls
       // behave normally — the cover stays in its final state until the user
       // scrolls back to top.
-      const INTRO_DURATION = 11.0; // seconds — total length of the cover play-through
+      const INTRO_DURATION = 19.0; // seconds — 4 holds of ~4s + 3 transitions of ~1s
 
       let introState = 'idle'; // 'idle' | 'playing' | 'done'
       const intentEvents = ['wheel', 'touchmove', 'keydown'];
