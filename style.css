@@ -52,12 +52,12 @@
     var(--magenta) 95%
   );
 
-  /* Typography */
+  /* Typography — locked to 2 families 2026-05-28 (drop Poppins). Inter
+     covers display + body; Fraunces is editorial accent only at exactly
+     4 selectors (S1 cover title · S3 movement H2 · S6 KPI values · S6
+     quote text). See memories project_typography_v2_lock + project_fraunces_reopened. */
   --font-display: 'Inter', 'Inter Display', system-ui, -apple-system, sans-serif;
-  --font-body: 'Poppins', system-ui, -apple-system, sans-serif;
-  /* Editorial serif accent — narrow use only (S3 H2 · KPI values · S6 quote).
-     B1 lock partially reversed 2026-05-27 post-audit. See memory
-     project_fraunces_reopened. */
+  --font-body: 'Inter', 'Inter Display', system-ui, -apple-system, sans-serif;
   --font-editorial: 'Fraunces', Georgia, 'Times New Roman', serif;
 
   /* Type scale (D2 — clamp() responsive) */
@@ -1397,7 +1397,7 @@ p { line-height: 1.6; max-width: 65ch; }
 .faq__question::after {
   content: '+';
   font-size: var(--type-h2);
-  font-weight: 300;
+  font-weight: 400;
   color: var(--text-accent);
   transition: transform var(--duration-fast) var(--ease-out-quart);
 }

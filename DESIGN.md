@@ -59,14 +59,15 @@ Used at S3 (Movement) + S7 (Final CTA) as paired bookends. Both sections layer a
 
 ## Typography
 
-**Sans-only display per B1 lock (Fraunces dropped 2026-05-27).** Accent on key fragments = **color only** (magenta), never italic.
+**Locked to 2 families 2026-05-28 — Inter (display + body) + Fraunces (editorial accent only at 4 selectors).** Poppins dropped to consolidate. Accent on key fragments = **color only** (magenta), never italic.
 
 ### Families
 
-- `--font-display: 'Inter', 'Inter Display', system-ui, sans-serif` — H1, H2, H3, big numbers, KPI values, calculator output
-- `--font-body: 'Poppins', system-ui, sans-serif` — body, sub-copy, captions, FAQ answers, form labels
+- `--font-display: 'Inter', 'Inter Display', system-ui, sans-serif` — H1, H2, H3, big numbers, KPI values, calculator output, body, sub-copy, captions, FAQ answers, form labels (Inter covers display + body roles)
+- `--font-body: 'Inter', ...` — same stack as `--font-display`; both tokens preserved for forward semantic clarity but resolve identically
+- `--font-editorial: 'Fraunces', Georgia, serif` — applied at exactly 4 selectors: `.cover-scrub__title` (S1 cover) · `.movement__h2` (S3) · `.kpi__value` (S6) · `.proof__quote-text` (S6). Do not creep.
 
-Both loaded from Google Fonts in `<head>`. Inter weights 500/600/700/800; Poppins weights 400/500/600/700.
+Loaded from Google Fonts in `<head>`. Inter weights 400/500/600/700; Fraunces opsz variable axis 400/500/600.
 
 ### Scale (clamp() responsive — D2 lock)
 
