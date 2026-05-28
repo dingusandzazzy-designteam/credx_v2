@@ -159,19 +159,23 @@
         }
       };
 
-      // Progress → video-time anchors. Each scene boundary from the source
-      // edit gets its own anchor; scroll is split into 4 equal chunks (one
-      // per beat). Source timecodes (24fps, HH:MM:SS:FF):
-      //   00:00:00:00  Intro   → 0.000s
-      //   00:00:04:10  Cena 1  → 4.417s
-      //   00:00:10:04  Cena 2  → 10.167s
-      //   00:00:13:22  Final   → 13.917s
+      // Progress → video-time anchors. Each beat is structured as:
+      //   play-in (video advances quickly to the beat's hold frame)
+      //   → HOLD (currentTime constant, title fully on for reading)
+      //   → transition (video advances through scene end + gap + next fade-in)
+      // Hold frames sit inside each beat's full-opacity range so the title
+      // is fully visible during the read. -1 in t means "clamp to duration".
+      // Source timecodes (24fps): 0.000 / 4.417 / 10.167 / 13.917.
       const ANCHORS = [
-        { p: 0.00, t: 0.000  },  // 00:00:00:00 — B1 Intro
-        { p: 0.25, t: 4.417  },  // 00:00:04:10 — B2 Cena 1
-        { p: 0.50, t: 10.167 },  // 00:00:10:04 — B3 Cena 2
-        { p: 0.75, t: 13.917 },  // 00:00:13:22 — B4 Final
-        { p: 1.00, t: -1     },  // clamp to duration at runtime
+        { p: 0.00, t: 0.000  },  // B1 enter (00:00:00:00)
+        { p: 0.04, t: 1.500  },  // B1 reached hold frame
+        { p: 0.22, t: 1.500  },  // B1 HOLD
+        { p: 0.27, t: 6.500  },  // → cross scene 1 end, gap, into B2 hold
+        { p: 0.45, t: 6.500  },  // B2 HOLD
+        { p: 0.50, t: 12.000 },  // → into B3 hold
+        { p: 0.68, t: 12.000 },  // B3 HOLD
+        { p: 0.75, t: 13.917 },  // → into B4 (00:00:13:22)
+        { p: 1.00, t: -1     },  // B4 HOLD on last frame
       ];
 
       const progressToTime = (p, duration) => {
@@ -211,7 +215,7 @@
       // smooth-scroll to the next section (hero--full). Subsequent scrolls
       // behave normally — the cover stays in its final state until the user
       // scrolls back to top.
-      const INTRO_DURATION = 7.0; // seconds — total length of the cover play-through
+      const INTRO_DURATION = 11.0; // seconds — total length of the cover play-through
 
       let introState = 'idle'; // 'idle' | 'playing' | 'done'
       const intentEvents = ['wheel', 'touchmove', 'keydown'];
