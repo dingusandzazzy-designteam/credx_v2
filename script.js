@@ -159,21 +159,21 @@
         }
       };
 
-      // Progress → video-time anchors. Each beat freezes on its source
-      // keyframe (with a tiny offset on B2-B4 so the title finishes fading
-      // in before the freeze starts). Holds are ~4s each, transitions
-      // between holds are ~1s and traverse fade-out + gap + fade-in.
+      // Progress → video-time anchors. Each segment (hold or transition)
+      // gets an equal 1/7 slice of the intro = ~4s each at INTRO_DURATION=28s.
+      // Holds freeze on the source keyframes (with +0.45s offset on B2/B3
+      // so the title is fully faded in when the freeze starts).
       // Source keyframes (24fps): 0.000 / 4.417 / 10.167 / 13.917.
       // -1 in t means "clamp to video duration at runtime".
       const ANCHORS = [
-        { p: 0.00, t: 0.000  },  // B1 enter on keyframe (00:00:00:00)
-        { p: 0.21, t: 0.000  },  // B1 HOLD on keyframe (~4s)
-        { p: 0.26, t: 4.867  },  // → cross to B2 (~1s)
-        { p: 0.47, t: 4.867  },  // B2 HOLD on keyframe + fade-in offset (~4s)
-        { p: 0.53, t: 10.617 },  // → cross to B3 (~1s)
-        { p: 0.74, t: 10.617 },  // B3 HOLD (~4s)
-        { p: 0.79, t: -1     },  // → cross to B4 (~1s, clamps to duration)
-        { p: 1.00, t: -1     },  // B4 HOLD on final frame (~4s)
+        { p: 0.000, t: 0.000  },  // B1 enter (00:00:00:00)
+        { p: 0.143, t: 0.000  },  // B1 HOLD end (~4s)
+        { p: 0.286, t: 4.867  },  // → transition to B2 (~4s)
+        { p: 0.429, t: 4.867  },  // B2 HOLD end (~4s)
+        { p: 0.571, t: 10.617 },  // → transition to B3 (~4s)
+        { p: 0.714, t: 10.617 },  // B3 HOLD end (~4s)
+        { p: 0.857, t: -1     },  // → transition to B4 (~4s)
+        { p: 1.000, t: -1     },  // B4 HOLD end (~4s)
       ];
 
       const progressToTime = (p, duration) => {
@@ -217,7 +217,7 @@
       // smooth-scroll to the next section (hero--full). Subsequent scrolls
       // behave normally — the cover stays in its final state until the user
       // scrolls back to top.
-      const INTRO_DURATION = 19.0; // seconds — 4 holds of ~4s + 3 transitions of ~1s
+      const INTRO_DURATION = 28.0; // seconds — 4 holds + 3 transitions, ~4s each
 
       let introState = 'idle'; // 'idle' | 'playing' | 'done'
       const intentEvents = ['wheel', 'touchmove', 'keydown'];
