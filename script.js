@@ -131,9 +131,10 @@
 
       const updateBeats = (t, duration) => {
         for (let i = 0; i < beats.length; i++) {
-          const visStart = BEAT_STARTS[i];
+          // Beat 0 starts fully visible at t=0 (no entry fade) by virtually
+          // shifting its window to the left.
+          const visStart = (i === 0) ? -FADE_IN : BEAT_STARTS[i];
           const nextStart = (i + 1 < BEAT_STARTS.length) ? BEAT_STARTS[i + 1] : duration;
-          // Leave a GAP before the next beat enters (or before the clip ends).
           const visEnd = Math.max(visStart + FADE_IN + 0.05, nextStart - GAP);
           let op;
           if (t < visStart || t >= visEnd) {
@@ -152,12 +153,45 @@
         }
       };
 
+      // Scroll-progress → video-time remap with dwell at each beat. Each
+      // pair = (progress 0..1, video time seconds). Inside a dwell window
+      // currentTime advances slowly (long read); between dwells it crosses
+      // the inter-scene gap quickly. Anchor times are clamped to the actual
+      // video duration at apply-time.
+      // Layout: dwell ~18% · jump ~10% · dwell ~18% · jump ~10% · dwell ~18% · jump ~10% · dwell ~16%
+      const ANCHORS = [
+        { p: 0.00, t: 0.00 },   // B1 already on screen
+        { p: 0.18, t: 3.60 },   // end of B1 dwell
+        { p: 0.28, t: 4.80 },   // landed in B2 (past the gap)
+        { p: 0.46, t: 9.40 },   // end of B2 dwell
+        { p: 0.56, t: 10.50 },  // landed in B3
+        { p: 0.74, t: 13.20 },  // end of B3 dwell
+        { p: 0.84, t: 13.95 },  // landed in B4
+        { p: 1.00, t: -1 },     // clamp to duration at runtime
+      ];
+
+      const progressToTime = (p, duration) => {
+        const clamped = p < 0 ? 0 : p > 1 ? 1 : p;
+        for (let i = 0; i < ANCHORS.length - 1; i++) {
+          const a = ANCHORS[i];
+          const b = ANCHORS[i + 1];
+          if (clamped >= a.p && clamped <= b.p) {
+            const span = b.p - a.p;
+            const local = span === 0 ? 0 : (clamped - a.p) / span;
+            const tA = a.t < 0 ? duration : a.t;
+            const tB = b.t < 0 ? duration : b.t;
+            return tA + (tB - tA) * local;
+          }
+        }
+        return duration;
+      };
+
       let pendingProgress = 0;
       let rafId = null;
       const applyScrub = () => {
         rafId = null;
         if (!isFinite(video.duration) || video.duration <= 0) return;
-        const t = Math.max(0, Math.min(video.duration, pendingProgress * video.duration));
+        const t = Math.max(0, Math.min(video.duration, progressToTime(pendingProgress, video.duration)));
         // Setting currentTime triggers an async seek; we don't await it.
         try { video.currentTime = t; } catch (_) {}
         updateBeats(t, video.duration);
@@ -172,7 +206,7 @@
         window.ScrollTrigger.create({
           trigger: cover,
           start: 'top top',
-          end: '+=300%', // 3× viewport scroll for the full clip
+          end: '+=400%', // 4× viewport — extra room so each beat has reading time
           pin: true,
           pinSpacing: true,
           scrub: 0.5,
