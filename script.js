@@ -186,9 +186,13 @@
           if (clamped >= a.p && clamped <= b.p) {
             const span = b.p - a.p;
             const local = span === 0 ? 0 : (clamped - a.p) / span;
+            // Smoothstep eases entry/exit of each anchor segment so the
+            // video doesn't jolt when crossing between a hold (zero slope)
+            // and a transition (high slope) — and back.
+            const eased = smoothstep(local);
             const tA = a.t < 0 ? duration : a.t;
             const tB = b.t < 0 ? duration : b.t;
-            return tA + (tB - tA) * local;
+            return tA + (tB - tA) * eased;
           }
         }
         return duration;
