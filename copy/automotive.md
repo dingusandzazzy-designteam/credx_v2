@@ -15,21 +15,24 @@
 | Field | Value | Length | Status |
 |---|---|---|---|
 | URL slug | `/automotive` | — | DRAFT |
-| Search intent | Transactional / B2B vendor evaluation | — | DRAFT |
-| Funnel stage | MOFU (dealer principal / VP Ops actively evaluating interchange-reduction solutions) | — | DRAFT |
-| Primary keyword | `interchange recovery for car dealers` | — | DRAFT — validate against locked SEO brief |
-| Secondary keywords | `dealer in-house financing` · `embedded credit auto dealer` · `merchant network agreement automotive` · `F&I margin recovery` | — | DRAFT |
-| **Title (browser tab + SERP)** | `Recover $30K per $1M interchange — CredX for auto dealers` | 58 | DRAFT |
-| **Meta description** | `Your dealership processes $1M a month on Visa. A Merchant Network Agreement with CredX recovers up to $30,000 per million in interchange.` | 151 | DRAFT |
-| **H1 (S1 Hero)** | `Your dealership processes $1M a month. Where does $30,000 go?` | 60 | DRAFT — accent on `$30,000` (color-only magenta, no italic) |
-| OG title | `Recover $30K per $1M interchange — CredX for auto dealers` | 58 | DRAFT |
-| OG description | `A Merchant Network Agreement with CredX returns up to $30,000 per million in dealer interchange.` | 96 | DRAFT |
+| Search intent | Commercial — the S2 pain-explainer and FAQ serve the informational interchange-fees intent | — | LOCKED 2026-05-29 |
+| Funnel stage | MOFU (dealer principal / VP Ops actively evaluating interchange-reduction solutions) | — | LOCKED |
+| Primary keyword | `car dealership interchange fees` | — | LOCKED 2026-05-29 (pain-aligned per SEMrush CA re-pull — see `seo/automotive_brief_revalidation_2026-05-29.md`) |
+| Secondary keywords | `interchange fee reduction for dealerships` · `branded credit line for dealerships` · `embedded credit for car dealerships` | — | LOCKED |
+| **Title (browser tab + SERP)** | `Cut Car Dealership Interchange Fees by $30K per $1M \| CredX` | 59 | LOCKED |
+| **Meta description** | `Car dealership interchange fees cost you $30,000 of every $1M. CredX turns them into a branded credit line at the F&I desk, so your dealership keeps the margin.` | 160 | LOCKED |
+| **H1 (S1 Hero)** | `Your dealership processes $1M a month. Where does $30,000 go?` | 61 | LOCKED — pain-pivot per A3; primary keyword carried in the S2 H2; color-only magenta accent on `$30,000` |
+| OG title | `Cut Car Dealership Interchange Fees by $30K per $1M \| CredX` | 59 | LOCKED |
+| OG description | `Car dealership interchange fees take $30,000 of every $1M. CredX turns them into a branded credit line at the F&I desk that your dealership owns.` | — | LOCKED |
 | OG image | `assets/images/automotive_og_v2.png` | — | TBD — Phase 5 imagery |
 
 **Notes:**
-- Pain-pivot H1 per A3 lock — quantified leak in the first frame.
+- Pain-pivot H1 per A3 lock — quantified leak in the first frame. Retained verbatim through the 2026-05-29 SEO re-validation.
+- SEO target re-aligned to the pain pivot 2026-05-29 (SEMrush CA re-pull): primary is now `car dealership interchange fees`. The interchange-fees framing matches what the page leads with, so the keyword sits naturally in the S2 H2 and the pain narrative. Earlier candidates `dealer in-house financing` (off-brand — buy-here-pay-here) and `branded credit line for dealerships` (solution-side, weaker intent match) were stepped down; branded credit line stays a secondary. See `seo/automotive_brief_revalidation_2026-05-29.md`.
+- The primary is Informational intent (SEMrush KD 33) — served by the S2 pain-explainer and the FAQ, which match that intent; the Title and CTAs stay commercial so the page still converts.
+- Primary keyword is carried in the S2 H2 ("...to interchange fees"), so the locked pain-pivot H1 stays keyword-free and on-brand (on-page practice #5 honored via the H2).
 - Avoid naming partner brands (PBS, Harley-Davidson, NMAX) in Title / Meta / H1 / OG until public-use approval is logged.
-- "Up to 85%" hedge appears in body; Meta uses "up to $30,000" as the defensible band.
+- "Up to 85%" hedge appears in body; the $30,000 per $1M dollar figure is the defensible anchor.
 
 ---
 
@@ -42,9 +45,10 @@
 |---|---|
 | Eyebrow | `For dealership groups + DMS operators` |
 | H1 | `Your dealership processes $1M a month. Where does` `<em class="accent">$30,000</em>` `go?` |
-| Sub | `A Merchant Network Agreement with CredX recovers up to $30,000 per million in interchange, builds a value-back program in your dealership's brand, and gives you the customer data your DMS does not capture.` |
+| Sub | `A Merchant Network Agreement with CredX turns the interchange fees you pay into a branded credit line for your dealership. It recovers up to $30,000 per million, builds a value-back program in your dealership's brand, and gives you the customer data your DMS does not capture.` |
 | Primary CTA | `Talk to a CredX partner specialist` → opens lead-form modal |
 | Hero asset | Static cinematic image (`assets/images/automotive/automotive-hero-poster.jpg`). No play button, no video modal. |
+| Hero alt text | `Dealership F&I desk where a branded credit line is issued to a customer` |
 
 **Notes:**
 - Pain-pivot ✅ — quantified leak in the first frame.
@@ -62,7 +66,8 @@
 | Field | Value |
 |---|---|
 | Image | Editorial-cinematic photography. Dealer principal or F&I director reviewing a margin report at a premium-showroom desk; statements / invoices in shallow focus. Per `project_imagery_direction` — competent agent in vertical context. |
-| H2 | `Every $1M you process on Visa loses $30,000 to interchange.` |
+| Alt text | `F&I director reviewing a dealership margin report at a showroom desk` |
+| H2 | `Every $1M you process on Visa loses $30,000 to interchange fees.` |
 | Body | `Visa and Mastercard take an average of 2.5–3% across your card mix. On a $40,000 vehicle, that is more than a thousand dollars per transaction. Across $1M a month, it is $30,000 of margin you will never see on a P&L.` |
 | Data callout | `$30,000 / $1M lost` (large display-sans, navy on light surface or cream on dark) |
 | Sub-link | `See where the leakage happens →` (anchors to S3 Opportunity) |
@@ -101,6 +106,10 @@
 
 **Status:** DRAFT
 **Beat:** Concrete outcomes. 3-col stat strip + interactive calculator widget. Bold data callouts.
+
+| Field | Value |
+|---|---|
+| Section H2 | `What a Branded Credit Line for Dealerships Returns` |
 
 ### Stat strip (3 columns)
 
@@ -152,7 +161,7 @@
 | 1 | Sign a Merchant Network Agreement | `Onboarding takes about 7 days. No replacement of your DMS, processor, or F&I tools.` |
 | 2 | CredX activates on your transaction flow | `Your existing checkout stays unchanged. CredX runs on the embedded value layer underneath.` |
 | 3 | Savings + value-back accrual report monthly | `Your monthly reporting shows interchange recovered and value-back earned, per store and per group.` |
-| 4 | Customers see lower-interest credit + value-back at your dealership | `Branded credit issued at the F&I desk, value-back accrued in your dealership's program. Visa is not the front-end anymore.` |
+| 4 | Customers see lower-interest credit + value-back at your dealership | `A branded credit line issued at the F&I desk, with value-back accrued in your dealership's program. Visa is not the front-end anymore.` |
 
 **Sub-link:** `See the integration spec →` (links to deeper technical / partner page — TBD whether implemented in v2 launch)
 
@@ -168,6 +177,10 @@
 
 **Status:** DRAFT — anonymized labels until public-use approval is logged
 **Beat:** Partner emblems · operator-side quoted endorsement · 3-KPI line.
+
+| Field | Value |
+|---|---|
+| Section H2 | `Dealers and Lenders Already Running Embedded Credit on CredX` |
 
 ### Partner emblem strip (4–6 emblems)
 
@@ -221,7 +234,7 @@ Imagery direction per `project_imagery_direction`: editorial-cinematic emblems o
 | Surface | Full-bleed gradient band (`--gradient-1` — paired with S3) |
 | Eyebrow | `Start a partner conversation` |
 | H2 | `Build the next era of automotive economics with CredX.` |
-| Body | `Talk to a CredX partner specialist. We will model your interchange recovery, walk you through the Merchant Network Agreement, and connect you with the lender partners that fund the embedded credit.` |
+| Body | `Talk to a CredX partner specialist. We will model your interchange recovery, walk you through the Merchant Network Agreement, and show you the branded credit line for dealerships that CredX issues at the F&I desk, funded by our lender partners.` |
 | Primary CTA | `Get my savings estimate` → opens lead-form modal pre-filled with vertical = Automotive |
 | Sub-CTA | `Read the Automotive partner brief` → PDF (hide on launch if PDF not ready) |
 | Optional micro-element | Calendar slot picker (Calendly embed) for direct booking — TBD whether in v2 launch |
@@ -252,6 +265,8 @@ Most globals (Nav · Footer · FAQ compact · Lead-form modal · Partner-program
 | What about multi-store rollout? | `One master account, individual store branding, consolidated reporting. Each rooftop sees its own savings and value-back accrual.` |
 | Is the dealership's customer data really mine? | `Yes. Consent-driven, opt-in by default, de-identified for analytics. Your dealership owns the value-back ledger; Visa does not.` |
 | How long until I see savings? | `Interchange recovery starts the month after activation. Monthly reporting shows the number per store and per group.` |
+| How does interchange fee reduction work for dealerships? | `A car dealership reduces interchange fees by signing a Merchant Network Agreement with CredX. CredX moves the transaction onto an embedded value layer and returns roughly $30,000 of every $1M as a branded credit line, so the margin stays with the dealership.` |
+| How does dealer in-house financing compare to a CredX branded credit line? | `Traditional dealer in-house financing puts the dealership's own capital at risk. A CredX branded credit line is an F&I credit platform funded by lender partners and issued in your dealership's brand, so you keep the customer relationship and the value-back without carrying the loan book.` |
 
 ---
 
@@ -263,7 +278,7 @@ Most globals (Nav · Footer · FAQ compact · Lead-form modal · Partner-program
 - ⚠ **S4 calculator math** — model is 3% effective ($36K interchange / $1M minus $6K residual / $1M with CredX = $30K saved / $1M / month → $360K/year at $1M default). Verified $36K / $6K benchmark figures from Audrey / Kendall before launch.
 - ⚠ **Trilha B cover animation** — external asset; lives as a separate animated section (not in the hero slot). Awaiting brief. The "short explainer video above the fold" requirement from feedback-03 is satisfied by Trilha B, not by a separate hero video.
 - ⚠ **Kendall founder quote attribution** — verify surname and title formatting.
-- ⚠ **SEO Title/Meta/H1** — needs `seo-copy-sync` validation against the locked v1 SEO brief in `seo/credx_SEO.xlsx`. Budgets honored (Title 58 / Meta 151 / H1 60); textual content may need refinement to match locked keyword targeting.
+- ✅ **SEO Title/Meta/H1** — re-validated 2026-05-29 and aligned to the pain pivot. Locked brief: primary `car dealership interchange fees`; Title 59 / Meta 160 / H1 61 (pain-pivot kept; keyword in S2 H2 + FAQ). Primary is Informational (KD 33) — served by S2 + FAQ; Title/CTAs stay commercial. See `seo/automotive_brief_revalidation_2026-05-29.md`.
 - ⚠ **Calculator hedge wording** — "Designed to recover up to 85%" is voice-correct but should be reviewed by Audrey for marketing claim defensibility.
 
 ---
@@ -272,7 +287,7 @@ Most globals (Nav · Footer · FAQ compact · Lead-form modal · Partner-program
 
 | Section | Status | Locked? |
 |---|---|---|
-| SEO meta block | DRAFT | No — pending seo-copy-sync validation |
+| SEO meta block | LOCKED 2026-05-29 | Yes — re-validated + brand-reconciled via seo-research / seo-copy-sync |
 | S1 Hero | DRAFT | No — pending user / brand-owner review |
 | S2 Pain | DRAFT | No |
 | S3 Opportunity | DRAFT | No |
