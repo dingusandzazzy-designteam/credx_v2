@@ -111,6 +111,41 @@
   --z-elevated: 10;
   --z-nav: 50;
   --z-modal: 100;
+
+  /* Nav surface (theme-aware) */
+  --nav-bg: rgba(11, 12, 22, 0.7);
+  --nav-bg-scrolled: rgba(11, 12, 22, 0.92);
+}
+
+/* ---- 1b. Light theme overrides (dark is the default above) ----
+   Toggle adds [data-theme="light"] on <html>. Surfaces + text flip; the
+   two cinematic bands (.movement, .final-cta) stay dark in BOTH themes by
+   design — they are the page's dark punctuation. Buttons use the
+   surface-aware mapping below. */
+[data-theme="light"] {
+  --surface-0: #f4f5f9;              /* Primary page surface */
+  --surface-1: #ffffff;              /* Card surface, raised panel */
+  --surface-2: #eceef4;              /* Hover / selected */
+  --surface-3: #dce0ea;              /* Divider / outline */
+
+  --text-primary: var(--ink);
+  --text-secondary: #4a4f73;         /* navy-slate, ~7:1 on white */
+  --text-muted: rgba(40, 44, 80, 0.62);
+  /* Accent on light must be the darker magenta (bright fails AA on white) */
+  --text-accent: var(--magenta);
+
+  --border-subtle: rgba(40, 44, 80, 0.12);
+  --border-default: #dce0ea;
+  --border-strong: var(--navy);
+
+  --nav-bg: rgba(244, 245, 249, 0.72);
+  --nav-bg-scrolled: rgba(244, 245, 249, 0.93);
+
+  --shadow-1: 0 1px 2px rgba(20, 24, 50, 0.06);
+  --shadow-2: 0 4px 12px rgba(20, 24, 50, 0.08);
+  --shadow-3: 0 12px 32px rgba(20, 24, 50, 0.12);
+
+  color-scheme: light;
 }
 
 /* ---- 2. Reset + base ---- */
@@ -286,19 +321,59 @@ p { line-height: 1.6; max-width: 65ch; }
 }
 .btn-text:hover { color: var(--purple); }
 
-/* On light surface (variant) */
-.light .btn-primary {
+/* On light surface (theme toggle) */
+[data-theme="light"] .btn-primary {
   background-color: var(--navy);
   color: var(--cloud-white);
 }
-.light .btn-primary:hover { background-color: var(--purple); }
+[data-theme="light"] .btn-primary:hover { background-color: var(--purple); }
 
-.light .btn-secondary {
+[data-theme="light"] .btn-secondary {
   background-color: transparent;
   color: var(--navy);
   border: 1.5px solid var(--navy);
 }
-.light .btn-secondary:hover { background-color: var(--navy); color: var(--cloud-white); }
+[data-theme="light"] .btn-secondary:hover { background-color: var(--navy); color: var(--cloud-white); }
+
+/* The .hero--full keeps its dark cinematic treatment in both themes (the hero
+   image is dark-graded until a light hero render lands), so its overlaid
+   secondary button stays light-on-dark regardless of theme. */
+[data-theme="light"] .hero--full .btn-secondary {
+  color: var(--cloud-white);
+  border-color: var(--cloud-white);
+}
+[data-theme="light"] .hero--full .btn-secondary:hover { background-color: var(--cloud-white); color: var(--ink); }
+/* Hero primary keeps brand magenta in both themes (hero is always dark-treated). */
+[data-theme="light"] .hero--full .btn-primary { background-color: var(--magenta); }
+[data-theme="light"] .hero--full .btn-primary:hover { background-color: var(--purple); }
+
+/* ---- 5b. Theme toggle ---- */
+
+.nav__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--s-4);
+}
+
+.theme-toggle {
+  display: inline-grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border-radius: var(--radius-pill);
+  color: var(--text-secondary);
+  border: 1px solid var(--border-subtle);
+  background-color: transparent;
+  transition: color var(--duration-fast) var(--ease-out-quart),
+              border-color var(--duration-fast) var(--ease-out-quart),
+              background-color var(--duration-fast) var(--ease-out-quart);
+}
+.theme-toggle:hover { color: var(--text-primary); border-color: var(--border-default); }
+.theme-toggle__icon { display: none; }
+/* Dark theme shows the sun (offer to brighten); light shows the moon. */
+.theme-toggle__icon--sun { display: block; }
+[data-theme="light"] .theme-toggle__icon--sun { display: none; }
+[data-theme="light"] .theme-toggle__icon--moon { display: block; }
 
 /* ---- 6. Navigation ---- */
 
@@ -309,12 +384,14 @@ p { line-height: 1.6; max-width: 65ch; }
   right: 0;
   z-index: var(--z-nav);
   padding-block: var(--s-4);
-  background-color: rgba(11, 12, 22, 0.7);
+  background-color: var(--nav-bg);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--border-subtle);
   transition: background-color var(--duration-base) var(--ease-out-quart);
 }
+
+.nav.is-scrolled { background-color: var(--nav-bg-scrolled); }
 
 .nav__inner {
   display: flex;
@@ -416,6 +493,16 @@ p { line-height: 1.6; max-width: 65ch; }
 }
 
 .hero--full .hero__copy { max-width: 560px; }
+
+/* Hero is dark-treated in both themes (dark image + ink overlay) until a
+   light-theme hero render lands — keep its copy cloud-white and its accent
+   the bright magenta regardless of [data-theme]. */
+.hero--full .hero__h1,
+.hero--full .hero__sub,
+.hero--full .eyebrow { color: var(--cloud-white); }
+.hero--full .hero__sub { color: rgba(248, 249, 252, 0.88); }
+.hero--full .accent,
+.hero--full .eyebrow--accent { color: var(--magenta-bright); }
 
 @media (max-width: 768px) {
   .hero--full .hero__overlay {
@@ -781,34 +868,28 @@ p { line-height: 1.6; max-width: 65ch; }
    text contrast; a single radial magenta atmospheric trace keeps brand color
    present without the gradient-band cliché. S7 is now the only gradient
    moment, paired with the conversion ask. */
+/* Token-based dark band (photo retired per prompts §A3). Stays dark in BOTH
+   themes by design — the page's manifesto punctuation. */
 .movement {
   background-color: var(--ink);
-  background-image:
-    linear-gradient(180deg,
-      rgba(11, 12, 22, 0.78) 0%,
-      rgba(11, 12, 22, 0.62) 35%,
-      rgba(11, 12, 22, 0.62) 65%,
-      rgba(11, 12, 22, 0.85) 100%),
-    image-set(
-      url('assets/images/automotive/automotive-movement-bg.webp') type('image/webp'),
-      url('assets/images/automotive/automotive-movement-bg.jpg') type('image/jpeg')
-    );
-  background-size: cover;
-  background-position: center;
   position: relative;
   overflow: hidden;
   padding-block: calc(var(--s-section) + var(--s-7));
 }
 
 .movement::before {
-  /* Single subtle magenta atmospheric trace — brand presence without gradient band */
+  /* Subtle magenta + purple atmospheric traces — brand presence, no photo */
   content: '';
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(ellipse at 80% 70%, rgba(148, 63, 120, 0.14), transparent 55%);
+    radial-gradient(ellipse at 82% 75%, rgba(148, 63, 120, 0.20), transparent 55%),
+    radial-gradient(ellipse at 12% 10%, rgba(109, 94, 164, 0.16), transparent 50%);
   pointer-events: none;
 }
+
+/* Movement text is cloud-white in both themes (dark band) */
+.movement .movement__h2 { color: var(--cloud-white); }
 
 .movement__inner {
   position: relative;
@@ -1614,4 +1695,172 @@ p { line-height: 1.6; max-width: 65ch; }
   outline-offset: 2px;
   box-shadow: 0 0 0 4px rgba(248, 249, 252, 0.35);
   border-radius: var(--radius-small);
+}
+
+[data-theme="light"] :focus-visible {
+  box-shadow: 0 0 0 4px rgba(11, 12, 22, 0.18);
+}
+
+/* ============================================================
+   20. V3.1 sections — Control · Gains · Calculator · Signup
+   ============================================================ */
+
+/* ---- Control (S3) ---- */
+.control { background-color: var(--surface-0); }
+.control__header { text-align: center; max-width: 760px; margin: 0 auto var(--s-9); }
+.control__h2 { margin-bottom: var(--s-4); }
+.control__intro { color: var(--text-secondary); font-size: var(--type-body-lg); }
+
+.control__three {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--s-5);
+  margin-bottom: var(--s-8);
+}
+@media (min-width: 768px) { .control__three { grid-template-columns: repeat(3, 1fr); } }
+
+.control-card {
+  padding: var(--s-7);
+  background-color: var(--surface-1);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-card);
+}
+.control-card__title {
+  font-family: var(--font-editorial);
+  font-size: var(--type-h3);
+  font-weight: 500;
+  color: var(--text-primary);
+  display: block;
+  margin-bottom: var(--s-3);
+  letter-spacing: -0.01em;
+}
+.control-card__body { color: var(--text-secondary); font-size: var(--type-body); line-height: 1.55; }
+
+.control__whitelabel {
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto;
+  padding-top: var(--s-7);
+  border-top: 1px solid var(--border-subtle);
+}
+.control__whitelabel-head {
+  font-family: var(--font-editorial);
+  font-size: var(--type-h2);
+  font-weight: 500;
+  margin-bottom: var(--s-4);
+}
+.control__whitelabel-body {
+  color: var(--text-secondary);
+  font-size: var(--type-body-lg);
+  max-width: 56ch;
+  margin-inline: auto;
+}
+
+/* ---- Gains (S4) ---- */
+.gains { background-color: var(--surface-0); }
+.gains__header { text-align: center; max-width: 760px; margin: 0 auto var(--s-9); }
+.gains__h2 { margin-bottom: var(--s-4); }
+
+.gains__list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--s-5);
+  margin-bottom: var(--s-9);
+}
+@media (min-width: 1024px) { .gains__list { grid-template-columns: repeat(3, 1fr); } }
+
+.gain {
+  padding: var(--s-7);
+  background-color: var(--surface-1);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-card);
+}
+.gain__num {
+  font-family: var(--font-editorial);
+  font-size: var(--type-h2);
+  font-weight: 600;
+  color: var(--text-accent);
+  display: block;
+  margin-bottom: var(--s-4);
+  line-height: 1;
+}
+.gain__title {
+  font-family: var(--font-editorial);
+  font-size: var(--type-h3);
+  font-weight: 500;
+  margin-bottom: var(--s-3);
+  line-height: 1.2;
+}
+.gain__body { color: var(--text-secondary); font-size: var(--type-body); line-height: 1.55; }
+
+.gains__strip {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--s-7);
+}
+@media (min-width: 768px) {
+  .gains__strip { grid-template-columns: repeat(3, 1fr); gap: var(--s-5); }
+}
+
+/* ---- Calculator section (S5) ---- */
+.calc-section { background-color: var(--surface-0); }
+
+.calc__reward {
+  margin-top: var(--s-4);
+  padding-top: var(--s-4);
+  border-top: 1px solid var(--border-subtle);
+  color: var(--text-primary);
+  font-size: var(--type-caption);
+  line-height: 1.5;
+}
+
+/* ---- Signup (S8) — 2-step progressive form ---- */
+.signup { background-color: var(--surface-1); }
+.signup__inner { max-width: 760px; margin-inline: auto; }
+.signup__intro { text-align: center; margin-bottom: var(--s-8); }
+.signup__h2 { margin-bottom: var(--s-4); }
+.signup__sub { color: var(--text-secondary); font-size: var(--type-body-lg); max-width: 48ch; margin-inline: auto; }
+
+.signup__step {
+  background-color: var(--surface-0);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-card);
+  padding: var(--s-7);
+}
+.signup__step--2 { margin-top: var(--s-5); }
+
+.signup__step-label {
+  font-family: var(--font-editorial);
+  font-size: var(--type-h3);
+  font-weight: 500;
+  display: block;
+  margin-bottom: var(--s-2);
+}
+.signup__optional { font-family: var(--font-body); font-size: var(--type-caption); color: var(--text-muted); font-weight: 500; }
+.signup__step-note { color: var(--text-muted); font-size: var(--type-caption); margin-bottom: var(--s-6); }
+
+.signup__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--s-5);
+  margin-bottom: var(--s-6);
+}
+@media (min-width: 640px) { .signup__grid { grid-template-columns: repeat(2, 1fr); } }
+
+.signup__reward {
+  margin-block: var(--s-5);
+  padding: var(--s-5) var(--s-6);
+  background-color: var(--surface-2);
+  border-left: 3px solid var(--text-accent);
+  border-radius: var(--radius-card-sm);
+  color: var(--text-primary);
+  font-size: var(--type-body);
+  line-height: 1.5;
+}
+.signup__done {
+  margin-top: var(--s-5);
+  padding: var(--s-5) var(--s-6);
+  background-color: var(--surface-2);
+  border-radius: var(--radius-card-sm);
+  color: var(--text-primary);
 }

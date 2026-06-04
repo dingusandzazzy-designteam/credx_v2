@@ -39,21 +39,18 @@
   /* ---- 2. Nav scroll state ---- */
 
   const nav = document.querySelector('.nav');
-  let lastScrollY = 0;
   function updateNavOnScroll() {
-    const y = window.scrollY;
-    if (y > 24) {
-      nav.style.backgroundColor = 'rgba(11, 12, 22, 0.92)';
-    } else {
-      nav.style.backgroundColor = 'rgba(11, 12, 22, 0.7)';
-    }
-    lastScrollY = y;
+    if (!nav) return;
+    // Theme-aware bg is driven by --nav-bg / --nav-bg-scrolled tokens; JS only
+    // toggles the scrolled state so it works in both light and dark themes.
+    nav.classList.toggle('is-scrolled', window.scrollY > 24);
   }
   if (lenis) {
     lenis.on('scroll', updateNavOnScroll);
   } else {
     window.addEventListener('scroll', updateNavOnScroll, { passive: true });
   }
+  updateNavOnScroll();
 
   /* ---- 3. Reveal-on-scroll ---- */
 
@@ -350,101 +347,98 @@
 
   const slider = document.querySelector('[data-calc-input]');
   const volumeDisplay = document.querySelector('[data-calc-volume-display]');
-  const monthlyOutput = document.querySelector('[data-calc-output-monthly]');
   const yearlyOutput = document.querySelector('[data-calc-output-yearly]');
+  const calcReward = document.querySelector('[data-calc-reward]');
 
   function formatFull(value) {
     return '$' + Math.round(value).toLocaleString('en-US');
   }
 
-  // Calculator math (per v2 screenshot model):
-  //   $36K interchange per $1M (Visa/MC benchmark) — $6K residual per $1M with CredX
-  //   = $30K saved per $1M/month → 3% effective rate
-  function updateCalc() {
+  // Output 1 only — Output 2 (value-back/year) deferred until a value-back
+  // rate lands (decision 2026-06-04, see copy/automotive.md §5).
+  //   recovered/year = volume × 0.03 × 12
+  //   ($36K interchange − $6K residual per $1M = $30K/$1M/month → 3% effective).
+  function rewardText(monthly, yearly) {
+    return 'At ' + formatFull(monthly) + ' a month, you are keeping ' + formatFull(yearly) +
+      ' a year. Want your real number from your actual processing statement? Take the next step.';
+  }
+
+  function updateCalc(reveal) {
     if (!slider) return;
     const monthly = parseFloat(slider.value);
-    const monthlySaved = monthly * 0.03;
-    const yearlySaved = monthlySaved * 12;
+    const yearly = monthly * 0.03 * 12;
 
     if (volumeDisplay) volumeDisplay.textContent = formatFull(monthly);
-    if (monthlyOutput) monthlyOutput.textContent = formatFull(monthlySaved);
-    if (yearlyOutput) yearlyOutput.innerHTML = formatFull(yearlySaved) + '<em class="accent">/year</em>';
+    if (yearlyOutput) yearlyOutput.textContent = formatFull(yearly);
+    if (calcReward && (reveal || !calcReward.hidden)) {
+      calcReward.textContent = rewardText(monthly, yearly);
+      calcReward.hidden = false;
+    }
   }
 
   if (slider) {
-    slider.addEventListener('input', updateCalc);
-    updateCalc();
+    slider.addEventListener('input', () => updateCalc(true));
+    updateCalc(false);
   }
 
-  /* ---- 6. Modals ---- */
+  /* ---- 6. Theme toggle (localStorage + first-load handled inline in <head>) ---- */
 
-  const triggers = document.querySelectorAll('[data-modal-trigger]');
-  const closes = document.querySelectorAll('[data-modal-close]');
-  let lastFocus = null;
-
-  function openModal(id) {
-    const modal = document.getElementById('modal-' + id);
-    if (!modal) return;
-    lastFocus = document.activeElement;
-    modal.setAttribute('aria-hidden', 'false');
-    document.body.style.overflow = 'hidden';
-    if (lenis) lenis.stop();
-    // Focus first focusable inside modal
-    const firstInput = modal.querySelector('input, select, textarea, button');
-    if (firstInput) setTimeout(() => firstInput.focus(), 50);
+  const themeToggle = document.querySelector('[data-theme-toggle]');
+  if (themeToggle) {
+    themeToggle.addEventListener('click', () => {
+      const isLight = document.documentElement.getAttribute('data-theme') === 'light';
+      const next = isLight ? 'dark' : 'light';
+      if (next === 'light') {
+        document.documentElement.setAttribute('data-theme', 'light');
+      } else {
+        document.documentElement.removeAttribute('data-theme');
+      }
+      try { localStorage.setItem('credx-theme', next); } catch (e) {}
+      const meta = document.querySelector('meta[name="theme-color"]');
+      if (meta) meta.setAttribute('content', next === 'light' ? '#f4f5f9' : '#0b0c16');
+    });
   }
 
-  function closeModal(modal) {
-    modal.setAttribute('aria-hidden', 'true');
-    document.body.style.overflow = '';
-    if (lenis) lenis.start();
-    if (lastFocus && typeof lastFocus.focus === 'function') lastFocus.focus();
-  }
+  /* ---- 7. Signup — 2-step progressive form (placeholder → CRM in Phase 7) ---- */
 
-  triggers.forEach((trigger) => {
-    trigger.addEventListener('click', (e) => {
-      e.preventDefault();
-      const id = trigger.getAttribute('data-modal-trigger');
-      openModal(id);
-    });
-  });
+  const signupForm = document.querySelector('[data-signup-form]');
+  if (signupForm) {
+    const step1 = signupForm.querySelector('[data-step="1"]');
+    const step2 = signupForm.querySelector('[data-step="2"]');
+    const step1Btn = signupForm.querySelector('[data-step1-next]');
+    const reward = signupForm.querySelector('[data-signup-reward]');
+    const done = signupForm.querySelector('[data-signup-done]');
 
-  closes.forEach((closeBtn) => {
-    closeBtn.addEventListener('click', () => {
-      const modal = closeBtn.closest('.modal');
-      if (modal) closeModal(modal);
-    });
-  });
-
-  // Click outside panel closes modal
-  document.querySelectorAll('.modal').forEach((modal) => {
-    modal.addEventListener('click', (e) => {
-      if (e.target === modal) closeModal(modal);
-    });
-  });
-
-  // Escape closes modal
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') {
-      const openModals = document.querySelectorAll('.modal[aria-hidden="false"]');
-      openModals.forEach((m) => closeModal(m));
+    if (step1Btn && step1) {
+      step1Btn.addEventListener('click', () => {
+        // Validate step 1 required fields only.
+        const fields = step1.querySelectorAll('input[required]');
+        for (let i = 0; i < fields.length; i++) {
+          if (!fields[i].checkValidity()) { fields[i].reportValidity(); return; }
+        }
+        // Phase 7: push step 1 to Kyle's CRM here — fires even if step 2 is skipped.
+        console.log('Signup step 1 (placeholder → CRM):', Object.fromEntries(new FormData(signupForm).entries()));
+        if (reward) {
+          reward.textContent = 'You are in. Based on your volume, you could be keeping up to $30,000 per $1M. Two more questions and we will build your real number.';
+          reward.hidden = false;
+        }
+        if (step2) step2.hidden = false;
+        step1Btn.textContent = 'Submitted ✓';
+        step1Btn.disabled = true;
+        if (step2) {
+          if (lenis && typeof lenis.scrollTo === 'function') lenis.scrollTo(step2, { offset: -80 });
+          else step2.scrollIntoView({ behavior: prefersReducedMotion ? 'auto' : 'smooth', block: 'center' });
+        }
+      });
     }
-  });
 
-  /* ---- 7. Form submit (placeholder — wire to Zapier/CRM in Phase 7) ---- */
-
-  const contactForm = document.querySelector('[data-form="contact"]');
-  if (contactForm) {
-    contactForm.addEventListener('submit', (e) => {
+    signupForm.addEventListener('submit', (e) => {
       e.preventDefault();
-      const formData = new FormData(contactForm);
-      const data = Object.fromEntries(formData.entries());
-      // Phase 7: replace with actual endpoint (Zapier webhook / Calendly / CRM)
-      console.log('Contact form submitted (placeholder):', data);
-      alert('Thanks. A CredX partner specialist will reach out within one business day.');
-      const modal = contactForm.closest('.modal');
-      if (modal) closeModal(modal);
-      contactForm.reset();
+      // Phase 7: push the full (step 1 + step 2) payload to CRM here.
+      console.log('Signup step 2 (placeholder → CRM):', Object.fromEntries(new FormData(signupForm).entries()));
+      if (step2) step2.hidden = true;
+      if (reward) reward.hidden = true;
+      if (done) done.hidden = false;
     });
   }
 

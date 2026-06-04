@@ -5,22 +5,32 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#0b0c16" />
 
-  <!-- SEO (per copy/automotive.md §SEO meta block — LOCKED 2026-05-29) -->
-  <title>Cut Car Dealership Interchange Fees by $30K per $1M | CredX</title>
-  <meta name="description" content="Car dealership interchange fees cost you $30,000 of every $1M. CredX turns them into a branded credit line at the F&I desk, so your dealership keeps the margin." />
+  <!-- Set theme before paint to avoid FOUC. Dark is the brand default;
+       a saved toggle preference wins. (To make first load OS-aware instead,
+       fall back to prefers-color-scheme when no stored pref.) -->
+  <script>
+    (function () {
+      try {
+        var stored = localStorage.getItem('credx-theme');
+        if (stored === 'light') document.documentElement.setAttribute('data-theme', 'light');
+      } catch (e) {}
+    })();
+  </script>
+
+  <!-- Campaign metadata (per copy/automotive.md §Page metadata — SEO dropped, not indexed) -->
+  <title>CredX for Auto Dealers — Own Your Customer, Recover $30K per $1M</title>
+  <meta name="description" content="Keep the customer, the data, and the loyalty your dealership earns. Recover up to $30,000 for every $1M you process. CredX is the embedded value platform built for automotive dealers." />
 
   <!-- Open Graph -->
-  <meta property="og:title" content="Cut Car Dealership Interchange Fees by $30K per $1M | CredX" />
-  <meta property="og:description" content="Car dealership interchange fees take $30,000 of every $1M. CredX turns them into a branded credit line at the F&I desk that your dealership owns." />
+  <meta property="og:title" content="CredX for Auto Dealers — Own Your Customer, Recover $30K per $1M" />
+  <meta property="og:description" content="Keep the customer, the data, and the loyalty your dealership earns. Recover up to $30,000 for every $1M you process." />
   <meta property="og:image" content="assets/images/automotive/automotive-og.png" />
   <meta property="og:type" content="website" />
   <meta name="twitter:card" content="summary_large_image" />
 
   <link rel="icon" href="assets/logo/credx-shape.svg" type="image/svg+xml" />
 
-  <!-- Fonts: Inter (display + body) + Fraunces (editorial accent only).
-       Locked 2026-05-28 to 2 families — Poppins dropped. See memories
-       project_typography_v2_lock + project_fraunces_reopened. -->
+  <!-- Fonts: Inter (display + body) + Fraunces (editorial accent). Locked to 2 families. -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" />
@@ -28,172 +38,174 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <!-- Nav (G1) — minimalist per A4 lock (4 independent verticals, no cross-vertical switcher) -->
+  <!-- Nav (G1) — minimalist per A4 lock (no cross-vertical switcher). In-page anchors + theme toggle + primary CTA. -->
   <nav class="nav" aria-label="Primary">
     <div class="container nav__inner">
-      <a href="#" class="nav__logo" aria-label="CredX home">
+      <a href="#top" class="nav__logo" aria-label="CredX home">
         <img src="assets/logo/Credx-name.svg" alt="CredX" height="28" />
       </a>
-      <a href="#contact" class="btn btn-primary nav__cta" data-modal-trigger="contact">Talk to a Partner Specialist</a>
+      <div class="nav__links">
+        <a href="#how" class="nav__link">How it works</a>
+        <a href="#movement" class="nav__link">The movement</a>
+        <a href="#savings" class="nav__link">Savings</a>
+      </div>
+      <div class="nav__actions">
+        <button class="theme-toggle" data-theme-toggle type="button" aria-label="Toggle light and dark theme">
+          <svg class="theme-toggle__icon theme-toggle__icon--sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="4" /><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41" />
+          </svg>
+          <svg class="theme-toggle__icon theme-toggle__icon--moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+          </svg>
+        </button>
+        <a href="#form" class="btn btn-primary nav__cta">Join the Movement</a>
+      </div>
     </div>
   </nav>
 
-  <main>
-    <!-- S1 Hero — Trilha B cover scrub (4 frames cross-fade via ScrollTrigger pin) -->
-    <section class="cover-scrub" aria-label="Hero">
-      <div class="cover-scrub__stage" aria-hidden="true">
-        <video
-          class="cover-scrub__video"
-          data-cover-video
-          src="assets/cover/cover-video.mp4"
-          poster="assets/images/automotive/frame-1-pain.jpg"
-          muted
-          playsinline
-          preload="auto"
-          disablepictureinpicture
-        ></video>
-        <img
-          class="cover-scrub__poster"
-          src="assets/images/automotive/frame-1-pain.jpg"
-          alt=""
-          width="1672"
-          height="941"
-        />
-        <div class="cover-scrub__scrim"></div>
-      </div>
-
-      <div class="container cover-scrub__copy">
-        <div class="cover-scrub__beat is-active" data-frame="1">
-          <span class="eyebrow eyebrow--accent">For Dealership Groups + DMS Operators</span>
-          <h1 class="cover-scrub__title">
-            Your Dealership Processes<br />
-            $1M a Month.<br />
-            <em class="accent">Where Does $30,000 Go?</em>
-          </h1>
-        </div>
-        <div class="cover-scrub__beat" data-frame="2">
-          <span class="eyebrow">The Movement</span>
-          <p class="cover-scrub__title">Sign a Merchant Network Agreement.</p>
-          <p class="cover-scrub__sub">Embedded value rails. No DMS replacement.</p>
-        </div>
-        <div class="cover-scrub__beat" data-frame="3">
-          <span class="eyebrow">What Changes</span>
-          <p class="cover-scrub__title">Recover <em class="accent">$30,000</em> per $1M Processed.</p>
-          <p class="cover-scrub__sub">Value-back accrual in your dealership's brand.</p>
-        </div>
-        <div class="cover-scrub__beat" data-frame="4">
-          <p class="cover-scrub__title">Build the Next Era of Automotive Economics.</p>
-          <p class="cover-scrub__sub">Scroll down to start the conversation.</p>
-        </div>
-      </div>
-
-      <div class="cover-scrub__progress" aria-hidden="true">
-        <span class="cover-scrub__progress-dot is-active" data-dot="1"></span>
-        <span class="cover-scrub__progress-dot" data-dot="2"></span>
-        <span class="cover-scrub__progress-dot" data-dot="3"></span>
-        <span class="cover-scrub__progress-dot" data-dot="4"></span>
-      </div>
-    </section>
-
-    <!-- S1 Hero — full-bleed variant (follows the cover scrub prologue) -->
+  <main id="top">
+    <!-- ============================================================
+         S1 — HERO · The Movement
+         Hero is a static image this round (movement film deferred —
+         project_hero_no_video). Dark-treated in both themes for now;
+         the light-theme hero image (automotive-hero-light.jpg) swaps in
+         once rendered — see prompts/automotive.md §A3 for the swap block.
+         ============================================================ -->
     <section class="hero hero--full" aria-label="Hero">
       <picture>
-        <img src="assets/images/automotive/hero-image-2.jpg" alt="Dealership F&I desk where a branded credit line is issued to a customer" class="hero__bg" width="1916" height="821" loading="lazy" />
+        <img src="assets/images/automotive/hero-image-2.jpg" alt="Dealership F&I desk where a branded credit line is issued to a customer" class="hero__bg" width="1916" height="821" />
       </picture>
       <div class="hero__overlay" aria-hidden="true"></div>
       <div class="container hero__inner">
         <div class="hero__copy">
           <span class="eyebrow eyebrow--accent" data-reveal>For Dealership Groups + DMS Operators</span>
-          <h2 class="hero__h1" data-reveal data-reveal-delay="1">
-            Your Dealership Processes $1M a Month. Where Does <em class="accent">$30,000</em> Go?
-          </h2>
+          <h1 class="hero__h1" data-reveal data-reveal-delay="1">
+            Own the Customer You <em class="accent">Fought to Win</em>
+          </h1>
           <p class="hero__sub" data-reveal data-reveal-delay="2">
-            A Merchant Network Agreement with CredX turns the interchange fees you pay into a branded credit line for your dealership. It recovers up to $30,000 per million, builds a value-back program in your dealership's brand, and gives you the customer data your DMS does not capture.
+            Every car you sell builds a relationship. CredX keeps it yours: the data, the loyalty, and the next purchase. And it recovers up to $30,000 for every $1M you process.
           </p>
           <div class="hero__ctas" data-reveal data-reveal-delay="3">
-            <button class="btn btn-primary" data-modal-trigger="contact">Talk to a CredX Partner Specialist</button>
+            <a href="#form" class="btn btn-primary">Join the Movement</a>
+            <a href="#how" class="btn btn-secondary">See how it works</a>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- S2 Pain -->
-    <section id="pain" class="section pain" aria-label="The pain">
-      <div class="container pain__inner">
-        <div class="pain__media" data-reveal>
-          <picture>
-            <source srcset="assets/images/automotive/automotive-pain-fi-desk.webp" type="image/webp" />
-            <img src="assets/images/automotive/automotive-pain-fi-desk.jpg" alt="F&I director reviewing a dealership margin report at a showroom desk" width="1122" height="1402" loading="lazy" />
-          </picture>
-        </div>
-        <div>
-          <span class="eyebrow" data-reveal>The Money Problem</span>
-          <h2 class="pain__h2" data-reveal data-reveal-delay="1">
-            Every $1M You Process on Visa Loses <em class="accent">$30,000</em> to Interchange Fees
-          </h2>
-          <p class="pain__body" data-reveal data-reveal-delay="2">
-            Visa and Mastercard take an average of 2.5%–3% across your card mix. On a $40,000 vehicle, that is more than $1,000 per transaction. Across $1M a month, it is $30,000 of margin you will never see on a P&amp;L.
-          </p>
-          <div class="pain__callout" data-reveal data-reveal-delay="3">
-            <span class="pain__callout-number"><em class="accent">$30,000</em>/$1M LOST</span>
-          </div>
-          <a href="#movement" class="sub-link">See Where the Leakage Happens</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- S3 Opportunity / Movement -->
+    <!-- ============================================================
+         S2 — THE MOVEMENT, IN ONE LINE (manifesto band + founder quote)
+         ============================================================ -->
     <section id="movement" class="section movement" aria-label="The movement">
       <div class="container movement__inner">
-        <span class="eyebrow" style="color: rgba(248,249,252,0.7)" data-reveal>The Movement</span>
-        <h2 class="movement__h2" data-reveal data-reveal-delay="1">
-          CredX Is a Modern Financial Movement Reshaping <em class="accent">Payment Economics</em>
+        <h2 class="movement__h2" data-reveal>
+          The dealer who owns the data <em class="accent">owns the customer</em>.
         </h2>
-        <p class="movement__body" data-reveal data-reveal-delay="2">
-          Merchants like you are signing Merchant Network Agreements with CredX. These embedded value rails turn interchange into recurring revenue, customer retention, and partnership equity. The system that has been taking $30,000 per million from your dealership for decades does not have to keep doing it.
+        <p class="movement__body" data-reveal data-reveal-delay="1">
+          Right now your DMS runs the payment, and the card network keeps everything that comes after: who your customer is, what they spend, and when they will buy again. CredX puts that back in your hands. Your credit facility, your brand, your customer.
         </p>
-        <div class="movement__quote" data-reveal data-reveal-delay="3">
+        <div class="movement__quote" data-reveal data-reveal-delay="2">
           <p class="movement__quote-text">
-            <em class="accent">"</em>Software should pay for people, not people for software.<em class="accent">"</em>
+            <em class="accent">"</em>We spend our money and give it to your clients, white-labelled to look like you. Who partners like that?<em class="accent">"</em>
           </p>
-          <p class="movement__quote-attribution">—Kendall, Founder, CredX</p>
+          <p class="movement__quote-attribution">— Kendall, Founder, CredX</p>
         </div>
       </div>
     </section>
 
-    <!-- S4 Outcome -->
-    <section class="section outcome" aria-label="Outcome">
+    <!-- ============================================================
+         S3 — CONTROL · What You Get Back
+         ============================================================ -->
+    <section id="control" class="section control" aria-label="Take control">
       <div class="container">
-        <div class="outcome__header">
-          <span class="eyebrow" data-reveal>What Changes?</span>
-          <h2 class="outcome__h2" data-reveal data-reveal-delay="1">
-            What a <em class="accent">Branded Credit Line</em> for Dealerships Returns
+        <div class="control__header">
+          <span class="eyebrow" data-reveal>Take Control of Your Dealership</span>
+          <h2 class="control__h2" data-reveal data-reveal-delay="1">
+            Your data is the asset no one gave back. <em class="accent">Until now.</em>
+          </h2>
+          <p class="control__intro" data-reveal data-reveal-delay="2">Three things become yours the day you sign:</p>
+        </div>
+
+        <div class="control__three">
+          <div class="control-card" data-reveal>
+            <span class="control-card__title">Your customer.</span>
+            <p class="control-card__body">The relationship stays in your dealership's name, not the card network's.</p>
+          </div>
+          <div class="control-card" data-reveal data-reveal-delay="1">
+            <span class="control-card__title">Your data.</span>
+            <p class="control-card__body">Consent-driven and de-identified: which buyers come back, which segments spend the most, and when demand peaks.</p>
+          </div>
+          <div class="control-card" data-reveal data-reveal-delay="2">
+            <span class="control-card__title">Your loyalty.</span>
+            <p class="control-card__body">A value-back program in your own brand that keeps the customer from driving to the dealer down the street.</p>
+          </div>
+        </div>
+
+        <div class="control__whitelabel" data-reveal>
+          <h3 class="control__whitelabel-head">Your dealership's name. <em class="accent">Our infrastructure.</em></h3>
+          <p class="control__whitelabel-body">Everything the customer sees carries your brand. The technology, compliance, and credit run behind the scenes. The relationship is yours.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         S4 — THE GAINS · The cherry on the cake
+         ============================================================ -->
+    <section id="gains" class="section gains" aria-label="The gains">
+      <div class="container">
+        <div class="gains__header">
+          <span class="eyebrow" data-reveal>And Here Is What It Pays You Back</span>
+          <h2 class="gains__h2" data-reveal data-reveal-delay="1">
+            Three ways CredX puts <em class="accent">money back</em> in your dealership.
           </h2>
         </div>
 
-        <div class="outcome__stats">
+        <div class="gains__list">
+          <div class="gain" data-reveal>
+            <span class="gain__num">1</span>
+            <h3 class="gain__title">Recover up to 85% of interchange</h3>
+            <p class="gain__body">$6,000 per $1M with CredX, against roughly $36,000 with Visa and Mastercard. On $1M a month, that is up to $30,000 staying in your business.</p>
+          </div>
+          <div class="gain" data-reveal data-reveal-delay="1">
+            <span class="gain__num">2</span>
+            <h3 class="gain__title">Earn on the credit you used to give away</h3>
+            <p class="gain__body">A credit facility in your own brand, issued at the F&amp;I desk in about 6 minutes, at roughly half the rate of a standard card (around 11%, against 19–44%). You are paid in full and upfront. Your customer carries the credit, and the risk stays with CredX, never on your books. Dealers who add embedded credit at the point of sale see up to a 321% lift in purchase frequency and 76% larger transactions (PayPal embedded credit benchmark).</p>
+          </div>
+          <div class="gain" data-reveal data-reveal-delay="2">
+            <span class="gain__num">3</span>
+            <h3 class="gain__title">See your business in real time</h3>
+            <p class="gain__body">A monthly dashboard in plain language, not raw numbers: which rooftop peaks in July, which segment drives service revenue, and who is about to lapse. The intelligence your DMS never handed you.</p>
+          </div>
+        </div>
+
+        <div class="gains__strip">
           <div class="stat" data-reveal>
             <span class="stat__number">$30K</span>
-            <span class="stat__label">Recovered per $1M Processed — average interchange recovery via Merchant Network Agreement.</span>
+            <span class="stat__label">Recovered per $1M, month one.</span>
           </div>
           <div class="stat" data-reveal data-reveal-delay="1">
             <span class="stat__number">Yours</span>
-            <span class="stat__label">Customer + Data Owned by the Dealership — not by Visa, not by the DMS.</span>
+            <span class="stat__label">The customer, the data, the loyalty. Not Visa's.</span>
           </div>
           <div class="stat" data-reveal data-reveal-delay="2">
             <span class="stat__number">6 min</span>
-            <span class="stat__label">To Underwrite a Credit Decision — at the F&amp;I desk, in the customer's hand.</span>
+            <span class="stat__label">Credit approved at the F&amp;I desk, before they leave the lot.</span>
           </div>
         </div>
+      </div>
+    </section>
 
+    <!-- ============================================================
+         S5 — SAVINGS CALCULATOR (single output — Output 2 deferred)
+         ============================================================ -->
+    <section id="savings" class="section calc-section" aria-label="Savings calculator">
+      <div class="container">
         <div class="calc" data-reveal>
           <div>
-            <h3 class="calc__h3">What $30,000 per Million Looks Like <em class="accent">Across Your Operation</em></h3>
-            <p class="calc__body">
-              CredX shows what your group recovers across 12 months at your real volume. Move the slider and see what you can recover.
-            </p>
+            <h3 class="calc__h3">Move the slider. <em class="accent">See what stays</em> in your dealership.</h3>
+            <p class="calc__body">Set your real monthly card volume and watch the recovery add up across twelve months.</p>
             <div class="calc__input">
-              <label class="calc__label" for="calc-slider">Your Monthly Card Volume</label>
+              <label class="calc__label" for="calc-slider">Your monthly card volume</label>
               <input
                 type="range"
                 id="calc-slider"
@@ -211,32 +223,35 @@
             </div>
           </div>
           <div class="calc__output">
-            <span class="calc__label">Saved with CredX per month</span>
-            <span class="calc__output-number" data-calc-output-monthly>$30,000</span>
-            <span class="calc__output-yearly" data-calc-output-yearly>$360,000<em class="accent">/year</em></span>
+            <span class="calc__label">Recovered with CredX</span>
+            <span class="calc__output-number" data-calc-output-yearly>$360,000</span>
+            <span class="calc__output-yearly"><em class="accent">per year</em></span>
             <p class="calc__hedge">
-              Based on $36K interchange per $1M (Visa/MC benchmark) vs $6K per $1M with CredX.
+              Designed to recover up to 85% of standard interchange. Your number depends on card mix. Based on roughly $36K interchange per $1M (Visa/Mastercard benchmark) against $6K per $1M with CredX.
             </p>
-            <button class="btn btn-primary calc__cta" data-modal-trigger="contact">Get My Full Savings Estimate</button>
+            <p class="calc__reward" data-calc-reward hidden></p>
+            <a href="#form" class="btn btn-primary calc__cta">Get my savings estimate</a>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- S5 Process -->
-    <section class="section process" aria-label="How it works">
+    <!-- ============================================================
+         S6 — HOW IT WORKS (4 steps)
+         ============================================================ -->
+    <section id="how" class="section process" aria-label="How it works">
       <div class="container">
         <div class="process__header">
           <span class="eyebrow" data-reveal>How It Works</span>
           <h2 data-reveal data-reveal-delay="1">
-            Four Steps. <em class="accent">No DMS Replacement</em> and No Customer-Facing Change at Checkout.
+            Four steps. Your DMS and your checkout <em class="accent">stay exactly as they are.</em>
           </h2>
         </div>
 
         <div class="process__image" data-reveal>
           <picture>
             <source srcset="assets/images/automotive/automotive-process-flow.webp" type="image/webp" />
-            <img src="assets/images/automotive/automotive-process-flow.jpg" alt="Dealership F&I floor and service drive in continuous frame" width="1672" height="941" loading="lazy" />
+            <img src="assets/images/automotive/automotive-process-flow.jpg" alt="Sales consultant handing a tablet to a seated customer on a dealership floor" width="1672" height="941" loading="lazy" />
           </picture>
         </div>
 
@@ -244,48 +259,40 @@
           <div class="step" data-reveal>
             <span class="step__eyebrow">Step 1</span>
             <h3 class="step__h3">Sign a Merchant Network Agreement</h3>
-            <p class="step__body">Onboarding takes about 7 days. No replacement of your DMS, processor, or F&amp;I tools.</p>
+            <p class="step__body">Onboarding runs about 7 days. Your DMS, processor, and F&amp;I tools all stay in place.</p>
           </div>
           <div class="step" data-reveal data-reveal-delay="1">
             <span class="step__eyebrow">Step 2</span>
-            <h3 class="step__h3">CredX Activates on Your Transaction Flow</h3>
-            <p class="step__body">Your existing checkout stays unchanged. CredX runs on the embedded value layer underneath.</p>
+            <h3 class="step__h3">CredX activates on your transaction flow</h3>
+            <p class="step__body">Your checkout is unchanged, with no new terminals or hardware to install. CredX runs underneath, capturing the value and data your current setup leaves behind.</p>
           </div>
           <div class="step" data-reveal data-reveal-delay="2">
             <span class="step__eyebrow">Step 3</span>
-            <h3 class="step__h3">Savings + Value-Back Accrual Report Monthly</h3>
-            <p class="step__body">Your monthly reporting shows interchange recovered and value-back earned, per store and per group.</p>
+            <h3 class="step__h3">Your monthly report arrives</h3>
+            <p class="step__body">Interchange recovered and value-back earned, broken out per store and per group.</p>
           </div>
           <div class="step" data-reveal data-reveal-delay="3">
             <span class="step__eyebrow">Step 4</span>
-            <h3 class="step__h3">Customers See Lower-Interest Credit + Value-Back at Your Dealership</h3>
-            <p class="step__body">A branded credit line issued at the F&amp;I desk, with value-back accrued in your dealership's program. Visa is not the front-end anymore.</p>
+            <h3 class="step__h3">Customers get branded credit and value-back</h3>
+            <p class="step__body">Lower-rate credit issued in your dealership's name, with value-back accruing in your program. The relationship stays yours.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- S6 Proof -->
-    <section class="section proof" aria-label="Proof">
+    <!-- ============================================================
+         S7 — SOCIAL PROOF
+         ============================================================ -->
+    <section id="proof" class="section proof" aria-label="Social proof">
       <div class="container">
         <div class="proof__header">
-          <span class="eyebrow" data-reveal>Social Proof</span>
+          <span class="eyebrow" data-reveal>Dealers Already in the Network</span>
           <h2 data-reveal data-reveal-delay="1">
-            Dealers and Lenders Already Running <em class="accent">Embedded Credit</em> on CredX
+            Dealers and lenders already running <em class="accent">embedded credit</em> on CredX
           </h2>
         </div>
 
-        <!-- Partner emblems — anonymized SAMPLES until public-use approval logged -->
-        <div class="proof__emblems">
-          <div class="emblem" data-reveal><span class="emblem__label">Dealer Group A<br />Western Canada · Multi-rooftop</span></div>
-          <div class="emblem" data-reveal data-reveal-delay="1"><span class="emblem__label">Dealer Group B<br />Powersports retail · US Southeast</span></div>
-          <div class="emblem" data-reveal data-reveal-delay="2"><span class="emblem__label">Multi-Brand Auto Group<br />Eastern Canada · 12 rooftops</span></div>
-          <div class="emblem" data-reveal data-reveal-delay="1"><span class="emblem__label">DMS Partner<br />Mid-market dealer-management platform</span></div>
-          <div class="emblem" data-reveal data-reveal-delay="2"><span class="emblem__label">Lender Partner<br />Community lender · Embedded credit funding</span></div>
-          <div class="emblem" data-reveal data-reveal-delay="3"><span class="emblem__label">Powersports Operator<br />Recreational vehicle dealer network</span></div>
-        </div>
-
-        <!-- Operator quote (SAMPLE — do not publish) -->
+        <!-- Operator quote (SAMPLE — do not publish until real attribution) -->
         <div class="proof__quote-block" data-reveal>
           <div class="proof__quote-portrait">
             <picture>
@@ -295,21 +302,31 @@
           </div>
           <div>
             <p class="proof__quote-text">
-              "We were leaking <em class="accent">$30,000 of margin per million</em> in interchange and could not see it on the P&amp;L. CredX gave us the rails to recover it and the customer data our DMS never captured."
+              "We were leaking <em class="accent">$30,000 of margin per million</em> in interchange and couldn't see it on the P&amp;L. CredX gave us the rails to recover it, and the customer data our DMS never captured."
             </p>
-            <p class="proof__quote-attribution">—F&amp;I Director, Dealer Group, Region</p>
+            <p class="proof__quote-attribution">— F&amp;I Director, multi-rooftop group, Western Canada ($40M+ monthly volume)</p>
           </div>
         </div>
 
-        <!-- Behind-the-scenes wide proof (Phase 5, prompts/automotive.md §C7) -->
+        <!-- Partner network -->
+        <div class="proof__emblems">
+          <div class="emblem" data-reveal><span class="emblem__label">Multi-rooftop dealer group<br />Western Canada · $40M+/month</span></div>
+          <div class="emblem" data-reveal data-reveal-delay="1"><span class="emblem__label">Powersports retailer<br />US Southeast · 3 locations</span></div>
+          <div class="emblem" data-reveal data-reveal-delay="2"><span class="emblem__label">Multi-brand auto group<br />Eastern Canada · 12 rooftops</span></div>
+          <div class="emblem" data-reveal data-reveal-delay="1"><span class="emblem__label">Mid-market DMS platform<br />Integration partner</span></div>
+          <div class="emblem" data-reveal data-reveal-delay="2"><span class="emblem__label">Community lender<br />Funds the embedded credit</span></div>
+          <div class="emblem" data-reveal data-reveal-delay="3"><span class="emblem__label">Recreational vehicle<br />Dealer network</span></div>
+        </div>
+
+        <!-- Behind-the-scenes wide proof -->
         <div class="proof__wide" data-reveal>
           <picture>
             <source srcset="assets/images/automotive/automotive-proof-team.webp" type="image/webp" />
-            <img src="assets/images/automotive/automotive-proof-team.jpg" alt="Dealer principal and service director reviewing recovery dashboard" width="1672" height="941" loading="lazy" />
+            <img src="assets/images/automotive/automotive-proof-team.jpg" alt="Dealer principal and service director reviewing a recovery report" width="1672" height="941" loading="lazy" />
           </picture>
         </div>
 
-        <!-- 3-KPI line -->
+        <!-- Key metrics -->
         <div class="proof__kpis">
           <div class="kpi" data-reveal>
             <span class="kpi__value">$500M+</span>
@@ -320,61 +337,116 @@
             <span class="kpi__label">community lender partners funding embedded credit</span>
           </div>
           <div class="kpi" data-reveal data-reveal-delay="2">
-            <span class="kpi__value">SOC 2</span>
-            <span class="kpi__label">compliant — so data is de-identified and consent-driven</span>
+            <span class="kpi__value">SOC 2 + PIPEDA</span>
+            <span class="kpi__label">compliant. Data de-identified, consent-driven, and held to Canadian privacy law.</span>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- S7 Final CTA -->
-    <section id="contact" class="section final-cta" aria-label="Final call to action">
-      <div class="container final-cta__inner">
-        <span class="eyebrow" style="color: rgba(248,249,252,0.7)" data-reveal>Start a Partner Conversation</span>
-        <h2 class="final-cta__h2" data-reveal data-reveal-delay="1">
-          Build the <em class="accent">Next Era</em> of Automotive Economics with CredX
-        </h2>
-        <p class="final-cta__body" data-reveal data-reveal-delay="2">
-          Talk to a CredX partner specialist. We will model your interchange recovery, walk you through the Merchant Network Agreement, and show you the branded credit line for dealerships that CredX issues at the F&I desk, funded by our lender partners.
-        </p>
-        <div class="final-cta__ctas" data-reveal data-reveal-delay="3">
-          <button class="btn btn-primary" data-modal-trigger="contact">Get My Savings Estimate</button>
-          <button class="btn btn-secondary">Read the Automotive Partner Brief</button>
+    <!-- ============================================================
+         S8 — BE PART OF THE MOVEMENT (2-step progressive form)
+         Every CTA on the page anchors here.
+         ============================================================ -->
+    <section id="form" class="section signup" aria-label="Be part of the movement">
+      <div class="container signup__inner">
+        <div class="signup__intro" data-reveal>
+          <span class="eyebrow eyebrow--accent">Be Part of the Movement</span>
+          <h2 class="signup__h2">Ready to own your customer?</h2>
+          <p class="signup__sub">Two quick steps. Start with the basics — we will take it from there.</p>
         </div>
+
+        <form class="signup__form" data-signup-form novalidate>
+          <!-- Step 1 -->
+          <div class="signup__step" data-step="1">
+            <span class="signup__step-label">Step 1 — Tell us who you are</span>
+            <p class="signup__step-note">This is all we need to reach you.</p>
+            <div class="signup__grid">
+              <div class="form__field">
+                <label class="form__label" for="su-name">Full name</label>
+                <input class="form__input" id="su-name" name="name" type="text" required />
+              </div>
+              <div class="form__field">
+                <label class="form__label" for="su-email">Work email</label>
+                <input class="form__input" id="su-email" name="email" type="email" required />
+              </div>
+              <div class="form__field">
+                <label class="form__label" for="su-phone">Phone</label>
+                <input class="form__input" id="su-phone" name="phone" type="tel" required />
+              </div>
+              <div class="form__field">
+                <label class="form__label" for="su-company">Dealership or company name (or website)</label>
+                <input class="form__input" id="su-company" name="company" type="text" required />
+              </div>
+            </div>
+            <button type="button" class="btn btn-primary" data-step1-next>Join the Movement</button>
+          </div>
+
+          <!-- Micro-reward (revealed after Step 1) -->
+          <p class="signup__reward" data-signup-reward hidden></p>
+
+          <!-- Step 2 (optional) -->
+          <div class="signup__step signup__step--2" data-step="2" hidden>
+            <span class="signup__step-label">Step 2 — Tell us about your dealership <em class="signup__optional">(optional)</em></span>
+            <p class="signup__step-note">Helps us tailor your savings and check fit with our lenders.</p>
+            <div class="signup__grid">
+              <div class="form__field">
+                <label class="form__label" for="su-volume">Roughly what do you process in card volume each month?</label>
+                <select class="form__select" id="su-volume" name="volume">
+                  <option value="">Select…</option>
+                  <option>$250K — $1M</option>
+                  <option>$1M — $5M</option>
+                  <option>$5M — $25M</option>
+                  <option>$25M+</option>
+                </select>
+              </div>
+              <div class="form__field">
+                <label class="form__label" for="su-rooftops">How many rooftops do you run?</label>
+                <input class="form__input" id="su-rooftops" name="rooftops" type="number" min="1" />
+              </div>
+              <div class="form__field">
+                <label class="form__label" for="su-dms">Which DMS are you on today?</label>
+                <input class="form__input" id="su-dms" name="dms" type="text" />
+              </div>
+              <div class="form__field">
+                <label class="form__label" for="su-goal">In one line: what would owning your customer data change for your business?</label>
+                <input class="form__input" id="su-goal" name="goal" type="text" />
+              </div>
+            </div>
+            <button type="submit" class="btn btn-primary">See my full breakdown</button>
+          </div>
+
+          <!-- Final confirmation -->
+          <p class="signup__done" data-signup-done hidden>Thank you. A CredX partner specialist will reach out within one business day with your full breakdown.</p>
+        </form>
       </div>
     </section>
 
-    <!-- FAQ (G3) -->
-    <section class="section faq" aria-label="Frequently asked questions">
+    <!-- ============================================================
+         S9 — FAQ (DMS-specific, 4 items)
+         ============================================================ -->
+    <section id="faq" class="section faq" aria-label="Frequently asked questions">
       <div class="container">
         <div class="faq__header">
           <span class="eyebrow">FAQ</span>
-          <h2>Questions Dealers Ask Before Signing</h2>
+          <h2>Questions dealers ask before signing</h2>
         </div>
         <div class="faq__list">
           <details class="faq__item">
             <summary class="faq__question">Does CredX replace my DMS?</summary>
-            <p class="faq__answer">No. CredX runs on the embedded value layer underneath your existing DMS—PBS, CDK, Reynolds &amp; Reynolds all supported. Typical integration is 2–4 weeks.</p>
+            <p class="faq__answer">No. CredX runs on the value layer underneath your existing DMS. PBS, CDK, and Reynolds &amp; Reynolds are all supported. Typical integration runs 4–8 weeks.</p>
           </details>
           <details class="faq__item">
-            <summary class="faq__question">What about multi-store rollout?</summary>
-            <p class="faq__answer">One master account, individual store branding, consolidated reporting. Each rooftop sees its own savings and value-back accrual.</p>
+            <summary class="faq__question">What about a multi-store rollout?</summary>
+            <p class="faq__answer">One master account, individual store branding, and consolidated reporting. Each rooftop sees its own savings and value-back.</p>
           </details>
           <details class="faq__item">
-            <summary class="faq__question">Is the dealership's customer data really mine?</summary>
-            <p class="faq__answer">Yes. Consent-driven, opt-in by default, de-identified for analytics. Your dealership owns the value-back ledger; Visa does not.</p>
+            <summary class="faq__question">Is my customer data really mine?</summary>
+            <p class="faq__answer">Yes. Consent-driven, opt-in by default, de-identified for analytics, and handled under Canadian privacy law (PIPEDA). Your dealership owns the value-back ledger. Visa does not.</p>
           </details>
           <details class="faq__item">
-            <summary class="faq__question">How long until I see savings?</summary>
-            <p class="faq__answer">Interchange recovery starts the month after activation. Monthly reporting shows the number per store and per group.</p>
-          </details>
-          <details class="faq__item">
-            <summary class="faq__question">How does interchange fee reduction work for dealerships?</summary>
-            <p class="faq__answer">A car dealership reduces interchange fees by signing a Merchant Network Agreement with CredX. CredX moves the transaction onto an embedded value layer and returns roughly $30,000 of every $1M as a branded credit line, so the margin stays with the dealership.</p>
-          </details>
-          <details class="faq__item">
-            <summary class="faq__question">How does dealer in-house financing compare to a CredX branded credit line?</summary>
-            <p class="faq__answer">Traditional dealer in-house financing puts the dealership's own capital at risk. A CredX branded credit line is an F&amp;I credit platform funded by lender partners and issued in your dealership's brand, so you keep the customer relationship and the value-back without carrying the loan book.</p>
+            <summary class="faq__question">How soon do I see savings?</summary>
+            <p class="faq__answer">Interchange recovery starts the month after activation, reported per store and per group.</p>
           </details>
         </div>
       </div>
@@ -387,13 +459,15 @@
       <div class="footer__inner">
         <div>
           <img src="assets/logo/Credx-name.svg" alt="CredX" height="32" style="margin-bottom: 24px;" />
-          <p class="footer__brand-line">A modern financial movement reshaping payment economics.</p>
+          <p class="footer__brand-line">Software should pay for people, not people for software.</p>
         </div>
         <div>
-          <h4 class="footer__col-title">Talk to us</h4>
+          <h4 class="footer__col-title">Navigate</h4>
           <div class="footer__links">
-            <a href="#contact" class="footer__link">Talk to a CredX partner specialist</a>
-            <a href="#" class="footer__link">Read the Automotive partner brief</a>
+            <a href="#how" class="footer__link">How it works</a>
+            <a href="#movement" class="footer__link">The movement</a>
+            <a href="#savings" class="footer__link">Savings</a>
+            <a href="#form" class="footer__link">Join the movement</a>
           </div>
         </div>
         <div>
@@ -407,61 +481,9 @@
       </div>
       <div class="footer__bottom">
         <span>© 2026 CredX Tech Inc. All rights reserved.</span>
-        <span>Designed to recover. Built to ship.</span>
       </div>
     </div>
   </footer>
-
-  <!-- Modal: Contact -->
-  <div class="modal" id="modal-contact" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="modal-contact-title">
-    <div class="modal__panel">
-      <button class="modal__close" data-modal-close aria-label="Close">×</button>
-      <h3 class="modal__h3" id="modal-contact-title">Start a partner conversation</h3>
-      <p class="modal__body">Tell us about your operation. A CredX partner specialist will reach out within one business day.</p>
-      <form class="form" data-form="contact">
-        <div class="form__field">
-          <label class="form__label" for="form-name">Name</label>
-          <input class="form__input" id="form-name" name="name" type="text" required />
-        </div>
-        <div class="form__field">
-          <label class="form__label" for="form-email">Work email</label>
-          <input class="form__input" id="form-email" name="email" type="email" required />
-        </div>
-        <div class="form__field">
-          <label class="form__label" for="form-company">Dealership / group</label>
-          <input class="form__input" id="form-company" name="company" type="text" required />
-        </div>
-        <div class="form__field">
-          <label class="form__label" for="form-role">Your role</label>
-          <select class="form__select" id="form-role" name="role">
-            <option value="">Select…</option>
-            <option>Dealership Principal / Owner</option>
-            <option>VP Operations / Finance</option>
-            <option>F&amp;I Director</option>
-            <option>Digital / IT Director</option>
-            <option>CX / Marketing Manager</option>
-            <option>Other</option>
-          </select>
-        </div>
-        <div class="form__field">
-          <label class="form__label" for="form-volume">Monthly card volume (estimate)</label>
-          <select class="form__select" id="form-volume" name="volume">
-            <option value="">Select…</option>
-            <option>Under $500K</option>
-            <option>$500K — $1M</option>
-            <option>$1M — $5M</option>
-            <option>$5M — $25M</option>
-            <option>Over $25M</option>
-          </select>
-        </div>
-        <div class="form__field">
-          <label class="form__label" for="form-message">Anything specific you want to discuss?</label>
-          <textarea class="form__textarea" id="form-message" name="message" rows="4"></textarea>
-        </div>
-        <button type="submit" class="btn btn-primary">Send</button>
-      </form>
-    </div>
-  </div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
