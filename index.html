@@ -66,14 +66,19 @@
   <main id="top">
     <!-- ============================================================
          S1 — HERO · The Movement
-         Hero is a static image this round (movement film deferred —
-         project_hero_no_video). Dark-treated in both themes for now;
-         the light-theme hero image (automotive-hero-light.jpg) swaps in
-         once rendered — see prompts/automotive.md §A3 for the swap block.
+         Static image this round (movement film deferred — project_hero_no_video).
+         Two renders swap by theme (§A3): dark dusk image for dark theme,
+         bright daylight image for light theme. Negative space on the left
+         carries the copy (deep shadow on dark, pale wall on light).
          ============================================================ -->
     <section class="hero hero--full" aria-label="Hero">
       <picture>
-        <img src="assets/images/automotive/hero-image-2.jpg" alt="Dealership F&I desk where a branded credit line is issued to a customer" class="hero__bg" width="1916" height="821" />
+        <source srcset="assets/images/automotive/automotive-hero-dark.webp" type="image/webp" />
+        <img src="assets/images/automotive/automotive-hero-dark.jpg" alt="Dealer principal reviewing the floor at dusk in a premium dealership" class="hero__bg hero__bg--dark" width="1916" height="821" />
+      </picture>
+      <picture>
+        <source srcset="assets/images/automotive/automotive-hero-light.webp" type="image/webp" />
+        <img src="assets/images/automotive/automotive-hero-light.jpg" alt="Dealer principal in conversation on a bright dealership floor" class="hero__bg hero__bg--light" width="1916" height="821" loading="lazy" />
       </picture>
       <div class="hero__overlay" aria-hidden="true"></div>
       <div class="container hero__inner">

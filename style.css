@@ -338,12 +338,7 @@ p { line-height: 1.6; max-width: 65ch; }
 /* The .hero--full keeps its dark cinematic treatment in both themes (the hero
    image is dark-graded until a light hero render lands), so its overlaid
    secondary button stays light-on-dark regardless of theme. */
-[data-theme="light"] .hero--full .btn-secondary {
-  color: var(--cloud-white);
-  border-color: var(--cloud-white);
-}
-[data-theme="light"] .hero--full .btn-secondary:hover { background-color: var(--cloud-white); color: var(--ink); }
-/* Hero primary keeps brand magenta in both themes (hero is always dark-treated). */
+/* Hero primary keeps brand magenta in both themes for punch on the photo. */
 [data-theme="light"] .hero--full .btn-primary { background-color: var(--magenta); }
 [data-theme="light"] .hero--full .btn-primary:hover { background-color: var(--purple); }
 
@@ -494,15 +489,25 @@ p { line-height: 1.6; max-width: 65ch; }
 
 .hero--full .hero__copy { max-width: 560px; }
 
-/* Hero is dark-treated in both themes (dark image + ink overlay) until a
-   light-theme hero render lands — keep its copy cloud-white and its accent
-   the bright magenta regardless of [data-theme]. */
-.hero--full .hero__h1,
-.hero--full .hero__sub,
-.hero--full .eyebrow { color: var(--cloud-white); }
-.hero--full .hero__sub { color: rgba(248, 249, 252, 0.88); }
-.hero--full .accent,
-.hero--full .eyebrow--accent { color: var(--magenta-bright); }
+/* Hero background swaps by theme: dark dusk image (default) / light daylight
+   image. h1, eyebrow and accent follow theme tokens (cloud-white/bright-magenta
+   on dark; ink/magenta on light). The sub gets an explicit tone per theme so
+   it stays legible over the photo's negative-space side. */
+.hero__bg--light { display: none; }
+[data-theme="light"] .hero__bg--dark { display: none; }
+[data-theme="light"] .hero__bg--light { display: block; }
+
+.hero--full .hero__sub { color: rgba(248, 249, 252, 0.92); }
+[data-theme="light"] .hero--full .hero__sub { color: #2a2e4a; }
+
+/* Light-theme hero overlay: pale wash on the left for ink copy. */
+[data-theme="light"] .hero--full .hero__overlay {
+  background: linear-gradient(90deg,
+    var(--cloud-white) 0%,
+    rgba(248, 249, 252, 0.85) 30%,
+    rgba(248, 249, 252, 0.35) 60%,
+    transparent 100%);
+}
 
 @media (max-width: 768px) {
   .hero--full .hero__overlay {
@@ -510,6 +515,12 @@ p { line-height: 1.6; max-width: 65ch; }
       rgba(11, 12, 22, 0.45) 0%,
       rgba(11, 12, 22, 0.85) 55%,
       var(--ink) 100%);
+  }
+  [data-theme="light"] .hero--full .hero__overlay {
+    background: linear-gradient(180deg,
+      rgba(248, 249, 252, 0.45) 0%,
+      rgba(248, 249, 252, 0.85) 55%,
+      var(--cloud-white) 100%);
   }
   .hero--full .hero__bg { object-position: center center; }
   .hero--full .hero__inner { display: flex; align-items: flex-end; min-height: inherit; }
