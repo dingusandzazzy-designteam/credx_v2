@@ -1875,3 +1875,82 @@ p { line-height: 1.6; max-width: 65ch; }
   border-radius: var(--radius-card-sm);
   color: var(--text-primary);
 }
+
+/* ============================================================
+   21. Motion + micro-interactions (/impeccable enhance pass)
+   One coherent feedback language: hover lift on cards, shadow on
+   primary CTAs, icon feedback on the toggle, smooth disclosure on
+   FAQ, a condensing nav, and a slow hero entrance. All bounded to
+   pointer:fine where it's a hover, and disabled under reduced-motion
+   by the global cap in §18.
+   ============================================================ */
+
+/* Hover lift — content cards. Steps keep their bg shift and gain a lift. */
+.control-card,
+.gain,
+.emblem,
+.step {
+  transition: transform var(--duration-base) var(--ease-out-quart),
+              border-color var(--duration-fast) var(--ease-out-quart),
+              background-color var(--duration-fast) var(--ease-out-quart),
+              box-shadow var(--duration-base) var(--ease-out-quart);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .control-card:hover,
+  .gain:hover,
+  .emblem:hover,
+  .step:hover {
+    transform: translateY(-4px);
+    border-color: var(--surface-3);
+    box-shadow: var(--shadow-2);
+  }
+}
+
+/* Primary CTA — add a soft magenta cast on hover (lift comes from .btn:hover). */
+.btn-primary {
+  transition: transform var(--duration-fast) var(--ease-out-quart),
+              background-color var(--duration-fast) var(--ease-out-quart),
+              box-shadow var(--duration-base) var(--ease-out-quart);
+}
+@media (hover: hover) {
+  .btn-primary:hover { box-shadow: 0 8px 24px rgba(148, 63, 120, 0.35); }
+}
+
+/* Theme toggle — icon nudges on hover, spins on press. */
+.theme-toggle__icon {
+  transition: transform var(--duration-base) var(--ease-out-quart);
+}
+.theme-toggle:hover .theme-toggle__icon { transform: rotate(18deg); }
+.theme-toggle:active .theme-toggle__icon { transform: rotate(180deg); }
+
+/* Nav condenses slightly once scrolled. */
+.nav {
+  transition: background-color var(--duration-base) var(--ease-out-quart),
+              padding-block var(--duration-base) var(--ease-out-quart);
+}
+.nav.is-scrolled { padding-block: var(--s-3); }
+
+/* FAQ — fade + slide the answer in on open (native <details> snaps otherwise). */
+.faq__item[open] .faq__answer {
+  animation: faqReveal var(--duration-base) var(--ease-out-quart);
+}
+@keyframes faqReveal {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Hero bg scale-in is GSAP-driven (composes with parallax). CSS fallback for
+   no-JS: a one-shot scale on load. GSAP overrides transform when present. */
+@media (prefers-reduced-motion: no-preference) {
+  .hero__bg { animation: heroIn 1.5s var(--ease-out-expo) both; }
+}
+@keyframes heroIn {
+  from { transform: scale(1.07); }
+  to   { transform: scale(1); }
+}
+
+/* Slightly more separation before the gains stat strip + control white-label,
+   so the "summary" beats read as their own moment, not another card row. */
+.gains__strip { margin-top: var(--s-9); }
+.control__whitelabel { margin-top: var(--s-8); }

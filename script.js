@@ -320,6 +320,19 @@
     }
   }
 
+  /* ---- 4a2. Hero entrance — slow scale-in on the background image ----
+     Brand signature load moment. Composes with the parallax y-tween below
+     (GSAP merges scale + y on the same target). The CSS `heroIn` keyframe is
+     the no-JS fallback; GSAP overrides transform when present. */
+
+  if (!prefersReducedMotion && window.gsap) {
+    window.gsap.fromTo(
+      '.hero__bg',
+      { scale: 1.07 },
+      { scale: 1, duration: 1.5, ease: 'expo.out' }
+    );
+  }
+
   /* ---- 4b. Subtle parallax on hero bg + pain media ---- */
 
   if (!prefersReducedMotion && isPointerFine && window.gsap && window.ScrollTrigger) {
@@ -379,6 +392,32 @@
   if (slider) {
     slider.addEventListener('input', () => updateCalc(true));
     updateCalc(false);
+  }
+
+  // Count the recovered-per-year figure up from zero the first time the
+  // output scrolls into view — the page's one data flourish. After that the
+  // slider drives it instantly. Skipped under reduced motion (stays final).
+  if (slider && yearlyOutput && !prefersReducedMotion && window.ScrollTrigger) {
+    const targetVal = parseFloat(slider.value) * 0.03 * 12;
+    yearlyOutput.textContent = formatFull(0);
+    let counted = false;
+    window.ScrollTrigger.create({
+      trigger: yearlyOutput,
+      start: 'top 85%',
+      once: true,
+      onEnter: function () {
+        if (counted) return;
+        counted = true;
+        const dur = 900;
+        const t0 = performance.now();
+        (function tick(now) {
+          const p = Math.min(1, (now - t0) / dur);
+          const eased = 1 - Math.pow(1 - p, 4);
+          yearlyOutput.textContent = formatFull(targetVal * eased);
+          if (p < 1) requestAnimationFrame(tick);
+        })(t0);
+      },
+    });
   }
 
   /* ---- 6. Theme toggle (localStorage + first-load handled inline in <head>) ---- */
