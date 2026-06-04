@@ -1657,21 +1657,40 @@ p { line-height: 1.6; max-width: 65ch; }
 
 /* ---- 17. Reveal animation hook (used by script.js) ---- */
 
+/* Baseline reveal — confident rise + subtle scale (bolder than the old 24px
+   fade so entrances read with presence). */
 [data-reveal] {
   opacity: 0;
-  transform: translateY(24px);
+  transform: translateY(48px) scale(0.96);
   transition: opacity var(--duration-slow) var(--ease-out-expo),
               transform var(--duration-slow) var(--ease-out-expo);
 }
 
 [data-reveal].is-revealed {
   opacity: 1;
-  transform: translateY(0);
+  transform: translateY(0) scale(1);
 }
 
-[data-reveal-delay='1'] { transition-delay: 100ms; }
-[data-reveal-delay='2'] { transition-delay: 200ms; }
-[data-reveal-delay='3'] { transition-delay: 300ms; }
+[data-reveal-delay='1'] { transition-delay: 90ms; }
+[data-reveal-delay='2'] { transition-delay: 180ms; }
+[data-reveal-delay='3'] { transition-delay: 270ms; }
+
+/* Editorial word-reveal — section titles rise word-by-word from behind a mask.
+   Hidden state + animation are JS-driven (GSAP) so no-JS / reduced-motion keep
+   the text fully visible. These rules only provide the clip structure. */
+.reveal-word-mask {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: top;
+  padding-bottom: 0.08em;   /* room for descenders inside the clip */
+  margin-bottom: -0.08em;
+}
+.reveal-word { display: inline-block; will-change: transform; }
+
+/* Cinematic media wipe — wide photos reveal left-to-right with a slow zoom-out.
+   JS sets the hidden state; container already clips via overflow:hidden. */
+[data-reveal-media] { will-change: clip-path; }
+[data-reveal-media] img { will-change: transform; }
 
 /* ---- 18. Reduced motion ---- */
 
@@ -1685,6 +1704,10 @@ p { line-height: 1.6; max-width: 65ch; }
     scroll-behavior: auto !important;
   }
   [data-reveal] { opacity: 1; transform: none; }
+  [data-reveal-words], [data-reveal-media] { opacity: 1; }
+  .reveal-word { transform: none; }
+  [data-reveal-media] { clip-path: none; }
+  [data-reveal-media] img { transform: none; }
 }
 
 /* ---- 19. Accessibility helpers ---- */

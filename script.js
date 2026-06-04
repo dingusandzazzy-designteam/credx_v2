@@ -84,6 +84,87 @@
     document.querySelectorAll('[data-reveal]').forEach((el) => io.observe(el));
   }
 
+  /* ---- 3b. Editorial word-reveal (titles) + cinematic media wipe ----
+     Signature motion. Fraunces section titles rise word-by-word from behind a
+     mask; the wide photos reveal with a left-to-right clip + slow zoom-out.
+     GSAP-driven, so the hidden state only exists when we will actually animate
+     — no-JS and reduced-motion keep everything visible (see CSS §18 fallback). */
+
+  if (!prefersReducedMotion && window.gsap && window.ScrollTrigger) {
+    const _gsap = window.gsap;
+
+    // Split text into word spans, each in an overflow-clip mask. Inline tags
+    // (e.g. <em class="accent">) are kept as a single word unit so their style
+    // and wrapping survive intact.
+    function wordSplit(el) {
+      const words = [];
+      const frag = document.createDocumentFragment();
+      Array.prototype.forEach.call(el.childNodes, function (node) {
+        if (node.nodeType === 3) {
+          node.textContent.split(/(\s+)/).forEach(function (part) {
+            if (part === '') return;
+            if (/^\s+$/.test(part)) { frag.appendChild(document.createTextNode(part)); return; }
+            const mask = document.createElement('span');
+            mask.className = 'reveal-word-mask';
+            const word = document.createElement('span');
+            word.className = 'reveal-word';
+            word.textContent = part;
+            mask.appendChild(word);
+            frag.appendChild(mask);
+            words.push(word);
+          });
+        } else if (node.nodeType === 1) {
+          const mask = document.createElement('span');
+          mask.className = 'reveal-word-mask';
+          const word = document.createElement('span');
+          word.className = 'reveal-word';
+          word.appendChild(node.cloneNode(true));
+          mask.appendChild(word);
+          frag.appendChild(mask);
+          words.push(word);
+        }
+      });
+      el.textContent = '';
+      el.appendChild(frag);
+      return words;
+    }
+
+    document.querySelectorAll('[data-reveal-words]').forEach(function (title) {
+      let words = [];
+      try {
+        words = wordSplit(title);
+        if (!words.length) return;
+        _gsap.set(words, { yPercent: 115 });
+        _gsap.to(words, {
+          yPercent: 0,
+          duration: 0.85,
+          ease: 'power3.out',
+          stagger: 0.055,
+          scrollTrigger: { trigger: title, start: 'top 88%', once: true },
+        });
+      } catch (e) {
+        // Never leave a title hidden — snap words back to visible.
+        if (words.length) { try { _gsap.set(words, { yPercent: 0 }); } catch (_) {} }
+      }
+    });
+
+    document.querySelectorAll('[data-reveal-media]').forEach(function (media) {
+      const img = media.querySelector('img');
+      try {
+        _gsap.set(media, { clipPath: 'inset(0 0 0 100%)' });
+        if (img) _gsap.set(img, { scale: 1.25 });
+        const tl = _gsap.timeline({
+          scrollTrigger: { trigger: media, start: 'top 85%', once: true },
+        });
+        tl.to(media, { clipPath: 'inset(0 0 0 0%)', duration: 1.0, ease: 'power3.out' }, 0);
+        if (img) tl.to(img, { scale: 1, duration: 1.15, ease: 'power3.out' }, 0);
+      } catch (e) {
+        // Never leave media hidden — clear the clip + scale.
+        try { _gsap.set(media, { clipPath: 'none' }); if (img) _gsap.set(img, { scale: 1 }); } catch (_) {}
+      }
+    });
+  }
+
   /* ---- 4a. Cover scrub (Trilha B — video scrubbed by scroll) ----
      Source timecodes provided by edit (24 fps, HH:MM:SS:FF):
        00:00:00:00  Intro   → 0.000s
