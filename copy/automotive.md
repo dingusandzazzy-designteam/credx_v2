@@ -254,7 +254,7 @@
 - `Full name`
 - `Work email`
 - `Phone`
-- `Dealership or company name (or website)`
+- `Company name`
 
 **Button:** `Join the Movement`
 

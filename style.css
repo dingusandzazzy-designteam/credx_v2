@@ -1406,16 +1406,30 @@ p { line-height: 1.6; max-width: 65ch; }
   font-weight: 500;
   color: var(--text-primary);
   letter-spacing: -0.02em;
-  line-height: 1;
+  line-height: 1.05;
   display: block;
+  text-wrap: balance;
   font-variation-settings: 'opsz' 96;
 }
+/* The compliance KPI is a text badge, not a number — sized down so it sits on
+   one line and the three KPI captions stay aligned (no dangling "+"). */
+.kpi__value--compact {
+  font-size: clamp(1.75rem, 1.6vw + 1rem, 2.4rem);
+  letter-spacing: -0.01em;
+}
+
 .kpi__label {
   font-size: var(--type-caption);
   color: var(--text-secondary);
-  margin-top: var(--s-2);
+  margin-top: var(--s-4);
   display: block;
+  max-width: 30ch;
+  margin-inline: auto;
+  text-wrap: balance;
 }
+
+/* Keep the KPI columns top-aligned so captions line up across all three. */
+.proof__kpis { align-items: start; }
 
 /* ---- 13. Final CTA (S7) — gradient band ---- */
 
@@ -1904,6 +1918,7 @@ p { line-height: 1.6; max-width: 65ch; }
   padding: var(--s-7);
 }
 .signup__step--2 { margin-top: var(--s-5); }
+.signup__step .btn { width: 100%; }
 
 .signup__step-label {
   font-family: var(--font-editorial);
