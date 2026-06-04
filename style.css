@@ -950,6 +950,8 @@ p { line-height: 1.6; max-width: 65ch; }
   font-size: var(--type-caption);
   color: var(--text-secondary);
   margin-top: var(--s-4);
+  margin-inline: auto;
+  max-width: none;
   text-transform: uppercase;
   letter-spacing: 0.08em;
 }
