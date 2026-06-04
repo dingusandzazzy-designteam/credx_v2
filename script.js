@@ -114,6 +114,8 @@
             words.push(word);
           });
         } else if (node.nodeType === 1) {
+          // Preserve hard line breaks as real <br> (not a word unit).
+          if (node.tagName === 'BR') { frag.appendChild(document.createElement('br')); return; }
           const mask = document.createElement('span');
           mask.className = 'reveal-word-mask';
           const word = document.createElement('span');

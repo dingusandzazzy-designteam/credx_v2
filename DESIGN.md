@@ -56,7 +56,7 @@ Two sections stay dark in **both** themes by design — the page's cinematic pun
 ### Families
 
 - `--font-editorial: 'Fraunces', Georgia, serif` — **all narrative titles**: baseline `h1, h2, h3, h4` plus the explicit selectors `.movement__h2`, `.control-card__title`, `.control__whitelabel-head`, `.gain__num`, `.gain__title`, `.calc__h3`, `.step__h3`, `.faq__question`, `.kpi__value`, `.proof__quote-text`, `.signup__step-label`. Weight 500 default; 600 on `h1`. `font-optical-sizing: auto` lets the display variant carry big sizes.
-- `--font-display` / `--font-body: 'Inter', system-ui, sans-serif` — body, sub-copy, eyebrows, captions, FAQ answers, form labels + inputs, buttons, and **all data callouts** (`.stat__number`, `.calc__volume-value`, `.calc__output-number`). Weights 400-700. Both tokens resolve to Inter (kept distinct for forward clarity).
+- `--font-display` / `--font-body: 'Inter', system-ui, sans-serif` — body, sub-copy, eyebrows, captions, FAQ answers, form labels + inputs, buttons, and **most data callouts** (`.calc__volume-value`, `.calc__output-number`). Weights 400-700. **Exception (2026-06-04, user):** the Gains stat strip values (`.gains__strip .stat__number` — $30K / Yours / 6 min) are **Fraunces** for an editorial register; the calculator numerals stay Inter. Both tokens resolve to Inter (kept distinct for forward clarity).
 
 Loaded in `<head>`: `Inter:wght@400;500;600;700` + `Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600`.
 
