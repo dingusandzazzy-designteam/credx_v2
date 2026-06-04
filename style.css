@@ -1921,10 +1921,10 @@ p { line-height: 1.6; max-width: 65ch; }
 .gain,
 .emblem,
 .step {
-  transition: transform var(--duration-base) var(--ease-out-quart),
-              border-color var(--duration-fast) var(--ease-out-quart),
+  transition: transform 250ms var(--ease-out-quart),
+              border-color 250ms var(--ease-out-quart),
               background-color var(--duration-fast) var(--ease-out-quart),
-              box-shadow var(--duration-base) var(--ease-out-quart);
+              box-shadow 250ms var(--ease-out-quart);
 }
 
 @media (hover: hover) and (pointer: fine) {
@@ -1932,20 +1932,50 @@ p { line-height: 1.6; max-width: 65ch; }
   .gain:hover,
   .emblem:hover,
   .step:hover {
-    transform: translateY(-4px);
-    border-color: var(--surface-3);
-    box-shadow: var(--shadow-2);
+    transform: translateY(-8px) scale(1.015);
+    border-color: var(--text-accent);
+    box-shadow: var(--shadow-3), 0 10px 30px rgba(148, 63, 120, 0.18);
   }
+  /* The gain numeral pops when its card lifts. */
+  .gain:hover .gain__num { transform: scale(1.14); }
 }
 
-/* Primary CTA — add a soft magenta cast on hover (lift comes from .btn:hover). */
+.gain__num { transition: transform 250ms var(--ease-out-quart); }
+
+/* Primary CTA — confident lift + scale + a stronger magenta glow on hover. */
 .btn-primary {
   transition: transform var(--duration-fast) var(--ease-out-quart),
               background-color var(--duration-fast) var(--ease-out-quart),
-              box-shadow var(--duration-base) var(--ease-out-quart);
+              box-shadow var(--duration-fast) var(--ease-out-quart);
 }
 @media (hover: hover) {
-  .btn-primary:hover { box-shadow: 0 8px 24px rgba(148, 63, 120, 0.35); }
+  .btn-primary:hover {
+    transform: translateY(-2px) scale(1.03);
+    box-shadow: 0 10px 30px rgba(148, 63, 120, 0.45);
+  }
+  .btn-primary:active { transform: translateY(0) scale(0.99); }
+}
+
+/* Nav links — magenta underline grows from the left on hover. */
+.nav__link { position: relative; }
+.nav__link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  height: 1.5px;
+  width: 0;
+  background-color: var(--text-accent);
+  transition: width 250ms var(--ease-out-quart);
+}
+.nav__link:hover::after { width: 100%; }
+
+/* FAQ — the + grows and the question brightens on hover (closed items). */
+.faq__question { transition: color var(--duration-fast) var(--ease-out-quart); }
+@media (hover: hover) {
+  .faq__item:not([open]) .faq__question:hover { color: var(--text-primary); }
+  /* Scope the + scale to closed items so it never fights the [open] × rotate. */
+  .faq__item:not([open]) .faq__question:hover::after { transform: scale(1.25); }
 }
 
 /* Theme toggle — icon nudges on hover, spins on press. */
