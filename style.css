@@ -1776,9 +1776,25 @@ p { line-height: 1.6; max-width: 65ch; }
   display: grid;
   grid-template-columns: 1fr;
   gap: var(--s-5);
-  margin-bottom: var(--s-9);
+  margin-bottom: var(--s-7);
 }
 @media (min-width: 1024px) { .gains__list { grid-template-columns: repeat(3, 1fr); } }
+
+/* Benchmark proof line — relocated out of gain 2 so the cards stay at parity.
+   A quiet centered statement of evidence; the % figures carry the accent. */
+.gains__benchmark {
+  max-width: 64ch;
+  margin-inline: auto;
+  text-align: center;
+  font-size: var(--type-body-lg);
+  line-height: 1.5;
+  color: var(--text-secondary);
+}
+.gains__benchmark .accent { font-weight: 700; }
+.gains__benchmark-src {
+  color: var(--text-muted);
+  font-size: var(--type-caption);
+}
 
 .gain {
   padding: var(--s-7);

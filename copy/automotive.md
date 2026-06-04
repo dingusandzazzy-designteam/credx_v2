@@ -122,8 +122,14 @@
 | # | Title | Body |
 |---|---|---|
 | 1 | `Recover up to 85% of interchange` | `$6,000 per $1M with CredX, against roughly $36,000 with Visa and Mastercard. On $1M a month, that is up to $30,000 staying in your business.` |
-| 2 | `Earn on the credit you used to give away` | `A credit facility in your own brand, issued at the F&I desk in about 6 minutes, at roughly half the rate of a standard card (around 11%, against 19–44%). You are paid in full and upfront. Your customer carries the credit, and the risk stays with CredX, never on your books. Dealers who add embedded credit at the point of sale see up to a 321% lift in purchase frequency and 76% larger transactions (PayPal embedded credit benchmark).` |
+| 2 | `Earn on the credit you used to give away` | `A credit facility in your own brand, issued at the F&I desk in about 6 minutes, at roughly half the rate of a standard card. You are paid in full and upfront, and the risk stays with CredX, never on your books.` |
 | 3 | `See your business in real time` | `A monthly dashboard in plain language, not raw numbers: which rooftop peaks in July, which segment drives service revenue, and who is about to lapse. The intelligence your DMS never handed you.` |
+
+### Benchmark proof line (below the three gain cards)
+
+`Dealers who add embedded credit at the point of sale see up to a 321% lift in purchase frequency and 76% larger transactions (PayPal embedded credit benchmark).`
+
+*(Relocated out of gain 2 (2026-06-04) so the three cards render at parity; the sourced 321% / 76% figure keeps its inline PayPal attribution and now reads as a standalone proof line.)*
 
 ### Key-outcomes strip
 
@@ -134,8 +140,8 @@
 | `6 min` | `credit approved at the F&I desk, before they leave the lot.` |
 
 **Notes:**
-- 321% / 76% carry their source inline ("PayPal embedded credit benchmark") — sourced, so safe to publish (no ⚠).
-- De-risking line ("paid in full and upfront", "risk stays with CredX, never on your books") removes the biggest objection to embedded credit.
+- 321% / 76% carry their source inline ("PayPal embedded credit benchmark") — sourced, so safe to publish (no ⚠). Relocated out of gain 2 to a standalone proof line below the cards (2026-06-04) for card-height parity.
+- De-risking line ("paid in full and upfront", "risk stays with CredX, never on your books") removes the biggest objection to embedded credit. Gain 2 trimmed (dropped the "around 11%, against 19–44%" parenthetical) so the three cards render at similar height.
 - The interchange numbers ($36K / $6K / $30K) depend on the benchmark — see ⚠ in §Launch-confirm items.
 
 ---
