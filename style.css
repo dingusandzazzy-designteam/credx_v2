@@ -1093,8 +1093,9 @@ p { line-height: 1.6; max-width: 65ch; }
 
 .calc__volume {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: baseline;
+  gap: var(--s-2);
   margin-top: var(--s-4);
 }
 
