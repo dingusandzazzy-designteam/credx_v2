@@ -1855,15 +1855,6 @@ p { line-height: 1.6; max-width: 65ch; }
 /* ---- Calculator section (S5) ---- */
 .calc-section { background-color: var(--surface-0); }
 
-.calc__reward {
-  margin-top: var(--s-4);
-  padding-top: var(--s-4);
-  border-top: 1px solid var(--border-subtle);
-  color: var(--text-primary);
-  font-size: var(--type-caption);
-  line-height: 1.5;
-}
-
 /* ---- Signup (S8) — 2-step progressive form ---- */
 .signup { background-color: var(--surface-1); }
 .signup__inner { max-width: 760px; margin-inline: auto; }

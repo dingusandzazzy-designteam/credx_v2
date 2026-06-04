@@ -442,7 +442,6 @@
   const slider = document.querySelector('[data-calc-input]');
   const volumeDisplay = document.querySelector('[data-calc-volume-display]');
   const yearlyOutput = document.querySelector('[data-calc-output-yearly]');
-  const calcReward = document.querySelector('[data-calc-reward]');
 
   function formatFull(value) {
     return '$' + Math.round(value).toLocaleString('en-US');
@@ -452,27 +451,17 @@
   // rate lands (decision 2026-06-04, see copy/automotive.md §5).
   //   recovered/year = volume × 0.03 × 12
   //   ($36K interchange − $6K residual per $1M = $30K/$1M/month → 3% effective).
-  function rewardText(monthly, yearly) {
-    return 'At ' + formatFull(monthly) + ' a month, you are keeping ' + formatFull(yearly) +
-      ' a year. Want your real number from your actual processing statement? Take the next step.';
-  }
-
-  function updateCalc(reveal) {
+  function updateCalc() {
     if (!slider) return;
     const monthly = parseFloat(slider.value);
     const yearly = monthly * 0.03 * 12;
-
     if (volumeDisplay) volumeDisplay.textContent = formatFull(monthly);
     if (yearlyOutput) yearlyOutput.textContent = formatFull(yearly);
-    if (calcReward && (reveal || !calcReward.hidden)) {
-      calcReward.textContent = rewardText(monthly, yearly);
-      calcReward.hidden = false;
-    }
   }
 
   if (slider) {
-    slider.addEventListener('input', () => updateCalc(true));
-    updateCalc(false);
+    slider.addEventListener('input', updateCalc);
+    updateCalc();
   }
 
   // Count the recovered-per-year figure up from zero the first time the

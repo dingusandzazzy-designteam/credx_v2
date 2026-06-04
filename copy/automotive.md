@@ -161,7 +161,8 @@
 | Output 2 | `$Y per year accruing in value-back` — **deferred this build** (no value-back rate yet; build Output 1 only) |
 | Caption | `Designed to recover up to 85% of standard interchange. Your number depends on card mix. Based on roughly $36K interchange per $1M (Visa/Mastercard benchmark) against $6K per $1M with CredX.` |
 | CTA | `Get my savings estimate` → scrolls to §8 form |
-| Micro-reward (after run) | `At $1M a month, you are keeping $360,000 a year. Want your real number from your actual processing statement? Take the next step.` |
+
+> **Calculator micro-reward REMOVED (2026-06-04, user).** The post-slider line "At $X a month, you are keeping $Y a year. Want your real number from your actual processing statement? Take the next step." was cut — the calculator now shows slider → "$X recovered per year" + caption + CTA only. (Deviation from V3.1, which had this micro-reward.) The §8 *form* micro-reward ("You are in…") is unaffected.
 
 **Calculator math (for build):**
 - **Output 1 — recovered per year** = `monthly_volume × 0.03 × 12`.
