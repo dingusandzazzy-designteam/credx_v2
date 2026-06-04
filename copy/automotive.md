@@ -217,16 +217,16 @@
 
 ### Partner network
 
-*Replace each placeholder with one concrete detail even when the name stays anonymous — a generic "Dealer Group A" reads as "we have no real clients."*
+**Explicit logo placeholders (decision 2026-06-04, user).** For the review build the emblems are clearly marked as logo slots — so the row reads as "real logos coming," not as fake/empty clients. This **overrides** the earlier "one concrete detail per tile" guidance (which warned a generic label reads as "no real clients"); for a pre-launch review, honest placeholders are clearer.
 
-- `Multi-rooftop dealer group · Western Canada · $40M+/month`
-- `Powersports retailer · US Southeast · 3 locations`
-- `Multi-brand auto group · Eastern Canada · 12 rooftops`
-- `Mid-market DMS platform · integration partner`
-- `Community lender · funds the embedded credit`
-- `Recreational vehicle dealer network`
+- `Partner 01 · Logo placeholder`
+- `Partner 02 · Logo placeholder`
+- `Partner 03 · Logo placeholder`
+- `Partner 04 · Logo placeholder`
+- `Partner 05 · Logo placeholder`
+- `Partner 06 · Logo placeholder`
 
-⚠ All labels anonymized until Kyle / Kendall sign off on public-use (PBS Systems, Harley-Davidson Tampa, NMAX, etc.).
+⚠ **Before public launch:** swap each slot for a real partner logo once Kyle / Kendall log public-use approval (PBS Systems, Harley-Davidson Tampa, NMAX, etc.), or revert to the anonymized-with-detail format if logos are not approved.
 
 ### Key metrics
 
