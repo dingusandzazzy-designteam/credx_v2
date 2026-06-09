@@ -91,12 +91,12 @@ Community lenders have always been closer to their members than the big networks
 | Field | Value |
 |---|---|
 | Pull-quote | `"We believe in true partnership so much we put our own money into your business — then give it to your clients, presented under your brand. Who partners like that?"` |
-| Attribution | `— Kendall [surname], Founder, CredX` |
+| Attribution | `— Kendall, Founder, CredX` |
 
 **Section CTAs (Audrey #14):** `Book a Demo` (→ §8 form; Calendly fallback) · `Run the Numbers` (→ §5 calculator).
 
 **Notes:**
-- Pull-quote uses comment #15 wording (Feedback-04). Held verbatim — do not paraphrase or expand contractions. ⚠ confirm Kendall's surname + title before launch.
+- Pull-quote uses comment #15 wording (Feedback-04). Held verbatim — do not paraphrase or expand contractions. Attribution settled as `— Kendall, Founder, CredX` — **no surname** (user, 2026-06-09).
 
 ---
 
@@ -167,7 +167,7 @@ Community lenders have always been closer to their members than the big networks
 **Notes:**
 - Credit approval beat changed from "6 min at the F&I desk" to "about 20 seconds at checkout" (Feedback-04 #28/#30/#40 — aftermarket has no F&I desk).
 - 321% / 76% carry their PayPal source inline — sourced, safe to publish.
-- The interchange numbers ($36K / $6K / $30K) depend on the benchmark — see ⚠ in §Launch-confirm items.
+- The interchange numbers ($36K competing credit facilities / $6K CredX / $30K saved) are **confirmed correct** (user, 2026-06-09).
 
 ---
 
@@ -188,7 +188,7 @@ Community lenders have always been closer to their members than the big networks
 
 **Calculator math (for build):**
 - **Recovered per year** = `monthly_volume × 0.03 × 12`. At $1M default → **$360,000/year**.
-- ⚠ Interchange benchmark ($36K / $6K) — see §Launch-confirm items.
+- Interchange benchmark ($36K competing / $6K CredX → $30K saved per $1M/month = 3%) — **confirmed correct** (user, 2026-06-09).
 
 *(The value-back "Output 2" from earlier drafts was removed 2026-06-09 per user — the calculator is single-output.)*
 
@@ -340,13 +340,16 @@ A secondary `Book a Demo` route opens a calendar booking, distinct from `Join th
 
 ## Launch-confirm items (⚠ — none block the build; all block public launch)
 
-1. **⚠ `$500M+` Merchant Network Agreements signed (§7).** Pending Audrey / Kendall.
-2. **⚠ Interchange benchmark — $36K per $1M vs $6K per $1M with CredX (§4, §5).** Basis for every $30K / 85% / $360K figure. Pending Audrey / Kendall.
-3. **⚠ Kendall founder quote (§2)** — confirm surname + title; verbatim, do not paraphrase.
-4. **⚠ Partner logos (§7)** — pending Audrey; no placeholder note on the page (removed 2026-06-09), add real logos when approved.
-5. **⚠ Book-a-Demo Calendly URL** — pending Kyle; falls back to the form anchor.
-6. **⚠ "~20 seconds at checkout" credit-approval claim** — sourced from Feedback-04 client comments; confirm defensible before launch.
-7. **Hero movement video** — deferred; copy carries the page until the film is approved.
+1. **⚠ `$500M+` Merchant Network Agreements signed (§7).** Pending Audrey / Kendall (to verify).
+2. **⚠ Partner logos (§7)** — pending Audrey (to verify); no placeholder note on the page (removed 2026-06-09), add real logos when approved.
+3. **⚠ Book-a-Demo Calendly URL** — pending Kyle (to verify); falls back to the form anchor.
+4. **"~20 seconds at checkout" credit-approval claim (§4, §6)** — kept as-is for now (user, 2026-06-09); revisit later if needed.
+5. **Hero movement video** — deferred; copy carries the page until the film is approved.
+
+**Resolved 2026-06-09 (no longer pending):**
+- ✅ **Interchange benchmark** ($36K competing / $6K CredX) — confirmed correct by user.
+- ✅ **Kendall attribution** — settled as `— Kendall, Founder, CredX`, no surname.
+- ✅ **Calculator value-back "Output 2"** — removed (single-output).
 
 ---
 
@@ -356,9 +359,9 @@ A secondary `Book a Demo` route opens a calendar booking, distinct from `Join th
 |---|---|
 | Page metadata (campaign, not indexed) | CANONICAL — aftermarket audience |
 | 1 · Hero — The Movement | CANONICAL — $30K removed from subhead; video deferred |
-| 2 · The Movement — Three Voices | CANONICAL — new 3-voice block; ⚠ Kendall surname |
+| 2 · The Movement — Three Voices | CANONICAL — new 3-voice block; Kendall attribution settled (no surname) |
 | 3 · Control | CANONICAL — Customer / Access to Data / Keep the Fence |
-| 4 · The Gains | CANONICAL — "competing credit facility"; 20s at checkout; ⚠ benchmark |
+| 4 · The Gains | CANONICAL — "competing credit facility"; 20s at checkout; benchmark confirmed |
 | 5 · Savings Calculator | CANONICAL — single output (recovered/year) |
 | 6 · How It Works | CANONICAL — POS/aftermarket; 4–8 wk |
 | 7 · Built For | CANONICAL — replaces social proof; no people; ⚠ $500M+, logos |
