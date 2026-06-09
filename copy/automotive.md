@@ -54,6 +54,7 @@
 **Notes:**
 - The `$30,000 per $1M` figure was **removed from the hero subhead** (Feedback-04 #07) — it now lives only in the §4 outcomes strip. Movement first, money is the cherry.
 - Accent magenta on a key fragment is colour-only, no italic.
+- **Nav carries two CTAs (Audrey #4 + Change Log #01/#02):** `Book a Demo` (secondary) + `Join the Movement` (primary, dominant). Book a Demo is a distinct destination (Calendly, pending Kyle) — falls back to the §8 form anchor until the URL lands. Hidden below 640px to keep the nav uncrowded.
 
 ---
 
@@ -91,6 +92,8 @@ Community lenders have always been closer to their members than the big networks
 |---|---|
 | Pull-quote | `"We believe in true partnership so much we put our own money into your business — then give it to your clients, presented under your brand. Who partners like that?"` |
 | Attribution | `— Kendall [surname], Founder, CredX` |
+
+**Section CTAs (Audrey #14):** `Book a Demo` (→ §8 form; Calendly fallback) · `Run the Numbers` (→ §5 calculator).
 
 **Notes:**
 - Pull-quote uses comment #15 wording (Feedback-04). Held verbatim — do not paraphrase or expand contractions. ⚠ confirm Kendall's surname + title before launch.
@@ -158,6 +161,8 @@ Community lenders have always been closer to their members than the big networks
 | `$30K` | `recovered per $1M, month one.` |
 | `Yours` | `the customer, the data, and the loyalty. Not a competing credit facility's.` |
 | `20 seconds` | `credit approved at checkout.` |
+
+**Section CTAs (Audrey #31):** `Book a Demo` (→ §8 form; Calendly fallback) · `Join the Network` (→ §8 form).
 
 **Notes:**
 - Credit approval beat changed from "6 min at the F&I desk" to "about 20 seconds at checkout" (Feedback-04 #28/#30/#40 — aftermarket has no F&I desk).
@@ -324,7 +329,7 @@ A secondary `Book a Demo` route opens a calendar booking, distinct from `Join th
 
 | Field | Value |
 |---|---|
-| Closing CTA line | `Still have questions? Talk to our team.` + `Book a Demo` / `Join the Movement` |
+| Closing CTA line | `Still have questions? Talk to our team.` + `Book a Demo` / `Join the Network` |
 | Nav | `How it works · The movement · Savings · Join the movement` |
 | Legal | `Privacy · Terms · SOC 2 attestation` |
 | Copyright | `© 2026 CredX Tech Inc.` |

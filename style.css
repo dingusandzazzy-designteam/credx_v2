@@ -342,6 +342,26 @@ p { line-height: 1.6; max-width: 65ch; }
 [data-theme="light"] .hero--full .btn-primary { background-color: var(--magenta); }
 [data-theme="light"] .hero--full .btn-primary:hover { background-color: var(--purple); }
 
+/* Reusable centered CTA row (Movement §2, Gains §4 — more CTA touchpoints per Audrey) */
+.section-ctas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-4);
+  justify-content: center;
+  margin-top: var(--s-8);
+}
+
+/* The .movement band stays dark in both themes, so its overlaid buttons must
+   keep the light-on-dark treatment even in light theme (same rationale as .hero--full). */
+[data-theme="light"] .movement .btn-secondary { color: var(--cloud-white); border-color: var(--cloud-white); }
+[data-theme="light"] .movement .btn-secondary:hover { background-color: var(--cloud-white); color: var(--ink); }
+[data-theme="light"] .movement .btn-primary { background-color: var(--magenta); }
+[data-theme="light"] .movement .btn-primary:hover { background-color: var(--purple); }
+
+/* Keep the nav uncrowded on small screens — drop the secondary demo button there
+   (Book a Demo still appears in the Movement, Gains, and footer touchpoints). */
+@media (max-width: 640px) { .nav__cta--demo { display: none; } }
+
 /* ---- 5b. Theme toggle ---- */
 
 .nav__actions {
