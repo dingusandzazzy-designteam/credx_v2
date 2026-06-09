@@ -1558,12 +1558,6 @@ p { line-height: 1.6; max-width: 65ch; }
   color: var(--text-secondary);
   text-wrap: balance;
 }
-.builtfor__partners-note {
-  text-align: center;
-  color: var(--text-muted);
-  font-size: var(--type-caption);
-  margin-bottom: var(--s-10);
-}
 
 .proof__kpis {
   display: grid;

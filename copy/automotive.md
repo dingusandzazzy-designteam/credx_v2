@@ -253,7 +253,7 @@ Community lenders have always been closer to their members than the big networks
 **Notes:**
 - The SAMPLE operator quote and the role-titled persona ("F&I Director, Western Canada") are **removed** (Feedback-04). No people in this section.
 - The "RV dealer network" partner line is **removed** (#42).
-- ⚠ Partner logos: pending from Audrey. Until they arrive, use a neutral treatment ("Partner details available upon request") rather than fabricated logo slots.
+- ⚠ Partner logos: pending from Audrey. No placeholder/neutral note shown on the page (the "Partner details available upon request" line was removed 2026-06-09 per user); add real logos when approved.
 
 ---
 
