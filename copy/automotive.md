@@ -1,23 +1,23 @@
-# Automotive — Landing Page Copy (V3.1 canonical)
+# Automotive — Landing Page Copy (Feedback-04 canonical)
 
 > **URL:** `/` (Automotive is the canonical landing entry — `index.html`. Path / subdomain decided in Phase 7.)
-> **Template:** A (operator pitch) — **re-sequenced to V3.1: Movement → Control → Gains.**
-> **Status:** CANONICAL 2026-06-04 — `copy/CredX-Automotive-Copy-V3.md` (V3.1) folded in as the source of truth, superseding the 2026-05-27 Pain → Opportunity → Outcome draft and the D&Z proof (`project_copy_proof_authority`). HTML mirrors this file verbatim per `feedback_copy_html_sync`.
-> **Audience:** `audiences/automotive.md` — Dealership groups / DMS operators / OEM financing arms / F&I leadership.
+> **Template:** A (operator pitch) — **Movement → Control → Gains.**
+> **Status:** CANONICAL 2026-06-09 — rewritten per **Client-feedback-04**. Source of truth: `copy/CredX-Automotive-Copy-with-Comments.md` (V3.1 body + Audrey Wilson's 57 inline comments). Execution brief: `copy/CredX-Automotive-Feedback04-Brief.md`. Supersedes the 2026-06-04 V3.1 dealership build. HTML mirrors this file verbatim per `feedback_copy_html_sync`.
+> **Audience:** **Automotive aftermarket operators** — auto service & repair, parts retailers & distributors, accessories & aftermarket, tire chains & quick-lube, fleet service, powersports & RV. (Full pivot away from the dealership/DMS/F&I framing — Feedback-04 decision.)
 > **Voice:** Premium · Aspirational · Enterprise-ready · Human. Mode: Operator / Merchant.
-> **House-style applied:** contractions expanded (do not / you are / we will / here is); Canadian spelling kept (white-labelled, PIPEDA); Oxford comma.
+> **House style:** contractions expanded (do not / you are / we will / here is); Canadian spelling kept (white-labelled, PIPEDA); Oxford comma. Founder quote held verbatim (exempt).
 
 ---
 
-## V3.1 adoption notes (read first)
+## Feedback-04 change notes (read first)
 
-- **Narrative re-ordered (supersedes A3 pain-pivot lock for Automotive).** The page now leads with the **movement** (own your customer), then **control** (data / loyalty / brand), then **gains** (the $30K recovery). The $30,000 saving is the *cherry*, no longer the hook. This is the V3.1 / `project_v3_copy_authority` decision — the old pain-pivot H1 ("Where does $30,000 go?") is retired.
-- **SEO dropped** for this page (`project_v3_copy_authority`). It is a campaign destination, not an organic search target — not indexed. The 2026-05-29 locked SEO brief (`car dealership interchange fees` primary, Title/Meta/H1 budgets) is now **historical**; `seo-copy-sync` is out of the loop. The page still ships a `<title>` + meta description as campaign metadata (below) — length budgets no longer bind.
-- **Hero = static image this round.** Video slot **deferred** (PM call 2026-06-03): build with the existing hero image (`hero-image-2.jpg`); the movement film drops in later. V3.1's "[video slot]" placeholder is parked, not built. `project_hero_no_video` stays intact.
-- **Single build + theme toggle.** PM ruling (2026-06-03) overrides V3.1's "two builds, one copy" A/B suggestion: one build, **dark = default**, in-nav light/dark toggle (Phase 3 light-token increment + Phase 6 wiring).
-- **Tone rule (non-negotiable, from V3.1):** the surface is empowerment. The "Visa took your customer" truth sits *underneath* the copy — never as an attack.
-- **Every primary CTA anchor-scrolls to the form** (§8). Anyone who wants to skip the story lands straight on it.
-- **⚠ = confirm before launch.** Three launch-confirm items remain — see §Launch-confirm items. None block the build; they block public launch.
+- **Audience pivot (full).** Dealership/DMS/F&I/rooftop vocabulary retired. Target is any automotive operator with recurring customers and card volume. Swaps: `dealership → business`; `DMS → POS / payment processor / management software`; `rooftops → locations`; `F&I desk / 6 min → checkout / ~20 seconds`; `Visa and Mastercard → competing credit facility / credit facility network`.
+- **§2 gains a "Three Voices, One Direction" section** (Merchant / Consumer / Lender) — new movement beat. *(Note: introduces a consumer perspective as a deliberate manifesto device under a clear header — an approved deviation from the strict B2B-only rule.)*
+- **§3 Control pillars** are now `Your customer / Your access to data / Keep the fence`.
+- **Footer tagline removed** ("Software should pay for people…" is gone — supersedes the tagline note in `project_v3_copy_authority`).
+- **No people in §7.** Role-titled personas (the operator quote) removed; §7 is now a "Built for…" block.
+- **Founder pull-quote uses comment #15 wording**, attribution `— Kendall, Founder, CredX` kept (⚠ confirm surname + title).
+- **⚠ = confirm before launch.** See §Launch-confirm items. None block the build.
 
 ---
 
@@ -25,14 +25,14 @@
 
 | Field | Value |
 |---|---|
-| Title (browser tab) | `CredX for Auto Dealers — Own Your Customer, Recover $30K per $1M` |
-| Meta description | `Keep the customer, the data, and the loyalty your dealership earns. Recover up to $30,000 for every $1M you process. CredX is the embedded value platform built for automotive dealers.` |
+| Title (browser tab) | `CredX for Automotive Operators — Own Your Customer, Recover $30K per $1M` |
+| Meta description | `Keep the customer, the data, and the loyalty your business earns. Recover up to $30,000 for every $1M you process. CredX is the embedded value platform built for automotive service, parts, and aftermarket operators.` |
 | H1 | See §1 Hero headline. |
-| OG title | `CredX for Auto Dealers — Own Your Customer, Recover $30K per $1M` |
-| OG description | `Keep the customer, the data, and the loyalty your dealership earns. Recover up to $30,000 for every $1M you process.` |
+| OG title | `CredX for Automotive Operators — Own Your Customer, Recover $30K per $1M` |
+| OG description | `Keep the customer, the data, and the loyalty your business earns. Recover up to $30,000 for every $1M you process.` |
 | OG image | `assets/images/automotive_og_v2.png` — TBD (Phase 5 imagery) |
 
-**Note:** "embedded value platform" is the sanctioned substitution for "payments platform" (mechanic/product context). SEO not indexed, so the keyword-targeted Title/Meta from the retired brief no longer apply.
+**Note:** SEO not indexed; keyword budgets do not bind. "embedded value platform" is the sanctioned substitution for "payments platform."
 
 ---
 
@@ -43,46 +43,68 @@
 
 | Field | Value |
 |---|---|
-| Eyebrow | `For Dealership Groups + DMS Operators` |
+| Eyebrow | `For Automotive Service, Parts & Aftermarket Operators` |
 | Headline (H1) | `Own the Customer You Fought to Win` |
-| Subheadline | `Every car you sell builds a relationship. CredX keeps it yours: the data, the loyalty, and the next purchase. And it recovers up to $30,000 for every $1M you process.` |
+| Subheadline | `Every service visit, every parts purchase, every accessory install builds a relationship. CredX keeps it yours: the data, the loyalty, and the next visit.` |
 | Primary CTA | `Join the Movement` → scrolls to §8 form |
 | Secondary CTA | `See how it works` → scrolls to §6 How It Works |
-| Hero asset | Static cinematic image (`assets/images/automotive/hero-image-2.jpg`). No play button, no video modal this round. |
-| Hero alt text | `Dealership F&I desk where a branded credit line is issued to a customer` |
+| Hero asset | Static cinematic image. No play button, no video modal this round. |
+| Hero alt text | `Automotive service counter where a branded credit line is issued to a returning customer` |
 
 **Notes:**
-- Movement-pivot H1 (V3.1). Accent magenta on a key fragment is colour-only, no italic (Fraunces dropped per B1 lock).
-- Sub-copy ~190 chars — within 10-second density.
+- The `$30,000 per $1M` figure was **removed from the hero subhead** (Feedback-04 #07) — it now lives only in the §4 outcomes strip. Movement first, money is the cherry.
+- Accent magenta on a key fragment is colour-only, no italic.
 
 ---
 
-## 2 · THE MOVEMENT, IN ONE LINE
+## 2 · THE MOVEMENT — THREE VOICES, ONE DIRECTION
 
 **Status:** CANONICAL
-**Beat:** One-line manifesto + founder pull-quote.
+**Beat:** One-line manifesto → three-perspective movement block → founder pull-quote.
 
 | Field | Value |
 |---|---|
-| Headline | `The dealer who owns the data owns the customer.` |
-| Body | `Right now your DMS runs the payment, and the card network keeps everything that comes after: who your customer is, what they spend, and when they will buy again. CredX puts that back in your hands. Your credit facility, your brand, your customer.` |
-| Pull-quote | `"We spend our money and give it to your clients, white-labelled to look like you. Who partners like that?"` |
+| Headline | `The business that owns the data owns the customer.` |
+| Body | `Right now your payment processor runs the transaction, and the credit facility network keeps everything that comes after: who your customer is, what they spend, and when they will come back. CredX puts that back in your hands. Your credit facility, your brand, your customer.` |
+
+### Three Voices, One Direction
+
+> **Build note:** render as collapsed expanders (accordion) — headline visible, body on click — per the UX blueprint. Three voices, one closing line.
+
+**The Merchant**
+*"Your customers were already loyal. A competing credit facility was the only one charging you for it."*
+You built the relationship. You earned the trust. But every transaction sent a piece of your margin to a system that does not know your customer's name. CredX gives that back — not just as savings, but as a tool: lower costs across every transaction, built-in revolving credit with no lending risk on your books, and a data network that tells you who your buyers really are. A growing community of businesses, done handing their growth to a credit facility network. This is your network. Finally.
+
+**The Consumer**
+*"They have been the product for long enough."*
+Every time they tap their card, someone they have never met profits from their loyalty, and they never saw a cent of it. CredX changes that. Customers benefit from the data they generate, access revolving credit, and keep more of what they earn in the businesses where they spend. This is a shift in who the economy works for.
+
+**The Lender**
+*"Finally, credit that earns where the spending already happens."*
+Community lenders have always been closer to their members than the big networks, but the credit facility network always captured the transaction. CredX changes the rail: fund embedded credit directly at the point of service, a diversified, closed-loop asset class, with delinquency controls built in so risk stays managed.
+
+**Closer:** `The old system extracted value from all three. CredX returns it.`
+
+### Founder pull-quote
+
+| Field | Value |
+|---|---|
+| Pull-quote | `"We believe in true partnership so much we put our own money into your business — then give it to your clients, presented under your brand. Who partners like that?"` |
 | Attribution | `— Kendall [surname], Founder, CredX` |
 
 **Notes:**
-- Founder quote is verbatim (V3.1) — ⚠ confirm Kendall's surname + title formatting before launch (do not paraphrase).
-- No contractions present in the quote; left verbatim.
+- Pull-quote uses comment #15 wording (Feedback-04). Held verbatim — do not paraphrase or expand contractions. ⚠ confirm Kendall's surname + title before launch.
 
 ---
 
 ## 3 · CONTROL — WHAT YOU GET BACK
 
 **Status:** CANONICAL
-**Beat:** The three things the dealer gets back + the white-label beat. Written as a gain, never a warning (Kendall's "fence").
+**Beat:** The three things the operator gets back + the white-label beat. Written as a gain, never a warning (Kendall's "fence").
 
 | Field | Value |
 |---|---|
-| Eyebrow | `Take Control of Your Dealership` |
+| Eyebrow | `Take Control of Your Business` |
 | Headline | `Your data is the asset no one gave back. Until now.` |
 | Intro line | `Three things become yours the day you sign:` |
 
@@ -90,58 +112,56 @@
 
 | Item | Copy |
 |---|---|
-| Your customer. | `The relationship stays in your dealership's name, not the card network's.` |
-| Your data. | `Consent-driven and de-identified: which buyers come back, which segments spend the most, and when demand peaks.` |
-| Your loyalty. | `A value-back program in your own brand that keeps the customer from driving to the dealer down the street.` |
+| Your customer. | `The relationship stays in your business's name, not a competing credit facility's. The customer who came in for a tune-up last Tuesday belongs to you.` |
+| Your access to data. | `Consent-driven and de-identified: which buyers come back, which segments spend the most, and when demand peaks.` |
+| Keep the fence. | `A closed-loop value-back program in your own brand that keeps the customer from driving to the shop down the street.` |
 
 ### White-label beat
 
 | Field | Value |
 |---|---|
-| Sub-head | `Your dealership's name. Our infrastructure.` |
+| Sub-head | `Your business name. Our infrastructure.` |
 | Body | `Everything the customer sees carries your brand. The technology, compliance, and credit run behind the scenes. The relationship is yours.` |
 
 **Notes:**
-- "value-back program" (never "rewards" / "loyalty" as a product label).
-- Framed entirely as a gain per the V3.1 tone rule.
+- "value-back program" (never "rewards").
+- Framed entirely as a gain.
 
 ---
 
 ## 4 · THE GAINS — THE CHERRY ON THE CAKE
 
 **Status:** CANONICAL
-**Beat:** Three ways CredX pays the dealer back + key-outcomes strip.
+**Beat:** Three ways CredX pays the operator back + key-outcomes strip.
 
 | Field | Value |
 |---|---|
 | Eyebrow | `And Here Is What It Pays You Back` |
-| Headline | `Three ways CredX puts money back in your dealership.` |
+| Headline | `Three ways CredX puts money back in your business.` |
 
 ### Three gains
 
 | # | Title | Body |
 |---|---|---|
-| 1 | `Recover up to 85% of interchange` | `$6,000 per $1M with CredX, against roughly $36,000 with Visa and Mastercard. On $1M a month, that is up to $30,000 staying in your business.` |
-| 2 | `Earn on the credit you used to give away` | `A credit facility in your own brand, issued at the F&I desk in about 6 minutes, at roughly half the rate of a standard card. You are paid in full and upfront, and the risk stays with CredX, never on your books.` |
-| 3 | `See your business in real time` | `A monthly dashboard in plain language, not raw numbers: which rooftop peaks in July, which segment drives service revenue, and who is about to lapse. The intelligence your DMS never handed you.` |
+| 1 | `Recover up to 85% of interchange` | `$6,000 per $1M with CredX, against roughly $36,000 with competing credit facilities. On $1M a month, that is up to $30,000 staying in your business.` |
+| 2 | `Earn on the credit you used to give away` | `A credit facility in your own brand, approved in about 20 seconds at checkout, at roughly half the rate of a standard card. You are paid in full and upfront, and the risk stays with CredX, never on your books.` |
+| 3 | `See your business in real time` | `A monthly dashboard in plain language, not raw numbers: which location peaks in July, which segment drives revenue, and who is about to lapse. The intelligence your current setup never handed you.` |
 
 ### Benchmark proof line (below the three gain cards)
 
-`Dealers who add embedded credit at the point of sale see up to a 321% lift in purchase frequency and 76% larger transactions (PayPal embedded credit benchmark).`
-
-*(Relocated out of gain 2 (2026-06-04) so the three cards render at parity; the sourced 321% / 76% figure keeps its inline PayPal attribution and now reads as a standalone proof line.)*
+`Businesses that add embedded credit at the point of sale see up to a 321% lift in purchase frequency and 76% larger transactions (PayPal embedded credit benchmark).`
 
 ### Key-outcomes strip
 
 | Value | Caption |
 |---|---|
 | `$30K` | `recovered per $1M, month one.` |
-| `Yours` | `the customer, the data, the loyalty. Not Visa's.` |
-| `6 min` | `credit approved at the F&I desk, before they leave the lot.` |
+| `Yours` | `the customer, the data, and the loyalty. Not a competing credit facility's.` |
+| `20 seconds` | `credit approved at checkout.` |
 
 **Notes:**
-- 321% / 76% carry their source inline ("PayPal embedded credit benchmark") — sourced, so safe to publish (no ⚠). Relocated out of gain 2 to a standalone proof line below the cards (2026-06-04) for card-height parity.
-- De-risking line ("paid in full and upfront", "risk stays with CredX, never on your books") removes the biggest objection to embedded credit. Gain 2 trimmed (dropped the "around 11%, against 19–44%" parenthetical) so the three cards render at similar height.
+- Credit approval beat changed from "6 min at the F&I desk" to "about 20 seconds at checkout" (Feedback-04 #28/#30/#40 — aftermarket has no F&I desk).
+- 321% / 76% carry their PayPal source inline — sourced, safe to publish.
 - The interchange numbers ($36K / $6K / $30K) depend on the benchmark — see ⚠ in §Launch-confirm items.
 
 ---
@@ -149,84 +169,73 @@
 ## 5 · SAVINGS CALCULATOR
 
 **Status:** CANONICAL — math partially specified (see ⚠ Output 2)
-**Beat:** Interactive slider, two outputs, micro-reward after first run.
+**Beat:** Interactive slider, recovered-per-year output, CTA into the form.
 
 | Field | Value |
 |---|---|
-| Headline | `Move the slider. See what stays in your dealership.` |
+| Headline | `Move the slider. See what stays in your business.` |
 | Body | `Set your real monthly card volume and watch the recovery add up across twelve months.` |
-| Slider label | `Your monthly card volume` |
+| Slider label | `Monthly processing volume` |
 | Slider range | `$250K — $25M` (default $1M; round-increment step) |
 | Output 1 | `$X recovered per year` |
 | Output 2 | `$Y per year accruing in value-back` — **deferred this build** (no value-back rate yet; build Output 1 only) |
-| Caption | `Designed to recover up to 85% of standard interchange. Your number depends on card mix. Based on roughly $36K interchange per $1M (Visa/Mastercard benchmark) against $6K per $1M with CredX.` |
+| Caption | `Designed to recover up to 85% of standard interchange. Your number depends on card mix. Based on roughly $36K interchange per $1M with competing credit facilities, against $6K per $1M with CredX.` |
 | CTA | `Get my savings estimate` → scrolls to §8 form |
 
-> **Calculator micro-reward REMOVED (2026-06-04, user).** The post-slider line "At $X a month, you are keeping $Y a year. Want your real number from your actual processing statement? Take the next step." was cut — the calculator now shows slider → "$X recovered per year" + caption + CTA only. (Deviation from V3.1, which had this micro-reward.) The §8 *form* micro-reward ("You are in…") is unaffected.
-
 **Calculator math (for build):**
-- **Output 1 — recovered per year** = `monthly_volume × 0.03 × 12`.
-  Effective 3% = ($36K interchange − $6K residual) per $1M = $30K per $1M/month. At $1M default → **$360,000/year** (matches the micro-reward).
-- **Output 2 — value-back per year** = `monthly_volume × [VALUE-BACK RATE] × 12`.
-  ⚠ **DEFERRED THIS BUILD (decision 2026-06-04):** build **Output 1 only** for now. No value-back accrual rate exists in V3.1 or any source doc, and inventing one is off-limits. Output 2 is added once Audrey / Kendall supply the rate (or the % of volume that accrues as value-back). Until then the calculator ships single-output.
+- **Output 1 — recovered per year** = `monthly_volume × 0.03 × 12`. At $1M default → **$360,000/year**.
+- **Output 2 — value-back per year** = `monthly_volume × [VALUE-BACK RATE] × 12`. ⚠ **DEFERRED:** build Output 1 only until Audrey / Kendall supply the value-back rate. Do not invent one.
 - ⚠ Interchange benchmark ($36K / $6K) — see §Launch-confirm items.
+
+> **Build note (UX blueprint):** moving the slider should reveal / pulse the inline Step 1 form below it (Kendall's "cheese" moment). Output animates count-up on change.
 
 ---
 
 ## 6 · HOW IT WORKS
 
 **Status:** CANONICAL
-**Beat:** Four steps. Subordinate density. DMS and checkout stay as they are.
+**Beat:** Four steps. Subordinate density. POS and payment stack stay as they are.
 
 | Field | Value |
 |---|---|
-| Headline | `Four steps. Your DMS and your checkout stay exactly as they are.` |
+| Headline | `Four steps. Your POS and payment stack stay exactly as they are.` |
 
 ### Steps
 
 | Step | Title | Body |
 |---|---|---|
-| 1 | `Sign a Merchant Network Agreement` | `Onboarding runs about 7 days. Your DMS, processor, and F&I tools all stay in place.` |
-| 2 | `CredX activates on your transaction flow` | `Your checkout is unchanged, with no new terminals or hardware to install. CredX runs underneath, capturing the value and data your current setup leaves behind.` |
-| 3 | `Your monthly report arrives` | `Interchange recovered and value-back earned, broken out per store and per group.` |
-| 4 | `Customers get branded credit and value-back` | `Lower-rate credit issued in your dealership's name, with value-back accruing in your program. The relationship stays yours.` |
+| 1 | `Sign a Merchant Network Agreement` | `Onboarding runs about 4 to 8 weeks. Your POS, payment processor, and management software all stay in place.` |
+| 2 | `CredX activates on your transaction flow` | `Your checkout is unchanged, with no new terminals or hardware to install. CredX runs underneath, capturing the interchange value and customer data your current setup leaves behind across every transaction type.` |
+| 3 | `Your monthly report arrives` | `Interchange recovered and value-back earned, broken out per location and in aggregate.` |
+| 4 | `Customers get branded credit and value-back` | `Lower-rate credit issued in your business's name, approved in about 20 seconds at checkout, with value-back accruing in your program. The relationship stays yours.` |
 
 **Notes:**
-- "no new terminals or hardware" = the hardware-saving beat (SoftPOS / QR). The specific $500–$1,500/year figure is available as a callout if wanted later.
-- "Merchant Network Agreement" required vocabulary (never "LOI").
+- Timeline corrected to **4 to 8 weeks** (was "about 7 days" — Feedback-04 #11; now consistent with the FAQ).
+- "no new terminals or hardware" = the hardware-saving beat.
+- "Merchant Network Agreement" is the locked term (never "LOI"). ⚠ Comment #37 wrote "Merchant Network **Licensing** Agreement" — kept the established term for page consistency; confirm if "Licensing" should be added everywhere.
 
 ---
 
-## 7 · SOCIAL PROOF
+## 7 · BUILT FOR — WHO CREDX IS FOR
 
-**Status:** CANONICAL — emblems + quote are SAMPLE until public-use approval
-**Beat:** Operator quote · partner network · key metrics.
-
-| Field | Value |
-|---|---|
-| Eyebrow | `Dealers Already in the Network` |
-
-### Operator quote
+**Status:** CANONICAL — replaces the prior Social Proof section (no real proof yet)
+**Beat:** Honest "built for" audience block + key metrics. No quotes, no personas (Feedback-04 #41/#42).
 
 | Field | Value |
 |---|---|
-| Quote | `"We were leaking $30,000 of margin per million in interchange and couldn't see it on the P&L. CredX gave us the rails to recover it, and the customer data our DMS never captured."` |
-| Attribution | `— F&I Director, multi-rooftop group, Western Canada ($40M+ monthly volume)` |
+| Eyebrow | `Built For` |
+| Headline | `Built for any automotive business with recurring customers and card volume.` |
 
-⚠ Composite SAMPLE quote — DO NOT publish. Replace with a real operator quote once public-use approval is logged. *(Note: the quote retains "couldn't" as a verbatim spoken quotation; if rendered as brand copy rather than a real attributed person, expand to "could not". Held verbatim pending a real quote.)*
+### Audience list
 
-### Partner network
+- `Auto service & repair shops`
+- `Parts retailers & distributors`
+- `Accessories & aftermarket retailers`
+- `Tire chains & quick-lube operators`
+- `Fleet service operators`
+- `Powersports & RV operators`
 
-**Explicit logo placeholders (decision 2026-06-04, user).** For the review build the emblems are clearly marked as logo slots — so the row reads as "real logos coming," not as fake/empty clients. This **overrides** the earlier "one concrete detail per tile" guidance (which warned a generic label reads as "no real clients"); for a pre-launch review, honest placeholders are clearer.
-
-- `Partner 01 · Logo placeholder`
-- `Partner 02 · Logo placeholder`
-- `Partner 03 · Logo placeholder`
-- `Partner 04 · Logo placeholder`
-- `Partner 05 · Logo placeholder`
-- `Partner 06 · Logo placeholder`
-
-⚠ **Before public launch:** swap each slot for a real partner logo once Kyle / Kendall log public-use approval (PBS Systems, Harley-Davidson Tampa, NMAX, etc.), or revert to the anonymized-with-detail format if logos are not approved.
+**Qualifier line:** `If you process $250K or more per month in card volume and your customers come back, CredX is built for you.`
 
 ### Key metrics
 
@@ -235,6 +244,11 @@
 | `$500M+ in Merchant Network Agreements signed` | ⚠ confirm figure — see §Launch-confirm items |
 | `4 community lender partners funding embedded credit` | DRAFT |
 | `SOC 2 + PIPEDA compliant. Data de-identified, consent-driven, and held to Canadian privacy law.` | DRAFT |
+
+**Notes:**
+- The SAMPLE operator quote and the role-titled persona ("F&I Director, Western Canada") are **removed** (Feedback-04). No people in this section.
+- The "RV dealer network" partner line is **removed** (#42).
+- ⚠ Partner logos: pending from Audrey. Until they arrive, use a neutral treatment ("Partner details available upon request") rather than fabricated logo slots.
 
 ---
 
@@ -254,42 +268,53 @@
 - `Full name`
 - `Work email`
 - `Phone`
-- `Company name`
+- `Business name`
+- `Your title or role`
+- `Website`
 
 **Button:** `Join the Movement`
 
 **Micro-reward on submit:**
 `You are in. Based on your volume, you could be keeping up to $30,000 per $1M. Two more questions and we will build your real number.`
 
-### Step 2 — Tell us about your dealership
+### Step 2 — Tell us about your business
 *(Optional. Helps us tailor your savings and check fit with our lenders.)*
 
+- `Type of business` ( `Service & repair` · `Parts & accessories` · `Tire & quick-lube` · `Fleet service` · `Powersports & RV` · `Other` )
 - `Roughly what do you process in card volume each month?` ( `$250K–$1M` · `$1M–$5M` · `$5M–$25M` · `$25M+` )
-- `How many rooftops do you run?`
-- `Which DMS are you on today?`
-- `In one line: what would owning your customer data change for your business?`
+- `Number of locations`
+- `POS or management system (Clover, Lightspeed, Square, etc.)`
+- `In one line: what would having access to your customer data change for your business?`
 
 **Button:** `See my full breakdown`
 
-**Build note (operator-facing):** Step 1 fields feed Kyle's CRM the moment they are submitted, even if Step 2 is skipped. Step 2 is automotive-specific — each vertical's page gets its own Step 2 questions. Never show more than three or four fields in a single view (Kendall: "you give them three or four at a time").
+**Build note (operator-facing):** Step 1 fields feed Kyle's CRM the moment they are submitted, even if Step 2 is skipped. Step 1 is a single reusable component used in three places (hero inline, calculator step-in, bottom form) per the UX blueprint. Never show more than three or four fields in a single view.
+
+### Demo path (alongside the form)
+
+A secondary `Book a Demo` route opens a calendar booking, distinct from `Join the Movement` (which anchors to the inline form). ⚠ Calendly / booking URL pending from Kyle — until it arrives, `Book a Demo` falls back to the form anchor.
 
 ---
 
 ## 9 · FAQ
 
 **Status:** CANONICAL
-**Heading:** `Questions dealers ask before signing`
+**Heading:** `Questions operators ask before signing`
+
+> **Build note:** render as collapsed expanders (accordion).
 
 | Question | Answer |
 |---|---|
-| `Does CredX replace my DMS?` | `No. CredX runs on the value layer underneath your existing DMS. PBS, CDK, and Reynolds & Reynolds are all supported. Typical integration runs 4–8 weeks.` |
-| `What about a multi-store rollout?` | `One master account, individual store branding, and consolidated reporting. Each rooftop sees its own savings and value-back.` |
-| `Is my customer data really mine?` | `Yes. Consent-driven, opt-in by default, de-identified for analytics, and handled under Canadian privacy law (PIPEDA). Your dealership owns the value-back ledger. Visa does not.` |
-| `How soon do I see savings?` | `Interchange recovery starts the month after activation, reported per store and per group.` |
+| `Does CredX replace my existing POS or payment processor?` | `No. CredX runs on the value layer underneath your existing setup. Your POS, payment terminals, and management software all stay in place, and it requires no new hardware at the counter. Typical integration runs 4 to 8 weeks.` |
+| `What types of automotive businesses does this work for?` | `Any automotive operator with recurring customers and meaningful card volume: service and repair shops, parts retailers, accessories and aftermarket businesses, tire chains, quick-lube operators, fleet service providers, and powersports or RV operators. If your customers come back and pay by card, CredX applies.` |
+| `What about a multi-location rollout?` | `One master account, individual location branding if needed, and consolidated reporting. Each location sees its own interchange recovery and value-back numbers.` |
+| `Is my customer data really mine?` | `Yes. Consent-driven, opt-in by default, de-identified for analytics, and handled under Canadian privacy law, including PIPEDA. Your business owns the customer relationship. A competing credit facility does not.` |
+| `How soon do I see savings?` | `Interchange recovery starts the month after activation, reported per location and in aggregate.` |
+| `Who qualifies?` | `Automotive operators processing $250K or more per month in card volume. Single-location and multi-location businesses both qualify — the savings and data benefits are proportional to your volume.` |
 
 **Notes:**
-- Integration time is **4–8 weeks** (V3.1 correction to match the official FAQ — supersedes the old "2–4 weeks"). Under-promise.
-- DMS-specific (PBS / CDK / Reynolds & Reynolds) per V3.1.
+- The "PBS / CDK / Reynolds & Reynolds" DMS list is **removed** (dealership-specific; no longer audience-fit — Feedback-04 #14).
+- Integration time is **4 to 8 weeks**. Under-promise.
 
 ---
 
@@ -299,27 +324,25 @@
 
 | Field | Value |
 |---|---|
-| Tagline | `Software should pay for people, not people for software.` |
+| Closing CTA line | `Still have questions? Talk to our team.` + `Book a Demo` / `Join the Movement` |
 | Nav | `How it works · The movement · Savings · Join the movement` |
 | Legal | `Privacy · Terms · SOC 2 attestation` |
 | Copyright | `© 2026 CredX Tech Inc.` |
 
-**Note:** the footer tagline replaces the old "reshaping payment economics" anchor — Kendall flagged that framing as wrong (supersedes the §0 anchor tagline in `project_v2_direction_lock`).
+**Note:** the footer tagline ("Software should pay for people, not people for software.") is **removed** (Feedback-04 C1). No replacement tagline.
 
 ---
 
 ## Launch-confirm items (⚠ — none block the build; all block public launch)
 
-1. **⚠ `$500M+` Merchant Network Agreements signed (§7).** Likely understated per the standing open item. **Status: FLAGGED — pending Audrey / Kendall.** Keep `$500M+` as the placeholder shape until the real figure lands. Cannot be resolved without external input.
-2. **⚠ Interchange benchmark — $36K per $1M (Visa/Mastercard) vs $6K per $1M with CredX (§4, §5).** This is the basis for every $30K / 85% / $360K figure on the page. **Status: FLAGGED — pending Audrey / Kendall** to verify the benchmark before launch. The numbers are internally consistent (3% effective recovery) but the source benchmark must be confirmed defensible.
-3. **Calculator math (§5).** **Output 1 (recovered/year) = RESOLVED:** `monthly_volume × 0.03 × 12`, default $1M → $360,000/year (ties to the micro-reward and the §4 gains). **Output 2 (value-back/year) = DEFERRED (decision 2026-06-04):** build Output 1 only; the calculator ships single-output until Audrey / Kendall supply the value-back rate. ⚠ post-launch addition, not a launch blocker.
-
-### Other external pending (carried from prior open items)
-
-- ⚠ **S7 partner emblems** — anonymized SAMPLES; replace once Kyle / Kendall log public-use approval.
-- ⚠ **S7 operator quote** — SAMPLE composite; replace with a real attributed quote (then expand "couldn't" → "could not" if rendered as brand copy).
-- ⚠ **Kendall founder quote (§2)** — confirm surname + title formatting; verbatim, do not paraphrase.
-- ⚠ **Hero movement film** — deferred; copy carries the page until the film is approved (AI vs. illustration still under internal review).
+1. **⚠ `$500M+` Merchant Network Agreements signed (§7).** Pending Audrey / Kendall.
+2. **⚠ Interchange benchmark — $36K per $1M vs $6K per $1M with CredX (§4, §5).** Basis for every $30K / 85% / $360K figure. Pending Audrey / Kendall.
+3. **⚠ Calculator Output 2 (value-back/year).** Deferred until a value-back rate exists. Ships single-output.
+4. **⚠ Kendall founder quote (§2)** — confirm surname + title; verbatim, do not paraphrase.
+5. **⚠ Partner logos (§7)** — pending Audrey; neutral placeholder until then.
+6. **⚠ Book-a-Demo Calendly URL** — pending Kyle; falls back to the form anchor.
+7. **⚠ "~20 seconds at checkout" credit-approval claim** — sourced from Feedback-04 client comments; confirm defensible before launch.
+8. **Hero movement video** — deferred; copy carries the page until the film is approved.
 
 ---
 
@@ -327,18 +350,20 @@
 
 | Section | Status |
 |---|---|
-| Page metadata (campaign, not indexed) | CANONICAL — SEO dropped; old locked brief now historical |
-| 1 · Hero — The Movement | CANONICAL — hero image, video deferred |
-| 2 · The Movement, in One Line | CANONICAL — ⚠ Kendall surname |
-| 3 · Control | CANONICAL |
-| 4 · The Gains | CANONICAL — ⚠ interchange benchmark |
-| 5 · Savings Calculator | CANONICAL — Output 1 resolved; ⚠ Output 2 value-back rate needed |
-| 6 · How It Works | CANONICAL |
-| 7 · Social Proof | CANONICAL — emblems + quote SAMPLE; ⚠ $500M+ figure |
-| 8 · Be Part of the Movement (form) | CANONICAL — 2-step progressive |
-| 9 · FAQ | CANONICAL — DMS-specific, 4–8 wk integration |
-| 10 · Footer | CANONICAL — new tagline |
+| Page metadata (campaign, not indexed) | CANONICAL — aftermarket audience |
+| 1 · Hero — The Movement | CANONICAL — $30K removed from subhead; video deferred |
+| 2 · The Movement — Three Voices | CANONICAL — new 3-voice block; ⚠ Kendall surname |
+| 3 · Control | CANONICAL — Customer / Access to Data / Keep the Fence |
+| 4 · The Gains | CANONICAL — "competing credit facility"; 20s at checkout; ⚠ benchmark |
+| 5 · Savings Calculator | CANONICAL — Output 1 resolved; ⚠ Output 2 |
+| 6 · How It Works | CANONICAL — POS/aftermarket; 4–8 wk |
+| 7 · Built For | CANONICAL — replaces social proof; no people; ⚠ $500M+, logos |
+| 8 · Be Part of the Movement (form) | CANONICAL — 2-step, new fields, demo path |
+| 9 · FAQ | CANONICAL — operator-framed; DMS list removed |
+| 10 · Footer | CANONICAL — tagline removed |
 
-**House-style pass:** contractions expanded throughout customer-facing copy (you are / we will / here is / could not), except (a) the verbatim founder quote in §2 and (b) the SAMPLE operator quote in §7, both held verbatim pending real attribution. Canadian spelling kept (white-labelled, PIPEDA). Oxford comma held.
+**House style:** contractions expanded throughout customer-facing copy, except the verbatim founder quote in §2. Canadian spelling kept (white-labelled, PIPEDA). Oxford comma held.
 
-**Out of scope for this turn:** `copy/entertainment.md`, `copy/sports.md`, `copy/pos.md`, `copy/global.md`. The Movement → Control → Gains re-sequence is Automotive-only until the others are reopened.
+**Out of scope (Feedback-04):** AI chatbot, IP-based personalization.
+
+**Downstream:** HTML must mirror this file verbatim (`feedback_copy_html_sync`) — Phase 6 re-sync adds the Three Voices accordion, the new form fields, the Book-a-Demo CTA, and removes the footer tagline. Imagery (Phase 5) likely needs regen for aftermarket scenes (service bay, parts counter, tire/quick-lube, fleet) — separate pass.
