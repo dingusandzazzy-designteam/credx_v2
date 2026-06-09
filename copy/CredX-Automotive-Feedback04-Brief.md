@@ -67,7 +67,7 @@
 ### §5 · Savings Calculator
 - Headline → `Move the slider. See what stays in your business.` (#32).
 - Slider label / volume → `Monthly Processing Volume` (#33, #34).
-- Caption → "...with competing credit facilities" (#35). Output 1 only (Output 2 value-back still deferred — no rate).
+- Caption → "...with competing credit facilities" (#35). Single output (recovered/year); the value-back "Output 2" was removed 2026-06-09 per user.
 
 ### §6 · How It Works
 - Headline → `Four steps. Your POS and payment stack stay exactly as they are.` (#36).
@@ -112,7 +112,7 @@
 ## Launch-confirm ⚠ (carry — block launch, not the build)
 - `$500M+` Merchant Network Agreements — pending Audrey/Kendall.
 - Interchange benchmark ($36K / $6K per $1M) — pending Audrey/Kendall.
-- Calculator Output 2 (value-back rate) — deferred until a rate exists.
+- Calculator Output 2 (value-back) — removed 2026-06-09 (no longer pending; calculator is single-output).
 - Real partner logos — pending Audrey. *(§7 operator quote dropped — role-titled personas removed from social proof.)*
 - Kendall surname + title for the §2 founder attribution — confirm before launch.
 - Hero movement video — deferred (Audrey producing).

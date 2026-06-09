@@ -449,8 +449,7 @@
     return '$' + Math.round(value).toLocaleString('en-US');
   }
 
-  // Output 1 only — Output 2 (value-back/year) deferred until a value-back
-  // rate lands (decision 2026-06-04, see copy/automotive.md §5).
+  // Single output — recovered/year (value-back "Output 2" removed 2026-06-09).
   //   recovered/year = volume × 0.03 × 12
   //   ($36K interchange − $6K residual per $1M = $30K/$1M/month → 3% effective).
   function updateCalc() {

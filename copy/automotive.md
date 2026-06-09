@@ -173,8 +173,8 @@ Community lenders have always been closer to their members than the big networks
 
 ## 5 · SAVINGS CALCULATOR
 
-**Status:** CANONICAL — math partially specified (see ⚠ Output 2)
-**Beat:** Interactive slider, recovered-per-year output, CTA into the form.
+**Status:** CANONICAL
+**Beat:** Interactive slider, single recovered-per-year output, CTA into the form.
 
 | Field | Value |
 |---|---|
@@ -182,15 +182,15 @@ Community lenders have always been closer to their members than the big networks
 | Body | `Set your real monthly card volume and watch the recovery add up across twelve months.` |
 | Slider label | `Monthly processing volume` |
 | Slider range | `$250K — $25M` (default $1M; round-increment step) |
-| Output 1 | `$X recovered per year` |
-| Output 2 | `$Y per year accruing in value-back` — **deferred this build** (no value-back rate yet; build Output 1 only) |
+| Output | `$X recovered per year` |
 | Caption | `Designed to recover up to 85% of standard interchange. Your number depends on card mix. Based on roughly $36K interchange per $1M with competing credit facilities, against $6K per $1M with CredX.` |
 | CTA | `Get my savings estimate` → scrolls to §8 form |
 
 **Calculator math (for build):**
-- **Output 1 — recovered per year** = `monthly_volume × 0.03 × 12`. At $1M default → **$360,000/year**.
-- **Output 2 — value-back per year** = `monthly_volume × [VALUE-BACK RATE] × 12`. ⚠ **DEFERRED:** build Output 1 only until Audrey / Kendall supply the value-back rate. Do not invent one.
+- **Recovered per year** = `monthly_volume × 0.03 × 12`. At $1M default → **$360,000/year**.
 - ⚠ Interchange benchmark ($36K / $6K) — see §Launch-confirm items.
+
+*(The value-back "Output 2" from earlier drafts was removed 2026-06-09 per user — the calculator is single-output.)*
 
 > **Build note (UX blueprint):** moving the slider should reveal / pulse the inline Step 1 form below it (Kendall's "cheese" moment). Output animates count-up on change.
 
@@ -342,12 +342,11 @@ A secondary `Book a Demo` route opens a calendar booking, distinct from `Join th
 
 1. **⚠ `$500M+` Merchant Network Agreements signed (§7).** Pending Audrey / Kendall.
 2. **⚠ Interchange benchmark — $36K per $1M vs $6K per $1M with CredX (§4, §5).** Basis for every $30K / 85% / $360K figure. Pending Audrey / Kendall.
-3. **⚠ Calculator Output 2 (value-back/year).** Deferred until a value-back rate exists. Ships single-output.
-4. **⚠ Kendall founder quote (§2)** — confirm surname + title; verbatim, do not paraphrase.
-5. **⚠ Partner logos (§7)** — pending Audrey; neutral placeholder until then.
-6. **⚠ Book-a-Demo Calendly URL** — pending Kyle; falls back to the form anchor.
-7. **⚠ "~20 seconds at checkout" credit-approval claim** — sourced from Feedback-04 client comments; confirm defensible before launch.
-8. **Hero movement video** — deferred; copy carries the page until the film is approved.
+3. **⚠ Kendall founder quote (§2)** — confirm surname + title; verbatim, do not paraphrase.
+4. **⚠ Partner logos (§7)** — pending Audrey; no placeholder note on the page (removed 2026-06-09), add real logos when approved.
+5. **⚠ Book-a-Demo Calendly URL** — pending Kyle; falls back to the form anchor.
+6. **⚠ "~20 seconds at checkout" credit-approval claim** — sourced from Feedback-04 client comments; confirm defensible before launch.
+7. **Hero movement video** — deferred; copy carries the page until the film is approved.
 
 ---
 
@@ -360,7 +359,7 @@ A secondary `Book a Demo` route opens a calendar booking, distinct from `Join th
 | 2 · The Movement — Three Voices | CANONICAL — new 3-voice block; ⚠ Kendall surname |
 | 3 · Control | CANONICAL — Customer / Access to Data / Keep the Fence |
 | 4 · The Gains | CANONICAL — "competing credit facility"; 20s at checkout; ⚠ benchmark |
-| 5 · Savings Calculator | CANONICAL — Output 1 resolved; ⚠ Output 2 |
+| 5 · Savings Calculator | CANONICAL — single output (recovered/year) |
 | 6 · How It Works | CANONICAL — POS/aftermarket; 4–8 wk |
 | 7 · Built For | CANONICAL — replaces social proof; no people; ⚠ $500M+, logos |
 | 8 · Be Part of the Movement (form) | CANONICAL — 2-step, new fields, demo path |

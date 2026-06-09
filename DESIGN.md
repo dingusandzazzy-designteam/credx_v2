@@ -137,7 +137,7 @@ In page order:
 - **Movement (S2)** — dark band (both themes), centered one-liner H2 + body + founder pull-quote (Kendall, verbatim).
 - **Control (S3)** — eyebrow + H2 + intro, then a **3-card grid** (Your customer / Your data / Your loyalty) + a centered **white-label beat** above a divider.
 - **Gains (S4)** — eyebrow + H2, then **3 numbered cards** (big Fraunces numeral + title + body) + a **3-stat strip** ($30K / Yours / 6 min) with dividers.
-- **Calculator (S5)** — `.calc` card: slider ($250K–$25M) + live volume readout / single output card ("$X recovered per year" + caption + dynamic micro-reward + CTA). Output 2 (value-back) deferred — no rate yet.
+- **Calculator (S5)** — `.calc` card: slider ($250K–$25M) + live volume readout / single output card ("$X recovered per year" + caption + CTA).
 - **How it works (S6, `.process`)** — header + wide shared photo + **4-step card grid**.
 - **Proof (S7)** — header + operator quote block (portrait + quote + attribution) + **6-emblem partner grid** + behind-the-scenes wide photo + **3-KPI line** ($500M+ · 4 lenders · SOC 2 + PIPEDA).
 - **Signup (S8, `.signup`)** — dark band, intro + **inline 2-step progressive form** (Step 1: 4 fields + "Join the Movement"; micro-reward; Step 2 optional: 4 fields + "See my full breakdown"; done state). This replaced the old contact modal — it is the single conversion surface.
@@ -149,7 +149,6 @@ No modal, no cover-scrub video, no gradient bands in the current build (all reti
 ## Open derivations / pending
 
 - ⚠ **Theme default** — dark hard-default (ignores OS); flip to OS-aware is a 1-line `<head>` change, open for user.
-- ⚠ **Calculator Output 2 (value-back/year)** — deferred; single-output until Audrey/Kendall supply a value-back rate.
 - ⚠ **Launch-confirm copy figures** — interchange benchmark ($36K/$6K per $1M), $500M+ signed figure (owned by `credx-copy`, pending Audrey/Kendall).
 - ⚠ **S7 partner emblems + operator quote** — anonymized SAMPLE until public-use approval.
 - ⚠ **D7 gradient ribbon symbol** SVG from D&Z (external).
