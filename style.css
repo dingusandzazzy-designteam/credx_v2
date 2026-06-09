@@ -1297,6 +1297,51 @@ p { line-height: 1.6; max-width: 65ch; }
 .process__image:has(img)::after { content: none; }
 .process__image img { width: 100%; height: 100%; object-fit: cover; }
 
+/* New framed media slots (Control editorial + Built For scene trio). Placeholder
+   boxes with a label until the aftermarket renders land (prompts in
+   prompts/automotive-v2.md). Drop in an <img> and the label auto-hides. */
+.section-media {
+  aspect-ratio: 16 / 9;
+  border-radius: var(--radius-card);
+  background-color: var(--surface-1);
+  border: 1px solid var(--border-subtle);
+  position: relative;
+  overflow: hidden;
+  margin-bottom: var(--s-9);
+}
+.builtfor__scenes {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--s-4);
+  max-width: 880px;
+  margin: 0 auto var(--s-8);
+}
+@media (min-width: 768px) { .builtfor__scenes { grid-template-columns: repeat(3, 1fr); } }
+.builtfor__scene {
+  aspect-ratio: 4 / 5;
+  border-radius: var(--radius-card-sm);
+  background-color: var(--surface-1);
+  border: 1px solid var(--border-subtle);
+  position: relative;
+  overflow: hidden;
+}
+.section-media::after,
+.builtfor__scene::after {
+  content: attr(data-ph);
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  color: var(--text-muted);
+  font-size: var(--type-caption);
+  padding: var(--s-5);
+  text-align: center;
+}
+.section-media:has(img)::after,
+.builtfor__scene:has(img)::after { content: none; }
+.section-media img,
+.builtfor__scene img { width: 100%; height: 100%; object-fit: cover; }
+
 .process__steps {
   display: grid;
   grid-template-columns: 1fr;
