@@ -15,7 +15,7 @@
 - **Source:** Discovery Questionnaire v2 (Sports profile) — headline pain `$60,000/night in interchange at a major hockey game`; fans are the most loyal customers on earth but their loyalty accrues to a card network's reward store, not the team's; the Flames demo is the origin story.
 - **Locked rules honoured:** NO competitor names on page (the "Visa gets the points" truth stays subsurface → "a competing credit facility"); positive-surface only (empowering, never attacking); "value-back" never "rewards"; PIPEDA language (consent-driven, opt-in, de-identified); no "Talk to a specialist" CTA; movement leads; "embedded value platform" not "payments platform"; Canada-first tone.
 - **⚠ Imagery is placeholder.** No Sports renders exist; the build is image-light (styled placeholder treatment), not reusing the automotive photos (a service bay on a sports page reads wrong). Stadium / concourse / concession / fan-checkout renders = a Phase-5 task.
-- **⚠ = confirm before launch** (figures, partner logos, Calendly URL — same as the other verticals).
+- **⚠ = confirm before launch** (figures, Calendly URL — same as the other verticals). **No third-party logos** by rule ([[feedback_no_third_party_logos]]).
 
 ---
 
@@ -241,7 +241,7 @@ Community lenders have always been closer to their members than the big networks
 
 **Notes:**
 - No people, no persona quotes in this section.
-- ⚠ Partner logos pending from Audrey; add real logos when approved.
+- **No third-party logos** — locked rule (user 2026-06-16, [[feedback_no_third_party_logos]]). §7 stays text + numeric KPIs only; no partner/team/lender emblems ever. Only the CredX brand mark appears on the page.
 
 ---
 
@@ -331,7 +331,7 @@ A secondary `Book a Demo` route opens a calendar booking, distinct from `Join th
 4. **⚠ `$60,000 a night` figure** — Discovery stat for a major NHL game; confirm it can be stated publicly.
 5. **⚠ `$5,000` per-fan credit line + `$3M` calculator default** — illustrative (from `audiences/sports.md` / Brand Analysis); confirm before launch.
 6. **⚠ `$500M+` Merchant Network Agreements signed (§7).** Pending Audrey / Kendall.
-7. **⚠ Partner logos (§7)** — pending Audrey.
+7. ~~Partner logos~~ — **retired:** no third-party logos published, by rule ([[feedback_no_third_party_logos]]).
 8. **⚠ Book-a-Demo Calendly URL** — pending Kyle; falls back to the form anchor.
 
 ---

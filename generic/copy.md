@@ -14,7 +14,7 @@
 - **Source:** `copy/automotive.md`. The Automotive vocabulary was generalized: `automotive business → business`; `service visit / parts purchase / accessory install → transaction / repeat visit / sale`; `tune-up last Tuesday → walked in last Tuesday`; the automotive audience list and the "Type of business" options were replaced with industry-neutral categories.
 - **Kept verbatim from the canonical:** the Movement hook, the Three Voices block, the Control pillars, the Gains numbers and the PayPal benchmark, the calculator math, the How-It-Works steps, the founder pull-quote.
 - **⚠ Imagery is placeholder.** This page currently reuses the Automotive renders as temporary placeholders — they read as automotive scenes and **must be regenerated** with industry-neutral imagery (Phase 5). Flagged in the build + handoff.
-- **⚠ = confirm before launch.** Same launch-confirm items as Automotive carry here (figures, partner logos, Calendly URL).
+- **⚠ = confirm before launch.** Same launch-confirm items as Automotive carry here (figures, Calendly URL). **No third-party logos** by rule ([[feedback_no_third_party_logos]]).
 
 ---
 
@@ -246,7 +246,7 @@ Community lenders have always been closer to their members than the big networks
 
 **Notes:**
 - No people, no persona quotes in this section (inherited from Feedback-04).
-- ⚠ Partner logos pending from Audrey; add real logos when approved.
+- **No third-party logos** — locked rule (user 2026-06-16, [[feedback_no_third_party_logos]]). §7 stays text + numeric KPIs only; no partner/lender emblems ever. Only the CredX brand mark appears.
 
 ---
 
@@ -331,7 +331,7 @@ A secondary `Book a Demo` route opens a calendar booking, distinct from `Join th
 
 1. **⚠ Industry-neutral imagery** — this page reuses Automotive renders as placeholders; regenerate for neutral business scenes (Phase 5).
 2. **⚠ `$500M+` Merchant Network Agreements signed (§7).** Pending Audrey / Kendall.
-3. **⚠ Partner logos (§7)** — pending Audrey.
+3. ~~Partner logos~~ — **retired:** no third-party logos published, by rule ([[feedback_no_third_party_logos]]).
 4. **⚠ Book-a-Demo Calendly URL** — pending Kyle; falls back to the form anchor.
 5. **Hero movement video** — deferred.
 
@@ -348,7 +348,7 @@ A secondary `Book a Demo` route opens a calendar booking, distinct from `Join th
 | 4 · The Gains | CANONICAL — benchmark confirmed |
 | 5 · Savings Calculator | CANONICAL — single output (recovered/year) |
 | 6 · How It Works | CANONICAL — 4–8 wk |
-| 7 · Built For | CANONICAL — industry-neutral list; no people; ⚠ $500M+, logos |
+| 7 · Built For | CANONICAL — industry-neutral list; no people; no third-party logos; ⚠ $500M+ figure |
 | 8 · Be Part of the Movement (form) | CANONICAL — 2-step, neutral business-type options |
 | 9 · FAQ | CANONICAL — operator-framed, industry-neutral |
 | 10 · Footer | CANONICAL — no tagline |

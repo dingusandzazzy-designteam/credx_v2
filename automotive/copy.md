@@ -253,7 +253,7 @@ Community lenders have always been closer to their members than the big networks
 **Notes:**
 - The SAMPLE operator quote and the role-titled persona ("F&I Director, Western Canada") are **removed** (Feedback-04). No people in this section.
 - The "RV dealer network" partner line is **removed** (#42).
-- ⚠ Partner logos: pending from Audrey. No placeholder/neutral note shown on the page (the "Partner details available upon request" line was removed 2026-06-09 per user); add real logos when approved.
+- **No third-party logos** — locked rule (user 2026-06-16, [[feedback_no_third_party_logos]]). §7 stays text + numeric KPIs only; no partner emblems or logo slots ever. (Reference note — Automotive's source of truth is the HTML.)
 
 ---
 
@@ -341,7 +341,7 @@ A secondary `Book a Demo` route opens a calendar booking, distinct from `Join th
 ## Launch-confirm items (⚠ — none block the build; all block public launch)
 
 1. **⚠ `$500M+` Merchant Network Agreements signed (§7).** Pending Audrey / Kendall (to verify).
-2. **⚠ Partner logos (§7)** — pending Audrey (to verify); no placeholder note on the page (removed 2026-06-09), add real logos when approved.
+2. ~~Partner logos~~ — **retired:** no third-party logos published, by rule (user 2026-06-16, [[feedback_no_third_party_logos]]).
 3. **⚠ Book-a-Demo Calendly URL** — pending Kyle (to verify); falls back to the form anchor.
 4. **"~20 seconds at checkout" credit-approval claim (§4, §6)** — kept as-is for now (user, 2026-06-09); revisit later if needed.
 5. **Hero movement video** — deferred; copy carries the page until the film is approved.
@@ -364,7 +364,7 @@ A secondary `Book a Demo` route opens a calendar booking, distinct from `Join th
 | 4 · The Gains | CANONICAL — "competing credit facility"; 20s at checkout; benchmark confirmed |
 | 5 · Savings Calculator | CANONICAL — single output (recovered/year) |
 | 6 · How It Works | CANONICAL — POS/aftermarket; 4–8 wk |
-| 7 · Built For | CANONICAL — replaces social proof; no people; ⚠ $500M+, logos |
+| 7 · Built For | CANONICAL — replaces social proof; no people; no third-party logos; ⚠ $500M+ figure |
 | 8 · Be Part of the Movement (form) | CANONICAL — 2-step, new fields, demo path |
 | 9 · FAQ | CANONICAL — operator-framed; DMS list removed |
 | 10 · Footer | CANONICAL — tagline removed |
