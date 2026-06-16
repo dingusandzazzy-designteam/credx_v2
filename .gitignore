@@ -19,3 +19,8 @@ assets/cover/video-*.mp4
 .gstack/
 assets/images/automotive/automotive_images_final_named/
 assets/images/automotive/automotive_images_final_named.zip
+
+# Per-vertical local-only artifacts (co-located with each vertical)
+*/images/_masters/
+*/prompts*.md
+generic/seo/
