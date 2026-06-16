@@ -3,7 +3,7 @@
 > **URL:** `/sports/` (reached from the root hub `index.html`).
 > **Template:** A (operator pitch) — **Movement → Control → Gains.** Cloned from the Generic template-mother, re-verticalized for Sports.
 > **Status:** DRAFT 2026-06-16 — first Sports build, then a `/credx-copy` review pass (folded in the `audiences/sports.md` substance: the $5K team-currency device, $3M calculator default, sports FAQ extras, naming guard). Copy-led: this file is canonical; `sports/index.html` mirrors it ([[feedback_copy_html_sync]]). No SEO ([[project_seo_scope_generic]] — only Generic gets SEO).
-> **⚠ ARC NOT CLIENT-RATIFIED.** The Movement → Control → Gains structure was cloned from Automotive. `credx-copy/SKILL.md` is explicit that the client has **not ratified this arc for Sports** — confirm with Kyle/Kendall before locking. Until then this whole page is DRAFT, pending that ratification + the Mauricio → client review gate.
+> **Arc ratified (Marco, 2026-06-16):** Movement → Control → Gains is **carried to all verticals** from the client-approved Automotive precedent — no longer a per-vertical open question. Page remains DRAFT only pending the normal **Mauricio → client (Kyle/Kendall) copy review gate**.
 > **Audience:** **Pro teams, stadiums & leagues** — professional sports teams (NHL, CFL, MLS, WHL and equivalents), stadium/arena operators and concession management, league administration and ticketing bodies. Pitch is direct (merchant-style).
 > **Voice:** Premium · Aspirational · Enterprise-ready · Human. Mode: Operator / Merchant (the "operator" here is the team/venue).
 > **House style:** contractions expanded (do not / you are / we will / here is); Canadian spelling kept (white-labelled, PIPEDA); Oxford comma. Founder quote held verbatim (exempt).
@@ -325,7 +325,7 @@ A secondary `Book a Demo` route opens a calendar booking, distinct from `Join th
 
 ## Launch-confirm items (⚠ — none block the build; all block public launch)
 
-1. **⚠ ARC RATIFICATION** — confirm with Kyle/Kendall that **Movement → Control → Gains** is the right structure for Sports (cloned from Automotive; not yet client-ratified for non-automotive verticals).
+1. ✅ **Arc ratified** (Marco, 2026-06-16) — Movement → Control → Gains carried to all verticals from the Automotive precedent. No longer pending.
 2. **⚠ Naming guard** — never name a real team on-page. Use *"a Canadian NHL franchise"* / *"a Western Canada pro team"* / *"your team's own currency"* until CSEC / Alysia Olsen approves named use. The `$5,000` team-currency framing is permitted only as an **illustrative example**.
 3. **⚠ Sports imagery** — build is image-light placeholders; regenerate stadium / concourse / concession / fan-checkout scenes (Phase 5).
 4. **⚠ `$60,000 a night` figure** — Discovery stat for a major NHL game; confirm it can be stated publicly.
