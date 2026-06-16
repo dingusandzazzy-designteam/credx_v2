@@ -2245,3 +2245,121 @@ p { line-height: 1.6; max-width: 65ch; }
    so the "summary" beats read as their own moment, not another card row. */
 .gains__strip { margin-top: var(--s-9); }
 .control__whitelabel { margin-top: var(--s-8); }
+
+/* ============================================================
+   HUB — root index.html. Industry chooser for the 5 verticals.
+   Shares this design system. Introduces hub→vertical navigation:
+   the hub is the single entry point; the verticals themselves still
+   never cross-link to each other (supersedes the v1 "no `/` content"
+   standalone rule for the root only).
+   ============================================================ */
+
+.hub-main { min-height: 100vh; display: flex; flex-direction: column; }
+
+.hub-hero {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding-top: calc(var(--s-10) + var(--s-8));
+  padding-bottom: var(--s-7);
+}
+
+.hub-hero__title {
+  font-family: var(--font-editorial);
+  font-size: var(--type-display);
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+  max-width: 18ch;
+  margin-bottom: var(--s-5);
+}
+
+.hub-hero__sub {
+  font-size: var(--type-body-lg);
+  color: var(--text-secondary);
+  max-width: 54ch;
+}
+
+.hub-chooser { padding-bottom: var(--s-10); flex: 1; }
+
+.hub-chooser__label {
+  font-size: var(--type-eyebrow);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 600;
+  color: var(--text-accent);
+  margin-bottom: var(--s-5);
+}
+
+.vertical-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(248px, 1fr));
+  gap: var(--s-5);
+}
+
+.vertical-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-3);
+  padding: var(--s-6);
+  min-height: 184px;
+  background-color: var(--surface-1);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-card);
+  transition: transform var(--duration-fast) var(--ease-out-quart),
+              border-color var(--duration-fast) var(--ease-out-quart),
+              background-color var(--duration-fast) var(--ease-out-quart);
+}
+
+a.vertical-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--text-accent);
+  background-color: var(--surface-2);
+}
+
+.vertical-card__name {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s-3);
+  font-size: var(--type-h3);
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.vertical-card__name::after {
+  content: '\2192';
+  color: var(--text-accent);
+  transition: transform var(--duration-fast) var(--ease-out-quart);
+}
+a.vertical-card:hover .vertical-card__name::after { transform: translateX(4px); }
+
+.vertical-card__desc {
+  font-size: var(--type-caption);
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+.vertical-card--soon { opacity: 0.55; cursor: default; }
+.vertical-card--soon .vertical-card__name::after { content: none; }
+
+.vertical-card__badge {
+  margin-top: auto;
+  align-self: flex-start;
+  font-size: var(--type-eyebrow);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-weight: 600;
+  color: var(--text-secondary);
+  background-color: var(--surface-3);
+  padding: var(--s-1) var(--s-3);
+  border-radius: var(--radius-pill);
+}
+
+.hub-footer {
+  border-top: 1px solid var(--border-subtle);
+  padding-block: var(--s-6);
+  color: var(--text-muted);
+  font-size: var(--type-caption);
+}
