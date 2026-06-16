@@ -2,7 +2,8 @@
 
 > **URL:** `/sports/` (reached from the root hub `index.html`).
 > **Template:** A (operator pitch) — **Movement → Control → Gains.** Cloned from the Generic template-mother, re-verticalized for Sports.
-> **Status:** DRAFT 2026-06-16 — first Sports build. Copy-led: this file is canonical; `sports/index.html` mirrors it ([[feedback_copy_html_sync]]). No SEO ([[project_seo_scope_generic]] — only Generic gets SEO).
+> **Status:** DRAFT 2026-06-16 — first Sports build, then a `/credx-copy` review pass (folded in the `audiences/sports.md` substance: the $5K team-currency device, $3M calculator default, sports FAQ extras, naming guard). Copy-led: this file is canonical; `sports/index.html` mirrors it ([[feedback_copy_html_sync]]). No SEO ([[project_seo_scope_generic]] — only Generic gets SEO).
+> **⚠ ARC NOT CLIENT-RATIFIED.** The Movement → Control → Gains structure was cloned from Automotive. `credx-copy/SKILL.md` is explicit that the client has **not ratified this arc for Sports** — confirm with Kyle/Kendall before locking. Until then this whole page is DRAFT, pending that ratification + the Mauricio → client review gate.
 > **Audience:** **Pro teams, stadiums & leagues** — professional sports teams (NHL, CFL, MLS, WHL and equivalents), stadium/arena operators and concession management, league administration and ticketing bodies. Pitch is direct (merchant-style).
 > **Voice:** Premium · Aspirational · Enterprise-ready · Human. Mode: Operator / Merchant (the "operator" here is the team/venue).
 > **House style:** contractions expanded (do not / you are / we will / here is); Canadian spelling kept (white-labelled, PIPEDA); Oxford comma. Founder quote held verbatim (exempt).
@@ -23,7 +24,7 @@
 | Field | Value |
 |---|---|
 | Title (browser tab) | `CredX for Teams & Venues — Own the Loyalty Your Fans Give You` |
-| Meta description | `Your fans are the most loyal customers on earth. Keep the data, the loyalty, and the value their spending creates — in your team's brand, not a card network's. CredX is the embedded value platform for teams, stadiums, and leagues.` |
+| Meta description | `Your fans are the most loyal customers on earth. Keep the data, the loyalty, and the value their spending creates — in your team's brand, not a competing credit facility's. CredX is the embedded value platform for teams, stadiums, and leagues.` |
 | H1 | See §1 Hero headline. |
 | OG title | `CredX for Teams & Venues — Own the Loyalty Your Fans Give You` |
 | OG description | `Keep the data, the loyalty, and the value your fans' spending creates. Recover up to $30,000 for every $1M you process.` |
@@ -71,7 +72,7 @@ You built the franchise. Your fans show up, in the cold, season after season. Bu
 
 **The Fan**
 *"They have been the product for long enough."*
-Every time they tap their card at the gate, someone they have never met profits from their loyalty, and the points pile up in a card network's store instead of going back to the team they love. CredX changes that. Fans benefit from the data they generate, access revolving credit, and keep more of what they earn with the teams and venues where they spend. This is a shift in who the game works for.
+Every time they tap their card at the gate, someone they have never met profits from their loyalty, and the value piles up with a competing credit facility instead of going back to the team they love. CredX changes that. Fans benefit from the data they generate, access revolving credit, and keep more of what they earn with the teams and venues where they spend. This is a shift in who the game works for.
 
 **The Lender**
 *"Finally, credit that earns where the spending already happens."*
@@ -110,7 +111,7 @@ Community lenders have always been closer to their members than the big networks
 |---|---|
 | Your fan. | `The relationship stays in your team's name, not a competing credit facility's. The fan who bought season tickets and three jerseys belongs to you.` |
 | Your access to data. | `Consent-driven and de-identified: which fans come back, which segments spend the most on concessions and merchandise, and when demand peaks.` |
-| Keep the loyalty. | `A closed-loop value-back program in your own brand that keeps your fans spending with the team, not with a card network's reward store.` |
+| Keep the loyalty. | `A closed-loop value-back program in your team's own currency, where $1 spent is $1 earned, that keeps your fans spending with the team, not with a competing credit facility's program.` |
 
 ### White-label beat
 
@@ -140,7 +141,7 @@ Community lenders have always been closer to their members than the big networks
 | # | Title | Body |
 |---|---|---|
 | 1 | `Recover up to 85% of interchange` | `$6,000 per $1M with CredX, against roughly $36,000 with competing credit facilities. On a $60,000 night at the gate, that is most of it staying with your team.` |
-| 2 | `Earn on the credit you used to give away` | `A credit facility in your own brand, approved in about 20 seconds at the concession or the gate, at roughly half the rate of a standard card. You are paid in full and upfront, and the risk stays with CredX, never on your books.` |
+| 2 | `Earn on the credit you used to give away` | `A credit line of up to $5,000 in your team's own brand — your fans carry your team's currency — approved in about 20 seconds at the concession or the gate, at roughly half the rate of a standard card. You are paid in full and upfront, and the risk stays with CredX, never on your books.` |
 | 3 | `See your fan base in real time` | `A monthly dashboard in plain language, not raw numbers: which game nights peak, which segment drives concession and merchandise revenue, and who is about to lapse on their season tickets. The intelligence your current setup never handed you.` |
 
 ### Benchmark proof line (below the three gain cards)
@@ -173,13 +174,13 @@ Community lenders have always been closer to their members than the big networks
 | Headline | `Move the slider. See what stays with your team.` |
 | Body | `Set your real monthly card volume and watch the recovery add up across the season.` |
 | Slider label | `Monthly processing volume` |
-| Slider range | `$250K — $25M` (default $1M; round-increment step) |
+| Slider range | `$250K — $25M` (default **$3M** — event-night volume on a busy month, per `audiences/sports.md`; round-increment step) |
 | Output | `$X recovered per year` |
 | Caption | `Designed to recover up to 85% of standard interchange. Your number depends on card mix. Based on roughly $36K interchange per $1M with competing credit facilities, against $6K per $1M with CredX.` |
 | CTA | `Get my savings estimate` → scrolls to §8 form |
 
 **Calculator math (for build):**
-- **Recovered per year** = `monthly_volume × 0.03 × 12`. At $1M default → **$360,000/year**. (Single-output, same engine as the other verticals.)
+- **Recovered per year** = `monthly_volume × 0.03 × 12`. At the **$3M default** → **$1,080,000/year**. (Single-output, same engine as the other verticals; only the default differs — Sports leads with event-night volume.)
 
 > **Build note:** moving the slider should reveal / pulse the inline form below it. Output animates count-up on change.
 
@@ -201,7 +202,7 @@ Community lenders have always been closer to their members than the big networks
 | 1 | `Sign a Merchant Network Agreement` | `Onboarding runs about 4 to 8 weeks. Your ticketing platform, POS, and payment processor all stay in place.` |
 | 2 | `CredX activates on your transaction flow` | `Your checkout is unchanged, with no new terminals or hardware to install. A QR-code flow runs underneath at the gate and the concession, capturing the interchange value and fan data your current setup leaves behind across every transaction.` |
 | 3 | `Your monthly report arrives` | `Interchange recovered and value-back earned, broken out per venue and in aggregate.` |
-| 4 | `Fans get branded credit and value-back` | `Lower-rate credit issued in your team's name, approved in about 20 seconds at the gate, with value-back accruing in your program. The relationship stays yours.` |
+| 4 | `Fans get branded credit and value-back` | `A credit line of up to $5,000, issued in your team's own brand and approved in about 20 seconds at the gate, with value-back accruing in your team's own currency at $1 for every $1 spent. The relationship stays yours.` |
 
 **Notes:**
 - "no new terminals or hardware" + QR-code flow = the no-hardware beat (Discovery emphasizes the QR checkout demo).
@@ -299,7 +300,8 @@ A secondary `Book a Demo` route opens a calendar booking, distinct from `Join th
 |---|---|
 | `Does CredX replace my ticketing or payment processor?` | `No. CredX runs on the value layer underneath your existing setup. Your ticketing platform, POS, and payment terminals all stay in place, and it requires no new hardware at the gate or the concession. Typical integration runs 4 to 8 weeks.` |
 | `What types of sports organizations does this work for?` | `Any team, venue, or league with recurring fans and meaningful card volume: professional teams, stadiums and arenas, concession and hospitality operators, leagues and governing bodies, ticketing platforms, and minor or junior leagues. If your fans come back and pay by card, CredX applies.` |
-| `What about a multi-venue rollout?` | `One master account, individual venue branding if needed, and consolidated reporting. Each venue sees its own interchange recovery and value-back numbers.` |
+| `What about a multi-venue or league-wide rollout?` | `One master account, individual venue or team branding, and consolidated reporting. Each venue sees its own interchange recovery and value-back numbers. Across a league, every team runs its own branded credit and value-back layer on shared infrastructure, with a distinct currency per team.` |
+| `Can fans use it outside the venue?` | `Yes. Once a fan holds a credit line in your team's brand, it works at any participating merchant, and your team's brand follows the fan beyond game day.` |
 | `Is my fan data really mine?` | `Yes. Consent-driven, opt-in by default, de-identified for analytics, and handled under Canadian privacy law, including PIPEDA. Your team owns the fan relationship. A competing credit facility does not.` |
 | `How soon do I see savings?` | `Interchange recovery starts the month after activation, reported per venue and in aggregate.` |
 | `Who qualifies?` | `Teams, venues, and leagues processing $250K or more per month in card volume. Single-venue and multi-venue organizations both qualify — the savings and data benefits are proportional to your volume.` |
@@ -323,11 +325,14 @@ A secondary `Book a Demo` route opens a calendar booking, distinct from `Join th
 
 ## Launch-confirm items (⚠ — none block the build; all block public launch)
 
-1. **⚠ Sports imagery** — build is image-light placeholders; regenerate stadium / concourse / concession / fan-checkout scenes (Phase 5).
-2. **⚠ `$60,000 a night` headline figure** — Discovery stat for a major NHL game; confirm it can be stated publicly.
-3. **⚠ `$500M+` Merchant Network Agreements signed (§7).** Pending Audrey / Kendall.
-4. **⚠ Partner logos (§7)** — pending Audrey.
-5. **⚠ Book-a-Demo Calendly URL** — pending Kyle; falls back to the form anchor.
+1. **⚠ ARC RATIFICATION** — confirm with Kyle/Kendall that **Movement → Control → Gains** is the right structure for Sports (cloned from Automotive; not yet client-ratified for non-automotive verticals).
+2. **⚠ Naming guard** — never name a real team on-page. Use *"a Canadian NHL franchise"* / *"a Western Canada pro team"* / *"your team's own currency"* until CSEC / Alysia Olsen approves named use. The `$5,000` team-currency framing is permitted only as an **illustrative example**.
+3. **⚠ Sports imagery** — build is image-light placeholders; regenerate stadium / concourse / concession / fan-checkout scenes (Phase 5).
+4. **⚠ `$60,000 a night` figure** — Discovery stat for a major NHL game; confirm it can be stated publicly.
+5. **⚠ `$5,000` per-fan credit line + `$3M` calculator default** — illustrative (from `audiences/sports.md` / Brand Analysis); confirm before launch.
+6. **⚠ `$500M+` Merchant Network Agreements signed (§7).** Pending Audrey / Kendall.
+7. **⚠ Partner logos (§7)** — pending Audrey.
+8. **⚠ Book-a-Demo Calendly URL** — pending Kyle; falls back to the form anchor.
 
 ---
 
