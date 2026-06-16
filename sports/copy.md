@@ -355,3 +355,51 @@ A secondary `Book a Demo` route opens a calendar booking, distinct from `Join th
 **House style:** contractions expanded throughout, except the verbatim founder quote in §2. Canadian spelling kept. Oxford comma held.
 
 **Downstream:** HTML mirrors this file verbatim (`feedback_copy_html_sync`). Imagery is placeholder (image-light) — Sports renders are a Phase-5 task.
+
+---
+
+## ⬇ Open questions for CredX — answer inline with the copy review
+
+> **For Kyle / Kendall / Audrey.** Please answer directly under each item (an `→ Answer:` line is provided). These are the only open points on the Sports copy — the narrative structure is already settled. None block reading the copy; they block public launch.
+
+### A · Numbers & claims (confirm we can state these publicly)
+
+1. **$60,000 a night** in interchange at a major game — OK to state publicly?
+   → Answer:
+2. **$5,000** per-fan credit line in the team's own brand, with **$1 spent = $1 earned** in "team currency" — OK as an illustrative figure?
+   → Answer:
+3. **$3,000,000 / month** as the calculator's default volume (a busy event month) — representative for the teams we are pitching?
+   → Answer:
+4. **"Approved in about 20 seconds"** credit at the gate / concession — defensible?
+   → Answer:
+5. **$500M+ in Merchant Network Agreements signed** — confirm the figure (or give the correct one).
+   → Answer:
+6. **4 community lender partners funding embedded credit** — confirm the count.
+   → Answer:
+7. **PayPal benchmark (321% lift in frequency, 76% larger transactions)** applied to venues — OK to use as framed?
+   → Answer:
+8. **Interchange math** ($6K per $1M with CredX vs ~$36K with a competing facility; up to 85% recovered) — confirm it carries to the sports framing.
+   → Answer:
+
+### B · Naming & approvals
+
+9. **Team naming:** we keep it generic ("a Canadian NHL franchise") and name **no real team** until CSEC / Alysia Olsen approves public use. Confirm — and tell us if any team / quote IS approved to name.
+   → Answer:
+10. **No third-party logos** anywhere on the page (partner / team / lender) — confirm this is your intent for Sports too.
+   → Answer:
+
+### C · CTAs & integration
+
+11. **CTA labels:** we are using **"Join the Movement"** (primary) · **"Book a Demo"** (secondary) · **"Join the Network"** (Gains + footer), carried from Automotive. The Discovery doc listed "Book a Demo / Calculate Your Savings" for Sports — which set do you want?
+   → Answer:
+12. **Book-a-Demo destination:** we need the **Calendly / booking URL** (Kyle). Until it lands, "Book a Demo" falls back to the inline form.
+   → Answer:
+
+### D · Compliance
+
+13. **"SOC 2 + PIPEDA compliant. Data de-identified, consent-driven, held to Canadian privacy law."** — confirm this claim is accurate as stated.
+   → Answer:
+
+### Related (not copy — heads-up)
+
+- **Sports imagery** is image-light placeholder; stadium / concourse / fan-checkout renders are a separate Phase-5 task (no answer needed here).
