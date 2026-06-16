@@ -323,41 +323,6 @@ A secondary `Book a Demo` route opens a calendar booking, distinct from `Join th
 
 ---
 
-## Launch-confirm items (⚠ — none block the build; all block public launch)
-
-1. ✅ **Arc ratified** (Marco, 2026-06-16) — Movement → Control → Gains carried to all verticals from the Automotive precedent. No longer pending.
-2. **⚠ Naming guard** — never name a real team on-page. Use *"a Canadian NHL franchise"* / *"a Western Canada pro team"* / *"your team's own currency"* until CSEC / Alysia Olsen approves named use. The `$5,000` team-currency framing is permitted only as an **illustrative example**.
-3. **⚠ Sports imagery** — build is image-light placeholders; regenerate stadium / concourse / concession / fan-checkout scenes (Phase 5).
-4. **⚠ `$60,000 a night` figure** — Discovery stat for a major NHL game; confirm it can be stated publicly.
-5. **⚠ `$5,000` per-fan credit line + `$3M` calculator default** — illustrative (from `audiences/sports.md` / Brand Analysis); confirm before launch.
-6. **⚠ `$500M+` Merchant Network Agreements signed (§7).** Pending Audrey / Kendall.
-7. ~~Partner logos~~ — **retired:** no third-party logos published, by rule ([[feedback_no_third_party_logos]]).
-8. **⚠ Book-a-Demo Calendly URL** — pending Kyle; falls back to the form anchor.
-
----
-
-## Status summary
-
-| Section | Status |
-|---|---|
-| Page metadata (campaign, not indexed) | DRAFT — Sports audience |
-| 1 · Hero — The Movement | DRAFT — image-light; video deferred |
-| 2 · The Movement — Three Voices | DRAFT — Team / Fan / Lender |
-| 3 · Control | DRAFT — Fan / Access to data / Keep the loyalty |
-| 4 · The Gains | DRAFT — $60K/night hook; benchmark |
-| 5 · Savings Calculator | DRAFT — single output |
-| 6 · How It Works | DRAFT — ticketing/POS; QR; 4–8 wk |
-| 7 · Built For | DRAFT — teams/venues/leagues; no people |
-| 8 · Be Part of the Movement (form) | DRAFT — 2-step, sports options |
-| 9 · FAQ | DRAFT — team-framed |
-| 10 · Footer | DRAFT — no tagline |
-
-**House style:** contractions expanded throughout, except the verbatim founder quote in §2. Canadian spelling kept. Oxford comma held.
-
-**Downstream:** HTML mirrors this file verbatim (`feedback_copy_html_sync`). Imagery is placeholder (image-light) — Sports renders are a Phase-5 task.
-
----
-
 ## ⬇ Open questions for CredX — answer inline with the copy review
 
 > **For Kyle / Kendall / Audrey.** Please answer directly under each item (an `→ Answer:` line is provided). These are the only open points on the Sports copy — the narrative structure is already settled. None block reading the copy; they block public launch.
