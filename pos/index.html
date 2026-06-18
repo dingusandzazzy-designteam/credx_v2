@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0b0c16" />
+
+  <!-- Set theme before paint to avoid FOUC. A saved toggle preference always
+       wins; with no saved preference we follow the OS (prefers-color-scheme),
+       falling back to the dark brand default. -->
+  <script>
+    (function () {
+      try {
+        var stored = localStorage.getItem('credx-theme');
+        var useLight = stored === 'light' ||
+          (!stored && window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches);
+        if (useLight) document.documentElement.setAttribute('data-theme', 'light');
+      } catch (e) {}
+    })();
+  </script>
+
+  <!-- Campaign metadata (per pos/copy.md §Page metadata — SEO dropped, not indexed) -->
+  <title>CredX for POS Platforms — Give Your Merchants the Offer No Competing Platform Can Match</title>
+  <meta name="description" content="Add embedded credit and value-back to your POS with one API. Your merchants save up to $30K for every $1M they process — and they stay on your platform because the value is built in. The embedded value layer for POS platforms and ISVs." />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="CredX for POS Platforms — The Embedded Value Layer for Your Channel" />
+  <meta property="og:description" content="One API. Embedded credit and value-back, white-labelled under your brand. Your merchants save up to $30K per $1M — and stay on your platform." />
+  <!-- ⚠ OG image pending a POS render (Phase 5). -->
+  <meta property="og:image" content="" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="icon" href="../assets/logo/credx-shape.svg" type="image/svg+xml" />
+
+  <!-- Fonts: Inter (display + body) + Fraunces (editorial accent). Locked to 2 families. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Nav (G1) — minimalist per A4 lock (no cross-vertical switcher). In-page anchors + theme toggle + primary CTA.
+       POS is a channel page: NO "Book a Demo" — primary is "Explore a Partnership". -->
+  <nav class="nav" aria-label="Primary">
+    <div class="container nav__inner">
+      <a href="../" class="nav__logo" aria-label="CredX home">
+        <img src="../assets/logo/Credx-name.svg" alt="CredX" height="28" />
+      </a>
+      <div class="nav__links">
+        <a href="#how" class="nav__link">How it integrates</a>
+        <a href="#movement" class="nav__link">The movement</a>
+        <a href="#opmodel" class="nav__link">Operating model</a>
+      </div>
+      <div class="nav__actions">
+        <button class="theme-toggle" data-theme-toggle type="button" aria-label="Toggle light and dark theme">
+          <svg class="theme-toggle__icon theme-toggle__icon--sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="4" /><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41" />
+          </svg>
+          <svg class="theme-toggle__icon theme-toggle__icon--moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+          </svg>
+        </button>
+        <a href="#gains" class="btn btn-secondary nav__cta nav__cta--demo">See the merchant ROI</a>
+        <a href="#form" class="btn btn-primary nav__cta">Explore a Partnership</a>
+      </div>
+    </div>
+  </nav>
+
+  <main id="top">
+    <!-- ============================================================
+         S1 — HERO · The Movement (partnership pivot, not pain)
+         ⚠ Image-light: no POS renders yet, so the hero uses a branded
+         gradient placeholder (.hero--placeholder). Phase 5 = partnership /
+         integration / channel-conference render swapped in here.
+         ============================================================ -->
+    <section class="hero hero--full hero--placeholder" aria-label="Hero">
+      <div class="hero__overlay" aria-hidden="true"></div>
+      <div class="container hero__inner">
+        <div class="hero__copy">
+          <span class="eyebrow eyebrow--accent" data-reveal>For POS Platforms &amp; ISVs</span>
+          <h1 class="hero__h1" data-reveal-words>
+            Give Your Merchants the Offer <em class="accent">No Competing Platform Can Match</em>
+          </h1>
+          <p class="hero__sub" data-reveal data-reveal-delay="2">
+            You run the payment. CredX builds the value layer underneath it — embedded credit and value-back, white-labelled under your brand. Your merchants save, and they stay on your platform because the value is built in.
+          </p>
+          <div class="hero__ctas" data-reveal data-reveal-delay="3">
+            <a href="#form" class="btn btn-primary">Explore a Partnership</a>
+            <a href="#gains" class="btn btn-secondary">See the merchant ROI</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         S2 — THE MOVEMENT (one-liner + Three Voices accordion + founder quote)
+         Voices remapped to the channel: Platform / Merchant / Lender.
+         ============================================================ -->
+    <section id="movement" class="section movement" aria-label="The movement">
+      <div class="container movement__inner">
+        <h2 class="movement__h2" data-reveal-words>
+          The platform that owns the value<br /><em class="accent">owns the merchant</em>.
+        </h2>
+        <p class="movement__body" data-reveal data-reveal-delay="1">
+          Right now you run the transaction, and the credit facility network keeps everything that comes after: the merchant's customer, the data, and the loyalty. CredX puts that back on your platform. Your value layer, your brand, your merchants.
+        </p>
+
+        <!-- Three Voices, One Direction — collapsed expanders (native <details>) -->
+        <div class="voices" data-reveal data-reveal-delay="1">
+          <span class="voices__eyebrow">Three Voices, One Direction</span>
+          <details class="voices__item">
+            <summary class="voices__summary">
+              <span class="voices__role">The Platform</span>
+              <span class="voices__line">“Your merchants were already loyal. A competing credit facility was the only one profiting from it.”</span>
+            </summary>
+            <div class="voices__body">
+              <p>You built the platform your merchants run their business on. But every transaction sent a piece of their margin to a system that does not answer to you, and the loyalty their customers built accrued to a credit facility network instead of to your platform. CredX gives that back — not just as savings for your merchants, but as a tool you own: an embedded value layer that turns interchange into a differentiator, built-in revolving credit with no lending risk on anyone's books, and a retention moat competing platforms cannot match.</p>
+              <p>A growing community of platforms, done handing their merchants' loyalty to a credit facility network. This is your channel. Finally.</p>
+            </div>
+          </details>
+          <details class="voices__item">
+            <summary class="voices__summary">
+              <span class="voices__role">The Merchant</span>
+              <span class="voices__line">“They have been subsidizing the system for long enough.”</span>
+            </summary>
+            <div class="voices__body">
+              <p>Every transaction sent roughly 3% to someone the merchant never met, and the value piled up with a competing credit facility instead of staying in their business. CredX changes that. On your platform, merchants lower their costs, offer their own customers branded credit and value-back, and keep more of what they earn.</p>
+              <p>This is a shift in who the platform works for.</p>
+            </div>
+          </details>
+          <details class="voices__item">
+            <summary class="voices__summary">
+              <span class="voices__role">The Lender</span>
+              <span class="voices__line">“Finally, credit that earns where the spending already happens.”</span>
+            </summary>
+            <div class="voices__body">
+              <p>Community lenders have always been closer to their members than the big networks, but the credit facility network always captured the transaction. CredX changes the rail: fund embedded credit directly at the point of sale, a diversified, closed-loop asset class, with delinquency controls built in so risk stays managed.</p>
+            </div>
+          </details>
+          <p class="voices__closer">The old system extracted value from all three. <em class="accent">CredX returns it.</em></p>
+        </div>
+
+        <div class="movement__quote" data-reveal data-reveal-delay="2">
+          <p class="movement__quote-text">
+            <em class="accent">"</em>We believe in true partnership so much we put our own money into your business — then give it to your clients, presented under your brand. Who partners like that?<em class="accent">"</em>
+          </p>
+          <p class="movement__quote-attribution">— Kendall, Founder, CredX</p>
+        </div>
+
+        <div class="section-ctas" data-reveal>
+          <a href="#form" class="btn btn-primary">Explore a Partnership</a>
+          <a href="#numbers" class="btn btn-secondary">See the numbers</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         S3 — CONTROL · What Your Platform Gets Back
+         ============================================================ -->
+    <section id="control" class="section control" aria-label="Take control">
+      <div class="container">
+        <div class="control__header">
+          <span class="eyebrow" data-reveal>Take Control of Your Channel</span>
+          <h2 class="control__h2" data-reveal-words>
+            The merchant relationship is the asset the networks kept. <em class="accent">Until now.</em>
+          </h2>
+          <p class="control__intro" data-reveal data-reveal-delay="2">Three things become yours the day you integrate:</p>
+        </div>
+
+        <!-- ⚠ Image-light placeholder — POS render deferred (Phase 5). -->
+        <div class="section-media media-placeholder" data-reveal-media aria-hidden="true" data-ph="POS imagery — Phase 5"></div>
+
+        <div class="control__three">
+          <div class="control-card" data-reveal>
+            <span class="control-card__title">Your merchant.</span>
+            <p class="control-card__body">The relationship stays on your platform, in your brand, not a competing credit facility's. The merchant who runs on your platform — and the loyalty their customers build — belongs to your channel.</p>
+          </div>
+          <div class="control-card" data-reveal data-reveal-delay="1">
+            <span class="control-card__title">Your access to data.</span>
+            <p class="control-card__body">Consent-driven and de-identified: which merchants grow, which segments drive the most volume, and where embedded credit lifts retention across your channel.</p>
+          </div>
+          <div class="control-card" data-reveal data-reveal-delay="2">
+            <span class="control-card__title">Keep the loyalty inside your platform.</span>
+            <p class="control-card__body">A closed-loop value-back layer in each merchant's own currency, where $1 spent is $1 earned, that keeps a merchant's customers spending with them — and keeps the merchant on your platform.</p>
+          </div>
+        </div>
+
+        <div class="control__whitelabel" data-reveal>
+          <h3 class="control__whitelabel-head">Your platform's name. <em class="accent">Our infrastructure.</em></h3>
+          <p class="control__whitelabel-body">Everything the merchant and their customer sees carries your brand. The underwriting, servicing, compliance, and credit run behind the scenes. The relationship is yours.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         S4 — THE GAINS · The cherry on the cake
+         ============================================================ -->
+    <section id="gains" class="section gains" aria-label="The gains">
+      <div class="container">
+        <div class="gains__header">
+          <span class="eyebrow" data-reveal>And Here Is What It Pays Your Channel</span>
+          <h2 class="gains__h2" data-reveal-words>
+            Three ways CredX puts <em class="accent">money back</em> in your channel.
+          </h2>
+        </div>
+
+        <div class="gains__list">
+          <div class="gain" data-reveal>
+            <span class="gain__num">1</span>
+            <h3 class="gain__title">Hand your merchants up to 85% interchange recovery</h3>
+            <p class="gain__body">$6,000 per $1M with CredX, against roughly $36,000 with a competing credit facility. That is up to $30,000 back for every $1M a merchant processes — a saving you deliver, and a differentiator competing platforms cannot match.</p>
+          </div>
+          <div class="gain" data-reveal data-reveal-delay="1">
+            <span class="gain__num">2</span>
+            <h3 class="gain__title">Earn on the credit you used to send away</h3>
+            <p class="gain__body">A credit line of up to $5,000 in each merchant's own brand, approved in about 20 seconds at checkout, at roughly half the rate of a standard card. The merchant is paid in full and upfront, the lending risk stays with CredX and its lender partners, and your platform shares in the value through a revenue share — never on anyone's books.</p>
+          </div>
+          <div class="gain" data-reveal data-reveal-delay="2">
+            <span class="gain__num">3</span>
+            <h3 class="gain__title">See your channel in real time</h3>
+            <p class="gain__body">A monthly dashboard in plain language, not raw numbers: which merchants grow, which segments drive volume, and where embedded credit lifts retention. The channel intelligence your current setup never handed you.</p>
+          </div>
+        </div>
+
+        <p class="gains__benchmark" data-reveal>Merchants who add embedded credit at the point of sale see up to a <em class="accent">321%</em> lift in purchase frequency and <em class="accent">76%</em> larger transactions <span class="gains__benchmark-src">(PayPal embedded credit benchmark)</span>.</p>
+
+        <div class="gains__strip">
+          <div class="stat" data-reveal>
+            <span class="stat__number">$30K</span>
+            <span class="stat__label">Recovered per $1M a merchant processes.</span>
+          </div>
+          <div class="stat" data-reveal data-reveal-delay="1">
+            <span class="stat__number">Yours</span>
+            <span class="stat__label">The merchant, the data, and the loyalty. Not a competing credit facility's.</span>
+          </div>
+          <div class="stat" data-reveal data-reveal-delay="2">
+            <span class="stat__number">One API</span>
+            <span class="stat__label">To integrate. No new hardware for merchants.</span>
+          </div>
+        </div>
+
+        <div class="section-ctas" data-reveal>
+          <a href="#form" class="btn btn-primary">Explore a Partnership</a>
+          <a href="#opmodel" class="btn btn-secondary">See the operating model</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         S5 — CHANNEL MULTIPLIER (swaps the calculator — is_channel_page)
+         No slider: the savings are the merchant's, rolled up to channel scale.
+         ============================================================ -->
+    <section id="numbers" class="section channel" aria-label="Channel multiplier">
+      <div class="container">
+        <div class="channel__header">
+          <span class="eyebrow" data-reveal>The Channel Multiplier</span>
+          <h2 data-reveal-words>Your savings, at the scale of <em class="accent">your channel</em>.</h2>
+          <p class="channel__body" data-reveal data-reveal-delay="2">Every merchant you onboard compounds the same recovery. Here is what it looks like across a channel.</p>
+        </div>
+
+        <div class="channel__stats">
+          <div class="stat" data-reveal>
+            <span class="stat__number">1,000</span>
+            <span class="stat__label">merchants on your platform, each processing about $1M a year.</span>
+          </div>
+          <div class="stat stat--op" data-reveal data-reveal-delay="1">
+            <span class="stat__number"><span class="channel__op">×</span> $30K</span>
+            <span class="stat__label">recovered for each merchant, every year.</span>
+          </div>
+          <div class="stat stat--op" data-reveal data-reveal-delay="2">
+            <span class="stat__number"><span class="channel__op">=</span> $30M</span>
+            <span class="stat__label">put back in your merchants' pockets across your channel — your differentiator, in dollars.</span>
+          </div>
+        </div>
+
+        <p class="channel__caption" data-reveal>Illustrative. Based on recovering up to 85% of standard interchange — roughly $36K per $1M with a competing credit facility, against $6K per $1M with CredX. Your channel's number depends on merchant count, volume, and card mix.</p>
+
+        <div class="section-ctas" data-reveal>
+          <a href="#form" class="btn btn-primary">Explore a Partnership</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         S6 — HOW IT INTEGRATES (integration is the centrepiece — Template B)
+         ============================================================ -->
+    <section id="how" class="section process" aria-label="How it integrates">
+      <div class="container">
+        <div class="process__header">
+          <span class="eyebrow" data-reveal>How It Integrates</span>
+          <h2 data-reveal-words>
+            One API. Your payment stack, your checkout, and your merchants <em class="accent">stay exactly as they are.</em>
+          </h2>
+          <p class="process__intro" data-reveal data-reveal-delay="2">Your POS connects to the CredX value layer, which runs underwriting, the lender network, and the value-back ledger behind the scenes. Nothing changes at the merchant's terminal.</p>
+        </div>
+
+        <div class="process__steps">
+          <div class="step" data-reveal>
+            <span class="step__eyebrow">Step 1</span>
+            <h3 class="step__h3">Spec review and Merchant Network Agreement</h3>
+            <p class="step__body">We align on the integration spec and sign a Merchant Network Agreement. Your platform, your checkout, and your payment processor all stay in place.</p>
+          </div>
+          <div class="step" data-reveal data-reveal-delay="1">
+            <span class="step__eyebrow">Step 2</span>
+            <h3 class="step__h3">Build in the sandbox</h3>
+            <p class="step__body">One REST API, with SDKs and a full sandbox. CredX activates as a toggle in your platform — no new hardware for merchants, no change to their checkout. Typical path to production runs about 4 to 8 weeks, against a roughly 12-month in-house build.</p>
+          </div>
+          <div class="step" data-reveal data-reveal-delay="2">
+            <span class="step__eyebrow">Step 3</span>
+            <h3 class="step__h3">Go live across your channel</h3>
+            <p class="step__body">Each merchant flips CredX on at checkout. Their customers are approved for branded credit in about 20 seconds, value-back accrues in the merchant's own currency at $1 for every $1 spent, and the loyalty stays inside your platform.</p>
+          </div>
+          <div class="step" data-reveal data-reveal-delay="3">
+            <span class="step__eyebrow">Step 4</span>
+            <h3 class="step__h3">Your monthly channel report arrives</h3>
+            <p class="step__body">Interchange recovered and value-back earned across your channel, broken out per merchant and in aggregate, with your revenue share reconciled.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         S7 — CHANNEL OPERATING MODEL (swaps Built-For — is_channel_page)
+         Table + built-for list + KPIs + Tier 3 disclaimer.
+         ============================================================ -->
+    <section id="opmodel" class="section proof" aria-label="Channel operating model">
+      <div class="container">
+        <div class="proof__header">
+          <span class="eyebrow" data-reveal>The Operating Model</span>
+          <h2 data-reveal-words>Who runs what. <em class="accent">Clear from day one.</em></h2>
+          <p class="opmodel__intro" data-reveal data-reveal-delay="2">CredX carries the credit, the risk, and the compliance. Your platform carries the brand and the channel. Your merchants carry the relationship with their customers.</p>
+        </div>
+
+        <div class="opmodel__wrap" data-reveal>
+          <table class="opmodel">
+            <thead>
+              <tr>
+                <th scope="col">Function</th>
+                <th scope="col">CredX</th>
+                <th scope="col">Your Platform</th>
+                <th scope="col">Merchant</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><th scope="row">Underwriting</th><td class="is-owned">Owns</td><td>—</td><td>—</td></tr>
+              <tr><th scope="row">Funding</th><td class="is-owned">Owns (with lender partners)</td><td>—</td><td>—</td></tr>
+              <tr><th scope="row">Servicing</th><td class="is-owned">Owns</td><td>—</td><td>—</td></tr>
+              <tr><th scope="row">Collections</th><td class="is-owned">Owns</td><td>—</td><td>—</td></tr>
+              <tr><th scope="row">Risk</th><td class="is-owned">Owns</td><td>—</td><td>—</td></tr>
+              <tr><th scope="row">Compliance (SOC 2, PIPEDA)</th><td class="is-owned">Owns</td><td>—</td><td>—</td></tr>
+              <tr><th scope="row">Brand and checkout</th><td>Behind the scenes</td><td class="is-owned">Owns (white-label)</td><td class="is-owned">Owns (their customers)</td></tr>
+              <tr><th scope="row">Revenue share</th><td class="is-owned">Credit + servicing margin</td><td class="is-owned">Share of the savings delta</td><td class="is-owned">Lower costs + value-back</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="builtfor" data-reveal>
+          <h3 class="builtfor__head">Built for the platforms whose merchants keep coming back.</h3>
+          <ul class="builtfor__list">
+            <li class="builtfor__item">Mid-market and enterprise POS platforms</li>
+            <li class="builtfor__item">ISVs and vertical SaaS with embedded payments</li>
+            <li class="builtfor__item">Payment facilitators</li>
+            <li class="builtfor__item">Integration and channel partners</li>
+          </ul>
+          <p class="builtfor__qualifier">
+            If your merchants run card volume on your platform, CredX is built to run underneath it. <em class="accent">Platforms with 1,000+ merchants and $100M+ in annual volume</em> see the channel multiplier compound fastest.
+          </p>
+        </div>
+
+        <!-- Key metrics -->
+        <div class="proof__kpis">
+          <div class="kpi" data-reveal>
+            <span class="kpi__value">$500M+</span>
+            <span class="kpi__label">in Merchant Network Agreements signed</span>
+          </div>
+          <div class="kpi" data-reveal data-reveal-delay="1">
+            <span class="kpi__value">4</span>
+            <span class="kpi__label">community lender partners funding embedded credit</span>
+          </div>
+          <div class="kpi" data-reveal data-reveal-delay="2">
+            <span class="kpi__value kpi__value--compact">SOC 2 + PIPEDA</span>
+            <span class="kpi__label">compliant. Data de-identified, consent-driven, and held to Canadian privacy law.</span>
+          </div>
+        </div>
+
+        <!-- Tier 3 disclaimer — verbatim, legal-owned. Do not paraphrase. -->
+        <p class="params" data-reveal>For discussion purposes only; not a commitment or offer.</p>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         S8 — EXPLORE A PARTNERSHIP (2-step partner application)
+         Every CTA on the page anchors here.
+         ============================================================ -->
+    <section id="form" class="section signup" aria-label="Explore a partnership">
+      <div class="container signup__inner">
+        <div class="signup__intro" data-reveal>
+          <span class="eyebrow eyebrow--accent">Explore a Partnership</span>
+          <h2 class="signup__h2">Ready to own your channel?</h2>
+          <p class="signup__sub">Two quick steps. Start with the basics — we will take it from there.</p>
+        </div>
+
+        <form class="signup__form" data-signup-form novalidate>
+          <!-- Step 1 -->
+          <div class="signup__step" data-step="1">
+            <span class="signup__step-label">Step 1 — Tell us about you</span>
+            <p class="signup__step-note">This is all we need to reach you.</p>
+            <div class="signup__grid">
+              <div class="form__field">
+                <label class="form__label" for="su-name">Full name</label>
+                <input class="form__input" id="su-name" name="name" type="text" required />
+              </div>
+              <div class="form__field">
+                <label class="form__label" for="su-email">Work email</label>
+                <input class="form__input" id="su-email" name="email" type="email" required />
+              </div>
+              <div class="form__field">
+                <label class="form__label" for="su-phone">Phone</label>
+                <input class="form__input" id="su-phone" name="phone" type="tel" required />
+              </div>
+              <div class="form__field">
+                <label class="form__label" for="su-company">Platform or company name</label>
+                <input class="form__input" id="su-company" name="company" type="text" required />
+              </div>
+              <div class="form__field">
+                <label class="form__label" for="su-title">Your title or role</label>
+                <input class="form__input" id="su-title" name="title" type="text" />
+              </div>
+              <div class="form__field">
+                <label class="form__label" for="su-website">Website</label>
+                <input class="form__input" id="su-website" name="website" type="url" />
+              </div>
+            </div>
+            <button type="button" class="btn btn-primary" data-step1-next>Explore a Partnership</button>
+          </div>
+
+          <!-- Micro-reward (revealed after Step 1) -->
+          <p class="signup__reward" data-signup-reward hidden></p>
+
+          <!-- Step 2 (optional) -->
+          <div class="signup__step signup__step--2" data-step="2" hidden>
+            <span class="signup__step-label">Step 2 — Tell us about your platform <em class="signup__optional">(optional)</em></span>
+            <p class="signup__step-note">Helps us scope the integration and the revenue share.</p>
+            <div class="signup__grid">
+              <div class="form__field">
+                <label class="form__label" for="su-type">Type of platform</label>
+                <select class="form__select" id="su-type" name="platform_type">
+                  <option value="">Select…</option>
+                  <option>POS platform</option>
+                  <option>ISV / vertical SaaS</option>
+                  <option>Payment facilitator</option>
+                  <option>Integration / channel partner</option>
+                  <option>Other</option>
+                </select>
+              </div>
+              <div class="form__field">
+                <label class="form__label" for="su-merchants">Roughly how many merchants are on your platform?</label>
+                <select class="form__select" id="su-merchants" name="merchants">
+                  <option value="">Select…</option>
+                  <option>Under 1,000</option>
+                  <option>1,000 – 10,000</option>
+                  <option>10,000 – 50,000</option>
+                  <option>50,000+</option>
+                </select>
+              </div>
+              <div class="form__field">
+                <label class="form__label" for="su-volume">Roughly what annual card volume do your merchants process?</label>
+                <select class="form__select" id="su-volume" name="volume">
+                  <option value="">Select…</option>
+                  <option>Under $100M</option>
+                  <option>$100M – $500M</option>
+                  <option>$500M – $1B</option>
+                  <option>$1B+</option>
+                </select>
+              </div>
+              <div class="form__field">
+                <label class="form__label" for="su-certs">Existing certifications or compliance (PCI, SOC 2, etc.)</label>
+                <input class="form__input" id="su-certs" name="certifications" type="text" />
+              </div>
+              <div class="form__field form__field--full">
+                <label class="form__label" for="su-goal">In one line: what would an embedded value layer change for your platform?</label>
+                <input class="form__input" id="su-goal" name="goal" type="text" />
+              </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Send my channel details</button>
+          </div>
+
+          <!-- Final confirmation -->
+          <p class="signup__done" data-signup-done hidden>Thank you. Our partnerships team will reach out within one business day to scope your channel.</p>
+        </form>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         S9 — FAQ (channel + technical, 8 items)
+         ============================================================ -->
+    <section id="faq" class="section faq" aria-label="Frequently asked questions">
+      <div class="container">
+        <div class="faq__header">
+          <span class="eyebrow">FAQ</span>
+          <h2>Questions platforms ask before integrating</h2>
+        </div>
+        <div class="faq__list">
+          <details class="faq__item">
+            <summary class="faq__question">Does CredX replace my payment processor or POS?</summary>
+            <p class="faq__answer">No. CredX runs as a value layer underneath your existing payment flow. Your platform, your checkout, and your merchants' payment processing all stay in place. It integrates through one API, with no new hardware for merchants, and typical integration runs 4 to 8 weeks.</p>
+          </details>
+          <details class="faq__item">
+            <summary class="faq__question">What does the API integration actually involve?</summary>
+            <p class="faq__answer">One REST API, with SDKs and a full sandbox to build against before you go live. CredX activates as a toggle in your platform. Most partners reach production in 4 to 8 weeks, against a roughly 12-month in-house build for underwriting, servicing, funding, and compliance.</p>
+          </details>
+          <details class="faq__item">
+            <summary class="faq__question">How does the revenue share work?</summary>
+            <p class="faq__answer">Per partnership agreement. CredX captures the credit and servicing margin; your platform shares in the savings delta CredX creates for your merchants. We model the specific structure with you during the partnership conversation.</p>
+          </details>
+          <details class="faq__item">
+            <summary class="faq__question">Whose brand do merchants and their customers see?</summary>
+            <p class="faq__answer">Yours. Full white-label is the default for channel partnerships — the merchant and their customer see your platform's brand, while the underwriting, servicing, credit, and compliance run behind the scenes as CredX.</p>
+          </details>
+          <details class="faq__item">
+            <summary class="faq__question">Who carries the lending risk?</summary>
+            <p class="faq__answer">CredX and its community lender partners. The merchant is paid in full and upfront, and the credit risk never sits on your platform's books or the merchant's.</p>
+          </details>
+          <details class="faq__item">
+            <summary class="faq__question">Is this PCI, SOC 2, and privacy compliant?</summary>
+            <p class="faq__answer">Yes. SOC 2 and PIPEDA compliant, data de-identified and consent-driven, and handled under Canadian privacy law. Your platform owns the merchant relationship. A competing credit facility does not.</p>
+          </details>
+          <details class="faq__item">
+            <summary class="faq__question">What about multi-region or large-channel rollouts?</summary>
+            <p class="faq__answer">One integration, individual merchant branding, and consolidated channel reporting. Each merchant sees its own recovery and value-back numbers, and everything rolls up across your channel on shared infrastructure.</p>
+          </details>
+          <details class="faq__item">
+            <summary class="faq__question">Who is a good fit?</summary>
+            <p class="faq__answer">POS platforms, ISVs, payment facilitators, and channel partners. Platforms with 1,000 or more merchants and $100M or more in annual volume see the channel multiplier compound fastest.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer (G2) -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__inner">
+        <div>
+          <img src="../assets/logo/Credx-name.svg" alt="CredX" height="32" style="margin-bottom: 24px;" />
+          <p class="footer__cta-line">Want to run the numbers on your channel? Talk to our team.</p>
+          <div class="footer__ctas">
+            <a href="#gains" class="btn btn-secondary">See the merchant ROI</a>
+            <a href="#form" class="btn btn-primary">Explore a Partnership</a>
+          </div>
+        </div>
+        <div>
+          <h4 class="footer__col-title">Navigate</h4>
+          <div class="footer__links">
+            <a href="#how" class="footer__link">How it integrates</a>
+            <a href="#movement" class="footer__link">The movement</a>
+            <a href="#opmodel" class="footer__link">Operating model</a>
+            <a href="#form" class="footer__link">Explore a partnership</a>
+          </div>
+        </div>
+        <div>
+          <h4 class="footer__col-title">Legal</h4>
+          <div class="footer__links">
+            <a href="#" class="footer__link">Privacy</a>
+            <a href="#" class="footer__link">Terms</a>
+            <a href="#" class="footer__link">SOC 2 attestation</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span>© 2026 CredX Tech Inc. All rights reserved.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.0.42/dist/lenis.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
