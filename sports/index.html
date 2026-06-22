@@ -26,8 +26,7 @@
   <!-- Open Graph -->
   <meta property="og:title" content="CredX for Teams &amp; Venues — Own the Loyalty Your Fans Give You" />
   <meta property="og:description" content="Keep the data, the loyalty, and the value your fans' spending creates. Recover up to $30,000 for every $1M you process." />
-  <!-- ⚠ OG image pending a Sports render (Phase 5). -->
-  <meta property="og:image" content="" />
+  <meta property="og:image" content="images/og.png" />
   <meta property="og:type" content="website" />
   <meta name="twitter:card" content="summary_large_image" />
 
@@ -71,11 +70,19 @@
   <main id="top">
     <!-- ============================================================
          S1 — HERO · The Movement
-         ⚠ Image-light: no Sports renders yet, so the hero uses a branded
-         gradient placeholder (.hero--placeholder). Phase 5 = stadium /
-         concourse / fan-checkout render swapped in here.
+         Two-version hero (theme swap): hero-dark for dark theme (deep navy
+         left third), hero-light for light theme (bright left third). The
+         left third is intentional negative space that carries the copy.
          ============================================================ -->
-    <section class="hero hero--full hero--placeholder" aria-label="Hero">
+    <section class="hero hero--full" aria-label="Hero">
+      <picture>
+        <source srcset="images/hero-dark.webp" type="image/webp" />
+        <img src="images/hero-dark.jpg" alt="VP of fan experience on an arena concourse overlooking the seating bowl on an event night" class="hero__bg hero__bg--dark" width="1916" height="821" />
+      </picture>
+      <picture>
+        <source srcset="images/hero-light.webp" type="image/webp" />
+        <img src="images/hero-light.jpg" alt="VP of fan experience on a daylit arena concourse overlooking the seating bowl" class="hero__bg hero__bg--light" width="1916" height="821" loading="lazy" />
+      </picture>
       <div class="hero__overlay" aria-hidden="true"></div>
       <div class="container hero__inner">
         <div class="hero__copy">
@@ -168,8 +175,13 @@
           <p class="control__intro" data-reveal data-reveal-delay="2">Three things become yours the day you sign:</p>
         </div>
 
-        <!-- ⚠ Image-light placeholder — Sports render deferred (Phase 5). -->
-        <div class="section-media media-placeholder" data-reveal-media aria-hidden="true">Sports imagery — Phase 5</div>
+        <!-- Editorial media slot (front office) -->
+        <div class="section-media" data-reveal-media>
+          <picture>
+            <source srcset="images/control-frontoffice.webp" type="image/webp" />
+            <img src="images/control-frontoffice.jpg" alt="Chief commercial officer reviewing fan-data reporting on a printed sheet in a front-office suite overlooking the arena bowl" width="1600" height="900" loading="lazy" />
+          </picture>
+        </div>
 
         <div class="control__three">
           <div class="control-card" data-reveal>
@@ -299,8 +311,12 @@
           </h2>
         </div>
 
-        <!-- ⚠ Image-light placeholder — Sports render deferred (Phase 5). -->
-        <div class="process__image media-placeholder" data-reveal-media aria-hidden="true">Sports imagery — Phase 5</div>
+        <div class="process__image" data-reveal-media>
+          <picture>
+            <source srcset="images/process-gate-qr.webp" type="image/webp" />
+            <img src="images/process-gate-qr.jpg" alt="Fan tapping a phone to pay at a busy arena concession stand while staff hands over a food tray" width="1672" height="941" loading="lazy" />
+          </picture>
+        </div>
 
         <div class="process__steps">
           <div class="step" data-reveal>
