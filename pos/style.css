@@ -474,7 +474,10 @@ p { line-height: 1.6; max-width: 65ch; }
   min-height: 100dvh;
   display: flex;
   align-items: center;
-  padding-block: 0;
+  /* Reserve the fixed-nav height so the longer POS hero copy centres in the
+     area BELOW the nav instead of riding up under it on shorter viewports.
+     (POS has the longest H1 + subhead of the verticals.) */
+  padding-block: var(--s-9) 0;
 }
 
 .hero--full .hero__bg {
