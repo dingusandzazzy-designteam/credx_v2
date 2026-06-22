@@ -26,8 +26,7 @@
   <!-- Open Graph -->
   <meta property="og:title" content="CredX for POS Platforms — The Embedded Value Layer for Your Channel" />
   <meta property="og:description" content="One API. Embedded credit and value-back, white-labelled under your brand. Your merchants save up to $30K per $1M — and stay on your platform." />
-  <!-- ⚠ OG image pending a POS render (Phase 5). -->
-  <meta property="og:image" content="" />
+  <meta property="og:image" content="images/og.png" />
   <meta property="og:type" content="website" />
   <meta name="twitter:card" content="summary_large_image" />
 
@@ -71,11 +70,19 @@
   <main id="top">
     <!-- ============================================================
          S1 — HERO · The Movement (partnership pivot, not pain)
-         ⚠ Image-light: no POS renders yet, so the hero uses a branded
-         gradient placeholder (.hero--placeholder). Phase 5 = partnership /
-         integration / channel-conference render swapped in here.
+         Two-version hero (theme swap): hero-dark for dark theme (deep navy
+         left third), hero-light for light theme (bright left third). The
+         left third is intentional negative space that carries the copy.
          ============================================================ -->
-    <section class="hero hero--full hero--placeholder" aria-label="Hero">
+    <section class="hero hero--full" aria-label="Hero">
+      <picture>
+        <source srcset="images/hero-dark.webp" type="image/webp" />
+        <img src="images/hero-dark.jpg" alt="Chief partnerships officer in a modern technology headquarters at dusk, city skyline beyond the glass" class="hero__bg hero__bg--dark" width="1916" height="821" />
+      </picture>
+      <picture>
+        <source srcset="images/hero-light.webp" type="image/webp" />
+        <img src="images/hero-light.jpg" alt="Chief partnerships officer in a daylit open-plan technology office" class="hero__bg hero__bg--light" width="1916" height="821" loading="lazy" />
+      </picture>
       <div class="hero__overlay" aria-hidden="true"></div>
       <div class="container hero__inner">
         <div class="hero__copy">
@@ -169,8 +176,13 @@
           <p class="control__intro" data-reveal data-reveal-delay="2">Three things become yours the day you integrate:</p>
         </div>
 
-        <!-- ⚠ Image-light placeholder — POS render deferred (Phase 5). -->
-        <div class="section-media media-placeholder" data-reveal-media aria-hidden="true" data-ph="POS imagery — Phase 5"></div>
+        <!-- Editorial media slot (channel) -->
+        <div class="section-media" data-reveal-media>
+          <picture>
+            <source srcset="images/control-channel.webp" type="image/webp" />
+            <img src="images/control-channel.jpg" alt="VP of channel reviewing channel-performance reporting with a colleague in a modern glass-walled office" width="1600" height="900" loading="lazy" />
+          </picture>
+        </div>
 
         <div class="control__three">
           <div class="control-card" data-reveal>
