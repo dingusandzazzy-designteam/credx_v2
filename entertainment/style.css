@@ -1283,7 +1283,7 @@ p { line-height: 1.6; max-width: 65ch; }
 }
 
 .process__image::after {
-  content: 'F&I floor + service drive — editorial-cinematic (Phase 5)';
+  content: 'Lobby + concession — editorial-cinematic';
   position: absolute;
   inset: 0;
   display: grid;
