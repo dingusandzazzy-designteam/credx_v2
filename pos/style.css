@@ -904,6 +904,57 @@ p { line-height: 1.6; max-width: 65ch; }
    moment, paired with the conversion ask. */
 /* Token-based dark band (photo retired per prompts §A3). Stays dark in BOTH
    themes by design — the page's manifesto punctuation. */
+/* ============================================================
+   THE MOVEMENT STATEMENT — manifesto beat between hero and §2
+   Theme-aware surface; editorial type. Generic across verticals.
+   ============================================================ */
+.statement {
+  text-align: center;
+}
+
+.statement__inner {
+  max-width: 820px;
+  margin-inline: auto;
+}
+
+.statement__h2 {
+  font-family: var(--font-editorial);
+  font-size: clamp(2.25rem, 4vw + 1rem, 3.75rem);
+  font-weight: 500;
+  line-height: 1.08;
+  letter-spacing: -0.015em;
+  font-variation-settings: 'opsz' 96;
+  margin-bottom: var(--s-5);
+}
+
+.statement__lead {
+  font-size: var(--type-h3);
+  font-weight: 500;
+  line-height: 1.35;
+  color: var(--text-accent);
+  max-width: 32ch;
+  margin-inline: auto;
+  margin-bottom: var(--s-6);
+  text-wrap: balance;
+}
+
+.statement__body {
+  font-size: var(--type-body-lg);
+  color: var(--text-secondary);
+  max-width: 56ch;
+  margin-inline: auto;
+  margin-bottom: var(--s-6);
+  text-wrap: pretty;
+}
+
+.statement__closer {
+  font-family: var(--font-editorial);
+  font-size: var(--type-h3);
+  font-weight: 500;
+  color: var(--text-primary);
+  font-variation-settings: 'opsz' 96;
+}
+
 .movement {
   background-color: var(--ink);
   position: relative;

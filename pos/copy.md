@@ -53,6 +53,26 @@
 
 ---
 
+## 1.5 · THE MOVEMENT STATEMENT
+
+**Status:** DRAFT (pending Mauricio → client review)
+**Beat:** Manifesto beat between the hero and §2. Generic — identical across all five verticals (drop-in verbatim). Gaetan's formulation, approved by Kendall. Liberation framing, grade-5, positive surface only.
+
+| Field | Value |
+|---|---|
+| Eyebrow | `A Movement, Not a Product` |
+| Headline | `Forget the old system. Here is a new one.` |
+| Lead | `One that you belong to, instead of one that owns you.` |
+| Body | `The value your business creates should come back to your business. CredX is how that happens. This is not another product to buy. It is a movement to join, built so the people and businesses who create the value are the ones who keep it. Your customers and your data stay where they started: with you.` |
+| Closer | `That is the real switch.` |
+
+**Notes:**
+- Approved formulation (Gaetan, approved by Kendall): "Forget the old system. Here's a new one. One that you belong to, instead of one that owns you." The contraction "Here's" is expanded to "Here is" per the CredX no-contractions rule; hold verbatim only if re-approved.
+- Broken system is implied, never attacked. No competitor named. The word "owns" appears only inside the approved formulation, describing the *old* system you leave — not as a CredX claim (Kendall flag on "own the customer" respected).
+- Generic verbatim. POS speaks to the platform (B2B2B); the generic "your business / your customers" was kept per decision (no POS-specific variant this round — surface a platform-voiced variant later if wanted).
+
+---
+
 ## 2 · THE MOVEMENT — THREE VOICES, ONE DIRECTION
 
 **Status:** DRAFT
@@ -60,7 +80,7 @@
 
 | Field | Value |
 |---|---|
-| Headline | `The platform that owns the value owns the merchant.` |
+| Headline | `The platform that earns the merchant should keep the merchant.` |
 | Body | `Right now you run the transaction, and the credit facility network keeps everything that comes after: the merchant's customer, the data, and the loyalty. CredX puts that back on your platform. Your value layer, your brand, your merchants.` |
 
 ### Three Voices, One Direction
@@ -279,7 +299,7 @@ Community lenders have always been closer to their members than the big networks
 
 | Field | Value |
 |---|---|
-| Headline | `Ready to own your channel?` |
+| Headline | `Ready to keep your merchants?` |
 | Subline | `Two quick steps. Start with the basics — we will take it from there.` |
 
 ### Step 1 — Tell us about you
@@ -330,7 +350,7 @@ There is **no "Book a Demo"** on the channel page (per `audiences/pos.md`). A se
 | `How does the revenue share work?` | `Per partnership agreement. CredX captures the credit and servicing margin; your platform shares in the savings delta CredX creates for your merchants. We model the specific structure with you during the partnership conversation.` |
 | `Whose brand do merchants and their customers see?` | `Yours. Full white-label is the default for channel partnerships — the merchant and their customer see your platform's brand, while the underwriting, servicing, credit, and compliance run behind the scenes as CredX.` |
 | `Who carries the lending risk?` | `CredX and its community lender partners. The merchant is paid in full and upfront, and the credit risk never sits on your platform's books or the merchant's.` |
-| `Is this PCI, SOC 2, and privacy compliant?` | `Yes. SOC 2 and PIPEDA compliant, data de-identified and consent-driven, and handled under Canadian privacy law. Your platform owns the merchant relationship. A competing credit facility does not.` |
+| `Is this PCI, SOC 2, and privacy compliant?` | `Yes. SOC 2 and PIPEDA compliant, data de-identified and consent-driven, and handled under Canadian privacy law. The merchant relationship stays yours, never a competing credit facility's.` |
 | `What about multi-region or large-channel rollouts?` | `One integration, individual merchant branding, and consolidated channel reporting. Each merchant sees its own recovery and value-back numbers, and everything rolls up across your channel on shared infrastructure.` |
 | `Who is a good fit?` | `POS platforms, ISVs, payment facilitators, and channel partners. Platforms with 1,000 or more merchants and $100M or more in annual volume see the channel multiplier compound fastest.` |
 

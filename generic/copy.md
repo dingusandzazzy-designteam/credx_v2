@@ -22,10 +22,10 @@
 
 | Field | Value |
 |---|---|
-| Title (browser tab) | `CredX — Own Your Customer, Recover $30K per $1M` |
+| Title (browser tab) | `CredX — Keep Your Customer, Recover $30K per $1M` |
 | Meta description | `Keep the customer, the data, and the loyalty your business earns. Recover up to $30,000 for every $1M you process. CredX is the embedded value platform for businesses with recurring customers and card volume.` |
 | H1 | See §1 Hero headline. |
-| OG title | `CredX — Own Your Customer, Recover $30K per $1M` |
+| OG title | `CredX — Keep Your Customer, Recover $30K per $1M` |
 | OG description | `Keep the customer, the data, and the loyalty your business earns. Recover up to $30,000 for every $1M you process.` |
 | OG image | ⚠ placeholder (reuses automotive OG) — regen for a neutral scene. |
 
@@ -41,7 +41,7 @@
 | Field | Value |
 |---|---|
 | Eyebrow | `For Operators Who Earn Their Customers` |
-| Headline (H1) | `Own the Customer You Fought to Win` |
+| Headline (H1) | `Keep the Customer You Fought to Win` |
 | Subheadline | `Every transaction, every repeat visit, every sale builds a relationship. CredX keeps it yours: the data, the loyalty, and the next visit.` |
 | Primary CTA | `Join the Movement` → scrolls to §8 form |
 | Secondary CTA | `See how it works` → scrolls to §6 How It Works |
@@ -55,6 +55,26 @@
 
 ---
 
+## 1.5 · THE MOVEMENT STATEMENT
+
+**Status:** DRAFT (pending Mauricio → client review)
+**Beat:** Manifesto beat between the hero and §2. Generic — identical across all five verticals (drop-in verbatim). Gaetan's formulation, approved by Kendall. Liberation framing, grade-5, positive surface only.
+
+| Field | Value |
+|---|---|
+| Eyebrow | `A Movement, Not a Product` |
+| Headline | `Forget the old system. Here is a new one.` |
+| Lead | `One that you belong to, instead of one that owns you.` |
+| Body | `The value your business creates should come back to your business. CredX is how that happens. This is not another product to buy. It is a movement to join, built so the people and businesses who create the value are the ones who keep it. Your customers and your data stay where they started: with you.` |
+| Closer | `That is the real switch.` |
+
+**Notes:**
+- Approved formulation (Gaetan, approved by Kendall): "Forget the old system. Here's a new one. One that you belong to, instead of one that owns you." The contraction "Here's" is expanded to "Here is" per the CredX no-contractions rule; hold verbatim only if re-approved.
+- Broken system is implied, never attacked. No competitor named. The word "owns" appears only inside the approved formulation, describing the *old* system you leave — not as a CredX claim (Kendall flag on "own the customer" respected).
+- Generic verbatim across Automotive, Generic, Sports, Entertainment, POS. POS speaks to the platform; the generic "your business / your customers" was kept per decision (no POS-specific variant this round).
+
+---
+
 ## 2 · THE MOVEMENT — THREE VOICES, ONE DIRECTION
 
 **Status:** CANONICAL
@@ -62,7 +82,7 @@
 
 | Field | Value |
 |---|---|
-| Headline | `The business that owns the data owns the customer.` |
+| Headline | `The business that earns the customer should keep the customer.` |
 | Body | `Right now your payment processor runs the transaction, and the credit facility network keeps everything that comes after: who your customer is, what they spend, and when they will come back. CredX puts that back in your hands. Your credit facility, your brand, your customer.` |
 
 ### Three Voices, One Direction
@@ -257,7 +277,7 @@ Community lenders have always been closer to their members than the big networks
 
 | Field | Value |
 |---|---|
-| Headline | `Ready to own your customer?` |
+| Headline | `Ready to keep your customer?` |
 | Subline | `Two quick steps. Start with the basics — we will take it from there.` |
 
 ### Step 1 — Tell us who you are
@@ -306,7 +326,7 @@ A secondary `Book a Demo` route opens a calendar booking, distinct from `Join th
 | `Does CredX replace my existing POS or payment processor?` | `No. CredX runs on the value layer underneath your existing setup. Your POS, payment terminals, and management software all stay in place, and it requires no new hardware at the counter. Typical integration runs 4 to 8 weeks.` |
 | `What types of businesses does this work for?` | `Any business with recurring customers and meaningful card volume: retail and e-commerce, hospitality and food service, health and wellness, professional and home services, membership businesses, and multi-location operators. If your customers come back and pay by card, CredX applies.` |
 | `What about a multi-location rollout?` | `One master account, individual location branding if needed, and consolidated reporting. Each location sees its own interchange recovery and value-back numbers.` |
-| `Is my customer data really mine?` | `Yes. Consent-driven, opt-in by default, de-identified for analytics, and handled under Canadian privacy law, including PIPEDA. Your business owns the customer relationship. A competing credit facility does not.` |
+| `Is my customer data really mine?` | `Yes. Consent-driven, opt-in by default, de-identified for analytics, and handled under Canadian privacy law, including PIPEDA. The customer relationship stays yours, never a competing credit facility's.` |
 | `How soon do I see savings?` | `Interchange recovery starts the month after activation, reported per location and in aggregate.` |
 | `Who qualifies?` | `Businesses processing $250K or more per month in card volume. Single-location and multi-location businesses both qualify — the savings and data benefits are proportional to your volume.` |
 

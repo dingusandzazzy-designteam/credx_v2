@@ -23,10 +23,10 @@
 
 | Field | Value |
 |---|---|
-| Title (browser tab) | `CredX for Venues & Entertainment — Own the Guests Who Keep Coming Back` |
+| Title (browser tab) | `CredX for Venues & Entertainment — Keep Every Guest Who Comes Back` |
 | Meta description | `Your guests already keep coming back. Keep the data, the loyalty, and the value their spending creates — in your venue's brand, not a competing credit facility's. CredX is the embedded value platform for venues, theatres, and entertainment.` |
 | H1 | See §1 Hero headline. |
-| OG title | `CredX for Venues & Entertainment — Own the Guests Who Keep Coming Back` |
+| OG title | `CredX for Venues & Entertainment — Keep Every Guest Who Comes Back` |
 | OG description | `Keep the data, the loyalty, and the value your guests' spending creates. Recover up to $30,000 for every $1M you process.` |
 | OG image | ⚠ pending an Entertainment render (Phase 5). |
 
@@ -40,7 +40,7 @@
 | Field | Value |
 |---|---|
 | Eyebrow | `For Venues, Theatres & Entertainment` |
-| Headline (H1) | `Own the Guests Who Keep Coming Back` |
+| Headline (H1) | `Keep Every Guest Who Comes Back` |
 | Subheadline | `Every ticket, every concession, every visit builds a relationship with your guests. CredX keeps it yours: the data, the loyalty, and the next night out.` |
 | Primary CTA | `Join the Movement` → scrolls to §8 form |
 | Secondary CTA | `See how it works` → scrolls to §6 How It Works |
@@ -52,6 +52,26 @@
 
 ---
 
+## 1.5 · THE MOVEMENT STATEMENT
+
+**Status:** DRAFT (pending Mauricio → client review)
+**Beat:** Manifesto beat between the hero and §2. Generic — identical across all five verticals (drop-in verbatim). Gaetan's formulation, approved by Kendall. Liberation framing, grade-5, positive surface only.
+
+| Field | Value |
+|---|---|
+| Eyebrow | `A Movement, Not a Product` |
+| Headline | `Forget the old system. Here is a new one.` |
+| Lead | `One that you belong to, instead of one that owns you.` |
+| Body | `The value your business creates should come back to your business. CredX is how that happens. This is not another product to buy. It is a movement to join, built so the people and businesses who create the value are the ones who keep it. Your customers and your data stay where they started: with you.` |
+| Closer | `That is the real switch.` |
+
+**Notes:**
+- Approved formulation (Gaetan, approved by Kendall): "Forget the old system. Here's a new one. One that you belong to, instead of one that owns you." The contraction "Here's" is expanded to "Here is" per the CredX no-contractions rule; hold verbatim only if re-approved.
+- Broken system is implied, never attacked. No competitor named. The word "owns" appears only inside the approved formulation, describing the *old* system you leave — not as a CredX claim (Kendall flag on "own the customer" respected).
+- Generic verbatim across Automotive, Generic, Sports, Entertainment, POS. POS speaks to the platform; the generic "your business / your customers" was kept per decision (no POS-specific variant this round).
+
+---
+
 ## 2 · THE MOVEMENT — THREE VOICES, ONE DIRECTION
 
 **Status:** DRAFT
@@ -59,7 +79,7 @@
 
 | Field | Value |
 |---|---|
-| Headline | `The venue that owns the data owns the guest.` |
+| Headline | `The venue that earns the guest should keep the guest.` |
 | Body | `Right now your payment processor runs the transaction, and the credit facility network keeps everything that comes after: who your guest is, what they spend, and when they will come back. CredX puts that back in your hands. Your credit facility, your brand, your guests.` |
 
 ### Three Voices, One Direction
@@ -253,7 +273,7 @@ Community lenders have always been closer to their members than the big networks
 
 | Field | Value |
 |---|---|
-| Headline | `Ready to own your guests?` |
+| Headline | `Ready to keep your guests?` |
 | Subline | `Two quick steps. Start with the basics — we will take it from there.` |
 
 ### Step 1 — Tell us who you are
@@ -278,7 +298,7 @@ Community lenders have always been closer to their members than the big networks
 - `Roughly what do you process in card volume each month?` ( `$250K–$1M` · `$1M–$5M` · `$5M–$25M` · `$25M+` )
 - `Number of venues`
 - `Ticketing or POS system (Ticketmaster, AudienceView, Square, etc.)`
-- `In one line: what would owning your guest data change for your organization?`
+- `In one line: what would keeping your guest data change for your organization?`
 
 **Button:** `See my full breakdown`
 
@@ -304,7 +324,7 @@ A secondary `Book a Demo` route opens a calendar booking, distinct from `Join th
 | `What about a multi-venue or franchise rollout?` | `One master account, individual venue branding, and consolidated reporting. Each venue sees its own interchange recovery and value-back numbers, and everything rolls up across the group on shared infrastructure, with a distinct currency per venue if you want it.` |
 | `Will it hold up on a busy event night?` | `Yes. The QR-code flow is built for doors-open peak load: no terminal queue, no new hardware, and approvals in about 20 seconds at the concession or the box office.` |
 | `Can guests use it outside the venue?` | `Yes. Once a guest holds a credit line in your venue's brand, it works at any participating merchant, and your venue's brand follows the guest beyond the event.` |
-| `Is my guest data really mine?` | `Yes. Consent-driven, opt-in by default, de-identified for analytics, and handled under Canadian privacy law, including PIPEDA. Your venue owns the guest relationship. A competing credit facility does not.` |
+| `Is my guest data really mine?` | `Yes. Consent-driven, opt-in by default, de-identified for analytics, and handled under Canadian privacy law, including PIPEDA. The guest relationship stays yours, never a competing credit facility's.` |
 | `How soon do I see savings?` | `Interchange recovery starts the month after activation, reported per venue and in aggregate.` |
 | `Who qualifies?` | `Venues and operators processing $250K or more per month in card volume. Single-venue and multi-venue organizations both qualify — the savings and data benefits are proportional to your volume.` |
 
