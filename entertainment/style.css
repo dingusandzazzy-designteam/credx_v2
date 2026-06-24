@@ -421,14 +421,22 @@ p { line-height: 1.6; max-width: 65ch; }
   width: auto;
 }
 
-/* The CredX wordmark SVG ships a fixed dark-navy fill (#062641), invisible on
-   the dark navbar/footer. Recolor per theme: white on dark surfaces (default),
-   natural navy on light. Covers nav + footer (both flip with the theme). */
-img[src$="Credx-name.svg"] {
+/* The CredX wordmark SVG has only a viewBox (no width/height), so the global
+   `img { height: auto }` reset above collapses it to zero — set an explicit
+   size. It also ships a fixed dark-navy fill (#062641) invisible on dark
+   surfaces, so recolor per theme: white on dark (default), navy on light.
+   Covers nav + footer (both flip with the theme). */
+.nav__logo img,
+.footer img[src$="Credx-name.svg"] {
+  width: auto;
   filter: brightness(0) invert(1);
 }
 
-[data-theme="light"] img[src$="Credx-name.svg"] {
+.nav__logo img { height: 28px; }
+.footer img[src$="Credx-name.svg"] { height: 32px; }
+
+[data-theme="light"] .nav__logo img,
+[data-theme="light"] .footer img[src$="Credx-name.svg"] {
   filter: none;
 }
 
