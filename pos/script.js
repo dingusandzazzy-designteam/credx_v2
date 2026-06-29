@@ -531,7 +531,7 @@
         // Phase 7: push step 1 to Kyle's CRM here — fires even if step 2 is skipped.
         console.log('Signup step 1 (placeholder → CRM):', Object.fromEntries(new FormData(signupForm).entries()));
         if (reward) {
-          reward.textContent = ‘You are in. Be the platform that pays for itself. Two more questions and we will model your channel.’;
+          reward.textContent = 'You are in. Be the platform that pays for itself. Two more questions and we will model your channel.';
           reward.hidden = false;
         }
         if (step2) step2.hidden = false;
