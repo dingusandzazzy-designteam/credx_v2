@@ -41,8 +41,8 @@
 | Field | Value |
 |---|---|
 | Eyebrow | `For POS Platforms & ISVs` |
-| Headline (H1) | `Give Your Merchants the Offer No Competing Platform Can Match` |
-| Subheadline | `You run the payment. CredX builds the value layer underneath it — embedded credit and value-back, white-labelled under your brand. Your merchants save, and they stay on your platform because the value is built in.` |
+| Headline (H1) | `The card network takes the fees and keeps the data. Your merchants get the invoice. CredX closes the loop.` |
+| Subheadline | `Today, the interchange system splits your transaction data across rail companies that give nothing back. Your platform is left with settlement files and zero customer intelligence. CredX builds the value layer underneath your existing payments — embedded credit and value-back, white-labelled under your brand.` |
 | Primary CTA | `Explore a Partnership` → scrolls to §8 form |
 | Secondary CTA | `See the merchant ROI` → scrolls to §4 Gains |
 | Hero asset | ⚠ placeholder (image-light) — POS render deferred. |
@@ -81,23 +81,23 @@
 | Field | Value |
 |---|---|
 | Headline | `The platform that earns the merchant should keep the merchant.` |
-| Body | `Right now you run the transaction, and the credit facility network keeps everything that comes after: the merchant's customer, the data, and the loyalty. CredX puts that back on your platform. Your value layer, your brand, your merchants.` |
+| Body | `Right now you run the transaction, and the card network keeps everything that comes after: the merchant's customer, the data, and the loyalty. CredX puts that back on your platform. Your value layer, your brand, your merchants.` |
 
 ### Three Voices, One Direction
 
 > **Build note:** render as collapsed expanders (accordion). Three voices, one closing line.
 
 **The Platform**
-*"Your merchants were already loyal. A competing credit facility was the only one profiting from it."*
-You built the platform your merchants run their business on. But every transaction sent a piece of their margin to a system that does not answer to you, and the loyalty their customers built accrued to a credit facility network instead of to your platform. CredX gives that back — not just as savings for your merchants, but as a tool you own: an embedded value layer that turns interchange into a differentiator, built-in revolving credit with no lending risk on anyone's books, and a retention moat competing platforms cannot match. A growing community of platforms, done handing their merchants' loyalty to a credit facility network. This is your channel. Finally.
+*"Your merchants were already loyal. A card network was the only one profiting from it."*
+You built the platform your merchants run their business on. But every transaction sent a piece of their margin to a system that does not answer to you, and the loyalty their customers built accrued to a card network instead of to your platform. CredX gives that back — not just as savings for your merchants, but as a tool you own: an embedded value layer that turns interchange into a differentiator, built-in revolving credit with no lending risk on anyone's books, and a retention moat competing platforms cannot match. A growing community of platforms, done handing their merchants' loyalty to a card network. This is your channel. Finally.
 
 **The Merchant**
 *"They have been subsidizing the system for long enough."*
-Every transaction sent roughly 3% to someone the merchant never met, and the value piled up with a competing credit facility instead of staying in their business. CredX changes that. On your platform, merchants lower their costs, offer their own customers branded credit and value-back, and keep more of what they earn. This is a shift in who the platform works for.
+Every transaction sent roughly 3% to someone the merchant never met, and the value piled up with a card network instead of staying in their business. CredX changes that. On your platform, merchants lower their costs, offer their own customers branded credit and value-back, and keep more of what they earn. This is a shift in who the platform works for.
 
 **The Lender**
 *"Finally, credit that earns where the spending already happens."*
-Community lenders have always been closer to their members than the big networks, but the credit facility network always captured the transaction. CredX changes the rail: fund embedded credit directly at the point of sale, a diversified, closed-loop asset class, with delinquency controls built in so risk stays managed.
+Community lenders have always been closer to their members than the big networks, but the card network always captured the transaction. CredX changes the rail: fund embedded credit directly at the point of sale, a diversified, closed-loop asset class, with delinquency controls built in so risk stays managed.
 
 **Closer:** `The old system extracted value from all three. CredX returns it.`
 
@@ -131,8 +131,8 @@ Community lenders have always been closer to their members than the big networks
 
 | Item | Copy |
 |---|---|
-| Your merchant. | `The relationship stays on your platform, in your brand, not a competing credit facility's. The merchant who runs on your platform — and the loyalty their customers build — belongs to your channel.` |
-| Your access to data. | `Consent-driven and de-identified: which merchants grow, which segments drive the most volume, and where embedded credit lifts retention across your channel.` |
+| Your merchant. | `The relationship stays on your platform, in your brand, not a card network's. The merchant who runs on your platform — and the loyalty their customers build — belongs to your channel.` |
+| Your access to data. | `186 verified data sources across the 5 C's of credit — financial, location, inventory, purchase timing, and behavioural — tied directly to the individual customer, not aggregated cohorts. No other platform on the market consolidates all five. Independently confirmed by two of the Big Four accounting firms. Consent-driven and de-identified: which merchants grow, which segments drive the most volume, and where embedded credit lifts retention across your channel.` |
 | Keep the loyalty inside your platform. | `A closed-loop value-back layer in each merchant's own currency, where $1 spent is $1 earned, that keeps a merchant's customers spending with them — and keeps the merchant on your platform.` |
 
 ### White-label beat
@@ -161,20 +161,20 @@ Community lenders have always been closer to their members than the big networks
 
 | # | Title | Body |
 |---|---|---|
-| 1 | `Hand your merchants up to 85% interchange recovery` | `$6,000 per $1M with CredX, against roughly $36,000 with a competing credit facility. That is up to $30,000 back for every $1M a merchant processes — a saving you deliver, and a differentiator competing platforms cannot match.` |
-| 2 | `Earn on the credit you used to send away` | `A credit line of up to $5,000 in each merchant's own brand, approved in about 20 seconds at checkout, at roughly half the rate of a standard card. The merchant is paid in full and upfront, the lending risk stays with CredX and its lender partners, and your platform shares in the value through a revenue share — never on anyone's books.` |
+| 1 | `Hand your merchants up to 85% interchange recovery` | `$6,000 per $1M with CredX, against roughly $36,000 with a card network. That is up to $30,000 back for every $1M a merchant processes — a saving you deliver, and a differentiator competing platforms cannot match.` |
+| 2 | `Earn on the credit you used to send away` | `Embedded credit of up to $5,000 in each merchant's own brand, approved in about 20 seconds at checkout, at roughly half the rate of a standard card. The merchant is paid in full and upfront, the lending risk stays with CredX and its lender partners, and your platform earns on the economics — never on anyone's books.` |
 | 3 | `See your channel in real time` | `A monthly dashboard in plain language, not raw numbers: which merchants grow, which segments drive volume, and where embedded credit lifts retention. The channel intelligence your current setup never handed you.` |
 
 ### Benchmark proof line (below the three gain cards)
 
-`Merchants who add embedded credit at the point of sale see up to a 321% lift in purchase frequency and 76% larger transactions (PayPal embedded credit benchmark).`
+`When your merchants recover up to 85% of their interchange costs, they reinvest. Promotions, VIP packages, seasonal pricing, loyalty programmes — funded not by their marketing budget, but by money that used to leave their business entirely. Add embedded credit at checkout — up to $5,000 per customer, in the merchant's own brand, at roughly half the rate of a standard card — and the effect compounds. Merchants with embedded credit at the point of sale see up to a 321% lift in purchase frequency and 76% larger transactions (PayPal embedded credit benchmark). Your platform makes both possible. That is a differentiator no competing platform can match.`
 
 ### Key-outcomes strip
 
 | Value | Caption |
 |---|---|
 | `$30K` | `recovered per $1M a merchant processes.` |
-| `Yours` | `the merchant, the data, and the loyalty. Not a competing credit facility's.` |
+| `Yours` | `the merchant, the data, and the loyalty. Not a card network's.` |
 | `One API` | `to integrate. No new hardware for merchants.` |
 
 **Section CTAs:** `Explore a Partnership` (→ §8 form) · `See the operating model` (→ §7).
@@ -206,7 +206,7 @@ Community lenders have always been closer to their members than the big networks
 
 | Field | Value |
 |---|---|
-| Caption | `Illustrative. Based on recovering up to 85% of standard interchange — roughly $36K per $1M with a competing credit facility, against $6K per $1M with CredX. Your channel's number depends on merchant count, volume, and card mix.` |
+| Caption | `Illustrative. Based on recovering up to 85% of standard interchange — roughly $36K per $1M with a card network, against $6K per $1M with CredX. Your channel's number depends on merchant count, volume, and card mix.` |
 | CTA | `Explore a Partnership` → scrolls to §8 form |
 
 **Notes:**
@@ -233,7 +233,7 @@ Community lenders have always been closer to their members than the big networks
 | 1 | `Spec review and Merchant Network Agreement` | `We align on the integration spec and sign a Merchant Network Agreement. Your platform, your checkout, and your payment processor all stay in place.` |
 | 2 | `Build in the sandbox` | `One REST API, with SDKs and a full sandbox. CredX activates as a toggle in your platform — no new hardware for merchants, no change to their checkout. Typical path to production runs about 4 to 8 weeks, against a roughly 12-month in-house build.` |
 | 3 | `Go live across your channel` | `Each merchant flips CredX on at checkout. Their customers are approved for branded credit in about 20 seconds, value-back accrues in the merchant's own currency at $1 for every $1 spent, and the loyalty stays inside your platform.` |
-| 4 | `Your monthly channel report arrives` | `Interchange recovered and value-back earned across your channel, broken out per merchant and in aggregate, with your revenue share reconciled.` |
+| 4 | `Your monthly channel report arrives` | `Interchange recovered and value-back earned across your channel, broken out per merchant and in aggregate, with your channel economics reconciled.` |
 
 **Notes:**
 - "one API" + "no new hardware" + sandbox → production = the developer-experience beat (Template B centrepiece).
@@ -256,14 +256,15 @@ Community lenders have always been closer to their members than the big networks
 
 | Function | CredX | Your Platform | Merchant |
 |---|---|---|---|
-| Underwriting | Owns | — | — |
-| Funding | Owns (with lender partners) | — | — |
-| Servicing | Owns | — | — |
-| Collections | Owns | — | — |
-| Risk | Owns | — | — |
-| Compliance (SOC 2, PIPEDA) | Owns | — | — |
+| Underwriting | Carries | — | — |
+| Funding | Carries (with lender partners) | — | — |
+| Servicing | Carries | — | — |
+| Collections | Carries | — | — |
+| Risk | Carries | — | — |
+| Compliance (SOC 2, PIPEDA) | Carries | — | — |
+| Support | Carries | — | — |
 | Brand and checkout | Behind the scenes | Owns (white-label) | Owns (their customers) |
-| Revenue share | Credit + servicing margin | Share of the savings delta | Lower costs + value-back |
+| Economics | Credit + servicing margin | Share of the savings delta | Lower costs + value-back |
 
 ### Built for
 
@@ -315,10 +316,10 @@ Community lenders have always been closer to their members than the big networks
 **Button:** `Explore a Partnership`
 
 **Micro-reward on submit:**
-`You are in. Across a channel of 1,000 merchants, CredX could put up to $30M a year back in your merchants' pockets. Two more questions and we will model your channel.`
+`You are in. Be the platform that pays for itself. Two more questions and we will model your channel.`
 
 ### Step 2 — Tell us about your platform
-*(Optional. Helps us scope the integration and the revenue share.)*
+*(Optional. Helps us scope the integration and the channel economics.)*
 
 - `Type of platform` ( `POS platform` · `ISV / vertical SaaS` · `Payment facilitator` · `Integration / channel partner` · `Other` )
 - `Roughly how many merchants are on your platform?` ( `Under 1,000` · `1,000 – 10,000` · `10,000 – 50,000` · `50,000+` )
@@ -347,10 +348,10 @@ There is **no "Book a Demo"** on the channel page (per `audiences/pos.md`). A se
 |---|---|
 | `Does CredX replace my payment processor or POS?` | `No. CredX runs as a value layer underneath your existing payment flow. Your platform, your checkout, and your merchants' payment processing all stay in place. It integrates through one API, with no new hardware for merchants, and typical integration runs 4 to 8 weeks.` |
 | `What does the API integration actually involve?` | `One REST API, with SDKs and a full sandbox to build against before you go live. CredX activates as a toggle in your platform. Most partners reach production in 4 to 8 weeks, against a roughly 12-month in-house build for underwriting, servicing, funding, and compliance.` |
-| `How does the revenue share work?` | `Per partnership agreement. CredX captures the credit and servicing margin; your platform shares in the savings delta CredX creates for your merchants. We model the specific structure with you during the partnership conversation.` |
+| `How does the channel economics work?` | `Per partnership agreement. CredX captures the credit and servicing margin; your platform earns on the savings delta CredX creates for your merchants. We model the specific structure with you during the partnership conversation.` |
 | `Whose brand do merchants and their customers see?` | `Yours. Full white-label is the default for channel partnerships — the merchant and their customer see your platform's brand, while the underwriting, servicing, credit, and compliance run behind the scenes as CredX.` |
 | `Who carries the lending risk?` | `CredX and its community lender partners. The merchant is paid in full and upfront, and the credit risk never sits on your platform's books or the merchant's.` |
-| `Is this PCI, SOC 2, and privacy compliant?` | `Yes. SOC 2 and PIPEDA compliant, data de-identified and consent-driven, and handled under Canadian privacy law. The merchant relationship stays yours, never a competing credit facility's.` |
+| `Is this PCI, SOC 2, and privacy compliant?` | `Yes. SOC 2 and PIPEDA compliant, data de-identified and consent-driven, and handled under Canadian privacy law. The merchant relationship stays yours, never a card network's.` |
 | `What about multi-region or large-channel rollouts?` | `One integration, individual merchant branding, and consolidated channel reporting. Each merchant sees its own recovery and value-back numbers, and everything rolls up across your channel on shared infrastructure.` |
 | `Who is a good fit?` | `POS platforms, ISVs, payment facilitators, and channel partners. Platforms with 1,000 or more merchants and $100M or more in annual volume see the channel multiplier compound fastest.` |
 
