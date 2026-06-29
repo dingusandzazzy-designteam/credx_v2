@@ -41,7 +41,8 @@
 | Field | Value |
 |---|---|
 | Eyebrow | `For POS Platforms & ISVs` |
-| Headline (H1) | `The card network takes the fees and keeps the data. Your merchants get the invoice. CredX closes the loop.` |
+| Headline (H1) | `The card network takes the fees and keeps the data.` |
+| Deck line | `Your merchants get the invoice. CredX closes the loop.` |
 | Subheadline | `Today, the interchange system splits your transaction data across rail companies that give nothing back. Your platform is left with settlement files and zero customer intelligence. CredX builds the value layer underneath your existing payments — embedded credit and value-back, white-labelled under your brand.` |
 | Primary CTA | `Explore a Partnership` → scrolls to §8 form |
 | Secondary CTA | `See the merchant ROI` → scrolls to §4 Gains |

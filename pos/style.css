@@ -795,6 +795,16 @@ p { line-height: 1.6; max-width: 65ch; }
   margin-bottom: var(--s-5);
 }
 
+.hero__deck {
+  font-size: var(--type-h2);
+  font-weight: 600;
+  line-height: 1.2;
+  color: rgba(248, 249, 252, 0.7);
+  margin-bottom: var(--s-6);
+}
+
+[data-theme="light"] .hero__deck { color: #3a3f6a; }
+
 .hero__sub {
   font-size: var(--type-body-lg);
   color: var(--text-secondary);
