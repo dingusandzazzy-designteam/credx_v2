@@ -28,14 +28,14 @@ def answer():
     p.paragraph_format.left_indent = Pt(14)
 
 doc.add_heading('CredX — POS Platforms Landing Page Copy', level=0)
-para('For POS Platforms & ISVs · Channel / partnership page (Template B) · DRAFT for client review (2026-06-18)', italic=True)
+para('For POS Platforms and ISVs · Channel / partnership page (Template B) · DRAFT for client review (2026-06-18)', italic=True)
 
 h('Page metadata')
 field('Title', 'CredX for POS Platforms — Give Your Merchants the Offer No Competing Platform Can Match')
 field('Meta description', 'Add embedded credit and value-back to your POS with one API. Your merchants save up to $30K for every $1M they process — and they stay on your platform because the value is built in. The embedded value layer for POS platforms and ISVs.')
 
 h('1. Hero — The Movement (partnership pivot)')
-field('Eyebrow', 'For POS Platforms & ISVs')
+field('Eyebrow', 'For POS Platforms and ISVs')
 field('Headline', 'Give Your Merchants the Offer No Competing Platform Can Match')
 field('Subheadline', 'You run the payment. CredX builds the value layer underneath it — embedded credit and value-back, white-labelled under your brand. Your merchants save, and they stay on your platform because the value is built in.')
 field('Primary CTA', 'Explore a Partnership')

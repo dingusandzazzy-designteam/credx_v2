@@ -40,7 +40,7 @@
 
 | Field | Value |
 |---|---|
-| Eyebrow | `For POS Platforms & ISVs` |
+| Eyebrow | `For POS Platforms and ISVs` |
 | Headline (H1) | `The card network takes the fees and keeps the data.` |
 | Deck line | `Your merchants get the invoice. CredX closes the loop.` |
 | Subheadline | `Today, the interchange system splits your transaction data across rail companies that give nothing back. Your platform is left with settlement files and zero customer intelligence. CredX builds the value layer underneath your existing payments — embedded credit and value-back, white-labelled under your brand.` |
