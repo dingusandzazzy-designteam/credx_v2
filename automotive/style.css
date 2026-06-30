@@ -351,12 +351,6 @@ p { line-height: 1.6; max-width: 65ch; }
   margin-top: var(--s-8);
 }
 
-/* The .movement band stays dark in both themes, so its overlaid buttons must
-   keep the light-on-dark treatment even in light theme (same rationale as .hero--full). */
-[data-theme="light"] .movement .btn-secondary { color: var(--cloud-white); border-color: var(--cloud-white); }
-[data-theme="light"] .movement .btn-secondary:hover { background-color: var(--cloud-white); color: var(--ink); }
-[data-theme="light"] .movement .btn-primary { background-color: var(--magenta); }
-[data-theme="light"] .movement .btn-primary:hover { background-color: var(--purple); }
 
 /* Keep the nav uncrowded on small screens — drop the secondary demo button there
    (Book a Demo still appears in the Movement, Gains, and footer touchpoints). */
@@ -972,7 +966,7 @@ p { line-height: 1.6; max-width: 65ch; }
 }
 
 .movement {
-  background-color: var(--ink);
+  background-color: var(--surface-0);
   position: relative;
   overflow: hidden;
   padding-block: calc(var(--s-section) + var(--s-7));
@@ -989,8 +983,8 @@ p { line-height: 1.6; max-width: 65ch; }
   pointer-events: none;
 }
 
-/* Movement text is cloud-white in both themes (dark band) */
-.movement .movement__h2 { color: var(--cloud-white); }
+/* Movement h2 follows the page theme. */
+.movement .movement__h2 { color: var(--text-primary); }
 
 .movement__inner {
   position: relative;
@@ -1012,8 +1006,7 @@ p { line-height: 1.6; max-width: 65ch; }
 
 .movement__body {
   font-size: var(--type-body-lg);
-  color: var(--cloud-white);
-  opacity: 0.92;
+  color: var(--text-secondary);
   margin-inline: auto;
   margin-bottom: var(--s-7);
   max-width: 54ch;
@@ -1023,14 +1016,14 @@ p { line-height: 1.6; max-width: 65ch; }
 .movement__quote {
   margin-top: var(--s-7);
   padding-top: var(--s-6);
-  border-top: 1px solid rgba(248, 249, 252, 0.18);
+  border-top: 1px solid var(--border-subtle);
 }
 
 .movement__quote-text {
   font-size: var(--type-h3);
   font-weight: 500;
   line-height: 1.4;
-  color: var(--cloud-white);
+  color: var(--text-primary);
   max-width: 34ch;
   margin-inline: auto;
   text-wrap: balance;
@@ -1046,11 +1039,11 @@ p { line-height: 1.6; max-width: 65ch; }
   letter-spacing: 0.08em;
 }
 
-/* Three Voices, One Direction — accordion on the dark movement band */
+/* Three Voices, One Direction */
 .voices {
   margin-top: var(--s-8);
   padding-top: var(--s-6);
-  border-top: 1px solid rgba(248, 249, 252, 0.18);
+  border-top: 1px solid var(--border-subtle);
   text-align: left;
   display: flex;
   flex-direction: column;
@@ -1067,7 +1060,7 @@ p { line-height: 1.6; max-width: 65ch; }
   margin-bottom: var(--s-4);
 }
 .voices__item {
-  border: 1px solid rgba(248, 249, 252, 0.16);
+  border: 1px solid var(--border-subtle);
   border-radius: var(--radius-card-sm);
   overflow: hidden;
   transition: border-color var(--duration-fast) var(--ease-out-quart);
@@ -1106,18 +1099,18 @@ p { line-height: 1.6; max-width: 65ch; }
   font-size: var(--type-h3);
   font-weight: 500;
   line-height: 1.35;
-  color: var(--cloud-white);
+  color: var(--text-primary);
   padding-right: var(--s-7);
 }
 .voices__body { padding: 0 var(--s-6) var(--s-5); }
-.voices__body p { color: var(--cloud-white); opacity: 0.86; line-height: 1.6; }
+.voices__body p { color: var(--text-secondary); line-height: 1.6; }
 .voices__body p + p { margin-top: var(--s-4); }
 .voices__closer {
   text-align: center;
   font-family: var(--font-editorial);
   font-size: var(--type-h3);
   font-weight: 500;
-  color: var(--cloud-white);
+  color: var(--text-primary);
   margin-top: var(--s-5);
 }
 
