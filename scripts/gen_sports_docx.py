@@ -158,7 +158,7 @@ open_qs = [
  '4 community lender partners funding embedded credit — confirm the count.',
  'PayPal benchmark (321% lift in frequency, 76% larger transactions) applied to venues — OK to use as framed?',
  '“SOC 2 + PIPEDA compliant. Data de-identified, consent-driven, held to Canadian privacy law.” — confirm this claim is accurate as stated.',
- 'Data proof — the “5 C’s” claim. Already settled from the review: “All 5 data types in one place” (financial, location/GPS, inventory/product, purchase timing, behavioural — the only company with all five) is approved for the Gains section (Gaetan, 2026-06-23), and “104M+ transactions/month” via the banking partner is confirmed usable (Kyle). Still needed from you: what does “186 verified data sources across the 5 C’s of credit” refer to, and how much detail on the banking partner can we state publicly?',
+ 'Data proof — the “5 C’s” claim. What does “186 verified data sources across the 5 C’s of credit” refer to, and how much detail on the banking partner can we state publicly?',
  'FAQ “Who qualifies?” — the $250K/month floor may exclude smaller teams, and minor / junior leagues are a listed target audience. Keep the $250K figure, drop it, or add a second line for minor / junior leagues — and with what qualifying criteria?',
 ]
 for i,q in enumerate(open_qs,1):

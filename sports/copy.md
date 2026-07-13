@@ -356,7 +356,7 @@ A secondary `Book a Demo` route opens a calendar booking, distinct from `Join th
    → Answer:
 4. **"SOC 2 + PIPEDA compliant. Data de-identified, consent-driven, held to Canadian privacy law."** — confirm this claim is accurate as stated.
    → Answer:
-5. **Data proof — the "5 C's" claim.** Already settled from the review: **"All 5 data types in one place"** (financial, location/GPS, inventory/product, purchase timing, behavioural — the only company with all five) is approved for the Gains section (Gaetan, 2026-06-23), and **"104M+ transactions/month" via the banking partner** is confirmed usable (Kyle). Still needed from you: what does **"186 verified data sources across the 5 C's of credit"** refer to, and how much detail on the banking partner can we state publicly?
+5. **Data proof — the "5 C's" claim.** What does **"186 verified data sources across the 5 C's of credit"** refer to, and how much detail on the banking partner can we state publicly?
    → Answer:
 6. **FAQ "Who qualifies?" — the $250K/month floor** may exclude smaller teams, and minor / junior leagues are a listed target audience. Keep the $250K figure, drop it, or add a second line for minor / junior leagues — and with what qualifying criteria?
    → Answer:
