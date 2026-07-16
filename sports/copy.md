@@ -5,6 +5,7 @@
 > **Status:** DRAFT 2026-06-16 — first Sports build, then a `/credx-copy` review pass (folded in the `audiences/sports.md` substance: the $5K team-currency device, $3M calculator default, sports FAQ extras, naming guard). Copy-led: this file is canonical; `sports/index.html` mirrors it ([[feedback_copy_html_sync]]). No SEO ([[project_seo_scope_generic]] — only Generic gets SEO).
 > **Arc ratified (Marco, 2026-06-16):** Movement → Control → Gains is **carried to all verticals** from the client-approved Automotive precedent — no longer a per-vertical open question. Page remains DRAFT only pending the normal **Mauricio → client (Kyle/Kendall) copy review gate**.
 > **Client review folded in (2026-07-13):** applied the resolved comments from `CredX — Sports Landing Page Copy - reviewed 13072026.docx` (Kyle Bunbury / Gaetan Pierrot / Audrey Wilson): §2 headline → "understands the data understands the fan" (Audrey C1); The Fan gains the 11% vs 22.97% rate line (Kyle/Gaetan C4/C5); "credit line" → "revolving credit" for the fan product (Audrey C10/C13, page-wide); FAQ multi-venue reworded to open with "Yes" (Kyle/Gaetan C16/C17); **terminology — the old/incumbent way is now "legacy credit network(s)" (was "competing credit facility"/"credit facility network")** per Kyle C2 → Marco, differentiating it from CredX (the product term "Your credit facility, your brand, your fans" is untouched, per Gaetan C3). ⚠ This term **overrides** the skill's Feedback-04 locked substitution for Sports only. **Still pending client:** data proof points (5 data types / 5 C's / 104M), $250K qualifier floor for minor/junior leagues, lender-partner count, PayPal benchmark framing.
+> **Second client review folded in (2026-07-16 — Audrey Wilson):** applied Audrey's 7 comments dated 2026-07-15 from `CredX — Sports Landing Page Copy - feedback - 16072026.docx`. Actioned: §2 The Fan rate → **"approximately 11%"** (C6); §4 section label → **"The Gains — The Returns"** (was "The Cherry on the Cake" — casual vs other section names) (C12); §6 Step 2 reframed to lead with the objection-handler **"Nothing changes for your fans"** (C15); §7 key metrics — **lender count made generic** (dropped the "4", pending a confirmed number) (C20) and **SOC 2 + PIPEDA moved to the top** of the metrics strip (C21). **Still blocked on Kyle/client:** `$500M+` accuracy (C19), and the "5 C's" / "186 verified data sources" definition + how much banking-partner detail is public (C29) — both already tracked in Open Questions below.
 > **Audience:** **Pro teams, stadiums & leagues** — professional sports teams (NHL, CFL, MLS, WHL and equivalents), stadium/arena operators and concession management, league administration and ticketing bodies. Pitch is direct (merchant-style).
 > **Voice:** Premium · Aspirational · Enterprise-ready · Human. Mode: Operator / Merchant (the "operator" here is the team/venue).
 > **House style:** contractions expanded (do not / you are / we will / here is); Canadian spelling kept (white-labelled, PIPEDA); Oxford comma. Founder quote held verbatim (exempt).
@@ -93,7 +94,7 @@ You built the franchise. Your fans show up, in the cold, season after season. Bu
 
 **The Fan**
 *"They have been the product for long enough."*
-Every time they tap their card at the gate, someone they have never met profits from their loyalty, and the value piles up with a legacy credit network instead of going back to the team they love. CredX changes that. Fans benefit from the data they generate, access revolving credit at roughly half the rate of a standard card — 11% versus the national average of 22.97% — and keep more of what they earn with the teams and venues where they spend. This is a shift in who the game works for.
+Every time they tap their card at the gate, someone they have never met profits from their loyalty, and the value piles up with a legacy credit network instead of going back to the team they love. CredX changes that. Fans benefit from the data they generate, access revolving credit at roughly half the rate of a standard card — approximately 11% versus the national average of 22.97% — and keep more of what they earn with the teams and venues where they spend. This is a shift in who the game works for.
 
 **The Lender**
 *"Finally, credit that earns where the spending already happens."*
@@ -147,7 +148,7 @@ Community lenders have always been closer to their members than the big networks
 
 ---
 
-## 4 · THE GAINS — THE CHERRY ON THE CAKE
+## 4 · THE GAINS — THE RETURNS
 
 **Status:** DRAFT
 **Beat:** Three ways CredX pays the team back + key-outcomes strip.
@@ -221,7 +222,7 @@ Community lenders have always been closer to their members than the big networks
 | Step | Title | Body |
 |---|---|---|
 | 1 | `Sign a Merchant Network Agreement` | `Onboarding runs about 4 to 8 weeks. Your ticketing platform, POS, and payment processor all stay in place.` |
-| 2 | `CredX activates on your transaction flow` | `Your checkout is unchanged, with no new terminals or hardware to install. A QR-code flow runs underneath at the gate and the concession, capturing the interchange value and fan data your current setup leaves behind across every transaction.` |
+| 2 | `Nothing changes for your fans` | `Your checkout is unchanged and there is nothing new for your fans to learn — no new terminals or hardware to install. A QR-code flow runs underneath at the gate and the concession, capturing the interchange value and fan data your current setup leaves behind across every transaction.` |
 | 3 | `Your monthly report arrives` | `Interchange recovered and value-back earned, broken out per venue and in aggregate.` |
 | 4 | `Fans get branded credit and value-back` | `Revolving credit of up to $5,000, issued in your team's own brand and approved in about 20 seconds at the gate, with value-back accruing in your team's own currency at $1 for every $1 spent. The relationship stays yours.` |
 
@@ -256,9 +257,9 @@ Community lenders have always been closer to their members than the big networks
 
 | Metric | Status |
 |---|---|
+| `SOC 2 + PIPEDA compliant. Data de-identified, consent-driven, and held to Canadian privacy law.` | DRAFT — moved up per Audrey C21 (2026-07-16) |
 | `$500M+ in Merchant Network Agreements signed` | ⚠ confirm figure |
-| `4 community lender partners funding embedded credit` | DRAFT |
-| `SOC 2 + PIPEDA compliant. Data de-identified, consent-driven, and held to Canadian privacy law.` | DRAFT |
+| `Community lender partners funding embedded credit` | generic — count dropped per Audrey C20 (2026-07-16), pending confirmed number |
 
 **Notes:**
 - No people, no persona quotes in this section.
@@ -348,15 +349,15 @@ A secondary `Book a Demo` route opens a calendar booking, distinct from `Join th
 
 > **For Kyle / Kendall / Audrey.** These are the copy claims still awaiting confirmation before public launch. The items resolved in the 2026-07-13 review round are already folded into the copy above; only the still-open ones remain here. None block reading the copy; they block public launch.
 
-1. **$500M+ in Merchant Network Agreements signed** — confirm the figure (or give the correct one).
+1. **$500M+ in Merchant Network Agreements signed** — confirm the figure (or give the correct one). *(Audrey re-flagged 2026-07-16, C19: "is this verified/confirmed? We want to make sure it is accurate.")*
    → Answer:
-2. **4 community lender partners funding embedded credit** — confirm the count.
+2. **Community lender partners funding embedded credit** — confirm the count. *(The "4" was removed from the copy 2026-07-16 per Audrey C20 — "we do not have a specific number yet, do not want to misrepresent." The metric now reads generic; restore a number here once confirmed.)*
    → Answer:
 3. **PayPal benchmark (321% lift in frequency, 76% larger transactions)** applied to venues — OK to use as framed?
    → Answer:
 4. **"SOC 2 + PIPEDA compliant. Data de-identified, consent-driven, held to Canadian privacy law."** — confirm this claim is accurate as stated.
    → Answer:
-5. **Data proof — the "5 C's" claim.** What does **"186 verified data sources across the 5 C's of credit"** refer to, and how much detail on the banking partner can we state publicly?
+5. **Data proof — the "5 C's" claim.** What does **"186 verified data sources across the 5 C's of credit"** refer to, and how much detail on the banking partner can we state publicly? *(Audrey re-flagged 2026-07-16, C29: may need a public definition — "people may not know what this means, particularly 5 C's of credit.")*
    → Answer:
 6. **FAQ "Who qualifies?" — the $250K/month floor** may exclude smaller teams, and minor / junior leagues are a listed target audience. Keep the $250K figure, drop it, or add a second line for minor / junior leagues — and with what qualifying criteria?
    → Answer:
