@@ -491,7 +491,8 @@
     });
   }
 
-  /* ---- 6. Theme toggle (localStorage + first-load handled inline in <head>) ---- */
+  /* ---- 6. Theme toggle DISABLED — light theme deferred to a future update.
+     Un-comment this block (plus the head FOUC script and the nav <template>) to restore.
 
   const themeToggle = document.querySelector('[data-theme-toggle]');
   if (themeToggle) {
@@ -508,6 +509,7 @@
       if (meta) meta.setAttribute('content', next === 'light' ? '#f4f5f9' : '#0b0c16');
     });
   }
+  */
 
   /* ---- 7. Signup — 2-step progressive form (placeholder → CRM in Phase 7) ---- */
 
@@ -566,6 +568,28 @@
       } else {
         target.scrollIntoView({ behavior: prefersReducedMotion ? 'auto' : 'smooth', block: 'start' });
       }
+    });
+  });
+})();
+
+/* ============================================================
+   CredX Website — multi-page nav: mobile menu toggle
+   (appended for the credx-website Home build; not in the vertical base)
+   ============================================================ */
+(function () {
+  var nav = document.querySelector('.nav');
+  var toggle = document.querySelector('[data-nav-toggle]');
+  if (!nav || !toggle) return;
+  toggle.addEventListener('click', function () {
+    var open = nav.classList.toggle('nav--open');
+    toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+  });
+  nav.querySelectorAll('.nav__link').forEach(function (link) {
+    link.addEventListener('click', function () {
+      nav.classList.remove('nav--open');
+      toggle.setAttribute('aria-expanded', 'false');
+      toggle.setAttribute('aria-label', 'Open menu');
     });
   });
 })();

@@ -5,9 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#0b0c16" />
 
-  <!-- Set theme before paint to avoid FOUC. A saved toggle preference always
-       wins; with no saved preference we follow the OS (prefers-color-scheme),
-       falling back to the dark brand default. -->
+  <!-- Light theme + toggle DEFERRED to a future update. Dark is the only theme now.
+       The FOUC script below is disabled; the [data-theme="light"] CSS stays but never
+       activates. To restore: un-comment this script, unwrap the theme-toggle <template>
+       in the nav, and un-comment script.js section 6.
   <script>
     (function () {
       try {
@@ -18,6 +19,7 @@
       } catch (e) {}
     })();
   </script>
+  -->
 
   <!-- Campaign metadata (per sports/copy.md §Page metadata — SEO dropped, not indexed) -->
   <title>CredX for Teams &amp; Venues — Keep the Loyalty Your Fans Give You</title>
@@ -47,6 +49,8 @@
         <img src="../assets/logo/Credx-name.svg" alt="CredX" height="28" />
       </a>
       <div class="nav__actions">
+        <!-- Theme toggle deferred to a future update; markup preserved inert in the template below. Restore: unwrap it, then un-comment the head FOUC script and script.js section 6. -->
+        <template data-deferred="theme-toggle">
         <button class="theme-toggle" data-theme-toggle type="button" aria-label="Toggle light and dark theme">
           <svg class="theme-toggle__icon theme-toggle__icon--sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <circle cx="12" cy="12" r="4" /><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41" />
@@ -55,6 +59,7 @@
             <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
           </svg>
         </button>
+        </template>
         <!-- Book a Demo = secondary, distinct destination (Calendly, pending Kyle); falls back to #form for now. Join the Movement stays dominant (Change Log #02). -->
         <a href="#form" class="btn btn-secondary nav__cta nav__cta--demo" data-book-demo>Book a Demo</a>
         <a href="#form" class="btn btn-primary nav__cta">Join the Movement</a>

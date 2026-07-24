@@ -419,6 +419,12 @@ There is **no "Book a Demo"** on the channel page (per `audiences/pos.md`). A se
 15. **"SOC 2 + PIPEDA compliant. Data de-identified, consent-driven, held to Canadian privacy law."** — confirm this claim is accurate as stated for the channel partnership.
    → Answer:
 
+### E · Research / examples (pending access)
+
+16. **RAMP InterActive as ISV example** — Kyle flagged RAMP InterActive (sports administration SaaS, $1B+ in registrations) as a strong ISV use-case and shared a business case document. DZ does not have access to the Google Drive link. Pending Kyle sharing the file directly.
+    → Once received: review for KPIs or differentiators worth surfacing on the POS page (section §3 "What Your Platform Gets Back" or §4 "The Gains").
+    → Answer:
+
 ### Related (not copy — heads-up)
 
 - **POS imagery** is image-light placeholder; partnership / integration / channel-conference renders are a separate Phase-5 task (no answer needed here).

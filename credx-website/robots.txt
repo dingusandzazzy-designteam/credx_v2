@@ -1,0 +1,7 @@
+# CredX website robots.txt — PRE-BUILD DRAFT (Phase 4).
+# Sitemap domain https://credx.ca is a PROVISIONAL PLACEHOLDER pending client resolution — swap on domain lock.
+# Add Disallow lines for staging/admin paths when they exist.
+User-agent: *
+Allow: /
+
+Sitemap: https://credx.ca/sitemap.xml

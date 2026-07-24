@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0b0c16" />
+
+  <!-- Light theme + toggle DEFERRED to a future update. Dark is the only theme now.
+       The FOUC script below is disabled; the [data-theme="light"] CSS stays but never
+       activates. To restore: un-comment this script, unwrap the theme-toggle <template>
+       in the nav, and un-comment script.js section 6.
+  <script>
+    (function () {
+      try {
+        var stored = localStorage.getItem('credx-theme');
+        var useLight = stored === 'light' ||
+          (!stored && window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches);
+        if (useLight) document.documentElement.setAttribute('data-theme', 'light');
+      } catch (e) {}
+    })();
+  </script>
+  -->
+
+  <!-- Page metadata (per copy/home.md — INDEXED; SEO budgets bind) -->
+  <title>Embedded Lending for Merchants | CredX</title>
+  <meta name="description" content="CredX is the embedded lending platform that keeps the customer, the data, and the value your business earns. Recover up to $30,000 per $1M you process." />
+  <link rel="canonical" href="https://credx.ca/" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Embedded Lending for Merchants | CredX" />
+  <meta property="og:description" content="Keep the customer, the data, and the value your business earns. Recover up to $30,000 for every $1M you process." />
+  <meta property="og:image" content="images/og.jpg" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://credx.ca/" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="icon" href="../assets/logo/credx-shape.svg" type="image/svg+xml" />
+
+  <!-- Fonts: Inter (display + body) + Fraunces (editorial accent). Locked to 2 families. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" />
+
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Organization schema (per plan §6/§7 — homepage) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "CredX",
+    "url": "https://credx.ca",
+    "logo": "https://credx.ca/assets/logo/credx-shape.svg",
+    "description": "CredX is an embedded lending platform that keeps the customer, the data, and the value a business earns.",
+    "areaServed": "CA"
+  }
+  </script>
+</head>
+<body>
+  <!-- Nav (G1) — multi-page header: How It Works · For Lenders · About · [Book a meeting] + theme toggle -->
+  <nav class="nav" aria-label="Primary">
+    <div class="container nav__inner">
+      <a href="/" class="nav__logo" aria-label="CredX home">
+        <img src="../assets/logo/Credx-name.svg" alt="CredX" height="28" />
+      </a>
+      <div class="nav__links" data-nav-menu>
+        <a href="/how-it-works" class="nav__link">How It Works</a>
+        <a href="/lenders" class="nav__link">For Lenders</a>
+        <a href="/about" class="nav__link">About</a>
+      </div>
+      <div class="nav__actions">
+        <!-- Theme toggle deferred to a future update; markup preserved inert in the template below. Restore: unwrap it, then un-comment the head FOUC script and script.js section 6. -->
+        <template data-deferred="theme-toggle">
+        <button class="theme-toggle" data-theme-toggle type="button" aria-label="Toggle light and dark theme">
+          <svg class="theme-toggle__icon theme-toggle__icon--sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="4" /><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41" />
+          </svg>
+          <svg class="theme-toggle__icon theme-toggle__icon--moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+          </svg>
+        </button>
+        </template>
+        <a href="/contact" class="btn btn-primary nav__cta">Book a meeting</a>
+        <button class="nav__toggle" data-nav-toggle type="button" aria-label="Open menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <main id="top">
+    <!-- ============================================================
+         S1 — HERO · The Movement
+         Placeholder background (gradient) until the hero render lands (Phase 8).
+         ============================================================ -->
+    <section class="hero hero--full" aria-label="Hero">
+      <!-- Placeholder render wired per prompts.md; drop-in replace by filename later.
+           Light theme deferred → only hero-dark is wired (add the hero-light <picture>
+           when the toggle returns). -->
+      <picture>
+        <source srcset="images/hero-dark.webp" type="image/webp" />
+        <img src="images/hero-dark.jpg" alt="A business owner at a premium branded checkout, mid-interaction with a returning customer at dusk" class="hero__bg hero__bg--dark" width="1920" height="1080" />
+      </picture>
+      <div class="hero__overlay" aria-hidden="true"></div>
+      <div class="container hero__inner">
+        <div class="hero__copy">
+          <span class="eyebrow eyebrow--accent" data-reveal>For Businesses That Earn Their Customers</span>
+          <h1 class="hero__h1" data-reveal-words>
+            Embedded Lending That Keeps the Customer <em class="accent">Yours</em>
+          </h1>
+          <p class="hero__sub" data-reveal data-reveal-delay="2">
+            Embedded lending puts credit and value back inside your own checkout. Every transaction builds a relationship, and CredX keeps it yours: the customer, the data, and the loyalty.
+          </p>
+          <p class="hero__movement" data-reveal data-reveal-delay="3">A system you belong to, instead of one that owns you.</p>
+          <div class="hero__ctas" data-reveal data-reveal-delay="4">
+            <a href="/contact" class="btn btn-primary">Book a meeting</a>
+            <a href="/how-it-works" class="btn btn-secondary">See how it works</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         S2 — THE MOVEMENT (one-liner + Three Voices accordion + partnership synthesis)
+         ============================================================ -->
+    <section id="movement" class="section movement" aria-label="The movement">
+      <div class="container movement__inner">
+        <h2 class="movement__h2" data-reveal-words>
+          The business that earns the customer <em class="accent">should keep the customer</em>.
+        </h2>
+        <p class="movement__body" data-reveal data-reveal-delay="1">
+          Today, your payment processor runs the transaction, and a competing credit facility keeps everything that comes after: who your customer is, what they spend, and when they return. Embedded lending puts that back in your hands. Your credit facility, your brand, your customer.
+        </p>
+
+        <!-- Three Voices, One Direction — full-image cards. The voice's LINE is
+             visible by default over the image; on fine-pointer devices the
+             supporting text reveals on hover / keyboard focus, on touch it stays
+             visible (no hover dependency). Layout-only — IA unchanged (still
+             Merchant · Customer · Lender). Media = dark brand placeholder until
+             Phase-8 imagery lands (casting still pending Audrey sign-off). -->
+        <div class="voices" data-reveal data-reveal-delay="1">
+          <span class="voices__eyebrow">Three Voices, One Direction</span>
+          <ul class="voices__grid" role="list">
+            <li>
+              <article class="voice-card" tabindex="0" data-reveal data-reveal-delay="1">
+                <span class="voice-card__media" aria-hidden="true">
+                  <picture>
+                    <source srcset="images/voice-merchant.webp" type="image/webp" />
+                    <img src="images/voice-merchant.jpg" alt="" width="960" height="1200" loading="lazy" />
+                  </picture>
+                </span>
+                <span class="voice-card__scrim" aria-hidden="true"></span>
+                <div class="voice-card__content">
+                  <h3 class="voice-card__role">The Merchant</h3>
+                  <p class="voice-card__line">“Your customers were already loyal. A competing credit facility was the only one charging you for it.”</p>
+                  <div class="voice-card__support">
+                    <p>You built the relationship and earned the trust, yet every transaction sends a piece of your margin to a system that does not know your customer by name. CredX gives that back: lower costs on every transaction, revolving credit in your own brand with no lending risk on your books, and a data view of who your buyers really are. A growing community of businesses, done handing their growth to a credit facility network.</p>
+                  </div>
+                </div>
+              </article>
+            </li>
+            <li>
+              <article class="voice-card" tabindex="0" data-reveal data-reveal-delay="2">
+                <span class="voice-card__media" aria-hidden="true">
+                  <picture>
+                    <source srcset="images/voice-customer.webp" type="image/webp" />
+                    <img src="images/voice-customer.jpg" alt="" width="960" height="1200" loading="lazy" />
+                  </picture>
+                </span>
+                <span class="voice-card__scrim" aria-hidden="true"></span>
+                <div class="voice-card__content">
+                  <h3 class="voice-card__role">The Customer</h3>
+                  <p class="voice-card__line">“They have been the product for long enough.”</p>
+                  <div class="voice-card__support">
+                    <p>Every time a customer taps their card, someone they have never met profits from their loyalty, and they never see a cent of it. CredX changes that. Customers benefit from the value they generate, reach fairer credit, and keep more of what they earn where they already spend.</p>
+                  </div>
+                </div>
+              </article>
+            </li>
+            <li>
+              <article class="voice-card" tabindex="0" data-reveal data-reveal-delay="3">
+                <span class="voice-card__media" aria-hidden="true">
+                  <picture>
+                    <source srcset="images/voice-lender.webp" type="image/webp" />
+                    <img src="images/voice-lender.jpg" alt="" width="960" height="1200" loading="lazy" />
+                  </picture>
+                </span>
+                <span class="voice-card__scrim" aria-hidden="true"></span>
+                <div class="voice-card__content">
+                  <h3 class="voice-card__role">The Lender</h3>
+                  <p class="voice-card__line">“Finally, credit that earns where the spending already happens.”</p>
+                  <div class="voice-card__support">
+                    <p>Community lenders have always been closer to their members than the big networks, yet the credit facility network always captured the transaction. CredX changes the rail with fund-embedded, merchant-linked credit at the point of sale. It is a diversified, closed-loop asset class with built-in delinquency controls, so risk stays managed.</p>
+                  </div>
+                </div>
+              </article>
+            </li>
+          </ul>
+          <p class="voices__partnership"><strong>One partnership across all three:</strong> CredX puts its own money into your business, then delivers that value to your customers under your brand. You keep the customer and the relationship, your customers keep more of what they earn, and community lenders fund the credit that makes it work.</p>
+          <p class="voices__closer">The old system extracted value from all three. <em class="accent">CredX returns it.</em></p>
+        </div>
+
+        <div class="section-ctas" data-reveal>
+          <a href="#calc" class="btn btn-primary">Run the numbers</a>
+          <a href="/contact" class="btn btn-secondary">Book a meeting</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         S3 — CONTROL · What You Get Back
+         ============================================================ -->
+    <section id="control" class="section control" aria-label="Take control">
+      <div class="container">
+        <div class="control__header">
+          <span class="eyebrow" data-reveal>Take Control of Your Business</span>
+          <h2 class="control__h2" data-reveal-words>
+            The customer relationship is the asset no one gave back. <em class="accent">Until now.</em>
+          </h2>
+          <p class="control__intro" data-reveal data-reveal-delay="2">Three things become yours the day you sign a Merchant Network Agreement:</p>
+        </div>
+
+        <!-- Editorial media (placeholder render wired per prompts.md; drop-in replace later) -->
+        <div class="section-media" data-reveal-media>
+          <picture>
+            <source srcset="images/control.webp" type="image/webp" />
+            <img src="images/control.jpg" alt="A composed business owner reviewing a simple customer-insights dashboard on a tablet at their counter" width="1920" height="1080" loading="lazy" />
+          </picture>
+        </div>
+
+        <div class="control__three">
+          <div class="control-card" data-reveal>
+            <span class="control-card__title">Your Customer.</span>
+            <p class="control-card__body">The relationship stays in your business's name, not a competing credit facility's. The customer who walked in last week belongs to you.</p>
+          </div>
+          <div class="control-card" data-reveal data-reveal-delay="1">
+            <span class="control-card__title">Your Data.</span>
+            <p class="control-card__body">Consent-driven and de-identified, opt-in by default: which buyers return, which segments spend the most, and when demand peaks.</p>
+          </div>
+          <div class="control-card" data-reveal data-reveal-delay="2">
+            <span class="control-card__title">Your Value-Back.</span>
+            <p class="control-card__body">A closed-loop value-back program in your own brand that gives customers a reason to keep spending with you, not down the street.</p>
+          </div>
+        </div>
+
+        <div class="control__whitelabel" data-reveal>
+          <h3 class="control__whitelabel-head">Your business name. <em class="accent">Our infrastructure.</em></h3>
+          <p class="control__whitelabel-body">Everything the customer sees carries your brand. The embedded value platform, the compliance, and the credit run behind the scenes. The relationship is yours.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         S4 — THE GAINS · The cherry on the cake
+         ============================================================ -->
+    <section id="gains" class="section gains" aria-label="The gains">
+      <div class="container">
+        <div class="gains__header">
+          <span class="eyebrow" data-reveal>And Here Is What It Pays You Back</span>
+          <h2 class="gains__h2" data-reveal-words>
+            Three ways embedded lending puts <em class="accent">money back</em> in your business.
+          </h2>
+        </div>
+
+        <div class="gains__list">
+          <div class="gain" data-reveal>
+            <span class="gain__num">1</span>
+            <h3 class="gain__title">Recover up to 85% of Interchange</h3>
+            <p class="gain__body">Roughly $6,000 per $1M with CredX, against about $36,000 with competing credit facilities. On $1M a month, that is up to $30,000 staying in your business.</p>
+          </div>
+          <div class="gain" data-reveal data-reveal-delay="1">
+            <span class="gain__num">2</span>
+            <h3 class="gain__title">Earn on the Credit You Used to Give Away</h3>
+            <p class="gain__body">A merchant-linked credit facility in your own brand, approved in about 20 seconds at checkout, at roughly half the rate of a standard card. You are paid in full and upfront, and the risk stays with CredX, never on your books.</p>
+          </div>
+          <div class="gain" data-reveal data-reveal-delay="2">
+            <span class="gain__num">3</span>
+            <h3 class="gain__title">See Your Business in Real Time</h3>
+            <p class="gain__body">A monthly dashboard in plain language showing which segment drives revenue, when demand peaks, and who is about to lapse. It is the intelligence your current setup never handed you.</p>
+          </div>
+        </div>
+
+        <p class="gains__benchmark" data-reveal>Businesses that add embedded credit at the point of sale see up to a <em class="accent">321%</em> lift in purchase frequency and <em class="accent">76%</em> larger transactions <span class="gains__benchmark-src">(PayPal embedded credit benchmark)</span>.</p>
+
+        <div class="gains__strip">
+          <div class="stat" data-reveal>
+            <span class="stat__number">$30K</span>
+            <span class="stat__label">Recovered per $1M, month one.</span>
+          </div>
+          <div class="stat" data-reveal data-reveal-delay="1">
+            <span class="stat__number">You keep</span>
+            <span class="stat__label">The customer, the data, and the loyalty.</span>
+          </div>
+          <div class="stat" data-reveal data-reveal-delay="2">
+            <span class="stat__number">20 sec</span>
+            <span class="stat__label">Credit approved at checkout.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         S5 — RECOVERY CALCULATOR (single output — recovered/year)
+         ============================================================ -->
+    <section id="calc" class="section calc-section" aria-label="Recovery calculator">
+      <div class="container">
+        <div class="calc" data-reveal>
+          <div>
+            <h3 class="calc__h3">Move the slider <em class="accent">to see what stays</em> in your business.</h3>
+            <p class="calc__body">Set your actual monthly card volume and watch the recovery add up over 12 months.</p>
+            <div class="calc__input">
+              <label class="calc__label" for="calc-slider">Monthly processing volume</label>
+              <input
+                type="range"
+                id="calc-slider"
+                class="calc__slider"
+                min="250000"
+                max="25000000"
+                step="250000"
+                value="1000000"
+                data-calc-input
+              />
+              <div class="calc__volume">
+                <span class="calc__volume-value" data-calc-volume-display>$1,000,000</span>
+                <span class="calc__volume-unit">/month</span>
+              </div>
+            </div>
+          </div>
+          <div class="calc__output">
+            <span class="calc__label">Recovered with CredX</span>
+            <span class="calc__output-number" data-calc-output-yearly>$360,000</span>
+            <span class="calc__output-yearly"><em class="accent">per year</em></span>
+            <p class="calc__hedge">
+              Designed to recover up to 85% of standard interchange. Your number depends on the card mix. Based on roughly $36K interchange per $1M with competing credit facilities, against $6K per $1M with CredX.
+            </p>
+            <a href="/contact" class="btn btn-primary calc__cta">Get My Estimate</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         S6 — PROOF (benchmark + trust markers)
+         ============================================================ -->
+    <section id="proof" class="section proof" aria-label="Proof">
+      <div class="container">
+        <div class="proof__header">
+          <span class="eyebrow" data-reveal>Built on Trust</span>
+          <h2 data-reveal-words>
+            An embedded value platform that <em class="accent">enterprises can stand behind</em>.
+          </h2>
+        </div>
+
+        <!-- Built For scene trio — breadth of "any business with recurring customers".
+             Placeholder renders (images/builtfor-1..3) wired per prompts.md §B-5; reuses
+             the existing .builtfor__scenes CSS. ⚠ A header/context line for this trio is
+             still owned by credx-copy (none fabricated here). -->
+        <div class="builtfor__scenes" data-reveal>
+          <div class="builtfor__scene">
+            <picture>
+              <source srcset="images/builtfor-1.webp" type="image/webp" />
+              <img src="images/builtfor-1.jpg" alt="A shopkeeper in a premium retail boutique helping a customer at the counter" width="960" height="1200" loading="lazy" />
+            </picture>
+          </div>
+          <div class="builtfor__scene">
+            <picture>
+              <source srcset="images/builtfor-2.webp" type="image/webp" />
+              <img src="images/builtfor-2.jpg" alt="A hospitality operator handing an order to a returning guest at a cafe counter" width="960" height="1200" loading="lazy" />
+            </picture>
+          </div>
+          <div class="builtfor__scene">
+            <picture>
+              <source srcset="images/builtfor-3.webp" type="image/webp" />
+              <img src="images/builtfor-3.jpg" alt="A service-business owner welcoming a client at a studio front desk" width="960" height="1200" loading="lazy" />
+            </picture>
+          </div>
+        </div>
+
+        <div class="proof__markers">
+          <div class="trust" data-reveal>
+            <span class="trust__lead">$500M+</span>
+            <span class="trust__body">in Merchant Network Agreements signed.</span>
+          </div>
+          <div class="trust" data-reveal data-reveal-delay="1">
+            <span class="trust__lead">Lender-funded</span>
+            <span class="trust__body">Community lender partners fund embedded credit.</span>
+          </div>
+          <div class="trust" data-reveal data-reveal-delay="2">
+            <span class="trust__lead">SOC 2 + PIPEDA</span>
+            <span class="trust__body">Compliant, so data is de-identified, consent-driven, and held to Canadian privacy law.</span>
+          </div>
+        </div>
+
+        <p class="proof__pending" data-reveal>(Figures pending verification before launch.)</p>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         S7 — FOUNDER PULL-QUOTE (placeholder wording — pending Kendall)
+         ============================================================ -->
+    <section id="quote" class="section pullquote" aria-label="Founder pull-quote">
+      <div class="container pullquote__inner">
+        <blockquote class="pullquote__text" data-reveal>
+          <em class="accent">“</em>We built CredX on one belief: the people and businesses who create the value should be the ones who keep it. That is the movement, and you belong in it.<em class="accent">”</em>
+        </blockquote>
+        <p class="pullquote__attribution" data-reveal data-reveal-delay="1">— Kendall, Founder, CredX</p>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         S8 — FINAL CTA (funnels to /contact — no on-page form on the Home)
+         ============================================================ -->
+    <section id="join" class="section final-cta" aria-label="Ready to keep your customer">
+      <div class="container final-cta__inner">
+        <div data-reveal>
+          <span class="eyebrow eyebrow--accent">Be Part of the Movement</span>
+          <h2 class="final-cta__h2">Ready to keep your customer?</h2>
+          <p class="final-cta__body">See what embedded lending could return for your business. One conversation, no obligation.</p>
+          <div class="hero__ctas final-cta__ctas">
+            <a href="/contact" class="btn btn-primary">Book a Meeting</a>
+            <a href="/how-it-works" class="btn btn-secondary">See How It Works</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer (G2) — footer-sitemap -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__inner footer__inner--sitemap">
+        <div class="footer__brand">
+          <img src="../assets/logo/Credx-name.svg" alt="CredX" height="32" style="margin-bottom: 20px;" />
+          <p class="footer__movement">A system you belong to, instead of one that owns you.</p>
+        </div>
+        <div>
+          <h4 class="footer__col-title">Explore</h4>
+          <div class="footer__links">
+            <a href="/how-it-works" class="footer__link">How It Works</a>
+            <a href="/lenders" class="footer__link">For Lenders</a>
+            <a href="/about" class="footer__link">About</a>
+            <a href="/contact" class="footer__link">Contact</a>
+            <a href="/learn/glossary/" class="footer__link">Glossary</a>
+          </div>
+        </div>
+        <div>
+          <h4 class="footer__col-title">Legal</h4>
+          <div class="footer__links">
+            <a href="/legal" class="footer__link">Privacy</a>
+            <a href="/legal" class="footer__link">Terms</a>
+          </div>
+        </div>
+        <div>
+          <h4 class="footer__col-title">Connect</h4>
+          <div class="footer__links">
+            <a href="https://www.linkedin.com/" class="footer__link" rel="noopener" target="_blank">LinkedIn</a>
+            <a href="/contact" class="footer__link">Book a meeting</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span>© 2026 CredX Tech Inc. · credx.ca</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.0.42/dist/lenis.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

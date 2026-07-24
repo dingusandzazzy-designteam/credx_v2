@@ -172,9 +172,9 @@ Community lenders have always been closer to their members than the big networks
 
 | Value | Caption |
 |---|---|
-| `$60K` | `recovered on a major event night.` |
-| `Yours` | `the guest, the data, and the loyalty. Not a competing credit facility's.` |
-| `20 seconds` | `credit approved at the concession.` |
+| `$60K` | `Recovered on a major event night.` |
+| `Yours` | `The guest, the data, and the loyalty. Not a competing credit facility's.` |
+| `20 sec` | `Credit approved at the concession.` |
 
 **Section CTAs:** `Book a Demo` (→ §8 form; Calendly fallback) · `Join the Network` (→ §8 form).
 
@@ -250,7 +250,7 @@ Community lenders have always been closer to their members than the big networks
 - `Ticketing platforms`
 - `Multi-venue franchises and operators`
 
-**Qualifier line:** `If your guests come back and pay by card, CredX is built for you.`
+**Qualifier line:** `If your guests come back and pay by card, CredX is built for you. $250K or more per month in card volume and the savings and data benefits scale with you.`
 
 ### Key metrics
 

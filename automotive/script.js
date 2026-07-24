@@ -491,7 +491,8 @@
     });
   }
 
-  /* ---- 6. Theme toggle (localStorage + first-load handled inline in <head>) ---- */
+  /* ---- 6. Theme toggle DISABLED — light theme deferred to a future update.
+     Un-comment this block (plus the head FOUC script and the nav <template>) to restore.
 
   const themeToggle = document.querySelector('[data-theme-toggle]');
   if (themeToggle) {
@@ -508,6 +509,7 @@
       if (meta) meta.setAttribute('content', next === 'light' ? '#f4f5f9' : '#0b0c16');
     });
   }
+  */
 
   /* ---- 7. Signup — 2-step progressive form (placeholder → CRM in Phase 7) ---- */
 

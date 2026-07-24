@@ -989,7 +989,8 @@ p { line-height: 1.6; max-width: 65ch; }
 .movement__inner {
   position: relative;
   z-index: 1;
-  max-width: 880px;
+  max-width: var(--container-max); /* full container width — the cards span it;
+                                      the narrative header keeps its own measure */
   text-align: center;
   margin-inline: auto;
 }
@@ -998,7 +999,9 @@ p { line-height: 1.6; max-width: 65ch; }
   font-family: var(--font-editorial);
   font-size: clamp(2.25rem, 4vw + 1rem, 3.75rem);
   font-weight: 500;
-  margin-bottom: var(--s-6);
+  margin-block: 0 var(--s-6);
+  margin-inline: auto;
+  max-width: 22ch; /* readable display measure inside the now-wide section */
   letter-spacing: -0.015em;
   line-height: 1.08;
   font-variation-settings: 'opsz' 96;
@@ -1059,52 +1062,188 @@ p { line-height: 1.6; max-width: 65ch; }
   color: var(--text-accent);
   margin-bottom: var(--s-4);
 }
-.voices__item {
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-card-sm);
-  overflow: hidden;
-  transition: border-color var(--duration-fast) var(--ease-out-quart);
-}
-.voices__item[open] { border-color: var(--text-accent); }
-.voices__summary {
-  cursor: pointer;
+/* Three Voices as full-image cards.
+   The card is dark in BOTH themes (dark placeholder / photo behind a scrim),
+   so type is cloud-white and the accent is the dark-theme magenta throughout —
+   same rule as the .movement band and the hero placeholder. */
+.voices__grid {
   list-style: none;
+  margin: var(--s-4) 0 0;
+  padding: 0;
+  display: grid;
+  gap: var(--s-4);
+  grid-template-columns: 1fr;
+  align-items: start; /* each card sizes to its own content, so only the
+                         hovered card grows on reveal — its siblings hold. */
+}
+.voices__grid > li { min-width: 0; } /* let the grid track shrink below content */
+@media (min-width: 720px) {
+  .voices__grid { grid-template-columns: repeat(3, 1fr); gap: var(--s-5); }
+}
+
+.voice-card {
   position: relative;
-  padding: var(--s-5) var(--s-6);
+  width: 100%;
+  min-height: clamp(420px, 66vw, 460px);
   display: flex;
   flex-direction: column;
-  gap: var(--s-2);
+  justify-content: flex-end; /* line + role rest at the bottom over the image */
+  overflow: hidden;
+  border-radius: var(--radius-card);
+  background-color: var(--ink);
+  isolation: isolate;
 }
-.voices__summary::-webkit-details-marker { display: none; }
-.voices__summary::after {
-  content: '+';
+.voice-card:focus-visible {
+  outline: 2px solid var(--magenta-bright);
+  outline-offset: 3px;
+}
+/* Media layer — dark brand placeholder until Phase-8 renders land.
+   When imagery arrives: swap the gradient for background-image: url(...) +
+   background-size: cover; the scrim + type layers already guarantee contrast. */
+.voice-card__media {
   position: absolute;
-  top: var(--s-5);
-  right: var(--s-6);
-  font-size: var(--type-h3);
-  font-weight: 400;
-  color: var(--text-accent);
-  transition: transform var(--duration-fast) var(--ease-out-quart);
+  inset: 0;
+  z-index: 0;
+  background:
+    radial-gradient(ellipse at 72% 22%, rgba(148, 63, 120, 0.32), transparent 55%),
+    radial-gradient(ellipse at 24% 84%, rgba(109, 94, 164, 0.30), transparent 55%),
+    linear-gradient(155deg, var(--ink), var(--navy));
+  background-size: cover;
+  background-position: center;
+  transform: scale(1.001); /* paint on its own layer for a smooth zoom */
+  /* Base = the EXIT transition (quicker, so pulling away feels responsive).
+     The slow cinematic entrance is set on the :hover / :focus rule below. */
+  transition: transform var(--duration-base) var(--ease-out-quart),
+              filter var(--duration-base) var(--ease-out-quart);
 }
-.voices__item[open] .voices__summary::after { transform: rotate(45deg); }
-.voices__role {
+/* Real render (when wired) fills the media layer; the gradient above is the
+   fallback if the image is missing. The hover scale on __media scales this too. */
+.voice-card__media picture,
+.voice-card__media img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+/* Scrim carries WCAG contrast for the overlaid type. Never fully transparent
+   at the top: the supporting text rises into the upper half on reveal, and
+   final imagery is documentary mid-key, so the whole card stays type-safe. */
+.voice-card__scrim {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(
+    to top,
+    rgba(11, 12, 22, 0.94) 0%,
+    rgba(11, 12, 22, 0.85) 40%,
+    rgba(11, 12, 22, 0.62) 72%,
+    rgba(11, 12, 22, 0.40) 100%
+  );
+}
+.voice-card__content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-3);
+  padding: var(--s-6);
+}
+.voice-card__role {
+  margin: 0;
+  font-family: var(--font-body);
   font-size: var(--type-eyebrow);
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: var(--text-accent);
+  color: var(--magenta-bright);
 }
-.voices__line {
+.voice-card__line {
+  margin: 0;
   font-family: var(--font-editorial);
   font-size: var(--type-h3);
   font-weight: 500;
-  line-height: 1.35;
-  color: var(--text-primary);
-  padding-right: var(--s-7);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  color: var(--cloud-white);
+  text-wrap: pretty;
 }
-.voices__body { padding: 0 var(--s-6) var(--s-5); }
-.voices__body p { color: var(--text-secondary); line-height: 1.6; }
-.voices__body p + p { margin-top: var(--s-4); }
+.voice-card__support { color: rgba(248, 249, 252, 0.86); }
+.voice-card__support p {
+  margin: 0;
+  max-width: 46ch;
+  font-size: var(--type-body);
+  line-height: 1.6;
+  color: inherit;
+  text-wrap: pretty;
+}
+
+/* Fine-pointer devices (real hover): the line rests at the bottom of the image
+   and the supporting text reveals on hover / keyboard focus, growing the card
+   downward (grid `align-items: start` keeps the siblings put). Touch + no-hover
+   devices (the mobile-first rules above) keep both layers visible — no
+   tap-to-reveal. */
+@media (hover: hover) and (pointer: fine) {
+  .voice-card { min-height: clamp(440px, 46vw, 500px); }
+
+  /* Resting + EXIT state: collapsed, blurred, dropped. Uses duration-base so
+     retracting on mouse-out is quicker than the entrance (motion best practice). */
+  .voice-card__support {
+    display: grid;
+    grid-template-rows: 0fr;
+    opacity: 0;
+    transform: translateY(14px);
+    filter: blur(4px);
+    transition:
+      grid-template-rows var(--duration-base) var(--ease-out-quart),
+      opacity var(--duration-base) var(--ease-out-quart),
+      transform var(--duration-base) var(--ease-out-quart),
+      filter var(--duration-base) var(--ease-out-quart);
+  }
+  .voice-card__support > p { overflow: hidden; }
+
+  /* ENTRANCE — a two-step focal reveal, not a single snap:
+     1) the image pushes in and darkens slowly (duration-slow, expo);
+     2) a beat later (+120ms) the support text rises and sharpens out of blur. */
+  .voice-card:hover .voice-card__media,
+  .voice-card:focus-within .voice-card__media {
+    transform: scale(1.08);
+    filter: brightness(0.48);
+    transition:
+      transform var(--duration-slow) var(--ease-out-expo),
+      filter var(--duration-slow) var(--ease-out-expo);
+  }
+  .voice-card:hover .voice-card__support,
+  .voice-card:focus-within .voice-card__support {
+    grid-template-rows: 1fr;
+    opacity: 1;
+    transform: none;
+    filter: blur(0);
+    transition:
+      grid-template-rows var(--duration-slow) var(--ease-out-expo) 120ms,
+      opacity var(--duration-slow) var(--ease-out-quart) 120ms,
+      transform var(--duration-slow) var(--ease-out-expo) 120ms,
+      filter var(--duration-slow) var(--ease-out-quart) 120ms;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  /* Cap every voice-card transition to instant regardless of specificity, and
+     drop the zoom. Keep the brightness shift (a fade, not motion) so the
+     supporting text still reads over the image. */
+  .voice-card__media,
+  .voice-card__support,
+  .voice-card:hover .voice-card__media,
+  .voice-card:focus-within .voice-card__media,
+  .voice-card:hover .voice-card__support,
+  .voice-card:focus-within .voice-card__support {
+    transition-duration: 0.01ms !important;
+    transition-delay: 0ms !important;
+  }
+  .voice-card__support { filter: none; }
+  .voice-card:hover .voice-card__media,
+  .voice-card:focus-within .voice-card__media { transform: none; }
+}
 .voices__closer {
   text-align: center;
   font-family: var(--font-editorial);
@@ -1375,14 +1514,13 @@ p { line-height: 1.6; max-width: 65ch; }
 .builtfor__scenes {
   display: grid;
   grid-template-columns: 1fr;
-  gap: var(--s-4);
-  max-width: 880px;
-  margin: 0 auto var(--s-8);
+  gap: var(--s-5);
+  margin: 0 auto var(--s-8); /* full container width, matching the §2 voice grid */
 }
-@media (min-width: 768px) { .builtfor__scenes { grid-template-columns: repeat(3, 1fr); } }
+@media (min-width: 720px) { .builtfor__scenes { grid-template-columns: repeat(3, 1fr); } }
 .builtfor__scene {
   aspect-ratio: 4 / 5;
-  border-radius: var(--radius-card-sm);
+  border-radius: var(--radius-card); /* match the §2 voice cards */
   background-color: var(--surface-1);
   border: 1px solid var(--border-subtle);
   position: relative;
@@ -2425,4 +2563,174 @@ a.vertical-card:hover .vertical-card__name::after { transform: translateX(4px); 
   padding-block: var(--s-6);
   color: var(--text-muted);
   font-size: var(--type-caption);
+}
+
+/* ============================================================
+   CredX Website — Home deltas (multi-page nav, placeholders,
+   footer-sitemap, pull-quote, trust markers, partnership line).
+   Seeded from the Automotive design system; only the additions live here.
+   ============================================================ */
+
+/* --- Multi-page nav: hamburger + mobile menu --- */
+.nav__toggle {
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
+  width: 40px;
+  height: 40px;
+  padding: 9px;
+  background: transparent;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-small);
+  cursor: pointer;
+}
+.nav__toggle span {
+  display: block;
+  height: 2px;
+  width: 100%;
+  background: var(--text-primary);
+  border-radius: 2px;
+  transition: transform var(--duration-fast) var(--ease-out-quart), opacity var(--duration-fast);
+}
+.nav--open .nav__toggle span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+.nav--open .nav__toggle span:nth-child(2) { opacity: 0; }
+.nav--open .nav__toggle span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+
+@media (min-width: 768px) { .nav__toggle { display: none; } }
+
+@media (max-width: 767px) {
+  .nav--open .nav__links {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--s-4);
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    padding: var(--s-5) var(--container-pad);
+    background: var(--nav-bg-scrolled);
+    -webkit-backdrop-filter: blur(18px);
+    backdrop-filter: blur(18px);
+    border-top: 1px solid var(--border-subtle);
+  }
+  .nav--open .nav__link { font-size: var(--type-body); }
+}
+
+/* --- Hero: movement line + placeholder background --- */
+.hero__movement {
+  font-family: var(--font-editorial);
+  font-size: var(--type-body-lg);
+  color: var(--text-accent);
+  margin-top: var(--s-5);
+  max-width: 42ch;
+}
+.hero__bg--placeholder {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 75% 25%, rgba(148, 63, 120, 0.35), transparent 55%),
+    radial-gradient(ellipse at 25% 80%, rgba(109, 94, 164, 0.30), transparent 55%),
+    linear-gradient(150deg, var(--ink), var(--navy));
+}
+/* Placeholder hero is always dark — keep the overlaid copy light in both themes. */
+.hero--full .hero__h1,
+.hero--full .hero__sub { color: var(--cloud-white); }
+
+/* --- Image placeholder box (until Phase 8 renders land) --- */
+.media-ph {
+  position: relative;
+  min-height: 300px;
+  border: 1px dashed var(--border-default);
+  border-radius: var(--radius-card);
+  background:
+    repeating-linear-gradient(135deg, rgba(167,154,180,0.05) 0 12px, transparent 12px 24px),
+    var(--surface-1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.media-ph::after {
+  content: 'Image slot — ' attr(data-img-ph);
+  display: block;
+  max-width: 42ch;
+  padding: var(--s-5);
+  text-align: center;
+  font-size: var(--type-caption);
+  color: var(--text-muted);
+}
+
+/* --- S2 partnership synthesis line --- */
+.voices__partnership {
+  margin-top: var(--s-6);
+  padding-top: var(--s-6);
+  border-top: 1px solid var(--border-subtle);
+  color: var(--text-secondary);
+  font-size: var(--type-body-lg);
+  line-height: 1.6;
+  max-width: 70ch;      /* readable measure inside the full-width section */
+  margin-inline: auto;
+  text-align: center;
+}
+.voices__partnership strong { color: var(--text-primary); font-weight: 600; }
+
+/* --- S6 Proof: trust markers --- */
+.proof__markers {
+  display: grid;
+  gap: var(--s-5);
+  grid-template-columns: 1fr;
+  max-width: 980px;
+  margin-inline: auto;
+}
+@media (min-width: 768px) { .proof__markers { grid-template-columns: repeat(3, 1fr); } }
+.trust {
+  padding: var(--s-6);
+  background: var(--surface-1);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-card-sm);
+}
+.trust__lead {
+  display: block;
+  font-family: var(--font-editorial);
+  font-size: var(--type-h3);
+  color: var(--text-accent);
+  margin-bottom: var(--s-3);
+}
+.trust__body { color: var(--text-secondary); font-size: var(--type-body); }
+.proof__pending {
+  text-align: center;
+  margin-top: var(--s-6);
+  font-size: var(--type-caption);
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+/* --- S7 Founder pull-quote --- */
+.pullquote { background-color: var(--surface-0); }
+.pullquote__inner { max-width: 900px; margin-inline: auto; text-align: center; }
+.pullquote__text {
+  font-family: var(--font-editorial);
+  font-size: clamp(1.5rem, 2.5vw + 1rem, 2.4rem);
+  line-height: 1.35;
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
+  margin: 0;
+  border: 0;
+  padding: 0;
+}
+.pullquote__attribution {
+  margin-top: var(--s-6);
+  font-size: var(--type-caption);
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* --- Footer: brand column movement line --- */
+.footer__movement {
+  font-family: var(--font-editorial);
+  font-size: var(--type-body-lg);
+  color: var(--text-secondary);
+  max-width: 30ch;
 }
