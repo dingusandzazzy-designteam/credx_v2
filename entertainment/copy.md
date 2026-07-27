@@ -160,7 +160,7 @@ Community lenders have always been closer to their members than the big networks
 
 | # | Title | Body |
 |---|---|---|
-| 1 | `Recover up to 85% of interchange` | `$6,000 per $1M with CredX, against roughly $36,000 with competing credit facilities. On a $60,000 night at the gate and the concession, that is most of it staying with your venue.` |
+| 1 | `Recover an estimated 85% of interchange` | `$6,000 per $1M with CredX, against roughly $36,000 with competing credit facilities. On a $60,000 night at the gate and the concession, that is most of it staying with your venue.` |
 | 2 | `Earn on the credit you used to give away` | `A credit line of up to $5,000 in your venue's own brand — your guests carry your venue's currency — approved in about 20 seconds at the concession or the box office, at roughly half the rate of a standard card. You are paid in full and upfront, and the risk stays with CredX, never on your books.` |
 | 3 | `See your guest base in real time` | `A monthly dashboard in plain language, not raw numbers: which event nights peak, which segment drives concession and merchandise revenue, and who is about to lapse on their membership or season pass. The intelligence your current setup never handed you.` |
 
@@ -256,8 +256,8 @@ Community lenders have always been closer to their members than the big networks
 
 | Metric | Status |
 |---|---|
-| `$500M+ in Merchant Network Agreements signed` | ⚠ confirm figure |
-| `4 community lender partners funding embedded credit` | DRAFT |
+| `$500M+ in Merchant Network Agreements signed` | ✅ confirmed correct 2026-07-27 (Marco) — keep as written |
+| `Community lender partners funding embedded credit` | generic — count dropped 2026-07-27 per Audrey C10 (homepage review, 2026-07-24) for cross-page consistency; pending confirmed number |
 | `SOC 2 + PIPEDA compliant. Data de-identified, consent-driven, and held to Canadian privacy law.` | DRAFT |
 
 **Notes:**
@@ -358,13 +358,13 @@ A secondary `Book a Demo` route opens a calendar booking, distinct from `Join th
 3. **$2,000,000 / month** as the calculator's default volume (a busy event month) — representative for the venues we are pitching?
    → Answer:
 4. **"Approved in about 20 seconds"** credit at the concession / box office — defensible?
-   → Answer:
+   → Answer: ✅ **Confirmed 2026-07-27 (Marco): keep "about 20 seconds at checkout" as written.**
 5. **$500M+ in Merchant Network Agreements signed** — confirm the figure (or give the correct one).
-   → Answer:
-6. **4 community lender partners funding embedded credit** — confirm the count.
+   → Answer: ✅ **Confirmed correct 2026-07-27 (Marco).** Keep `$500M+` as written. Cleared alongside the 5 C's of credit and the 186 verified data sources.
+6. **Community lender partners funding embedded credit** — confirm the count. *(The "4" was removed 2026-07-27 per Audrey C10 — same rationale as her 2026-07-16 C20 on Sports: no confirmed number yet, do not misrepresent. The metric now reads generic; restore a number once confirmed.)*
    → Answer:
 7. **PayPal benchmark (321% lift in frequency, 76% larger transactions)** applied to venues — OK to use as framed?
-   → Answer:
+   → Answer: ✅ **Keep as written (Marco, 2026-07-27).** No per-vertical refinement of the benchmark framing for now — focus is the generic site page. ⏳ The **source link** for the figure is a separate, still-open ask (see `workflow/Open-Items-Copy-2026-07-27.md` q1).
 8. **Interchange math** ($6K per $1M with CredX vs ~$36K with a competing facility; up to 85% recovered) — confirm it carries to the venue framing.
    → Answer:
 
@@ -378,7 +378,7 @@ A secondary `Book a Demo` route opens a calendar booking, distinct from `Join th
 ### C · CTAs & integration
 
 11. **CTA labels:** we are using **"Join the Movement"** (primary) · **"Book a Demo"** (secondary) · **"Join the Network"** (Gains + footer), carried from Automotive and Sports. Confirm this set for Entertainment.
-   → Answer:
+   → Answer: ✅ **Confirmed 2026-07-27 (Marco): keep as is.** The inherited set is now ratified for Entertainment. Verified applied across all 8 CTA touchpoints on the page and matching what is live in production.
 12. **Book-a-Demo destination:** we need the **Calendly / booking URL** (Kyle). Until it lands, "Book a Demo" falls back to the inline form.
    → Answer:
 13. **Ticketing / POS examples** in the form and FAQ (we used Ticketmaster, AudienceView, Square as generic examples) — any preferred set, or keep generic?

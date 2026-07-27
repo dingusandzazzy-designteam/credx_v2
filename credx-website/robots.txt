@@ -1,7 +1,10 @@
 # CredX website robots.txt — PRE-BUILD DRAFT (Phase 4).
-# Sitemap domain https://credx.ca is a PROVISIONAL PLACEHOLDER pending client resolution — swap on domain lock.
+# Domain LOCKED 2026-07-27: credx-tech.com is the primary/canonical host.
+#   credxtech.com (no hyphen) and credx.ca both 301-REDIRECT to it — they must never
+#   serve content, or they become duplicate hosts competing with the canonical.
 # Add Disallow lines for staging/admin paths when they exist.
+# ⚠ Still to add before launch: Disallow (or noindex) for the /join onboarding page.
 User-agent: *
 Allow: /
 
-Sitemap: https://credx.ca/sitemap.xml
+Sitemap: https://credx-tech.com/sitemap.xml

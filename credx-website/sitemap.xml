@@ -1,95 +1,95 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- CredX website sitemap — PRE-BUILD DRAFT (Phase 4).
-     Domain https://credx.ca is a PROVISIONAL PLACEHOLDER pending client resolution — swap on domain lock.
+     Domain https://credx-tech.com is a PROVISIONAL PLACEHOLDER pending client resolution — swap on domain lock.
      lastmod omitted until pages are built (Phase 9). Regenerate at build/publish. -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://credx.ca/</loc>
+    <loc>https://credx-tech.com/</loc>
     <priority>1.0</priority>
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://credx.ca/how-it-works</loc>
+    <loc>https://credx-tech.com/how-it-works</loc>
     <priority>0.9</priority>
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://credx.ca/lenders</loc>
+    <loc>https://credx-tech.com/lenders</loc>
     <priority>0.8</priority>
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://credx.ca/about</loc>
+    <loc>https://credx-tech.com/about</loc>
     <priority>0.7</priority>
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://credx.ca/contact</loc>
+    <loc>https://credx-tech.com/contact</loc>
     <priority>0.6</priority>
     <changefreq>yearly</changefreq>
   </url>
   <url>
-    <loc>https://credx.ca/legal</loc>
+    <loc>https://credx-tech.com/legal</loc>
     <priority>0.3</priority>
     <changefreq>yearly</changefreq>
   </url>
   <url>
-    <loc>https://credx.ca/learn/glossary/</loc>
+    <loc>https://credx-tech.com/learn/glossary/</loc>
     <priority>0.5</priority>
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://credx.ca/learn/glossary/embedded-lending</loc>
+    <loc>https://credx-tech.com/learn/glossary/embedded-lending</loc>
     <priority>0.4</priority>
     <changefreq>yearly</changefreq>
   </url>
   <url>
-    <loc>https://credx.ca/learn/glossary/embedded-value-platform</loc>
+    <loc>https://credx-tech.com/learn/glossary/embedded-value-platform</loc>
     <priority>0.4</priority>
     <changefreq>yearly</changefreq>
   </url>
   <url>
-    <loc>https://credx.ca/learn/glossary/mutual-ownership-acquisition-technology</loc>
+    <loc>https://credx-tech.com/learn/glossary/mutual-ownership-acquisition-technology</loc>
     <priority>0.4</priority>
     <changefreq>yearly</changefreq>
   </url>
   <url>
-    <loc>https://credx.ca/learn/glossary/merchant-linked-consumer-credit</loc>
+    <loc>https://credx-tech.com/learn/glossary/merchant-linked-consumer-credit</loc>
     <priority>0.4</priority>
     <changefreq>yearly</changefreq>
   </url>
   <url>
-    <loc>https://credx.ca/learn/glossary/value-back-programme</loc>
+    <loc>https://credx-tech.com/learn/glossary/value-back-programme</loc>
     <priority>0.4</priority>
     <changefreq>yearly</changefreq>
   </url>
   <url>
-    <loc>https://credx.ca/learn/glossary/embedded-credit-facility</loc>
+    <loc>https://credx-tech.com/learn/glossary/embedded-credit-facility</loc>
     <priority>0.4</priority>
     <changefreq>yearly</changefreq>
   </url>
   <url>
-    <loc>https://credx.ca/learn/glossary/point-of-sale-lending</loc>
+    <loc>https://credx-tech.com/learn/glossary/point-of-sale-lending</loc>
     <priority>0.4</priority>
     <changefreq>yearly</changefreq>
   </url>
   <url>
-    <loc>https://credx.ca/learn/glossary/transaction-data-monetisation</loc>
+    <loc>https://credx-tech.com/learn/glossary/transaction-data-monetisation</loc>
     <priority>0.4</priority>
     <changefreq>yearly</changefreq>
   </url>
   <url>
-    <loc>https://credx.ca/learn/glossary/open-loop-credit</loc>
+    <loc>https://credx-tech.com/learn/glossary/open-loop-credit</loc>
     <priority>0.4</priority>
     <changefreq>yearly</changefreq>
   </url>
   <url>
-    <loc>https://credx.ca/learn/glossary/community-lender</loc>
+    <loc>https://credx-tech.com/learn/glossary/community-lender</loc>
     <priority>0.4</priority>
     <changefreq>yearly</changefreq>
   </url>
   <url>
-    <loc>https://credx.ca/learn/glossary/the-data-economy</loc>
+    <loc>https://credx-tech.com/learn/glossary/the-data-economy</loc>
     <priority>0.4</priority>
     <changefreq>yearly</changefreq>
   </url>

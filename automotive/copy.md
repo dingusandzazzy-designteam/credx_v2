@@ -166,7 +166,7 @@ Community lenders have always been closer to their members than the big networks
 
 | # | Title | Body |
 |---|---|---|
-| 1 | `Recover up to 85% of interchange` | `$6,000 per $1M with CredX, against roughly $36,000 with competing credit facilities. On $1M a month, that is up to $30,000 staying in your business.` |
+| 1 | `Recover an estimated 85% of interchange` | `$6,000 per $1M with CredX, against roughly $36,000 with competing credit facilities. On $1M a month, that is up to $30,000 staying in your business.` |
 | 2 | `Earn on the credit you used to give away` | `A credit facility in your own brand, approved in about 20 seconds at checkout, at roughly half the rate of a standard card. You are paid in full and upfront, and the risk stays with CredX, never on your books.` |
 | 3 | `See your business in real time` | `A monthly dashboard in plain language, not raw numbers: which location peaks in July, which segment drives revenue, and who is about to lapse. The intelligence your current setup never handed you.` |
 
@@ -266,8 +266,8 @@ Community lenders have always been closer to their members than the big networks
 
 | Metric | Status |
 |---|---|
-| `$500M+ in Merchant Network Agreements signed` | ⚠ confirm figure — see §Launch-confirm items |
-| `4 community lender partners funding embedded credit` | DRAFT |
+| `$500M+ in Merchant Network Agreements signed` | ✅ confirmed correct 2026-07-27 (Marco) — keep as written |
+| `Community lender partners funding embedded credit` | generic — count dropped 2026-07-27 per Audrey C10 (homepage review, 2026-07-24) for cross-page consistency; pending confirmed number |
 | `SOC 2 + PIPEDA compliant. Data de-identified, consent-driven, and held to Canadian privacy law.` | DRAFT |
 
 **Notes:**
@@ -360,11 +360,12 @@ A secondary `Book a Demo` route opens a calendar booking, distinct from `Join th
 
 ## Launch-confirm items (⚠ — none block the build; all block public launch)
 
-1. **⚠ `$500M+` Merchant Network Agreements signed (§7).** Pending Audrey / Kendall (to verify).
+1. ~~**⚠ `$500M+` Merchant Network Agreements signed (§7).**~~ — **RESOLVED 2026-07-27 (Marco): confirmed correct, keep as written.** Cleared alongside the 5 C's of credit and the 186 verified data sources.
 2. ~~Partner logos~~ — **retired:** no third-party logos published, by rule (user 2026-06-16, [[feedback_no_third_party_logos]]).
 3. **⚠ Book-a-Demo Calendly URL** — pending Kyle (to verify); falls back to the form anchor.
-4. **"~20 seconds at checkout" credit-approval claim (§4, §6)** — kept as-is for now (user, 2026-06-09); revisit later if needed.
+4. ~~**"~20 seconds at checkout" credit-approval claim (§4, §6)**~~ — **RESOLVED 2026-07-27 (Marco): confirmed, keep as written.** No longer a launch-confirm item.
 5. **Hero movement video** — deferred; copy carries the page until the film is approved.
+6. **⚠ Community lender partner count (§7).** *(The "4" was removed 2026-07-27 per Audrey C10 — same rationale as her 2026-07-16 C20 on Sports: no confirmed number yet, do not misrepresent. The metric now reads generic; restore a number once confirmed.)*
 
 **Resolved 2026-06-09 (no longer pending):**
 - ✅ **Interchange benchmark** ($36K competing / $6K CredX) — confirmed correct by user.
@@ -384,7 +385,7 @@ A secondary `Book a Demo` route opens a calendar booking, distinct from `Join th
 | 4 · The Gains | CANONICAL — "competing credit facility"; 20s at checkout; benchmark confirmed |
 | 5 · Savings Calculator | CANONICAL — single output (recovered/year) |
 | 6 · How It Works | CANONICAL — POS/aftermarket; 4–8 wk |
-| 7 · Built For | CANONICAL — replaces social proof; no people; no third-party logos; ⚠ $500M+ figure |
+| 7 · Built For | CANONICAL — replaces social proof; no people; no third-party logos; $500M+ figure confirmed 2026-07-27 |
 | 8 · Be Part of the Movement (form) | CANONICAL — 2-step, new fields, demo path |
 | 9 · FAQ | CANONICAL — operator-framed; DMS list removed |
 | 10 · Footer | CANONICAL — tagline removed |

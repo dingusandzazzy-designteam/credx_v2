@@ -162,7 +162,7 @@ Community lenders have always been closer to their members than the big networks
 
 | # | Title | Body |
 |---|---|---|
-| 1 | `Hand your merchants up to 85% interchange recovery` | `$6,000 per $1M with CredX, against roughly $36,000 with a card network. That is up to $30,000 back for every $1M a merchant processes — a saving you deliver, and a differentiator competing platforms cannot match.` |
+| 1 | `Hand your merchants an estimated 85% interchange recovery` | `$6,000 per $1M with CredX, against roughly $36,000 with a card network. That is up to $30,000 back for every $1M a merchant processes — a saving you deliver, and a differentiator competing platforms cannot match.` |
 | 2 | `Earn on the credit you used to send away` | `Embedded credit of up to $5,000 in each merchant's own brand, approved in about 20 seconds at checkout, at roughly half the rate of a standard card. The merchant is paid in full and upfront, the lending risk stays with CredX and its lender partners, and your platform earns on the economics — never on anyone's books.` |
 | 3 | `See your channel in real time` | `A monthly dashboard in plain language, not raw numbers: which merchants grow, which segments drive volume, and where embedded credit lifts retention. The channel intelligence your current setup never handed you.` |
 
@@ -279,8 +279,8 @@ Community lenders have always been closer to their members than the big networks
 
 | Metric | Status |
 |---|---|
-| `$500M+ in Merchant Network Agreements signed` | ⚠ confirm figure |
-| `4 community lender partners funding embedded credit` | DRAFT |
+| `$500M+ in Merchant Network Agreements signed` | ✅ confirmed correct 2026-07-27 (Marco) — keep as written |
+| `Community lender partners funding embedded credit` | generic — count dropped 2026-07-27 per Audrey C10 (homepage review, 2026-07-24) for cross-page consistency; pending confirmed number |
 | `SOC 2 + PIPEDA compliant. Data de-identified, consent-driven, and held to Canadian privacy law.` | DRAFT |
 
 ### Partnership Parameters (Tier 3 disclaimer — verbatim)
@@ -384,19 +384,21 @@ There is **no "Book a Demo"** on the channel page (per `audiences/pos.md`). A se
 2. **$5,000** per-customer credit line in the merchant's own brand, with **$1 spent = $1 earned** value-back — OK as an illustrative figure for the POS page?
    → Answer:
 3. **⚠ Number discrepancy.** Discovery said "**$30M saved per $100M** in volume," but the per-$1M math scales to **$3M per $100M** ($100M × $30K/$1M). We used the defensible roll-up in the Channel Multiplier (**1,000 merchants × $1M each × $30K = $30M unlocked across the channel**). Which framing is correct, and is the $30M-across-a-1,000-merchant-channel example OK to publish?
+   → Answer: ✅ **Keep the published roll-up (Marco, 2026-07-27)** — the page keeps `1,000 merchants × $1M × $30K = $30M`, with the `Illustrative` caption. The discovery line *"$30M per $100M"* **does not reconcile with the page math and is not being used.** ⚠ Heads-up for the client side: anyone quoting the discovery figure in a call will be off by a factor of ten against the page.
    → Answer:
 4. **Channel Multiplier example** (1,000 merchants, ~$1M each) — is this a representative channel for the platforms we are pitching, or should we size it differently?
+   → Answer: ✅ **Keep as written (Marco, 2026-07-27).** The 1,000 × ~$1M example stays, as does the `1,000+ merchants / $100M+ annual volume` qualifier that reuses it in §7 and the FAQ.
    → Answer:
 5. **"Approved in about 20 seconds"** credit at checkout — defensible? *(The old POS notes said underwriting "in 6 minutes"; we used the cross-vertical "about 20 seconds at checkout" — confirm which is right.)*
-   → Answer:
+   → Answer: ✅ **Confirmed 2026-07-27 (Marco): "about 20 seconds at checkout" is right — keep as written.** The old "6 minutes" note is retired.
 6. **One API · 4 to 8 weeks to production · ~12-month in-house build** comparison — accurate and OK to state?
    → Answer:
 7. **Revenue share** — we kept it "per partnership agreement" with no numbers. Is there an approved range we can publish, or keep it qualitative?
    → Answer:
-8. **$500M+ in Merchant Network Agreements signed · 4 community lender partners** — confirm both figures.
-   → Answer:
+8. **$500M+ in Merchant Network Agreements signed · Community lender partners** — confirm both figures. *(The "4" was removed 2026-07-27 per Audrey C10 — same rationale as her 2026-07-16 C20 on Sports: no confirmed number yet, do not misrepresent. The metric now reads generic; restore a number once confirmed.)*
+   → Answer: ✅ **`$500M+` confirmed correct 2026-07-27 (Marco)** — keep as written. ⏳ **Lender partner count still open** — the metric stays generic until a number is confirmed.
 9. **PayPal benchmark** (321% lift in frequency, 76% larger transactions) applied to merchants on a POS platform — OK to use as framed?
-   → Answer:
+   → Answer: ✅ **Keep as written (Marco, 2026-07-27).** No per-vertical refinement of the benchmark framing for now — focus is the generic site page. ⏳ The **source link** for the figure is a separate, still-open ask (see `workflow/Open-Items-Copy-2026-07-27.md` q1).
 
 ### B · Naming & approvals
 

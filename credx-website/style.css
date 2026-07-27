@@ -1168,6 +1168,30 @@ p { line-height: 1.6; max-width: 65ch; }
   color: var(--cloud-white);
   text-wrap: pretty;
 }
+/* Align the role labels across the three cards (Marco, 2026-07-27).
+   The content block is bottom-anchored, and the three quotes are very different
+   lengths (the Merchant runs ~2× the Customer), so the labels landed at three
+   different heights — a 62px spread at 1440. Fix: reserve the LONGEST quote's
+   height on every card, so each label starts from the same line. The surplus falls
+   below the shorter quotes, over the image, where it costs nothing.
+   Line counts are measured, not assumed, and they change with column width:
+     1440 / 1280 → 4 · 2 · 3 lines
+     1084        → 6 · 3 · 4
+     744         → 9 · 4 · 6
+   Hence one reservation per band. Below 720 the cards stack — nothing to align.
+
+   BOTH EDGES ALIGN (Marco, 2026-07-27 — "alinhar os textos de voice para baixo").
+   The reservation alone left the short quotes floating: the surplus sat BELOW the text,
+   leaving a gap to the card edge. Making the reserved box a flex column justified to
+   flex-end drops the text to the bottom of its own box — so the box top keeps the role
+   labels aligned AND the text bottoms land level. The surplus moves to the middle,
+   between label and quote, where it reads as breathing room instead of a mistake. */
+@media (min-width: 720px) {
+  .voice-card__line { min-height: calc(9 * 1.3em); display: flex; flex-direction: column; justify-content: flex-end; }
+}
+@media (min-width: 1024px) { .voice-card__line { min-height: calc(6 * 1.3em); } }
+@media (min-width: 1280px) { .voice-card__line { min-height: calc(4 * 1.3em); } }
+
 .voice-card__support { color: rgba(248, 249, 252, 0.86); }
 .voice-card__support p {
   margin: 0;
@@ -1251,6 +1275,12 @@ p { line-height: 1.6; max-width: 65ch; }
   font-weight: 500;
   color: var(--text-primary);
   margin-top: var(--s-5);
+  /* Required, not optional: the global `p { max-width: 65ch }` (line ~222) caps
+     this paragraph, and without an auto inline margin the capped box hugs the left
+     edge — `text-align: center` then centres the text inside a box that is itself
+     off-centre. It measured mid=626 against a container centre of 705. Any centred
+     <p> in this file needs this. Fixed 2026-07-27. */
+  margin-inline: auto;
 }
 
 /* ---- 10. Outcome (S4) — stat strip + calculator ---- */
@@ -1511,23 +1541,74 @@ p { line-height: 1.6; max-width: 65ch; }
   overflow: hidden;
   margin-bottom: var(--s-9);
 }
-.builtfor__scenes {
+/* ---- Proof mosaic (§6) ----
+   Replaced the 3-up 4:5 portrait row (2026-07-27). Three equal frames of three
+   people said the same thing three times; the section's claim is breadth, so the
+   composition now carries two ideas instead of one: an ANCHOR tile for what kind
+   of place this is, and three supporting tiles for how wide the range runs.
+   Deliberately unequal. Businesses, not portraits. */
+.proof__mosaic {
   display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--s-5);
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--s-4);
   margin: 0 auto var(--s-8); /* full container width, matching the §2 voice grid */
 }
-@media (min-width: 720px) { .builtfor__scenes { grid-template-columns: repeat(3, 1fr); } }
-.builtfor__scene {
-  aspect-ratio: 4 / 5;
+
+.proof__tile {
   border-radius: var(--radius-card); /* match the §2 voice cards */
   background-color: var(--surface-1);
   border: 1px solid var(--border-subtle);
   position: relative;
   overflow: hidden;
 }
+
+/* Mobile: anchor full width, wide full width, the two small ones paired,
+   then the three stat tiles full width at their natural height. */
+.proof__tile--anchor { grid-column: 1 / -1; aspect-ratio: 4 / 3; }
+.proof__tile--wide { grid-column: 1 / -1; aspect-ratio: 16 / 9; }
+.proof__tile--small { aspect-ratio: 1 / 1; }
+.proof__tile--stat { grid-column: 1 / -1; }
+
+/* Stat tiles — same shell as the image tiles, that is the point of unifying the
+   section. Content sits at the bottom so the tile has air above it, the way the
+   image tiles carry their subject. */
+.proof__tile--stat {
+  display: flex;
+  flex-direction: column;
+  /* Centred, not bottom-aligned. Bottom-aligning read fine on the two narrow tiles
+     but left the wide SOC 2 tile with a large empty rectangle above two lines of
+     text — a hole in the corner of the mosaic, next to two tiles full of image. */
+  justify-content: center;
+  padding: var(--s-6);
+  /* Outlined, not filled. The image tiles use --surface-1; letting the stat tiles
+     sit on the page surface makes them read as deliberate text cells in the mosaic
+     instead of photo frames that failed to load. Filled vs outlined is the only
+     signal needed — no extra colour, no decoration. */
+  background-color: var(--surface-0);
+}
+
+/* The bento starts at 1024, not 720. Measured at 760px the four columns are only
+   ~159px wide, which forced the stat tiles to 287px tall to fit their own body copy
+   and dragged the anchor to 0.72:1 — portrait, the opposite of the intent. Between
+   720 and 1023 the 2-column layout above is simply better: taller section, but every
+   tile keeps an honest proportion. */
+@media (min-width: 1024px) {
+  .proof__mosaic {
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(3, minmax(clamp(10rem, 14.5vw, 15rem), auto));
+  }
+  .proof__tile { aspect-ratio: auto; }
+  .proof__tile--anchor { grid-column: 1 / span 2; grid-row: 1 / span 2; }
+  .proof__tile--wide { grid-column: 3 / span 2; grid-row: 1; }
+  .proof__tile--stat-a { grid-column: 3; grid-row: 2; }
+  .proof__tile--stat-b { grid-column: 4; grid-row: 2; }
+  .proof__tile--small-c { grid-column: 1; grid-row: 3; }
+  .proof__tile--small-d { grid-column: 2; grid-row: 3; }
+  .proof__tile--stat-c { grid-column: 3 / span 2; grid-row: 3; }
+}
+
 .section-media::after,
-.builtfor__scene::after {
+.proof__tile::after {
   content: attr(data-ph);
   position: absolute;
   inset: 0;
@@ -1539,9 +1620,9 @@ p { line-height: 1.6; max-width: 65ch; }
   text-align: center;
 }
 .section-media:has(img)::after,
-.builtfor__scene:has(img)::after { content: none; }
+.proof__tile:has(img)::after { content: none; }
 .section-media img,
-.builtfor__scene img { width: 100%; height: 100%; object-fit: cover; }
+.proof__tile img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
 .process__steps {
   display: grid;
@@ -1910,6 +1991,11 @@ p { line-height: 1.6; max-width: 65ch; }
   color: var(--text-secondary);
   line-height: 1.6;
 }
+
+/* `.definition` (a non-interactive shell for a single Q&A) was added and then
+   removed on 2026-07-27. It existed only while §3.5 held one question; the section
+   now carries three, so it uses the plain `.faq` accordion with the first item
+   `open` — the definition stays visible for the snippet, the objections collapse. */
 
 /* ---- 15. Footer ---- */
 
@@ -2624,6 +2710,12 @@ a.vertical-card:hover .vertical-card__name::after { transform: translateX(4px); 
   font-size: var(--type-body-lg);
   color: var(--text-accent);
   margin-top: var(--s-5);
+  /* The line had NO margin-bottom, so the CTA row sat flush against it and the
+     movement line read as a label for the buttons instead of the closing beat of
+     the copy block. 48px matches the 48px above it (hero__sub's margin-bottom,
+     which collapses over this element's 24px top), so the line now sits as its own
+     beat with equal air on both sides. Fixed 2026-07-27. */
+  margin-bottom: var(--s-7);
   max-width: 42ch;
 }
 .hero__bg--placeholder {
@@ -2676,20 +2768,10 @@ a.vertical-card:hover .vertical-card__name::after { transform: translateX(4px); 
 .voices__partnership strong { color: var(--text-primary); font-weight: 600; }
 
 /* --- S6 Proof: trust markers --- */
-.proof__markers {
-  display: grid;
-  gap: var(--s-5);
-  grid-template-columns: 1fr;
-  max-width: 980px;
-  margin-inline: auto;
-}
-@media (min-width: 768px) { .proof__markers { grid-template-columns: repeat(3, 1fr); } }
-.trust {
-  padding: var(--s-6);
-  background: var(--surface-1);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-card-sm);
-}
+/* `.proof__markers` (the 3-up card row) and `.trust` (its card shell) were removed
+   2026-07-27 — the markers moved INTO `.proof__mosaic` as `.proof__tile--stat`,
+   which supplies the surface, border and radius. Only the type styles below are
+   still live, reused verbatim inside the mosaic tiles. */
 .trust__lead {
   display: block;
   font-family: var(--font-editorial);
@@ -2718,6 +2800,10 @@ a.vertical-card:hover .vertical-card__name::after { transform: translateX(4px); 
   margin: 0;
   border: 0;
   padding: 0;
+  /* Kills the widow: the quote was breaking with `in it."` alone on line four.
+     `balance` evens the line lengths across the whole block, which is what display
+     text this short wants (`pretty` only protects the last line). Fixed 2026-07-27. */
+  text-wrap: balance;
 }
 .pullquote__attribution {
   margin-top: var(--s-6);
@@ -2725,6 +2811,9 @@ a.vertical-card:hover .vertical-card__name::after { transform: translateX(4px); 
   color: var(--text-muted);
   text-transform: uppercase;
   letter-spacing: 0.08em;
+  /* Same trap as .voices__closer — the global p max-width left this sitting at
+     mid=590 against a container centre of 705. Fixed 2026-07-27. */
+  margin-inline: auto;
 }
 
 /* --- Footer: brand column movement line --- */

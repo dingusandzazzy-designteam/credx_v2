@@ -24,14 +24,18 @@
   <!-- Page metadata (per copy/home.md — INDEXED; SEO budgets bind) -->
   <title>Embedded Lending for Merchants | CredX</title>
   <meta name="description" content="CredX is the embedded lending platform that keeps the customer, the data, and the value your business earns. Recover up to $30,000 per $1M you process." />
-  <link rel="canonical" href="https://credx.ca/" />
+  <link rel="canonical" href="https://credx-tech.com/" />
 
   <!-- Open Graph -->
   <meta property="og:title" content="Embedded Lending for Merchants | CredX" />
   <meta property="og:description" content="Keep the customer, the data, and the value your business earns. Recover up to $30,000 for every $1M you process." />
-  <meta property="og:image" content="images/og.jpg" />
+  <!-- og:image is now an ABSOLUTE URL on the primary domain (most platforms will not
+       resolve a relative one) and points at the FINAL filename. ⚠ `og.jpg` does not
+       exist yet — the master is `images/og.png`; the pre-push conversion pass creates
+       it. Do not "fix" this back to a relative path or to the .png. -->
+  <meta property="og:image" content="https://credx-tech.com/images/og.jpg" />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://credx.ca/" />
+  <meta property="og:url" content="https://credx-tech.com/" />
   <meta name="twitter:card" content="summary_large_image" />
 
   <link rel="icon" href="../assets/logo/credx-shape.svg" type="image/svg+xml" />
@@ -49,8 +53,8 @@
     "@context": "https://schema.org",
     "@type": "Organization",
     "name": "CredX",
-    "url": "https://credx.ca",
-    "logo": "https://credx.ca/assets/logo/credx-shape.svg",
+    "url": "https://credx-tech.com",
+    "logo": "https://credx-tech.com/assets/logo/credx-shape.svg",
     "description": "CredX is an embedded lending platform that keeps the customer, the data, and the value a business earns.",
     "areaServed": "CA"
   }
@@ -97,9 +101,12 @@
       <!-- Placeholder render wired per prompts.md; drop-in replace by filename later.
            Light theme deferred → only hero-dark is wired (add the hero-light <picture>
            when the toggle returns). -->
+      <!-- ⚠⚠ LOCAL PREVIEW ONLY — raw PNG master (1.6 MB), no <source webp>.
+           The webp source was REMOVED on purpose: leaving it would serve the OLD
+           image and hide this change. Before any push: convert to JPG q82 + WebP q80
+           (pipeline in prompts.md §B-5) and restore the <picture> wrapper. -->
       <picture>
-        <source srcset="images/hero-dark.webp" type="image/webp" />
-        <img src="images/hero-dark.jpg" alt="A business owner at a premium branded checkout, mid-interaction with a returning customer at dusk" class="hero__bg hero__bg--dark" width="1920" height="1080" />
+        <img src="images/hero-dark-2.png" alt="A business owner at a premium branded checkout, mid-interaction with a returning customer at dusk" class="hero__bg hero__bg--dark" width="1672" height="941" />
       </picture>
       <div class="hero__overlay" aria-hidden="true"></div>
       <div class="container hero__inner">
@@ -112,8 +119,12 @@
             Embedded lending puts credit and value back inside your own checkout. Every transaction builds a relationship, and CredX keeps it yours: the customer, the data, and the loyalty.
           </p>
           <p class="hero__movement" data-reveal data-reveal-delay="3">A system you belong to, instead of one that owns you.</p>
+          <!-- Hero primary CTA = Join the Movement → /join (Marco, 2026-07-27), matching
+               §8. Note the casing: the hero's other CTAs are deliberately lowercase per
+               the 2026-07-15 proofing decision, but "Join the Movement" is the locked
+               brand label (Audrey C15), not a generic action, so it keeps Title Case. -->
           <div class="hero__ctas" data-reveal data-reveal-delay="4">
-            <a href="/contact" class="btn btn-primary">Book a meeting</a>
+            <a href="/join" class="btn btn-primary">Join the Movement</a>
             <a href="/how-it-works" class="btn btn-secondary">See how it works</a>
           </div>
         </div>
@@ -126,7 +137,7 @@
     <section id="movement" class="section movement" aria-label="The movement">
       <div class="container movement__inner">
         <h2 class="movement__h2" data-reveal-words>
-          The business that earns the customer <em class="accent">should keep the customer</em>.
+          The business that earns the customer <em class="accent">keeps the customer</em>.
         </h2>
         <p class="movement__body" data-reveal data-reveal-delay="1">
           Today, your payment processor runs the transaction, and a competing credit facility keeps everything that comes after: who your customer is, what they spend, and when they return. Embedded lending puts that back in your hands. Your credit facility, your brand, your customer.
@@ -145,8 +156,8 @@
               <article class="voice-card" tabindex="0" data-reveal data-reveal-delay="1">
                 <span class="voice-card__media" aria-hidden="true">
                   <picture>
-                    <source srcset="images/voice-merchant.webp" type="image/webp" />
-                    <img src="images/voice-merchant.jpg" alt="" width="960" height="1200" loading="lazy" />
+                    <!-- ⚠ LOCAL PREVIEW ONLY — raw PNG master, webp source removed. -->
+                    <img src="images/novas/voice-merchant.png" alt="" width="1122" height="1402" loading="lazy" />
                   </picture>
                 </span>
                 <span class="voice-card__scrim" aria-hidden="true"></span>
@@ -163,8 +174,8 @@
               <article class="voice-card" tabindex="0" data-reveal data-reveal-delay="2">
                 <span class="voice-card__media" aria-hidden="true">
                   <picture>
-                    <source srcset="images/voice-customer.webp" type="image/webp" />
-                    <img src="images/voice-customer.jpg" alt="" width="960" height="1200" loading="lazy" />
+                    <!-- ⚠ LOCAL PREVIEW ONLY — raw PNG master, webp source removed. -->
+                    <img src="images/novas/voice-customer.png" alt="" width="1122" height="1402" loading="lazy" />
                   </picture>
                 </span>
                 <span class="voice-card__scrim" aria-hidden="true"></span>
@@ -181,8 +192,8 @@
               <article class="voice-card" tabindex="0" data-reveal data-reveal-delay="3">
                 <span class="voice-card__media" aria-hidden="true">
                   <picture>
-                    <source srcset="images/voice-lender.webp" type="image/webp" />
-                    <img src="images/voice-lender.jpg" alt="" width="960" height="1200" loading="lazy" />
+                    <!-- ⚠ LOCAL PREVIEW ONLY — raw PNG master, webp source removed. -->
+                    <img src="images/novas/voice-lender.png" alt="" width="1122" height="1402" loading="lazy" />
                   </picture>
                 </span>
                 <span class="voice-card__scrim" aria-hidden="true"></span>
@@ -222,9 +233,9 @@
 
         <!-- Editorial media (placeholder render wired per prompts.md; drop-in replace later) -->
         <div class="section-media" data-reveal-media>
+          <!-- ⚠ LOCAL PREVIEW ONLY — raw PNG master, webp source removed (see hero note). -->
           <picture>
-            <source srcset="images/control.webp" type="image/webp" />
-            <img src="images/control.jpg" alt="A composed business owner reviewing a simple customer-insights dashboard on a tablet at their counter" width="1920" height="1080" loading="lazy" />
+            <img src="images/control.png" alt="A composed business owner reviewing a simple customer-insights dashboard on a tablet at their counter" width="1672" height="941" loading="lazy" />
           </picture>
         </div>
 
@@ -234,7 +245,7 @@
             <p class="control-card__body">The relationship stays in your business's name, not a competing credit facility's. The customer who walked in last week belongs to you.</p>
           </div>
           <div class="control-card" data-reveal data-reveal-delay="1">
-            <span class="control-card__title">Your Data.</span>
+            <span class="control-card__title">Your Access to Data.</span>
             <p class="control-card__body">Consent-driven and de-identified, opt-in by default: which buyers return, which segments spend the most, and when demand peaks.</p>
           </div>
           <div class="control-card" data-reveal data-reveal-delay="2">
@@ -246,6 +257,46 @@
         <div class="control__whitelabel" data-reveal>
           <h3 class="control__whitelabel-head">Your business name. <em class="accent">Our infrastructure.</em></h3>
           <p class="control__whitelabel-body">Everything the customer sees carries your brand. The embedded value platform, the compliance, and the credit run behind the scenes. The relationship is yours.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         S3.5 — AEO DEFINITION BLOCK (Audrey C5, 2026-07-24)
+         FAQ format, open by default so the answer is visible to crawlers
+         and answer engines. Bridges Control → The Gains. Answer is 50
+         words (spec: 40 min / 60 max) and opens on the primary keyword.
+         Reuses the existing .faq component — no new CSS.
+         ============================================================ -->
+    <section id="what-is-embedded-lending" class="section faq" aria-label="What is embedded lending">
+      <div class="container">
+        <div class="faq__header">
+          <span class="eyebrow" data-reveal>The Short Answers</span>
+          <h2 data-reveal data-reveal-delay="1">Plain language, before <em class="accent">the numbers</em>.</h2>
+        </div>
+        <!-- Four Q&As in ONE block (Marco, 2026-07-27: the FAQ he asked for belongs
+             here, so the section is not a single question). Structure is deliberate:
+             the definition stays OPEN because it is the featured-snippet target and
+             answer engines lift visible prose; the three objections sit collapsed
+             beneath it. That also retires the earlier one-item-accordion problem —
+             with four items the component is doing what an accordion is for.
+             The three objection answers are ADAPTED FROM CLIENT-REVIEWED VERTICAL
+             COPY, not authored; the same questions ship on all four vertical pages.
+             Sources cited per row in copy/home.md §3.5.
+             Objection order: mechanics → trust → fit. -->
+        <div class="faq__list">
+          <details class="faq__item" open data-reveal data-reveal-delay="2">
+            <summary class="faq__question">What is embedded lending?</summary>
+            <p class="faq__answer">Embedded lending is credit offered inside your own checkout, in your own brand, funded by a lender rather than a competing credit facility. The customer is approved in about 20 seconds, you are paid in full and upfront, and the relationship, the data, and the value-back stay with your business.</p>
+          </details>
+          <details class="faq__item" data-reveal data-reveal-delay="2">
+            <summary class="faq__question">Does CredX replace my POS or payment processor?</summary>
+            <p class="faq__answer">No. CredX runs on the value layer underneath your existing setup. Your POS, payment terminals, and management software all stay in place, and it requires no new hardware at the counter. Typical integration runs 4 to 8 weeks.</p>
+          </details>
+          <details class="faq__item" data-reveal data-reveal-delay="3">
+            <summary class="faq__question">Is my customer data really mine?</summary>
+            <p class="faq__answer">Yes. Consent-driven, opt-in by default, de-identified for analytics, and handled under Canadian privacy law, including PIPEDA. The customer relationship stays yours, never a competing credit facility's.</p>
+          </details>
         </div>
       </div>
     </section>
@@ -265,7 +316,7 @@
         <div class="gains__list">
           <div class="gain" data-reveal>
             <span class="gain__num">1</span>
-            <h3 class="gain__title">Recover up to 85% of Interchange</h3>
+            <h3 class="gain__title">Recover an Estimated 85% of Interchange</h3>
             <p class="gain__body">Roughly $6,000 per $1M with CredX, against about $36,000 with competing credit facilities. On $1M a month, that is up to $30,000 staying in your business.</p>
           </div>
           <div class="gain" data-reveal data-reveal-delay="1">
@@ -351,78 +402,117 @@
           </h2>
         </div>
 
-        <!-- Built For scene trio — breadth of "any business with recurring customers".
-             Placeholder renders (images/builtfor-1..3) wired per prompts.md §B-5; reuses
-             the existing .builtfor__scenes CSS. ⚠ A header/context line for this trio is
-             still owned by credx-copy (none fabricated here). -->
-        <div class="builtfor__scenes" data-reveal>
-          <div class="builtfor__scene">
-            <picture>
-              <source srcset="images/builtfor-1.webp" type="image/webp" />
-              <img src="images/builtfor-1.jpg" alt="A shopkeeper in a premium retail boutique helping a customer at the counter" width="960" height="1200" loading="lazy" />
-            </picture>
-          </div>
-          <div class="builtfor__scene">
-            <picture>
-              <source srcset="images/builtfor-2.webp" type="image/webp" />
-              <img src="images/builtfor-2.jpg" alt="A hospitality operator handing an order to a returning guest at a cafe counter" width="960" height="1200" loading="lazy" />
-            </picture>
-          </div>
-          <div class="builtfor__scene">
-            <picture>
-              <source srcset="images/builtfor-3.webp" type="image/webp" />
-              <img src="images/builtfor-3.jpg" alt="A service-business owner welcoming a client at a studio front desk" width="960" height="1200" loading="lazy" />
-            </picture>
-          </div>
-        </div>
+        <!-- Built For MOSAIC — breadth of "any business with recurring customers".
+             Replaced the 3-up portrait trio of people (2026-07-27, Marco): these are
+             BUSINESSES, not portraits. People appear only as incidental presence —
+             hands, a figure at depth, backs turned. Never a face in the proof block.
 
-        <div class="proof__markers">
-          <div class="trust" data-reveal>
+             UNIFIED 2026-07-27 (Marco): the three trust markers were a separate
+             card row below. They are now tiles in the same grid — images and proof
+             interleaved, one section instead of two stacked blocks. Same tile shell,
+             different content: that is what makes the bento a bento rather than a
+             photo grid with a footer.
+
+             7 tiles, deliberately unequal:
+               A  anchor  the business as a place in the world (exterior, dusk)
+               B  wide    the counter at the moment of transaction
+               C  small   hospitality — service in motion
+               D  small   service — bench or front desk
+               + $500M+ · Lender-funded · SOC 2 + PIPEDA (the longest body sits in
+                 the wide slot so it never has to squeeze into a narrow column)
+
+             The anchor carries the section's one authored motion moment, reusing the
+             site's existing media reveal (clip wipe + inner scale, same as §3). The
+             three supporting tiles use the ordinary staggered reveal.
+
+             ⚠ RENDERS PENDING (Marco re-shooting). Tiles ship as labelled empty boxes
+             on purpose — a broken image tag looks like a bug, an empty tile looks
+             intended. To wire one: nest the same picture/source/img structure used in
+             the §3 Control media block above, pointing at the filename in the tile's
+             data-ph label. The label hides itself once an img is present.
+             Prompts, filenames and target crops: prompts.md §B-5.
+             ⚠ A header/context line for this block is still owned by credx-copy. -->
+        <div class="proof__mosaic">
+          <div class="proof__tile proof__tile--anchor" data-reveal-media>
+            <picture>
+              <img src="images/novas/business-exterior.png" alt="An independent business at dusk, warm light from inside spilling through the windows onto a quiet street" width="1400" height="1050" loading="lazy" />
+            </picture>
+          </div>
+          <div class="proof__tile proof__tile--wide" data-reveal>
+            <picture>
+              <img src="images/novas/business-interior.png" alt="A business counter at the moment of payment, hands completing the transaction on a clean surface" width="1600" height="900" loading="lazy" />
+            </picture>
+          </div>
+
+          <div class="proof__tile proof__tile--stat proof__tile--stat-a" data-reveal data-reveal-delay="1">
             <span class="trust__lead">$500M+</span>
             <span class="trust__body">in Merchant Network Agreements signed.</span>
           </div>
-          <div class="trust" data-reveal data-reveal-delay="1">
+          <div class="proof__tile proof__tile--stat proof__tile--stat-b" data-reveal data-reveal-delay="2">
             <span class="trust__lead">Lender-funded</span>
             <span class="trust__body">Community lender partners fund embedded credit.</span>
           </div>
-          <div class="trust" data-reveal data-reveal-delay="2">
+
+          <div class="proof__tile proof__tile--small proof__tile--small-c" data-reveal data-reveal-delay="1">
+            <picture>
+              <img src="images/novas/business-sportinggoods.png" alt="A hospitality counter mid-service, an order being set down" width="1000" height="800" loading="lazy" />
+            </picture>
+          </div>
+          <div class="proof__tile proof__tile--small proof__tile--small-d" data-reveal data-reveal-delay="2">
+            <picture>
+              <img src="images/novas/business-bakery.png" alt="The working surface of a service business, tools and a terminal arranged as genuinely used" width="1000" height="800" loading="lazy" />
+            </picture>
+          </div>
+
+          <div class="proof__tile proof__tile--stat proof__tile--stat-c" data-reveal data-reveal-delay="3">
             <span class="trust__lead">SOC 2 + PIPEDA</span>
             <span class="trust__body">Compliant, so data is de-identified, consent-driven, and held to Canadian privacy law.</span>
           </div>
         </div>
-
-        <p class="proof__pending" data-reveal>(Figures pending verification before launch.)</p>
       </div>
     </section>
 
     <!-- ============================================================
-         S7 — FOUNDER PULL-QUOTE (placeholder wording — pending Kendall)
+         S7 — FOUNDER PULL-QUOTE (D&Z-authored; approved as final 2026-07-27)
          ============================================================ -->
     <section id="quote" class="section pullquote" aria-label="Founder pull-quote">
       <div class="container pullquote__inner">
         <blockquote class="pullquote__text" data-reveal>
-          <em class="accent">“</em>We built CredX on one belief: the people and businesses who create the value should be the ones who keep it. That is the movement, and you belong in it.<em class="accent">”</em>
+          <em class="accent">“</em>We built CredX on one belief: the value belongs to the people and businesses who create it. That is the movement, and you belong in it.<em class="accent">”</em>
         </blockquote>
         <p class="pullquote__attribution" data-reveal data-reveal-delay="1">— Kendall, Founder, CredX</p>
       </div>
     </section>
 
     <!-- ============================================================
-         S8 — FINAL CTA (funnels to /contact — no on-page form on the Home)
+         S8 — ONBOARDING + FINAL CTA
+         Rewritten 2026-07-27: the onboarding treatment is a DEDICATED PAGE
+         (not a popup — Marco). This section is the on-page teaser; the
+         secondary CTA links straight to it. `Join the Movement` alone is
+         Audrey's C15 call ("get onboarded" is transactional for a cold
+         audience).
+         Slug DECIDED 2026-07-27 = `/join` — it echoes the button, it is short
+         enough to dictate on a call, and it carries the movement register.
+         The page is `noindex` on evidence: in the `ca` database the whole
+         merchant-onboarding cluster is 0–40/mo, and indexing it against
+         "embedded lending" would cannibalise the Home's own 1,000/mo anchor.
+         So the slug has no keyword duty — do not stuff one in.
+         Primary stays /contact until Kyle's calendar URL lands.
          ============================================================ -->
     <section id="join" class="section final-cta" aria-label="Ready to keep your customer">
       <div class="container final-cta__inner">
         <div data-reveal>
           <span class="eyebrow eyebrow--accent">Be Part of the Movement</span>
           <h2 class="final-cta__h2">Ready to keep your customer?</h2>
-          <p class="final-cta__body">See what embedded lending could return for your business. One conversation, no obligation.</p>
+          <p class="final-cta__body">Join now and finish on your own time: one link, a guided form, and no back and forth. If you would rather talk it through first, book a meeting.</p>
           <div class="hero__ctas final-cta__ctas">
-            <a href="/contact" class="btn btn-primary">Book a Meeting</a>
-            <a href="/how-it-works" class="btn btn-secondary">See How It Works</a>
+            <a href="/join" class="btn btn-primary">Join the Movement</a>
+            <a href="/contact" class="btn btn-secondary">Book a Meeting</a>
           </div>
         </div>
       </div>
     </section>
+
   </main>
 
   <!-- Footer (G2) — footer-sitemap -->
@@ -459,7 +549,7 @@
         </div>
       </div>
       <div class="footer__bottom">
-        <span>© 2026 CredX Tech Inc. · credx.ca</span>
+        <span>© 2026 CredX Tech Inc. · credx-tech.com</span>
       </div>
     </div>
   </footer>

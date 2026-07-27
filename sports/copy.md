@@ -162,7 +162,7 @@ Community lenders have always been closer to their members than the big networks
 
 | # | Title | Body |
 |---|---|---|
-| 1 | `Recover up to 85% of interchange` | `$6,000 per $1M with CredX, against roughly $36,000 with legacy credit networks. On a $60,000 night at the gate, that is most of it staying with your team.` |
+| 1 | `Recover an estimated 85% of interchange` | `$6,000 per $1M with CredX, against roughly $36,000 with legacy credit networks. On a $60,000 night at the gate, that is most of it staying with your team.` |
 | 2 | `Earn on the credit you used to give away` | `Revolving credit of up to $5,000 in your team's own brand — your fans carry your team's currency — approved in about 20 seconds at the concession or the gate, at roughly half the rate of a standard card. You are paid in full and upfront, and the risk stays with CredX, never on your books.` |
 | 3 | `See your fan base in real time` | `A monthly dashboard in plain language, not raw numbers: which game nights peak, which segment drives concession and merchandise revenue, and who is about to lapse on their season tickets. The intelligence your current setup never handed you.` |
 
@@ -258,7 +258,7 @@ Community lenders have always been closer to their members than the big networks
 | Metric | Status |
 |---|---|
 | `SOC 2 + PIPEDA compliant. Data de-identified, consent-driven, and held to Canadian privacy law.` | DRAFT — moved up per Audrey C21 (2026-07-16) |
-| `$500M+ in Merchant Network Agreements signed` | ⚠ confirm figure |
+| `$500M+ in Merchant Network Agreements signed` | ✅ confirmed correct 2026-07-27 (Marco) — keep as written |
 | `Community lender partners funding embedded credit` | generic — count dropped per Audrey C20 (2026-07-16), pending confirmed number |
 
 **Notes:**
@@ -350,15 +350,15 @@ A secondary `Book a Demo` route opens a calendar booking, distinct from `Join th
 > **For Kyle / Kendall / Audrey.** These are the copy claims still awaiting confirmation before public launch. The items resolved in the 2026-07-13 review round are already folded into the copy above; only the still-open ones remain here. None block reading the copy; they block public launch.
 
 1. **$500M+ in Merchant Network Agreements signed** — confirm the figure (or give the correct one). *(Audrey re-flagged 2026-07-16, C19: "is this verified/confirmed? We want to make sure it is accurate.")*
-   → Answer:
+   → Answer: ✅ **Confirmed correct 2026-07-27 (Marco).** Keep `$500M+` as written. Cleared alongside the 5 C's of credit and the 186 verified data sources.
 2. **Community lender partners funding embedded credit** — confirm the count. *(The "4" was removed from the copy 2026-07-16 per Audrey C20 — "we do not have a specific number yet, do not want to misrepresent." The metric now reads generic; restore a number here once confirmed.)*
    → Answer:
 3. **PayPal benchmark (321% lift in frequency, 76% larger transactions)** applied to venues — OK to use as framed?
-   → Answer:
+   → Answer: ✅ **Keep as written (Marco, 2026-07-27).** No per-vertical refinement of the benchmark framing for now — focus is the generic site page. ⏳ The **source link** for the figure is a separate, still-open ask (see `workflow/Open-Items-Copy-2026-07-27.md` q1).
 4. **"SOC 2 + PIPEDA compliant. Data de-identified, consent-driven, held to Canadian privacy law."** — confirm this claim is accurate as stated.
    → Answer:
 5. **Data proof — the "5 C's" claim.** What does **"186 verified data sources across the 5 C's of credit"** refer to, and how much detail on the banking partner can we state publicly? *(Audrey re-flagged 2026-07-16, C29: may need a public definition — "people may not know what this means, particularly 5 C's of credit.")*
-   → Answer:
+   → Answer: ✅ **Accuracy confirmed 2026-07-27 (Marco): the 5 C's and the 186 sources are correct — keep as written.** ⏳ Two halves of this question remain: (a) Audrey's C29 ask for a **public definition** of "5 C's of credit" is not being actioned, since "keep everything" reads as no rewording — reopen if she pushes; (b) **how much banking-partner detail is publishable** was not addressed.
 6. **FAQ "Who qualifies?" — the $250K/month floor** may exclude smaller teams, and minor / junior leagues are a listed target audience. Keep the $250K figure, drop it, or add a second line for minor / junior leagues — and with what qualifying criteria?
    → Answer:
 
