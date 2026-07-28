@@ -102,6 +102,12 @@
   /* Motion */
   --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  /* Both curves above are heavily front-loaded: expo is ~85% resolved by 25% of the
+     duration, quart ~78%. Great for entrances that should feel instant, wrong for a
+     hover reveal the pointer is holding — the eye reads a snap plus a dead tail.
+     This one keeps velocity through the middle so a long duration actually looks long.
+     Added 2026-07-27 for the §2 voice-card reveal. */
+  --ease-reveal: cubic-bezier(0.32, 0.72, 0.28, 1);
   --duration-fast: 200ms;
   --duration-base: 400ms;
   --duration-slow: 800ms;
@@ -1126,20 +1132,46 @@ p { line-height: 1.6; max-width: 65ch; }
   height: 100%;
   object-fit: cover;
 }
-/* Scrim carries WCAG contrast for the overlaid type. Never fully transparent
-   at the top: the supporting text rises into the upper half on reveal, and
-   final imagery is documentary mid-key, so the whole card stays type-safe. */
+/* Scrim carries WCAG contrast for the overlaid type — but in TWO STATES, reworked
+   2026-07-27. The single gradient it used to have was 40% black at the very top and
+   62% at 72% height, which is where the faces sit: it was protecting text that is
+   not on screen yet and crushing the portraits to do it (Marco: "a parte de cima do
+   degradê está muito escura, deixando os rostos sem visibilidade").
+
+   REST — bottom-weighted, effectively clear at the top. It only has to protect the
+   role label and the quote line, which live in the bottom third.
+   HOVER — a second, fuller layer fades in, because that is when the supporting text
+   rises into the upper half. Two layers rather than one animated gradient: CSS
+   cannot interpolate between gradient stops, so transitioning `background` would
+   snap. Opacity on a separate layer animates cleanly and costs nothing. */
 .voice-card__scrim {
   position: absolute;
   inset: 0;
   z-index: 1;
   background: linear-gradient(
     to top,
-    rgba(11, 12, 22, 0.94) 0%,
-    rgba(11, 12, 22, 0.85) 40%,
-    rgba(11, 12, 22, 0.62) 72%,
-    rgba(11, 12, 22, 0.40) 100%
+    rgba(11, 12, 22, 0.92) 0%,
+    rgba(11, 12, 22, 0.78) 24%,
+    rgba(11, 12, 22, 0.34) 50%,
+    rgba(11, 12, 22, 0.08) 76%,
+    rgba(11, 12, 22, 0) 100%
   );
+}
+/* Defaults to VISIBLE so touch / no-hover devices — which show both text layers at
+   once — keep full protection. The hover block below hides it at rest and brings it
+   back on hover. */
+.voice-card__scrim::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(11, 12, 22, 0.94) 0%,
+    rgba(11, 12, 22, 0.88) 40%,
+    rgba(11, 12, 22, 0.70) 72%,
+    rgba(11, 12, 22, 0.56) 100%
+  );
+  opacity: 1;
 }
 .voice-card__content {
   position: relative;
@@ -1210,44 +1242,89 @@ p { line-height: 1.6; max-width: 65ch; }
 @media (hover: hover) and (pointer: fine) {
   .voice-card { min-height: clamp(440px, 46vw, 500px); }
 
-  /* Resting + EXIT state: collapsed, blurred, dropped. Uses duration-base so
-     retracting on mouse-out is quicker than the entrance (motion best practice). */
+  /* REWORKED 2026-07-27 — the reveal read as mechanical. Two causes, both measured:
+
+     1) Every property ran the same duration on the same front-loaded curve, so the
+        whole card moved as one rigid block. Natural motion has properties resolving
+        at DIFFERENT times; each now has its own duration.
+     2) `--duration-slow` (800ms) on `--ease-out-expo` is ~85% done by 200ms. The
+        declared duration was a lie about the perceived one — a snap plus 600ms of
+        dead tail. Hence `--ease-reveal`, which holds velocity through the middle.
+
+     Also dropped: the `blur(4px)` on the support text. It was the most expensive
+     property here, it quantises on type, and opacity + translate already carry the
+     arrival. One less thing moving is what made the rest legible.
+
+     The sequence now reads as three overlapping beats rather than one block:
+       darken (280ms) → card grows (400ms) → text rises and lands (440ms, +120ms in)
+     The image scale is the only long move (640ms) because a slow depth drift is
+     exactly where a tail belongs. */
+
+  /* Resting + EXIT state. Exit stays quicker than entrance and uniform — retracting
+     is an undo, not an authored moment. */
   .voice-card__support {
     display: grid;
     grid-template-rows: 0fr;
     opacity: 0;
-    transform: translateY(14px);
-    filter: blur(4px);
+    transform: translateY(10px);
+    /* Required, and it was missing. `.voice-card` is a flex column, so this block is a
+       flex item with the default `flex-shrink: 1`. Once the quote's height reservation
+       (added 2026-07-27 to align the role labels) ate into the card, the revealed text
+       no longer fit — so instead of growing the card, this block was being SQUEEZED and
+       `overflow: hidden` on the paragraph silently truncated the copy mid-sentence.
+       Caught by forcing the hover state in a headless render; a real pointer hover shows
+       the same clipping. Do not remove. */
+    flex-shrink: 0;
     transition:
-      grid-template-rows var(--duration-base) var(--ease-out-quart),
-      opacity var(--duration-base) var(--ease-out-quart),
-      transform var(--duration-base) var(--ease-out-quart),
-      filter var(--duration-base) var(--ease-out-quart);
+      grid-template-rows 240ms var(--ease-out-quart),
+      opacity 200ms var(--ease-out-quart),
+      transform 240ms var(--ease-out-quart);
   }
-  .voice-card__support > p { overflow: hidden; }
+  /* `overflow: hidden` sits on the CONTAINER, not the paragraph. On the paragraph it
+     zeroes that item's automatic minimum size, so `grid-template-rows: 1fr` —
+     which is `minmax(auto, 1fr)` — resolved its auto minimum to 0 inside the card's
+     flex context and the row never opened: the text was clipped to nothing at hover.
+     Measured `height: 0` with `scrollHeight: 282`. Clipping still happens, it just
+     happens one level up where it does not poison the row sizing. */
+  .voice-card__support { overflow: hidden; }
 
-  /* ENTRANCE — a two-step focal reveal, not a single snap:
-     1) the image pushes in and darkens slowly (duration-slow, expo);
-     2) a beat later (+120ms) the support text rises and sharpens out of blur. */
+  .voice-card__media {
+    transition:
+      transform 420ms var(--ease-reveal),
+      filter 260ms var(--ease-reveal);
+  }
+
+  /* On pointer devices the deep scrim is OFF at rest — the face reads — and fades in
+     with the reveal, slightly ahead of the text it protects. */
+  .voice-card__scrim::after {
+    opacity: 0;
+    transition: opacity 220ms var(--ease-out-quart);
+  }
+  .voice-card:hover .voice-card__scrim::after,
+  .voice-card:focus-within .voice-card__scrim::after {
+    opacity: 1;
+    transition: opacity 300ms var(--ease-reveal);
+  }
+
+  /* ENTRANCE */
   .voice-card:hover .voice-card__media,
   .voice-card:focus-within .voice-card__media {
-    transform: scale(1.08);
+    transform: scale(1.045);          /* was 1.08 — a depth cue, not a lurch */
     filter: brightness(0.48);
+    will-change: transform, filter;   /* scoped to the animating state only */
     transition:
-      transform var(--duration-slow) var(--ease-out-expo),
-      filter var(--duration-slow) var(--ease-out-expo);
+      transform 640ms var(--ease-reveal),
+      filter 280ms var(--ease-reveal);
   }
   .voice-card:hover .voice-card__support,
   .voice-card:focus-within .voice-card__support {
     grid-template-rows: 1fr;
     opacity: 1;
     transform: none;
-    filter: blur(0);
     transition:
-      grid-template-rows var(--duration-slow) var(--ease-out-expo) 120ms,
-      opacity var(--duration-slow) var(--ease-out-quart) 120ms,
-      transform var(--duration-slow) var(--ease-out-expo) 120ms,
-      filter var(--duration-slow) var(--ease-out-quart) 120ms;
+      grid-template-rows 400ms var(--ease-reveal),
+      opacity 300ms linear 120ms,
+      transform 440ms var(--ease-reveal) 120ms;
   }
 }
 
@@ -1257,16 +1334,19 @@ p { line-height: 1.6; max-width: 65ch; }
      supporting text still reads over the image. */
   .voice-card__media,
   .voice-card__support,
+  .voice-card__scrim::after,
   .voice-card:hover .voice-card__media,
   .voice-card:focus-within .voice-card__media,
   .voice-card:hover .voice-card__support,
-  .voice-card:focus-within .voice-card__support {
+  .voice-card:focus-within .voice-card__support,
+  .voice-card:hover .voice-card__scrim::after,
+  .voice-card:focus-within .voice-card__scrim::after {
     transition-duration: 0.01ms !important;
     transition-delay: 0ms !important;
   }
   .voice-card__support { filter: none; }
   .voice-card:hover .voice-card__media,
-  .voice-card:focus-within .voice-card__media { transform: none; }
+  .voice-card:focus-within .voice-card__media { transform: none; will-change: auto; }
 }
 .voices__closer {
   text-align: center;
