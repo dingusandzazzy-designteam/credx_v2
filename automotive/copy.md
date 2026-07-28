@@ -68,7 +68,7 @@
 | Eyebrow | `A Movement, Not a Product` |
 | Headline | `Forget the old system. Here is a new one.` |
 | Lead | `One that you belong to, instead of one that owns you.` |
-| Body | `The value your business creates should come back to your business. CredX is how that happens. This is not another product to buy. It is a movement to join, built so the people and businesses who create the value are the ones who keep it. Your customers and your data stay where they started: with you.` |
+| Body | `The value your business creates belongs to your business. CredX is how that happens. This is not another product to buy. It is a movement to join, built so the people and businesses who create the value are the ones who keep it. Your customers and your data stay where they started: with you.` |
 | Closer | `That is the real switch.` |
 
 **Notes:**
@@ -85,7 +85,7 @@
 
 | Field | Value |
 |---|---|
-| Headline | `The business that earns the customer should keep the customer.` |
+| Headline | `The business that earns the customer keeps the customer.` |
 | Body | `Right now your payment processor runs the transaction, and the credit facility network keeps everything that comes after: who your customer is, what they spend, and when they will come back. CredX puts that back in your hands. Your credit facility, your brand, your customer.` |
 
 ### Three Voices, One Direction
