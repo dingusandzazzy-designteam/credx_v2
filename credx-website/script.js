@@ -593,3 +593,63 @@
     });
   });
 })();
+
+
+/* ============================================================
+   CredX Website — Contact page (/contact) form
+   Appended 2026-07-31. Guarded by [data-contact-form], so this block is
+   inert on every other page (the Home has no form).
+
+   ⚠⚠ THERE IS NO BACKEND. Nothing submitted here is delivered anywhere.
+   This handler shows the inline success state and logs the payload to the
+   console. The visitor is told "thank you" either way, which is exactly why
+   {{PENDING:form-endpoint}} is the most dangerous placeholder on the page.
+
+   Deliberately NOT reusing the 2-step [data-signup-form] handler in
+   section 7: that one is Automotive-seeded, assumes two steps, and hardcodes
+   the "$30,000 per $1M" reward copy. This page is single-step.
+
+   TWO THINGS TO WIRE BEFORE PUBLISH:
+     1. The endpoint (Webflow Forms native, or whatever is chosen).
+     2. The conversion event. `/thank-you` was dropped when the MVP was
+        fixed at three pages (Marco, 2026-07-31), so the Meta Pixel /
+        Google Ads conversion fires HERE, on success — not on a
+        thank-you pageview. plan/04:89 calls the thank-you URL a launch
+        blocker; that framing is wrong. The requirement is an event.
+   ============================================================ */
+(function () {
+  var form = document.querySelector('[data-contact-form]');
+  if (!form) return;
+
+  var done = document.querySelector('[data-contact-done]');
+
+  form.addEventListener('submit', function (event) {
+    // Native constraint validation gates us: `submit` does not fire while a
+    // required field is invalid, so there is no manual validation pass here.
+    event.preventDefault();
+
+    var payload = Object.fromEntries(new FormData(form).entries());
+
+    // PLACEHOLDER — replace with the real delivery call.
+    console.warn('[CredX /contact] {{PENDING:form-endpoint}} — submission NOT sent anywhere:', payload);
+
+    // PLACEHOLDER — the conversion event belongs here, not on a /thank-you pageview:
+    //   if (window.fbq)  fbq('track', 'Lead');
+    //   if (window.gtag) gtag('event', 'conversion', { send_to: 'AW-XXXXXXXX/XXXX' });
+
+    if (done) {
+      form.hidden = true;
+      done.hidden = false;
+      // Move focus so screen-reader users land on the confirmation rather than
+      // on the now-hidden form. role="status" announces it; focus makes it findable.
+      done.setAttribute('tabindex', '-1');
+      done.focus();
+    }
+  });
+
+  // Keep placeholder destinations inert instead of scrolling to the top of the
+  // page on an `href="#"`. Removing aria-disabled re-enables the link.
+  document.querySelectorAll('a[aria-disabled="true"]').forEach(function (link) {
+    link.addEventListener('click', function (event) { event.preventDefault(); });
+  });
+})();

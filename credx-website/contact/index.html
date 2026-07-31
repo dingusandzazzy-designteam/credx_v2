@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0b0c16" />
+
+  <!-- Light theme + toggle DEFERRED to a future update (2026-07-24). Dark is the only
+       theme. This page never had a FOUC script or a toggle; do not add one. -->
+
+  <!-- Page metadata (per copy/contact.md — INDEXED; SEO budgets bind)
+       Title 30/≤60 · Meta 158/150–160 · H1 35/≤70 — measured, not estimated.
+       The Title is deliberately short: demand on this URL is branded/navigational
+       ("credx contact"), so padding it with "embedded lending" would only compete
+       with the Home's own 1,000/mo anchor. See copy/contact.md §metadata. -->
+  <title>Contact CredX | Talk to Our Team</title>
+  <meta name="description" content="Talk to the CredX team about embedded lending for your business. Tell us who you are and what you run, and we will come back with the numbers. Get in touch." />
+  <link rel="canonical" href="https://credx-tech.com/contact" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Contact CredX | Talk to Our Team" />
+  <meta property="og:description" content="Tell us who you are and what you run. We will come back with what joining would look like for your business." />
+  <meta property="og:image" content="https://credx-tech.com/images/og.jpg" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://credx-tech.com/contact" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="icon" href="../../assets/logo/credx-shape.svg" type="image/svg+xml" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" />
+
+  <link rel="stylesheet" href="../style.css" />
+
+  <!-- ContactPage schema. ⚠ `contactPoint` is deliberately ABSENT: no email or phone
+       exists yet (see {{PENDING:email-general}} in §4). Declaring an empty or invented
+       contactPoint would be worse than omitting it. Add it with the real values. -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ContactPage",
+    "name": "Contact CredX",
+    "url": "https://credx-tech.com/contact",
+    "description": "Talk to the CredX team about embedded lending for your business.",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "CredX",
+      "url": "https://credx-tech.com"
+    },
+    "about": {
+      "@type": "Organization",
+      "name": "CredX",
+      "url": "https://credx-tech.com",
+      "areaServed": "CA"
+    }
+  }
+  </script>
+</head>
+<body>
+  <!-- Nav (G1) — identical to the Home. `aria-current` marks Contact as the current page. -->
+  <nav class="nav" aria-label="Primary">
+    <div class="container nav__inner">
+      <a href="/" class="nav__logo" aria-label="CredX home">
+        <img src="../../assets/logo/Credx-name.svg" alt="CredX" height="28" />
+      </a>
+      <div class="nav__links" data-nav-menu>
+        <a href="/how-it-works" class="nav__link">How It Works</a>
+        <a href="/lenders" class="nav__link">For Lenders</a>
+        <a href="/about" class="nav__link">About</a>
+        <a href="/contact" class="nav__link" aria-current="page">Contact Us</a>
+      </div>
+      <div class="nav__actions">
+        <!-- `Book a meeting` is the CALENDAR path and a DIFFERENT destination from the
+             Contact Us link above (Marco, 2026-07-31). ⚠ {{PENDING:booking-url}} is still
+             owed by Kyle (since 2026-07-20), so it falls back to /contact meanwhile —
+             the same fallback the four vertical pages have used for `Book a Demo` since
+             Feedback-04. Swap the href when the URL lands; do not leave it dead, the nav
+             is on every page. -->
+        <a href="/contact" class="btn btn-primary nav__cta" data-pending="booking-url">Book a meeting</a>
+        <button class="nav__toggle" data-nav-toggle type="button" aria-label="Open menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <main id="top">
+
+    <!-- ============================================================
+         1 · INTRO — THE INVITATION
+         ⚠ Reframed 2026-07-31: this is the GENERAL contact page reached
+         from the `Contact Us` nav item, NOT the booking funnel. Booking
+         moved out to the nav CTA. The H1 survived the reframe unchanged
+         because it never mentioned meetings — it invites a conversation,
+         which is what a contact page is for. Only the eyebrow and the
+         submit label carried the old framing.
+         ============================================================ -->
+    <section class="section contact-intro">
+      <div class="container contact-intro__inner">
+        <span class="eyebrow eyebrow--accent">Contact Us</span>
+        <h1 class="contact-intro__title" data-reveal-words>Talk it through with the CredX team</h1>
+        <p class="contact-intro__body">Tell us who you are and what you run. We will come back with what joining would look like for your business, and the numbers behind it.</p>
+        <!-- The anti-cannibalisation line: /join and /contact are both MVP conversion
+             surfaces and the difference is warmth. Text link, NOT a second button —
+             a competing CTA here would undo the point. -->
+        <p class="contact-intro__alt">Already spoke with someone on our team? <a href="/join" class="btn-text">Join the movement</a> and finish on your own time.</p>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         2 · THE FORM
+         ⚠⚠ NO BACKEND IS WIRED. The submit handler shows the inline
+         success state and logs to the console. Nothing is delivered
+         anywhere. This is {{PENDING:form-endpoint}} — the single most
+         dangerous placeholder on the page, because the visitor is told
+         "thank you" either way. See copy/contact.md §Placeholder register.
+         ============================================================ -->
+    <section class="section signup" id="form">
+      <div class="container signup__inner">
+
+        <!-- ⚠⚠ {{PENDING:form-endpoint}} — THE FORM IS STILL NOT CONNECTED TO ANYTHING.
+             The visible warning banner that used to sit here was removed for the Vercel
+             deploy (Marco, 2026-07-31). The defect it warned about is unchanged: every
+             submission is logged to the console and discarded, and the visitor is shown
+             "Thank you… someone will be in touch" regardless.
+             Removing the banner did not fix it — it made it invisible. Wire the endpoint
+             (and the fbq / gtag conversion event) before anyone is sent to this page. -->
+
+        <div class="signup__step">
+          <span class="signup__step-label">Tell us who you are</span>
+
+          <form class="form" data-contact-form>
+            <div class="signup__grid">
+
+              <div class="form__field form__field--full">
+                <label class="form__label" for="contact-role">I am a…</label>
+                <select class="form__select" id="contact-role" name="role" required>
+                  <option value="" disabled selected>Select one</option>
+                  <option value="merchant">Merchant</option>
+                  <option value="lender">Lender</option>
+                  <option value="partner">Partner</option>
+                </select>
+              </div>
+
+              <div class="form__field">
+                <label class="form__label" for="contact-name">Full name</label>
+                <input class="form__input" id="contact-name" name="name" type="text" autocomplete="name" required />
+              </div>
+
+              <div class="form__field">
+                <label class="form__label" for="contact-email">Work email</label>
+                <input class="form__input" id="contact-email" name="email" type="email" autocomplete="email" required />
+              </div>
+
+              <div class="form__field form__field--full">
+                <label class="form__label" for="contact-business">Business name</label>
+                <input class="form__input" id="contact-business" name="business" type="text" autocomplete="organization" required />
+              </div>
+
+              <!-- Optional volume band. Bands are the client-reviewed set from
+                   automotive/copy.md:309 — not invented. Full-width because the
+                   reviewed label is a full question. -->
+              <div class="form__field form__field--full">
+                <label class="form__label" for="contact-volume">Roughly what do you process in card volume each month? <span class="signup__optional">(optional)</span></label>
+                <select class="form__select" id="contact-volume" name="volume">
+                  <option value="" selected>Prefer not to say</option>
+                  <option value="250k-1m">$250K–$1M</option>
+                  <option value="1m-5m">$1M–$5M</option>
+                  <option value="5m-25m">$5M–$25M</option>
+                  <option value="25m-plus">$25M+</option>
+                </select>
+              </div>
+
+              <div class="form__field form__field--full">
+                <label class="form__label" for="contact-message">What would you like to talk about? <span class="signup__optional">(optional)</span></label>
+                <textarea class="form__textarea" id="contact-message" name="message" rows="4"></textarea>
+              </div>
+
+            </div>
+
+            <!-- `Send message`, not `Request a meeting` (reframed 2026-07-31): this is
+                 the general contact page, and booking now lives on the nav CTA. The label
+                 also stays honest about the mechanism — a message is sent, nothing is booked. -->
+            <button class="btn btn-primary" type="submit">Send message</button>
+
+            <!-- Deliberately NOT "we never share your details" — submissions land in a
+                 CRM, which is a third party, and an unverifiable promise does not belong
+                 on an indexed page from a company claiming PIPEDA compliance. -->
+            <!-- The second half of this line used to read "Read how we handle them in our
+                 Privacy notice" and linked to {{PENDING:privacy-url}}. Both the link and the
+                 visible token were cut for the Vercel deploy: /legal/privacy is post-MVP and
+                 does not exist, and a dead privacy link on a form that collects business
+                 details is worse than no link at all. The remaining sentence is factual and
+                 claims nothing. ⚠ Restore the link — do not restore the sentence alone —
+                 once /legal/privacy exists. -->
+            <p class="form__note">Your details reach our team so we can reply.</p>
+          </form>
+
+          <div class="signup__done" data-contact-done role="status" aria-live="polite" hidden>
+            <p>Thank you. Your message reached our team, and someone will be in touch.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         3 · BOOK A TIME — REMOVED 2026-07-31 (Marco).
+         Booking is now a separate destination reached from the `Book a
+         meeting` nav CTA, not a block on this page. The copy is parked in
+         copy/contact.md §3 rather than deleted, in case booking is ever
+         wanted back on-page. Do not re-add it without that decision — two
+         booking entry points would compete.
+         ============================================================ -->
+
+    <!-- ============================================================
+         4 · ALTERNATIVE CONTACT — REMOVED FOR THE VERCEL DEPLOY (2026-07-31)
+         The block was placeholders and nothing else: general email, press
+         email, LinkedIn URL and location were ALL unknown to us, not merely
+         unwritten — the repo contains no email, no phone and no address
+         anywhere. With the visible tokens gone the section had no content
+         left, and an empty "Other ways to reach us" heading is worse than
+         no heading at all.
+         Markup and copy are parked in copy/contact.md §4, same as §3.
+         Still owed by the client, tracked in that file's register:
+           {{PENDING:email-general}}  {{PENDING:email-press}}
+           {{PENDING:linkedin-url}}   {{PENDING:location-line}}
+         ⚠ Do NOT restore this block with a guessed address. An unmonitored
+         inbox on a conversion page loses leads in silence.
+         ============================================================ -->
+
+  </main>
+
+  <!-- Footer (G2) — identical to the Home. ⚠ The LinkedIn href is the bare domain here
+       too; that is a pre-existing defect carried from index.html:546, not a new one. -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__inner footer__inner--sitemap">
+        <div class="footer__brand">
+          <img src="../../assets/logo/Credx-name.svg" alt="CredX" height="32" style="margin-bottom: 20px;" />
+          <p class="footer__movement">A system you belong to, instead of one that owns you.</p>
+        </div>
+        <div>
+          <h4 class="footer__col-title">Explore</h4>
+          <div class="footer__links">
+            <a href="/how-it-works" class="footer__link">How It Works</a>
+            <a href="/lenders" class="footer__link">For Lenders</a>
+            <a href="/about" class="footer__link">About</a>
+            <a href="/contact" class="footer__link">Contact</a>
+            <a href="/learn/glossary/" class="footer__link">Glossary</a>
+          </div>
+        </div>
+        <div>
+          <h4 class="footer__col-title">Legal</h4>
+          <div class="footer__links">
+            <a href="/legal" class="footer__link">Privacy</a>
+            <a href="/legal" class="footer__link">Terms</a>
+          </div>
+        </div>
+        <div>
+          <h4 class="footer__col-title">Connect</h4>
+          <div class="footer__links">
+            <a href="https://www.linkedin.com/" class="footer__link" rel="noopener" target="_blank">LinkedIn</a>
+            <a href="/contact" class="footer__link">Book a meeting</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span>© 2026 CredX Tech Inc. · credx-tech.com</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.0.42/dist/lenis.min.js"></script>
+  <script src="../script.js"></script>
+</body>
+</html>

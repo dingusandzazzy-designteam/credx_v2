@@ -71,6 +71,10 @@
         <a href="/how-it-works" class="nav__link">How It Works</a>
         <a href="/lenders" class="nav__link">For Lenders</a>
         <a href="/about" class="nav__link">About</a>
+        <!-- Contact Us is a NAV ITEM, distinct from the `Book a meeting` CTA
+             (Marco, 2026-07-31). The CTA is the calendar path; this is the
+             general contact page. -->
+        <a href="/contact" class="nav__link">Contact Us</a>
       </div>
       <div class="nav__actions">
         <!-- Theme toggle deferred to a future update; markup preserved inert in the template below. Restore: unwrap it, then un-comment the head FOUC script and script.js section 6. -->
@@ -84,7 +88,11 @@
           </svg>
         </button>
         </template>
-        <a href="/contact" class="btn btn-primary nav__cta">Book a meeting</a>
+        <!-- CALENDAR path — a different destination from the Contact Us link above.
+             ⚠ {{PENDING:booking-url}} owed by Kyle since 2026-07-20; falls back to
+             /contact until it lands, mirroring the verticals' `Book a Demo` fallback
+             (Feedback-04). Swap the href when the URL arrives. -->
+        <a href="/contact" class="btn btn-primary nav__cta" data-pending="booking-url">Book a meeting</a>
         <button class="nav__toggle" data-nav-toggle type="button" aria-label="Open menu" aria-expanded="false">
           <span></span><span></span><span></span>
         </button>

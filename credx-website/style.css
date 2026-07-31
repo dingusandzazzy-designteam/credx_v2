@@ -2903,3 +2903,128 @@ a.vertical-card:hover .vertical-card__name::after { transform: translateX(4px); 
   color: var(--text-secondary);
   max-width: 30ch;
 }
+
+/* ============================================================
+   23. Contact page (/contact) — added 2026-07-31
+   Built almost entirely on existing classes (.section, .signup__*,
+   .form__*, .eyebrow, .btn). Only the page-specific layout below is new.
+   ⚠ Reminder for anyone editing centred text here: the global rule
+   `p { max-width: 65ch }` (line 228) caps the BOX, so a centred <p>
+   without `margin-inline: auto` centres its text inside a box that
+   hugs the left edge. Two Home paragraphs shipped that bug on
+   2026-07-27. Every centred paragraph below carries the auto margin.
+   ============================================================ */
+
+/* --- 1 · Intro --- */
+.contact-intro__inner {
+  max-width: 760px;
+  margin-inline: auto;
+  text-align: center;
+}
+.contact-intro__title { margin-bottom: var(--s-5); }
+.contact-intro__body {
+  font-size: var(--type-body-lg);
+  color: var(--text-secondary);
+  max-width: 52ch;
+  margin-inline: auto;          /* required — see the note above */
+}
+.contact-intro__alt {
+  margin-top: var(--s-6);
+  font-size: var(--type-body);
+  color: var(--text-muted);
+  max-width: 52ch;
+  margin-inline: auto;          /* required — see the note above */
+}
+
+/* --- 2 · Form: the note under the submit button --- */
+.form__note {
+  margin-top: var(--s-4);
+  font-size: var(--type-caption);
+  color: var(--text-muted);
+  max-width: none;              /* overrides p{max-width:65ch}; the field grid sets the measure */
+}
+
+/* --- 3 + 4 · Secondary blocks --- */
+.contact-block { text-align: center; }
+.contact-block__title { margin-bottom: var(--s-4); }
+.contact-block__body {
+  color: var(--text-secondary);
+  max-width: 46ch;
+  margin-inline: auto;          /* required — see the note above */
+  margin-bottom: var(--s-6);
+}
+
+/* --- 4 · Alternative-contact list --- */
+.contact-list {
+  margin-top: var(--s-6);
+  text-align: left;
+  display: grid;
+  gap: var(--s-4);
+}
+.contact-list__row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--s-1);
+  padding-bottom: var(--s-4);
+  border-bottom: 1px solid var(--border-subtle);
+}
+@media (min-width: 640px) {
+  .contact-list__row {
+    grid-template-columns: 200px 1fr;
+    align-items: baseline;
+    gap: var(--s-5);
+  }
+}
+.contact-list__row:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+.contact-list__label {
+  font-size: var(--type-eyebrow);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-secondary);
+}
+.contact-list__value {
+  margin: 0;
+  color: var(--text-primary);
+  font-size: var(--type-body);
+}
+
+/* --- Placeholder marker — DELIBERATELY LOUD --------------------
+   Every unresolved value on this page renders through .pending. It is
+   ugly on purpose: this repo auto-deploys `main` to GitHub Pages with
+   no staging step, so a push IS a publish. A placeholder that looked
+   like real content could reach the live site unnoticed; this one
+   cannot. Gate before publishing:
+       grep -rn "{{PENDING:" credx-website/
+   Registered in copy/contact.md §Placeholder register.
+   -------------------------------------------------------------- */
+.pending {
+  display: inline-block;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.78rem;
+  line-height: 1.45;
+  color: #ffd166;
+  background-color: rgba(255, 209, 102, 0.08);
+  border: 1px dashed #ffd166;
+  border-radius: var(--radius-small);
+  padding: 0.35em 0.6em;
+  max-width: none;
+}
+.pending--banner {
+  display: block;
+  margin-bottom: var(--s-6);
+  text-align: left;
+}
+.pending code {
+  font-family: inherit;
+  color: inherit;
+  background-color: rgba(255, 209, 102, 0.14);
+  padding: 0.05em 0.3em;
+  border-radius: 3px;
+}
+
+/* Inert links while their destination is a placeholder. */
+[aria-disabled="true"] { cursor: not-allowed; opacity: 0.55; }
