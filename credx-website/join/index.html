@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0b0c16" />
+
+  <!-- Light theme + toggle DEFERRED to a future update (2026-07-24). Dark is the only
+       theme. Do not add a FOUC script or a toggle. ⚠ The base44 prototype this page is
+       designed from is a LIGHT UI (white cards on light grey). The dark surface here is
+       deliberate, not drift — see copy/join.md §Design note. -->
+
+  <!-- ⚠ noindex — decided 2026-07-27 on Semrush data: the whole merchant-application
+       cluster is 0–40 searches/month in the `ca` database, and indexing this page against
+       "embedded lending" would cannibalise the Home's own 1,000/mo anchor. No meta
+       description, no OG tags, no schema: the link is sent by a rep, never shared. -->
+  <title>Merchant Application | CredX</title>
+  <meta name="robots" content="noindex, nofollow" />
+
+  <link rel="icon" href="../assets/logo/credx-shape.svg" type="image/svg+xml" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" />
+
+  <link rel="stylesheet" href="../style.css" />
+</head>
+<body class="join-body">
+
+  <!-- ============================================================
+       APPLICATION CHROME — deliberately NOT the site nav.
+       This is an Operate surface: the visitor is inside a task, and every
+       marketing nav link is an exit from a form they were sent here to
+       finish. It is also the practical call — `/how-it-works`, `/lenders`,
+       `/about`, `/legal` (×2) and `/learn/glossary/` are all post-MVP and
+       404 today, so the 4-link nav + sitemap footer would add EIGHT more
+       dead links to the 17 already logged on the Home. The prototype's own
+       header is wordmark + label, so this also matches it.
+       ============================================================ -->
+  <header class="join-chrome">
+    <div class="join-chrome__inner">
+      <a href="../" class="join-chrome__logo" aria-label="CredX home">
+        <img src="../assets/logo/Credx-name.svg" alt="CredX" height="24" />
+      </a>
+      <span class="join-chrome__label">Merchant Application</span>
+    </div>
+  </header>
+
+  <!-- ============================================================
+       PROGRESS RAIL — sticky, because an 8-step form must always answer
+       "how much is left?" without scrolling up.
+       Step numbers are the one place `craft-floor` allows an 01/02/03
+       sequence: here the number IS the information.
+       `aria-current="step"` marks position; completed steps carry a check
+       AND a text label, never colour alone.
+       ============================================================ -->
+  <div class="join-rail" data-join-rail>
+    <div class="join-rail__inner">
+      <div class="join-rail__meta">
+        <p class="join-rail__count">Step <strong data-rail-current>1</strong> of 8</p>
+        <p class="join-rail__name" data-rail-name>Business Identity</p>
+      </div>
+      <div class="join-rail__track" role="progressbar" aria-label="Application progress" aria-valuemin="1" aria-valuemax="8" aria-valuenow="1">
+        <span class="join-rail__fill" data-rail-fill></span>
+      </div>
+      <ol class="join-rail__steps" data-rail-steps>
+        <li class="join-rail__step is-current" aria-current="step"><span class="join-rail__step-num">1</span><span class="sr-only">Business Identity — current step</span></li>
+        <li class="join-rail__step"><span class="join-rail__step-num">2</span><span class="sr-only">Ownership</span></li>
+        <li class="join-rail__step"><span class="join-rail__step-num">3</span><span class="sr-only">Commercial</span></li>
+        <li class="join-rail__step"><span class="join-rail__step-num">4</span><span class="sr-only">Payments</span></li>
+        <li class="join-rail__step"><span class="join-rail__step-num">5</span><span class="sr-only">Technology</span></li>
+        <li class="join-rail__step"><span class="join-rail__step-num">6</span><span class="sr-only">Data &amp; Ops</span></li>
+        <li class="join-rail__step"><span class="join-rail__step-num">7</span><span class="sr-only">Documents</span></li>
+        <li class="join-rail__step"><span class="join-rail__step-num">8</span><span class="sr-only">Review</span></li>
+      </ol>
+    </div>
+  </div>
+
+  <main class="join-main" id="top">
+
+    <!-- Page intro. `Join the Movement` is the locked brand label (Audrey C15) and the
+         same string on the button that sent the merchant here — the eyebrow is the scent
+         match, which is why it is Title Case against the 2026-07-15 lowercase-CTA rule.
+         ⚠ NO `data-reveal-words` here, unlike every other page in this project: word
+         reveal is a Persuade device, and on a task surface an animated headline delays
+         the task. It is also the artifact that broke render verification twice. -->
+    <div class="join-intro">
+      <span class="eyebrow eyebrow--accent">Join the Movement</span>
+      <h1 class="join-intro__title">Your merchant application</h1>
+      <p class="join-intro__body">Eight short sections. Complete each one, and our team takes it from there.</p>
+    </div>
+
+    <!-- ⚠⚠ DESIGN PROTOTYPE — NOT AN IMPLEMENTATION.
+         Focus of this deliverable is DESIGN; the implementation is another team's
+         (Marco, 2026-08-03). The step controller at the foot of this file exists ONLY
+         so the eight screens can be walked through in review. There is deliberately:
+           · no submit transport of any kind
+           · no file upload transport
+           · no Day.ai payload, endpoint, auth or field mapping
+           · no persistence (there is no login — see copy/join.md §Out of scope)
+         The <form> carries no action and no method ON PURPOSE. Do not "finish" this by
+         wiring it up; the receiving integration is CredX IT's, into Day.ai.
+         ============================================================ -->
+    <form class="join-form" data-join-form novalidate>
+
+      <!-- ========================================================
+           STEP 1 · BUSINESS IDENTITY
+           ⚠ FIELD LABELS ARE LOCKED — ClickUp 86caz3h02: "Form fields must
+           match the prototype exactly (same fields, order, labels)." Every
+           label, placeholder and helper below is transcribed from the
+           prototype screenshots, not authored. Do not improve them.
+           ======================================================== -->
+      <section class="join-step is-active" data-step="1" aria-labelledby="step-1-title">
+        <header class="join-step__head">
+          <h2 class="join-step__title" id="step-1-title">Business Identity</h2>
+          <p class="join-step__sub">Start with your company&rsquo;s legal information.</p>
+        </header>
+
+        <div class="join-step__body">
+          <div class="signup__grid">
+            <div class="join-field">
+              <label class="form__label" for="j-name">Your Name <span class="join-req" aria-hidden="true">*</span></label>
+              <input class="form__input" type="text" id="j-name" name="your_name" placeholder="Full name" required autocomplete="name" />
+            </div>
+            <div class="join-field">
+              <label class="form__label" for="j-email">Your Email <span class="join-req" aria-hidden="true">*</span></label>
+              <input class="form__input" type="email" id="j-email" name="your_email" placeholder="email@company.com" required autocomplete="email" />
+            </div>
+          </div>
+
+          <!-- `Your Phone` is an ADDITION to the prototype's locked field set, APPROVED
+               by Marco 2026-08-03. The client asked for it — comment #7, to Audrey:
+               "We still need to have them put their phone number on the first page of
+               this. I see the title but we need the number as well." It is also what
+               makes the CRM abandonment follow-up (comment #3) possible at all.
+               Paired with `Your Title` in one row rather than sitting full-width alone:
+               that mirrors how the client described it ("I see the title but we need the
+               number as well") and keeps the card's two-column rhythm. Optional, because
+               work email is already required and reaching the merchant is not gated on it. -->
+          <div class="signup__grid">
+            <div class="join-field">
+              <label class="form__label" for="j-phone">Your Phone</label>
+              <input class="form__input" type="tel" id="j-phone" name="your_phone" placeholder="(000) 000-0000" autocomplete="tel" />
+            </div>
+            <div class="join-field">
+              <label class="form__label" for="j-title">Your Title</label>
+              <input class="form__input" type="text" id="j-title" name="your_title" placeholder="e.g. CEO, Owner, Operations Manager" autocomplete="organization-title" />
+            </div>
+          </div>
+
+          <h3 class="join-group">Business Details</h3>
+
+          <div class="signup__grid">
+            <div class="join-field">
+              <label class="form__label" for="j-legal">Legal Business Name <span class="join-req" aria-hidden="true">*</span></label>
+              <input class="form__input" type="text" id="j-legal" name="legal_business_name" placeholder="As registered" required />
+            </div>
+            <div class="join-field">
+              <label class="form__label" for="j-trade">Operating / Trade Name</label>
+              <input class="form__input" type="text" id="j-trade" name="trade_name" placeholder="If different from legal name" />
+            </div>
+            <div class="join-field">
+              <label class="form__label" for="j-bn">Business Number / Tax ID <span class="join-req" aria-hidden="true">*</span></label>
+              <input class="form__input" type="text" id="j-bn" name="business_number" placeholder="e.g. 123456789" required />
+            </div>
+            <div class="join-field">
+              <label class="form__label" for="j-country">Country</label>
+              <select class="form__select" id="j-country" name="country">
+                <option value="CA" selected>Canada</option>
+                <option value="US">United States</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="join-field">
+            <label class="form__label" for="j-street">Street Address <span class="join-req" aria-hidden="true">*</span></label>
+            <input class="form__input" type="text" id="j-street" name="street_address" placeholder="123 Main St" required autocomplete="street-address" />
+          </div>
+
+          <div class="join-field-row join-field-row--3">
+            <div class="join-field">
+              <label class="form__label" for="j-city">City</label>
+              <input class="form__input" type="text" id="j-city" name="city" placeholder="City" autocomplete="address-level2" />
+            </div>
+            <div class="join-field">
+              <label class="form__label" for="j-prov">Province / State</label>
+              <input class="form__input" type="text" id="j-prov" name="province" placeholder="ON" autocomplete="address-level1" />
+            </div>
+            <div class="join-field">
+              <label class="form__label" for="j-post">Postal / ZIP</label>
+              <input class="form__input" type="text" id="j-post" name="postal" placeholder="A1A 1A1" autocomplete="postal-code" />
+            </div>
+          </div>
+        </div>
+
+        <footer class="join-step__foot">
+          <span></span>
+          <button class="btn btn-primary" type="button" data-step-next>Continue</button>
+        </footer>
+      </section>
+
+      <!-- ========================================================
+           STEP 2 · OWNERSHIP & CONTROL
+           ⚠ The three helper texts are compliance instructions, kept verbatim.
+           `authorized` is the prototype's US spelling; held rather than changed
+           because these strings sit closest to the legal register and the client
+           wrote them. Flagged in copy/join.md §Divergences.
+           ⚠ `Signing Authority` names the person who signs the Merchant Network
+           Agreement. Never "LOI" anywhere near this flow.
+           ======================================================== -->
+      <section class="join-step" data-step="2" aria-labelledby="step-2-title" hidden>
+        <header class="join-step__head">
+          <h2 class="join-step__title" id="step-2-title">Ownership &amp; Control</h2>
+          <p class="join-step__sub">Who owns and controls the business?</p>
+        </header>
+
+        <div class="join-step__body">
+          <div class="join-field">
+            <label class="form__label" for="j-owners">Beneficial Owners (25%+ ownership) <span class="join-req" aria-hidden="true">*</span></label>
+            <textarea class="form__textarea" id="j-owners" name="beneficial_owners" placeholder="e.g. Jane Smith &mdash; 60%, John Doe &mdash; 40%" required aria-describedby="j-owners-h"></textarea>
+            <p class="join-help" id="j-owners-h">List all individuals who own 25% or more. Include full name and ownership %.</p>
+          </div>
+
+          <div class="join-field">
+            <label class="form__label" for="j-directors">Directors / Officers <span class="join-req" aria-hidden="true">*</span></label>
+            <textarea class="form__textarea" id="j-directors" name="directors_officers" placeholder="e.g. Jane Smith &mdash; CEO, John Doe &mdash; CFO" required aria-describedby="j-directors-h"></textarea>
+            <p class="join-help" id="j-directors-h">List names and titles of all directors and officers.</p>
+          </div>
+
+          <div class="join-field">
+            <label class="form__label" for="j-signing">Signing Authority <span class="join-req" aria-hidden="true">*</span></label>
+            <input class="form__input" type="text" id="j-signing" name="signing_authority" placeholder="Full name and title" required aria-describedby="j-signing-h" />
+            <p class="join-help" id="j-signing-h">Who is authorized to sign agreements on behalf of the business?</p>
+          </div>
+        </div>
+
+        <footer class="join-step__foot">
+          <button class="btn btn-secondary" type="button" data-step-back>&larr; Back</button>
+          <button class="btn btn-primary" type="button" data-step-next>Continue</button>
+        </footer>
+      </section>
+
+      <!-- ========================================================
+           STEP 3 · COMMERCIAL DETAILS
+           🔴 BLOCKING GAP: `Risk Category` option values are NOT in the source
+           document — the screenshot shows a closed `Select…`. Nothing is invented
+           here. Needed from the prototype or the client before this card is final.
+           See copy/join.md §Open items #5.
+           ======================================================== -->
+      <section class="join-step" data-step="3" aria-labelledby="step-3-title" hidden>
+        <header class="join-step__head">
+          <h2 class="join-step__title" id="step-3-title">Commercial Details</h2>
+          <p class="join-step__sub">Tell us about your business activity and sales profile.</p>
+        </header>
+
+        <div class="join-step__body">
+          <div class="signup__grid">
+            <div class="join-field">
+              <label class="form__label" for="j-industry">Industry / Business Type <span class="join-req" aria-hidden="true">*</span></label>
+              <input class="form__input" type="text" id="j-industry" name="industry" placeholder="e.g. Restaurant, Retail, SaaS" required />
+            </div>
+            <div class="join-field">
+              <label class="form__label" for="j-mcc">MCC Code</label>
+              <input class="form__input" type="text" id="j-mcc" name="mcc_code" placeholder="e.g. 5812" aria-describedby="j-mcc-h" />
+              <p class="join-help" id="j-mcc-h">Merchant Category Code &mdash; leave blank if unknown.</p>
+            </div>
+          </div>
+
+          <div class="join-field join-field--half">
+            <label class="form__label" for="j-risk">Risk Category</label>
+            <!-- 🔴 Option values unknown — awaiting the prototype's real list. -->
+            <select class="form__select" id="j-risk" name="risk_category" aria-describedby="j-risk-h" data-pending="risk-category-options">
+              <option value="" selected>Select&hellip;</option>
+            </select>
+            <p class="join-help" id="j-risk-h">CredX will confirm this during review.</p>
+          </div>
+
+          <div class="signup__grid">
+            <div class="join-field">
+              <label class="form__label" for="j-volume">Monthly Sales Volume (CAD) <span class="join-req" aria-hidden="true">*</span></label>
+              <input class="form__input" type="text" id="j-volume" name="monthly_volume" placeholder="e.g. $250,000" required aria-describedby="j-volume-h" />
+              <p class="join-help" id="j-volume-h">Approximate monthly card processing volume.</p>
+            </div>
+            <div class="join-field">
+              <label class="form__label" for="j-avg">Average Transaction Amount (CAD) <span class="join-req" aria-hidden="true">*</span></label>
+              <input class="form__input" type="text" id="j-avg" name="average_transaction" placeholder="e.g. $45" required />
+            </div>
+          </div>
+        </div>
+
+        <footer class="join-step__foot">
+          <button class="btn btn-secondary" type="button" data-step-back>&larr; Back</button>
+          <button class="btn btn-primary" type="button" data-step-next>Continue</button>
+        </footer>
+      </section>
+
+      <!-- ========================================================
+           STEP 4 · PAYMENTS SETUP
+           ⚠ The placeholders name competitor brands (Moneris, Square, Stripe, TD,
+           Beanstream, Authorize.net) and that is ALLOWED: the payment exception in
+           voice.md permits describing the merchant's EXISTING stack. Two rules that
+           do NOT apply and must not be misfired: the pos/prompts.md §E naming guard
+           governs marketing copy where those brands are prospects, and the
+           Visa/Mastercard prohibition is untouched — NO card network is named
+           anywhere on this page, and none may be added.
+           🔴 BLOCKING GAP: `Settlement Cadence` option values are NOT in the source
+           document. Likely Daily · Weekly · Monthly, but that is a guess and it is
+           deliberately not written in.
+           ======================================================== -->
+      <section class="join-step" data-step="4" aria-labelledby="step-4-title" hidden>
+        <header class="join-step__head">
+          <h2 class="join-step__title" id="step-4-title">Payments Setup</h2>
+          <p class="join-step__sub">Your current payment processing configuration.</p>
+        </header>
+
+        <div class="join-step__body">
+          <div class="signup__grid">
+            <div class="join-field">
+              <label class="form__label" for="j-processor">Current Processor</label>
+              <input class="form__input" type="text" id="j-processor" name="current_processor" placeholder="e.g. Moneris, Square, Stripe" />
+            </div>
+            <div class="join-field">
+              <label class="form__label" for="j-acquirer">Acquirer</label>
+              <input class="form__input" type="text" id="j-acquirer" name="acquirer" placeholder="e.g. TD Merchant Services" />
+            </div>
+          </div>
+
+          <div class="join-field join-field--half">
+            <label class="form__label" for="j-gateway">Payment Gateway</label>
+            <input class="form__input" type="text" id="j-gateway" name="payment_gateway" placeholder="e.g. Beanstream, Authorize.net" />
+          </div>
+
+          <hr class="join-rule" />
+
+          <div class="signup__grid">
+            <div class="join-field">
+              <label class="form__label" for="j-bank">Settlement Bank <span class="join-req" aria-hidden="true">*</span></label>
+              <input class="form__input" type="text" id="j-bank" name="settlement_bank" placeholder="Bank name and account type" required aria-describedby="j-bank-h" />
+              <p class="join-help" id="j-bank-h">Bank where funds settle.</p>
+            </div>
+            <div class="join-field">
+              <label class="form__label" for="j-cadence">Settlement Cadence <span class="join-req" aria-hidden="true">*</span></label>
+              <!-- 🔴 Option values unknown — awaiting the prototype's real list. -->
+              <select class="form__select" id="j-cadence" name="settlement_cadence" required data-pending="settlement-cadence-options">
+                <option value="" selected>Select&hellip;</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <footer class="join-step__foot">
+          <button class="btn btn-secondary" type="button" data-step-back>&larr; Back</button>
+          <button class="btn btn-primary" type="button" data-step-next>Continue</button>
+        </footer>
+      </section>
+
+      <!-- ========================================================
+           STEP 5 · TECHNOLOGY STACK
+           ⚠ `CRM / Loyalty / Customer ID System` keeps "Loyalty" and that is allowed:
+           the loyalty exception covers the merchant's OWN existing system. CredX's
+           equivalent is still "value-back program", and that term does not appear here.
+           No required fields — the two "Leave blank if not applicable" helpers are
+           doing real work for merchants with no e-commerce arm.
+           ======================================================== -->
+      <section class="join-step" data-step="5" aria-labelledby="step-5-title" hidden>
+        <header class="join-step__head">
+          <h2 class="join-step__title" id="step-5-title">Technology Stack</h2>
+          <p class="join-step__sub">Your point-of-sale, e-commerce, and customer tools.</p>
+        </header>
+
+        <div class="join-step__body">
+          <div class="signup__grid">
+            <div class="join-field">
+              <label class="form__label" for="j-pos">POS Vendor</label>
+              <input class="form__input" type="text" id="j-pos" name="pos_vendor" placeholder="e.g. Lightspeed, Toast" aria-describedby="j-pos-h" />
+              <p class="join-help" id="j-pos-h">Leave blank if not applicable.</p>
+            </div>
+            <div class="join-field">
+              <label class="form__label" for="j-posver">POS Version / Model</label>
+              <input class="form__input" type="text" id="j-posver" name="pos_version" placeholder="e.g. v5.2, Lane 3000" />
+            </div>
+            <div class="join-field">
+              <label class="form__label" for="j-ecom">E-Commerce Platform</label>
+              <input class="form__input" type="text" id="j-ecom" name="ecommerce_platform" placeholder="e.g. Shopify, WooCommerce" aria-describedby="j-ecom-h" />
+              <p class="join-help" id="j-ecom-h">Leave blank if not applicable.</p>
+            </div>
+            <div class="join-field">
+              <label class="form__label" for="j-checkout">Checkout System</label>
+              <input class="form__input" type="text" id="j-checkout" name="checkout_system" placeholder="e.g. Custom, Shopify Checkout" />
+            </div>
+          </div>
+
+          <div class="join-field">
+            <label class="form__label" for="j-crm">CRM / Loyalty / Customer ID System</label>
+            <input class="form__input" type="text" id="j-crm" name="crm_system" placeholder="e.g. Salesforce, HubSpot, Square Loyalty" />
+          </div>
+        </div>
+
+        <footer class="join-step__foot">
+          <button class="btn btn-secondary" type="button" data-step-back>&larr; Back</button>
+          <button class="btn btn-primary" type="button" data-step-next>Continue</button>
+        </footer>
+      </section>
+
+      <!-- ========================================================
+           STEP 6 · DATA, OPERATIONS & LAUNCH
+           The consent line under the import checkbox is an ADDITION to the
+           prototype, APPROVED by Marco 2026-08-03. voice.md is unambiguous:
+           "Never imply consent. When data-sharing is mentioned, opt-in must be
+           stated." The checkbox is a data-sharing statement in everything but
+           name, so without that line the page breaks a locked brand rule.
+           Do not remove it. See copy/join.md §6.
+           ======================================================== -->
+      <section class="join-step" data-step="6" aria-labelledby="step-6-title" hidden>
+        <header class="join-step__head">
+          <h2 class="join-step__title" id="step-6-title">Data, Operations &amp; Launch</h2>
+          <p class="join-step__sub">How you handle transactions, support, and your launch plan.</p>
+        </header>
+
+        <div class="join-step__body">
+          <div class="join-field">
+            <label class="form__label" for="j-fields">Available Transaction Data Fields</label>
+            <textarea class="form__textarea" id="j-fields" name="transaction_data_fields" placeholder="List available data fields" aria-describedby="j-fields-h"></textarea>
+            <p class="join-help" id="j-fields-h">What fields are in your transaction records? e.g. date, amount, location, SKU</p>
+          </div>
+
+          <div class="join-check">
+            <input type="checkbox" id="j-historical" name="historical_data" class="join-check__box" aria-describedby="j-historical-h" />
+            <label for="j-historical" class="join-check__label">Historical transaction data is available for import</label>
+          </div>
+          <!-- APPROVED 2026-08-03. This is the opt-in sentence voice.md requires — "Never
+               imply consent. When data-sharing is mentioned, opt-in must be stated." The
+               checkbox above is a data-sharing statement in everything but name, so without
+               this line the page breaks a locked brand rule. `aria-describedby` ties it to
+               the checkbox so it is announced with the control, not stranded after it. -->
+          <p class="join-help" id="j-historical-h">Nothing is imported until you opt in and the Agreement is in place.</p>
+
+          <hr class="join-rule" />
+
+          <div class="signup__grid">
+            <div class="join-field">
+              <label class="form__label" for="j-refund">Refund Process <span class="join-req" aria-hidden="true">*</span></label>
+              <textarea class="form__textarea" id="j-refund" name="refund_process" placeholder="How are refunds processed and who handles them?" required></textarea>
+            </div>
+            <div class="join-field">
+              <label class="form__label" for="j-chargeback">Chargeback Process <span class="join-req" aria-hidden="true">*</span></label>
+              <textarea class="form__textarea" id="j-chargeback" name="chargeback_process" placeholder="How are chargebacks handled?" required></textarea>
+            </div>
+          </div>
+
+          <hr class="join-rule" />
+
+          <div class="signup__grid">
+            <div class="join-field">
+              <label class="form__label" for="j-tier1">Tier 1 Support Owner</label>
+              <input class="form__input" type="text" id="j-tier1" name="tier1_support" placeholder="Team or person name" />
+            </div>
+            <div class="join-field">
+              <label class="form__label" for="j-escalation">Escalation Path</label>
+              <input class="form__input" type="text" id="j-escalation" name="escalation_path" placeholder="Who handles escalations?" />
+            </div>
+            <div class="join-field">
+              <label class="form__label" for="j-pilotloc">Pilot Locations</label>
+              <input class="form__input" type="text" id="j-pilotloc" name="pilot_locations" placeholder="e.g. Toronto HQ, Vancouver location" />
+            </div>
+            <div class="join-field">
+              <label class="form__label" for="j-pilotch">Pilot Channels</label>
+              <input class="form__input" type="text" id="j-pilotch" name="pilot_channels" placeholder="e.g. In-store, Online, Mobile app" />
+            </div>
+          </div>
+        </div>
+
+        <footer class="join-step__foot">
+          <button class="btn btn-secondary" type="button" data-step-back>&larr; Back</button>
+          <button class="btn btn-primary" type="button" data-step-next>Continue</button>
+        </footer>
+      </section>
+
+      <!-- ========================================================
+           STEP 7 · DOCUMENT UPLOADS
+           ⚠ Rows, NOT nested cards. The prototype nests a card per document
+           inside the step card; craft-floor is explicit that nested cards are
+           always wrong. Dividers carry the separation instead.
+           🔴 UPLOAD TRANSPORT IS NOT BUILT AND MUST NOT BE. The client asked
+           whether uploads are feasible on the website at all (comment #8:
+           "fingers crossed we are able to do this on the website. Let me know
+           if we are able to and if not any suggestions?"). That is an open
+           question owed back to them, and the design deliberately shows the
+           full UI so it does not pre-empt the answer.
+           `Continue to review` starts DISABLED and enables when the three
+           mandatory documents are chosen — preserved from the prototype.
+           ======================================================== -->
+      <section class="join-step" data-step="7" aria-labelledby="step-7-title" hidden>
+        <header class="join-step__head">
+          <h2 class="join-step__title" id="step-7-title">Document Uploads</h2>
+          <p class="join-step__sub">Upload the documents needed to complete your application.</p>
+        </header>
+
+        <div class="join-step__body">
+          <p class="join-formats">Accepted formats: PDF, JPG, PNG. Maximum 10MB per file.</p>
+
+          <ul class="join-docs" data-join-docs>
+            <li class="join-doc">
+              <div class="join-doc__text">
+                <p class="join-doc__name">Void Cheque <span class="join-req" aria-hidden="true">*</span></p>
+                <p class="join-doc__desc">A void cheque for your settlement bank account.</p>
+              </div>
+              <label class="btn btn-secondary join-doc__btn" for="j-doc-cheque">Upload</label>
+              <input class="join-doc__input" type="file" id="j-doc-cheque" name="doc_void_cheque" accept=".pdf,.jpg,.jpeg,.png" data-doc-required />
+            </li>
+            <li class="join-doc">
+              <div class="join-doc__text">
+                <p class="join-doc__name">Government-Issued ID <span class="join-req" aria-hidden="true">*</span></p>
+                <p class="join-doc__desc">Photo ID of the signing authority.</p>
+              </div>
+              <label class="btn btn-secondary join-doc__btn" for="j-doc-id">Upload</label>
+              <input class="join-doc__input" type="file" id="j-doc-id" name="doc_government_id" accept=".pdf,.jpg,.jpeg,.png" data-doc-required />
+            </li>
+            <li class="join-doc">
+              <div class="join-doc__text">
+                <p class="join-doc__name">Incorporation Document <span class="join-req" aria-hidden="true">*</span></p>
+                <p class="join-doc__desc">Certificate of incorporation or articles of incorporation.</p>
+              </div>
+              <label class="btn btn-secondary join-doc__btn" for="j-doc-inc">Upload</label>
+              <input class="join-doc__input" type="file" id="j-doc-inc" name="doc_incorporation" accept=".pdf,.jpg,.jpeg,.png" data-doc-required />
+            </li>
+            <li class="join-doc">
+              <div class="join-doc__text">
+                <p class="join-doc__name">POS / E-Commerce Screenshot</p>
+                <p class="join-doc__desc">Screenshot of your POS system or checkout flow.</p>
+              </div>
+              <label class="btn btn-secondary join-doc__btn" for="j-doc-pos">Upload</label>
+              <input class="join-doc__input" type="file" id="j-doc-pos" name="doc_pos_screenshot" accept=".pdf,.jpg,.jpeg,.png" />
+            </li>
+            <li class="join-doc">
+              <div class="join-doc__text">
+                <p class="join-doc__name">Settlement Sample Report</p>
+                <p class="join-doc__desc">A recent settlement or reconciliation report.</p>
+              </div>
+              <label class="btn btn-secondary join-doc__btn" for="j-doc-settle">Upload</label>
+              <input class="join-doc__input" type="file" id="j-doc-settle" name="doc_settlement_report" accept=".pdf,.jpg,.jpeg,.png" />
+            </li>
+          </ul>
+        </div>
+
+        <footer class="join-step__foot">
+          <button class="btn btn-secondary" type="button" data-step-back>&larr; Back</button>
+          <button class="btn btn-primary" type="button" data-step-next data-gate-docs disabled>Continue to review</button>
+        </footer>
+      </section>
+
+      <!-- ========================================================
+           STEP 8 · REVIEW & SUBMIT
+           ⚠ The prototype's review screen lists the seven section names with
+           NOTHING under them — a stub. Designed here to echo the merchant's own
+           answers back, with a per-section Edit affordance that jumps to that
+           step. A review screen that shows nothing to review cannot do its job.
+           ⚠ The disclaimer is the client's own wording, contractions expanded and
+           the numeral spelled out. It is the closest thing on this page to legal
+           text and CredX legal owns legal copy — do not rewrite it further.
+           ======================================================== -->
+      <section class="join-step" data-step="8" aria-labelledby="step-8-title" hidden>
+        <header class="join-step__head">
+          <h2 class="join-step__title" id="step-8-title">Review &amp; Submit</h2>
+          <p class="join-step__sub">Review your information before submitting.</p>
+        </header>
+
+        <div class="join-step__body">
+          <div class="join-review" data-join-review>
+            <!-- Populated from the form on entry to this step, so the merchant sees
+                 their own answers. Empty optional fields render as "Not provided". -->
+          </div>
+
+          <p class="join-notice" role="note">By submitting, you confirm all information is accurate. Our operations team will review your file and reach out within one to two business days.</p>
+        </div>
+
+        <footer class="join-step__foot">
+          <button class="btn btn-secondary" type="button" data-step-back>&larr; Back</button>
+          <button class="btn btn-primary" type="button" data-join-submit>Submit application</button>
+        </footer>
+      </section>
+
+    </form>
+
+    <!-- ========================================================
+         CONFIRMATION
+         ⚠ The prototype headline was `Your Journey has Started`. It cannot ship:
+         "journey" is a vague noun on the D&Z anti-pattern list, and "start your
+         journey" was EXPLICITLY rejected as the replacement for "onboarding" on
+         2026-07-27. `Welcome to the movement.` pays off the `Join the Movement`
+         button that started the flow — one story from click to confirmation.
+         ⚠ An ordered list, not three cards. The sequence is the information.
+         🔴 The prototype's contact address `connect@credxtech.com` is on the WRONG
+         DOMAIN — no hyphen. `credx-tech.com` is the locked primary; `credxtech.com`
+         301-redirects to it, and redirects do not forward mail. Every commenter in
+         the source document writes from the hyphenated domain. Held as a placeholder
+         rather than corrected, because guessing an address that may not exist is the
+         same failure as the /contact form. See copy/join.md §Open items #4.
+         ======================================================== -->
+    <section class="join-done" data-join-done hidden aria-labelledby="join-done-title" tabindex="-1">
+      <span class="join-done__mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.8 10.3A10 10 0 1 1 17 3.3" /><path d="m9 11 3 3L22 4" /></svg>
+      </span>
+      <h2 class="join-done__title" id="join-done-title">Welcome to the movement.</h2>
+      <p class="join-done__sub">We have your application. Here is what happens next:</p>
+
+      <ol class="join-next">
+        <li class="join-next__item">
+          <span class="join-next__num" aria-hidden="true">1</span>
+          <div>
+            <p class="join-next__title">Our team reviews your file</p>
+            <p class="join-next__body">Every section is checked against the documents you uploaded, usually within one to two business days.</p>
+          </div>
+        </li>
+        <li class="join-next__item">
+          <span class="join-next__num" aria-hidden="true">2</span>
+          <div>
+            <p class="join-next__title">You hear from us</p>
+            <!-- ⚠ "discovery" — confirm the merchant knows what this stage is by the
+                 time they reach this screen. An unexplained internal stage name on a
+                 confirmation screen is an open question at exactly the wrong moment. -->
+            <p class="join-next__body">If anything is missing, we reach out by email. Otherwise your file moves straight to discovery.</p>
+          </div>
+        </li>
+        <li class="join-next__item">
+          <span class="join-next__num" aria-hidden="true">3</span>
+          <div>
+            <p class="join-next__title">No second meeting needed</p>
+            <p class="join-next__body">You have done your part. We take it from here.</p>
+          </div>
+        </li>
+      </ol>
+
+      <p class="join-done__contact">Questions? Contact your CredX representative at
+        <!-- {{PENDING:email-join}} — the correct address on the HYPHENATED domain.
+             ⚠ This is also the first CredX email address to surface anywhere in the
+             project; copy/contact.md §4 has been parked on {{PENDING:email-general}}
+             and the Organization schema's contactPoint is decorative for want of one.
+             Ask once, and it may unblock four placeholders. -->
+        <span class="join-pending">your representative&rsquo;s address</span>.
+      </p>
+    </section>
+
+  </main>
+
+  <!-- Minimal legal line, not the site's sitemap footer. Same reasoning as the
+       chrome: a task surface does not offer eight exits, and five of the footer's
+       links are post-MVP 404s today. -->
+  <footer class="join-foot">
+    <span>&copy; 2026 CredX Tech Inc. &middot; credx-tech.com</span>
+  </footer>
+
+  <!-- ============================================================
+       STEP CONTROLLER — DESIGN REVIEW ONLY.
+       Walks the eight screens so the design can be evaluated. It does NOT
+       submit, upload, persist, or transport anything anywhere. The receiving
+       integration into Day.ai belongs to CredX IT (ClickUp 86caz3h02:
+       "do not build that integration"). No GSAP / Lenis / ScrollTrigger is
+       loaded on this page: those are Persuade-surface motion, and a form does
+       not want smooth-scroll hijacking or scroll-triggered reveals.
+       ============================================================ -->
+  <script>
+  (function () {
+    var form = document.querySelector('[data-join-form]');
+    if (!form) return;
+
+    var steps = Array.prototype.slice.call(form.querySelectorAll('.join-step'));
+    var railSteps = Array.prototype.slice.call(document.querySelectorAll('.join-rail__step'));
+    var railFill = document.querySelector('[data-rail-fill]');
+    var railCurrent = document.querySelector('[data-rail-current]');
+    var railName = document.querySelector('[data-rail-name]');
+    var railBar = document.querySelector('.join-rail__track');
+    var done = document.querySelector('[data-join-done]');
+    var rail = document.querySelector('[data-join-rail]');
+    var intro = document.querySelector('.join-intro');
+    var names = ['Business Identity', 'Ownership', 'Commercial', 'Payments', 'Technology', 'Data & Ops', 'Documents', 'Review'];
+    var index = 0;
+
+    // `initial` suppresses the focus move and the scroll on the first call.
+    // Without it the step heading takes focus on page load, so :focus-visible
+    // fires and the first card opens wearing a focus ring nobody asked for.
+    // Caught by rendering, not by reading the code.
+    function show(next, initial) {
+      index = Math.max(0, Math.min(steps.length - 1, next));
+      steps.forEach(function (s, i) {
+        s.hidden = i !== index;
+        s.classList.toggle('is-active', i === index);
+      });
+      railSteps.forEach(function (s, i) {
+        s.classList.toggle('is-current', i === index);
+        s.classList.toggle('is-done', i < index);
+        if (i === index) { s.setAttribute('aria-current', 'step'); } else { s.removeAttribute('aria-current'); }
+      });
+      railFill.style.width = (index / (steps.length - 1) * 100) + '%';
+      railCurrent.textContent = String(index + 1);
+      railName.textContent = names[index];
+      railBar.setAttribute('aria-valuenow', String(index + 1));
+      if (index === 7) renderReview();
+      if (initial) return;
+      // Move focus to the step heading so keyboard and screen-reader users land
+      // in the new section rather than at the top of the document.
+      var heading = steps[index].querySelector('.join-step__title');
+      if (heading) { heading.setAttribute('tabindex', '-1'); heading.focus({ preventScroll: true }); }
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Validate only the CURRENT step. Native validation, no custom messages —
+    // the browser's own are localised and familiar, which is what Operate wants.
+    function stepValid(section) {
+      var fields = Array.prototype.slice.call(section.querySelectorAll('input, select, textarea'));
+      var ok = true;
+      fields.forEach(function (f) {
+        if (f.type === 'file') return;
+        var valid = f.checkValidity();
+        f.closest('.join-field') && f.closest('.join-field').classList.toggle('has-error', !valid);
+        if (!valid && ok) { f.reportValidity(); ok = false; }
+      });
+      return ok;
+    }
+
+    form.addEventListener('click', function (e) {
+      var next = e.target.closest('[data-step-next]');
+      var back = e.target.closest('[data-step-back]');
+      var submit = e.target.closest('[data-join-submit]');
+      if (next) { if (stepValid(steps[index])) show(index + 1); return; }
+      if (back) { show(index - 1); return; }
+      if (submit) {
+        // ⚠ NO TRANSPORT. Design review only — the confirmation is shown so the
+        // final screen can be evaluated. Nothing is sent, stored, or queued.
+        console.warn('[CredX /join] DESIGN PROTOTYPE — no submit transport. The Day.ai integration is CredX IT\'s (ClickUp 86caz3h02). Nothing was sent.');
+        form.hidden = true;
+        if (rail) rail.hidden = true;
+        if (intro) intro.hidden = true;
+        done.hidden = false;
+        done.focus();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    });
+
+    // Document gate — `Continue to review` stays disabled until the three
+    // mandatory documents are chosen. Preserved from the prototype.
+    var gate = form.querySelector('[data-gate-docs]');
+    var requiredDocs = Array.prototype.slice.call(form.querySelectorAll('[data-doc-required]'));
+    requiredDocs.forEach(function (input) {
+      input.addEventListener('change', function () {
+        var row = input.closest('.join-doc');
+        var name = input.files && input.files[0] ? input.files[0].name : '';
+        row.classList.toggle('is-attached', !!name);
+        var label = row.querySelector('.join-doc__btn');
+        if (label) label.textContent = name ? 'Replace' : 'Upload';
+        var existing = row.querySelector('.join-doc__file');
+        if (name) {
+          if (!existing) {
+            existing = document.createElement('p');
+            existing.className = 'join-doc__file';
+            row.querySelector('.join-doc__text').appendChild(existing);
+          }
+          existing.textContent = name;
+        } else if (existing) { existing.remove(); }
+        gate.disabled = !requiredDocs.every(function (i) { return i.files && i.files.length; });
+      });
+    });
+
+    // Echo the merchant's own answers back on the review step. The prototype
+    // showed section names with nothing under them; a review screen with nothing
+    // to review cannot do its job.
+    function renderReview() {
+      var target = form.querySelector('[data-join-review]');
+      if (!target) return;
+      target.innerHTML = '';
+      steps.slice(0, 7).forEach(function (section, i) {
+        var rows = [];
+        section.querySelectorAll('input, select, textarea').forEach(function (f) {
+          if (f.type === 'file') {
+            var n = f.files && f.files[0] ? f.files[0].name : '';
+            if (n) rows.push([labelFor(f), n]);
+            return;
+          }
+          if (f.type === 'checkbox') { rows.push([labelFor(f), f.checked ? 'Yes' : 'No']); return; }
+          // Selects echo the option's LABEL, not its value — the review showed
+          // "CA" where the merchant chose "Canada". Caught by rendering with data.
+          if (f.tagName === 'SELECT') {
+            var opt = f.selectedOptions && f.selectedOptions[0];
+            var t = opt ? opt.text.trim() : '';
+            rows.push([labelFor(f), (t && t !== 'Select…') ? t : null]);
+            return;
+          }
+          rows.push([labelFor(f), f.value || null]);
+        });
+        var group = document.createElement('div');
+        group.className = 'join-review__group';
+        var head = document.createElement('div');
+        head.className = 'join-review__head';
+        head.innerHTML = '<h3 class="join-review__label">' + names[i].toUpperCase() + '</h3>';
+        var edit = document.createElement('button');
+        edit.type = 'button';
+        edit.className = 'btn-text join-review__edit';
+        edit.textContent = 'Edit';
+        edit.addEventListener('click', function () { show(i); });
+        head.appendChild(edit);
+        group.appendChild(head);
+        var dl = document.createElement('dl');
+        dl.className = 'join-review__list';
+        rows.forEach(function (r) {
+          var dt = document.createElement('dt');
+          dt.textContent = r[0];
+          var dd = document.createElement('dd');
+          if (r[1]) { dd.textContent = r[1]; } else { dd.textContent = 'Not provided'; dd.className = 'is-empty'; }
+          dl.appendChild(dt); dl.appendChild(dd);
+        });
+        group.appendChild(dl);
+        target.appendChild(group);
+      });
+    }
+
+    function labelFor(field) {
+      var l = field.id ? form.querySelector('label[for="' + field.id + '"]') : null;
+      return l ? l.textContent.replace('*', '').trim() : (field.name || '');
+    }
+
+    show(0, true);
+
+    // ---- DESIGN-REVIEW AFFORDANCE ----------------------------------------
+    // `?step=7` opens a given step directly and `?demo=1` fills plausible sample
+    // values, so the later screens — Documents, Review, and the confirmation —
+    // can be judged without typing through eight cards. `?step=done` opens the
+    // confirmation. This exists for review of a DESIGN PROTOTYPE and has no place
+    // in the implementation; delete this block when the real page is built.
+    var qs = new URLSearchParams(location.search);
+    if (qs.get('demo')) {
+      var demo = {
+        'j-name': 'Jane Smith', 'j-email': 'jane@smithholdings.ca', 'j-phone': '(416) 555-0143',
+        'j-title': 'Owner', 'j-legal': 'Smith Holdings Inc.', 'j-trade': 'Smith & Co. Supply',
+        'j-bn': '123456789', 'j-street': '480 Queen Street West', 'j-city': 'Toronto',
+        'j-prov': 'ON', 'j-post': 'M5V 2B3',
+        'j-owners': 'Jane Smith — 60%, David Okafor — 40%',
+        'j-directors': 'Jane Smith — CEO, David Okafor — CFO',
+        'j-signing': 'Jane Smith, Owner',
+        'j-industry': 'Retail — home and garden supply', 'j-mcc': '5261',
+        'j-volume': '$420,000', 'j-avg': '$68',
+        'j-processor': 'Moneris', 'j-acquirer': 'TD Merchant Services', 'j-gateway': 'Beanstream',
+        'j-bank': 'RBC — business chequing',
+        'j-pos': 'Lightspeed', 'j-posver': 'Retail v3.4', 'j-ecom': 'Shopify',
+        'j-checkout': 'Shopify Checkout', 'j-crm': 'HubSpot',
+        'j-fields': 'date, amount, location, SKU, tender type',
+        'j-refund': 'Processed in-store by the duty manager, same tender as the original sale.',
+        'j-chargeback': 'Handled by our bookkeeper with the acquirer, escalated to the owner past $500.',
+        'j-tier1': 'Store operations', 'j-escalation': 'Jane Smith',
+        'j-pilotloc': 'Queen Street West', 'j-pilotch': 'In-store, Online'
+      };
+      Object.keys(demo).forEach(function (id) { var el = document.getElementById(id); if (el) el.value = demo[id]; });
+      var hist = document.getElementById('j-historical'); if (hist) hist.checked = true;
+    }
+    var want = qs.get('step');
+    if (want === 'done') {
+      form.hidden = true; if (rail) rail.hidden = true; if (intro) intro.hidden = true;
+      done.hidden = false;
+    } else if (want) {
+      var n = parseInt(want, 10);
+      if (n >= 1 && n <= 8) show(n - 1, true);
+    }
+  })();
+  </script>
+</body>
+</html>
