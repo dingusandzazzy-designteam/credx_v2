@@ -3059,47 +3059,37 @@ a.vertical-card:hover .vertical-card__name::after { transform: translateX(4px); 
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  /* The site nav is `position: fixed`, so it floats over content and the page
+     has to reserve its height. ⚠ The nav shrinks to padding-block: var(--s-3)
+     when script.js adds `.is-scrolled` — this page deliberately does NOT load
+     script.js (its motion layer is Persuade-only), so the height is stable.
+     If script.js is ever added here, this value and the rail offset need the
+     scrolled height too. */
+  padding-top: var(--join-nav-h);
 }
 
-/* ---- 24.1 Application chrome ---- */
+/* ⚠ MEASURED, not derived — and my arithmetic was wrong first time.
+   I computed 61px from the 28px logo + 2×16px padding + 1px border; the real
+   height is 63px, because the `Book a meeting` button is the tallest child at
+   30px, not the logo. The 2px error put the rail underneath the nav.
+   Do not hand-edit this: the nav-geometry probe asserts
+   `--join-nav-h === the measured nav height`, so if the nav ever changes the
+   check fails loudly instead of drifting silently. */
+:root { --join-nav-h: 63px; }
 
-.join-chrome {
-  border-bottom: 1px solid var(--border-subtle);
-  background-color: var(--surface-0);
-}
-.join-chrome__inner {
-  max-width: 900px;
-  margin-inline: auto;
-  padding: var(--s-4) var(--container-pad);
-  display: flex;
-  align-items: center;
-  gap: var(--s-4);
-}
-/* ⚠ `display: block`, NOT inline-flex, and the img carries an EXPLICIT height.
-   The wordmark SVG declares only a viewBox (0 0 75.68 16.19) with no width or
-   height attributes, so as a flex item with width:auto it has no intrinsic
-   basis and collapsed to 0px wide — the logo was in the DOM, filtered, and
-   occupying nothing. This mirrors `.nav__logo`, which has always worked.
-   Measured, not assumed: the probe reported width 0.0px before this. */
-.join-chrome__logo { display: block; flex: 0 0 auto; height: 24px; }
-/* The SVG is filled #062641 — a dark navy invisible on --ink. The same filter
-   the nav and footer already use turns it white. */
-.join-chrome__logo img {
-  display: block;
-  height: 24px;
-  width: auto;
-  filter: brightness(0) invert(1);
-}
-/* The divider is drawn with a border rather than a character, so it holds at
-   any type size and disappears cleanly when the label wraps away. */
-.join-chrome__label {
-  font-size: 0.875rem;
-  font-weight: 500;
-  color: var(--text-secondary);
-  padding-left: var(--s-4);
-  border-left: 1px solid var(--border-subtle);
-  line-height: 1.2;
-}
+/* ---- 24.1 Nav ----
+   This page uses the STANDARD site nav (Marco, 2026-08-03), not a reduced
+   application chrome. The `.nav*` rules already exist and are reused verbatim;
+   nothing here restyles them. ⚠ The nav is duplicated per page in this project
+   rather than being a component, so a nav change is N edits and this page is
+   now one of the N.
+   ⚠ Two hrefs necessarily DIFFER from the Home and Contact copies because this
+   page sits one level deep and must resolve in both mounts (Vercel serves the
+   repo root; credx-tech.com will serve credx-website as root): the logo is
+   `../` and both `Contact Us` and the `Book a meeting` fallback are
+   `../contact/`. The three post-MVP links (/how-it-works, /lenders, /about)
+   are kept byte-identical to the other pages so the nav block stays
+   copy-pasteable — they 404 in every mount today regardless. */
 
 /* ---- 24.2 Progress rail ----
    Sticky: an 8-step form must answer "how much is left?" without scrolling
@@ -3107,7 +3097,10 @@ a.vertical-card:hover .vertical-card__name::after { transform: translateX(4px); 
 
 .join-rail {
   position: sticky;
-  top: 0;
+  /* Sticks BELOW the fixed nav, not under it. z-index stays under --z-nav (50)
+     so the mobile menu, which drops from the nav at top:100%, overlays the rail
+     instead of being clipped by it. */
+  top: var(--join-nav-h);
   z-index: 20;
   background-color: rgba(11, 12, 22, 0.92);
   backdrop-filter: blur(10px);
