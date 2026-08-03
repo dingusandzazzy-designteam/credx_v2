@@ -5,15 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#0b0c16" />
 
-  <!-- Light theme + toggle DEFERRED to a future update (2026-07-24). Dark is the only
-       theme. Do not add a FOUC script or a toggle. ⚠ The base44 prototype this page is
-       designed from is a LIGHT UI (white cards on light grey). The dark surface here is
-       deliberate, not drift — see copy/join.md §Design note. -->
-
-  <!-- ⚠ noindex — decided 2026-07-27 on Semrush data: the whole merchant-application
-       cluster is 0–40 searches/month in the `ca` database, and indexing this page against
-       "embedded lending" would cannibalise the Home's own 1,000/mo anchor. No meta
-       description, no OG tags, no schema: the link is sent by a rep, never shared. -->
   <title>Merchant Application | CredX</title>
   <meta name="robots" content="noindex, nofollow" />
 
@@ -27,16 +18,6 @@
 </head>
 <body class="join-body">
 
-  <!-- ============================================================
-       APPLICATION CHROME — deliberately NOT the site nav.
-       This is an Operate surface: the visitor is inside a task, and every
-       marketing nav link is an exit from a form they were sent here to
-       finish. It is also the practical call — `/how-it-works`, `/lenders`,
-       `/about`, `/legal` (×2) and `/learn/glossary/` are all post-MVP and
-       404 today, so the 4-link nav + sitemap footer would add EIGHT more
-       dead links to the 17 already logged on the Home. The prototype's own
-       header is wordmark + label, so this also matches it.
-       ============================================================ -->
   <header class="join-chrome">
     <div class="join-chrome__inner">
       <a href="../" class="join-chrome__logo" aria-label="CredX home">
@@ -46,14 +27,6 @@
     </div>
   </header>
 
-  <!-- ============================================================
-       PROGRESS RAIL — sticky, because an 8-step form must always answer
-       "how much is left?" without scrolling up.
-       Step numbers are the one place `craft-floor` allows an 01/02/03
-       sequence: here the number IS the information.
-       `aria-current="step"` marks position; completed steps carry a check
-       AND a text label, never colour alone.
-       ============================================================ -->
   <div class="join-rail" data-join-rail>
     <div class="join-rail__inner">
       <div class="join-rail__meta">
@@ -78,38 +51,14 @@
 
   <main class="join-main" id="top">
 
-    <!-- Page intro. `Join the Movement` is the locked brand label (Audrey C15) and the
-         same string on the button that sent the merchant here — the eyebrow is the scent
-         match, which is why it is Title Case against the 2026-07-15 lowercase-CTA rule.
-         ⚠ NO `data-reveal-words` here, unlike every other page in this project: word
-         reveal is a Persuade device, and on a task surface an animated headline delays
-         the task. It is also the artifact that broke render verification twice. -->
     <div class="join-intro">
       <span class="eyebrow eyebrow--accent">Join the Movement</span>
       <h1 class="join-intro__title">Your merchant application</h1>
       <p class="join-intro__body">Eight short sections. Complete each one, and our team takes it from there.</p>
     </div>
 
-    <!-- ⚠⚠ DESIGN PROTOTYPE — NOT AN IMPLEMENTATION.
-         Focus of this deliverable is DESIGN; the implementation is another team's
-         (Marco, 2026-08-03). The step controller at the foot of this file exists ONLY
-         so the eight screens can be walked through in review. There is deliberately:
-           · no submit transport of any kind
-           · no file upload transport
-           · no Day.ai payload, endpoint, auth or field mapping
-           · no persistence (there is no login — see copy/join.md §Out of scope)
-         The <form> carries no action and no method ON PURPOSE. Do not "finish" this by
-         wiring it up; the receiving integration is CredX IT's, into Day.ai.
-         ============================================================ -->
     <form class="join-form" data-join-form novalidate>
 
-      <!-- ========================================================
-           STEP 1 · BUSINESS IDENTITY
-           ⚠ FIELD LABELS ARE LOCKED — ClickUp 86caz3h02: "Form fields must
-           match the prototype exactly (same fields, order, labels)." Every
-           label, placeholder and helper below is transcribed from the
-           prototype screenshots, not authored. Do not improve them.
-           ======================================================== -->
       <section class="join-step is-active" data-step="1" aria-labelledby="step-1-title">
         <header class="join-step__head">
           <h2 class="join-step__title" id="step-1-title">Business Identity</h2>
@@ -128,15 +77,6 @@
             </div>
           </div>
 
-          <!-- `Your Phone` is an ADDITION to the prototype's locked field set, APPROVED
-               by Marco 2026-08-03. The client asked for it — comment #7, to Audrey:
-               "We still need to have them put their phone number on the first page of
-               this. I see the title but we need the number as well." It is also what
-               makes the CRM abandonment follow-up (comment #3) possible at all.
-               Paired with `Your Title` in one row rather than sitting full-width alone:
-               that mirrors how the client described it ("I see the title but we need the
-               number as well") and keeps the card's two-column rhythm. Optional, because
-               work email is already required and reaching the merchant is not gated on it. -->
           <div class="signup__grid">
             <div class="join-field">
               <label class="form__label" for="j-phone">Your Phone</label>
@@ -199,15 +139,6 @@
         </footer>
       </section>
 
-      <!-- ========================================================
-           STEP 2 · OWNERSHIP & CONTROL
-           ⚠ The three helper texts are compliance instructions, kept verbatim.
-           `authorized` is the prototype's US spelling; held rather than changed
-           because these strings sit closest to the legal register and the client
-           wrote them. Flagged in copy/join.md §Divergences.
-           ⚠ `Signing Authority` names the person who signs the Merchant Network
-           Agreement. Never "LOI" anywhere near this flow.
-           ======================================================== -->
       <section class="join-step" data-step="2" aria-labelledby="step-2-title" hidden>
         <header class="join-step__head">
           <h2 class="join-step__title" id="step-2-title">Ownership &amp; Control</h2>
@@ -240,13 +171,6 @@
         </footer>
       </section>
 
-      <!-- ========================================================
-           STEP 3 · COMMERCIAL DETAILS
-           🔴 BLOCKING GAP: `Risk Category` option values are NOT in the source
-           document — the screenshot shows a closed `Select…`. Nothing is invented
-           here. Needed from the prototype or the client before this card is final.
-           See copy/join.md §Open items #5.
-           ======================================================== -->
       <section class="join-step" data-step="3" aria-labelledby="step-3-title" hidden>
         <header class="join-step__head">
           <h2 class="join-step__title" id="step-3-title">Commercial Details</h2>
@@ -268,7 +192,6 @@
 
           <div class="join-field join-field--half">
             <label class="form__label" for="j-risk">Risk Category</label>
-            <!-- 🔴 Option values unknown — awaiting the prototype's real list. -->
             <select class="form__select" id="j-risk" name="risk_category" aria-describedby="j-risk-h" data-pending="risk-category-options">
               <option value="" selected>Select&hellip;</option>
             </select>
@@ -294,19 +217,6 @@
         </footer>
       </section>
 
-      <!-- ========================================================
-           STEP 4 · PAYMENTS SETUP
-           ⚠ The placeholders name competitor brands (Moneris, Square, Stripe, TD,
-           Beanstream, Authorize.net) and that is ALLOWED: the payment exception in
-           voice.md permits describing the merchant's EXISTING stack. Two rules that
-           do NOT apply and must not be misfired: the pos/prompts.md §E naming guard
-           governs marketing copy where those brands are prospects, and the
-           Visa/Mastercard prohibition is untouched — NO card network is named
-           anywhere on this page, and none may be added.
-           🔴 BLOCKING GAP: `Settlement Cadence` option values are NOT in the source
-           document. Likely Daily · Weekly · Monthly, but that is a guess and it is
-           deliberately not written in.
-           ======================================================== -->
       <section class="join-step" data-step="4" aria-labelledby="step-4-title" hidden>
         <header class="join-step__head">
           <h2 class="join-step__title" id="step-4-title">Payments Setup</h2>
@@ -340,7 +250,6 @@
             </div>
             <div class="join-field">
               <label class="form__label" for="j-cadence">Settlement Cadence <span class="join-req" aria-hidden="true">*</span></label>
-              <!-- 🔴 Option values unknown — awaiting the prototype's real list. -->
               <select class="form__select" id="j-cadence" name="settlement_cadence" required data-pending="settlement-cadence-options">
                 <option value="" selected>Select&hellip;</option>
               </select>
@@ -354,14 +263,6 @@
         </footer>
       </section>
 
-      <!-- ========================================================
-           STEP 5 · TECHNOLOGY STACK
-           ⚠ `CRM / Loyalty / Customer ID System` keeps "Loyalty" and that is allowed:
-           the loyalty exception covers the merchant's OWN existing system. CredX's
-           equivalent is still "value-back program", and that term does not appear here.
-           No required fields — the two "Leave blank if not applicable" helpers are
-           doing real work for merchants with no e-commerce arm.
-           ======================================================== -->
       <section class="join-step" data-step="5" aria-labelledby="step-5-title" hidden>
         <header class="join-step__head">
           <h2 class="join-step__title" id="step-5-title">Technology Stack</h2>
@@ -402,15 +303,6 @@
         </footer>
       </section>
 
-      <!-- ========================================================
-           STEP 6 · DATA, OPERATIONS & LAUNCH
-           The consent line under the import checkbox is an ADDITION to the
-           prototype, APPROVED by Marco 2026-08-03. voice.md is unambiguous:
-           "Never imply consent. When data-sharing is mentioned, opt-in must be
-           stated." The checkbox is a data-sharing statement in everything but
-           name, so without that line the page breaks a locked brand rule.
-           Do not remove it. See copy/join.md §6.
-           ======================================================== -->
       <section class="join-step" data-step="6" aria-labelledby="step-6-title" hidden>
         <header class="join-step__head">
           <h2 class="join-step__title" id="step-6-title">Data, Operations &amp; Launch</h2>
@@ -428,11 +320,6 @@
             <input type="checkbox" id="j-historical" name="historical_data" class="join-check__box" aria-describedby="j-historical-h" />
             <label for="j-historical" class="join-check__label">Historical transaction data is available for import</label>
           </div>
-          <!-- APPROVED 2026-08-03. This is the opt-in sentence voice.md requires — "Never
-               imply consent. When data-sharing is mentioned, opt-in must be stated." The
-               checkbox above is a data-sharing statement in everything but name, so without
-               this line the page breaks a locked brand rule. `aria-describedby` ties it to
-               the checkbox so it is announced with the control, not stranded after it. -->
           <p class="join-help" id="j-historical-h">Nothing is imported until you opt in and the Agreement is in place.</p>
 
           <hr class="join-rule" />
@@ -476,20 +363,6 @@
         </footer>
       </section>
 
-      <!-- ========================================================
-           STEP 7 · DOCUMENT UPLOADS
-           ⚠ Rows, NOT nested cards. The prototype nests a card per document
-           inside the step card; craft-floor is explicit that nested cards are
-           always wrong. Dividers carry the separation instead.
-           🔴 UPLOAD TRANSPORT IS NOT BUILT AND MUST NOT BE. The client asked
-           whether uploads are feasible on the website at all (comment #8:
-           "fingers crossed we are able to do this on the website. Let me know
-           if we are able to and if not any suggestions?"). That is an open
-           question owed back to them, and the design deliberately shows the
-           full UI so it does not pre-empt the answer.
-           `Continue to review` starts DISABLED and enables when the three
-           mandatory documents are chosen — preserved from the prototype.
-           ======================================================== -->
       <section class="join-step" data-step="7" aria-labelledby="step-7-title" hidden>
         <header class="join-step__head">
           <h2 class="join-step__title" id="step-7-title">Document Uploads</h2>
@@ -549,16 +422,6 @@
         </footer>
       </section>
 
-      <!-- ========================================================
-           STEP 8 · REVIEW & SUBMIT
-           ⚠ The prototype's review screen lists the seven section names with
-           NOTHING under them — a stub. Designed here to echo the merchant's own
-           answers back, with a per-section Edit affordance that jumps to that
-           step. A review screen that shows nothing to review cannot do its job.
-           ⚠ The disclaimer is the client's own wording, contractions expanded and
-           the numeral spelled out. It is the closest thing on this page to legal
-           text and CredX legal owns legal copy — do not rewrite it further.
-           ======================================================== -->
       <section class="join-step" data-step="8" aria-labelledby="step-8-title" hidden>
         <header class="join-step__head">
           <h2 class="join-step__title" id="step-8-title">Review &amp; Submit</h2>
@@ -567,8 +430,6 @@
 
         <div class="join-step__body">
           <div class="join-review" data-join-review>
-            <!-- Populated from the form on entry to this step, so the merchant sees
-                 their own answers. Empty optional fields render as "Not provided". -->
           </div>
 
           <p class="join-notice" role="note">By submitting, you confirm all information is accurate. Our operations team will review your file and reach out within one to two business days.</p>
@@ -582,21 +443,6 @@
 
     </form>
 
-    <!-- ========================================================
-         CONFIRMATION
-         ⚠ The prototype headline was `Your Journey has Started`. It cannot ship:
-         "journey" is a vague noun on the D&Z anti-pattern list, and "start your
-         journey" was EXPLICITLY rejected as the replacement for "onboarding" on
-         2026-07-27. `Welcome to the movement.` pays off the `Join the Movement`
-         button that started the flow — one story from click to confirmation.
-         ⚠ An ordered list, not three cards. The sequence is the information.
-         🔴 The prototype's contact address `connect@credxtech.com` is on the WRONG
-         DOMAIN — no hyphen. `credx-tech.com` is the locked primary; `credxtech.com`
-         301-redirects to it, and redirects do not forward mail. Every commenter in
-         the source document writes from the hyphenated domain. Held as a placeholder
-         rather than corrected, because guessing an address that may not exist is the
-         same failure as the /contact form. See copy/join.md §Open items #4.
-         ======================================================== -->
     <section class="join-done" data-join-done hidden aria-labelledby="join-done-title" tabindex="-1">
       <span class="join-done__mark" aria-hidden="true">
         <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.8 10.3A10 10 0 1 1 17 3.3" /><path d="m9 11 3 3L22 4" /></svg>
@@ -616,9 +462,6 @@
           <span class="join-next__num" aria-hidden="true">2</span>
           <div>
             <p class="join-next__title">You hear from us</p>
-            <!-- ⚠ "discovery" — confirm the merchant knows what this stage is by the
-                 time they reach this screen. An unexplained internal stage name on a
-                 confirmation screen is an open question at exactly the wrong moment. -->
             <p class="join-next__body">If anything is missing, we reach out by email. Otherwise your file moves straight to discovery.</p>
           </div>
         </li>
@@ -632,33 +475,16 @@
       </ol>
 
       <p class="join-done__contact">Questions? Contact your CredX representative at
-        <!-- {{PENDING:email-join}} — the correct address on the HYPHENATED domain.
-             ⚠ This is also the first CredX email address to surface anywhere in the
-             project; copy/contact.md §4 has been parked on {{PENDING:email-general}}
-             and the Organization schema's contactPoint is decorative for want of one.
-             Ask once, and it may unblock four placeholders. -->
         <span class="join-pending">your representative&rsquo;s address</span>.
       </p>
     </section>
 
   </main>
 
-  <!-- Minimal legal line, not the site's sitemap footer. Same reasoning as the
-       chrome: a task surface does not offer eight exits, and five of the footer's
-       links are post-MVP 404s today. -->
   <footer class="join-foot">
     <span>&copy; 2026 CredX Tech Inc. &middot; credx-tech.com</span>
   </footer>
 
-  <!-- ============================================================
-       STEP CONTROLLER — DESIGN REVIEW ONLY.
-       Walks the eight screens so the design can be evaluated. It does NOT
-       submit, upload, persist, or transport anything anywhere. The receiving
-       integration into Day.ai belongs to CredX IT (ClickUp 86caz3h02:
-       "do not build that integration"). No GSAP / Lenis / ScrollTrigger is
-       loaded on this page: those are Persuade-surface motion, and a form does
-       not want smooth-scroll hijacking or scroll-triggered reveals.
-       ============================================================ -->
   <script>
   (function () {
     var form = document.querySelector('[data-join-form]');
@@ -676,10 +502,6 @@
     var names = ['Business Identity', 'Ownership', 'Commercial', 'Payments', 'Technology', 'Data & Ops', 'Documents', 'Review'];
     var index = 0;
 
-    // `initial` suppresses the focus move and the scroll on the first call.
-    // Without it the step heading takes focus on page load, so :focus-visible
-    // fires and the first card opens wearing a focus ring nobody asked for.
-    // Caught by rendering, not by reading the code.
     function show(next, initial) {
       index = Math.max(0, Math.min(steps.length - 1, next));
       steps.forEach(function (s, i) {
@@ -697,15 +519,11 @@
       railBar.setAttribute('aria-valuenow', String(index + 1));
       if (index === 7) renderReview();
       if (initial) return;
-      // Move focus to the step heading so keyboard and screen-reader users land
-      // in the new section rather than at the top of the document.
       var heading = steps[index].querySelector('.join-step__title');
       if (heading) { heading.setAttribute('tabindex', '-1'); heading.focus({ preventScroll: true }); }
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    // Validate only the CURRENT step. Native validation, no custom messages —
-    // the browser's own are localised and familiar, which is what Operate wants.
     function stepValid(section) {
       var fields = Array.prototype.slice.call(section.querySelectorAll('input, select, textarea'));
       var ok = true;
@@ -725,9 +543,7 @@
       if (next) { if (stepValid(steps[index])) show(index + 1); return; }
       if (back) { show(index - 1); return; }
       if (submit) {
-        // ⚠ NO TRANSPORT. Design review only — the confirmation is shown so the
-        // final screen can be evaluated. Nothing is sent, stored, or queued.
-        console.warn('[CredX /join] DESIGN PROTOTYPE — no submit transport. The Day.ai integration is CredX IT\'s (ClickUp 86caz3h02). Nothing was sent.');
+        console.warn('[CredX /join] Submission is not wired. No data was sent.');
         form.hidden = true;
         if (rail) rail.hidden = true;
         if (intro) intro.hidden = true;
@@ -737,8 +553,6 @@
       }
     });
 
-    // Document gate — `Continue to review` stays disabled until the three
-    // mandatory documents are chosen. Preserved from the prototype.
     var gate = form.querySelector('[data-gate-docs]');
     var requiredDocs = Array.prototype.slice.call(form.querySelectorAll('[data-doc-required]'));
     requiredDocs.forEach(function (input) {
@@ -761,9 +575,6 @@
       });
     });
 
-    // Echo the merchant's own answers back on the review step. The prototype
-    // showed section names with nothing under them; a review screen with nothing
-    // to review cannot do its job.
     function renderReview() {
       var target = form.querySelector('[data-join-review]');
       if (!target) return;
@@ -777,8 +588,6 @@
             return;
           }
           if (f.type === 'checkbox') { rows.push([labelFor(f), f.checked ? 'Yes' : 'No']); return; }
-          // Selects echo the option's LABEL, not its value — the review showed
-          // "CA" where the merchant chose "Canada". Caught by rendering with data.
           if (f.tagName === 'SELECT') {
             var opt = f.selectedOptions && f.selectedOptions[0];
             var t = opt ? opt.text.trim() : '';
@@ -820,12 +629,6 @@
 
     show(0, true);
 
-    // ---- DESIGN-REVIEW AFFORDANCE ----------------------------------------
-    // `?step=7` opens a given step directly and `?demo=1` fills plausible sample
-    // values, so the later screens — Documents, Review, and the confirmation —
-    // can be judged without typing through eight cards. `?step=done` opens the
-    // confirmation. This exists for review of a DESIGN PROTOTYPE and has no place
-    // in the implementation; delete this block when the real page is built.
     var qs = new URLSearchParams(location.search);
     if (qs.get('demo')) {
       var demo = {
