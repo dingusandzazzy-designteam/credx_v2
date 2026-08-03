@@ -24,3 +24,8 @@ assets/images/automotive/automotive_images_final_named.zip
 */images/_masters/
 */prompts*.md
 generic/seo/
+
+# credx-website working copy docs — internal. They carry client quotes, open
+# items and review notes, and every tracked file is served publicly by both
+# GitHub Pages and Vercel. Same treatment as documents/, plan/, seo/, workflow/.
+credx-website/copy/
