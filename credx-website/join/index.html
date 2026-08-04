@@ -130,16 +130,16 @@
 
           <div class="join-field-row join-field-row--3">
             <div class="join-field">
-              <label class="form__label" for="j-city">City</label>
-              <input class="form__input" type="text" id="j-city" name="city" placeholder="City" autocomplete="address-level2" />
+              <label class="form__label" for="j-city">City <span class="join-req" aria-hidden="true">*</span></label>
+              <input class="form__input" type="text" id="j-city" name="city" placeholder="City" required autocomplete="address-level2" />
             </div>
             <div class="join-field">
-              <label class="form__label" for="j-prov">Province / State</label>
-              <input class="form__input" type="text" id="j-prov" name="province" placeholder="ON" autocomplete="address-level1" />
+              <label class="form__label" for="j-prov">Province / State <span class="join-req" aria-hidden="true">*</span></label>
+              <input class="form__input" type="text" id="j-prov" name="province" placeholder="ON" required autocomplete="address-level1" />
             </div>
             <div class="join-field">
-              <label class="form__label" for="j-post">Postal / ZIP</label>
-              <input class="form__input" type="text" id="j-post" name="postal" placeholder="A1A 1A1" autocomplete="postal-code" />
+              <label class="form__label" for="j-post">Postal / ZIP <span class="join-req" aria-hidden="true">*</span></label>
+              <input class="form__input" type="text" id="j-post" name="postal" placeholder="A1A 1A1" required autocomplete="postal-code" />
             </div>
           </div>
         </div>
@@ -205,6 +205,10 @@
             <label class="form__label" for="j-risk">Risk Category</label>
             <select class="form__select" id="j-risk" name="risk_category" aria-describedby="j-risk-h" data-pending="risk-category-options">
               <option value="" selected>Select&hellip;</option>
+              <option value="low">Low risk</option>
+              <option value="medium">Medium risk</option>
+              <option value="high">High risk</option>
+              <option value="unsure">Not sure</option>
             </select>
             <p class="join-help" id="j-risk-h">CredX will confirm this during review.</p>
           </div>
@@ -263,6 +267,13 @@
               <label class="form__label" for="j-cadence">Settlement Cadence <span class="join-req" aria-hidden="true">*</span></label>
               <select class="form__select" id="j-cadence" name="settlement_cadence" required data-pending="settlement-cadence-options">
                 <option value="" selected>Select&hellip;</option>
+                <option value="daily">Daily</option>
+                <option value="t1">Next business day (T+1)</option>
+                <option value="t2">Two business days (T+2)</option>
+                <option value="weekly">Weekly</option>
+                <option value="biweekly">Bi-weekly</option>
+                <option value="monthly">Monthly</option>
+                <option value="other">Other</option>
               </select>
             </div>
           </div>
@@ -283,18 +294,18 @@
         <div class="join-step__body">
           <div class="signup__grid">
             <div class="join-field">
-              <label class="form__label" for="j-pos">POS Vendor</label>
-              <input class="form__input" type="text" id="j-pos" name="pos_vendor" placeholder="e.g. Lightspeed, Toast" aria-describedby="j-pos-h" />
-              <p class="join-help" id="j-pos-h">Leave blank if not applicable.</p>
+              <label class="form__label" for="j-pos">POS Vendor <span class="join-req" aria-hidden="true">*</span></label>
+              <input class="form__input" type="text" id="j-pos" name="pos_vendor" placeholder="e.g. Lightspeed, Toast" aria-describedby="j-pos-h" data-require-one="stack" data-require-one-msg="Tell us your POS vendor, or your e-commerce platform below." />
+              <p class="join-help" id="j-pos-h">Leave blank if you sell online only.</p>
             </div>
             <div class="join-field">
               <label class="form__label" for="j-posver">POS Version / Model</label>
               <input class="form__input" type="text" id="j-posver" name="pos_version" placeholder="e.g. v5.2, Lane 3000" />
             </div>
             <div class="join-field">
-              <label class="form__label" for="j-ecom">E-Commerce Platform</label>
-              <input class="form__input" type="text" id="j-ecom" name="ecommerce_platform" placeholder="e.g. Shopify, WooCommerce" aria-describedby="j-ecom-h" />
-              <p class="join-help" id="j-ecom-h">Leave blank if not applicable.</p>
+              <label class="form__label" for="j-ecom">E-Commerce Platform <span class="join-req" aria-hidden="true">*</span></label>
+              <input class="form__input" type="text" id="j-ecom" name="ecommerce_platform" placeholder="e.g. Shopify, WooCommerce" aria-describedby="j-ecom-h" data-require-one="stack" data-require-one-msg="Tell us your e-commerce platform, or your POS vendor above." />
+              <p class="join-help" id="j-ecom-h">Leave blank if you sell in person only.</p>
             </div>
             <div class="join-field">
               <label class="form__label" for="j-checkout">Checkout System</label>
@@ -429,7 +440,7 @@
 
         <footer class="join-step__foot">
           <button class="btn btn-secondary" type="button" data-step-back>&larr; Back</button>
-          <button class="btn btn-primary" type="button" data-step-next data-gate-docs disabled>Continue to review</button>
+          <button class="btn btn-primary" type="button" data-step-next data-gate-docs>Continue to review</button>
         </footer>
       </section>
 
@@ -553,7 +564,36 @@
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
+    // "At least one of these" groups: members share a data-require-one key. The rule
+    // is expressed as custom validity so the native bubble and .has-error both work.
+    function syncRequireOne(section) {
+      var groups = {};
+      section.querySelectorAll('[data-require-one]').forEach(function (f) {
+        var key = f.getAttribute('data-require-one');
+        (groups[key] = groups[key] || []).push(f);
+      });
+      Object.keys(groups).forEach(function (key) {
+        var members = groups[key];
+        var filled = members.some(function (f) { return f.value.trim(); });
+        members.forEach(function (f) {
+          f.setCustomValidity(filled ? '' : (f.getAttribute('data-require-one-msg') || 'Fill in at least one of these fields.'));
+        });
+      });
+    }
+
+    form.querySelectorAll('[data-require-one]').forEach(function (f) {
+      f.addEventListener('input', function () {
+        var section = f.closest('.join-step');
+        syncRequireOne(section);
+        section.querySelectorAll('[data-require-one]').forEach(function (m) {
+          var field = m.closest('.join-field');
+          if (field && m.checkValidity()) field.classList.remove('has-error');
+        });
+      });
+    });
+
     function stepValid(section) {
+      syncRequireOne(section);
       var fields = Array.prototype.slice.call(section.querySelectorAll('input, select, textarea'));
       var ok = true;
       fields.forEach(function (f) {
@@ -582,8 +622,14 @@
       }
     });
 
+    // Design build: the upload gate is deliberately non-blocking so reviewers can reach
+    // step 8 without attaching real files (browsers forbid prefilling file inputs).
+    // Flip to true when submission is wired to a backend — nothing else needs to change.
+    var ENFORCE_DOC_GATE = false;
+
     var gate = form.querySelector('[data-gate-docs]');
     var requiredDocs = Array.prototype.slice.call(form.querySelectorAll('[data-doc-required]'));
+    if (ENFORCE_DOC_GATE) gate.disabled = true;
     requiredDocs.forEach(function (input) {
       input.addEventListener('change', function () {
         var row = input.closest('.join-doc');
@@ -600,7 +646,9 @@
           }
           existing.textContent = name;
         } else if (existing) { existing.remove(); }
-        gate.disabled = !requiredDocs.every(function (i) { return i.files && i.files.length; });
+        if (ENFORCE_DOC_GATE) {
+          gate.disabled = !requiredDocs.every(function (i) { return i.files && i.files.length; });
+        }
       });
     });
 
@@ -612,8 +660,13 @@
         var rows = [];
         section.querySelectorAll('input, select, textarea').forEach(function (f) {
           if (f.type === 'file') {
+            // The label[for] of an upload is the Upload/Replace button, so take the
+            // document's own name instead. Missing docs still get a row, to keep the
+            // review complete rather than silently short.
+            var docRow = f.closest('.join-doc');
+            var docName = docRow && docRow.querySelector('.join-doc__name');
             var n = f.files && f.files[0] ? f.files[0].name : '';
-            if (n) rows.push([labelFor(f), n]);
+            rows.push([docName ? docName.textContent.replace('*', '').trim() : labelFor(f), n || null]);
             return;
           }
           if (f.type === 'checkbox') { rows.push([labelFor(f), f.checked ? 'Yes' : 'No']); return; }
@@ -669,9 +722,10 @@
         'j-directors': 'Jane Smith — CEO, David Okafor — CFO',
         'j-signing': 'Jane Smith, Owner',
         'j-industry': 'Retail — home and garden supply', 'j-mcc': '5261',
+        'j-risk': 'low',
         'j-volume': '$420,000', 'j-avg': '$68',
         'j-processor': 'Moneris', 'j-acquirer': 'TD Merchant Services', 'j-gateway': 'Beanstream',
-        'j-bank': 'RBC — business chequing',
+        'j-bank': 'RBC — business chequing', 'j-cadence': 't1',
         'j-pos': 'Lightspeed', 'j-posver': 'Retail v3.4', 'j-ecom': 'Shopify',
         'j-checkout': 'Shopify Checkout', 'j-crm': 'HubSpot',
         'j-fields': 'date, amount, location, SKU, tender type',
