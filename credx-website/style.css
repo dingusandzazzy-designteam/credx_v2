@@ -3592,3 +3592,142 @@ a.vertical-card:hover .vertical-card__name::after { transform: translateX(4px); 
   .join-rail__fill { transition: none; }
   .join-body * { scroll-behavior: auto !important; }
 }
+
+/* ==========================================================================
+   25. BATCH 1 SECTION PRIMITIVES — /about · /evp · /how-it-works
+   Added 2026-08-11 to repair execution defects in the three Batch-1 pages.
+
+   ⚠⚠ EVERY SELECTOR IN THIS SECTION IS NEW. Nothing above line 3594 was
+   modified, which is deliberate and load-bearing: this stylesheet is shared by
+   index.html (the Home — client-approved and byte-identical to commit
+   42d04d7), contact/index.html and join/index.html. Adjusting .movement*,
+   .control* or .gains* in place would have changed the Home. If you need to
+   change behaviour here, add or extend a selector in this section; do not
+   reach up into the components above.
+
+   WHY THESE EXIST. The three pages were first built by reusing the closest
+   existing component rather than adding CSS. Two of those reuses were wrong
+   for the content they carried:
+     · .movement is specified for a CENTRED ONE-LINER (DESIGN.md: "centered
+       one-liner H2 + body + founder pull-quote") and .movement__inner sets
+       text-align:center. Eight sections across the three pages carry two or
+       three stacked paragraphs, which silently inherited that centring.
+       .movement__h2's 22ch measure also broke full-sentence H2s into three
+       display-size lines.
+     · .calc__hedge is an italic disclaimer class, and it was carrying the
+       opt-in consent lines that the voice rules REQUIRE wherever data-sharing
+       is mentioned. A required statement should not read as fine print.
+
+   DIRECTION (Marco, 2026-08-11): the display H2 stays CENTRED — that is the
+   gesture the Home established for these bands and it is part of the identity
+   — and the prose alone goes left at a 65ch measure, with consent marked by a
+   rule rather than by italics.
+
+   Every colour here resolves through the existing theme-aware tokens, so the
+   deferred light theme would pick these up correctly if it is ever restored.
+   ========================================================================== */
+
+.prose-band { background-color: var(--surface-0); }
+
+.prose-band__inner {
+  max-width: var(--container-max);
+  margin-inline: auto;
+}
+
+/* Same clamp as .movement__h2, so the display scale is unchanged and these
+   sections still read as part of one system. Only the measure widens — 22ch to
+   34ch — because these H2s are full sentences rather than the manifesto
+   one-liner the original measure was cut for. */
+.prose-band__h2 {
+  font-family: var(--font-editorial);
+  font-size: clamp(2.25rem, 4vw + 1rem, 3.75rem);
+  font-weight: 500;
+  line-height: 1.08;
+  letter-spacing: -0.015em;
+  text-align: center;
+  text-wrap: balance;
+  max-width: 34ch;
+  margin-inline: auto;
+  margin-block: 0 var(--s-8);
+}
+
+/* The prose. `p` already caps at 65ch globally; this restates the measure so
+   the block is self-describing, and centres the COLUMN rather than the words.
+   text-align:left is explicit because these blocks sit inside centred parents
+   in three of the eight sections. */
+.prose-band__body {
+  font-size: var(--type-body-lg);
+  color: var(--text-secondary);
+  line-height: 1.65;
+  max-width: 65ch;
+  margin-inline: auto;
+  text-align: left;
+  text-wrap: pretty;
+}
+
+.prose-band__body + .prose-band__body { margin-top: var(--s-6); }
+
+/* A cross-link or trailing note under a prose block, held on the same column
+   so it reads as part of that block rather than as a new one. */
+.prose-band__aside {
+  max-width: 65ch;
+  margin-inline: auto;
+  margin-top: var(--s-6);
+  text-align: left;
+}
+
+/* Required opt-in / consent lines. Replaces .calc__hedge's italic-disclaimer
+   register. The rule is 1px and untinted — a heavier or coloured bar would be
+   the callout cliché, and this is a statement of fact, not an alert. */
+.consent-note {
+  max-width: 65ch;
+  margin-inline: auto;
+  margin-top: var(--s-7);
+  padding-left: var(--s-5);
+  border-left: 1px solid var(--border-subtle);
+  font-size: var(--type-caption);
+  color: var(--text-muted);
+  line-height: 1.55;
+  text-align: left;
+}
+
+/* .gains__strip is repeat(3, 1fr) from 768px up. /about §6 puts ONE .stat in
+   it and /evp §5 puts TWO, so the row left one or two empty columns and read
+   as broken rather than as a deliberate partial row. This fits the row to its
+   actual contents and centres it. The .stat:not(:last-child)::after divider
+   still lands correctly, because the last item is still the last child. */
+.gains__strip--fit { justify-items: center; }
+
+@media (min-width: 768px) {
+  .gains__strip--fit {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--s-7);
+  }
+  .gains__strip--fit > .stat { flex: 0 1 clamp(14rem, 22vw, 20rem); }
+}
+
+/* Spacing roles, so the three pages stop carrying hardcoded pixel values in
+   style attributes. .section-media already owns its own bottom margin. */
+.section-media--spaced { margin-top: var(--s-7); }
+/* A second media block sitting tight under the first, so the pair reads as one
+   group rather than as two separate beats. Used by /how-it-works §2, where the
+   reserved video slot and the mechanics image belong together. */
+.section-media--tight { margin-top: var(--s-5); }
+.gains__strip--lead { margin-bottom: var(--s-7); }
+.gains__strip--follow { margin-top: var(--s-7); }
+.section-aside { margin-top: var(--s-7); }
+
+/* A single trust marker standing on its own. /about §6 first used .gains__strip + .stat
+   for this. The centring was right, but .stat__number is the 48–80px NUMERAL face, so
+   "SOC 2 + PIPEDA" rendered as a masthead broken across two lines — caught only once the
+   page was finally screenshotted (2026-08-11). The Home already solves this exact content
+   with .trust__lead + .trust__body; both are standalone-safe, so this class supplies only
+   the centred wrapper they normally inherit from .proof__tile. */
+.trust-note {
+  max-width: 46ch;
+  margin-inline: auto;
+  margin-top: var(--s-7);
+  text-align: center;
+}

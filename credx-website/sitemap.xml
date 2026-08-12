@@ -13,6 +13,15 @@
     <priority>0.9</priority>
     <changefreq>monthly</changefreq>
   </url>
+  <!-- /evp priority 0.8 is the BRIEF'S RECOMMENDATION, not a lock (open item O4 in
+       copy/evp.md). plan/05:117 says only "index" and 04.Sitemap-Locked.md:25 gives no
+       priority. 0.8 follows from nav position #2 and core-page status; /about is 0.7 and
+       /how-it-works 0.9. Change it freely if the call goes another way. -->
+  <url>
+    <loc>https://credx-tech.com/evp</loc>
+    <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
+  </url>
   <url>
     <loc>https://credx-tech.com/lenders</loc>
     <priority>0.8</priority>

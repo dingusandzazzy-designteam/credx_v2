@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0b0c16" />
+
+  <!-- Light theme + toggle DEFERRED to a future update (2026-07-24). Dark is the only
+       theme. This page never had a FOUC script or a toggle; do not add one. -->
+
+  <!-- Page metadata (per copy/about.md — INDEXED; SEO budgets bind)
+       Title 46/≤60 · Meta 160/150–160 · H1 52/≤70 — RE-MEASURED against the rendered
+       strings at build time (2026-08-11). The strings are the APPROVED brief's verbatim
+       (seo/SEO-Briefs-Batch1.md, Marco 2026-08-10); only its hand counts were slightly
+       off — it records Meta 158 and H1 51. Nothing breaches a budget, so no copy moved.
+       ⚠ THE META IS AT 160, THE EXACT CEILING of the 150–160 band. Any future edit that
+       adds a character pushes it out of band. Re-count before touching it.
+       Primary keyword `the data economy` (50/mo, database Canada) leads the Title
+       at chars 1–16 and the H1 at chars 1–16.
+       ⚠ NOT a traffic page: 50/mo, and phrase_organic returns no tracked organic
+       SERP for the query in Canada. The job here is brand, narrative and the
+       Organization entity. Do not resource it as an acquisition page. -->
+  <title>The Data Economy and Who It Belongs To | CredX</title>
+  <meta name="description" content="The data economy runs on data that merchants and customers create. CredX is the movement built on one belief: that value belongs to them. See what we stand for." />
+  <link rel="canonical" href="https://credx-tech.com/about" />
+
+  <!-- Open Graph — OG title and description inherit Title/Meta per copy/about.md §metadata. -->
+  <meta property="og:title" content="The Data Economy and Who It Belongs To | CredX" />
+  <meta property="og:description" content="The data economy runs on data that merchants and customers create. CredX is the movement built on one belief: that value belongs to them. See what we stand for." />
+  <meta property="og:image" content="https://credx-tech.com/images/og.jpg" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://credx-tech.com/about" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="icon" href="../assets/logo/credx-shape.svg" type="image/svg+xml" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" />
+
+  <link rel="stylesheet" href="../style.css" />
+
+  <!-- Organization + BreadcrumbList per the brief. ⚠ NO FAQPage on this page — there is
+       no PAA-box evidence for `data economy` in Canada, and inventing one is forbidden.
+       ⚠ `contactPoint` is deliberately ABSENT here for the same reason it is absent on
+       /contact: no email or phone exists anywhere in the repo. Declaring an invented one
+       would be worse than omitting it. Add it with real values when they land.
+       E-E-A-T note: this page carries NO founder attribution (Discovery Q6 is LOCKED —
+       no names, photos or bios), so authority rests on the entity and the named
+       frameworks. That is an accepted structural weakness, recorded in the brief. -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "CredX",
+    "legalName": "CredX Tech Inc.",
+    "url": "https://credx-tech.com",
+    "logo": "https://credx-tech.com/assets/logo/credx-shape.svg",
+    "description": "CredX is the movement built on one belief: that the value created in the data economy belongs to the businesses and customers who create it.",
+    "areaServed": "CA"
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://credx-tech.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "The Movement",
+        "item": "https://credx-tech.com/about"
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <!-- Nav (G1) — same IA as the Home and /contact. `aria-current` marks About.
+       ⚠ PATHS ARE RELATIVE, DELIBERATELY. Both live surfaces serve the REPO ROOT
+       (there is no vercel.json and the root carries its own index.html + .nojekyll),
+       so credx-website sits at /credx-website/. An absolute `/about` therefore
+       resolves off-site. The Home and /contact still use absolute hrefs for
+       How It Works · For Lenders · About · Glossary · Legal and `href="/"` on the
+       logo — those are the known dead-link items, and they are NOT fixed here.
+       Do not "normalise" these back to absolute paths.
+       ⚠ `/lenders` does not exist yet (Batch 2). It is kept in the nav because all
+       three existing pages carry it and a nav that jumps between pages is worse than
+       one dead item. Tracked as part of the dead-link cluster, not introduced here. -->
+  <nav class="nav" aria-label="Primary">
+    <div class="container nav__inner">
+      <a href="../" class="nav__logo" aria-label="CredX home">
+        <img src="../assets/logo/Credx-name.svg" alt="CredX" height="28" />
+      </a>
+      <div class="nav__links" data-nav-menu>
+        <a href="../how-it-works/" class="nav__link">How It Works</a>
+        <a href="../lenders/" class="nav__link">For Lenders</a>
+        <a href="./" class="nav__link" aria-current="page">About</a>
+        <a href="../contact/" class="nav__link">Contact Us</a>
+      </div>
+      <div class="nav__actions">
+        <!-- `Book a meeting` is the CALENDAR path and a DIFFERENT destination from the
+             Contact Us link above (Marco, 2026-07-31). ⚠ {{PENDING:booking-url}} is still
+             owed by Kyle (since 2026-07-20), so it falls back to /contact meanwhile —
+             the same fallback every other page uses. Swap the href when the URL lands. -->
+        <a href="../contact/" class="btn btn-primary nav__cta" data-pending="booking-url">Book a meeting</a>
+        <button class="nav__toggle" data-nav-toggle type="button" aria-label="Open menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <main id="top">
+
+    <!-- ============================================================
+         1 · HERO — THE MOVEMENT
+         Copy: copy/about.md §1. Beat = movement hook, belief stated
+         plainly, then the definition handoff into §2.
+
+         ✅ IMAGE WIRED 2026-08-11 — `about-hero.png` (1672×941, optician
+         studio at dusk, left third in deep shadow so the overlaid copy
+         stays legible). Brief and delivery record: prompts-batch1.md.
+         ⚠ NO `<picture>` WRAPPER AND NO WEBP, deliberately (Marco,
+         2026-08-11): Webflow does the image optimisation and this build is
+         a layout-validation surface, so a `<picture>` with no `<source>`
+         would be pure noise. Do not "restore" one.
+         ⚠ Re-renders drop in UNDER THE SAME FILENAME — no markup change.
+         The alt deliberately carries NO keyword — the single keyword-bearing
+         alt on this page is reserved for §2 (practice #8).
+         ============================================================ -->
+    <section class="hero hero--full" aria-label="Hero">
+      <img src="../images/about-hero.png" alt="A Canadian business owner at the counter serving a returning customer" class="hero__bg hero__bg--dark" width="1672" height="941" />
+      <div class="hero__overlay" aria-hidden="true"></div>
+      <div class="container hero__inner">
+        <div class="hero__copy">
+          <span class="eyebrow eyebrow--accent" data-reveal>A Modern Financial Movement</span>
+          <h1 class="hero__h1" data-reveal-words>
+            The Data Economy Belongs to the People Who <em class="accent">Create It</em>
+          </h1>
+          <p class="hero__sub" data-reveal data-reveal-delay="1">
+            Every card transaction leaves a record behind. In the data economy that record is an asset, and CredX is built so it belongs to the business that earned the sale and the customer who made it.
+          </p>
+          <!-- §1's movement line. ⚠ This is NOT the Home's line. `05:99` originally
+               assigned /about "A system you belong to, instead of one that owns you.",
+               but the Home already ships that sentence and it is LOCKED there
+               (Gaetan's formulation, Kendall-approved 2026-06-23, Discovery Q4).
+               Marco resolved O1 on 2026-08-10: /about gets a fresh line, and
+               plan/05.Content-Architecture.md:99 was updated to match. -->
+          <p class="hero__movement" data-reveal data-reveal-delay="2">You belong in the system you help build.</p>
+          <div class="hero__ctas" data-reveal data-reveal-delay="3">
+            <a href="../contact/" class="btn btn-primary">Book a Meeting</a>
+            <a href="../how-it-works/" class="btn btn-secondary">See how it works</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         2 · THE DATA ECONOMY
+         Copy: copy/about.md §2. This is the section the primary keyword
+         belongs to — it carries the keyword in the H2 and opens the AEO
+         snippet on the exact term.
+
+         Reuses the .movement component shell (surface-0 section, editorial
+         H2, prose body) rather than introducing new CSS — the same reuse
+         idiom the Home applies when its §3.5 AEO block borrows .faq.
+
+         ⚠ The word "rigged" is DELIBERATELY ABSENT. plan/05:100 labels this
+         narrative "the 'financial system is rigged' narrative" and §13 lists
+         `financial system rigged` as a secondary keyword, but attack framing
+         is banned outright (forbidden-language list: "Reframe every truth as
+         a gain. Surface = empowerment, never attack"), and the keyword has
+         ZERO search volume (confirmed 2026-08-10). The narrative's substance
+         is written in full without the word. Nothing is lost on either side.
+         ============================================================ -->
+    <section id="data-economy" class="section prose-band" aria-label="The data economy">
+      <div class="container prose-band__inner">
+        <h2 class="prose-band__h2" data-reveal-words>
+          What the data economy is, and <em class="accent">who it pays today</em>.
+        </h2>
+
+        <!-- AEO snippet — 51 words (budget 40–60), opens literally "The data economy
+             is…" per the brief, one factual claim per sentence, CredX named once.
+             Placement directly below the H2 is mandated by the brief. Do not split
+             it, pad it, or move it below the body: this is the string an answer
+             engine lifts. -->
+        <p class="prose-band__body" data-reveal>
+          The data economy is the market for information created by everyday transactions. Every purchase records who bought, what they spent, and when they return. That record has value. Today it accrues to a competing credit facility rather than to the business that earned the sale. CredX is built to give that business access to it.
+        </p>
+
+        <p class="prose-band__body" data-reveal data-reveal-delay="1">
+          Your payment processor runs the transaction, and that part works. What happens after is where the value sits. The purchase record becomes an asset held by a competing credit facility, one with no relationship to your customer and no stake in whether they come back. CredX is structured so the business that built the relationship gets access to it.
+        </p>
+
+        <!-- Consent line — REQUIRED, not optional. Voice rule: "Never imply consent.
+             When data-sharing is mentioned, opt-in is stated." This section mentions
+             data, so the line stays wherever this copy renders.
+             ⚠ It used to carry .calc__hedge, which is an ITALIC DISCLAIMER class — the
+             wrong register for a statement the voice rules require to be present. Now
+             .consent-note: muted caption on a 1px rule, left-aligned, no italics. -->
+        <p class="consent-note" data-reveal data-reveal-delay="2">
+          Merchant and customer data is de-identified and shared only on explicit opt-in. Participation is a choice at every step.
+        </p>
+
+        <!-- ✅ WIRED 2026-08-11 — `about-data-economy.png` (garden centre under glass,
+             bright cool overcast, owner with a tablet held low). The ONE keyword-bearing
+             alt on this page (practice #8).
+             ✅ CASTING BREACH RESOLVED — re-rendered 2026-08-11 17:16, this slot now
+             carries a WOMAN operator. The first render set had a man in every
+             identifiable operator role across all eight images, including both of the
+             site's only two solo decision frames (this one and `hiw-fees`), which
+             breached `prompts.md` §A's casting table — "women lead operator/decision
+             scenes as much as men". Both were re-rendered. Do not swap this back to a
+             male operator without checking the balance across the whole set first. -->
+        <div class="section-media section-media--spaced" data-reveal-media>
+          <img src="../images/about-data-economy.png" alt="A merchant reviewing purchase patterns from the data economy on a tablet" width="1672" height="941" loading="lazy" />
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         3 · MoaT — MUTUAL OWNERSHIP ACQUISITION TECHNOLOGY
+         Copy: copy/about.md §3. Beat = MoaT as the movement's PHILOSOPHY
+         of ownership, deliberately NOT the mechanism.
+
+         ⚠ TWO THINGS TO KNOW BEFORE EDITING THIS SECTION.
+         1. This is MoaT's FIRST appearance in validated public copy. The
+            validated Home contains ZERO hits for MoaT, DaaP, BoosT,
+            MarketPlace or Orchestration — it speaks operationally and
+            never names a framework. So this section sets the precedent for
+            how CredX names an internal framework on an indexed page.
+         2. The /about ↔ /evp MoaT split is WRITTEN TO BUT UNRATIFIED
+            (open item O2; Post-MVP-Roadmap.md:71). /about takes MoaT as
+            movement and philosophy, /evp §3 takes it as mechanism in the
+            value stack, and they cross-link instead of repeating. If the
+            split is rejected, BOTH §3s change together.
+         The full expansion is spelled out on first mention, `MoaT` after —
+         mandated by the brief's H2/H3 outline.
+         ============================================================ -->
+    <section id="moat" class="section control" aria-label="Mutual Ownership Acquisition Technology">
+      <div class="container">
+        <div class="control__header">
+          <h2 class="control__h2" data-reveal-words>
+            Mutual Ownership Acquisition Technology, <em class="accent">in plain terms</em>.
+          </h2>
+        </div>
+
+        <!-- ⚠ This prose used to sit in .control__whitelabel, which is centred at a
+             720px measure — fine for the Home's short white-label beat, wrong for a
+             five-sentence paragraph. Now the prose-band pattern: the H2 above stays
+             centred, the prose reads left at 65ch. -->
+        <!-- "hold a stake", not "should all hold a stake" — the `should` was removed
+             on Marco's instruction, 2026-08-10 (O4, per Audrey C12). ⚠ This does NOT
+             touch the two held canonical lines (Kendall's anchor and the core belief);
+             those still contain "should", are still unresolved with the client, and
+             are still not ours to rewrite (voice.md:130-140). -->
+        <p class="prose-band__body" data-reveal>
+          Mutual Ownership Acquisition Technology, or MoaT, is the principle that all three parties to a transaction hold a stake in what it produces. The merchant earns the relationship. The customer creates the value. The community lender funds the credit. MoaT is how the upside is shared between them instead of collected by a party that did none of the three.
+        </p>
+
+        <!-- Cross-link, not a repeat: the mechanism lives on /evp §3. Held on the same
+             65ch column as the prose so it reads as part of that block. -->
+        <p class="prose-band__aside" data-reveal data-reveal-delay="1">
+          <a href="../evp/" class="sub-link">See how MoaT works inside the value stack →</a>
+        </p>
+
+        <div class="media-ph section-media--spaced" data-img-ph="about-moat — Three parties to a transaction sharing in what it produces" data-reveal data-reveal-delay="2"></div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         4 · MISSION
+         Copy: copy/about.md §4. Beat = the shared-value model as mission.
+         Movement, not product pitch.
+
+         ⚠ The H2 here was changed during the copy pass because the original
+         ("A system where the value returns to the people inside it.")
+         near-duplicated §1's movement line. And a sentence was CUT rather
+         than reworded — "Not a feature added to the existing arrangement,
+         but a different arrangement." was a confirmed "not just X, but Y"
+         anti-pattern that restated the sentence before it. Do not restore
+         either; both were deliberate removals, logged in copy/about.md §4.
+         ============================================================ -->
+    <section id="mission" class="section prose-band" aria-label="Mission">
+      <div class="container prose-band__inner">
+        <h2 class="prose-band__h2" data-reveal-words>What the movement <em class="accent">is for</em>.</h2>
+        <p class="prose-band__body" data-reveal>
+          The mission is narrow and it does not change: build the infrastructure that lets value stay with the businesses and customers who generate it. Any business with recurring customers and card volume has a place in it.
+        </p>
+        <!-- ✅ WIRED 2026-08-11 — `about-mission.png` (two operators of adjacent
+             businesses in conversation with each other on a shared street, golden
+             raking light). ⚠ Neither looks at the camera, deliberately: the stock
+             cliché this slot was written against is "owners arms-folded smiling at
+             lens". Do not swap in a posed frame. -->
+        <div class="section-media section-media--spaced" data-reveal-media>
+          <img src="../images/about-mission.png" alt="Independent Canadian operators who have joined the movement" width="1672" height="941" loading="lazy" />
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         5 · NO FOUNDERS SECTION — DELIBERATE, NOT AN OMISSION.
+
+         Discovery Q6 is LOCKED: no founder names, no photos, no bios on
+         this page. plan/05:103 states it explicitly — "deliberately no
+         team/founder section; brand and movement carry the page."
+
+         ⚠ If anyone proposes adding a founder block, Q6 has to be RE-OPENED
+         first. The structural consequence is recorded in the head comment:
+         this page's E-E-A-T cannot rest on a named expert, and that is an
+         accepted weakness rather than a gap to quietly fill.
+         ============================================================ -->
+
+    <!-- ============================================================
+         6 · THE PARTNERSHIP
+         Copy: copy/about.md §6.
+
+         🔴 THIS SECTION IS INDICATIVE, NOT SETTLED. plan/05:104 marks it
+         "indicative — pending the partnership meeting" and carries an
+         unresolved doc note, "NEW – add community?". Open item O3, blocked
+         on that meeting. The copy below is a first pass and must not be
+         treated as approved. It does NOT assume the community angle.
+
+         Proof discipline that is load-bearing here:
+         · Community lender count stays GENERIC — no number. Swept
+           number-free across all five existing pages; this page holds it.
+         · "Compliant", NEVER "certified". SOC 2 produces an attestation
+           report, not a certification, so "SOC 2 certified" would be wrong
+           even though the client confirmed on 2026-07-30 that they hold it.
+           Do not "upgrade" this wording on the strength of that answer.
+         · No dollar figures imported. $500M+ and the 5 C's / 186 sources are
+           confirmed but belong to other pages. This page carries no figures
+           at all.
+         ============================================================ -->
+    <section id="partnership" class="section control" aria-label="The partnership">
+      <div class="container">
+        <div class="control__header">
+          <h2 class="control__h2" data-reveal-words>Who holds what in a <em class="accent">CredX partnership</em>.</h2>
+        </div>
+
+        <!-- The two mirrored lists (what CredX holds vs what the merchant keeps) are
+             one of the three deliberate three-part constructions kept on this page —
+             the contrast IS the point here. See copy/about.md §Constraint self-check. -->
+        <div class="control__three">
+          <div class="control-card" data-reveal>
+            <span class="control-card__title">CredX carries.</span>
+            <p class="control-card__body">The credit, the funding, and the risk, together with community lender partners.</p>
+          </div>
+          <div class="control-card" data-reveal data-reveal-delay="1">
+            <span class="control-card__title">Your business keeps.</span>
+            <p class="control-card__body">The customer, the brand, and the relationship. The credit line appears under your name.</p>
+          </div>
+          <div class="control-card" data-reveal data-reveal-delay="2">
+            <span class="control-card__title">Off your books.</span>
+            <p class="control-card__body">The lending stays off your balance sheet. That is a structural fact, so it needs no hedge.</p>
+          </div>
+        </div>
+
+        <!-- ⚠ THIS BLOCK WAS REBUILT 2026-08-11 AFTER SEEING IT RENDERED. It first used
+             .gains__strip + .stat with a --fit modifier. The centring was correct, but
+             `.stat__number` is the 48–80px NUMERAL face, so "SOC 2 + PIPEDA" came out as a
+             masthead broken across two lines ("SOC 2 +" / "PIPEDA") with its caption
+             squeezed into a 20rem column. A numeral treatment on a text string.
+             Now .trust__lead + .trust__body — the components the Home already uses for
+             this exact marker in its proof mosaic — inside a plain centred wrapper.
+             ⚠ Do not put this back in a .stat. It is a marker, not a figure. -->
+        <div class="trust-note" data-reveal>
+          <span class="trust__lead">SOC 2 + PIPEDA</span>
+          <p class="trust__body">Compliant. Data is de-identified, consent-driven, and held to Canadian privacy law.</p>
+        </div>
+
+        <!-- ✅ WIRED 2026-08-11 — `about-partnership.png` (thick open agreement on a
+             timber table, both people chest-down and three-quarter, soft neutral
+             daylight, no handshake). The document shows paragraph texture with
+             unresolvable lettering — verified at 2.5× against the naming guard.
+             ⚠ THIS SECTION'S COPY IS STILL INDICATIVE, pending the partnership
+             meeting (copy/about.md §6, open item O3). If §6 changes, check that this
+             image still fits what the section ends up claiming. -->
+        <div class="section-media section-media--spaced" data-reveal-media>
+          <img src="../images/about-partnership.png" alt="A community lender and a business owner reviewing a partnership agreement" width="1672" height="941" loading="lazy" />
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         7 · CTA — JOIN THE MOVEMENT
+         Copy: copy/about.md §7. Both labels are plan/05:105's.
+
+         `Join the Movement` keeps TITLE CASE — it is the locked brand label
+         (Audrey C15), not a generic action, matching the deliberate
+         exception documented at copy/home.md:41.
+
+         ⚠ OPEN ITEM O5, unresolved and visible here: both CTAs resolve to
+         /contact, which makes the secondary redundant. The larger question
+         behind it — the Home moved its primary CTA to /join on 2026-07-27
+         while plan/05:96 still routes /about to /contact. Audrey's C15
+         reasoning (a cold audience is not warmed for a join-first ask)
+         argues for /contact on a brand page, so /contact is what ships
+         until someone decides otherwise.
+
+         The primary keyword is NOT repeated here: at 50/mo it would gain
+         nothing and would breach the stuffing ban.
+         ============================================================ -->
+    <section id="join" class="section final-cta" aria-label="Be part of the movement">
+      <div class="container final-cta__inner">
+        <div data-reveal>
+          <!-- ⚠ NO EYEBROW HERE, DELIBERATELY. This block carried
+               "Be Part of the Movement" over the headline "Be part of the movement." —
+               the same sentence twice, differing only in case. The eyebrow was mine, not
+               the copy's: copy/about.md §7 specifies a headline, a body and two CTAs, and
+               no eyebrow. Removed rather than reworded, because writing a new one is
+               credx-copy's call, not a design fix.
+               ⚠ The Home DOES carry an eyebrow in its final-cta, and its text differs
+               from its headline — so if the pattern is wanted back here, the ask is one
+               non-duplicating line from credx-copy, not a markup change. -->
+          <h2 class="final-cta__h2">Be part of the movement.</h2>
+          <p class="final-cta__body">The businesses joining CredX have one thing in common: they earned their customers and intend to keep what those relationships produce.</p>
+          <div class="hero__ctas final-cta__ctas">
+            <a href="../contact/" class="btn btn-primary">Join the Movement</a>
+            <a href="../contact/" class="btn btn-secondary">Book a Meeting</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer (G2) — same IA as the Home and /contact, paths made relative.
+       ⚠ The LinkedIn href is the bare domain, carried from index.html:570 — a
+       pre-existing defect, not a new one. ⚠ ../lenders/, ../learn/glossary/ and
+       ../legal/ do not exist yet; they are kept because every other page carries
+       them. Tracked as the dead-link cluster. -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__inner footer__inner--sitemap">
+        <div class="footer__brand">
+          <img src="../assets/logo/Credx-name.svg" alt="CredX" height="32" style="margin-bottom: 20px;" />
+          <p class="footer__movement">A system you belong to, instead of one that owns you.</p>
+        </div>
+        <div>
+          <h4 class="footer__col-title">Explore</h4>
+          <div class="footer__links">
+            <a href="../how-it-works/" class="footer__link">How It Works</a>
+            <a href="../lenders/" class="footer__link">For Lenders</a>
+            <a href="./" class="footer__link">About</a>
+            <a href="../contact/" class="footer__link">Contact</a>
+            <a href="../learn/glossary/" class="footer__link">Glossary</a>
+          </div>
+        </div>
+        <div>
+          <h4 class="footer__col-title">Legal</h4>
+          <div class="footer__links">
+            <a href="../legal/" class="footer__link">Privacy</a>
+            <a href="../legal/" class="footer__link">Terms</a>
+          </div>
+        </div>
+        <div>
+          <h4 class="footer__col-title">Connect</h4>
+          <div class="footer__links">
+            <a href="https://www.linkedin.com/" class="footer__link" rel="noopener" target="_blank">LinkedIn</a>
+            <a href="../contact/" class="footer__link">Book a meeting</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span>© 2026 CredX Tech Inc. · credx-tech.com</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.0.42/dist/lenis.min.js"></script>
+  <script src="../script.js"></script>
+</body>
+</html>

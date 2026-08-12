@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0b0c16" />
+
+  <!-- Light theme + toggle DEFERRED to a future update (2026-07-24). Dark is the only
+       theme. This page never had a FOUC script or a toggle; do not add one. -->
+
+  <!-- Page metadata (per copy/evp.md — INDEXED; SEO budgets bind)
+       Title 50/≤60 · Meta 156/150–160 · H1 48/≤70 — RE-MEASURED against the rendered
+       strings at build time (2026-08-11). The strings are the brief's verbatim
+       (seo/SEO-Briefs-Batch1.md, approved for drafting 2026-08-10); it records Meta 153
+       and H1 47, hand-counts off by three and one. In band either way, so no copy moved.
+
+       ⚠ THIS PAGE CANNOT RANK, AND THAT IS THE DESIGN. `embedded value platform`,
+       `what is an embedded value platform` and `embedded value partner` are ALL zero
+       volume — they return no row at all from phrase_these/phrase_kdi in both `ca` and
+       `us` (confirmed 2026-08-10). CredX-SEO-AEO-Strategy-v2.md:184 already states the
+       term is "brand and category coinage rather than the primary ranking term."
+       So this is an AEO and CATEGORY-DEFINITION page, not an acquisition page. Its job
+       is to be the citable definition of what a CredX partnership is. Judge it on
+       definitional clarity. Do not resource it for traffic, and do not force commercial
+       framing into it.
+
+       ⚠ SITEMAP PRIORITY: 0.8, which is a RECOMMENDATION and not locked anywhere.
+       plan/05:117 says only "index"; 04.Sitemap-Locked.md:25 gives no priority. For
+       reference /about is 0.7 and /how-it-works is 0.9. Open item O4.
+
+       ⚠ WHY THE H1 ASSERTS INSTEAD OF ASKING: /how-it-works owns the question-form H1
+       for AEO, and two interrogative H1s on adjacent indexed pages would be a pattern
+       rather than a choice. This H1 states the distinguishing fact, which is what
+       plan/05:115 says the section is for. It also DELIBERATELY avoids any "not
+       software / not a vendor" construction — Kendall's anchor ("Software should pay
+       for people, not people for software") contains "should", is held and uncleared
+       (voice.md:130-140), and a paraphrase in its shape reopens a question that is not
+       ours to answer. -->
+  <!-- 🔴 CATEGORY TERM CORRECTED 2026-08-11: "Embedded Value Partner" → "Embedded Value
+       Platform" throughout. Marco ruled Platform is the public term, on Kyle Bunbury's
+       Partner FAQ, which defines "Embedded Value Platform" and states "This is what
+       CredX is."
+       ⚠ THIS IS NOT A CLIENT-IMPOSED CHANGE — IT IS A CORRECTION BACK TO OUR OWN LOCKED
+       VOCABULARY. `.claude/skills/credx-copy/voice.md:83` already reads "Embedded value
+       platform. — required category term." This page shipped "Partner" against that rule;
+       the client's document simply caught it.
+       ⚠ "Partner" SURVIVES AS RELATIONSHIP LANGUAGE and is deliberately kept in §7 and in
+       the CTAs. The client's own document is titled "Partner FAQ" and addresses "partners
+       evaluating CredX" — so the merchant is the partner, and CredX is the platform.
+       Changing only the CATEGORY term is what keeps this page's argument intact instead
+       of turning it into a rewrite. -->
+  <title>Embedded Value Platform: The Complete Stack | CredX</title>
+  <meta name="description" content="An Embedded Value Platform puts capital, credit, and data infrastructure into your business, and returns a share of what they produce. See what it includes." />
+  <link rel="canonical" href="https://credx-tech.com/evp" />
+
+  <!-- Open Graph — OG title and description inherit Title/Meta per copy/evp.md §metadata. -->
+  <meta property="og:title" content="Embedded Value Platform: The Complete Stack | CredX" />
+  <meta property="og:description" content="An Embedded Value Platform puts capital, credit, and data infrastructure into your business, and returns a share of what they produce. See what it includes." />
+  <meta property="og:image" content="https://credx-tech.com/images/og.jpg" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://credx-tech.com/evp" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="icon" href="../assets/logo/credx-shape.svg" type="image/svg+xml" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" />
+
+  <link rel="stylesheet" href="../style.css" />
+
+  <!-- Organization + Service + BreadcrumbList per the brief. ⚠ NO FAQPage — no FAQ is
+       written for this page, and there is no PAA evidence for a zero-volume coinage.
+       Do not add one by inventing questions.
+       ⚠ The Service block carries NO `offers`, `price` or `aggregateRating`. None of
+       those exist as confirmed facts, and schema is in §5 scope of the
+       forbidden-language list, so inventing them would be fabricating claims in
+       structured data. `serviceType` uses the coinage deliberately — this page is where
+       the category is defined. -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "CredX",
+    "legalName": "CredX Tech Inc.",
+    "url": "https://credx-tech.com",
+    "logo": "https://credx-tech.com/assets/logo/credx-shape.svg",
+    "description": "CredX is an Embedded Value Platform: financial infrastructure that puts its own capital, credit, and data into a business and returns a share of what they produce.",
+    "areaServed": "CA"
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Embedded Value Platform",
+    "serviceType": "Embedded value platform",
+    "url": "https://credx-tech.com/evp",
+    "description": "An Embedded Value Platform is financial infrastructure that runs underneath a business's existing operations, adding cost recovery, data, and lending without changing what the customer sees. CredX funds the credit the business's customers use, carries the risk, and returns the value to the business that earned it.",
+    "areaServed": "CA",
+    "provider": {
+      "@type": "Organization",
+      "name": "CredX",
+      "url": "https://credx-tech.com"
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://credx-tech.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Embedded Value Platform",
+        "item": "https://credx-tech.com/evp"
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <!-- Nav (G1) — same IA as the Home and /contact, paths made relative.
+       ⚠ EVP IS NOT IN THE NAV. The locked 2026-07-17 nav is 8 items and includes it,
+       but the three pages already built ship a 4-item MVP nav, and adding EVP here
+       alone would make the nav jump between pages. Changing the nav across the whole
+       site is a spec-level IA decision, not a side effect of building a page.
+       This page is reachable from /about §3's cross-link and from the sitemap.
+       ⚠ PATHS ARE RELATIVE, DELIBERATELY — both live surfaces serve the REPO ROOT,
+       so credx-website sits at /credx-website/ and absolute hrefs resolve off-site. -->
+  <nav class="nav" aria-label="Primary">
+    <div class="container nav__inner">
+      <a href="../" class="nav__logo" aria-label="CredX home">
+        <img src="../assets/logo/Credx-name.svg" alt="CredX" height="28" />
+      </a>
+      <div class="nav__links" data-nav-menu>
+        <a href="../how-it-works/" class="nav__link">How It Works</a>
+        <a href="../lenders/" class="nav__link">For Lenders</a>
+        <a href="../about/" class="nav__link">About</a>
+        <a href="../contact/" class="nav__link">Contact Us</a>
+      </div>
+      <div class="nav__actions">
+        <!-- ⚠ {{PENDING:booking-url}} owed by Kyle since 2026-07-20; falls back to
+             /contact meanwhile, as on every other page. -->
+        <a href="../contact/" class="btn btn-primary nav__cta" data-pending="booking-url">Book a meeting</a>
+        <button class="nav__toggle" data-nav-toggle type="button" aria-label="Open menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <main id="top">
+
+    <!-- ============================================================
+         1 · HERO — WHAT AN EMBEDDED VALUE PARTNER IS
+         Copy: copy/evp.md §1. Beat = define the category, then name the
+         distinguishing fact. This is the page's citable moment.
+
+         ⚠⚠ THE AEO SNIPPET BELOW DEFINES A TERM CREDX INVENTED, SO WHATEVER
+         SHIPS BECOMES THE DEFINITION OF RECORD — for answer engines and for
+         anyone quoting the category back at us. It is the single
+         highest-consequence string on this site and it deserves a human read
+         more than any other. 49 words (budget 40–60), opens literally "An
+         Embedded Value Partner is…", one factual claim per sentence, CredX
+         named once, and "The partnership is the product" asserts positioning
+         without the banned "CredX is a platform that…" opener.
+
+         ⚠ THE SUB-LINE CARRIES NO COUNT, AND THAT IS A BUILD DECISION.
+         copy/evp.md §1 reads "Six parts make up the partnership…", and its own
+         open item O8 says the number depends on unratified material and must
+         NOT be hardcoded in the build. It is also wrong against this page's own
+         content: §2 lists SEVEN components, and §3 + §4 + §5 plus §6's four
+         add to seven as well. Writing the sub-line without a numeral honours
+         O8 and removes the self-contradiction in one move. If the client
+         ratifies a definitive list, a count can be reintroduced then.
+
+         ✅ IMAGE WIRED 2026-08-11 — `evp-hero.png` (1672×941, meeting room above a
+         shop at blue hour, long timber table, rolled drawings, warm spill from the
+         windows opposite; left third in deep shadow for the overlaid copy).
+         ⚠ THE ROOM IS THE SUBJECT AND THE TWO FIGURES ARE SMALL IN IT, deliberately.
+         That scale is the only thing separating this from `/about`'s §6 partnership
+         image, which is the same two-people-and-an-agreement idea shot tight, OF the
+         document. If this is ever re-rendered wide-to-tight, the two collide and one
+         is wasted. The register this page needs is a partnership of substance, not
+         paperwork.
+         ⚠ No `<picture>` and no WebP (Marco, 2026-08-11). Re-renders drop in under
+         the same filename with no markup change.
+         ============================================================ -->
+    <section class="hero hero--full" aria-label="Hero">
+      <img src="../images/evp-hero.png" alt="Two business partners reviewing an embedded value agreement" class="hero__bg hero__bg--dark" width="1672" height="941" />
+      <div class="hero__overlay" aria-hidden="true"></div>
+      <div class="container hero__inner">
+        <div class="hero__copy">
+          <span class="eyebrow eyebrow--accent" data-reveal>The Whole Proposition</span>
+          <h1 class="hero__h1" data-reveal-words>An Embedded Value Platform Brings <em class="accent">Its Own Capital</em></h1>
+
+          <p class="hero__sub" data-reveal data-reveal-delay="1">
+            An Embedded Value Platform is financial infrastructure that runs underneath a business's existing operations, adding cost recovery, data, and lending without changing what the customer sees. CredX funds the credit your customers use, carries the risk, and returns the value to the business that earned it.
+          </p>
+
+          <p class="hero__movement" data-reveal data-reveal-delay="2">Each part of the platform does something specific for your business. They are all below.</p>
+          <div class="hero__ctas" data-reveal data-reveal-delay="3">
+            <a href="../contact/" class="btn btn-primary">Become a CredX Partner</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         2 · THE VALUE STACK
+         Copy: copy/evp.md §2. Beat = the whole stack at a glance before any
+         single part is explained.
+
+         🔴🔴 CANDIDATE LIST — NOT RATIFIED BY THE CLIENT. This is the single
+         biggest caveat on the page, and it is marked here rather than in a
+         footnote because §2, §3, §4, §5 and §6 ALL rest on it (open item O2).
+         The list was recovered from the client's own EVP one-pager and vendor
+         deck, and cross-checked against the governing sitemap doc, which names
+         three of these and buckets the other four under "embedded value
+         platform components" (3 + 4 = 7, an exact fit). Corroborated three
+         ways; confirmed by nobody. If the ratified list differs, this section
+         and the four that follow change together.
+
+         ⚠ BoosT's EXPANSION IS DELIBERATELY WITHHELD (open item O3). "Balance
+         Offset & User Spending Trigger" is internal-sounding and explains
+         little to a merchant, so the name plus the plain line ships and the
+         glossary can carry the expansion if it needs one. MoaT's expansion
+         DOES ship — it is established brand vocabulary. Client's call to
+         reverse either.
+
+         Reuses .gains__list / .gain — a 3-column grid at 1024 that wraps
+         cleanly at seven items. No new CSS.
+         ============================================================ -->
+    <section id="stack" class="section control" aria-label="The value stack">
+      <div class="container">
+        <div class="control__header">
+          <h2 class="control__h2" data-reveal-words>What the platform <em class="accent">is made of</em>.</h2>
+          <p class="control__intro" data-reveal data-reveal-delay="1">The stack does four things: it keeps value inside your brand, turns your data into decisions, lowers what each sale costs you, and gives customers a reason to return.</p>
+        </div>
+
+        <div class="gains__list">
+          <div class="gain" data-reveal>
+            <h3 class="gain__title">CredX MoaT</h3>
+            <p class="gain__body">Mutual Ownership Acquisition Technology. Keeps the customer relationship inside your brand.</p>
+          </div>
+          <div class="gain" data-reveal data-reveal-delay="1">
+            <h3 class="gain__title">DaaP</h3>
+            <p class="gain__body">Data as a Product. Turns your transaction record into decisions you can act on.</p>
+          </div>
+          <div class="gain" data-reveal data-reveal-delay="2">
+            <h3 class="gain__title">Cost Reduction</h3>
+            <p class="gain__body">Lowers what each sale costs you to process.</p>
+          </div>
+          <div class="gain" data-reveal data-reveal-delay="3">
+            <h3 class="gain__title">BoosT</h3>
+            <p class="gain__body">Gives customers a reason to return sooner.</p>
+          </div>
+          <div class="gain" data-reveal>
+            <h3 class="gain__title">MarketPlace</h3>
+            <p class="gain__body">Connects you to other businesses for shared offers.</p>
+          </div>
+          <div class="gain" data-reveal data-reveal-delay="1">
+            <h3 class="gain__title">Orchestration</h3>
+            <p class="gain__body">Keeps the other parts working in step.</p>
+          </div>
+          <div class="gain" data-reveal data-reveal-delay="2">
+            <h3 class="gain__title">Marketing</h3>
+            <p class="gain__body">Turns each transaction into a reason to talk again.</p>
+          </div>
+        </div>
+
+        <div class="media-ph section-media--spaced" data-img-ph="evp-stack — The components of the CredX embedded value platform shown as one system" data-reveal></div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         3 · MoaT — THE OWNERSHIP MECHANISM
+         Copy: copy/evp.md §3. Beat = MoaT as MECHANISM, deliberately NOT as
+         philosophy.
+
+         ⚠ THE /about ↔ /evp MoaT SPLIT IS UNRATIFIED (open item O5;
+         Post-MVP-Roadmap.md:71). /about §3 takes MoaT as movement and
+         philosophy, this section takes it as mechanism in the value stack, and
+         they cross-link instead of repeating. Both pages are now written to
+         that split, so it can finally be judged as a pair. If it is rejected,
+         BOTH §3s change together.
+
+         ⚠ A GLOSSARY CROSS-LINK WAS REMOVED HERE, NOT FORGOTTEN. copy/evp.md
+         §3 specifies a second link, "Full definition →
+         /learn/glossary/mutual-ownership-acquisition-technology". That page
+         does not exist, and its spelling convention is still open (the
+         -programme / -program call). Shipping a dead link from an indexed page
+         is worse than shipping no link — the same reasoning that cut the
+         privacy link from /contact. Restore it when the glossary exists.
+
+         ⚠ Adversarial framing was struck from this body during the copy pass:
+         "difficult to take from you" implies an aggressor, and the rule is
+         empowerment, never attack. It became "durable". Do not restore it.
+         ============================================================ -->
+    <section id="moat" class="section prose-band" aria-label="MoaT, the ownership mechanism">
+      <div class="container prose-band__inner">
+        <h2 class="prose-band__h2" data-reveal-words>How the relationship <em class="accent">stays yours</em>.</h2>
+        <p class="prose-band__body" data-reveal>
+          Mutual Ownership Acquisition Technology is the part of the stack that keeps value inside your brand. The credit, the data, and the value-back all resolve to your business rather than to a third party. That is what makes the relationship durable: everything the customer values carries your name, so the reason they return belongs to you.
+        </p>
+        <p class="prose-band__aside" data-reveal data-reveal-delay="1">
+          <a href="../about/" class="sub-link">The movement behind it →</a>
+        </p>
+        <div class="media-ph section-media--spaced" data-img-ph="evp-moat — A customer relationship anchored to the merchant's own brand" data-reveal data-reveal-delay="2"></div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         4 · DaaP — DATA AS A PRODUCT
+         Copy: copy/evp.md §4.
+
+         ✅ RESOLVED — DO NOT REOPEN CASUALLY. This section was drafted in TWO
+         versions, narrow and broad, because its scope was a decision rather
+         than a research gap. Marco decided it on 2026-08-10: "a homepage
+         prevalece em cima de tudo." VERSION A — the narrow framing below —
+         ships, because it IS the homepage restated.
+
+         Why that settles it cleanly: the narrow promise is already live on
+         FIVE pages (the Home's §3 pillar "Your access to data", §3.5 Q4 and §4
+         gain 3, plus all four vertical landing pages, which ship the same §3
+         pillar). The broad framing — data as a governed product, anonymised
+         cohorts permissioned to approved partners, revenue share returning to
+         customers — appears in the client's EVP material and NOWHERE on any
+         published surface. It was never reviewed and it is a material privacy
+         question on a site asserting SOC 2 + PIPEDA.
+
+         🔴 IF VERSION B IS EVER REVIVED, THE CONSENT LINE MUST CHANGE WITH IT.
+         The line below reads "shared only on explicit opt-in", which covers
+         internal analytics. It does NOT describe permissioning cohorts to
+         third parties. Version B's full text is preserved in copy/evp.md §4
+         for the record. Adopting B and leaving this line untouched would be
+         the worst possible outcome, so it is called out here as well as there.
+
+         ⚠ This section KEEPS the validated Home's data enumeration ("which
+         buyers return, which segments spend the most, and when demand peaks")
+         on purpose. A cross-page audit found it had reached four pages; /evp
+         won it because data is this page's whole subject, and /how-it-works §4
+         gave it up. Do not "de-duplicate" it here.
+         ============================================================ -->
+    <section id="daap" class="section control" aria-label="DaaP, Data as a Product">
+      <div class="container">
+        <div class="control__header">
+          <h2 class="control__h2" data-reveal-words>What your data <em class="accent">becomes</em>.</h2>
+        </div>
+
+        <!-- ⚠ This prose used to sit in .control__whitelabel — centred at 720px, which
+             is right for the Home's short white-label beat and wrong for a
+             three-sentence paragraph. Now the prose-band pattern: centred H2 above,
+             prose left at 65ch. -->
+        <p class="prose-band__body" data-reveal>
+          Data as a Product turns the record of your own transactions into something you can act on. Which buyers return, which segments spend the most, and when demand peaks. It is opt-in and de-identified, and the view is of your own business, for your own decisions.
+        </p>
+
+        <!-- Consent line — REQUIRED. Voice rule: opt-in is stated wherever data-sharing
+             is mentioned.
+             ⚠ It used to carry .calc__hedge plus FOUR inline declarations trying to undo
+             that class's centring and measure. Now .consent-note, which is the role:
+             muted caption on a 1px rule, left-aligned on the prose column, no italics. -->
+        <p class="consent-note" data-reveal data-reveal-delay="1">
+          Data is de-identified and shared only on explicit opt-in. Participation is a choice at every step.
+        </p>
+
+        <div class="media-ph section-media--spaced" data-img-ph="evp-daap — A merchant acting on patterns drawn from their own transaction data" data-reveal data-reveal-delay="2"></div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         5 · COST REDUCTION
+         Copy: copy/evp.md §5. Beat = the money as an OUTCOME OF THE
+         PARTNERSHIP rather than as a product feature. The most grounded
+         section on the page.
+
+         🔴 THIS SECTION IS WHY A STANDING CROSS-PAGE CHECK NOW EXISTS. Its
+         draft body was VERBATIM IDENTICAL to /how-it-works §3 except for its
+         final five words — same opening sentence, same $36,000 / $6,000
+         arithmetic, same construction. Two indexed pages carrying the same
+         paragraph is the thin-content fault that had already been caught twice
+         in the same batch. The fix split the topic for real:
+           · /how-it-works §3 keeps the TRANSACTION-LEVEL ARITHMETIC.
+           · this section carries the PARTNERSHIP-LEVEL ARGUMENT — why the
+             saving is structural rather than promotional.
+         They cross-link instead of repeating. Do NOT re-import the
+         before-and-after arithmetic here.
+
+         ⚠ THIS SECTION RETURNS IN BATCH 2 AS /merchants §2, AND THAT SPLIT IS
+         NOT DECIDED (Post-MVP-Roadmap.md:71, open item O6). The proposal on
+         file: /evp frames cost reduction as ONE COMPONENT OF A PARTNERSHIP;
+         /merchants frames it as THE COMMERCIAL CASE, with the calculator and
+         the pricing detail. Decide before /merchants is written, or the two
+         pages will compete on the site's highest-commercial-intent query.
+
+         · The $30,000 per $1M figure is the validated Home's (copy/home.md §4
+           gain 1), hedged with "roughly".
+         🔴 THE PERCENTAGE CLAIM CHANGED 2026-08-11 — CLIENT INSTRUCTION. Kyle
+           Bunbury (VP Sales) requires "40 to 85% depending on qualifying
+           volume" throughout, "not a single figure", as a COMPLIANCE matter
+           (ClickUp `86camz57g` comment `90150250053993`; Partner FAQ p7).
+           Marco ruled that a direct client instruction outranks the Home
+           (2026-08-11). This SUPERSEDES the 2026-07-27 "an estimated 85%"
+           reframe. Do not restore a single figure; do not use "up to 85%".
+         · "interchange", never "payment processing" as the cost line.
+         · No card brand named.
+         ============================================================ -->
+    <section id="cost" class="section prose-band" aria-label="Cost reduction">
+      <div class="container prose-band__inner">
+        <h2 class="prose-band__h2" data-reveal-words>Why the saving <em class="accent">holds</em>.</h2>
+
+        <!-- ⚠ `gains__strip--fit` is load-bearing. .gains__strip is a 3-column grid from
+             768px up and this strip carries TWO stats — without the modifier the row left
+             a third column empty and read as a missing item rather than as a pair. The
+             modifier fits the row to its contents and centres it; the
+             .stat:not(:last-child) divider still lands between the two. -->
+        <div class="gains__strip gains__strip--fit gains__strip--lead">
+          <div class="stat" data-reveal>
+            <span class="stat__number">40 to 85%</span>
+            <span class="stat__label">Of interchange recovered, depending on qualifying volume.</span>
+          </div>
+          <div class="stat" data-reveal data-reveal-delay="1">
+            <span class="stat__number">$30,000</span>
+            <span class="stat__label">Roughly, per $1M of monthly volume, staying in the business.</span>
+          </div>
+        </div>
+
+        <p class="prose-band__body" data-reveal data-reveal-delay="1">
+          Roughly $30,000 of every $1M in monthly volume stays in the business instead of leaving it as interchange. What matters for a partnership is where that comes from: it is not a discount we extend and can withdraw, it is the result of the credit running on our own facility. We are paid when the facility is used, so the saving and our revenue point the same direction.
+        </p>
+
+        <p class="prose-band__aside" data-reveal data-reveal-delay="2">
+          <a href="../how-it-works/" class="sub-link">The transaction-level mechanics →</a>
+        </p>
+
+        <div class="media-ph section-media--spaced" data-img-ph="evp-cost — Recovered interchange shown against the cost of a standard card sale" data-reveal data-reveal-delay="3"></div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         6 · THE REST OF THE PLATFORM
+         Copy: copy/evp.md §6. The four components the governing doc bucketed.
+
+         🔴 CANDIDATE — NOT RATIFIED. Same caveat as §2. These four are what
+         the governing sitemap doc groups as "embedded value platform
+         components" without naming them; the names and functions come from the
+         client's EVP material.
+
+         ⚠ THE CLIENT'S PROSE WAS REPLACED, NOT ADAPTED, because it breaches
+         six locked rules. Specifically avoided here, and worth knowing before
+         anyone "restores the original wording":
+           · "rewards" and "loyalty" for CredX's own offering → the mechanics
+             are described without either word.
+           · "customer journey" → "one experience". "journey" is a BANNED
+             vague noun.
+           · "rails".
+           · "behavioural engine" — accurate, but it reads as something done TO
+             the customer rather than for them.
+         ============================================================ -->
+    <section id="platform" class="section control" aria-label="The rest of the platform">
+      <div class="container">
+        <div class="control__header">
+          <h2 class="control__h2" data-reveal-words>The parts that make <em class="accent">the rest work</em>.</h2>
+        </div>
+
+        <div class="gains__list">
+          <div class="gain" data-reveal>
+            <h3 class="gain__title">BoosT</h3>
+            <p class="gain__body">The reason a customer comes back sooner. Tiers, milestones, and cross-business offers that make the next visit worth making, funded by the value the last one created.</p>
+          </div>
+          <div class="gain" data-reveal data-reveal-delay="1">
+            <h3 class="gain__title">MarketPlace</h3>
+            <p class="gain__body">A network of businesses that can run offers together. Your customers find reasons to spend beyond your four walls, and other businesses' customers find you, without new infrastructure or a larger marketing budget.</p>
+          </div>
+          <div class="gain" data-reveal data-reveal-delay="2">
+            <h3 class="gain__title">Orchestration</h3>
+            <p class="gain__body">The layer that keeps the other parts in step. Payments, data, offers, and partners coordinated so the customer meets one experience instead of several.</p>
+          </div>
+          <div class="gain" data-reveal data-reveal-delay="3">
+            <h3 class="gain__title">Marketing</h3>
+            <p class="gain__body">Every transaction becomes a reason to speak to that customer again. Offers built from what they actually bought, aimed at the next visit and a fuller basket.</p>
+          </div>
+        </div>
+
+        <div class="media-ph section-media--spaced" data-img-ph="evp-platform — Four platform components working as one system behind a merchant's counter" data-reveal></div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         7 · CTA
+         Copy: copy/evp.md §7. The primary CTA is plan/05's verbatim.
+
+         ⚠ The headline was REPLACED during the copy pass. The draft read
+         "Partnership, not procurement." — two faults at once: the X-not-Y
+         contrast cadence and a two-word fragment pair. The body was rewritten
+         too, because it had ended on "the size of what comes back", and
+         "comes back" is the construction retired in commit 004a8aa when
+         "should come back to" became "belongs to" across four pages. Do not
+         restore either.
+
+         The secondary link completes the Batch-1 triangle:
+         /about → /evp → /how-it-works → /about.
+         ============================================================ -->
+    <section id="cta" class="section final-cta" aria-label="Bring us in as a partner">
+      <div class="container final-cta__inner">
+        <div data-reveal>
+          <!-- ⚠ NO EYEBROW HERE, DELIBERATELY. This block carried "The Partnership Is the
+               Product", which is the closing sentence of the §1 hero AEO snippet — the
+               page's single highest-consequence string, repeated as decoration at the
+               bottom. The eyebrow was mine, not the copy's; copy/evp.md §7 specifies a
+               headline, a body and two CTAs, no eyebrow. Removed rather than reworded,
+               because a replacement line is credx-copy's call. -->
+          <h2 class="final-cta__h2">Bring us in as a partner.</h2>
+          <p class="final-cta__body">A partnership starts with a conversation about your volume and your customers, and what the stack would return for a business your size.</p>
+          <div class="hero__ctas final-cta__ctas">
+            <a href="../contact/" class="btn btn-primary">Become a CredX Partner</a>
+            <a href="../how-it-works/" class="btn btn-secondary">See the mechanics</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer (G2) — same IA as the Home and /contact, paths made relative.
+       ⚠ ../lenders/, ../learn/glossary/ and ../legal/ do not exist yet; kept because
+       every other page carries them. LinkedIn href is the bare domain, carried from
+       index.html:570. Both tracked as the dead-link cluster, neither new here. -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__inner footer__inner--sitemap">
+        <div class="footer__brand">
+          <img src="../assets/logo/Credx-name.svg" alt="CredX" height="32" style="margin-bottom: 20px;" />
+          <p class="footer__movement">A system you belong to, instead of one that owns you.</p>
+        </div>
+        <div>
+          <h4 class="footer__col-title">Explore</h4>
+          <div class="footer__links">
+            <a href="../how-it-works/" class="footer__link">How It Works</a>
+            <a href="../lenders/" class="footer__link">For Lenders</a>
+            <a href="../about/" class="footer__link">About</a>
+            <a href="../contact/" class="footer__link">Contact</a>
+            <a href="../learn/glossary/" class="footer__link">Glossary</a>
+          </div>
+        </div>
+        <div>
+          <h4 class="footer__col-title">Legal</h4>
+          <div class="footer__links">
+            <a href="../legal/" class="footer__link">Privacy</a>
+            <a href="../legal/" class="footer__link">Terms</a>
+          </div>
+        </div>
+        <div>
+          <h4 class="footer__col-title">Connect</h4>
+          <div class="footer__links">
+            <a href="https://www.linkedin.com/" class="footer__link" rel="noopener" target="_blank">LinkedIn</a>
+            <a href="../contact/" class="footer__link">Book a meeting</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span>© 2026 CredX Tech Inc. · credx-tech.com</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.0.42/dist/lenis.min.js"></script>
+  <script src="../script.js"></script>
+</body>
+</html>
