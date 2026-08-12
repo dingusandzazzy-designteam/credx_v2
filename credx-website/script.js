@@ -99,11 +99,29 @@
     function wordSplit(el) {
       const words = [];
       const frag = document.createDocumentFragment();
+      // Each mask is display:inline-block, so two adjacent masks are a legal break
+      // opportunity even with no whitespace between them. Punctuation that follows a
+      // closing inline tag (`<em>Embedded Lending</em>?`) arrives as its own text node
+      // and would therefore get its own mask — and could drop to a line by itself.
+      // `prev` + `contiguous` let such punctuation join the unit it belongs to.
+      let prev = null;
+      let contiguous = false;
+      const isPunctuation = function (s) { return !/[0-9A-Za-zÀ-ÿ]/.test(s); };
+
       Array.prototype.forEach.call(el.childNodes, function (node) {
         if (node.nodeType === 3) {
           node.textContent.split(/(\s+)/).forEach(function (part) {
             if (part === '') return;
-            if (/^\s+$/.test(part)) { frag.appendChild(document.createTextNode(part)); return; }
+            if (/^\s+$/.test(part)) {
+              frag.appendChild(document.createTextNode(part));
+              contiguous = false;
+              return;
+            }
+            // Trailing punctuation with no space before it belongs to the previous word.
+            if (contiguous && prev && isPunctuation(part)) {
+              prev.appendChild(document.createTextNode(part));
+              return;
+            }
             const mask = document.createElement('span');
             mask.className = 'reveal-word-mask';
             const word = document.createElement('span');
@@ -112,10 +130,17 @@
             mask.appendChild(word);
             frag.appendChild(mask);
             words.push(word);
+            prev = word;
+            contiguous = true;
           });
         } else if (node.nodeType === 1) {
           // Preserve hard line breaks as real <br> (not a word unit).
-          if (node.tagName === 'BR') { frag.appendChild(document.createElement('br')); return; }
+          if (node.tagName === 'BR') {
+            frag.appendChild(document.createElement('br'));
+            prev = null;
+            contiguous = false;
+            return;
+          }
           const mask = document.createElement('span');
           mask.className = 'reveal-word-mask';
           const word = document.createElement('span');
@@ -124,6 +149,8 @@
           mask.appendChild(word);
           frag.appendChild(mask);
           words.push(word);
+          prev = word;
+          contiguous = true;
         }
       });
       el.textContent = '';
