@@ -41,3 +41,10 @@ credx-website/copy/
 copy/
 */copy.md
 *.docx
+
+# Impeccable working context. Internal: client quotes, anti-references, brand
+# strategy. Same treatment as copy/ and workflow/ — never served publicly.
+PRODUCT.md
+DESIGN.md
+*/PRODUCT.md
+*/DESIGN.md
