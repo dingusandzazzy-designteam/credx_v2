@@ -194,6 +194,59 @@
     });
   }
 
+  /* ---- 3c. Signature-component motion (Phase 6 §6.3) ----
+     The craft floor is explicit: one authored moment, not the same entrance on
+     every section. These three components each mean something different, so each
+     one moves differently and the movement IS the meaning:
+       .rail   the spine draws downward and the stations arrive in order — the
+               page's subject is sequence, so the motion is sequence
+       .stack  tiers arrive by RANK, three beats not seven — a uniform stagger of
+               seven cards would say the components are peers, which is the exact
+               claim the component exists to deny
+       .triad  the shared rule draws outward from the centre — the three parties
+               are already there; what animates is what connects them
+     All three start from an ALREADY-VISIBLE default, so no-JS and reduced-motion
+     render complete. Exponential ease-out, and nothing here runs on the Home. */
+
+  if (!prefersReducedMotion && window.gsap && window.ScrollTrigger) {
+    const gsap = window.gsap;
+
+    document.querySelectorAll('.rail').forEach(function (rail) {
+      const stations = rail.querySelectorAll('.rail__station');
+      const spines = rail.querySelectorAll('.rail__marker');
+      if (!stations.length) return;
+
+      gsap.set(stations, { opacity: 0, y: 18 });
+      gsap.set(spines, { '--spine-scale': 0 });
+
+      gsap.timeline({
+        scrollTrigger: { trigger: rail, start: 'top 78%', once: true }
+      })
+        .to(stations, {
+          opacity: 1, y: 0, duration: 0.7, ease: 'expo.out', stagger: 0.14
+        })
+        .to(spines, { '--spine-scale': 1, duration: 0.9, ease: 'expo.out', stagger: 0.14 }, 0.1);
+    });
+
+    document.querySelectorAll('.stack').forEach(function (stack) {
+      const tiers = stack.querySelectorAll('.stack__tier');
+      if (!tiers.length) return;
+      gsap.set(tiers, { opacity: 0, y: 22 });
+      gsap.to(tiers, {
+        opacity: 1, y: 0, duration: 0.8, ease: 'expo.out', stagger: 0.16,
+        scrollTrigger: { trigger: stack, start: 'top 80%', once: true }
+      });
+    });
+
+    document.querySelectorAll('.triad').forEach(function (triad) {
+      gsap.set(triad, { '--rule-scale': 0 });
+      gsap.to(triad, {
+        '--rule-scale': 1, duration: 1.1, ease: 'expo.out',
+        scrollTrigger: { trigger: triad, start: 'top 82%', once: true }
+      });
+    });
+  }
+
   /* ---- 4a. Cover scrub (Trilha B — video scrubbed by scroll) ----
      Source timecodes provided by edit (24 fps, HH:MM:SS:FF):
        00:00:00:00  Intro   → 0.000s

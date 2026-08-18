@@ -101,7 +101,7 @@
       <div class="nav__links" data-nav-menu>
         <a href="../how-it-works/" class="nav__link">How It Works</a>
         <a href="../lenders/" class="nav__link">For Lenders</a>
-        <a href="./" class="nav__link" aria-current="page">About</a>
+        <a href="./" class="nav__link nav__link--active" aria-current="page">About</a>
         <a href="../contact/" class="nav__link">Contact Us</a>
       </div>
       <div class="nav__actions">
@@ -109,7 +109,7 @@
              Contact Us link above (Marco, 2026-07-31). ⚠ {{PENDING:booking-url}} is still
              owed by Kyle (since 2026-07-20), so it falls back to /contact meanwhile —
              the same fallback every other page uses. Swap the href when the URL lands. -->
-        <a href="../contact/" class="btn btn-primary nav__cta" data-pending="booking-url">Book a meeting</a>
+        <a href="../contact/" class="btn btn-primary nav__cta" data-pending="booking-url">Book a Meeting</a>
         <button class="nav__toggle" data-nav-toggle type="button" aria-label="Open menu" aria-expanded="false">
           <span></span><span></span><span></span>
         </button>
@@ -135,9 +135,7 @@
          The alt deliberately carries NO keyword — the single keyword-bearing
          alt on this page is reserved for §2 (practice #8).
          ============================================================ -->
-    <section class="hero hero--full" aria-label="Hero">
-      <img src="../images/about-hero.png" alt="A Canadian business owner at the counter serving a returning customer" class="hero__bg hero__bg--dark" width="1672" height="941" />
-      <div class="hero__overlay" aria-hidden="true"></div>
+    <section class="hero hero--compact" aria-label="Hero">
       <div class="container hero__inner">
         <div class="hero__copy">
           <span class="eyebrow eyebrow--accent" data-reveal>A Modern Financial Movement</span>
@@ -145,7 +143,7 @@
             The Data Economy Belongs to the People Who <em class="accent">Create It</em>
           </h1>
           <p class="hero__sub" data-reveal data-reveal-delay="1">
-            Every card transaction leaves a record behind. In the data economy that record is an asset, and CredX is built so it belongs to the business that earned the sale and the customer who made it.
+            Every card transaction leaves a record behind. In the data economy, that record is an asset, and CredX is built so its value reaches the business that earned the sale and the customer who made it.
           </p>
           <!-- §1's movement line. ⚠ This is NOT the Home's line. `05:99` originally
                assigned /about "A system you belong to, instead of one that owns you.",
@@ -156,11 +154,18 @@
           <p class="hero__movement" data-reveal data-reveal-delay="2">You belong in the system you help build.</p>
           <div class="hero__ctas" data-reveal data-reveal-delay="3">
             <a href="../contact/" class="btn btn-primary">Book a Meeting</a>
-            <a href="../how-it-works/" class="btn btn-secondary">See how it works</a>
+            <a href="../how-it-works/" class="btn btn-secondary">See How It Works</a>
           </div>
         </div>
       </div>
     </section>
+
+    <!-- The hero photograph, demoted (Phase 6 §6.2). The Read type opens on
+         type; the image is the first thing the reader scrolls into rather than
+         the thing they land on. Same asset, different rank. -->
+    <div class="hero-media" data-reveal-media>
+      <img src="../images/about-hero.png" alt="A Canadian business owner at the counter serving a returning customer" width="1672" height="941" loading="eager" />
+    </div>
 
     <!-- ============================================================
          2 · THE DATA ECONOMY
@@ -192,11 +197,11 @@
              it, pad it, or move it below the body: this is the string an answer
              engine lifts. -->
         <p class="prose-band__body" data-reveal>
-          The data economy is the market for information created by everyday transactions. Every purchase records who bought, what they spent, and when they return. That record has value. Today it accrues to a competing credit facility rather than to the business that earned the sale. CredX is built to give that business access to it.
+          The data economy is the market for information created by everyday transactions. Every purchase records who bought, what they spent, and when they returned. That record has value. Today, it accrues to a competing credit facility rather than to the business that earned the sale. CredX is built to give that business access to it.
         </p>
 
         <p class="prose-band__body" data-reveal data-reveal-delay="1">
-          Your payment processor runs the transaction, and that part works. What happens after is where the value sits. The purchase record becomes an asset held by a competing credit facility, one with no relationship to your customer and no stake in whether they come back. CredX is structured so the business that built the relationship gets access to it.
+          Your payment processor runs the transaction, and that part works. What happens after is where the value sits. The purchase record becomes an asset held by a competing credit facility, one with no relationship to your customer and no stake in whether they come back. CredX is structured so that the business that built the relationship gets access to it.
         </p>
 
         <!-- Consent line — REQUIRED, not optional. Voice rule: "Never imply consent.
@@ -226,22 +231,28 @@
     </section>
 
     <!-- ============================================================
-         3 · MoaT — MUTUAL OWNERSHIP ACQUISITION TECHNOLOGY
-         Copy: copy/about.md §3. Beat = MoaT as the movement's PHILOSOPHY
+         3 · MOAT — CASING SETTLED 2026-08-14 (Kyle, via Mau): the initialism is
+         MOAT in caps, and the FULL EXPANSION IS BOLDED wherever it appears in prose,
+         not just the initials. His reason: readers skim "moat" and land on the
+         Berkshire economic-moat association, which is the wrong one. Applied
+         2026-08-18. ⚠ `copy/about.md` still reads `MoaT` — deferred to the single
+         copy-docs sync pass (Marco, 2026-08-18), NOT an oversight.
+         3 · MOAT — MUTUAL OWNERSHIP ACQUISITION TECHNOLOGY
+         Copy: copy/about.md §3. Beat = MOAT as the movement's PHILOSOPHY
          of ownership, deliberately NOT the mechanism.
 
          ⚠ TWO THINGS TO KNOW BEFORE EDITING THIS SECTION.
-         1. This is MoaT's FIRST appearance in validated public copy. The
-            validated Home contains ZERO hits for MoaT, DaaP, BoosT,
+         1. This is MOAT's FIRST appearance in validated public copy. The
+            validated Home contains ZERO hits for MOAT, DaaP, BoosT,
             MarketPlace or Orchestration — it speaks operationally and
             never names a framework. So this section sets the precedent for
             how CredX names an internal framework on an indexed page.
-         2. The /about ↔ /evp MoaT split is WRITTEN TO BUT UNRATIFIED
-            (open item O2; Post-MVP-Roadmap.md:71). /about takes MoaT as
+         2. The /about ↔ /evp MOAT split is WRITTEN TO BUT UNRATIFIED
+            (open item O2; Post-MVP-Roadmap.md:71). /about takes MOAT as
             movement and philosophy, /evp §3 takes it as mechanism in the
             value stack, and they cross-link instead of repeating. If the
             split is rejected, BOTH §3s change together.
-         The full expansion is spelled out on first mention, `MoaT` after —
+         The full expansion is spelled out on first mention, `MOAT` after —
          mandated by the brief's H2/H3 outline.
          ============================================================ -->
     <section id="moat" class="section control" aria-label="Mutual Ownership Acquisition Technology">
@@ -262,16 +273,42 @@
              those still contain "should", are still unresolved with the client, and
              are still not ours to rewrite (voice.md:130-140). -->
         <p class="prose-band__body" data-reveal>
-          Mutual Ownership Acquisition Technology, or MoaT, is the principle that all three parties to a transaction hold a stake in what it produces. The merchant earns the relationship. The customer creates the value. The community lender funds the credit. MoaT is how the upside is shared between them instead of collected by a party that did none of the three.
+          <strong>Mutual Ownership Acquisition Technology</strong>, or MOAT, is the principle that all three parties to a transaction hold a stake in what it produces.
         </p>
 
-        <!-- Cross-link, not a repeat: the mechanism lives on /evp §3. Held on the same
-             65ch column as the prose so it reads as part of that block. -->
-        <p class="prose-band__aside" data-reveal data-reveal-delay="1">
-          <a href="../evp/" class="sub-link">See how MoaT works inside the value stack →</a>
+        <!-- ⚠ STRUCTURE CHANGED 2026-08-18, COPY UNTOUCHED. This was a ticked list of
+             three sentences plus an empty image slot with no concept behind it
+             (AB-09). A list says "three items"; the section says the three hold ONE
+             thing. They now share a single rule, and the shared rule IS the shared
+             stake. That also answers the image slot, so the commission is not owed. -->
+        <div class="triad" data-reveal data-reveal-delay="1">
+          <div>
+            <span class="triad__party">The merchant</span>
+            <p class="triad__holds">earns the relationship.</p>
+          </div>
+          <div>
+            <span class="triad__party">The customer</span>
+            <p class="triad__holds">creates the value.</p>
+          </div>
+          <div>
+            <span class="triad__party">The community lender</span>
+            <p class="triad__holds">funds the credit.</p>
+          </div>
+          <p class="triad__stake">All three hold a stake in what the transaction produces.</p>
+        </div>
+
+        <p class="prose-band__body" data-reveal data-reveal-delay="2">
+          MOAT is how the upside is shared among them instead of collected by a party that did none of the three.
         </p>
 
-        <div class="media-ph section-media--spaced" data-img-ph="about-moat — Three parties to a transaction sharing in what it produces" data-reveal data-reveal-delay="2"></div>
+        <!-- Cross-link, not a repeat: the mechanism lives on /evp §3.
+             ⚠ 2026-08-18 — this WAS a .prose-band__aside sub-link held on the 65ch prose
+             column. Andrea's review asked for a centred CTA button instead, so it is now
+             .section-ctas + .btn and it no longer sits on the prose column. -->
+        <div class="section-ctas" data-reveal data-reveal-delay="3">
+          <a href="../evp/" class="btn btn-secondary">See How MOAT Works Inside the Value Stack</a>
+        </div>
+
       </div>
     </section>
 
@@ -350,16 +387,16 @@
              the contrast IS the point here. See copy/about.md §Constraint self-check. -->
         <div class="control__three">
           <div class="control-card" data-reveal>
-            <span class="control-card__title">CredX carries.</span>
-            <p class="control-card__body">The credit, the funding, and the risk, together with community lender partners.</p>
+            <span class="control-card__title">CredX carries</span>
+            <p class="control-card__body">the credit, the funding, and the risk, together with community lender partners.</p>
           </div>
           <div class="control-card" data-reveal data-reveal-delay="1">
-            <span class="control-card__title">Your business keeps.</span>
-            <p class="control-card__body">The customer, the brand, and the relationship. The credit line appears under your name.</p>
+            <span class="control-card__title">Your business keeps</span>
+            <p class="control-card__body">the customer, the brand, and the relationship, and the credit line appears under your name</p>
           </div>
           <div class="control-card" data-reveal data-reveal-delay="2">
-            <span class="control-card__title">Off your books.</span>
-            <p class="control-card__body">The lending stays off your balance sheet. That is a structural fact, so it needs no hedge.</p>
+            <span class="control-card__title">Your balance sheet stays clear</span>
+            <p class="control-card__body">of the lending, because it sits with CredX and its lending partners rather than with your business.</p>
           </div>
         </div>
 
@@ -455,17 +492,17 @@
           </div>
         </div>
         <div>
+          <h4 class="footer__col-title">Connect</h4>
+          <div class="footer__links">
+            <a href="https://www.linkedin.com/" class="footer__link" rel="noopener" target="_blank">LinkedIn</a>
+            <a href="../contact/" class="footer__link">Book a Meeting</a>
+          </div>
+        </div>
+        <div>
           <h4 class="footer__col-title">Legal</h4>
           <div class="footer__links">
             <a href="../legal/" class="footer__link">Privacy</a>
             <a href="../legal/" class="footer__link">Terms</a>
-          </div>
-        </div>
-        <div>
-          <h4 class="footer__col-title">Connect</h4>
-          <div class="footer__links">
-            <a href="https://www.linkedin.com/" class="footer__link" rel="noopener" target="_blank">LinkedIn</a>
-            <a href="../contact/" class="footer__link">Book a meeting</a>
           </div>
         </div>
       </div>
@@ -477,7 +514,7 @@
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/lenis@1.0.42/dist/lenis.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.0.45/dist/lenis.min.js"></script>
   <script src="../script.js"></script>
 </body>
 </html>

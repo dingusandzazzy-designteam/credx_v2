@@ -96,7 +96,7 @@
     "name": "Embedded Value Platform",
     "serviceType": "Embedded value platform",
     "url": "https://credx-tech.com/evp",
-    "description": "An Embedded Value Platform is financial infrastructure that runs underneath a business's existing operations, adding cost recovery, data, and lending without changing what the customer sees. CredX funds the credit the business's customers use, carries the risk, and returns the value to the business that earned it.",
+    "description": "An Embedded Value Platform is financial infrastructure that runs underneath a business’s existing operations, adding cost recovery, data, and lending without changing what the customer sees. CredX funds the credit the business’s customers use, carries the risk, and returns the value to the business that earned it.",
     "areaServed": "CA",
     "provider": {
       "@type": "Organization",
@@ -149,7 +149,7 @@
       <div class="nav__actions">
         <!-- ⚠ {{PENDING:booking-url}} owed by Kyle since 2026-07-20; falls back to
              /contact meanwhile, as on every other page. -->
-        <a href="../contact/" class="btn btn-primary nav__cta" data-pending="booking-url">Book a meeting</a>
+        <a href="../contact/" class="btn btn-primary nav__cta" data-pending="booking-url">Book a Meeting</a>
         <button class="nav__toggle" data-nav-toggle type="button" aria-label="Open menu" aria-expanded="false">
           <span></span><span></span><span></span>
         </button>
@@ -194,20 +194,18 @@
          ⚠ No `<picture>` and no WebP (Marco, 2026-08-11). Re-renders drop in under
          the same filename with no markup change.
          ============================================================ -->
-    <section class="hero hero--full" aria-label="Hero">
+    <section class="hero hero--full hero--capped" aria-label="Hero">
       <img src="../images/evp-hero.png" alt="Two business partners reviewing an embedded value agreement" class="hero__bg hero__bg--dark" width="1672" height="941" />
       <div class="hero__overlay" aria-hidden="true"></div>
       <div class="container hero__inner">
         <div class="hero__copy">
-          <span class="eyebrow eyebrow--accent" data-reveal>The Whole Proposition</span>
           <h1 class="hero__h1" data-reveal-words>An Embedded Value Platform Brings <em class="accent">Its Own Capital</em></h1>
 
           <p class="hero__sub" data-reveal data-reveal-delay="1">
-            An Embedded Value Platform is financial infrastructure that runs underneath a business's existing operations, adding cost recovery, data, and lending without changing what the customer sees. CredX funds the credit your customers use, carries the risk, and returns the value to the business that earned it.
+            An Embedded Value Platform is financial infrastructure that runs underneath a business’s existing operations, adding cost recovery, data, and lending without changing what the customer sees. CredX funds the credit your customers use, carries the risk, and returns the value to the business that earned it.
           </p>
 
-          <p class="hero__movement" data-reveal data-reveal-delay="2">Each part of the platform does something specific for your business. They are all below.</p>
-          <div class="hero__ctas" data-reveal data-reveal-delay="3">
+          <div class="hero__ctas" data-reveal data-reveal-delay="2">
             <a href="../contact/" class="btn btn-primary">Become a CredX Partner</a>
           </div>
         </div>
@@ -232,7 +230,7 @@
          ⚠ BoosT's EXPANSION IS DELIBERATELY WITHHELD (open item O3). "Balance
          Offset & User Spending Trigger" is internal-sounding and explains
          little to a merchant, so the name plus the plain line ships and the
-         glossary can carry the expansion if it needs one. MoaT's expansion
+         glossary can carry the expansion if it needs one. MOAT's expansion
          DOES ship — it is established brand vocabulary. Client's call to
          reverse either.
 
@@ -243,37 +241,49 @@
       <div class="container">
         <div class="control__header">
           <h2 class="control__h2" data-reveal-words>What the platform <em class="accent">is made of</em>.</h2>
-          <p class="control__intro" data-reveal data-reveal-delay="1">The stack does four things: it keeps value inside your brand, turns your data into decisions, lowers what each sale costs you, and gives customers a reason to return.</p>
+          <p class="control__intro" data-reveal data-reveal-delay="1">Seven components, and between them they do four things: keep value inside your brand, turn transaction data into decisions, lower what each sale costs you, and give customers a reason to return.</p>
         </div>
 
-        <div class="gains__list">
-          <div class="gain" data-reveal>
-            <h3 class="gain__title">CredX MoaT</h3>
-            <p class="gain__body">Mutual Ownership Acquisition Technology. Keeps the customer relationship inside your brand.</p>
+        <!-- ⚠ STRUCTURE CHANGED 2026-08-18, COPY UNTOUCHED. Seven equal cards in a
+             3-column grid orphaned Marketing on row three (EV-05) and said nothing
+             about how the parts relate (EV-20). The tiers are the content: MOAT and
+             DaaP are load-bearing and each owns a section below; Cost Reduction and
+             BoosT complete the four things named in the intro; the last three are
+             connective. 2 + 2 + 3 = 7, no orphan. -->
+        <div class="stack">
+          <div class="stack__tier stack__tier--lead">
+          <div class="stack__item stack__item--lead" data-reveal>
+            <h3 class="gain__title">CredX MOAT</h3>
+            <p class="gain__body"><strong>Mutual Ownership Acquisition Technology</strong>, and it keeps the customer relationship inside your brand.</p>
           </div>
-          <div class="gain" data-reveal data-reveal-delay="1">
+          <div class="stack__item stack__item--lead" data-reveal data-reveal-delay="1">
             <h3 class="gain__title">DaaP</h3>
-            <p class="gain__body">Data as a Product. Turns your transaction record into decisions you can act on.</p>
+            <p class="gain__body"><strong>Data as a Product</strong>, and it turns your transaction record into decisions you can act on.</p>
           </div>
-          <div class="gain" data-reveal data-reveal-delay="2">
+          </div>
+          <div class="stack__tier stack__tier--mid">
+          <div class="stack__item stack__item--mid" data-reveal>
             <h3 class="gain__title">Cost Reduction</h3>
-            <p class="gain__body">Lowers what each sale costs you to process.</p>
+            <p class="gain__body">lowers what each sale costs you to process.</p>
           </div>
-          <div class="gain" data-reveal data-reveal-delay="3">
+          <div class="stack__item stack__item--mid" data-reveal data-reveal-delay="1">
             <h3 class="gain__title">BoosT</h3>
-            <p class="gain__body">Gives customers a reason to return sooner.</p>
+            <p class="gain__body">gives customers a reason to return sooner.</p>
           </div>
-          <div class="gain" data-reveal>
+          </div>
+          <div class="stack__tier stack__tier--leaf">
+          <div class="stack__item stack__item--leaf" data-reveal>
             <h3 class="gain__title">MarketPlace</h3>
-            <p class="gain__body">Connects you to other businesses for shared offers.</p>
+            <p class="gain__body">connects you to other businesses for shared offers.</p>
           </div>
-          <div class="gain" data-reveal data-reveal-delay="1">
+          <div class="stack__item stack__item--leaf" data-reveal data-reveal-delay="1">
             <h3 class="gain__title">Orchestration</h3>
-            <p class="gain__body">Keeps the other parts working in step.</p>
+            <p class="gain__body">keeps the other parts working in step.</p>
           </div>
-          <div class="gain" data-reveal data-reveal-delay="2">
+          <div class="stack__item stack__item--leaf" data-reveal data-reveal-delay="2">
             <h3 class="gain__title">Marketing</h3>
-            <p class="gain__body">Turns each transaction into a reason to talk again.</p>
+            <p class="gain__body">turns each transaction into a reason to talk again.</p>
+          </div>
           </div>
         </div>
 
@@ -282,12 +292,12 @@
     </section>
 
     <!-- ============================================================
-         3 · MoaT — THE OWNERSHIP MECHANISM
-         Copy: copy/evp.md §3. Beat = MoaT as MECHANISM, deliberately NOT as
+         3 · MOAT — THE OWNERSHIP MECHANISM
+         Copy: copy/evp.md §3. Beat = MOAT as MECHANISM, deliberately NOT as
          philosophy.
 
-         ⚠ THE /about ↔ /evp MoaT SPLIT IS UNRATIFIED (open item O5;
-         Post-MVP-Roadmap.md:71). /about §3 takes MoaT as movement and
+         ⚠ THE /about ↔ /evp MOAT SPLIT IS UNRATIFIED (open item O5;
+         Post-MVP-Roadmap.md:71). /about §3 takes MOAT as movement and
          philosophy, this section takes it as mechanism in the value stack, and
          they cross-link instead of repeating. Both pages are now written to
          that split, so it can finally be judged as a pair. If it is rejected,
@@ -305,14 +315,14 @@
          "difficult to take from you" implies an aggressor, and the rule is
          empowerment, never attack. It became "durable". Do not restore it.
          ============================================================ -->
-    <section id="moat" class="section prose-band" aria-label="MoaT, the ownership mechanism">
+    <section id="moat" class="section prose-band" aria-label="MOAT, the ownership mechanism">
       <div class="container prose-band__inner">
         <h2 class="prose-band__h2" data-reveal-words>How the relationship <em class="accent">stays yours</em>.</h2>
         <p class="prose-band__body" data-reveal>
-          Mutual Ownership Acquisition Technology is the part of the stack that keeps value inside your brand. The credit, the data, and the value-back all resolve to your business rather than to a third party. That is what makes the relationship durable: everything the customer values carries your name, so the reason they return belongs to you.
+          <strong>Mutual Ownership Acquisition Technology</strong> (MOAT) is the part of the stack that keeps value inside your brand. The credit, the value-back, and access to the data all resolve to your business rather than to a third party, and that is what makes the relationship durable. Everything the customer values carries your name, so the reason they return belongs to you.
         </p>
         <p class="prose-band__aside" data-reveal data-reveal-delay="1">
-          <a href="../about/" class="sub-link">The movement behind it →</a>
+          <a href="../about/" class="sub-link">The Movement Behind It</a>
         </p>
         <div class="media-ph section-media--spaced" data-img-ph="evp-moat — A customer relationship anchored to the merchant's own brand" data-reveal data-reveal-delay="2"></div>
       </div>
@@ -353,7 +363,7 @@
     <section id="daap" class="section control" aria-label="DaaP, Data as a Product">
       <div class="container">
         <div class="control__header">
-          <h2 class="control__h2" data-reveal-words>What your data <em class="accent">becomes</em>.</h2>
+          <h2 class="control__h2" data-reveal-words>What your transaction record <em class="accent">becomes</em>.</h2>
         </div>
 
         <!-- ⚠ This prose used to sit in .control__whitelabel — centred at 720px, which
@@ -361,7 +371,7 @@
              three-sentence paragraph. Now the prose-band pattern: centred H2 above,
              prose left at 65ch. -->
         <p class="prose-band__body" data-reveal>
-          Data as a Product turns the record of your own transactions into something you can act on. Which buyers return, which segments spend the most, and when demand peaks. It is opt-in and de-identified, and the view is of your own business, for your own decisions.
+          Data as a Product turns the record of your own transactions into something you can act on: which buyers return, which segments spend the most, and when demand peaks. It is opt-in and de-identified, and the view is of your own business, for your own decisions.
         </p>
 
         <!-- Consent line — REQUIRED. Voice rule: opt-in is stated wherever data-sharing
@@ -425,21 +435,28 @@
              .stat:not(:last-child) divider still lands between the two. -->
         <div class="gains__strip gains__strip--fit gains__strip--lead">
           <div class="stat" data-reveal>
-            <span class="stat__number">40 to 85%</span>
-            <span class="stat__label">Of interchange recovered, depending on qualifying volume.</span>
+            <span class="stat__number stat__number--phrase">40 to 85%</span>
+            <span class="stat__label">of interchange recovered, depending on qualifying volume</span>
           </div>
           <div class="stat" data-reveal data-reveal-delay="1">
-            <span class="stat__number">$30,000</span>
-            <span class="stat__label">Roughly, per $1M of monthly volume, staying in the business.</span>
+            <span class="stat__number">~$30,000</span>
+            <span class="stat__label">per $1M of monthly volume, staying in the business</span>
           </div>
         </div>
 
+        <!-- CL-04 (client, 2026-08-14): the worked examples compute to ~83% recovery,
+             the very top of the published 40 to 85% range. Their words: "a regulator or
+             legal reviewer will notice this immediately." Every page carrying the
+             figures states the variance. ⚠ Their draft said "each year"; the figures are
+             MONTHLY, so the range below is monthly too. Do not restore "each year". -->
+        <p class="figure-note" data-reveal>Results vary by volume and card mix.</p>
+
         <p class="prose-band__body" data-reveal data-reveal-delay="1">
-          Roughly $30,000 of every $1M in monthly volume stays in the business instead of leaving it as interchange. What matters for a partnership is where that comes from: it is not a discount we extend and can withdraw, it is the result of the credit running on our own facility. We are paid when the facility is used, so the saving and our revenue point the same direction.
+          Roughly $30,000 of every $1M in monthly volume stays in the business instead of leaving it as interchange. That figure sits at the top of the range above, and at the lower end the same volume returns closer to $14,000. What matters for a partnership is where that comes from. It is not a discount we extend and can withdraw. It is the result of the credit running on our own facility. We are paid when the facility is used, so the saving and our revenue point the same direction.
         </p>
 
         <p class="prose-band__aside" data-reveal data-reveal-delay="2">
-          <a href="../how-it-works/" class="sub-link">The transaction-level mechanics →</a>
+          <a href="../how-it-works/" class="sub-link">See the Transaction-Level Mechanics</a>
         </p>
 
         <div class="media-ph section-media--spaced" data-img-ph="evp-cost — Recovered interchange shown against the cost of a standard card sale" data-reveal data-reveal-delay="3"></div>
@@ -470,6 +487,10 @@
       <div class="container">
         <div class="control__header">
           <h2 class="control__h2" data-reveal-words>The parts that make <em class="accent">the rest work</em>.</h2>
+          <!-- EV-20 (Andrea, 2026-08-13): §2 and this section both enumerate the stack,
+               with nothing saying how they relate. Marco ruled 2026-08-18: §2 is the
+               index, this is the detail. This line is the only thing that says so. -->
+          <p class="control__intro" data-reveal data-reveal-delay="1">Four of the seven need more than a line. These are the ones that keep the loop running once the credit is in place.</p>
         </div>
 
         <div class="gains__list">
@@ -479,7 +500,7 @@
           </div>
           <div class="gain" data-reveal data-reveal-delay="1">
             <h3 class="gain__title">MarketPlace</h3>
-            <p class="gain__body">A network of businesses that can run offers together. Your customers find reasons to spend beyond your four walls, and other businesses' customers find you, without new infrastructure or a larger marketing budget.</p>
+            <p class="gain__body">A network of businesses that can run offers together. Your customers find reasons to spend beyond your four walls, and other businesses’ customers find you, without new infrastructure or a larger marketing budget.</p>
           </div>
           <div class="gain" data-reveal data-reveal-delay="2">
             <h3 class="gain__title">Orchestration</h3>
@@ -520,10 +541,10 @@
                headline, a body and two CTAs, no eyebrow. Removed rather than reworded,
                because a replacement line is credx-copy's call. -->
           <h2 class="final-cta__h2">Bring us in as a partner.</h2>
-          <p class="final-cta__body">A partnership starts with a conversation about your volume and your customers, and what the stack would return for a business your size.</p>
+          <p class="final-cta__body">A partnership starts with a conversation about your volume, your customers, and what the stack would return for a business of your size.</p>
           <div class="hero__ctas final-cta__ctas">
             <a href="../contact/" class="btn btn-primary">Become a CredX Partner</a>
-            <a href="../how-it-works/" class="btn btn-secondary">See the mechanics</a>
+            <a href="../how-it-works/" class="btn btn-secondary">See the Mechanics</a>
           </div>
         </div>
       </div>
@@ -553,17 +574,17 @@
           </div>
         </div>
         <div>
+          <h4 class="footer__col-title">Connect</h4>
+          <div class="footer__links">
+            <a href="https://www.linkedin.com/" class="footer__link" rel="noopener" target="_blank">LinkedIn</a>
+            <a href="../contact/" class="footer__link">Book a Meeting</a>
+          </div>
+        </div>
+        <div>
           <h4 class="footer__col-title">Legal</h4>
           <div class="footer__links">
             <a href="../legal/" class="footer__link">Privacy</a>
             <a href="../legal/" class="footer__link">Terms</a>
-          </div>
-        </div>
-        <div>
-          <h4 class="footer__col-title">Connect</h4>
-          <div class="footer__links">
-            <a href="https://www.linkedin.com/" class="footer__link" rel="noopener" target="_blank">LinkedIn</a>
-            <a href="../contact/" class="footer__link">Book a meeting</a>
           </div>
         </div>
       </div>
@@ -575,7 +596,7 @@
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/lenis@1.0.42/dist/lenis.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.0.45/dist/lenis.min.js"></script>
   <script src="../script.js"></script>
 </body>
 </html>
