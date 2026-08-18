@@ -802,24 +802,30 @@ p { line-height: 1.6; max-width: 65ch; }
 
 /* ---- .rail · /how-it-works signature (Phase 6 §6.3) ------------------------
    The page's whole subject is ORDER OF EVENTS, and it was rendering as four
-   identical stacked cards — the same shape the Home uses for things that have no
-   order at all. A card says "item". A rail says "then".
+   identical stacked cards — the same shape the Home uses for things that have
+   no order at all. A card says "item". A rail says "then".
 
-   The spine is a real line the stations sit on, so sequence is carried by the
-   composition instead of by the words "Step 1". §6.4's section-number caveat is
-   satisfied here: the sequence IS the information on this page.
-   Numerals are the display face, tabular so the column does not jitter. */
-.rail { display: grid; gap: 0; position: relative; }
-.rail__station {
+   ⚠ 2026-08-18, second pass: the rail was vertical, which left the right half of
+   the section empty and drew every divider 1184px wide over a ~600px column.
+   It is now HORIZONTAL from 960px: four columns on one line, the numerals
+   sitting on it, the text hanging below. Same argument, full width, and still
+   not cards — there is no container, only the line and what hangs off it.
+   §6.4's caveat on section numbers is satisfied: on this page the sequence IS
+   the information. Numerals are tabular so the row does not jitter. */
+/* ⚠ It is an <ol>, so the UA draws its own "1." beside every numeral. Third time
+   this trap has bitten in one day: `list-style: none` alone still leaves the UA's
+   40px padding-inline-start, so both go. */
+.rail {
   display: grid;
-  grid-template-columns: auto 1fr;
-  gap: var(--s-6);
-  padding-block: var(--s-7);
+  gap: 0;
   position: relative;
+  list-style: none;
+  padding-inline-start: 0;
+  margin: 0;
 }
-.rail__station + .rail__station { border-top: 1px solid var(--border-subtle); }
 
-.rail__marker { position: relative; display: flex; justify-content: center; width: 3.5rem; }
+.rail__station { position: relative; }
+.rail__marker { position: relative; display: flex; }
 .rail__num {
   font-family: var(--font-display);
   font-variant-numeric: tabular-nums;
@@ -828,29 +834,56 @@ p { line-height: 1.6; max-width: 65ch; }
   line-height: 1;
   color: var(--text-accent);
 }
-/* the spine: drawn between stations, never past the last one.
-   --spine-scale is driven by the timeline in script.js so the line DRAWS
-   downward instead of appearing; it defaults to 1 so no-JS renders complete. */
-.rail__marker::after {
-  content: '';
-  position: absolute;
-  top: calc(var(--type-h2) + var(--s-4));
-  bottom: calc(var(--s-7) * -2);
-  width: 1px;
-  background-color: var(--border-subtle);
-  transform: scaleY(var(--spine-scale, 1));
-  transform-origin: top;
-}
-.rail__station:last-child .rail__marker::after { content: none; }
-
-.rail__body { max-width: 60ch; }
 .rail__h3 { font-size: var(--type-h3); margin-bottom: var(--s-3); }
 .rail__text { color: var(--text-secondary); line-height: 1.6; }
 
+/* ---- stacked, below 960: the numeral sits beside the text on a vertical spine */
+@media (max-width: 959px) {
+  .rail__station {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: var(--s-6);
+    padding-block: var(--s-7);
+  }
+  .rail__station + .rail__station { border-top: 1px solid var(--border-subtle); }
+  .rail__marker { width: 3.5rem; justify-content: center; }
+  .rail__marker::after {
+    content: '';
+    position: absolute;
+    top: calc(var(--type-h2) + var(--s-4));
+    bottom: calc(var(--s-7) * -2);
+    width: 1px;
+    background-color: var(--border-subtle);
+    transform: scaleY(var(--spine-scale, 1));
+    transform-origin: top;
+  }
+  .rail__station:last-child .rail__marker::after { content: none; }
+  .rail__body { max-width: 60ch; }
+}
 @media (max-width: 640px) {
   .rail__station { grid-template-columns: 1fr; gap: var(--s-3); }
-  .rail__marker { width: auto; justify-content: flex-start; }
+  .rail__marker { width: auto; }
   .rail__marker::after { content: none; }
+}
+
+/* ---- horizontal, 960 and up: four columns on one line ---- */
+@media (min-width: 960px) {
+  .rail { grid-template-columns: repeat(4, 1fr); gap: var(--s-7); }
+  .rail__station { padding-top: var(--s-7); }
+  .rail__marker { margin-bottom: var(--s-6); }
+  /* the line itself, drawn from each numeral to the next and never past the last */
+  .rail__marker::after {
+    content: '';
+    position: absolute;
+    left: calc(var(--type-h2) + var(--s-4));
+    right: calc(var(--s-7) * -1);
+    top: 50%;
+    height: 1px;
+    background-color: var(--border-subtle);
+    transform: scaleX(var(--spine-scale, 1));
+    transform-origin: left;
+  }
+  .rail__station:last-child .rail__marker::after { content: none; }
 }
 
 /* ---- .triad · /about signature (Phase 6 §6.3) -----------------------------
