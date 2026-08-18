@@ -585,6 +585,83 @@ p { line-height: 1.6; max-width: 65ch; }
   margin-top: var(--s-6);
 }
 .hero--compact .hero__movement { max-width: 46ch; }
+
+/* Centred variant of the Read opening. Used by the 404: one message, one way out.
+   ⚠ `.hero__inner` is a GRID, so `margin-inline: auto` on the copy did not
+   centre it — measured at L120 in a 1280 track, hard against the start edge.
+   Grid items centre with justify-items, not with auto margins. */
+.hero--centred { text-align: center; }
+/* ⚠ Took three attempts and a measurement to get right, so it is written down.
+   `.hero__inner` is a grid with no declared columns, so its single implicit
+   track is auto-sized to the content (570px) and anchored at the start. Neither
+   `justify-items: center` nor `margin-inline: auto` moves anything, because both
+   position the item INSIDE its track and the track is already only as wide as
+   the item. What centres it is `justify-content`, which positions the TRACK. */
+.hero--centred .hero__inner { display: block; }
+.hero--centred .hero__copy {
+  width: fit-content;
+  max-width: 100%;
+  margin-inline: auto;
+}
+.hero--centred .hero__h1,
+.hero--centred .hero__sub,
+.hero--centred .hero__movement { margin-inline: auto; }
+.hero--centred .hero__ctas { justify-content: center; }
+
+/* ---- .hero--alert · the 404 opening ----------------------------------------
+   A 404 that looks like every other page is a 404 the visitor reads as content.
+   It has to announce itself as an interruption — but inside a closed token
+   system, with no alert red to reach for and none coming.
+   The system already owns the right surface: Phase 6 §1.5 reserves the gradient
+   for PUNCTUATION, hero and CTA only. No page opens on it. So the 404 opening on
+   the gradient band is instantly not-a-content-page, using nothing new, and it
+   inherits the mark treatment from the closing band for the same reason. */
+.hero--alert {
+  --mark-size: 150%;
+  --mark-x: 88%;
+  --mark-opacity: 0.14;
+  background: var(--gradient-1);
+  position: relative;
+  overflow: hidden;
+}
+.hero--alert::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 70% 30%, rgba(167, 154, 180, 0.15), transparent 55%),
+    radial-gradient(ellipse at 30% 70%, rgba(148, 63, 120, 0.20), transparent 50%);
+  pointer-events: none;
+}
+.hero--alert::after {
+  content: '';
+  position: absolute;
+  inset: -12% -6%;
+  background-image: url('assets/logo/credx-shape.svg');
+  background-repeat: no-repeat;
+  background-position: var(--mark-x) 50%;
+  background-size: auto var(--mark-size);
+  filter: brightness(0);
+  opacity: var(--mark-opacity);
+  pointer-events: none;
+}
+.hero--alert .hero__inner { position: relative; z-index: 1; }
+.hero--alert .hero__h1, .hero--alert .hero__sub { color: var(--cloud-white); }
+
+/* The status itself, stated rather than decorated. Not an eyebrow: it follows
+   the headline, it carries information the headline does not, and it is the one
+   string a person pastes into a message when they report the problem. */
+.hero__status {
+  display: inline-block;
+  margin-top: var(--s-6);
+  font-size: var(--type-caption);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(248, 249, 252, 0.72);
+  border: 1px solid rgba(248, 249, 252, 0.28);
+  border-radius: var(--radius-pill);
+  padding: var(--s-2) var(--s-5);
+}
 .hero--compact .hero__movement { margin-top: var(--s-6); }
 .hero--compact .hero__ctas { margin-top: var(--s-8); }
 
