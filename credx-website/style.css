@@ -3293,6 +3293,15 @@ a.vertical-card:hover .vertical-card__name::after { transform: translateX(4px); 
 .hero--full .hero__sub { color: var(--cloud-white); }
 
 /* --- Image placeholder box (until Phase 8 renders land) --- */
+/* A reserved video slot, at the ratio the video will actually be. It stays a
+   dashed placeholder rather than a mocked-up player: a fake play button would
+   read as a broken video instead of as a slot that is honestly not built yet.
+   Marco, 2026-08-18: one placeholder on this page, and it is the video. */
+.media-ph--video {
+  aspect-ratio: 16 / 9;
+  min-height: 0;
+}
+
 .media-ph {
   position: relative;
   min-height: 300px;
@@ -3314,6 +3323,10 @@ a.vertical-card:hover .vertical-card__name::after { transform: translateX(4px); 
   font-size: var(--type-caption);
   color: var(--text-muted);
 }
+/* ⚠ Must sit AFTER `.media-ph::after` — same specificity (0,1,1), so position
+   decides. Placed before it, this lost silently and the slot kept saying
+   "Image slot". Second time this exact cascade trap bit today. */
+.media-ph--video::after { content: 'Video slot — ' attr(data-img-ph); }
 
 /* --- S2 partnership synthesis line --- */
 .voices__partnership {
