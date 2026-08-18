@@ -608,7 +608,11 @@ p { line-height: 1.6; max-width: 65ch; }
   }
 }
 .hero--split .hero__copy { max-width: none; }
-.hero--split .hero__h1 { font-size: clamp(2.5rem, 4.6vw, 3.75rem); max-width: 14ch; }
+/* ⚠ This was clamped to 3.75rem to suit the half-width column, which is exactly
+   what `.prose-band__h2` also resolves to — both landed on 60px at 1440 and the
+   section headings read as large as the page title. The H1 keeps the display
+   face; the column is narrow, so it wraps, which is what a display face is for. */
+.hero--split .hero__h1 { font-size: var(--type-display); max-width: 12ch; }
 .hero--split .hero__sub { font-size: var(--type-body-lg); margin-top: var(--s-6); max-width: none; }
 .hero--split .hero__movement { margin-top: var(--s-6); }
 .hero--split .hero__ctas { margin-top: var(--s-8); }
@@ -623,6 +627,35 @@ p { line-height: 1.6; max-width: 65ch; }
 }
 .hero__frame img { width: 100%; height: 100%; object-fit: cover; display: block; }
 @media (max-width: 959px) { .hero__frame { aspect-ratio: 16 / 10; } }
+
+/* ---- .split · a section of prose beside a framed photograph ------------------
+   The body counterpart to .hero--split. It exists so a reading section can use
+   the full width instead of setting prose left and leaving the right half void,
+   which was the shape every pillar section shared.
+   `--reverse` puts the photograph on the LEFT. Alternating it against the hero
+   above gives the page a rhythm instead of one repeated orientation. */
+.split__inner {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--s-8);
+  align-items: center;
+}
+@media (min-width: 960px) {
+  .split__inner { grid-template-columns: 1fr 1fr; gap: var(--s-9); }
+  .split--reverse .split__media { order: -1; }
+}
+.split__body { max-width: 58ch; }
+.split__body .prose-band__h2 { text-align: left; margin-inline: 0; max-width: 18ch; }
+.split__body > p + p { margin-top: var(--s-6); }
+.split__media {
+  border-radius: var(--radius-card);
+  border: 1px solid var(--border-subtle);
+  overflow: hidden;
+  aspect-ratio: 4 / 5;
+  background-color: var(--surface-1);
+}
+.split__media img { width: 100%; height: 100%; object-fit: cover; display: block; }
+@media (max-width: 959px) { .split__media { aspect-ratio: 16 / 10; } }
 
 /* Centred variant of the Read opening. Used by the 404: one message, one way out.
    ⚠ `.hero__inner` is a GRID, so `margin-inline: auto` on the copy did not
@@ -4056,13 +4089,20 @@ a.vertical-card:hover .vertical-card__name::after { transform: translateX(4px); 
    one-liner the original measure was cut for. */
 .prose-band__h2 {
   font-family: var(--font-editorial);
-  font-size: clamp(2.25rem, 4vw + 1rem, 3.75rem);
+  /* ⚠ Was clamp(2.25rem, 4vw + 1rem, 3.75rem) = up to 60px, which is the same as
+     the hero H1 and 12px LARGER than every other section heading on the same page
+     (`.control__h2` inherits the base `h2`, which is --type-h1). Two heading sizes
+     for the same rank, and one of them competing with the page title. This is the
+     scale's own step for an h2. */
+  font-size: var(--type-h1);
   font-weight: 500;
-  line-height: 1.08;
+  line-height: 1.1;
   letter-spacing: -0.015em;
   text-align: center;
   text-wrap: balance;
-  max-width: 34ch;
+  /* `34ch` resolved against the heading's OWN size, so it grew with it and the
+     measure swung from ~600px to ~1160px between sections. Fixed in rem. */
+  max-width: 30rem;
   margin-inline: auto;
   margin-block: 0 var(--s-8);
 }
