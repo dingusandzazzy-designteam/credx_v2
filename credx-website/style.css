@@ -765,6 +765,42 @@ p { line-height: 1.6; max-width: 65ch; }
 }
 /* the paragraph that follows was landing on the closing rule */
 .triad + .prose-band__body { margin-top: var(--s-7); }
+
+/* ---- 404 recovery list ----
+   The one component the branded 404 needs that the system did not already have.
+   Not cards: a 404 is a wayfinding moment, and four cards would ask the visitor
+   to parse containers before they can read where to go. Rows on a rule, the
+   destination first and the reason second. */
+.notfound__list {
+  max-width: calc(65ch * 18 / 16);
+  margin-inline: auto;
+  list-style: none;
+  padding-inline-start: 0;
+  display: flex;
+  flex-direction: column;
+}
+.notfound__list li {
+  display: grid;
+  gap: var(--s-2);
+  padding-block: var(--s-6);
+  border-top: 1px solid var(--border-subtle);
+}
+.notfound__list li:last-child { border-bottom: 1px solid var(--border-subtle); }
+.notfound__list a {
+  font-family: var(--font-editorial);
+  font-size: var(--type-h3);
+  color: var(--text-primary);
+  transition: color var(--duration-fast) var(--ease-out-quart);
+}
+.notfound__list a:hover { color: var(--text-accent); }
+.notfound__list span {
+  color: var(--text-secondary);
+  font-size: var(--type-body);
+  line-height: 1.5;
+}
+@media (min-width: 720px) {
+  .notfound__list li { grid-template-columns: 18rem 1fr; gap: var(--s-6); align-items: baseline; }
+}
 [data-theme="light"] .hero--full .hero__sub { color: #2a2e4a; }
 
 /* Light-theme hero overlay: pale wash on the left for ink copy. */

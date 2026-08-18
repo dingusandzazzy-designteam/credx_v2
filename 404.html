@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Page Not Found | CredX</title>
+  <meta name="robots" content="noindex, follow" />
+
+  <!-- ⚠ EVERY PATH ON THIS PAGE IS ABSOLUTE, ON PURPOSE.
+       Vercel serves this file for ANY unmatched route, so it can render at
+       /nonsense, at /credx-website/nonsense, or three levels deep. A relative
+       path would resolve differently each time and the recovery links — the
+       entire reason this page exists — would break exactly when they are
+       needed. Do not "tidy" these into relative paths.
+       It lives at the REPO ROOT because that is Vercel's output root here;
+       moving it under credx-website/ would stop it being served. -->
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/credx-website/style.css" />
+  <link rel="icon" href="/credx-website/assets/logo/credx-shape.svg" type="image/svg+xml" />
+</head>
+<body>
+
+  <nav class="nav" data-nav>
+    <div class="container nav__inner">
+      <a href="/credx-website/" class="nav__logo" aria-label="CredX home">
+        <img src="/credx-website/assets/logo/Credx-name.svg" alt="CredX" height="28" />
+      </a>
+      <div class="nav__links" data-nav-menu>
+        <a href="/credx-website/how-it-works/" class="nav__link">How It Works</a>
+        <a href="/credx-website/about/" class="nav__link">About</a>
+        <a href="/credx-website/contact/" class="nav__link">Contact Us</a>
+      </div>
+      <div class="nav__actions">
+        <a href="/credx-website/contact/" class="btn btn-primary nav__cta">Book a Meeting</a>
+        <button class="nav__toggle" data-nav-toggle type="button" aria-label="Open menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <!-- Reuses .hero--compact, the Pillar–Read opening: type-led, no photograph.
+         A 404 is the one page where an image would be pure delay in front of the
+         thing the visitor needs, which is a way out. -->
+    <section class="hero hero--compact" aria-label="Page not found">
+      <div class="container hero__inner">
+        <div class="hero__copy">
+          <h1 class="hero__h1">This page is not here.</h1>
+          <p class="hero__sub">
+            The address you followed does not match a page on this site. It may have moved, or it may not be built yet. Everything below is live.
+          </p>
+          <div class="hero__ctas">
+            <a href="/credx-website/" class="btn btn-primary">Go to the Homepage</a>
+            <a href="/credx-website/how-it-works/" class="btn btn-secondary">See How It Works</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section prose-band" aria-label="Where to go">
+      <div class="container prose-band__inner">
+        <ul class="notfound__list">
+          <li>
+            <a href="/credx-website/how-it-works/">How It Works</a>
+            <span>What embedded lending is, and the mechanics in the order your business meets them.</span>
+          </li>
+          <li>
+            <a href="/credx-website/evp/">Embedded Value Platform</a>
+            <span>The full stack, as a partnership proposition.</span>
+          </li>
+          <li>
+            <a href="/credx-website/about/">The Movement</a>
+            <span>The data economy, and who it belongs to.</span>
+          </li>
+          <li>
+            <a href="/credx-website/contact/">Contact</a>
+            <span>Start a conversation about your volume and your customers.</span>
+          </li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__inner">
+        <div class="footer__brand">
+          <img src="/credx-website/assets/logo/Credx-name.svg" alt="CredX" height="32" style="margin-bottom: 20px;" />
+          <p class="footer__movement">A system you belong to, instead of one that owns you.</p>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p>&copy; 2026 CredX Tech Inc. &middot; credx-tech.com</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/credx-website/script.js"></script>
+</body>
+</html>
