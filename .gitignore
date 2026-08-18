@@ -1,3 +1,7 @@
+# Session-start briefing for Claude Code. Gitignored deliberately: it loads from
+# disk regardless of git, and every tracked file is served as public plain text.
+CLAUDE.md
+
 documents/
 workflow/
 plan/
@@ -29,3 +33,11 @@ generic/seo/
 # items and review notes, and every tracked file is served publicly by both
 # GitHub Pages and Vercel. Same treatment as documents/, plan/, seo/, workflow/.
 credx-website/copy/
+
+# ── Internal materials. NEVER tracked: every tracked file is served as public
+#    plain text by Vercel. These carry client quotes, review commentary, open
+#    items and the internal forbidden-language list.
+#    Added 2026-08-18 when the four verticals were closed and handed over.
+copy/
+*/copy.md
+*.docx
