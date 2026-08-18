@@ -215,7 +215,7 @@
          `<picture>` with no `<source>` is noise. Re-renders drop in under the same
          filename with no markup change.
          ============================================================ -->
-    <section class="hero hero--compact" aria-label="Hero">
+    <section class="hero hero--split" aria-label="Hero">
       <div class="container hero__inner">
         <div class="hero__copy">
           <h1 class="hero__h1" data-reveal-words>What Is <em class="accent">Embedded Lending</em>?</h1>
@@ -236,15 +236,14 @@
             <a href="../contact/" class="btn btn-primary">See What CredX Could Return for Your Business</a>
           </div>
         </div>
+
+        <!-- The photograph returns to the hero, framed and beside the copy rather
+             than behind it. It was a full-bleed band below; the band is gone. -->
+        <div class="hero__frame" data-reveal-media>
+          <img src="../images/hiw-hero.png" alt="A customer approved for embedded lending at a merchant’s own checkout" width="1672" height="941" loading="eager" />
+        </div>
       </div>
     </section>
-
-    <!-- The hero photograph, demoted (Phase 6 §6.2). The Read type opens on
-         type; the image is the first thing the reader scrolls into rather than
-         the thing they land on. Same asset, different rank. -->
-    <div class="hero-media" data-reveal-media>
-      <img src="../images/hiw-hero.png" alt="A customer approved for embedded lending at a merchant’s own checkout" width="1672" height="941" loading="eager" />
-    </div>
 
     <!-- ============================================================
          2 · THE MECHANICS  ·  `HowTo`

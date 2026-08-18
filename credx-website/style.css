@@ -586,6 +586,44 @@ p { line-height: 1.6; max-width: 65ch; }
 }
 .hero--compact .hero__movement { max-width: 46ch; }
 
+/* ---- .hero--split · the /how-it-works opening -------------------------------
+   Copy and a framed photograph side by side, roughly even. This is the third
+   distinct opening on the site and it exists because /about and /how-it-works
+   were the one pair still sharing a composition — the 2026-08-18 audit's
+   sharpest point: crop the nav and nothing sorted them.
+   ⚠ The AEO paragraph's placement directly under the H1 is mandated and must not
+   move. A 50/50 split narrows its column, so the measure is set explicitly here
+   rather than inherited — check it still reads before changing the ratio. */
+.hero--split { padding-block: calc(var(--s-section) + var(--s-7)) var(--s-section); }
+.hero--split .hero__inner {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--s-8);
+  align-items: center;
+}
+@media (min-width: 960px) {
+  .hero--split .hero__inner {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--s-9);
+  }
+}
+.hero--split .hero__copy { max-width: none; }
+.hero--split .hero__h1 { font-size: clamp(2.5rem, 4.6vw, 3.75rem); max-width: 14ch; }
+.hero--split .hero__sub { font-size: var(--type-body-lg); margin-top: var(--s-6); max-width: none; }
+.hero--split .hero__movement { margin-top: var(--s-6); }
+.hero--split .hero__ctas { margin-top: var(--s-8); }
+
+/* The frame. One elevation only — a border, no shadow under it. */
+.hero__frame {
+  border-radius: var(--radius-card);
+  border: 1px solid var(--border-subtle);
+  overflow: hidden;
+  aspect-ratio: 4 / 5;
+  background-color: var(--surface-1);
+}
+.hero__frame img { width: 100%; height: 100%; object-fit: cover; display: block; }
+@media (max-width: 959px) { .hero__frame { aspect-ratio: 16 / 10; } }
+
 /* Centred variant of the Read opening. Used by the 404: one message, one way out.
    ⚠ `.hero__inner` is a GRID, so `margin-inline: auto` on the copy did not
    centre it — measured at L120 in a 1280 track, hard against the start edge.
