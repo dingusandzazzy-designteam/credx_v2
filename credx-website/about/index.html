@@ -135,7 +135,39 @@
          The alt deliberately carries NO keyword — the single keyword-bearing
          alt on this page is reserved for §2 (practice #8).
          ============================================================ -->
-    <section class="hero hero--compact" aria-label="Hero">
+    <!-- ⚠ OPENING CHANGED 2026-08-19 (Marco): `.hero--compact` → `.hero--split`, and
+         `about-data-economy.png` moved up here from §2, MIRRORED.
+         ------------------------------------------------------------------------
+         WHY MIRRORED, because it is not decoration: in the source she is turned to
+         her left and her gaze leaves the frame to the RIGHT. With the copy in the
+         left column that pointed her away from the headline, at the outer edge of
+         the page. Flipped, the gaze runs back into the H1. Marco: "quero a mulher
+         olhando pro título."
+
+         ⚠ WHY NOT A FULL-BLEED PHOTO WITH THE COPY OVER IT — measured, not a
+         preference. The asset is high-key (greenhouse glass, pale concrete): mean
+         luminance 168/255 across the top half, which is where an H1 sits. Against
+         `--text-primary` (#f8f9fc) that is **2.24:1**, failing even the 3:1 large-text
+         floor, and it needs ~40% of black over it to clear 4.5:1 — which erases the
+         airy quality that makes the shot worth using. She is also dead centre, where
+         a centred headline would go. So the photograph sits BESIDE the copy, never
+         under it.
+
+         ⚠ WHAT THIS COSTS, recorded because it is the third page-type reversal in two
+         days. `plan/06.Design-Direction.md` §6.2 assigns `/about` a **type-led opening
+         with no photograph** as its signature, and that is now spent: `/about`,
+         `/how-it-works` and `/evp` all open with copy beside a framed photograph, so
+         the *"no two pages open the same way"* rule is down to the Home and the
+         functional pages. Marco's call, made knowingly. The plan doc is stale on this
+         line — a third ↩ entry.
+
+         ⚠ AND §2 LOST ITS IMAGE. It was a `.split` (copy beside photograph); with the
+         photograph up here it would have rendered as half an empty section, so it is
+         PROVISIONALLY prose. Marco: "depois vamos pensar nessa sessão sobre o que
+         vamos fazer com ela." That decision is still owed — see the note on §2.
+         The asset is NOT duplicated: it appears once, here.
+         ============================================================ -->
+    <section class="hero hero--split" aria-label="Hero">
       <div class="container hero__inner">
         <div class="hero__copy">
           <span class="eyebrow eyebrow--accent" data-reveal>A Modern Financial Movement</span>
@@ -156,6 +188,31 @@
             <a href="../contact/" class="btn btn-primary">Book a Meeting</a>
             <a href="../how-it-works/" class="btn btn-secondary">See How It Works</a>
           </div>
+        </div>
+        <!-- `loading="eager"`, not lazy: it is above the fold now, where it was a
+             lazy §2 image before. ⚠ The alt is unchanged and still the ONE
+             keyword-bearing alt on the page (on-page practice #8) — mirroring the
+             pixels does not change what the photograph shows. -->
+        <div class="hero__frame hero__frame--mirrored" data-reveal-media>
+          <!-- ⚠ THE SPAN IS LOAD-BEARING. DO NOT FLATTEN IT.
+               The mirror cannot live on the <img>, because `transform` on a
+               `[data-reveal-media] img` is owned by the reveal system in TWO places
+               that both beat a stylesheet rule:
+                 · `style.css:2909` — `[data-reveal-media] img { transform: none }`
+                   inside `prefers-reduced-motion`. Equal specificity to any
+                   `.class img` rule and later in the file, so it wins.
+                 · `script.js:184/189` — GSAP `set(img, {scale: 1.25})` then animates
+                   to `scale: 1`, written as an INLINE transform, which beats
+                   everything in the stylesheet.
+               The first flip attempt did live on the img and was silently dead: it
+               would have shown only to a visitor with JS disabled AND no
+               reduced-motion preference. Caught by cropping the rendered head and
+               comparing it to the source, not by reading the CSS.
+               GSAP finds the image with `media.querySelector('img')`, a descendant
+               lookup, so this wrapper does not break the reveal or the wipe. -->
+          <span class="hero__frame-flip">
+            <img src="../images/about-data-economy.png" alt="A merchant reviewing purchase patterns from the data economy on a tablet" width="1672" height="941" loading="eager" />
+          </span>
         </div>
       </div>
     </section>
@@ -178,8 +235,71 @@
          ZERO search volume (confirmed 2026-08-10). The narrative's substance
          is written in full without the word. Nothing is lost on either side.
          ============================================================ -->
-    <section id="data-economy" class="section split" aria-label="data economy">
+    <!-- ⚠ RESHAPED 2026-08-19 (Marco) — this section lost its photograph to the hero
+         and got a different one, in a different shape. Read the reasoning; it is a
+         rhythm decision, not a slot to be refilled.
+         ------------------------------------------------------------------------
+         WHY NOT ANOTHER `.split`. With the hero now `.hero--split`, §3 rebuilt on the
+         same grid and §4 already `.split--reverse`, making §2 a split too would give
+         the page FOUR consecutive copy-beside-picture sections. That is the exact
+         sameness `plan/06.Design-Direction.md` §6 exists to fight — a page where
+         every section has one silhouette. §2 is prose on the centred column with a
+         FULL-WIDTH 16:9 band under it, so the page alternates: split · band · split ·
+         split-reverse · cards.
+
+         WHY `about-hero.png`, and why not the image just removed from §5:
+         · It is the ONE unused asset that was made for this page. It was `/about`'s
+           original full-bleed hero and went orphan when the opening became type-led;
+           it has been sitting unreferenced since. Nothing was commissioned.
+         · It is a merchant and a customer completing a purchase at a counter, which
+           IS this section's subject — "every purchase records who bought, what they
+           spent, and when". `about-partnership.png` (Marco's other suggestion) is two
+           people reading a CONTRACT: that is the partnership beat, not the data
+           economy one, and its faces are deliberately cropped out. Wrong section.
+         · It is 1672×941, exactly the 16:9 this band expects, so it renders with
+           **zero crop** — the defect class that lost an operator from `hiw-hero` and
+           decapitated someone in `hiw-loop` on 2026-08-18 came from feeding 16:9 into
+           narrower frames. Not possible here.
+         · It is dark, warm and low-key against the bright high-key greenhouse in the
+           hero above. Two photographs on one page that do not compete.
+         · No card-payment terminal anywhere in it (rule of 2026-08-19). A tray of
+           frames and a cloth, nothing else on the counter.
+         · It matches the merchant-conversation direction Audrey approved under GL-06
+           — it reads as a merchant with a customer, which is the ambiguity she wanted.
+
+         ⚠ THE ALT IS THE ORIGINAL, recovered from `7d741d1` rather than rewritten:
+         "A Canadian business owner at the counter serving a returning customer". It
+         deliberately carries NO keyword — the page's single keyword-bearing alt is
+         the one that travelled up to the hero with `about-data-economy.png`.
+
+         ⚠ The AEO paragraph's mandated placement directly under the H2 is preserved,
+         and the consent line is still present — both are non-negotiable here.
+         ============================================================ -->
+    <section id="data-economy" class="section split split--reverse" aria-label="data economy">
+      <!-- Same treatment as §4 "What the movement is for" (Marco, 2026-08-19): the
+           default 4:5 `.split__media`, centred, in the reversed position. Both
+           modifiers this section briefly carried — `--wide` and `--top` — are gone,
+           and so is the reason they existed.
+           ⚠ THE HISTORY IS WORTH ONE PARAGRAPH, because it is the same trap twice.
+           §2 lost its own photograph to the hero and was given `about-hero.png` as a
+           stopgap. That asset is a 1672×941 16:9 master, and `cover` into a 544×680
+           4:5 frame shows only source x 459→1213 — which crops the male customer out
+           entirely (he sits at x≈1280→1672). Forcing the frame to 16:9 with `--wide`
+           kept both people but left 380px of empty column beside 686px of copy, and
+           `--top` only made the imbalance tidy rather than absent. Marco called it:
+           "a imagem ficou estranha, quero igual a What the movement is for."
+           **The fix was a render, not a modifier.** `about-record.png` is composed
+           natively at 4:5 (1122×1402), so the default frame crops nothing at desktop
+           and the section is shape-identical to §4 as asked.
+           ⚠ Do not reintroduce `--wide` here. It exists for genuinely landscape
+           assets; this one is portrait. -->
       <div class="container split__inner">
+        <!-- `--focus-top` is mobile-crop insurance, not styling: this frame drops to
+             16/10 below 960px and the default centred crop cut the operator's head
+             just below the eyes. Measured, see the CSS. No effect at desktop. -->
+        <div class="split__media split__media--focus-top" data-reveal-media>
+          <img src="../images/about-record.png" alt="A business owner greeting a returning customer at the counter" width="1122" height="1402" loading="lazy" />
+        </div>
         <div class="split__body">
         <h2 class="prose-band__h2" data-reveal-words>
           What the data economy is, and <em class="accent">who it pays today</em>.
@@ -217,11 +337,11 @@
              site's only two solo decision frames (this one and `hiw-fees`), which
              breached `prompts.md` §A's casting table — "women lead operator/decision
              scenes as much as men". Both were re-rendered. Do not swap this back to a
-             male operator without checking the balance across the whole set first. -->
-        </div>
-
-        <div class="split__media" data-reveal-media>
-          <img src="../images/about-data-economy.png" alt="A merchant reviewing purchase patterns from the data economy on a tablet" width="1672" height="941" loading="lazy" />
+             male operator without checking the balance across the whole set first.
+             ⚠ THAT IMAGE IS NO LONGER HERE — it is the hero's, as of 2026-08-19. The
+             casting note above is kept because it governs the asset wherever it sits:
+             do not swap it back to a male operator without re-checking the balance
+             across the whole set. -->
         </div>
       </div>
     </section>
@@ -251,33 +371,63 @@
          The full expansion is spelled out on first mention, `MOAT` after —
          mandated by the brief's H2/H3 outline.
          ============================================================ -->
-    <section id="moat" class="section control" aria-label="Mutual Ownership Acquisition Technology">
-      <div class="container">
-        <div class="control__header">
-          <h2 class="control__h2" data-reveal-words>
+    <!-- ⚠ STRUCTURE CHANGED 2026-08-19 (Marco), COPY UNTOUCHED — SECOND time this
+         section has been restructured without a single word moving. Read both notes.
+         ------------------------------------------------------------------------
+         2026-08-18 (AB-09): it was a ticked list of three sentences plus an empty
+         image slot with no concept behind it. A list says "three items"; the section
+         says the three hold ONE thing. They were given a single shared rule, and the
+         shared rule IS the shared stake — which also answered the image slot, so the
+         commission was never owed.
+
+         2026-08-19 (Marco): the section was centred H2 → prose → three parties
+         side by side → prose → centred CTA, i.e. five stacked centred bands that
+         used the full width for nothing. It is now the page's `.split` primitive:
+         **the argument on the left, the structure on the right.** The three parties
+         run vertically (`.triad--stack`), one above the other, each on its own rule
+         — merchant, customer, community lender — so the shared-rule idea from 08-18
+         survives and reads *more* like a stake than three columns did.
+
+         Why `.split` and not a new grid: `/about` §2 and §4 are already `.split`, so
+         §3 now joins the page's own rhythm instead of inventing a third shape, and
+         it comes from the shared kit per `plan/06.Design-Direction.md` §6.5. The only
+         difference from §2/§4 is what occupies the right column — a component here,
+         a photograph there.
+
+         ⚠ COPY REDUNDANCY THIS LAYOUT EXPOSES, flagged not fixed. The left column's
+         first sentence ("…all three parties to a transaction hold a stake in what it
+         produces") and `.triad__stake` ("All three hold a stake in what the
+         transaction produces") are the same claim. Stacked vertically they were
+         far apart; side by side they are visible at once. **Copy is owned by
+         `credx-copy` and is not editable during design work** (PRODUCT.md), so both
+         still ship. One of them should go — that is a copy call, not a layout one.
+
+         "hold a stake", not "should all hold a stake" — the `should` was removed on
+         Marco's instruction, 2026-08-10 (O4, per Audrey C12). ⚠ This does NOT touch
+         the two held canonical lines (Kendall's anchor and the core belief); those
+         still contain "should", are still unresolved with the client, and are still
+         not ours to rewrite (voice.md:130-140).
+
+         The CTA is a cross-link, not a repeat: the mechanism lives on /evp §3. It was
+         a `.prose-band__aside` sub-link until Andrea's review asked for a button
+         (AB-07); it is now left-aligned at the foot of the argument rather than
+         centred under the whole section, because it closes the left column.
+         ============================================================ -->
+    <section id="moat" class="section split" aria-label="Mutual Ownership Acquisition Technology">
+      <div class="container split__inner split__inner--top">
+        <div class="split__body">
+          <h2 class="prose-band__h2" data-reveal-words>
             Mutual Ownership Acquisition Technology, <em class="accent">in plain terms</em>.
           </h2>
+          <p class="prose-band__body" data-reveal>
+            <strong>Mutual Ownership Acquisition Technology (MOAT)</strong> is the principle that all three parties to a transaction hold a stake in what it produces.
+          </p>
+          <p class="prose-band__body" data-reveal data-reveal-delay="1">
+            MOAT is how the upside is shared among them instead of collected by a party that did none of the three.
+          </p>
         </div>
 
-        <!-- ⚠ This prose used to sit in .control__whitelabel, which is centred at a
-             720px measure — fine for the Home's short white-label beat, wrong for a
-             five-sentence paragraph. Now the prose-band pattern: the H2 above stays
-             centred, the prose reads left at 65ch. -->
-        <!-- "hold a stake", not "should all hold a stake" — the `should` was removed
-             on Marco's instruction, 2026-08-10 (O4, per Audrey C12). ⚠ This does NOT
-             touch the two held canonical lines (Kendall's anchor and the core belief);
-             those still contain "should", are still unresolved with the client, and
-             are still not ours to rewrite (voice.md:130-140). -->
-        <p class="prose-band__body" data-reveal>
-          <strong>Mutual Ownership Acquisition Technology</strong>, or MOAT, is the principle that all three parties to a transaction hold a stake in what it produces.
-        </p>
-
-        <!-- ⚠ STRUCTURE CHANGED 2026-08-18, COPY UNTOUCHED. This was a ticked list of
-             three sentences plus an empty image slot with no concept behind it
-             (AB-09). A list says "three items"; the section says the three hold ONE
-             thing. They now share a single rule, and the shared rule IS the shared
-             stake. That also answers the image slot, so the commission is not owed. -->
-        <div class="triad" data-reveal data-reveal-delay="1">
+        <div class="triad triad--stack" data-reveal data-reveal-delay="1">
           <div>
             <span class="triad__party">The merchant</span>
             <p class="triad__holds">earns the relationship.</p>
@@ -293,15 +443,14 @@
           <p class="triad__stake">All three hold a stake in what the transaction produces.</p>
         </div>
 
-        <p class="prose-band__body" data-reveal data-reveal-delay="2">
-          MOAT is how the upside is shared among them instead of collected by a party that did none of the three.
-        </p>
-
-        <!-- Cross-link, not a repeat: the mechanism lives on /evp §3.
-             ⚠ 2026-08-18 — this WAS a .prose-band__aside sub-link held on the 65ch prose
-             column. Andrea's review asked for a centred CTA button instead, so it is now
-             .section-ctas + .btn and it no longer sits on the prose column. -->
-        <div class="section-ctas" data-reveal data-reveal-delay="3">
+        <!-- ⚠ The CTA is a THIRD grid child, deliberately not the last thing inside
+             `.split__body`. Found by render at 390: in one column the section read
+             *argument → CTA → the three parties*, so the button offering the reader
+             a way to /evp appeared before the section had delivered its payload.
+             As a sibling it lands by plain auto-placement — row 2 / column 1 at
+             ≥960px, exactly where it was visually, and dead last on mobile. No
+             page-specific grid rules, no `order`, nothing to maintain. -->
+        <div class="section-ctas section-ctas--start" data-reveal data-reveal-delay="2">
           <a href="../evp/" class="btn btn-secondary">See How MOAT Works Inside the Value Stack</a>
         </div>
 
@@ -415,16 +564,27 @@
           <p class="trust__body">Compliant. Data is de-identified, consent-driven, and held to Canadian privacy law.</p>
         </div>
 
-        <!-- ✅ WIRED 2026-08-11 — `about-partnership.png` (thick open agreement on a
-             timber table, both people chest-down and three-quarter, soft neutral
-             daylight, no handshake). The document shows paragraph texture with
-             unresolvable lettering — verified at 2.5× against the naming guard.
-             ⚠ THIS SECTION'S COPY IS STILL INDICATIVE, pending the partnership
-             meeting (copy/about.md §6, open item O3). If §6 changes, check that this
-             image still fits what the section ends up claiming. -->
-        <div class="section-media section-media--spaced" data-reveal-media>
-          <img src="../images/about-partnership.png" alt="A community lender and a business owner reviewing a partnership agreement" width="1672" height="941" loading="lazy" />
-        </div>
+        <!-- 🗑 IMAGE REMOVED 2026-08-19 (Marco): "a ultima imagem de about, tá
+             sobrando tb, pode retirar."
+             ------------------------------------------------------------------
+             It was `about-partnership.png` — a thick open agreement on a timber
+             table, both people chest-down and three-quarter, no handshake — wired
+             2026-08-11 and verified at 2.5× against the naming guard.
+
+             Two things this closes as a side effect, so nobody goes looking for them:
+             · The `/about` §6 partnership image was **blocked by the client** until
+               after their partnership meeting. There is no image here now, so that
+               dependency is dead rather than pending.
+             · `/about` is down to two photographs (§2 and §4, both in `.split`
+               frames). Every remaining image slot on the page is filled; there is
+               no placeholder left anywhere on it.
+
+             ⚠ The asset stays on disk at `images/about-partnership.png` — unreferenced,
+             not deleted. If §6's copy changes after the partnership meeting and the
+             section wants a picture again, it is right there.
+             ⚠ §6's copy is still INDICATIVE pending that meeting (copy/about.md §6,
+             open item O3). Removing the image does not settle the copy. -->
+
       </div>
     </section>
 

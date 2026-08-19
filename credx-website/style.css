@@ -82,7 +82,18 @@
   --s-8: 64px;
   --s-9: 96px;
   --s-10: 128px;
-  --s-section: clamp(64px, 10vh, 128px);
+  /* ---- SECTION RHYTHM · rewritten 2026-08-19 (Marco: excessive and irregular) ----
+     WAS: `clamp(64px, 10vh, 128px)` — keyed to viewport HEIGHT, which is why the page
+     felt irregular. Measured on the Home at 1424×905 it resolved to 90.5px, so every
+     boundary (padB + padT) was 181px, and 229px at `.movement`, 205px at `.join`.
+     Resize the window vertically and the whole vertical rhythm moved. Worse, 90.5 is
+     not a step on the 4px scale, so NO section padding on the site landed on the
+     spacing system at all — 91, 139 and 115 were the real numbers.
+     NOW: two token steps, chosen at a WIDTH breakpoint like `--container-pad` already
+     is. Every section padding is now exactly `--s-7` or `--s-8`, boundaries are 96px
+     on mobile and 128px from 960px up, and nothing changes when the window is
+     resized vertically. Desktop boundary goes 181px → 128px, a 29% reduction. */
+  --s-section: var(--s-7);
 
   /* Container */
   --container-max: 1280px;
@@ -121,6 +132,14 @@
   /* Nav surface (theme-aware) */
   --nav-bg: rgba(11, 12, 22, 0.7);
   --nav-bg-scrolled: rgba(11, 12, 22, 0.92);
+}
+
+/* The one width step for the section rhythm. Above 960px sections breathe one token
+   more; below it they do not, because a phone cannot afford 128px of nothing between
+   every section. Deliberately a single breakpoint — a scale with more steps than this
+   is unpredictable again, which was the original problem. */
+@media (min-width: 960px) {
+  :root { --s-section: var(--s-8); }
 }
 
 /* ---- 1b. Light theme overrides (dark is the default above) ----
@@ -615,7 +634,15 @@ p { line-height: 1.6; max-width: 65ch; }
 .hero--split .hero__h1 { font-size: var(--type-display); max-width: 12ch; }
 .hero--split .hero__sub { font-size: var(--type-body-lg); margin-top: var(--s-6); max-width: none; }
 .hero--split .hero__movement { margin-top: var(--s-6); }
-.hero--split .hero__ctas { margin-top: var(--s-8); }
+.hero--split .hero__ctas {
+  /* ⚠ 48px, not 64. `.hero__movement` sets `margin-bottom: var(--s-7)` and a comment
+     from 2026-07-27 records WHY — the line must read as its own beat with EQUAL air on
+     both sides, never as a label for the buttons. At `--s-8` the collapsed gap below it
+     was 64px against 48px above, so the documented intent was quietly broken on the
+     pillar pages while the Home (`.hero--full`) still honoured it at 48/48. Measured on
+     both. This restores the intent and takes 16px out. */
+  margin-top: var(--s-7);
+}
 
 /* The frame. One elevation only — a border, no shadow under it. */
 .hero__frame {
@@ -627,6 +654,39 @@ p { line-height: 1.6; max-width: 65ch; }
 }
 .hero__frame img { width: 100%; height: 100%; object-fit: cover; display: block; }
 @media (max-width: 959px) { .hero__frame { aspect-ratio: 16 / 10; } }
+
+/* ---- .hero__frame--mirrored ------------------------------------------------
+   `/about`, 2026-08-19. `about-data-economy.png` has the operator turned to her
+   left with her gaze leaving the frame to the RIGHT. In the left-copy split that
+   aimed her away from the H1, at the outer edge of the page — a subject looking
+   out of the composition pulls the reader out with her. Flipped, the gaze runs
+   back into the headline.
+
+   ⚠ Order of operations, because it is not obvious: `object-fit: cover` resolves
+   the crop against the frame's aspect ratio FIRST, then this transform flips the
+   already-cropped box. So mirroring does not change WHICH part of the photograph
+   is visible, only its handedness — the 4:5 centre crop is identical either way.
+   ⚠ Only ever use this on an image with no legible text, signage or lettering in
+   it. This one has none; a mirrored sign would be an obvious defect. */
+.hero__frame--mirrored .hero__frame-flip {
+  display: block;
+  width: 100%;
+  height: 100%;
+  transform: scaleX(-1);
+}
+/* ⚠ The flip is on a WRAPPER, never on the <img>, and that is not a style choice.
+   `transform` on a `[data-reveal-media] img` has two owners that both outrank a
+   stylesheet rule here:
+     · line ~2909, `[data-reveal-media] img { transform: none }` under
+       `prefers-reduced-motion` — equal specificity to `.class img`, declared later,
+       so it wins;
+     · `script.js:184/189`, GSAP `set(img, {scale: 1.25})` → `scale: 1`, written
+       INLINE, which outranks the whole stylesheet.
+   A flip declared on the img therefore renders for exactly one visitor: JS off AND
+   no reduced-motion preference. It was written that way first and looked correct in
+   a screenshot; the render was simply not mirrored. Verified the second time by
+   cropping the rendered head and comparing it against the source file.
+   The wrapper's own transform is contested by nothing. */
 
 /* ---- .split · a section of prose beside a framed photograph ------------------
    The body counterpart to .hero--split. It exists so a reading section can use
@@ -656,6 +716,33 @@ p { line-height: 1.6; max-width: 65ch; }
 }
 .split__media img { width: 100%; height: 100%; object-fit: cover; display: block; }
 @media (max-width: 959px) { .split__media { aspect-ratio: 16 / 10; } }
+/* `--wide` keeps a 16:9 source at 16:9. The default 4:5 exists for portrait-composed
+   renders (§4's `about-mission` was delivered at 1122×1402 for it); forcing a 16:9
+   asset into it crops width, which is the defect class that cost `hiw-hero` its
+   operator on 2026-08-18. Use this whenever the asset is landscape. */
+.split__media--wide { aspect-ratio: 16 / 9; }
+
+/* ---- --focus-top · mobile-crop insurance for both portrait frames ------------
+   For a portrait asset whose faces sit high in the frame. `.split__media` AND
+   `.hero__frame` are both 4:5 on desktop and **16/10 below 960px**, so a 1122×1402
+   master keeps every pixel at desktop and loses 50% of its HEIGHT on mobile:
+   `cover` shows only y 350→1051 of 1402, centred. One declaration serves both
+   components — they have the same ratio switch and therefore the same trap.
+
+   ⚠ Measured on `about-record.png`: the operator's head occupies y≈155→430, so the
+   default centred crop cut him just below the eyes — beard and mouth visible, eyes
+   gone. That is the same defect that decapitated a figure in `hiw-loop` on
+   2026-08-18, arriving by a different route: not a bad master, a bad anchor.
+
+   `center 20%` moves the visible band to y≈140→841, which holds both heads. The
+   tray of shears at the bottom is sacrificed, which is the right trade — a
+   signature prop is worth less than a face.
+   ⚠ It costs nothing at desktop: there the frame ratio equals the asset ratio, so
+   `cover` crops nothing and `object-position` has no effect at all. Safe to leave on.
+   ⚠ Check this on any NEW portrait asset dropped into a `.split__media`. The default
+   is only correct when the subject is vertically centred. */
+.hero__frame--focus-top img,
+.split__media--focus-top img { object-position: center 20%; }
 /* Inside a split the column is ~half the page, so the elements that carry the
    prose measure must stop carrying it or they overflow their own column. */
 .split__body .prose-band__body,
@@ -740,7 +827,7 @@ p { line-height: 1.6; max-width: 65ch; }
   padding: var(--s-2) var(--s-5);
 }
 .hero--compact .hero__movement { margin-top: var(--s-6); }
-.hero--compact .hero__ctas { margin-top: var(--s-8); }
+.hero--compact .hero__ctas { margin-top: var(--s-7); } /* see .hero--split, same reason */
 
 /* The photograph is not deleted, it is demoted: the page opens on type and the
    image is the first thing you scroll INTO. Full-bleed, so it reads as a band
@@ -990,6 +1077,82 @@ p { line-height: 1.6; max-width: 65ch; }
 }
 /* the paragraph that follows was landing on the closing rule */
 .triad + .prose-band__body { margin-top: var(--s-7); }
+
+/* ---- .triad--stack · the three parties running vertically -------------------
+   `/about` §3, added 2026-08-19 (Marco). The three-across version used the full
+   page width for three short phrases and left the section as five stacked centred
+   bands. Stacked, the triad becomes the right-hand column of the page's own
+   `.split` primitive and the argument gets the left — and the shared-rule idea
+   from 08-18 reads *better* vertically: three rules in a column is a ledger of who
+   holds what, where three side by side read as three unrelated items.
+
+   ⚠ `.triad.triad--stack` and not `.triad--stack` alone: the base component turns
+   itself into `repeat(3, 1fr)` inside `@media (min-width: 720px)` above, and a
+   media query adds no specificity — a single-class override would depend purely on
+   source order. Two classes settle it outright. */
+.triad.triad--stack {
+  grid-template-columns: 1fr;
+  /* the base component is a centred 65ch column in the middle of the page; in a
+     split column it is neither centred nor measured — the column IS the measure */
+  max-width: none;
+  margin-inline: 0;
+  margin-top: 0;
+  gap: 0;
+  /* each party carries its own rule now, so the component-level one would draw a
+     second line on top of the first party's */
+  border-top: none;
+  padding-top: 0;
+}
+.triad.triad--stack::before { content: none; }
+.triad--stack > div {
+  border-top: 1px solid var(--border-subtle);
+  padding-block: var(--s-5);
+}
+/* Left, not centred: it closes a column, not a full-width section. */
+.triad--stack .triad__stake { text-align: left; }
+
+/* ---- .split__inner--top ----------------------------------------------------
+   `.split__inner` centres its two columns against each other, which is right when
+   the right column is a photograph of a fixed ratio. When it holds a component
+   whose height comes from its own content, centring floats both columns and the
+   H2 stops agreeing with the first row of the thing it introduces. */
+.split__inner--top { align-items: start; }
+
+/* The CTA is a third grid child so that mobile reads argument → ledger → action
+   (see the note in about/index.html §3). On desktop that alone put it in row 2
+   with the full `--s-9` column gap as a ROW gap, which left ~184px between the
+   paragraph it belongs to and the button — measured, and it read as an orphan.
+   Two declarations fix it: the right-hand component spans both rows, so row 1 is
+   only as tall as the prose instead of as tall as the taller column, and the row
+   gap drops to `--s-6`. The button lands ~32px under its own paragraph on desktop
+   and stays dead last on mobile. */
+@media (min-width: 960px) {
+  .split__inner--top { row-gap: var(--s-6); }
+  .split__inner--top > .triad--stack {
+    /* ⚠ `grid-column: 2` is NOT redundant, and leaving it out swapped the columns.
+       Grid places every item with a DEFINITE position before it auto-places the
+       rest. Give this one a `grid-row` and nothing else and it stops being
+       auto-placed: it claims row 1 / column 1 — the first free slot — and the
+       prose, still auto-placed, lands in column 2. The section rendered mirrored,
+       ledger left and argument right. Pinning the column is what keeps the
+       row-span from reordering the section. */
+    grid-column: 2;
+    grid-row: 1 / span 2;
+  }
+  /* ⚠ Measured: the gap under the paragraph came out at 96px, not the 32 the
+     row-gap asks for. `.section-ctas` carries its own `margin-top: var(--s-8)`
+     for the case it was built for — a button closing a full-width section — and
+     as a grid child that margin STACKS on the row gap. Same class of defect as
+     AB-14, where a `.section-media` margin stacked on two section paddings.
+     The grid owns the rhythm here, so the margin goes. */
+  .split__inner--top > .section-ctas { margin-top: 0; }
+}
+
+/* ---- .section-ctas--start --------------------------------------------------
+   The base row is centred, for a button closing a full-width section. Inside a
+   split column, centred means centred on half the page — which reads as a
+   mistake rather than a choice. */
+.section-ctas--start { justify-content: flex-start; }
 
 /* ---- 404 recovery list ----
    The one component the branded 404 needs that the system did not already have.
@@ -2070,7 +2233,7 @@ p { line-height: 1.6; max-width: 65ch; }
 .process__header {
   text-align: center;
   max-width: 720px;
-  margin: 0 auto var(--s-9);
+  margin: 0 auto var(--s-8);
 }
 
 .process__image {
@@ -2251,7 +2414,7 @@ p { line-height: 1.6; max-width: 65ch; }
 .proof__header {
   text-align: center;
   max-width: 720px;
-  margin: 0 auto var(--s-9);
+  margin: 0 auto var(--s-8);
 }
 
 .proof__emblems {
@@ -2541,7 +2704,7 @@ p { line-height: 1.6; max-width: 65ch; }
   padding-block: var(--s-section);
 }
 
-.faq__header { text-align: center; margin-bottom: var(--s-9); }
+.faq__header { text-align: center; margin-bottom: var(--s-8); }
 
 .faq__list {
   max-width: 880px;
@@ -2849,7 +3012,18 @@ p { line-height: 1.6; max-width: 65ch; }
 
 /* ---- Control (S3) ---- */
 .control { background-color: var(--surface-0); }
-.control__header { text-align: center; max-width: 760px; margin: 0 auto var(--s-9); }
+
+/* ---- 2026-08-19 · HEADER → CONTENT UNIFIED AT --s-8 -------------------------
+   Measured across all four pages: the gap between a section header and its first
+   content block was **96px on `.control__header`, `.process__header`, `.faq__header`
+   and `.proof__header`, but 64px on `.prose-band__h2`** — the same relationship at two
+   values, on the same page in `/evp`'s case. 64px wins because it is the value the
+   newer component already used and because the brief was to REDUCE. 12 headers across
+   the site drop 32px each.
+   ⚠ `.movement__h2` is deliberately EXEMPT at 32px. It is a manifesto heading whose
+   "content" is a single closing line, not a block of content — tightening is the point
+   there, and raising it to 64 would be standardising in the wrong direction. */
+.control__header { text-align: center; max-width: 760px; margin: 0 auto var(--s-8); }
 .control__h2 { margin-bottom: var(--s-4); }
 .control__intro { color: var(--text-secondary); font-size: var(--type-body-lg); }
 
@@ -2900,7 +3074,7 @@ p { line-height: 1.6; max-width: 65ch; }
 
 /* ---- Gains (S4) ---- */
 .gains { background-color: var(--surface-0); }
-.gains__header { text-align: center; max-width: 760px; margin: 0 auto var(--s-9); }
+.gains__header { text-align: center; max-width: 760px; margin: 0 auto var(--s-8); } /* unified 2026-08-19, see .control__header */
 .gains__h2 { margin-bottom: var(--s-4); }
 
 .gains__list {
@@ -4228,6 +4402,79 @@ a.vertical-card:hover .vertical-card__name::after { transform: translateX(4px); 
   text-align: left;
 }
 
+/* ---- .defs · a run of term + definition ON the prose column ----------------
+   /evp §6, added 2026-08-19 for EV-20. It was two rows of `.stack__item--mid`,
+   which measured IDENTICAL to §2's `--mid` tier — left 120, width 580, padding
+   48, font-size 16 on both — so the page's index and its detail were
+   indistinguishable by anything except one sentence of intro copy.
+
+   The detail run on that page (§3, §4, §5) is prose. This makes §6 the fourth
+   of it instead of a second index, which also leaves §2's `.stack` as the only
+   card grid on the page — the uniqueness `plan/06.Design-Direction.md` §6.3
+   assigns it as the page's signature.
+
+   ⚠ Elevation is declared NOWHERE here, deliberately. No surface, no border, no
+   shadow: the whole point is that this is prose, and a card is what made it
+   read as the index. Do not add a container to "group" the four — the shared
+   column and the spacing rhythm already do that.
+   ============================================================ */
+.defs {
+  /* The ch trap again, and this is the third component to need the conversion:
+     the run inherits the 16px body face while the column above it is set at
+     18px, so 65ch here is ~70px narrower than the prose it must line up with.
+     `calc(65ch * 18 / 16)` lands on 630.703px, verified by render against
+     .prose-band__body, .prose-band__aside, .consent-note and .figure-note —
+     all five now compute the same left edge at 1440.
+     ⚠ DESIGN.md states this column is 738.1px. That figure is WRONG; the real
+     computed value is 630.703px. Do not "fix" an alignment against 738. */
+  max-width: calc(65ch * 18 / 16);
+  margin-inline: auto;
+  /* ⚠ Found by render, not by reasoning: without this the first term collided
+     with the framing paragraph above it. `.prose-band__body` carries no bottom
+     margin of its own (its `+ .prose-band__body` rule only fires between two
+     bodies) and the run had no top margin, so the gap was ZERO while the gap
+     between items was 48px — the first heading read as part of the intro.
+     64px is deliberately MORE than the 48px between items: this break separates
+     two registers, the framing sentence from the run, and every heading in the
+     run must keep more space above it than below.
+     ⚠ 2026-08-19, spacing audit: was `--s-8` (64px), which made both the h2→intro and
+     the intro→run gaps 64 and gave the section no internal hierarchy. `--s-7` (48px) is
+     the value every other content-to-content gap on these three pages already uses
+     (measured: 12 of 14 such gaps). Still more than the 8px inside each pair. */
+  margin-top: var(--s-7);
+}
+
+/* Tight inside the pair, generous between pairs — the grouping is proximity,
+   not a box. */
+.defs__item + .defs__item { margin-top: var(--s-7); }
+
+.defs__term {
+  /* Body face at the prose size, not the editorial card title it used to be.
+     §3 already names a component inside prose this way ("**Mutual Ownership
+     Acquisition Technology** (MOAT) is…"), and `.prose-band__body strong`
+     resolves to exactly these two declarations. Same idiom, one system.
+     ⚠ Not accented: brandguide §7 "Controlled" permits the accent at one
+     fragment per section, and four magenta terms would be four accents
+     competing. */
+  font-family: var(--font-body);
+  font-size: var(--type-body-lg);
+  font-weight: 600;
+  line-height: 1.65;
+  color: var(--text-primary);
+  margin: 0 0 var(--s-2);
+}
+
+.defs__body {
+  font-size: var(--type-body-lg);
+  color: var(--text-secondary);
+  line-height: 1.65;
+  /* The run carries the measure; a second 65ch here would resolve against this
+     element's own font-size and re-introduce the indent the wrapper just fixed. */
+  max-width: none;
+  margin: 0;
+  text-wrap: pretty;
+}
+
 /* Required opt-in / consent lines. Replaces .calc__hedge's italic-disclaimer
    register. The rule is 1px and untinted — a heavier or coloured bar would be
    the callout cliché, and this is a statement of fact, not an alert. */
@@ -4285,6 +4532,78 @@ a.vertical-card:hover .vertical-card__name::after { transform: translateX(4px); 
 /* Spacing roles, so the three pages stop carrying hardcoded pixel values in
    style attributes. .section-media already owns its own bottom margin. */
 .section-media--spaced { margin-top: var(--s-7); }
+
+/* ---- .photo-band · UNUSED as of 2026-08-19, kept for the measurement it records --
+   Built for `/about` §2 and dropped the same hour: Marco saw it rendered and called
+   it — the overlaid version did not read. §2 is now `.split--reverse`. The component
+   is left here because its contrast table is the only place on this project that
+   records WHICH images can carry overlaid copy and which cannot, and because the
+   `object-position: left` reasoning will be needed again. Delete it if a second
+   sweep finds no consumer.
+   ---- a section whose copy sits ON the photograph ---------------
+   `/about` §2, 2026-08-19 (Marco: "o conteúdo da sessão não pode ir por cima da
+   imagem?"). It can, on THIS asset and essentially no other one on the site.
+
+   MEASURED before building, because the identical question failed on the hero image
+   an hour earlier. `about-hero.png` against `--text-primary` (#f8f9fc):
+     · left third   L= 20.1 → 17.34:1
+     · left 45%     L= 19.9 → 17.36:1
+     · whole image  L= 44.5 → 13.06:1
+     · WORST CASE: the brightest 24px letter-sized patch anywhere inside the left
+       45% is L=95.3 → 5.98:1, still over 4.5.
+   So NO SCRIM IS APPLIED, deliberately. The asset was rendered on 2026-08-11 with
+   its left third in deep shadow specifically to carry overlaid copy; darkening it
+   further would be solving a problem the photograph already solved.
+   ⚠ `about-data-economy.png` measures 2.24:1 in the same role. Do not reuse this
+   component with another image without running the same measurement.
+
+   WHY THE COPY DRIVES THE HEIGHT. At 16:9 in a 1184px container the band is 666px
+   tall and this section's copy (H2 + a 51-word AEO paragraph + a second paragraph +
+   the consent line) is taller than that. Fixing the ratio would have forced either a
+   crop of the asset or a truncation of the copy. Instead the section is an ordinary
+   padded block whose height comes from its text, and the photograph is absolutely
+   positioned to cover it — so the composition holds at any copy length, in any
+   language, at any font size.
+
+   ⚠ `object-position: left` IS THE LOAD-BEARING LINE. As the box gets taller than
+   16:9, `cover` has to discard width; left-anchored, it discards it from the LIT
+   RIGHT side and the dark copy zone survives every time. Centre or right anchoring
+   would eat the shadow and the text would start failing contrast as the viewport
+   changed — silently, and only at some sizes.
+   ⚠ Also why there is no `aspect-ratio` here: adding one would re-introduce the
+   16:9-into-a-narrower-box crop that lost an operator from `hiw-hero` on 2026-08-18.
+   ============================================================ */
+.photo-band {
+  position: relative;
+  overflow: hidden;
+  /* the photograph is the surface, so the section's own colour must not show */
+  background-color: var(--ink);
+}
+.photo-band__media {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+.photo-band__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: left center;
+  display: block;
+}
+.photo-band__inner { position: relative; z-index: 1; }
+/* 45% is the measured safe zone, not a taste call — see the contrast table above.
+   Below 960px the photograph cannot hold a column AND stay readable, so the copy
+   takes the full width and the image drops to a quiet backdrop. */
+.photo-band__copy { max-width: 100%; }
+@media (min-width: 960px) {
+  .photo-band__copy { max-width: 45%; }
+}
+/* The prose components inside carry the centred 630.7px measure by default, which
+   would push them out of a 45% column. The column IS the measure here. */
+.photo-band__copy .prose-band__h2 { text-align: left; margin-inline: 0; max-width: 20ch; }
+.photo-band__copy .prose-band__body,
+.photo-band__copy .consent-note { max-width: none; margin-inline: 0; }
 
 /* A .section-media that ENDS its section was stacking its own 96px bottom margin on
    top of the section's bottom padding AND the next section's top padding â up to

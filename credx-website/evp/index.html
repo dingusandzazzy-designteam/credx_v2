@@ -282,12 +282,12 @@
           <div class="stack__item stack__item--lead stack__item--photo" data-reveal>
             <img src="../images/evp-moat-tile.png" alt="" class="stack__item-media" width="1122" height="1402" loading="lazy" />
             <h3 class="gain__title">CredX MOAT</h3>
-            <p class="gain__body"><strong>Mutual Ownership Acquisition Technology</strong>, and it keeps the customer relationship inside your brand.</p>
+            <p class="gain__body"><strong>Mutual Ownership Acquisition Technology (MOAT)</strong>, and it keeps the customer relationship inside your brand.</p>
           </div>
           <div class="stack__item stack__item--lead stack__item--photo" data-reveal data-reveal-delay="1">
             <img src="../images/evp-daap-tile.png" alt="" class="stack__item-media" width="1122" height="1402" loading="lazy" />
             <h3 class="gain__title">DaaP</h3>
-            <p class="gain__body"><strong>Data as a Product</strong>, and it turns your transaction record into decisions you can act on.</p>
+            <p class="gain__body"><strong>Data as a Product (DaaP)</strong>, and it turns your transaction record into decisions you can act on.</p>
           </div>
           </div>
           <div class="stack__tier stack__tier--mid">
@@ -347,7 +347,7 @@
       <div class="container prose-band__inner">
         <h2 class="prose-band__h2" data-reveal-words>How the relationship <em class="accent">stays yours</em>.</h2>
         <p class="prose-band__body" data-reveal>
-          <strong>Mutual Ownership Acquisition Technology</strong> (MOAT) is the part of the stack that keeps value inside your brand. The credit, the value-back, and access to the data all resolve to your business rather than to a third party, and that is what makes the relationship durable. Everything the customer values carries your name, so the reason they return belongs to you.
+          MOAT is the part of the stack that keeps value inside your brand. The credit, the value-back, and access to the data all resolve to your business rather than to a third party, and that is what makes the relationship durable. Everything the customer values carries your name, so the reason they return belongs to you.
         </p>
         <p class="prose-band__aside" data-reveal data-reveal-delay="1">
           <a href="../about/" class="sub-link">The Movement Behind It</a>
@@ -508,40 +508,75 @@
            · "behavioural engine" — accurate, but it reads as something done TO
              the customer rather than for them.
          ============================================================ -->
-    <section id="platform" class="section control" aria-label="The rest of the platform">
-      <div class="container">
-        <div class="control__header">
-          <h2 class="control__h2" data-reveal-words>The parts that make <em class="accent">the rest work</em>.</h2>
-          <!-- EV-20 (Andrea, 2026-08-13): §2 and this section both enumerate the stack,
-               with nothing saying how they relate. Marco ruled 2026-08-18: §2 is the
-               index, this is the detail. This line is the only thing that says so. -->
-          <p class="control__intro" data-reveal data-reveal-delay="1">Four of the seven need more than a line. These are the ones that keep the loop running once the credit is in place.</p>
-        </div>
+    <!-- EV-20 · RESOLVED IN FORM, 2026-08-19 (Marco). Read this before touching §6.
+         ------------------------------------------------------------------------
+         Andrea, 2026-08-13: "This section lists 4 — is it supposed to be in the
+         place of the 'What the platform is made of' section?"
 
-        <!-- ⚠ EV-05 was recorded as closed by the §2 rebuild and was not: this
-             section still put FOUR cards into a 3-column grid, so Marketing sat
-             alone on row two. These four are peers within this section, so they
-             take the kit's even tier twice — 2 + 2, no hole. -->
-        <div class="stack">
-          <div class="stack__tier stack__tier--mid">
-          <div class="stack__item stack__item--mid" data-reveal>
-            <h3 class="gain__title">BoosT</h3>
-            <p class="gain__body">The reason a customer comes back sooner. Tiers, milestones, and cross-business offers that make the next visit worth making, funded by the value the last one created.</p>
+         It was answered on 2026-08-18 with the intro sentence below, and the
+         sentence was the ONLY thing distinguishing the index from the detail.
+         Measured in the browser at 1440 on 2026-08-19, that was not close to
+         enough — a §6 tile and a §2 `--mid` tile were dimensionally IDENTICAL:
+
+             §2 --mid tile   left=120  width=580  padding=48  font-size=16
+             §6 tile         left=120  width=580  padding=48  font-size=16
+
+         So §6 was not merely similar to the index, it WAS the index's middle
+         tier repeated, carrying four names that §2 had already listed in the
+         same shell. §2 height 1093px vs §6 826px: near-equal mass for sections
+         of deliberately unequal rank.
+
+         THE FIX IS THE PAGE'S OWN LOGIC, not a new idea. §2 is the index; §3,
+         §4, §5 and §6 are its four details — and §3/§4/§5 are all prose. §6 was
+         the only detail built as a card grid, which is exactly why it read as a
+         rival list. It now joins the prose register: the shared `.prose-band`
+         shell, the same centred 630.7px column, and `.defs` for the four
+         term + definition pairs. No card, no surface, no border. Rank is
+         carried by register, which is what the other three detail sections
+         already do.
+
+         Consequences, so they are not rediscovered:
+         · §2's `.stack` is now the ONLY card grid on the page, so the index
+           silhouette is unique — which is what `plan/06.Design-Direction.md`
+           §6.3 assigns it as this page's signature.
+         · EV-05 stays closed. There is no grid here any more, so there is no
+           row for Marketing to be orphaned on.
+         · NO COPY CHANGED. Every string below is byte-identical to what
+           shipped on 2026-08-18. `copy/evp.md` §6 is unaffected, so this does
+           not widen WP-10's sync.
+         · `plan/06.Design-Direction.md` and `DESIGN.md` both record §6 as
+           "`.stack` even 2+2". Both are now stale on that one line.
+         · The terms are NOT accented. Brandguide §7 "Controlled" allows the
+           accent at one fragment per section; four magenta terms would be four
+           accents competing.
+         ============================================================ -->
+    <section id="platform" class="section prose-band" aria-label="The rest of the platform">
+      <div class="container prose-band__inner">
+        <h2 class="prose-band__h2" data-reveal-words>The parts that make <em class="accent">the rest work</em>.</h2>
+        <p class="prose-band__body" data-reveal>Four of the seven need more than a line. These are the ones that keep the loop running once the credit is in place.</p>
+
+        <!-- `<h3>` is deliberate rather than a `<dl>`: the outline and the
+             per-component subheading are load-bearing for the page's SEO brief,
+             and `<dd>`'s UA `margin-inline-start: 40px` is the same trap that
+             has bitten this project three times. The term is styled as the
+             page's existing bold prose lead-in (body face, 600, primary), not
+             as a card title — §3 already names a component that way. -->
+        <div class="defs">
+          <div class="defs__item" data-reveal>
+            <h3 class="defs__term">BoosT</h3>
+            <p class="defs__body">The reason a customer comes back sooner. Tiers, milestones, and cross-business offers that make the next visit worth making, funded by the value the last one created.</p>
           </div>
-          <div class="stack__item stack__item--mid" data-reveal data-reveal-delay="1">
-            <h3 class="gain__title">MarketPlace</h3>
-            <p class="gain__body">A network of businesses that can run offers together. Your customers find reasons to spend beyond your four walls, and other businesses’ customers find you, without new infrastructure or a larger marketing budget.</p>
+          <div class="defs__item" data-reveal data-reveal-delay="1">
+            <h3 class="defs__term">MarketPlace</h3>
+            <p class="defs__body">A network of businesses that can run offers together. Your customers find reasons to spend beyond your four walls, and other businesses’ customers find you, without new infrastructure or a larger marketing budget.</p>
           </div>
+          <div class="defs__item" data-reveal>
+            <h3 class="defs__term">Orchestration</h3>
+            <p class="defs__body">The layer that keeps the other parts in step. Payments, data, offers, and partners coordinated so the customer meets one experience instead of several.</p>
           </div>
-          <div class="stack__tier stack__tier--mid">
-          <div class="stack__item stack__item--mid" data-reveal>
-            <h3 class="gain__title">Orchestration</h3>
-            <p class="gain__body">The layer that keeps the other parts in step. Payments, data, offers, and partners coordinated so the customer meets one experience instead of several.</p>
-          </div>
-          <div class="stack__item stack__item--mid" data-reveal data-reveal-delay="1">
-            <h3 class="gain__title">Marketing</h3>
-            <p class="gain__body">Every transaction becomes a reason to speak to that customer again. Offers built from what they actually bought, aimed at the next visit and a fuller basket.</p>
-          </div>
+          <div class="defs__item" data-reveal data-reveal-delay="1">
+            <h3 class="defs__term">Marketing</h3>
+            <p class="defs__body">Every transaction becomes a reason to speak to that customer again. Offers built from what they actually bought, aimed at the next visit and a fuller basket.</p>
           </div>
         </div>
 

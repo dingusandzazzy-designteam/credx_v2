@@ -243,8 +243,18 @@
 
         <!-- The photograph returns to the hero, framed and beside the copy rather
              than behind it. It was a full-bleed band below; the band is gone. -->
-        <div class="hero__frame" data-reveal-media>
-          <img src="../images/hiw-hero.png" alt="A customer approved for embedded lending at a merchant’s own checkout" width="1122" height="1402" loading="eager" />
+        <!-- `--focus-top` is mobile-crop insurance, measured not styled: this frame drops
+             to 16/10 below 960px, and the default centred crop sliced the tops off BOTH
+             heads — her hair above the eyebrows, his forehead. See style.css. No effect
+             at desktop, where the frame ratio equals the asset ratio. -->
+        <div class="hero__frame hero__frame--focus-top" data-reveal-media>
+          <!-- `hiw-hero-v2.png` replaces `hiw-hero.png` (Marco, 2026-08-19: "essa tá ruim").
+               Brief and the five specific failures it fixes: prompts-batch1.md §9.
+               Short version — the old frame had the two people IGNORING each other in a
+               period apothecary set, full-length, with dozens of labelled bottles behind
+               them. This one is a contemporary joinery showroom, both leaning into the
+               same phone, mid-shot. Alt is UNCHANGED: it is indexed copy. -->
+          <img src="../images/hiw-hero-v2.png" alt="A customer approved for embedded lending at a merchant’s own checkout" width="1122" height="1402" loading="eager" />
         </div>
       </div>
     </section>
