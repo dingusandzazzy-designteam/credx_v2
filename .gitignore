@@ -60,12 +60,22 @@ DESIGN.md
 #    browser need it to render a page?" Nothing below is referenced by any
 #    href/src/url in any shipped HTML/CSS/JS — verified before removal.
 #    All of it stays on disk; only git stops carrying it.
-scripts/          # .docx generators + image optimiser. Authoring tooling, and
-                  # they embed internal deliverable names and page context.
-design/           # internal design working docs (brandguide token extraction,
-                  # per-vertical accent proposal, type-scale notes, references).
-README.md         # stale: describes the Automotive vertical, names internal
-                  # skill paths, and documents a known production bug publicly.
-webflow.config.json  # Webflow CLI deploy config; exposes the Webflow siteId.
-                     # The four verticals are closed and client-owned, so this
-                     # is historical tooling, not part of any live build.
+#    ⚠ NOTE FOR WHOEVER EDITS THIS FILE NEXT: gitignore has NO inline comments.
+#    A `#` only opens a comment at the START of a line, so `scripts/  # why`
+#    is read as a literal pattern and silently matches nothing. The first
+#    version of this block was written that way and four of its five patterns
+#    were dead on arrival — caught by `git check-ignore -v`, which is the only
+#    way to know a pattern actually bites. Keep every comment on its own line.
+#
+# .docx generators + image optimiser. Authoring tooling, and they embed
+# internal deliverable names and page context.
+scripts/
+# Internal design working docs: brandguide token extraction, per-vertical
+# accent proposal, type-scale notes, references.
+design/
+# Stale: describes the Automotive vertical, names internal skill paths, and
+# documents a known production bug publicly.
+README.md
+# Webflow CLI deploy config; exposes the Webflow siteId. The four verticals are
+# closed and client-owned, so this is historical tooling, not a live build.
+webflow.config.json
