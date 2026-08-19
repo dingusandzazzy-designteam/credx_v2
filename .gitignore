@@ -48,3 +48,24 @@ PRODUCT.md
 DESIGN.md
 */PRODUCT.md
 */DESIGN.md
+# ⚠ The comment above stated the intent from the start, but the patterns only
+#    ever covered PRODUCT/DESIGN — the skill's OWN output directory was never
+#    listed. Result: on 2026-08-19 `.impeccable/critique/*.md` was committed and
+#    served publicly (HTTP 200, text/markdown) on the indexed surface. Fixed.
+.impeccable/
+
+# ── NON-FUNCTIONAL TO THE SERVED SITE — untracked 2026-08-19 (Marco).
+#    The rule this whole file exists for: every tracked file is served as public
+#    plain text. So the test for tracking is not "is it useful?" but "does the
+#    browser need it to render a page?" Nothing below is referenced by any
+#    href/src/url in any shipped HTML/CSS/JS — verified before removal.
+#    All of it stays on disk; only git stops carrying it.
+scripts/          # .docx generators + image optimiser. Authoring tooling, and
+                  # they embed internal deliverable names and page context.
+design/           # internal design working docs (brandguide token extraction,
+                  # per-vertical accent proposal, type-scale notes, references).
+README.md         # stale: describes the Automotive vertical, names internal
+                  # skill paths, and documents a known production bug publicly.
+webflow.config.json  # Webflow CLI deploy config; exposes the Webflow siteId.
+                     # The four verticals are closed and client-owned, so this
+                     # is historical tooling, not part of any live build.
