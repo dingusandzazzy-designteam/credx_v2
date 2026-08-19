@@ -205,12 +205,16 @@
          intent table permits the question form for informational pages.
          Decided 2026-08-10, reversible.
 
-         ✅ IMAGE WIRED 2026-08-11 — `hiw-hero.png` (1672×941, apothecary counter
-         in cool evening light, left third in deep shadow for the overlaid copy).
-         ⚠ THE CUSTOMER IS THE SUBJECT AND THE OPERATOR IS SECONDARY, deliberately.
-         That is what separates this hero from the Home's, where the owner leads and
-         the customer is received. If this is ever re-rendered, keep the protagonist
-         on the customer or the two heroes collapse into the same frame.
+         ✅ IMAGE RE-WIRED 2026-08-19 — `hiw-hero.png` (1122×1402, 4:5, ChatGPT/
+         gpt-image, run by Marco from the prompt in `prompts-batch1.md` §7.6).
+         Fixes the lost-operator defect: the 2026-08-11 master was graded and
+         composed for the OLD full-bleed hero and lost the operator entirely
+         under this page's `hero--split` 4:5 crop. Same apothecary sector, both
+         figures composed inside the vertical frame directly, no crop step.
+         A second candidate from the same batch is kept, unwired, at
+         `../images/hiw-hero-alt.png` if Marco ever wants to swap it in.
+         ⚠ THE CUSTOMER IS STILL THE SUBJECT AND THE OPERATOR IS STILL SECONDARY —
+         that is what separates this hero from the Home's, where the owner leads.
          ⚠ No `<picture>` and no WebP (Marco, 2026-08-11) — Webflow optimises, and a
          `<picture>` with no `<source>` is noise. Re-renders drop in under the same
          filename with no markup change.
@@ -240,7 +244,7 @@
         <!-- The photograph returns to the hero, framed and beside the copy rather
              than behind it. It was a full-bleed band below; the band is gone. -->
         <div class="hero__frame" data-reveal-media>
-          <img src="../images/hiw-hero.png" alt="A customer approved for embedded lending at a merchant’s own checkout" width="1672" height="941" loading="eager" />
+          <img src="../images/hiw-hero.png" alt="A customer approved for embedded lending at a merchant’s own checkout" width="1122" height="1402" loading="eager" />
         </div>
       </div>
     </section>
@@ -470,14 +474,17 @@
         </p>
         </div>
 
-        <!-- ✅ WIRED 2026-08-11 — `hiw-loop.png` (butcher counter, the wrapped parcel
-             handover with both pairs of hands on it, bright neutral daylight).
-             ⚠ THE SUBJECT IS THE HANDOVER OF GOODS, NOT THE PAYMENT — no terminal, no
-             till, no money in frame, on purpose. The loop is shown as the second
-             visit, which is the one honest photographic form this abstract section
-             has. Do not "improve" it by adding a payment moment. -->
+        <!-- ✅ IMAGE RE-WIRED 2026-08-19 — `hiw-loop.png` (1122×1402, 4:5,
+             ChatGPT/gpt-image, run by Marco from `prompts-batch1.md` §7.6).
+             Fixes the decapitation defect: the 2026-08-11 master framed the
+             two people at opposite far edges, which lost one of them under
+             `.split__media`'s 4:5 crop. Same butcher-counter handover, now a
+             genuinely tight two-shot composed directly for the vertical frame.
+             ⚠ THE SUBJECT IS STILL THE HANDOVER OF GOODS, NOT THE PAYMENT — no
+             terminal, no till, no money in frame, on purpose. Do not "improve" it
+             by adding a payment moment. -->
         <div class="split__media" data-reveal-media>
-          <img src="../images/hiw-loop.png" alt="Value-back earned in a merchant’s own brand returning to the same business" width="1672" height="941" loading="lazy" />
+          <img src="../images/hiw-loop.png" alt="Value-back earned in a merchant’s own brand returning to the same business" width="1122" height="1402" loading="lazy" />
         </div>
       </div>
     </section>

@@ -806,6 +806,44 @@ p { line-height: 1.6; max-width: 65ch; }
   display: block;
 }
 
+/* ---- .stack__item--photo · /evp §2 lead tiles, added 2026-08-19 -------------
+   The two --lead tiles (MOAT, DaaP) carry a photograph behind the same
+   title + body markup instead of a flat surface — bento in the literal
+   sense, not just in silhouette. A gradient does the contrast work so the
+   source photo only has to be quiet in its lower third, not pre-darkened. */
+.stack__item--photo {
+  position: relative;
+  overflow: hidden;
+  min-height: 22rem;
+  padding: var(--s-8) var(--s-6) var(--s-6);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  background-color: var(--surface-2);
+}
+.stack__item--photo .stack__item-media {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+.stack__item--photo::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(10, 12, 18, 0.88) 0%, rgba(10, 12, 18, 0.45) 55%, rgba(10, 12, 18, 0) 100%);
+  z-index: 1;
+}
+.stack__item--photo .gain__title,
+.stack__item--photo .gain__body {
+  position: relative;
+  z-index: 2;
+  color: #f8f9fc;
+}
+.stack__item--photo .gain__body { color: rgba(248, 249, 252, 0.92); }
+
 /* ---- .rail · /how-it-works signature (Phase 6 §6.3) ------------------------
    The page's whole subject is ORDER OF EVENTS, and it was rendering as four
    identical stacked cards — the same shape the Home uses for things that have
@@ -2554,6 +2592,11 @@ p { line-height: 1.6; max-width: 65ch; }
   padding: 0 var(--s-6) var(--s-5);
   color: var(--text-secondary);
   line-height: 1.6;
+  /* HW-18: `.faq__answer` is the <p> itself, so the global `p { max-width: 65ch }`
+     (line 228) was capping it at ~520px inside an 880px `.faq__list` card,
+     leaving a large empty gutter. Neither the card nor this box needs to
+     change shape — only the inherited ch cap, which was never intentional here. */
+  max-width: none;
 }
 
 /* `.definition` (a non-interactive shell for a single Q&A) was added and then
