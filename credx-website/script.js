@@ -767,7 +767,14 @@
       // Flattened: the links are visible, so say so.
       group.setAttribute('data-open', 'false');
       toggle.setAttribute('aria-expanded', 'true');
+      // ⚠ And it does NOTHING here — the click handler returns early. A button that
+      // is announced, focusable and inert is a small trap for keyboard and screen
+      // reader users: they tab to it, press Enter, and nothing happens. aria-disabled
+      // says so without removing it from the reading order, which would cost the
+      // group its label.
+      toggle.setAttribute('aria-disabled', 'true');
     } else {
+      toggle.removeAttribute('aria-disabled');
       setOpen(false);
     }
   }

@@ -3497,6 +3497,43 @@ a.vertical-card:hover .vertical-card__name::after { transform: translateX(4px); 
     border-top: 1px solid var(--border-subtle);
   }
   .nav--open .nav__link { font-size: var(--type-body); }
+
+  /* 🔴 TOUCH TARGETS — measured 2026-08-20 with getBoundingClientRect in the open
+     sheet: .nav__link 24px tall, .nav__group-toggle 24px, .nav__cta 30px, against
+     a 44px minimum. Only .nav__toggle passed, because it was raised 40 → 44 in
+     August for this exact reason — the standard was set and the LINKS were missed.
+     ⚠ Not introduced by the nav rebuild; the drawer already shipped these. What
+     the rebuild changed is exposure: the drawer now serves up to 959px instead of
+     767px, so more visitors meet them. Fixing rather than inheriting. */
+  .nav--open .nav__link,
+  .nav--open .nav__sublink {
+    display: flex;
+    align-items: center;
+    min-height: 44px;
+  }
+  /* The CTA sits OUTSIDE the drawer, in .nav__actions, so it needs its own rule.
+     ⚠ It is also covered by the (pointer: coarse) block below — but that block
+     cannot be verified with the available instrument (headless reports
+     coarse=false), and an unverifiable fix is not a fix. Below 960 the hamburger
+     is showing, which is the touch-oriented context by construction, so bind it
+     to the breakpoint as well and measure it there. Belt and braces, on purpose. */
+  .nav__cta {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+  }
+}
+
+/* The CTA sits in .nav__actions, outside the drawer, so it needs its own rule —
+   and the right signal for a touch target is the POINTER, not the viewport. A
+   1200px tablet is coarse and a 900px window on a laptop is not. */
+@media (pointer: coarse) {
+  .nav__cta,
+  .nav__join {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+  }
 }
 
 /* --- Hero: movement line + placeholder background --- */
@@ -4727,7 +4764,7 @@ a.vertical-card:hover .vertical-card__name::after { transform: translateX(4px); 
 
 .feepath__label {
   display: inline-block;
-  font-size: 0.8125rem;
+  font-size: var(--type-eyebrow);   /* was 0.8125rem — off-scale */
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -4826,7 +4863,7 @@ a.vertical-card:hover .vertical-card__name::after { transform: translateX(4px); 
   }
 }
 .ledger__side-label {
-  font-size: 0.8125rem;
+  font-size: var(--type-eyebrow);   /* was 0.8125rem — off-scale */
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -4896,7 +4933,7 @@ a.vertical-card:hover .vertical-card__name::after { transform: translateX(4px); 
   .sheet__row { grid-template-columns: 14rem 1fr; gap: var(--s-6); align-items: baseline; }
 }
 .sheet__term {
-  font-size: 0.8125rem;
+  font-size: var(--type-eyebrow);   /* was 0.8125rem — off-scale */
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -4996,7 +5033,7 @@ a.vertical-card:hover .vertical-card__name::after { transform: translateX(4px); 
 .nav__join {
   color: var(--text-secondary);
   text-decoration: none;
-  font-size: var(--type-small, 0.9375rem);
+  font-size: var(--type-caption);   /* was var(--type-small, …) — that token does not exist and the fallback was off-scale */
   white-space: nowrap;
 }
 .nav__join:hover { color: var(--text-primary); }
