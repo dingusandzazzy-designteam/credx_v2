@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0b0c16" />
+
+  <!-- ============================================================
+       /lenders — For Lenders · Batch 2 · built 2026-08-20
+       Copy: copy/lenders.md · Brief: seo/SEO-Delta-Batch2.md (Approved 2026-08-20)
+       Design: plan/06.Design-Direction.md §6.9 — 🆕 INSTITUTIONAL, the only page
+       of its type on the site.
+
+       🔴 THIS PAGE HAS NO TRAFFIC JOB AND NO CONVERSION JOB. Read that before
+       changing anything.
+       Measured 2026-08-20, live Semrush, database ca: `credit union fintech`
+       returns 10/mo. The entire Canadian credit-union-fintech space returns
+       nothing above 10, and all six provincial variants (ON · BC · AB · SK · MB ·
+       Atlantic) return ZERO. And by locked Discovery it has no form and no
+       aggressive CTA. A page with neither target is not a quieter sales page —
+       it is a different artifact, which is why §6.9 gave it its own type.
+       JUDGE IT ON CREDIBILITY, not on traffic and not on conversions.
+
+       WHAT "INSTITUTIONAL" MEANS HERE, CONCRETELY:
+       · NO photograph. Not in the hero, not in the body. If a later round asks
+         for "one image to warm it up", that request is the type being eroded.
+       · NO gradient band — `.final-cta--plain` exists for exactly this page.
+       · Document register: the asset is stated the way a term sheet would state
+         it, and the signature component (§2) is a sheet, not a card grid.
+       · Sitemap priority 0.5, lowered from 0.8 on 2026-08-20. An unranked
+         credibility page should not declare near-top priority.
+
+       ⚠ KEEP THE GEOGRAPHY IN §4 ANYWAY — a Canadian institutional reader needs
+       to see the provinces. That is credibility, not SEO. But build NO regional
+       sections, pages or H2s: they would rank for nothing and they would pad the
+       one page whose whole virtue is restraint.
+       ============================================================ -->
+
+  <!-- Light theme + toggle DEFERRED to a future update (2026-07-24). Dark only. -->
+
+  <!-- SEO budgets, measured: Title 42/≤60 · Meta 153/150–160 · H1 51/≤70. -->
+  <title>Embedded Lending for Credit Unions | CredX</title>
+  <meta name="description" content="A merchant-linked consumer credit asset class for Canadian credit unions and community lenders, with repayment support built into the transaction itself." />
+  <link rel="canonical" href="https://credx-tech.com/lenders" />
+
+  <meta property="og:title" content="Embedded Lending for Credit Unions | CredX" />
+  <meta property="og:description" content="A merchant-linked consumer credit asset class for Canadian credit unions and community lenders, with repayment support built into the transaction itself." />
+  <meta property="og:image" content="https://credx-tech.com/images/og.jpg" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://credx-tech.com/lenders" />
+
+  <link rel="icon" href="../assets/logo/credx-shape.svg" type="image/svg+xml" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" />
+
+  <link rel="stylesheet" href="../style.css" />
+
+  <!-- ⚠ FinancialProduct, per plan/05:222 and the brief. It describes the ASSET
+       the lender takes on, not a consumer product offered to the page's reader.
+       🔴 No `interestRate`, no `feesAndCommissionsSpecification`, no yield of any
+       kind — the lender rate is unconfirmed and a schema field is a published
+       claim like any other. -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FinancialProduct",
+    "name": "Merchant-linked consumer credit",
+    "provider": { "@type": "Organization", "name": "CredX", "url": "https://credx-tech.com/" },
+    "areaServed": { "@type": "Country", "name": "Canada" },
+    "audience": { "@type": "Audience", "audienceType": "Credit unions and community lenders" },
+    "description": "Consumer credit originated at the point of purchase through a merchant the borrower already has a relationship with, placed with Canadian credit unions and community lenders, with repayment support structured into the transaction."
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://credx-tech.com/" },
+      { "@type": "ListItem", "position": 2, "name": "For Lenders", "item": "https://credx-tech.com/lenders" }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <!-- Nav (G1) — identical IA to every built page. ⚠ `For Lenders` in the nav has
+       pointed at this URL from every page since the MVP and has 404'd the whole
+       time. Building this page is what closes that. -->
+  <nav class="nav" aria-label="Primary">
+    <div class="container nav__inner">
+      <a href="../" class="nav__logo" aria-label="CredX home">
+        <img src="../assets/logo/Credx-name.svg" alt="CredX" height="28" />
+      </a>
+      <div class="nav__links" data-nav-menu>
+        <a href="../how-it-works/" class="nav__link">How It Works</a>
+        <a href="../lenders/" class="nav__link nav__link--active" aria-current="page">For Lenders</a>
+        <a href="../about/" class="nav__link">About</a>
+        <a href="../contact/" class="nav__link">Contact Us</a>
+      </div>
+      <div class="nav__actions">
+        <a href="../contact/" class="btn btn-primary nav__cta" data-pending="booking-url">Book a Meeting</a>
+        <button class="nav__toggle" data-nav-toggle type="button" aria-label="Open menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <main id="top">
+
+    <!-- ============================================================
+         1 · OPENING — no hero image, no band. `.hero--compact` is the site's
+         photoless, type-led shell (shared kit, §6.5); what makes this the
+         Institutional type is the register and what follows, not a new shell.
+         ⚠ ONE QUIET CTA ONLY, above the fold. No booking push, no urgency, no
+         second CTA. The deeper path appears once, in §6.
+         ============================================================ -->
+    <section class="hero hero--compact" aria-label="Opening">
+      <div class="container hero__inner">
+        <div class="hero__copy">
+          <h1 class="hero__h1" data-reveal-words>A Merchant-Linked Asset Class for <em class="accent">Community Lenders</em></h1>
+          <p class="hero__sub" data-reveal data-reveal-delay="1">
+            CredX originates consumer credit at the point of purchase and places it with Canadian credit unions and community lenders. The credit is tied to a merchant relationship the borrower already has, and repayment support is structured into the transaction rather than added afterwards.
+          </p>
+          <div class="hero__ctas" data-reveal data-reveal-delay="2">
+            <a href="../contact/" class="btn btn-secondary">Talk to Us</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         2 · THE ASSET MODEL — and the signature component, `.sheet`.
+         An asset-class sheet in a term-sheet register: institutional readers
+         evaluate an asset, not a promise. Nothing else on the site ships in a
+         document register — that is the differentiation.
+         ✅ It also ABSORBS THE BLOCKED METRIC: the community-lender count that
+         has not arrived lives in ONE FIELD here, not in a headline that cannot
+         be written without it. The page ships complete and gains a figure later.
+         ⚠ `.sheet` was checked against style.css before naming — `.rail` was
+         already taken by /how-it-works and collided on 2026-08-20.
+         ============================================================ -->
+    <section id="asset" class="section" aria-label="The asset model">
+      <div class="container prose-band__inner">
+        <h2 class="prose-band__h2" data-reveal-words>What the asset <em class="accent">is</em>.</h2>
+        <p class="prose-band__body" data-reveal>Credit is extended to a consumer at the moment of a purchase, through a merchant that has an existing relationship with that customer. The lender holds the receivable. CredX originates, services the merchant relationship, and supplies the transaction data the lending decision is made on.</p>
+        <p class="prose-band__body" data-reveal data-reveal-delay="1">The borrower is not anonymous to the merchant, and the merchant has a commercial interest in the relationship continuing. That is the difference from unsecured consumer credit written at arm's length.</p>
+
+        <dl class="sheet" data-reveal data-reveal-delay="2">
+          <div class="sheet__row">
+            <dt class="sheet__term">Instrument</dt>
+            <dd class="sheet__value">Merchant-linked consumer credit, originated at the point of purchase.</dd>
+          </div>
+          <div class="sheet__row">
+            <dt class="sheet__term">Held by</dt>
+            <dd class="sheet__value">The lending partner. CredX originates and services; the receivable sits with the lender.</dd>
+          </div>
+          <div class="sheet__row">
+            <dt class="sheet__term">Underwriting input</dt>
+            <dd class="sheet__value">Transaction data from the originating merchant relationship, on explicit consumer opt-in.</dd>
+          </div>
+          <div class="sheet__row">
+            <dt class="sheet__term">Repayment support</dt>
+            <dd class="sheet__value">Structured into the same transaction flow that created the credit. Designed to reduce default rather than to price for it.</dd>
+          </div>
+          <div class="sheet__row">
+            <dt class="sheet__term">Geography</dt>
+            <dd class="sheet__value">Ontario, British Columbia, Alberta, Saskatchewan, Manitoba, and Atlantic Canada.</dd>
+          </div>
+          <!-- ⏸ {{PENDING:community-lender-count}} — owed by Kyle / Kendall. The
+               metric stays generic until supplied. This is the field §6.9 was
+               designed around: a blocked number costs one row here, where it
+               would have cost a headline anywhere else. -->
+          <div class="sheet__row" data-pending="community-lender-count">
+            <dt class="sheet__term">Lending partners</dt>
+            <dd class="sheet__value">Credit unions and community lenders across the regions above.</dd>
+          </div>
+        </dl>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         3 · RISK AND REPAYMENT SUPPORT
+         🔴 HEDGING IS MANDATORY HERE AND IT IS NOT STYLISTIC. "Designed to",
+         "structured to", "may improve". NEVER "reduces defaults by", never a
+         percentage, never a guarantee. This is the section most likely to drift
+         into a claim legal cannot stand behind.
+         ⚠ No performance figure exists on file, and none may be inferred from
+         the merchant-side numbers — they answer a different question.
+         ============================================================ -->
+    <section id="risk" class="section prose-band" aria-label="Risk and repayment support">
+      <div class="container prose-band__inner">
+        <h2 class="prose-band__h2" data-reveal-words>How repayment <em class="accent">is supported</em>.</h2>
+        <p class="prose-band__body" data-reveal>Repayment support is built into the same transaction flow that created the credit. Because the merchant relationship continues, the structure is designed to reduce default rather than to price for it.</p>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         4 · COMMUNITY VALUE — the emotional section of an unemotional page.
+         It stays understated on purpose.
+         ⚠ Quebec is DEFERRED and deliberately absent from the list. Do not add it.
+         ============================================================ -->
+    <section id="community" class="section prose-band" aria-label="Community value">
+      <div class="container prose-band__inner">
+        <h2 class="prose-band__h2" data-reveal-words>Value that stays in <em class="accent">the region that produced it</em>.</h2>
+        <p class="prose-band__body" data-reveal>The lending is placed with institutions in the communities where the transactions happen. Ontario, British Columbia, Alberta, Saskatchewan, Manitoba, and Atlantic Canada.</p>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         5 · COMPLIANCE — ⏸ CONSTRAINED BY AN OPEN HOLD. READ BEFORE EDITING.
+         SOC 2 has THREE PARTS SETTLED AND ONE PENDING (register §1, 2026-08-20):
+         · SETTLED — "Compliant", never "certified". The reason is definitional:
+           SOC 2 produces an auditor's attestation report; there is NO CERTIFICATE
+           TO HOLD. ⚠ The client's own written answer says "SOC2 certified" and it
+           is wrong. Do not adopt it back from them.
+         · SETTLED — nothing may imply CredX holds Type II. Type II belongs to the
+           lenders and partners, and on THIS page that audience IS the reader, so
+           the risk of blurring it is higher here than anywhere else on the site.
+         · SETTLED — PIPEDA is confirmed. Canadian law, no certification exists or
+           is required. It is stated affirmatively below, which is why this section
+           is not empty.
+         · 🔴 PENDING — that CredX holds Type I. Audrey is double-checking, overdue
+           since 2026-08-17. NOT WRITTEN HERE, BY DECISION, NOT OVERSIGHT. A
+           compliance claim is the one category where being wrong is expensive.
+           When it lands this is a one-sentence addition, not a rewrite.
+         ⚠ OSFI: plan/05:229 asks for an "OSFI alignment" claim. NOTHING ON FILE
+         SOURCES IT, and an alignment claim about a prudential regulator must be
+         sourced. Written below as the partners' own obligations, which is true
+         and unremarkable. Someone should confirm or drop the plan-doc line.
+         ============================================================ -->
+    <section id="compliance" class="section prose-band" aria-label="Regulatory posture">
+      <div class="container prose-band__inner">
+        <h2 class="prose-band__h2" data-reveal-words>Regulatory <em class="accent">posture</em>.</h2>
+        <p class="prose-band__body" data-reveal>CredX operates under PIPEDA, with explicit consumer opt-in on any data used in a lending decision. Lending partners hold their own regulatory obligations, and the structure is built to sit inside them rather than around them.</p>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         6 · SOFT CTA — one low-key invitation. Nothing more.
+         🔴 `.final-cta--plain` REMOVES THE GRADIENT BAND. §6.9 gives the
+         Institutional type a gradient budget of ZERO. Do not "restore" it to
+         match the other pages — matching them is precisely what this page must
+         not do.
+         ⚠ THE DEEPER PATH IS COMMENTED OUT ON PURPOSE. /lenders/partner does not
+         exist yet (it is the longer enquiry form, noindex, built with this batch).
+         A dead link on a credibility page addressed to institutions is worse than
+         no link. Uncomment it the day the form is live, not before.
+         ============================================================ -->
+    <section id="cta" class="section final-cta final-cta--plain" aria-label="If the asset class is of interest">
+      <div class="container final-cta__inner">
+        <div data-reveal>
+          <h2 class="final-cta__h2">If the asset class is of interest.</h2>
+          <p class="final-cta__body">A conversation, not a pitch.</p>
+          <div class="hero__ctas final-cta__ctas">
+            <a href="../contact/" class="btn btn-secondary">Talk to Us</a>
+            <!-- <a href="../lenders/partner/" class="btn btn-secondary">Lender Partner Enquiry</a> -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__inner footer__inner--sitemap">
+        <div class="footer__brand">
+          <img src="../assets/logo/Credx-name.svg" alt="CredX" height="32" style="margin-bottom: 20px;" />
+          <p class="footer__movement">A system you belong to, instead of one that owns you.</p>
+        </div>
+        <div>
+          <h4 class="footer__col-title">Explore</h4>
+          <div class="footer__links">
+            <a href="../how-it-works/" class="footer__link">How It Works</a>
+            <a href="../lenders/" class="footer__link">For Lenders</a>
+            <a href="../about/" class="footer__link">About</a>
+            <a href="../contact/" class="footer__link">Contact</a>
+            <a href="../learn/glossary/" class="footer__link">Glossary</a>
+          </div>
+        </div>
+        <div>
+          <h4 class="footer__col-title">Connect</h4>
+          <div class="footer__links">
+            <a href="https://www.linkedin.com/" class="footer__link" rel="noopener" target="_blank">LinkedIn</a>
+            <a href="../contact/" class="footer__link">Book a Meeting</a>
+          </div>
+        </div>
+        <div>
+          <h4 class="footer__col-title">Legal</h4>
+          <div class="footer__links">
+            <a href="../legal/" class="footer__link">Privacy</a>
+            <a href="../legal/" class="footer__link">Terms</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span>© 2026 CredX Tech Inc. · credx-tech.com</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.0.45/dist/lenis.min.js"></script>
+  <script src="../script.js"></script>
+</body>
+</html>

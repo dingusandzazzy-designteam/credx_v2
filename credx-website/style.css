@@ -4682,3 +4682,233 @@ a.vertical-card:hover .vertical-card__name::after { transform: translateX(4px); 
   margin-top: var(--s-7);
   text-align: center;
 }
+
+/* ---- .feepath — /merchants signature component (§6.9), 2026-08-20 ----------
+   Two routes through one transaction, the second one returning. STATIC: no
+   input control, no computed output.
+
+   🔴 It is deliberately NOT the Home's `.calc__`, which is an interactive
+   slider producing a single figure, and it is NOT a bento — §6.4 caps bento at
+   one per page and this page spends its budget here. Reproducing
+   `.proof__mosaic`'s scattered composition is explicitly out.
+
+   Built only from existing tokens: no new colour, type, radius, shadow or
+   motion. The one thing encoding meaning is DIRECTION — the return route
+   carries the accent border and an accent label, so the two paths are
+   distinguishable without reading them.
+   --------------------------------------------------------------------------- */
+.feepath__routes {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--s-5);
+  margin-top: var(--s-7);
+}
+@media (min-width: 960px) {
+  .feepath__routes { grid-template-columns: 1fr 1fr; gap: var(--s-6); }
+}
+
+.feepath__route {
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-card);
+  background-color: var(--surface-1);
+  padding: var(--s-6);
+}
+.feepath__route--return { border-color: var(--text-accent); }
+
+.feepath__label {
+  display: inline-block;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: var(--s-5);
+}
+.feepath__label--accent { color: var(--text-accent); }
+
+.feepath__steps {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  counter-reset: feepath;
+}
+.feepath__step {
+  counter-increment: feepath;
+  position: relative;
+  padding-left: var(--s-7);
+  padding-bottom: var(--s-5);
+  color: var(--text-secondary);
+  /* ⚠ NOT `65ch`. The ch trap has bitten this project three times — 65ch
+     resolves against THIS element's font-size, not the prose column's. These
+     steps sit in a half-width card and need no measure cap at all. */
+  max-width: none;
+}
+.feepath__step::before {
+  content: counter(feepath);
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: var(--s-6);
+  height: var(--s-6);
+  display: grid;
+  place-items: center;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--border-default);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+.feepath__route--return .feepath__step::before {
+  border-color: var(--text-accent);
+  color: var(--text-accent);
+}
+/* The connector between stations. Omitted on the last step so the route ends
+   rather than trailing off. */
+.feepath__step:not(.feepath__step--end)::after {
+  content: '';
+  position: absolute;
+  left: calc(var(--s-6) / 2);
+  top: var(--s-6);
+  bottom: var(--s-2);
+  width: 1px;
+  background-color: var(--border-default);
+}
+.feepath__route--return .feepath__step:not(.feepath__step--end)::after {
+  background-color: var(--text-accent);
+  opacity: 0.4;
+}
+.feepath__step--end {
+  padding-bottom: 0;
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+.feepath__closer {
+  margin-top: var(--s-7);
+  max-width: none;
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+/* ---- .ledger — /pos signature component (§6.9), 2026-08-20 ------------------
+   The same mechanism read from both sides of the ledger at once: the platform
+   on one side, its merchants on the other, paired row by row.
+
+   🔴 MIRRORED, NOT SEQUENTIAL. `/how-it-works`'s mechanics rail is a NUMBERED
+   progression through time. This has no order at all — the rows are pairs, not
+   steps, and there is deliberately no counter. If a number ever appears here,
+   the component has drifted into the other page's signature and the §6.9
+   acceptance test fails.
+
+   Only existing tokens: no new colour, type, radius, shadow or motion. The one
+   thing carrying meaning is the SIDE — the merchant column takes the accent, so
+   which side of the ledger you are reading is legible before the words are.
+   --------------------------------------------------------------------------- */
+.ledger__head { display: none; }
+@media (min-width: 960px) {
+  .ledger__head {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--s-6);
+    margin-top: var(--s-7);
+    padding-bottom: var(--s-4);
+    border-bottom: 1px solid var(--border-default);
+  }
+}
+.ledger__side-label {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+.ledger__side-label--accent { color: var(--text-accent); }
+
+.ledger__rows { display: grid; gap: var(--s-5); margin-top: var(--s-5); }
+@media (max-width: 959px) { .ledger__rows { margin-top: var(--s-7); } }
+
+.ledger__row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--s-3);
+  padding-bottom: var(--s-5);
+  border-bottom: 1px solid var(--border-subtle);
+}
+.ledger__row:last-child { border-bottom: 0; padding-bottom: 0; }
+@media (min-width: 960px) {
+  .ledger__row { grid-template-columns: 1fr 1fr; gap: var(--s-6); align-items: start; }
+}
+
+.ledger__cell {
+  /* ⚠ NOT `65ch`. The ch trap has bitten this project three times and it resolves
+     against THIS element's font-size, not the prose column's. These cells sit in
+     a half-width track and need no measure cap. */
+  max-width: none;
+  margin: 0;
+  color: var(--text-secondary);
+}
+/* On mobile the columns stack, so the side a cell belongs to stops being
+   positional and has to be said. The accent rule does that without adding a
+   label the desktop layout would then duplicate. */
+.ledger__cell--merchant {
+  color: var(--text-primary);
+  border-left: 2px solid var(--text-accent);
+  padding-left: var(--s-4);
+}
+@media (min-width: 960px) {
+  .ledger__cell--merchant { border-left: 0; padding-left: 0; }
+}
+
+/* ---- .sheet — /lenders signature component (§6.9), 2026-08-20 -------------
+   An asset-class sheet in a term-sheet register. Institutional readers evaluate
+   an asset, not a promise, and nothing else on this site ships in a document
+   register — that IS the differentiation for the Institutional page type.
+
+   ⚠ Name checked against style.css before use. `.rail` was taken by
+   /how-it-works and collided the same day; that is now a standing pre-flight.
+
+   It is a <dl>, so the same UA-default trap as the .rail <ol> applies: the
+   browser indents <dd> by 40px on its own. Both the indent and the margin go.
+   --------------------------------------------------------------------------- */
+.sheet {
+  margin: var(--s-7) 0 0;
+  padding: 0;
+  border-top: 1px solid var(--border-default);
+}
+.sheet__row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--s-2);
+  padding: var(--s-5) 0;
+  border-bottom: 1px solid var(--border-subtle);
+}
+@media (min-width: 720px) {
+  .sheet__row { grid-template-columns: 14rem 1fr; gap: var(--s-6); align-items: baseline; }
+}
+.sheet__term {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin: 0;
+}
+.sheet__value {
+  /* ⚠ NOT `65ch` — the ch trap resolves against THIS element, not the prose
+     column. The value track is already constrained by the grid. */
+  max-width: none;
+  margin: 0;
+  margin-inline-start: 0;   /* kills the UA's default <dd> indent */
+  color: var(--text-secondary);
+}
+
+/* ---- .final-cta--plain ----------------------------------------------------
+   🔴 The Institutional type (/lenders) has a gradient budget of ZERO (§6.9).
+   This strips the band and leaves the section's structure intact. Do not
+   "restore" the gradient to match the other pages — matching them is exactly
+   what this page must not do.
+   --------------------------------------------------------------------------- */
+.final-cta--plain {
+  background: var(--surface-1);
+  border-top: 1px solid var(--border-default);
+}

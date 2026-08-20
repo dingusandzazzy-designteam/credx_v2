@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0b0c16" />
+
+  <!-- ============================================================
+       /pos — For POS & ISV · Batch 2 · built 2026-08-20
+       Copy: copy/pos.md · Brief: seo/SEO-Delta-Batch2.md (Approved 2026-08-20)
+       Design: plan/06.Design-Direction.md §6.9 — Pillar–Sell, .hero--split shell
+       shared with /evp and /merchants. Separated from both by hero CONTENT
+       (the two-sided proposition) and by the signature component (§4).
+
+       🔴 FOUR RULES SPECIFIC TO THIS PAGE.
+
+       1 · THE EXPANSION RULE, EXACTLY. First use per page: "Point of Sale (POS)
+       systems and Independent Software Vendor (ISV) platforms". Every use after:
+       "POS and ISV". NEVER "ISVs" — not once, not in a subhead, not in alt text.
+
+       2 · NEVER NAME A POS OR ISV BRAND (CredX-Forbidden-Language.md:37) — no
+       Square, Helcim, Clover, or Toast, in copy or in imagery. ⚠ That rule's
+       rationale clause calls those platforms "targets, never partners"; the
+       premise was superseded by the 2026-07-17 client decision that created this
+       page. The NAMING ban stands; the posture does not apply here.
+
+       3 · THE TITLE AND H1 CARRY NEITHER ACRONYM, DELIBERATELY. The expansion
+       does not fit a 60-character title and an H1 carrying it would exceed 100.
+       "Software platforms" carries the ISV meaning in plain language and costs
+       nothing in search: `independent software vendor payments` and `isv payments
+       partnership` both measure ZERO. §1 performs the full expansion as body
+       copy. No rule is bent — do not relitigate this at build time.
+
+       4 · THE SIGNATURE IS MIRRORED, NOT SEQUENTIAL. §4's ledger pairs what the
+       platform gains against what its merchants gain. It must NOT resemble
+       /how-it-works' mechanics rail, which is a numbered progression through
+       time. Same shared grid kit, opposite logic. NO BENTO on this page.
+
+       ⚠ NO FAQPage, and that is a decision. seo/SEO-Delta-Batch2.md recommends
+       one and two real queries exist for it — but plan/05 specifies six sections,
+       adding a seventh is a content-architecture change, and FAQPage schema
+       without visible FAQ content on the page is against Google's own guidance.
+       The recommendation stays on file rather than being smuggled in here.
+       ============================================================ -->
+
+  <!-- Light theme + toggle DEFERRED to a future update (2026-07-24). Dark only. -->
+
+  <!-- SEO budgets, measured against these exact strings:
+       Title 52/≤60 · Meta 153/150–160 · H1 48/≤70.
+       Primary `point of sale lending` — 70/mo CA, and Semrush returns NO
+       competitive SERP at all for it, which in practice means uncontested. The
+       US mirror (210/mo, KD 20; `pos financing` 260/mo, KD 19) confirms the term
+       is real and low-difficulty rather than junk. This is the best organic bet
+       of the three Batch 2 pages, which says more about the other two than it
+       does about this one.
+       ⚠ THE SLUG IS NOT RATIFIED. `/pos` is D&Z's proposal; the term carrying the
+       volume is `point of sale lending`, so `/point-of-sale` belongs on the table.
+       Client decision, and it must land BEFORE the URL is indexed — a slug change
+       after indexing costs redirects. -->
+  <title>Point of Sale Lending for Software Platforms | CredX</title>
+  <meta name="description" content="Add embedded lending to your point of sale system or software platform, under your own brand. Your merchants recover on fees, and you gain the advantage." />
+  <link rel="canonical" href="https://credx-tech.com/pos" />
+
+  <meta property="og:title" content="Point of Sale Lending for Software Platforms | CredX" />
+  <meta property="og:description" content="Add embedded lending to your point of sale system or software platform, under your own brand. Your merchants recover on fees, and you gain the advantage." />
+  <meta property="og:image" content="https://credx-tech.com/images/og.jpg" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://credx-tech.com/pos" />
+
+  <link rel="icon" href="../assets/logo/credx-shape.svg" type="image/svg+xml" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" />
+
+  <link rel="stylesheet" href="../style.css" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Embedded point of sale lending for software platforms",
+    "provider": { "@type": "Organization", "name": "CredX", "url": "https://credx-tech.com/" },
+    "areaServed": { "@type": "Country", "name": "Canada" },
+    "serviceType": "Embedded lending for point of sale and software platforms",
+    "audience": { "@type": "Audience", "audienceType": "Point of sale systems and independent software vendor platforms" },
+    "description": "CredX supplies the credit facility, the capital, and the risk behind a platform's existing transaction flow, so the platform's merchants recover a share of what each transaction costs them."
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://credx-tech.com/" },
+      { "@type": "ListItem", "position": 2, "name": "For POS & ISV", "item": "https://credx-tech.com/pos" }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <!-- Nav (G1) — identical IA to every built page. /pos is not in it, for the same
+       reason /evp and /merchants are not: the built pages ship a 4-item MVP nav and
+       adding one page alone makes the nav jump between pages. The "Who We Serve"
+       dropdown ships when all three audience pages exist. -->
+  <nav class="nav" aria-label="Primary">
+    <div class="container nav__inner">
+      <a href="../" class="nav__logo" aria-label="CredX home">
+        <img src="../assets/logo/Credx-name.svg" alt="CredX" height="28" />
+      </a>
+      <div class="nav__links" data-nav-menu>
+        <a href="../how-it-works/" class="nav__link">How It Works</a>
+        <a href="../lenders/" class="nav__link">For Lenders</a>
+        <a href="../about/" class="nav__link">About</a>
+        <a href="../contact/" class="nav__link">Contact Us</a>
+      </div>
+      <div class="nav__actions">
+        <a href="../contact/" class="btn btn-primary nav__cta" data-pending="booking-url">Book a Meeting</a>
+        <button class="nav__toggle" data-nav-toggle type="button" aria-label="Open menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <main id="top">
+
+    <!-- ============================================================
+         1 · HERO — the two-sided proposition in one breath.
+         This is what separates the page from /merchants, which shares its shell
+         and leads with the money question.
+         ✅ RENDER LANDED 2026-08-20. Brief: prompts-batch2.md §2. Naming guard
+         verified by 3× crop — the monitor's manufacturer mark is present but
+         unresolvable, which prompts-reference.md §5 defines as a pass; the
+         whiteboard carries diagrams with no lettering. Card-terminal sweep clean.
+         ⚠ Constraint that must survive a re-render: THE VIEWER IS ON THE SOFTWARE
+         SIDE OF THE DESK. It is deliberately the coolest-lit image on the site.
+         ============================================================ -->
+    <section class="hero hero--split" aria-label="Hero">
+      <div class="container hero__inner">
+        <div class="hero__copy">
+          <h1 class="hero__h1" data-reveal-words>Embedded Point of Sale Lending, <em class="accent">Under Your Brand</em></h1>
+          <p class="hero__sub" data-reveal data-reveal-delay="1">
+            CredX adds an embedded lending layer to Point of Sale (POS) systems and Independent Software Vendor (ISV) platforms. Your merchants recover a share of what each transaction costs them, and they recover it through you.
+          </p>
+          <div class="hero__ctas" data-reveal data-reveal-delay="2">
+            <a href="../contact/" class="btn btn-primary">Explore a Partnership</a>
+            <a href="../how-it-works/" class="btn btn-secondary">See How It Works</a>
+          </div>
+        </div>
+        <div class="hero__frame" data-reveal-media>
+          <img src="../images/pos-hero.png" alt="A product lead at a software company reviewing work on a desktop monitor, a whiteboard of system diagrams behind her" width="1122" height="1402" loading="eager" />
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         2 · THE CHANNEL MODEL — CredX arrives as a value partner, not as a
+         competitor for the same seat. Copy: copy/pos.md §2.
+         ============================================================ -->
+    <section id="channel" class="section control" aria-label="The channel model">
+      <div class="container">
+        <div class="control__header">
+          <h2 class="control__h2" data-reveal-words>A layer underneath the platform, <em class="accent">not a rival to it</em>.</h2>
+          <p class="control__intro" data-reveal data-reveal-delay="1">CredX does not sell to your merchants and does not stand between you and them. It supplies the credit facility, the capital, and the risk, and the platform keeps the relationship it already owns.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         3 · INTEGRATION
+         🔴 NO INTEGRATION SPECIFICATION EXISTS IN THE REPO. This section stays at
+         the level of WHAT HAPPENS, never HOW. Do not invent an endpoint, an SDK,
+         a data contract, or a timeline — the first developer-facing claim written
+         here becomes a commitment nobody has scoped.
+         ============================================================ -->
+    <section id="integration" class="section prose-band" aria-label="Integration">
+      <div class="container prose-band__inner">
+        <h2 class="prose-band__h2" data-reveal-words>What the integration <em class="accent">asks of you</em>.</h2>
+        <p class="prose-band__body" data-reveal>The platform exposes the transaction event; CredX handles origination, funding, and servicing behind it. The lending experience is white-labelled under the platform's brand or the merchant's, as the platform prefers.</p>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         4 · MERCHANT ADVANTAGE — THE TWO-SIDED RAIL (SIGNATURE COMPONENT, §6.9).
+         The same mechanism read from both sides of the ledger at once. The channel
+         pitch is irreducibly two-audience and prose cannot hold two columns of
+         consequence simultaneously.
+         🔴 MIRRORED, NOT SEQUENTIAL. /how-it-works' mechanics rail is a numbered
+         progression through time; this has no order at all. Same kit, opposite
+         logic. If a number ever appears on these rows, the component has drifted
+         into the other page's signature.
+         ⚠ Data language is ACCESS, never OWN (retired 2026-08-12, standing QA item).
+         🔴 Asserts NO redemption boundary — unsettled, client-only.
+         ============================================================ -->
+    <section id="advantage" class="section ledger" aria-label="What each side gains">
+      <div class="container">
+        <div class="control__header">
+          <h2 class="control__h2" data-reveal-words>One mechanism, <em class="accent">two sides of the ledger</em>.</h2>
+        </div>
+
+        <div class="ledger__head" aria-hidden="true">
+          <span class="ledger__side-label">The platform gains</span>
+          <span class="ledger__side-label ledger__side-label--accent">Its merchants gain</span>
+        </div>
+
+        <div class="ledger__rows">
+          <div class="ledger__row" data-reveal>
+            <p class="ledger__cell">A reason to stay that a competing platform cannot match on price.</p>
+            <p class="ledger__cell ledger__cell--merchant">A share of what each transaction costs them, returning.</p>
+          </div>
+          <div class="ledger__row" data-reveal data-reveal-delay="1">
+            <p class="ledger__cell">Value-back running inside the platform's own experience.</p>
+            <p class="ledger__cell ledger__cell--merchant">A value-back programme carrying the merchant's own name.</p>
+          </div>
+          <div class="ledger__row" data-reveal data-reveal-delay="2">
+            <p class="ledger__cell">Visibility into the transaction behaviour of its merchant base.</p>
+            <p class="ledger__cell ledger__cell--merchant">Access to structured intelligence from their own customer base.</p>
+          </div>
+          <!-- ⚠ This row is INDICATIVE until §5's partner terms are confirmed. -->
+          <div class="ledger__row" data-reveal data-reveal-delay="3" data-pending="partner-terms">
+            <p class="ledger__cell">A revenue relationship that grows with merchant volume.</p>
+            <p class="ledger__cell ledger__cell--merchant">Credit at checkout funded and risk-carried by CredX.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         5 · PARTNER PROGRAM — ⏸ BLOCKED, ships indicative.
+         🔴 {{PENDING:partner-terms}} — owed by the client. Do not state a revenue
+         share, a tier, or a threshold. The copy states the SHAPE without the
+         numbers so the section is honest today and gains detail later.
+         ⚠ Do not reuse /merchants §6's pricing language — different counterparty,
+         different economics, and that section is blocked on its own number.
+         ============================================================ -->
+    <section id="program" class="section prose-band" aria-label="Partner program">
+      <div class="container prose-band__inner">
+        <h2 class="prose-band__h2" data-reveal-words>How the partnership <em class="accent">works commercially</em>.</h2>
+        <p class="prose-band__body" data-reveal data-pending="partner-terms">CredX earns from the lending it funds. The platform participates in that, on terms set per partnership rather than from a rate card.</p>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         6 · SOFT CTA — one low-key invitation. Nothing more.
+         ============================================================ -->
+    <section id="cta" class="section final-cta" aria-label="Explore a partnership">
+      <div class="container final-cta__inner">
+        <div data-reveal>
+          <h2 class="final-cta__h2">If your merchants would gain from this.</h2>
+          <p class="final-cta__body">A conversation about fit, before anything technical.</p>
+          <div class="hero__ctas final-cta__ctas">
+            <a href="../contact/" class="btn btn-primary">Explore a Partnership</a>
+            <a href="../merchants/" class="btn btn-secondary">What Merchants Recover</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__inner footer__inner--sitemap">
+        <div class="footer__brand">
+          <img src="../assets/logo/Credx-name.svg" alt="CredX" height="32" style="margin-bottom: 20px;" />
+          <p class="footer__movement">A system you belong to, instead of one that owns you.</p>
+        </div>
+        <div>
+          <h4 class="footer__col-title">Explore</h4>
+          <div class="footer__links">
+            <a href="../how-it-works/" class="footer__link">How It Works</a>
+            <a href="../lenders/" class="footer__link">For Lenders</a>
+            <a href="../about/" class="footer__link">About</a>
+            <a href="../contact/" class="footer__link">Contact</a>
+            <a href="../learn/glossary/" class="footer__link">Glossary</a>
+          </div>
+        </div>
+        <div>
+          <h4 class="footer__col-title">Connect</h4>
+          <div class="footer__links">
+            <a href="https://www.linkedin.com/" class="footer__link" rel="noopener" target="_blank">LinkedIn</a>
+            <a href="../contact/" class="footer__link">Book a Meeting</a>
+          </div>
+        </div>
+        <div>
+          <h4 class="footer__col-title">Legal</h4>
+          <div class="footer__links">
+            <a href="../legal/" class="footer__link">Privacy</a>
+            <a href="../legal/" class="footer__link">Terms</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span>© 2026 CredX Tech Inc. · credx-tech.com</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.0.45/dist/lenis.min.js"></script>
+  <script src="../script.js"></script>
+</body>
+</html>

@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0b0c16" />
+
+  <!-- ============================================================
+       /merchants — For Merchants · Batch 2 · built 2026-08-20
+       Copy: copy/merchants.md · Brief: seo/SEO-Delta-Batch2.md (Approved 2026-08-20)
+       Design: plan/06.Design-Direction.md §6.9 — Pillar–Sell, .hero--split shell
+       shared with /evp, separated by hero content architecture and by the
+       signature component below.
+
+       🔴 THE THREE RULES THAT BIND THIS PAGE HARDER THAN ANY OTHER.
+
+       1 · THE FEE PHRASE IS ALLOWED, CONDITIONALLY.
+       CredX-Forbidden-Language.md:34 bans "payment processing" as the operator's
+       cost line. Marco ruled 2026-08-20 that the §3 exception covers it HERE,
+       because the fee is what the merchant's EXISTING processor charges — their
+       stack, not ours. THE CONDITION IS BINDING: the phrase may appear only
+       naming that existing charge, and always in a gain frame. "Recover what you
+       pay" is compliant. "You lose 3% to processing fees" is not.
+       ⚠ It cannot be quarantined in metadata either — §5 of that file puts
+       titles, metas, alt text and schema inside scope.
+
+       2 · THE PAGE OPENS BY EXPLAINING, NOT BY PITCHING.
+       The target's Canadian SERP is ~90% editorial — canada.ca #1, Retail
+       Council #2, Reddit, Forbes, Lightspeed. A conversion page enters that SERP
+       only if it answers the question first. §2's fee path IS that answer, which
+       is why the signature component and the ranking requirement are the same
+       object. Cutting the explanation to reach the pitch faster removes the only
+       reason this page can rank.
+
+       3 · NO CLAIM ABOUT WHERE VALUE MAY BE REDEEMED.
+       The redemption boundary is unsettled and only the client can settle it —
+       the Home says "closed-loop", /evp sells "spend beyond your four walls".
+       This page asserts no edge at all, exactly as /how-it-works §4 does.
+       ============================================================ -->
+
+  <!-- Light theme + toggle DEFERRED to a future update (2026-07-24). Dark is the only
+       theme. This page never had a FOUC script or a toggle; do not add one. -->
+
+  <!-- SEO budgets, measured against these exact strings, not re-derived:
+       Title 46/≤60 · Meta 152/150–160 · H1 51/≤70.
+       ⚠ Primary is `credit card processing rates and fees` — 170/mo, KD 23,
+       COMMERCIAL intent. It replaced `credit card processing fees` (210/mo,
+       KD 40, informational) on 2026-08-20: near-identical demand at roughly
+       half the difficulty, with the intent a conversion page wants.
+       🔴 DO NOT chase `merchant account canada` (70/mo, CPC $33.76, KD 13) or
+       `merchant services canada` (140/mo, CPC $19.78). They are the best numbers
+       in the whole study and they are MERCHANT-ACQUIRING queries — ranking there
+       presents CredX as a payments provider, banned by :31 and untrue besides. -->
+  <title>Credit Card Processing Fees, Recovered | CredX</title>
+  <meta name="description" content="Canadian merchants pay to reach their own customers. See how embedded lending turns credit card processing fees into value that returns to the business." />
+  <link rel="canonical" href="https://credx-tech.com/merchants" />
+
+  <!-- Open Graph — OG inherits Title/Meta, kept in parity as on /evp. -->
+  <meta property="og:title" content="Credit Card Processing Fees, Recovered | CredX" />
+  <meta property="og:description" content="Canadian merchants pay to reach their own customers. See how embedded lending turns credit card processing fees into value that returns to the business." />
+  <meta property="og:image" content="https://credx-tech.com/images/og.jpg" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://credx-tech.com/merchants" />
+
+  <link rel="icon" href="../assets/logo/credx-shape.svg" type="image/svg+xml" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" />
+
+  <link rel="stylesheet" href="../style.css" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Interchange recovery for merchants",
+    "provider": { "@type": "Organization", "name": "CredX", "url": "https://credx-tech.com/" },
+    "areaServed": { "@type": "Country", "name": "Canada" },
+    "serviceType": "Embedded lending and interchange recovery",
+    "description": "CredX places an embedded credit facility underneath the transactions a business already takes, so a share of what those transactions cost in interchange returns to the business that earned the sale."
+  }
+  </script>
+
+  <!-- FAQPage — method per the Batch-1 precedent. Real question volume is thin
+       (`what is point of sale financing` 20/mo, `what is embedded lending` 10/mo),
+       so the remaining entries are objections adapted from client-reviewed copy.
+       NO PAA WAS FABRICATED. -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is interchange, in plain terms?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Interchange is the largest part of what a business pays on a card sale. It is set by the competing credit facility that issued the customer's card and deducted before the sale settles. It funds a programme the business pays for and does not control." }
+      },
+      {
+        "@type": "Question",
+        "name": "Does the checkout change for my customers?",
+        "acceptedAnswer": { "@type": "Answer", "text": "No. The transaction flow the business runs today is unchanged, and no new hardware is required at the counter." }
+      },
+      {
+        "@type": "Question",
+        "name": "Who carries the credit risk?",
+        "acceptedAnswer": { "@type": "Answer", "text": "CredX funds the credit and carries the risk, together with community lender partners. The lending stays off the business's balance sheet." }
+      },
+      {
+        "@type": "Question",
+        "name": "What does it cost to install?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Nothing to install and nothing to run. CredX earns from the lending itself, so the model earns when the business recovers." }
+      },
+      {
+        "@type": "Question",
+        "name": "Does this work with my current point of sale system or software platform?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes. CredX integrates with Point of Sale (POS) systems and Independent Software Vendor (ISV) platforms, so the existing transaction flow is preserved." }
+      }
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://credx-tech.com/" },
+      { "@type": "ListItem", "position": 2, "name": "For Merchants", "item": "https://credx-tech.com/merchants" }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <!-- Nav (G1) — identical IA to /evp, /about and /how-it-works.
+       ⚠ /merchants IS NOT IN THE NAV, for the same reason /evp is not: the built
+       pages ship a 4-item MVP nav, and adding one page alone makes the nav jump
+       between pages. The "Who We Serve" dropdown (renamed from "Who It's For" on
+       2026-08-20 — the original broke the contractions ban) groups /merchants,
+       /lenders and /pos and ships when all three exist.
+       ⚠ PATHS ARE RELATIVE, DELIBERATELY — both live surfaces serve the REPO
+       ROOT, so credx-website sits at /credx-website/ and absolute hrefs resolve
+       off-site. -->
+  <nav class="nav" aria-label="Primary">
+    <div class="container nav__inner">
+      <a href="../" class="nav__logo" aria-label="CredX home">
+        <img src="../assets/logo/Credx-name.svg" alt="CredX" height="28" />
+      </a>
+      <div class="nav__links" data-nav-menu>
+        <a href="../how-it-works/" class="nav__link">How It Works</a>
+        <a href="../lenders/" class="nav__link">For Lenders</a>
+        <a href="../about/" class="nav__link">About</a>
+        <a href="../contact/" class="nav__link">Contact Us</a>
+      </div>
+      <div class="nav__actions">
+        <!-- ⚠ {{PENDING:booking-url}} owed by Kyle since 2026-07-20; falls back to
+             /contact meanwhile, as on every other page. -->
+        <a href="../contact/" class="btn btn-primary nav__cta" data-pending="booking-url">Book a Meeting</a>
+        <button class="nav__toggle" data-nav-toggle type="button" aria-label="Open menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <main id="top">
+
+    <!-- ============================================================
+         1 · HERO — Pillar–Sell, .hero--split, CTA above the fold.
+         Copy: copy/merchants.md §1.
+         ⚠ The H1 carries the keyword and the sub carries the belief. The
+         stronger opening sentence ("stop paying to reach the customers you
+         already earned") contains no query; the Home already runs this split.
+         🔴 IMAGE IS A PLACEHOLDER SLOT — no render exists and none may be
+         commissioned without clearing the no-card-terminal rule (Marco,
+         2026-08-19: a card machine is the competitor's device, no page).
+         ============================================================ -->
+    <section class="hero hero--split" aria-label="Hero">
+      <div class="container hero__inner">
+        <div class="hero__copy">
+          <h1 class="hero__h1" data-reveal-words>Recover What You Pay in <em class="accent">Credit Card Processing Fees</em></h1>
+          <p class="hero__sub" data-reveal data-reveal-delay="1">
+            Every card sale carries a fee that leaves the business and does not come back. CredX puts an embedded lending layer underneath the same transaction, so a share of that value returns to the business that earned it.
+          </p>
+          <div class="hero__ctas" data-reveal data-reveal-delay="2">
+            <a href="../contact/" class="btn btn-primary">See What You Could Recover</a>
+            <a href="../how-it-works/" class="btn btn-secondary">See How It Works</a>
+          </div>
+        </div>
+        <!-- ✅ RENDER LANDED 2026-08-20. Brief: prompts-batch2.md §1.
+             Naming guard VERIFIED, not assumed (prompts-reference.md §5): the plant
+             tags were cropped and upscaled 2.6× and are blank cards — no lettering
+             resolves anywhere. Card-terminal sweep: clean, foreground and background.
+             ⚠ The constraint that must survive any re-render: THE ROOM IS THE
+             SUBJECT and the operator is small in frame. It is a wide establishing
+             shot precisely because five slots on this site are already counters. -->
+        <div class="hero__frame" data-reveal-media>
+          <img src="../images/merchants-hero.png" alt="An independent garden centre in mid-morning trade, the owner moving a loaded stock trolley down an aisle of potted plants" width="1122" height="1402" loading="eager" />
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         2 · THE FEE PATH — THE SIGNATURE COMPONENT, AND THE PAGE'S SEO ENGINE.
+         Copy: copy/merchants.md §2.
+         Two routes through one transaction, the second one returning. Static,
+         no input control.
+         🔴 IT IS NOT THE HOME'S .calc__ — that is an interactive slider
+         producing a single figure. It is NOT A BENTO; §6.4 caps bento at one
+         per page and this page's budget is spent on this component.
+         ⚠ Built from the shared grid kit (§6.5), never a page-local grid.
+         ⚠ This section is why the page can rank. Do not shorten it to reach
+         the pitch faster.
+         ============================================================ -->
+    <section id="fee-path" class="section feepath" aria-label="Where the fee goes">
+      <div class="container">
+        <div class="control__header">
+          <h2 class="control__h2" data-reveal-words>Where the fee goes today, and <em class="accent">where it goes next</em>.</h2>
+          <p class="control__intro" data-reveal data-reveal-delay="1">On a card transaction, a share of every sale is deducted before the business sees it. Most of that share is interchange, set by the competing credit facility and collected on the way through. It funds a programme the business pays for and does not control.</p>
+        </div>
+
+        <div class="feepath__routes">
+          <div class="feepath__route" data-reveal>
+            <span class="feepath__label">Today</span>
+            <ol class="feepath__steps">
+              <li class="feepath__step">The customer pays.</li>
+              <li class="feepath__step">The transaction clears.</li>
+              <li class="feepath__step">Interchange is deducted.</li>
+              <li class="feepath__step">The value settles with the competing credit facility.</li>
+              <li class="feepath__step feepath__step--end">The business receives the remainder.</li>
+            </ol>
+          </div>
+
+          <div class="feepath__route feepath__route--return" data-reveal data-reveal-delay="1">
+            <span class="feepath__label feepath__label--accent">With CredX</span>
+            <ol class="feepath__steps">
+              <li class="feepath__step">The customer pays.</li>
+              <li class="feepath__step">The transaction clears through an embedded credit facility.</li>
+              <li class="feepath__step">CredX funds the credit and carries the risk.</li>
+              <li class="feepath__step">A share of the recovered value returns to the business.</li>
+              <li class="feepath__step feepath__step--end">It arrives in the business's own brand.</li>
+            </ol>
+          </div>
+        </div>
+
+        <p class="feepath__closer" data-reveal>Same sale. Same checkout. The difference is which direction the value travels afterwards.</p>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         3 · ACCESS TO YOUR CUSTOMER DATA
+         Copy: copy/merchants.md §3.
+         🔴 RETITLED FROM plan/05:210's "Own your customer data", which is the
+         OWNERSHIP framing Kyle and Audrey retired 2026-08-12 (ClickUp
+         86camz57g). Access language, never ownership. Standing QA item on all
+         copy, including already-approved pages. The plan doc was corrected in
+         place on 2026-08-20.
+         ✅ The 186 line lands here. It was client-ratified 2026-08-14 and then
+         ORPHANED — Mau parked it "outside Batch 1" and no batch picked it up;
+         verified 2026-08-20 that it appeared on no page of the site.
+         🔴 Never reintroduce the 5 C's (Ownest's framing, and the client
+         explicitly retired it). Never write "data points".
+         ============================================================ -->
+    <section id="data" class="section prose-band" aria-label="Access to your customer data">
+      <div class="container prose-band__inner">
+        <h2 class="prose-band__h2" data-reveal-words>The intelligence from your own customer base, <em class="accent">back where it belongs</em>.</h2>
+        <p class="prose-band__body" data-reveal>CredX manages the data infrastructure; the business accesses structured intelligence drawn from its own customer base. Purchase patterns, return rates, and value earned per customer, presented as decisions rather than exports. Your business name, our infrastructure underneath it.</p>
+        <p class="prose-band__body" data-reveal data-reveal-delay="1">The intelligence draws on 186 data sources across five categories: transaction, demographic, behavioural, credit and financial, and lifestyle — tied to the individual customer rather than to an aggregated cohort.</p>
+        <p class="prose-band__aside" data-reveal data-reveal-delay="2">Customer data is handled under PIPEDA, on explicit opt-in.</p>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         4 · THE VALUE-BACK LOOP
+         Copy: copy/merchants.md §4.
+         🔴 ASSERTS NO REDEMPTION BOUNDARY. Do not write "only with you" and do
+         not write "anywhere". /how-it-works §4 sets the precedent and claims
+         nothing about the edge. Andrea's "only redeemable with you" was removed
+         on 2026-08-18 and does not come back.
+         ⚠ HW-20: the contrast set is POINTS and STATEMENT CREDIT — about the
+         FORM the value takes and who delivers it, not about portability.
+         ============================================================ -->
+    <section id="loop" class="section control" aria-label="The value-back loop">
+      <div class="container">
+        <div class="control__header">
+          <h2 class="control__h2" data-reveal-words>Value that comes back <em class="accent">carrying your name</em>.</h2>
+          <p class="control__intro" data-reveal data-reveal-delay="1">The credit at checkout is branded as the business, not as CredX and not as a competing credit facility. Customers earn value in dollars — not points, and not a statement credit — and the programme runs under the business's own identity.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         5 · POS AND ISV FIT
+         Copy: copy/merchants.md §5.
+         ⚠ EXPANSION RULE: full expansion on first use per page, short form
+         after. NEVER "ISVs".
+         🔴 Never name a POS or ISV brand (CredX-Forbidden-Language.md:37) —
+         no Square, Helcim, Clover, or Toast, in copy or in imagery.
+         ⚠ The ../pos/ link assumes the slug. It is NOT ratified; if the client
+         picks /point-of-sale, this href moves with it.
+         ============================================================ -->
+    <section id="fit" class="section prose-band" aria-label="Point of sale and software platform fit">
+      <div class="container prose-band__inner">
+          <h2 class="prose-band__h2" data-reveal-words>It fits the system <em class="accent">you already run</em>.</h2>
+          <p class="prose-band__body" data-reveal>CredX integrates with Point of Sale (POS) systems and Independent Software Vendor (ISV) platforms, so the transaction flow the business runs today does not change. POS and ISV partners carry the integration; the operator carries nothing new.</p>
+          <!-- ⚠ .sub-link, not an invented class. `.text-link` was drafted here and
+               does not exist in style.css — shipping a class with no rule is how a
+               link silently loses its treatment. .sub-link is the site's existing
+               inline forward link (style.css:292) and carries its own arrow. -->
+          <a href="../pos/" class="sub-link" data-reveal data-reveal-delay="1">See How CredX Works With POS and ISV Platforms</a>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         6 · PRICING — ⏸ BLOCKED ON ONE NUMBER, AND IT SHIPS ANYWAY.
+         Copy: copy/merchants.md §6.
+         🔴 {{PENDING:lender-rate}} — owed by the client. DO NOT HARDCODE "11%".
+         The copy below states the STRUCTURE without the rate, so the section is
+         honest today and gains one sentence later rather than being rewritten.
+         ⚠ Do not substitute the 85% interchange figure here — it is an estimate,
+         headline-only, and it answers a different question.
+         ============================================================ -->
+    <section id="pricing" class="section prose-band" aria-label="How the model pays for itself">
+      <div class="container prose-band__inner">
+          <h2 class="prose-band__h2" data-reveal-words>How the model <em class="accent">pays for itself</em>.</h2>
+          <p class="prose-band__body" data-reveal data-pending="lender-rate">CredX funds the credit facility and carries the credit risk. The business pays nothing to install it and nothing to run it. CredX earns from the lending itself, at a rate set with the lending partner, so the model only earns when the business recovers.</p>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         7 · CTA
+         Copy: copy/merchants.md §7.
+         ⚠ CTA LABEL CHANGED FROM THE SPEC, DELIBERATELY. plan/05:214 and the
+         ClickUp task both give "See what you'd recover" — a contraction, banned
+         in customer-facing copy. The house already solved this sentence:
+         /how-it-works ships "See What CredX Could Return for Your Business".
+         Same construction applied. ⚠ If the CLIENT wrote that string verbatim,
+         the swap needs their nod.
+         ============================================================ -->
+    <section id="cta" class="section final-cta" aria-label="See what the transaction could return">
+      <div class="container final-cta__inner">
+        <div data-reveal>
+          <h2 class="final-cta__h2">See what the transaction could return.</h2>
+          <p class="final-cta__body">A short conversation, your own volume, and a figure you can check.</p>
+          <div class="hero__ctas final-cta__ctas">
+            <a href="../contact/" class="btn btn-primary">See What You Could Recover</a>
+            <a href="../how-it-works/" class="btn btn-secondary">See the Mechanics</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer (G2) — identical IA to every other page, paths relative.
+       ⚠ ../learn/glossary/ and ../legal/ do not exist yet; kept because every
+       other page carries them. ../lenders/ resolves once this batch ships. -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__inner footer__inner--sitemap">
+        <div class="footer__brand">
+          <img src="../assets/logo/Credx-name.svg" alt="CredX" height="32" style="margin-bottom: 20px;" />
+          <p class="footer__movement">A system you belong to, instead of one that owns you.</p>
+        </div>
+        <div>
+          <h4 class="footer__col-title">Explore</h4>
+          <div class="footer__links">
+            <a href="../how-it-works/" class="footer__link">How It Works</a>
+            <a href="../lenders/" class="footer__link">For Lenders</a>
+            <a href="../about/" class="footer__link">About</a>
+            <a href="../contact/" class="footer__link">Contact</a>
+            <a href="../learn/glossary/" class="footer__link">Glossary</a>
+          </div>
+        </div>
+        <div>
+          <h4 class="footer__col-title">Connect</h4>
+          <div class="footer__links">
+            <a href="https://www.linkedin.com/" class="footer__link" rel="noopener" target="_blank">LinkedIn</a>
+            <a href="../contact/" class="footer__link">Book a Meeting</a>
+          </div>
+        </div>
+        <div>
+          <h4 class="footer__col-title">Legal</h4>
+          <div class="footer__links">
+            <a href="../legal/" class="footer__link">Privacy</a>
+            <a href="../legal/" class="footer__link">Terms</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span>© 2026 CredX Tech Inc. · credx-tech.com</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.0.45/dist/lenis.min.js"></script>
+  <script src="../script.js"></script>
+</body>
+</html>
