@@ -86,21 +86,42 @@
   </script>
 </head>
 <body>
-  <!-- Nav (G1) — identical IA to every built page. ⚠ `For Lenders` in the nav has
-       pointed at this URL from every page since the MVP and has 404'd the whole
-       time. Building this page is what closes that. -->
+  <!-- Nav (G1) — REBUILT 2026-08-20, identical on all nine pages.
+       ⚠ The comment that stood here said this page "IS NOT IN THE NAV". That was
+       true when the page was built this morning and is false now: the audience
+       group ships because all three of its destinations exist. Corrected rather
+       than left to mislead the next reader. -->
   <nav class="nav" aria-label="Primary">
     <div class="container nav__inner">
       <a href="../" class="nav__logo" aria-label="CredX home">
         <img src="../assets/logo/Credx-name.svg" alt="CredX" height="28" />
       </a>
       <div class="nav__links" data-nav-menu>
+        <!-- ⚠ ORDER AND LABELS ARE THE LOCKED SITEMAP'S OWN (plan/04), not a preference.
+             Rebuilt 2026-08-20: /evp enters the nav after being navigationally orphaned
+             since it shipped — its only inbound link on the whole site was one mid-body
+             button on /about. `For Lenders` moves OUT of the top level and into the
+             group below; it was a top-level item only because /evp had no slot.
+             ⚠ The `Learn` group (hub · blog · glossary · data-economy · case studies)
+             is NOT here: all of its destinations are still 404. It ships when they exist. -->
+        <a href="../about/" class="nav__link">The Movement</a>
+        <a href="../evp/" class="nav__link">Embedded Value Platform</a>
         <a href="../how-it-works/" class="nav__link">How It Works</a>
-        <a href="../lenders/" class="nav__link nav__link--active" aria-current="page">For Lenders</a>
-        <a href="../about/" class="nav__link">About</a>
+        <!-- Audience group. Ships now because all three destinations exist as of
+             `62a5f9e`; it could not ship before, which is why the nav stayed at four
+             items through Batch 1. -->
+        <div class="nav__group" data-nav-group>
+          <button type="button" class="nav__link nav__group-toggle nav__link--active" aria-expanded="false" aria-controls="nav-audiences" data-nav-group-toggle>Who We Serve</button>
+          <div class="nav__submenu" id="nav-audiences" data-nav-submenu>
+            <a href="../merchants/" class="nav__sublink">For Merchants</a>
+            <a href="../lenders/" class="nav__sublink nav__sublink--active" aria-current="page">For Lenders</a>
+            <a href="../pos/" class="nav__sublink">For POS &amp; ISV</a>
+          </div>
+        </div>
         <a href="../contact/" class="nav__link">Contact Us</a>
       </div>
       <div class="nav__actions">
+        <a href="../join/" class="nav__join">Join</a>
         <a href="../contact/" class="btn btn-primary nav__cta" data-pending="booking-url">Book a Meeting</a>
         <button class="nav__toggle" data-nav-toggle type="button" aria-label="Open menu" aria-expanded="false">
           <span></span><span></span><span></span>

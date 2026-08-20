@@ -733,3 +733,67 @@
     link.addEventListener('click', function (event) { event.preventDefault(); });
   });
 })();
+
+/* ============================================================
+   CredX Website — nav audience group (dropdown)
+   Added 2026-08-20 with the nav rebuild.
+
+   🔴 ONE OWNER FOR THE STATE. `data-open` on the group is the single source of
+   truth; CSS reads it and never opens the menu on its own. There is no :hover
+   rule, on purpose — hover-only menus are unreachable by touch and keyboard,
+   and a CSS-opened menu would contradict aria-expanded.
+
+   Below 960 the submenu is always visible (see style.css), so aria-expanded is
+   kept truthful across the breakpoint instead of being left lying at "false"
+   while every link is on screen.
+   ============================================================ */
+(function () {
+  var group = document.querySelector('[data-nav-group]');
+  if (!group) return;
+  var toggle = group.querySelector('[data-nav-group-toggle]');
+  // ⚠ 959 — MUST match .nav__toggle's hide breakpoint in style.css, which moved
+  // 768 → 960 on 2026-08-20 when the nav grew to five items plus a group. This
+  // value and those four CSS breakpoints are ONE decision; move them together.
+  var mq = window.matchMedia('(max-width: 959px)');
+  if (!toggle) return;
+
+  function setOpen(open) {
+    group.setAttribute('data-open', open ? 'true' : 'false');
+    toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+  }
+
+  function syncToBreakpoint() {
+    if (mq.matches) {
+      // Flattened: the links are visible, so say so.
+      group.setAttribute('data-open', 'false');
+      toggle.setAttribute('aria-expanded', 'true');
+    } else {
+      setOpen(false);
+    }
+  }
+  syncToBreakpoint();
+  (mq.addEventListener ? mq.addEventListener.bind(mq, 'change') : mq.addListener.bind(mq))(syncToBreakpoint);
+
+  toggle.addEventListener('click', function (e) {
+    if (mq.matches) return;            // flattened; the toggle is a label
+    e.preventDefault();
+    setOpen(group.getAttribute('data-open') !== 'true');
+  });
+
+  document.addEventListener('click', function (e) {
+    if (mq.matches) return;
+    if (!group.contains(e.target)) setOpen(false);
+  });
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key !== 'Escape' || mq.matches) return;
+    if (group.getAttribute('data-open') === 'true') {
+      setOpen(false);
+      toggle.focus();                  // never strand focus inside a closed menu
+    }
+  });
+
+  group.querySelectorAll('.nav__sublink').forEach(function (link) {
+    link.addEventListener('click', function () { if (!mq.matches) setOpen(false); });
+  });
+})();

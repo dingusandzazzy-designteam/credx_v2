@@ -495,7 +495,17 @@ p { line-height: 1.6; max-width: 65ch; }
   font-size: var(--type-caption);
 }
 
-@media (min-width: 768px) {
+/* ⚠ THE NAV'S DESKTOP THRESHOLD MOVED 768 → 960 ON 2026-08-20, and every rule
+   that keyed off 768 moved with it. Reason, measured by rendering at 820: the
+   nav went from four flat items to FIVE plus an audience group on the same day,
+   and "Embedded Value Platform" alone is 22 characters. At 820 the row overflowed
+   — the CTA was cut off and the logo pushed out of frame. Tightening the gap was
+   not enough and shrinking the type would have been papering over it. The honest
+   fix is that a bigger nav collapses to the sheet sooner.
+   🔴 THESE FOUR BREAKPOINTS ARE ONE DECISION. If any of them moves again, all of
+   them move: .nav__links display · .nav__toggle display · the sheet block · the
+   audience-group flatten (and its matchMedia twin in script.js). */
+@media (min-width: 960px) {
   .nav__links { display: inline-flex; }
 }
 
@@ -3468,9 +3478,9 @@ a.vertical-card:hover .vertical-card__name::after { transform: translateX(4px); 
 .nav--open .nav__toggle span:nth-child(2) { opacity: 0; }
 .nav--open .nav__toggle span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
 
-@media (min-width: 768px) { .nav__toggle { display: none; } }
+@media (min-width: 960px) { .nav__toggle { display: none; } }
 
-@media (max-width: 767px) {
+@media (max-width: 959px) {
   .nav--open .nav__links {
     display: flex;
     flex-direction: column;
@@ -4911,4 +4921,125 @@ a.vertical-card:hover .vertical-card__name::after { transform: translateX(4px); 
 .final-cta--plain {
   background: var(--surface-1);
   border-top: 1px solid var(--border-default);
+}
+
+/* ---- Nav: the audience group (dropdown) + the /join secondary action --------
+   Added 2026-08-20 with the nav rebuild. The site had NO dropdown component
+   before this; the nav stayed at four flat items through Batch 1 because the
+   group's destinations did not exist yet.
+
+   🔴 CLICK, NOT HOVER, and that is deliberate. A hover-only menu is unreachable
+   by touch and by keyboard, and mixing CSS :hover with a JS `aria-expanded`
+   state produces a menu that is visually open while announcing itself closed.
+   One state, one owner: the `data-open` attribute, written by script.js.
+   --------------------------------------------------------------------------- */
+.nav__group { position: relative; display: inline-flex; }
+
+/* The toggle is a <button> wearing .nav__link, so it must be stripped back to
+   the anchor's own box or it inherits the UA button chrome. */
+.nav__group-toggle {
+  background: none;
+  border: 0;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s-2);
+}
+.nav__group-toggle::before {
+  /* The affordance. A caret drawn in text costs no icon and rotates with state. */
+  content: '';
+  order: 2;
+  width: 0;
+  height: 0;
+  border-inline: 4px solid transparent;
+  border-top: 4px solid currentColor;
+  transition: transform var(--duration-fast) var(--ease-out-quart);
+}
+[data-nav-group][data-open="true"] .nav__group-toggle::before { transform: rotate(180deg); }
+
+.nav__submenu {
+  display: none;
+  position: absolute;
+  top: calc(100% + var(--s-4));
+  left: 50%;
+  transform: translateX(-50%);
+  min-width: 15rem;
+  padding: var(--s-3);
+  background-color: var(--surface-2);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-card-sm);
+  box-shadow: var(--shadow-2);
+  z-index: 60;
+}
+[data-nav-group][data-open="true"] .nav__submenu { display: grid; }
+
+.nav__sublink {
+  display: block;
+  padding: var(--s-3) var(--s-4);
+  border-radius: var(--radius-small);
+  color: var(--text-secondary);
+  text-decoration: none;
+  white-space: nowrap;
+}
+.nav__sublink:hover { color: var(--text-primary); background-color: var(--surface-3); }
+/* ⚠ The active state is NOT colour alone. Colour-only "you are here" was a real
+   WCAG 1.4.1 failure on this site's nav underline, found 2026-08-18. */
+.nav__sublink--active {
+  color: var(--text-primary);
+  box-shadow: inset 2px 0 0 var(--text-accent);
+}
+
+/* /join is a quiet text action beside the CTA, never a button — Marco,
+   2026-08-19: the meeting keeps the CTA, Join sits beside it. */
+.nav__join {
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: var(--type-small, 0.9375rem);
+  white-space: nowrap;
+}
+.nav__join:hover { color: var(--text-primary); }
+
+/* ---- below 960: the group flattens ----------------------------------------
+   Inside the open mobile sheet there is no room for a second level and no
+   reason for one. The submenu is always visible and the toggle becomes a
+   section label. script.js keeps aria-expanded truthful across the breakpoint
+   rather than leaving it lying at "false" while the links are on screen. */
+/* ⚠ 767, NOT 959. This was written as 959 and was WRONG: `.nav__links` becomes
+   inline-flex at 768 and `.nav__toggle` hides at 768, so the horizontal nav
+   starts there. At 959 the flattened, full-width group would have been dropped
+   into a horizontal row for a 192px band. Caught by rendering at 1100. */
+@media (max-width: 959px) {
+  .nav__group { display: block; width: 100%; }
+  .nav__group-toggle { cursor: default; color: var(--text-muted); }
+  .nav__group-toggle::before { display: none; }
+  .nav__submenu {
+    display: grid;
+    position: static;
+    transform: none;
+    min-width: 0;
+    padding: 0 0 0 var(--s-4);
+    background: none;
+    border: 0;
+    box-shadow: none;
+  }
+  .nav__sublink { padding-inline: 0; }
+  .nav__join { display: none; }  /* the sheet already lists it; two entries is noise */
+}
+
+/* ---- Nav density between 768 and 1279 -------------------------------------
+   Found by rendering at 1100 on 2026-08-20: five multi-word labels ("Embedded
+   Value Platform" alone is 22 characters) at a 32px gap wrapped EVERY item onto
+   two lines. The nav grew from four items to five plus a group on the same day,
+   so this band had never been exercised.
+   ⚠ `white-space: nowrap` here is safe in a way it was not on `.btn` — below 768
+   the links stack full-width in the mobile sheet, so nowrap cannot force a
+   min-content wider than the viewport. That was the 2026-08-18 mobile P0 and it
+   is a different situation.
+   --------------------------------------------------------------------------- */
+.nav__link { white-space: nowrap; }
+@media (min-width: 960px) and (max-width: 1279px) {
+  .nav__links { gap: var(--s-4); }
+  .nav__join { display: none; }
 }
