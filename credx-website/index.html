@@ -432,7 +432,16 @@
                  ⚠ Note the top is arithmetically 83%, not 85%. That is inherited from the
                  approved figures; do not "fix" it to 85% without the client, because that
                  would move a number they approved. -->
-            <span class="calc__output-number" data-calc-output-yearly><span data-calc-low>$172,800</span><span class="calc__output-sep"> – </span><span data-calc-high>$360,000</span></span>
+            <!-- ↩ RANGE SET AS A HIERARCHY, 2026-08-20 (Marco). The first attempt put
+                 both ends at display size on one line; at 1440 it wrapped to two lines
+                 and stopped reading as one figure. The floor now sits above as a small
+                 line with the connecting word, and the top keeps the display weight.
+                 ⚠ Known trade, made deliberately: this re-anchors the EYE on the top of
+                 the band. What the client objected to was the floor being ABSENT — it is
+                 present and legible now. Do not delete the low line to "clean up" the
+                 number; it is the whole point of the change. -->
+            <span class="calc__range-low"><span data-calc-low>$172,800</span> to</span>
+            <span class="calc__output-number" data-calc-output-yearly><span data-calc-high>$360,000</span></span>
             <span class="calc__output-yearly"><em class="accent">per year</em></span>
             <p class="calc__hedge">
               Recovery runs 40 to 85% of standard interchange, so the figure above is a range rather than a single outcome. Results vary by volume and card mix. Based on roughly $36K interchange per $1M with competing credit facilities, against $6K per $1M with CredX.

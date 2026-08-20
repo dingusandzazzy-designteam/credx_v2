@@ -5194,3 +5194,19 @@ a.vertical-card:hover .vertical-card__name::after { transform: translateX(4px); 
 @media (hover: hover) and (pointer: fine) {
   .voice-card__support > * { min-height: 0; }
 }
+
+/* ---- .calc__range-low — the floor of the recovery range, 2026-08-20 --------
+   Marco's call after the first attempt: both ends at display size wrapped to two
+   lines and read as two numbers instead of one range. The floor drops to a small
+   line above, carrying the connecting word, and the top end keeps the display
+   weight so the output still has a single focal figure.
+   ⚠ It is a NUMBER, not a label — no uppercase, no letter-spacing. Digits get
+   worse, not better, from eyebrow treatment.
+   --------------------------------------------------------------------------- */
+.calc__range-low {
+  display: block;
+  font-size: var(--type-caption);
+  font-weight: 500;
+  color: var(--text-muted);
+  margin-bottom: var(--s-1);
+}
