@@ -5043,3 +5043,117 @@ a.vertical-card:hover .vertical-card__name::after { transform: translateX(4px); 
   .nav__links { gap: var(--s-4); }
   .nav__join { display: none; }
 }
+
+/* ---- Three Voices: card fixes + the mobile stack, 2026-08-20 ---------------
+   Reported by Marco ("os cards tão com problema"), then reproduced. ⚠ Reproducing
+   it needed a real pointer: headless reports `hover: none, pointer: coarse`, so it
+   renders the TOUCH branch, where the supporting text stays in flow and the layout
+   is a different one. Emulate with
+   --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4
+   or you are looking at a layout no desktop visitor sees.
+
+   THE CHAIN, measured at 1440 with a fine pointer:
+   1 · `align-items: start` let each card size to its own content, so the three
+       cards ended at three different heights (card 2 hung ~67px below its siblings).
+   2 · The content block is BOTTOM-anchored, so three card heights put the three
+       role labels at three heights — 261 / 330 / 305. The 2026-07-27 quote
+       height-reservation was added to fix exactly this and could not: it equalises
+       the QUOTE, while the ragged CARD is what moves the label.
+   3 · Worst consequence: the text block floated up out of the bottom third — and
+       the scrim is deliberately bottom-weighted (0.34 at mid-height). "THE MERCHANT"
+       landed on the bright shop window and was effectively unreadable.
+   One cause, three symptoms. Equalising the cards fixes all three, and the
+   reservation stays as belt-and-braces.
+   --------------------------------------------------------------------------- */
+@media (min-width: 720px) {
+  /* ⚠ This overrides the `align-items: start` above, whose stated reason was that a
+     hovered card grows while its siblings hold. That trade was the wrong way round:
+     it bought hover-stability at the cost of a permanently ragged row. Row growth on
+     hover is a deliberate expansion; three mismatched cards is a defect on every
+     view. */
+  .voices__grid { align-items: stretch; }
+  .voices__grid > li { display: flex; }
+  .voice-card { flex: 1; }
+}
+
+/* ---- below 720: image on top, text below, separated (Marco, 2026-08-20) -----
+   The overlay reads as one composed frame on desktop. On a phone the card is
+   narrow enough that a 4-line quote over a face wins neither — the portrait is
+   cropped to a letterbox and the type still fights the image. Stacked, each does
+   its own job.
+   ⚠ The scrim is REMOVED here, not faded: with no text over the image there is
+   nothing for it to protect, and leaving it would just dim the portrait. */
+@media (max-width: 719px) {
+  .voice-card {
+    min-height: 0;
+    display: block;
+    overflow: visible;
+    background-color: transparent;
+    border-radius: 0;
+  }
+  /* The media layer was absolutely positioned to sit behind the type. Returned to
+     the flow as a real block; its <img> is still absolute, so it needs a
+     positioned parent and an explicit ratio to have any height at all. */
+  .voice-card__media {
+    position: relative;
+    inset: auto;
+    display: block;
+    aspect-ratio: 4 / 3;
+    border-radius: var(--radius-card);
+    overflow: hidden;
+  }
+  /* The masters are 4:5 portraits and the faces sit in the upper half, so a
+     centred 4:3 crop cut the tops of the heads off. Bias the window upward
+     rather than changing the ratio — a full 4:5 stack is ~537px per card on a
+     430px phone, which is three screens of scroll for three quotes. */
+  .voice-card__media img { object-position: 50% 18%; }
+  .voice-card__scrim { display: none; }
+  .voice-card__content {
+    padding: var(--s-5) 0 0;   /* the separation between image and text */
+    gap: var(--s-2);
+  }
+  /* The desktop reservation exists to align labels across a 3-up row. Stacked,
+     there is no row to align to and it would only open a gap under each label. */
+  .voice-card__line { min-height: 0; }
+}
+
+/* The content block must sit at the BOTTOM of the card — that is where the scrim
+   protects, and Marco's 2026-07-27 ruling deliberately keeps the TOP of the
+   gradient clear so the portraits stay visible. `.voice-card` sets
+   `justify-content: flex-end` for this, and it was not surviving; `margin-top:
+   auto` on the item itself is the robust form and cannot be defeated by a later
+   rule on the container.
+   ⚠ Do NOT "fix" a low text block by darkening the top of the scrim. That reverses
+   a ruling made on the renders: "a parte de cima do degradê está muito escura,
+   deixando os rostos sem visibilidade." */
+.voice-card__content { margin-top: auto; }
+
+/* ---- 🔴 THE ACTUAL DEFECT BEHIND THE RAGGED CARDS — found by measurement -----
+   2026-08-20. Marco reported the cards looked wrong; equalising their heights was
+   necessary and not sufficient. Measured with getBoundingClientRect at 1400 on an
+   emulated fine pointer:
+
+     card1 h=461  roleTop=386  supportH=236
+     card2 h=461  roleTop=457  supportH=165
+     card3 h=461  roleTop=433  supportH=189
+
+   The cards ARE equal now. The ROLE LABELS are 71px apart — because
+   `.voice-card__support` NEVER COLLAPSES. It is `opacity: 0`, so it is invisible,
+   and it is still occupying 165–236px of the card. Three different support
+   lengths give three different reserved heights, which push the bottom-anchored
+   content up by three different amounts.
+
+   WHY: `grid-template-rows: 0fr` does not collapse a grid item on its own. The
+   row resolves as `minmax(auto, 0fr)`, and `auto` is the item's content height
+   unless the item's automatic minimum size is zeroed. The 2026-07-27 fix moved
+   `overflow: hidden` OFF the paragraph and onto the container — correctly, because
+   on the paragraph it also broke the OPEN state — but nothing replaced the zeroing
+   for the CLOSED state. So the reveal has had nothing to reveal since: the text
+   was always there, just transparent.
+
+   `min-height: 0` on the item is the missing half of the idiom. It zeroes the
+   automatic minimum without clipping, so 0fr closes and 1fr still opens.
+   --------------------------------------------------------------------------- */
+@media (hover: hover) and (pointer: fine) {
+  .voice-card__support > * { min-height: 0; }
+}
