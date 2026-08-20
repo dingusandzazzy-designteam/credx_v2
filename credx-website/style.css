@@ -5217,3 +5217,72 @@ a.vertical-card:hover .vertical-card__name::after { transform: translateX(4px); 
   color: var(--text-muted);
   margin-bottom: var(--s-1);
 }
+
+/* ---- .positions — /lenders, added 2026-08-20 ------------------------------
+   A map of POSITIONS, not of steps. An institution evaluating this asset does
+   not ask what happens first; it asks who holds the receivable, who carries the
+   risk, and who keeps the relationship. The page answered that in prose only.
+
+   🔴 IT CARRIES NO NUMBERS, AND THAT IS THE WHOLE DIFFERENTIATION.
+   /how-it-works owns the numbered mechanics rail (`.rail`). A numbered flow here
+   would be that component again, on a page whose type exists to not resemble the
+   others — and it would answer the wrong question besides.
+
+   Institutional register: hairlines and type, no cards, no fills, no shadow.
+   Tokens only. The accent appears exactly once, on the node that holds the
+   asset, because that is the fact the reader came for.
+   --------------------------------------------------------------------------- */
+.positions { margin-top: var(--s-7); }
+
+.positions__row {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--s-5);
+  border-top: 1px solid var(--border-default);
+  padding-top: var(--s-5);
+}
+@media (min-width: 860px) {
+  .positions__row { grid-template-columns: repeat(4, 1fr); gap: var(--s-6); }
+}
+
+.positions__node {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-2);
+  padding-left: var(--s-4);
+  /* The rule on the left is the only ornament, and it encodes the same thing the
+     accent does: position in the chain, not decoration. */
+  border-left: 1px solid var(--border-default);
+}
+.positions__node--credx { border-left-color: var(--text-secondary); }
+.positions__node--lender { border-left-color: var(--text-accent); }
+
+.positions__who {
+  font-size: var(--type-eyebrow);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+.positions__node--lender .positions__who { color: var(--text-accent); }
+
+.positions__holds {
+  /* ⚠ No `ch` cap. It resolves against THIS element's font-size, not the prose
+     column's — the trap that has bitten this project three times. The grid track
+     is the constraint here. */
+  max-width: none;
+  color: var(--text-secondary);
+}
+.positions__node--lender .positions__holds { color: var(--text-primary); }
+
+.positions__return {
+  margin: var(--s-5) 0 0;
+  padding-top: var(--s-5);
+  border-top: 1px solid var(--border-subtle);
+  max-width: none;
+  color: var(--text-muted);
+  font-size: var(--type-caption);
+}

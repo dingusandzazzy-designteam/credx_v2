@@ -170,7 +170,41 @@
         <p class="prose-band__body" data-reveal>Credit is extended to a consumer at the moment of a purchase, through a merchant that has an existing relationship with that customer. The lender holds the receivable. CredX originates, services the merchant relationship, and supplies the transaction data the lending decision is made on.</p>
         <p class="prose-band__body" data-reveal data-reveal-delay="1">The borrower is not anonymous to the merchant, and the merchant has a commercial interest in the relationship continuing. That is the difference from unsecured consumer credit written at arm's length.</p>
 
-        <dl class="sheet" data-reveal data-reveal-delay="2">
+        <!-- ============================================================
+             THE POSITIONS MAP — added 2026-08-20 (Marco).
+             🔴 DELIBERATELY NOT A NUMBERED SEQUENCE. /how-it-works already owns
+             the mechanics rail: numbered stations, order-of-events. Repeating
+             that shape here would collapse the two pages, and it would answer
+             the wrong question. An institution does not ask "what happens
+             first" — it asks WHO HOLDS WHAT: who carries the receivable, who
+             carries the risk, who keeps the relationship. So this is a map of
+             positions, not of steps, and it carries no numbers by design.
+             ⚠ If a number ever appears on these nodes, it has drifted into the
+             other page's signature.
+             ============================================================ -->
+        <div class="positions" data-reveal data-reveal-delay="2">
+          <ul class="positions__row">
+            <li class="positions__node">
+              <span class="positions__who">Customer</span>
+              <span class="positions__holds">Takes the credit at the point of purchase</span>
+            </li>
+            <li class="positions__node">
+              <span class="positions__who">Merchant</span>
+              <span class="positions__holds">Keeps the relationship that made the sale</span>
+            </li>
+            <li class="positions__node positions__node--credx">
+              <span class="positions__who">CredX</span>
+              <span class="positions__holds">Originates, services, and supplies the transaction data. Holds no receivable</span>
+            </li>
+            <li class="positions__node positions__node--lender">
+              <span class="positions__who">The lender</span>
+              <span class="positions__holds">Holds the receivable</span>
+            </li>
+          </ul>
+          <p class="positions__return">Repayment support runs back through the same transaction that created the credit.</p>
+        </div>
+
+        <dl class="sheet" data-reveal data-reveal-delay="3">
           <div class="sheet__row">
             <dt class="sheet__term">Instrument</dt>
             <dd class="sheet__value">Merchant-linked consumer credit, originated at the point of purchase.</dd>
