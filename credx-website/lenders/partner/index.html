@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0b0c16" />
+
+  <!-- ============================================================
+       /lenders/partner — Lender Partner Enquiry · Batch 2 · built 2026-08-20
+       Spec: plan/04.Sitemap-Locked.md:90 (C6) — "longer form (lender type / AUM /
+       geography / timeline); linked from the /lenders CTA".
+       Design: plan/06.Design-Direction.md §6.2 — FUNCTIONAL type. No hero, no
+       gradient band, signature budget 0. Straight into the task.
+
+       🔴 NOINDEX, AND THAT IS THE SPEC, NOT AN OVERSIGHT.
+       plan/04.Sitemap-Locked.md:109 puts this page in the campaign/hidden set:
+       noindex via meta, omitted from sitemap.xml. ⚠ It is deliberately NOT
+       Disallowed in robots.txt — the locked sitemap says to prefer per-page
+       noindex over Disallow patterns, because a Disallow advertises the path.
+       Consequence: no canonical, no JSON-LD, no OG image. None of them do
+       anything for a page that is not indexed, and a BreadcrumbList on a hidden
+       page is noise.
+
+       ⚠ SCOPE — D&Z OWNS THE LAYOUT AND THE CLIENT-SIDE LOGIC. CREDX IT OWNS THE
+       INTEGRATION (Marco, 2026-08-20). {{PENDING:form-endpoint}} is a HANDOFF
+       BOUNDARY here, not a defect, exactly as on /contact and /join.
+       🔴 What IS ours: the success state must not appear until a submission
+       actually succeeds. The handler below therefore does NOT hard-code a
+       confirmation — it exposes a single seam, window.credxSubmitPartnerEnquiry,
+       and shows the done state only if that returns/resolves truthy. With no
+       endpoint wired it stays on the form and says so. A confirmation that fires
+       regardless is the one thing that would make this page lie.
+
+       ⚠ THE LINK FROM /lenders IS STILL COMMENTED OUT. Ship it when the endpoint
+       is wired, not before — an enquiry form addressed to institutions that
+       silently drops submissions is worse than no link.
+       ============================================================ -->
+
+  <meta name="robots" content="noindex, nofollow" />
+
+  <title>Lender Partner Enquiry | CredX</title>
+  <meta name="description" content="Tell us about your institution and what you are looking to deploy." />
+
+  <link rel="icon" href="../../assets/logo/credx-shape.svg" type="image/svg+xml" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" />
+
+  <link rel="stylesheet" href="../../style.css" />
+</head>
+<body>
+  <!-- Nav — identical IA to every page. ⚠ Paths are TWO levels up here, not one:
+       this page sits at /lenders/partner/. -->
+  <nav class="nav" aria-label="Primary">
+    <div class="container nav__inner">
+      <a href="../../" class="nav__logo" aria-label="CredX home">
+        <img src="../../assets/logo/Credx-name.svg" alt="CredX" height="28" />
+      </a>
+      <div class="nav__links" data-nav-menu>
+        <a href="../../about/" class="nav__link">The Movement</a>
+        <a href="../../evp/" class="nav__link">Embedded Value Platform</a>
+        <a href="../../how-it-works/" class="nav__link">How It Works</a>
+        <div class="nav__group" data-nav-group>
+          <button type="button" class="nav__link nav__group-toggle nav__link--active" aria-expanded="false" aria-controls="nav-audiences" data-nav-group-toggle>Who We Serve</button>
+          <div class="nav__submenu" id="nav-audiences" data-nav-submenu>
+            <a href="../../merchants/" class="nav__sublink">For Merchants</a>
+            <a href="../../lenders/" class="nav__sublink nav__sublink--active" aria-current="page">For Lenders</a>
+            <a href="../../pos/" class="nav__sublink">For POS &amp; ISV</a>
+          </div>
+        </div>
+        <a href="../../contact/" class="nav__link">Contact Us</a>
+      </div>
+      <div class="nav__actions">
+        <a href="../../join/" class="nav__join">Join</a>
+        <a href="../../contact/" class="btn btn-primary nav__cta" data-pending="booking-url">Book a Meeting</a>
+        <button class="nav__toggle" data-nav-toggle type="button" aria-label="Open menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <main id="top">
+
+    <!-- ============================================================
+         1 · THE TASK — no hero, straight in. Functional type.
+         ⚠ Register: institutional. This is the deeper path off /lenders, whose
+         whole virtue is restraint, and the reader is a credit-union officer, not
+         an operator being sold to. No urgency, no persuasion, no second CTA.
+         ============================================================ -->
+    <section class="section contact-intro" aria-label="Lender partner enquiry">
+      <div class="container contact-intro__inner">
+        <h1 class="contact-intro__title">Lender partner enquiry</h1>
+        <p class="contact-intro__body">Tell us about your institution and what you are looking to deploy. We will come back with the asset structure, the geography we can cover, and what a first tranche would look like.</p>
+        <p class="contact-intro__alt">Not ready for detail? <a href="../" class="btn-text">Read the asset class first</a></p>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         2 · THE FORM — the four fields the spec names, in the order an
+         institution would answer them: who you are, how much, where, when.
+         ⚠ Reuses .form / .signup__grid from /contact. No new components: §6.2
+         gives the Functional type a signature budget of ZERO.
+         ============================================================ -->
+    <section class="section" aria-label="Enquiry form">
+      <div class="container">
+        <div class="signup__step">
+          <span class="signup__step-label">About your institution</span>
+
+          <form class="form" data-partner-form novalidate>
+            <div class="signup__grid">
+
+              <div class="form__field">
+                <label class="form__label" for="p-name">Full name</label>
+                <input class="form__input" id="p-name" name="name" type="text" autocomplete="name" required />
+              </div>
+
+              <div class="form__field">
+                <label class="form__label" for="p-email">Work email</label>
+                <input class="form__input" id="p-email" name="email" type="email" autocomplete="email" required />
+              </div>
+
+              <div class="form__field form__field--full">
+                <label class="form__label" for="p-institution">Institution</label>
+                <input class="form__input" id="p-institution" name="institution" type="text" autocomplete="organization" required />
+              </div>
+
+              <!-- SPEC FIELD 1 — lender type -->
+              <div class="form__field form__field--full">
+                <label class="form__label" for="p-type">Type of lender</label>
+                <select class="form__select" id="p-type" name="lender_type" required>
+                  <option value="" selected disabled>Select one</option>
+                  <option>Credit union</option>
+                  <option>Community lender</option>
+                  <option>Regional bank</option>
+                  <option>Private credit fund</option>
+                  <option>Other</option>
+                </select>
+              </div>
+
+              <!-- SPEC FIELD 2 — AUM. ⚠ Bands, not a free number: an institution
+                   will not type its AUM into a web form, and a band is enough to
+                   route the conversation. -->
+              <div class="form__field">
+                <label class="form__label" for="p-aum">Assets under management</label>
+                <select class="form__select" id="p-aum" name="aum">
+                  <option value="" selected disabled>Select a range</option>
+                  <option>Under $250M</option>
+                  <option>$250M – $1B</option>
+                  <option>$1B – $5B</option>
+                  <option>Over $5B</option>
+                  <option>Prefer not to say</option>
+                </select>
+              </div>
+
+              <!-- SPEC FIELD 4 — timeline -->
+              <div class="form__field">
+                <label class="form__label" for="p-timeline">Timeline</label>
+                <select class="form__select" id="p-timeline" name="timeline">
+                  <option value="" selected disabled>Select one</option>
+                  <option>Exploring</option>
+                  <option>This quarter</option>
+                  <option>Next two quarters</option>
+                  <option>This financial year</option>
+                </select>
+              </div>
+
+              <!-- SPEC FIELD 3 — geography.
+                   ⚠ THE LIST IS THE LOCKED ONE AND QUEBEC IS DELIBERATELY ABSENT
+                   (deferred). Do not add it here "for completeness" — the same
+                   list governs /lenders §4. Multi-select, because a lender
+                   operating in three provinces should not have to pick one. -->
+              <div class="form__field form__field--full">
+                <label class="form__label" for="p-geo">Where do you lend? <span class="signup__optional">Select all that apply</span></label>
+                <select class="form__select" id="p-geo" name="geography" multiple size="6">
+                  <option>Ontario</option>
+                  <option>British Columbia</option>
+                  <option>Alberta</option>
+                  <option>Saskatchewan</option>
+                  <option>Manitoba</option>
+                  <option>Atlantic Canada</option>
+                </select>
+              </div>
+
+              <div class="form__field form__field--full">
+                <label class="form__label" for="p-notes">Anything else we should know? <span class="signup__optional">Optional</span></label>
+                <textarea class="form__textarea" id="p-notes" name="notes" rows="4"></textarea>
+              </div>
+
+            </div>
+
+            <button class="btn btn-primary" type="submit">Send enquiry</button>
+
+            <!-- ⚠ Same wording discipline as /contact: no "we never share your
+                 details" (submissions land in a CRM, which is a third party), and
+                 no privacy link while /legal/privacy does not exist. -->
+            <p class="form__note">Your details reach our team so we can reply.</p>
+
+            <p class="form__note" data-partner-error role="alert" hidden></p>
+          </form>
+
+          <div class="signup__done" data-partner-done role="status" aria-live="polite" hidden>
+            <p>Thank you. Your enquiry reached our team, and someone will be in touch.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__inner footer__inner--sitemap">
+        <div class="footer__brand">
+          <img src="../../assets/logo/Credx-name.svg" alt="CredX" height="32" style="margin-bottom: 20px;" />
+          <p class="footer__movement">A system you belong to, instead of one that owns you.</p>
+        </div>
+        <div>
+          <h3 class="footer__col-title">Explore</h3>
+          <div class="footer__links">
+            <a href="../../how-it-works/" class="footer__link">How It Works</a>
+            <a href="../../lenders/" class="footer__link">For Lenders</a>
+            <a href="../../about/" class="footer__link">About</a>
+            <a href="../../contact/" class="footer__link">Contact</a>
+            <a href="../../learn/glossary/" class="footer__link">Glossary</a>
+          </div>
+        </div>
+        <div>
+          <h3 class="footer__col-title">Connect</h3>
+          <div class="footer__links">
+            <a href="https://www.linkedin.com/" class="footer__link" rel="noopener" target="_blank">LinkedIn</a>
+            <a href="../../contact/" class="footer__link">Book a Meeting</a>
+          </div>
+        </div>
+        <div>
+          <h3 class="footer__col-title">Legal</h3>
+          <div class="footer__links">
+            <a href="../../legal/" class="footer__link">Privacy</a>
+            <a href="../../legal/" class="footer__link">Terms</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span>© 2026 CredX Tech Inc. · credx-tech.com</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.0.45/dist/lenis.min.js"></script>
+  <script src="../../script.js"></script>
+
+  <script>
+  /* ============================================================
+     Lender partner enquiry — client-side logic only.
+
+     🔴 THE SEAM IS DELIBERATE AND IT IS THE POINT OF THIS BLOCK.
+     D&Z owns layout and client-side logic; CredX IT owns the integration
+     (Marco, 2026-08-20). So this does NOT post anywhere and does NOT
+     hard-code a confirmation. It validates, collects, and hands the payload
+     to ONE function:
+
+         window.credxSubmitPartnerEnquiry(payload) -> truthy | Promise<truthy>
+
+     The success state appears only if that resolves truthy. With nothing
+     wired — which is the state today — the form stays put and says so out
+     loud, instead of thanking someone whose enquiry went nowhere.
+
+     ⚠ Do not "simplify" this by showing .signup__done on submit. That is the
+     one change that would make the page lie to an institutional reader.
+     ============================================================ */
+  (function () {
+    var form = document.querySelector('[data-partner-form]');
+    if (!form) return;
+    var done = document.querySelector('[data-partner-done]');
+    var err = document.querySelector('[data-partner-error]');
+
+    function fail(msg) {
+      if (!err) return;
+      err.textContent = msg;
+      err.hidden = false;
+    }
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      err.hidden = true;
+
+      // Native validation, surfaced rather than bypassed by novalidate.
+      if (!form.checkValidity()) {
+        var firstInvalid = form.querySelector(':invalid');
+        if (firstInvalid) firstInvalid.focus();
+        fail('Please complete the highlighted fields.');
+        return;
+      }
+
+      var data = new FormData(form);
+      var payload = {};
+      data.forEach(function (v, k) {
+        // geography is multi-select, so it arrives as repeated keys
+        if (payload[k] === undefined) payload[k] = v;
+        else if (Array.isArray(payload[k])) payload[k].push(v);
+        else payload[k] = [payload[k], v];
+      });
+
+      if (typeof window.credxSubmitPartnerEnquiry !== 'function') {
+        fail('This form is not connected yet. Please email the team instead.');
+        // ⚠ {{PENDING:email-general}} — no address exists in the repo, which is
+        // why the sentence above names no destination. Add one when it lands.
+        console.warn('[credx] No submit handler wired. Payload was:', payload);
+        return;
+      }
+
+      Promise.resolve(window.credxSubmitPartnerEnquiry(payload))
+        .then(function (ok) {
+          if (!ok) return fail('Something went wrong. Please try again.');
+          form.hidden = true;
+          done.hidden = false;
+          done.focus && done.focus();
+        })
+        .catch(function () {
+          fail('Something went wrong. Please try again.');
+        });
+    });
+  })();
+  </script>
+</body>
+</html>
