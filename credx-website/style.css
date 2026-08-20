@@ -2104,6 +2104,13 @@ p { line-height: 1.6; max-width: 65ch; }
     grid-template-columns: 1fr 1.2fr;
     padding: var(--s-9);
     gap: var(--s-10);
+    /* ⚠ Added 2026-08-20. The two columns are different heights — the left is a
+       title, a line of body and the slider; the right is the output card, which
+       grew when the range and its hedge landed. Grid defaults to `stretch`, so the
+       left column was pinned to the top and left a gap under the slider that read
+       as a mistake. Centring the shorter column against the taller one is the fix;
+       `align-items: center` on the ITEMS, not `justify` on the tracks. */
+    align-items: center;
   }
 }
 
