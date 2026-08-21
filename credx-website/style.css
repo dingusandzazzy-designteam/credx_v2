@@ -5710,18 +5710,19 @@ a.vertical-card:hover .vertical-card__name::after { transform: translateX(4px); 
     text-wrap: balance;
   }
 
-  /* THE SUPPORTING ELEMENT, drawn rather than marked up. A short rule above the
-     heading gives the left column a visible top edge, so the column reads as a
-     column and not as an accident of alignment. No markup change across twelve
-     sections, and nothing to keep in sync. */
-  .prose-band__inner > .prose-band__h2::before {
-    content: '';
-    display: block;
-    width: var(--s-7);
-    height: 1px;
-    background: var(--text-accent);
-    margin-bottom: var(--s-5);
-  }
+  /* ↩ A 1px accent rule sat above every heading here for one push. REMOVED
+     2026-08-21 (Marcos: "esses tracos em cima dos titulos estao desnecessarios
+     eu acho"). He is right on the argument that matters: THE RULE WAS REDUNDANT.
+     What anchors the prose's left edge is the grid column, not an ornament — a
+     heading in column one with the reading column beside it already accounts for
+     the space, which is the whole fix. The rule was belt-and-braces, and it
+     repeated four times down `/merchants`.
+     ⚠ It also ran close to a ban this project's design skill states outright:
+     no kicker or eyebrow above a heading, "not a default", no brief earns it
+     back. A textless rule is not literally an eyebrow, but it is decoration in
+     the same slot doing the same job.
+     Do not reintroduce it. If the left edge ever stops reading as intentional,
+     the column is what needs adjusting. */
 
   /* The prose keeps its own comfortable measure INSIDE the column. The column is
      ~560px at 1440, which is about 49ch at 18px -- inside the 45-75ch band, so
@@ -5808,3 +5809,26 @@ a.vertical-card:hover .vertical-card__name::after { transform: translateX(4px); 
 @media (min-width: 960px) {
   .hero--ledger .hero__h1 { padding-right: var(--s-7); }
 }
+
+/* ---- .hero__plate · the /lenders hero photograph ---------------------------
+   ⚠ SHIPPED FOR ONE PUSH WITH NO RULE AT ALL. The markup carried
+   `class="hero__plate"` and nothing matched it, so the image only held its shape
+   through the global `img { max-width: 100% }` — a bare rectangle on a site where
+   `.split__media`, `.section-media` and `.proof__tile` all frame their images
+   with the same radius and hairline. It rendered, so a screenshot did not catch
+   it; grepping the deployed CSS for the class did.
+   Same three declarations as `.split__media`, deliberately: this is the site's
+   framed-media treatment and a fourth variation of it would be drift.
+   ⚠ 16:9, not `.split__media`'s 4/5 — the delivered master is 1672x941 and the
+   brief specifies the ratio, because the frame sits in a body-width column
+   rather than beside a hero.
+   --------------------------------------------------------------------------- */
+.hero__plate {
+  border-radius: var(--radius-card);
+  border: 1px solid var(--border-subtle);
+  overflow: hidden;
+  aspect-ratio: 16 / 9;
+  background-color: var(--surface-1);
+  margin-bottom: var(--s-5);
+}
+.hero__plate img { width: 100%; height: 100%; object-fit: cover; display: block; }
