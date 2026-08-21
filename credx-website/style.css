@@ -5410,110 +5410,20 @@ a.vertical-card:hover .vertical-card__name::after { transform: translateX(4px); 
    closes §1's tokens and this pass stays inside them.
    =========================================================================== */
 
-/* ---- .hero--ledger · the opening as a document header ----------------------
-   Two problems, one shell change.
-   🔴 THE H1 MEASURE. `.hero--compact .hero__h1` caps at `15ch`, cut for /about's
-   short manifesto line. This page's H1 is 51 characters, so at 1440 the cap
-   resolved to 570px and the headline set in FIVE lines with rects of
-   386 · 397 · 270 · 373 · 253 — two half-length lines stranded in the middle.
-   ⚠ IT WAS NOT `data-reveal-words` AND NOT THE `<em>`, which was the first
-   hypothesis. The Range rects locate every wrap at the 570px cap, and the
-   duplicated rects at the tail are just the `<em>`'s own client rects.
-   🔴 THE EMPTY HALF. On /about, `.hero--compact` is followed by `.hero-media` —
-   the photograph the reader scrolls into. This page has no photograph by type, so
-   the shell left the right half of the opening blank with a ragged column alone
-   in it. That reads as a hero with a hole, not as restraint.
-   ⚠ The paragraph moving right is a COMPOSITION change, not a content one: same
-   copy, same DOM order, nothing added. Below 960 it collapses back to the stack
-   and the page reads exactly as it did.
+/* ---- .hero--ledger and .hero__plate: REMOVED 2026-08-21 -------------------
+   Both were built earlier the same day for a composition that no longer exists:
+   an asymmetric "document header" opening with the photograph as a small plate
+   inside the summary column. Marcos then asked for the standard split hero
+   ("deixar a imagem sozinha a esquerda, como as outras paginas"), so the whole
+   block lost its only consumer within hours.
+   ⚠ DELETED RATHER THAN LEFT INERT, which departs from how this file usually
+   treats retired components (`.photo-band` is kept for the measurement it
+   records). The difference: these rules carried long comments asserting they
+   FIXED the H1 wrap. Dead CSS that claims to fix a live defect is worse than no
+   CSS — the next reader finds the note, believes it was handled, and stops
+   looking. That is exactly how the H1 broke a second time. The measurements
+   worth keeping moved to `.hero--institutional` at the end of this file.
    --------------------------------------------------------------------------- */
-/* 🔴 THE OPENING NEEDED ITS SPACE BACK. Holding the accent pair together took
-   the headline from five stacked lines to three beside a column, which is the
-   point — but it also took the section from 844px to 471px, making the OPENING
-   the shortest major block on the page, and the first line sat close enough to
-   the sticky nav to read as clipped. A document's first page is mostly margin;
-   this restores that deliberately rather than as a side effect of the type fix. */
-.hero--ledger {
-  padding-block: calc(var(--s-section) + var(--s-10)) var(--s-9);
-}
-
-.hero--ledger .hero__h1 {
-  /* Raised from `15ch`. ⚠ Above 960 this is INERT — the grid track is narrower
-     than 20ch and is the real constraint. It governs only the stacked layout
-     below 960, where it is wider than any phone viewport and therefore also
-     inert. It is kept as the stated intent rather than as a working value, and
-     saying so here is the point: the next reader should not "tune" a number that
-     nothing resolves against. */
-  max-width: 20ch;
-  /* `pretty` and not `balance`: measured at 1440, balance produced 386/574/478/253
-     and pretty produced 602/451/638 — a descending-then-full rag that reads as a
-     block. `balance` optimises for even line lengths, which is the wrong goal for
-     a three-line document header. */
-  text-wrap: pretty;
-  margin-bottom: 0;
-}
-
-@media (min-width: 960px) {
-  /* 🔴 `.hero__inner` IS ITSELF A GRID WITH NO DECLARED COLUMNS, so its implicit
-     track auto-sizes to its content — `.hero__copy` measured 587px inside an
-     1184px container and the two-column split resolved to 372px / 214px, which
-     set the H1 in SEVEN lines. Worse than the five it was sent to fix.
-     ⚠ THIS IS THE SAME TRAP DESIGN.md ALREADY RECORDS for `.hero--centred`,
-     where centring took three attempts for exactly this reason. It cost a
-     measurement round here too. Block layout is what gives the copy the
-     container's width; `max-width: none` on the child does nothing about a
-     parent track that is already content-sized. */
-  .hero--ledger .hero__inner { display: block; }
-  .hero--ledger .hero__copy {
-    display: grid;
-    /* Deliberately UNEQUAL. An even 1fr 1fr reads as two columns of a layout;
-       1.05fr / 0.95fr with a rule between reads as a header and its summary,
-       which is what an offering document's first page actually looks like. */
-    grid-template-columns: 1.05fr 0.95fr;
-    align-items: start;
-    gap: 0;
-  }
-  /* 🔴 EXPLICIT PLACEMENT, AND IT IS REQUIRED, NOT TIDINESS. Moving the CTA up
-     out of the summary column made `.hero__copy` a THREE-item grid, and auto-flow
-     put the CTA in column two row one — the button landed beside the headline's
-     first line and the whole summary block, photograph included, dropped to row
-     two of column one. Three items, two columns, no assignment: the browser had
-     no way to know. Each item now names its own cell. */
-  .hero--ledger .hero__h1     { grid-column: 1; grid-row: 1; }
-  .hero--ledger .hero__ctas   { grid-column: 1; grid-row: 2; }
-  .hero--ledger .hero__ledger { grid-column: 2; grid-row: 1 / span 2; }
-  /* The hairline between the two halves is the page's opening statement of
-     register: the Institutional type is hairlines and type, and this is the
-     first one the reader meets. */
-  .hero--ledger .hero__ledger {
-    border-left: 1px solid var(--border-subtle);
-    padding-left: clamp(var(--s-7), 5vw, var(--s-9));
-    /* Optical alignment, corrected against the render rather than computed: the
-       H1's cap height starts below its line box, so a paragraph at y=0 sits
-       visibly high against it. */
-    padding-top: var(--s-2);
-  }
-  /* 🔴 THE ACTUAL CURE FOR THE "QUEBRA ESTRANHA", and it is one line.
-     `Community Lenders` is the accent pair and it was breaking ACROSS lines 3 and
-     4, leaving `Lenders` alone on a 253px line under a 373px one. Measured at
-     1440, 1280, 1024 and 960: holding the pair together takes the headline from
-     four ragged lines to THREE at every one of those widths.
-     ⚠ SCOPED TO >=960 DELIBERATELY. At the stacked width the pair sets ~390px
-     against a 358px column, so an unscoped `nowrap` would trade a bad wrap for a
-     real horizontal overflow on a phone. Verified at 390x844: zero overflowing
-     elements.
-     ⚠ It also widens the left grid track from 622 to 638, because an `fr` track's
-     automatic minimum is its content — expected, not a bug. */
-  .hero--ledger .hero__h1 .accent { white-space: nowrap; }
-
-  .hero--ledger .hero__sub {
-    /* The right column is ~46ch of track, so a 58ch cap does nothing here and
-       the track is the real constraint. Stated so the next reader does not
-       "fix" an inherited number that is already inert. */
-    max-width: none;
-    margin-top: 0;
-  }
-}
 
 /* ---- .media-ph--band · the 16:9 IMAGE slot the component was missing -------
    ⏸ NO CONSUMER as of 2026-08-21 — `/lenders` §4 now carries the real photograph
@@ -5794,43 +5704,10 @@ a.vertical-card:hover .vertical-card__name::after { transform: translateX(4px); 
   .geo__item { break-inside: avoid; }
 }
 
-/* The CTA now lives in the headline column, so its top margin answers to the H1
-   rather than to a paragraph. --s-7 was tuned against `.hero--split`, where a
-   paragraph sits above it; under a 72px headline it reads tight. */
-@media (min-width: 960px) {
-  .hero--ledger .hero__ctas { margin-top: var(--s-8); }
-}
 
-/* ⚠ Clearance measured off the render, not guessed: the third line of the H1
-   ("Community Lenders", the widest at 638px) ended 1px from the ledger's rule.
-   The gap is deliberately on the HEADLINE and not on the rule, so the rule stays
-   on the column boundary where the grid puts it. */
-@media (min-width: 960px) {
-  .hero--ledger .hero__h1 { padding-right: var(--s-7); }
-}
 
-/* ---- .hero__plate · the /lenders hero photograph ---------------------------
-   ⚠ SHIPPED FOR ONE PUSH WITH NO RULE AT ALL. The markup carried
-   `class="hero__plate"` and nothing matched it, so the image only held its shape
-   through the global `img { max-width: 100% }` — a bare rectangle on a site where
-   `.split__media`, `.section-media` and `.proof__tile` all frame their images
-   with the same radius and hairline. It rendered, so a screenshot did not catch
-   it; grepping the deployed CSS for the class did.
-   Same three declarations as `.split__media`, deliberately: this is the site's
-   framed-media treatment and a fourth variation of it would be drift.
-   ⚠ 16:9, not `.split__media`'s 4/5 — the delivered master is 1672x941 and the
-   brief specifies the ratio, because the frame sits in a body-width column
-   rather than beside a hero.
-   --------------------------------------------------------------------------- */
-.hero__plate {
-  border-radius: var(--radius-card);
-  border: 1px solid var(--border-subtle);
-  overflow: hidden;
-  aspect-ratio: 16 / 9;
-  background-color: var(--surface-1);
-  margin-bottom: var(--s-5);
-}
-.hero__plate img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+
 
 
 /* ===========================================================================
@@ -6027,3 +5904,43 @@ a.vertical-card:hover .vertical-card__name::after { transform: translateX(4px); 
    for this slot, drop the modifier rather than re-cropping the frame.
    --------------------------------------------------------------------------- */
 .hero__frame--wide { aspect-ratio: 16 / 9; }
+
+
+/* ---- .hero--institutional · the /lenders headline, and the REAL cause -------
+   Marcos, twice: "A Merchant-Linked Asset Class for Community Lenders quebrou de
+   novo". It broke, was fixed, and broke again — because the first fix lived on a
+   shell (`.hero--ledger`) that was replaced hours later, and because the actual
+   cause was never the one being treated.
+
+   🔴 THE CAUSE IS `max-width` IN `ch`, WHICH MAKES FONT-SIZE A DEAD LEVER.
+   Measured at 72 / 64 / 60 / 56px: FIVE LINES EVERY TIME, breaking at the same
+   words, with line widths shrinking proportionally. A `ch` measure resolves
+   against the element's OWN font-size, so shrinking the type shrinks the measure
+   by the same ratio and the text-per-line never changes. Two earlier rounds
+   reached for font-size and `text-wrap`; both were inert for this reason.
+   ⚠ THIS IS THE `ch` TRAP DESIGN.md ALREADY DOCUMENTS, in its third form — it
+   has bitten `.prose-band__body`, `.consent-note`, `.prose-band__h2` (fixed by
+   moving to rem) and now the hero H1. A `ch` measure on an element whose
+   font-size is fluid is not a measure, it is a ratio.
+   ✅ RULED OUT WITH EVIDENCE, not assumed: `data-reveal-words` is innocent. It
+   never runs on this H1 — zero `.reveal-word-mask` nodes and the DOM is untouched
+   after load — and the wrap is byte-identical with the attribute stripped before
+   any script executes. That was the first hypothesis twice, and wrong twice.
+
+   Measured with the cap released, in the real 544px column:
+     72px -> 5 lines  ·  64px -> 4  ·  60px -> 4  ·  56px -> 3
+   The clamp below reads 56px from 1280 up and sets THREE lines with a
+   485 / 364 / 513 rag at 1280, 1440 and 1920.
+   ⚠ Smaller than `--type-display` (72px) on purpose: this is the longest H1 on
+   the site at 51 characters, and a quieter display size is the Institutional
+   type's own argument now that it shares its opening shell with /merchants and
+   /pos.
+   ⚠ SCOPED to this page. The other two split heroes have shorter headlines that
+   set correctly at the shared size; changing the measure globally would alter two
+   pages nobody complained about.
+   --------------------------------------------------------------------------- */
+.hero--institutional .hero__h1 {
+  /* The column is the measure. Nothing here may be expressed in `ch`. */
+  max-width: none;
+  font-size: clamp(2.5rem, 4.4vw, 3.5rem);
+}
