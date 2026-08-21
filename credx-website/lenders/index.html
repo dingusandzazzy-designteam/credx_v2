@@ -133,77 +133,78 @@
   <main id="top">
 
     <!-- ============================================================
-         1 · OPENING — no hero image, no band. `.hero--compact` is the site's
-         photoless, type-led shell (shared kit, §6.5); what makes this the
-         Institutional type is the register and what follows, not a new shell.
-         ⚠ ONE QUIET CTA ONLY, above the fold. No booking push, no urgency, no
-         second CTA. The deeper path appears once, in §6.
+         REBUILT 2026-08-21 AGAINST copy/lenders.md V2 — 8 SECTIONS, WAS 6.
 
-         ↩ 2026-08-21 · `.hero--ledger` ADDED, and it fixes a MEASURED defect,
-         not a taste. `.hero--compact` caps the H1 at `15ch` — a measure cut for
-         /about's short manifesto line. This page's H1 is 51 characters, so at
-         1440 it set in FIVE lines (rects 386 · 397 · 270 · 373 · 253 in a 570px
-         box) with two half-length lines in the middle. That is the "quebra
-         estranha".
-         🔴 IT IS NOT `data-reveal-words` AND IT IS NOT THE `<em>`. That was the
-         first hypothesis and it is wrong: the Range rects prove the wrap points
-         come from the 570px cap, and the duplicate rects at the tail are just
-         the `<em>`'s own client rects. Measured before changing anything.
-         ⚠ The second half of the defect is compositional: /about's
-         `.hero--compact` is followed by `.hero-media`, the photograph you scroll
-         INTO. This page has no photograph by type, so the shell left the right
-         half of the opening empty and the ragged column sat alone in it. The
-         ledger split spends that half on the paragraph that was underneath it —
-         no new content, no photograph, and it reads as a document header rather
-         than as a hero with a hole in it.
+         🔴 THE PAGE'S PURPOSE CHANGED, NOT JUST ITS COPY. Marcos: "A página do
+         lenders é mais uma de marketing, para enviar para clientes, já que a
+         página não tem conteúdo relevante para o SEO. Valorizar os lenders…
+         fazer eles se sentirem mais importantes e valorizados."
+         He accepts the same measurement §6.9 was built on — `credit union
+         fintech` at 10/mo, all six provincial variants at zero — and draws the
+         opposite conclusion: no traffic job means it is a link somebody SENDS,
+         so it has to work as a sent link. The reader arrives because a person
+         they know passed it on, usually around a call.
+
+         ⚠ SECTION ARCHITECTURE REOPENED. `plan/05` Page 6 specifies six named
+         sections; Marcos reopened it explicitly ("a copy nova define as
+         seções"). Two beats are new: §2 the distribution argument, §3 what
+         CredX does not take. Both exist because nothing in the six addressed
+         the READER's own standing — they all described the product, and a page
+         whose job is to make the reader feel valued needs one section about
+         them.
+
+         🔴 THE OPENING PARAGRAPH IS CLIENT-APPROVED COPY, CARRIED VERBATIM.
+         Marcos: "como a copy da home foi aprovada por eles, vamos manter o
+         frame como eles aprovaram." It is `index.html:228`, the Home's Lender
+         voice, byte-for-byte — verified by comparison, not by eye. Do not
+         tighten it, resequence it, or "fix" `big networks` (generic, names no
+         brand, and the same sentence supplies the approved substitute).
+
+         ⚠ WHAT THE REPOSITION DOES NOT TOUCH: every compliance constraint in
+         §7, the hedging mandate in §5, the absent lender rate, the absent
+         partner count, Quebec's absence, and the ban on naming a network. A
+         marketing register is not a licence to claim more.
+
+         🔴 `.sheet` IS RETIRED FROM THIS PAGE, and it was §6.9's ratified
+         signature component. Two reasons, both consequences of the reposition:
+         a term sheet is the institutional register the page just moved away
+         from, and it lost its rows — the receivable claim is removed pending
+         the risk-allocation answer, and the province list moved to §6 where it
+         is named ONCE. The signature is now `.positions` at §3, which carries
+         the page's actual thesis. Recorded as a deliberate retirement.
+         ============================================================ -->
+
+    <!-- ============================================================
+         1 · OPENING
+         H1 is option A of two in the copy doc; Marcos had not chosen, so this
+         is the recommended one and the swap is one line. It puts the lender as
+         the grammatical SUBJECT, which is the whole point of the reposition.
+         ⚠ ONE QUIET CTA. Discovery locks this page to no form and no
+         aggressive push, and the reposition does not reopen that — a
+         leave-behind sent by a colleague does not need to close.
          ============================================================ -->
     <section class="hero hero--split hero--institutional" aria-label="Opening">
       <div class="container hero__inner">
         <div class="hero__copy">
-          <h1 class="hero__h1" data-reveal-words>A Merchant-Linked Asset Class for <em class="accent">Community Lenders</em></h1>
+          <h1 class="hero__h1">Lend Where Your Members Are Already Buying</h1>
+          <!-- 🔴 CLIENT-APPROVED, VERBATIM. `index.html:228`. Four sentences,
+               denser than the 10-second target in voice.md — approved copy
+               outranks our own density guideline, and this is the one place on
+               the page where that trade is worth it: the argument, in the
+               client's words, above the fold. It opens on "Community lenders
+               have always been closer…", which IS the valorising line. -->
           <p class="hero__sub" data-reveal data-reveal-delay="1">
-            CredX originates consumer credit at the point of purchase and places it with Canadian credit unions and community lenders. The credit is tied to a merchant relationship the borrower already has, and repayment support is structured into the transaction rather than added afterwards.
+            Community lenders have always been closer to their members than the big networks, yet the credit facility network always captured the transaction. CredX changes the rail with fund-embedded, merchant-linked credit at the point of sale. It is a diversified, closed-loop asset class with built-in delinquency controls, so risk stays managed.
           </p>
-          <!-- ⚠ ONE QUIET CTA ONLY, and it survives every reshuffle of this hero.
-               §6.9 allows this page a single low-key action above the fold: no
-               booking push, no urgency, no second button. The deeper path
-               (/lenders/partner) appears once, in §6, and stays commented out
-               until the endpoint is wired. -->
           <div class="hero__ctas" data-reveal data-reveal-delay="2">
             <a href="../contact/" class="btn btn-secondary">Talk to Us</a>
           </div>
         </div>
-        <!-- ↩ THIRD POSITION FOR THIS PHOTOGRAPH IN TWO DAYS, and each move was a
-             decision rather than a drift, so the trail is here:
-             §6.9 gave the Institutional type NO PHOTOGRAPH → 2026-08-20 Marcos put
-             one in the BODY at §4 → 2026-08-21 he moved it into the HERO as a small
-             plate beside the summary → same day, "deixar a imagem sozinha a
-             esquerda, como as outras páginas": it is now the standard `.hero--split`
-             frame, alone in its own column.
-
-             🔴 THIS IS THE POINT WHERE §6.9's OWN WARNING COMES TRUE, and it should
-             be recorded rather than smoothed over. Its acceptance test was: crop
-             the nav from /merchants, /pos and /lenders and ask which audience each
-             addresses. This page now opens in the SAME SHELL as both Pillar–Sell
-             pages, so the opening no longer sorts them — that is the "three
-             audience pages that are each other" failure it named, and Marcos chose
-             it knowingly after it was put to him.
-             ✅ WHAT STILL SEPARATES THIS PAGE, and it is now carrying the whole
-             load: the term-sheet register, `.sheet` as the signature, the positions
-             spine, ZERO gradient (`.final-cta--plain`), one quiet CTA, and the
-             province schedule. If any of those go, the type is gone.
-             ⚠ `loading="eager"` + `fetchpriority="high"`, matching /merchants and
-             /pos: this is above the fold and it is the LCP element. -->
-        <!-- 🔴 `--wide` IS NOT DECORATION, IT PROTECTS THE SUBJECT. `.hero__frame` is
-             4:5 on desktop and `lenders-region.png` is a 16:9 master, so `object-fit:
-             cover` cropped the block down to TWO SHOPFRONTS — and the brief for this
-             frame says in as many words that "the BLOCK is the subject, not any one
-             business, because the section is about value staying in a region rather
-             than in a shop". A portrait crop deletes the reason the photograph exists.
-             ✅ It also does one small thing for §6.9's acceptance test, which this
-             page now fails on its opening shell: /merchants and /pos both use the 4:5
-             frame, so a wide one is the only thing left distinguishing the three
-             openings at a glance. -->
+        <!-- ⏸ `--wide` because the master is 16:9 and `.hero__frame` is 4:5 —
+             the crop reduced a block of shops to two shopfronts, deleting the
+             one thing its brief insists on. Marcos is generating a 4:5
+             replacement; WHEN IT LANDS, DROP `--wide` and the frame returns to
+             the shared ratio. The modifier follows the asset, not the page. -->
         <div class="hero__frame hero__frame--wide" data-reveal-media>
           <img src="../images/lenders-region.png" alt="A block of independent shops trading on the main street of a small Canadian city — a bakery, a florist, a bicycle shop and a homeware shop side by side, awnings out over the pavement and windows lit." width="1672" height="941" loading="eager" fetchpriority="high" />
         </div>
@@ -211,183 +212,164 @@
     </section>
 
     <!-- ============================================================
-         2 · THE ASSET MODEL — and the signature component, `.sheet`.
-         An asset-class sheet in a term-sheet register: institutional readers
-         evaluate an asset, not a promise. Nothing else on the site ships in a
-         document register — that is the differentiation.
-         ✅ It also ABSORBS THE BLOCKED METRIC: the community-lender count that
-         has not arrived lives in ONE FIELD here, not in a headline that cannot
-         be written without it. The page ships complete and gains a figure later.
-         ⚠ `.sheet` was checked against style.css before naming — `.rail` was
-         already taken by /how-it-works and collided on 2026-08-20.
+         2 · THE DISTRIBUTION ARGUMENT — 🆕 NEW, and this is the section that
+         does the valorising.
+         🔴 REGISTER DISCIPLINE: peer-to-peer. It must never tip into telling a
+         credit union what it is bad at. The claim is that proximity was never
+         the weakness — the gap is structural and external, never a shortcoming
+         of theirs.
+         ⚠ NO IMAGE HERE, and that is a decision. Its subject is distribution
+         and presence, which is not photographable without landing on a counter
+         — and the counter is §4's frame and `hiw-loop`'s pattern. The imagery
+         manual's own rule applies: some slots should be dropped, not filled.
          ============================================================ -->
-    <!-- ↩ 2026-08-21 · `.section--doc` — THE SECTION IS NOW LEFT-ALIGNED, and this
-         is the single change that does the most work on the page.
-         🔴 It carried THREE different left edges at once, measured at 1440: the H2
-         centred, the prose column centred at x=176 (65ch inside 1184), and the
-         positions map and sheet spanning the full container at x=128. A document
-         does not have three margins. Everything in this section now hangs off one
-         edge, which is also what separates it at a glance from §3 and §4 — those
-         stay centred, and the alternation is the page's rhythm.
-         ⚠ Only §2 takes this. Applying it to every section would trade three
-         alignments for one, which is the sameness problem, not the fix. -->
-    <section id="asset" class="section section--doc" aria-label="The asset model">
-      <!-- ↩ A PHOTOGRAPH ENTERS §2, 2026-08-21 (Marcos: "aqui colocar uma imagem a
-           esquerda What the asset is."). `.split--reverse` puts the frame on the
-           left, which is the position he asked for and the one `/about` §2 already
-           uses — so this is the site's existing composition, not a fourth variant.
-           🔴 TWO THINGS TO RECORD RATHER THAN SMOOTH OVER:
-           · §6.9 gave this page a photograph budget of ZERO. It is now at TWO. Each
-             step was Marcos's call and each is logged, but the count is worth
-             seeing in one place: hero (`lenders-region`) + §2 (`lenders-asset`).
-           · THE SUBJECT COLLIDES WITH `hiw-loop`. A wrapped parcel handed across a
-             counter, no terminal and no money in frame, is that slot's established
-             pattern and it is documented as such. /lenders §2 and /how-it-works now
-             share their subject. Flagged before wiring; his decision.
-           ✅ Casting moves the right way: `prompts-reference.md` §3 records women
-           holding five of seven identifiable operator roles, with "women only
-           emotional, men only decision" as the named failure. A male operator here
-           improves that distribution rather than worsening it.
-           ⚠ Naming guard: no readable text, no brand mark, no card terminal, no
-           till — checked on the delivered file at full size before wiring.
-           ⚠ The spine and the sheet stay FULL WIDTH in their own container below.
-           A term sheet squeezed into half a row is unreadable: the value track
-           collapses. That is why this section has two containers, not one. -->
+    <section id="distribution" class="section prose-band" aria-label="The distribution argument">
+      <div class="container prose-band__inner">
+        <h2 class="prose-band__h2" data-reveal-words>The model was never the problem. <em class="accent">The distribution was</em>.</h2>
+        <p class="prose-band__body" data-reveal>A member's largest spending decisions are made in front of a merchant, not in front of a lender. For as long as that has been true, the credit facility network has been the one positioned at that moment, with no relationship to the member and no stake in the community the money came from. It captured the transaction that a community lender was closer to all along.</p>
+        <p class="prose-band__body" data-reveal data-reveal-delay="1">CredX does not ask a community lender to compete on distribution it was never built to own. It supplies the position at the counter and leaves the lending to the institution that knows the member. A member who takes credit there is borrowing from the institution they already belong to, at the moment they were going to borrow anyway.</p>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         3 · WHAT STAYS WITH YOU — 🆕 NEW, and it is now the page's SIGNATURE.
+         🔴 VALORISATION BY SUBTRACTION. Naming what CredX declines makes the
+         lender the principal in the arrangement rather than a funding line in
+         someone else's product. Every item is already on file, so it costs
+         nothing in unconfirmed claims — which is the whole trick on a page
+         where every number is blocked.
+         ✅ `.positions` IS REUSED FOR EXACTLY ITS PURPOSE. It was built on
+         2026-08-20 as a map of positions rather than steps — "an institution
+         does not ask what happens first, it asks WHO HOLDS WHAT". That is
+         precisely this section, so the component moves here and becomes the
+         signature that `.sheet` used to be.
+         ⚠ THREE NODES, NOT FOUR. The customer node is gone: this section is
+         about what the two institutions and CredX each keep, and the accent
+         belongs on the reader.
+         ⚠ NO NUMBERS ON THESE NODES, EVER — a number here drifts into
+         /how-it-works's numbered rail, which is the other page's signature.
+         ============================================================ -->
+    <section id="stays" class="section section--doc" aria-label="What stays with you">
+      <div class="container prose-band__inner">
+        <h2 class="prose-band__h2" data-reveal-words>What stays <em class="accent">with you</em>.</h2>
+        <p class="prose-band__body" data-reveal>CredX originates the credit and services the merchant relationship. It does not take the member relationship, it does not put its own brand in front of your member, and it does not decide who your institution lends to.</p>
+
+        <div class="positions" data-reveal data-reveal-delay="1">
+          <ul class="positions__row">
+            <li class="positions__node">
+              <span class="positions__who">The merchant</span>
+              <span class="positions__holds">Keeps the customer they earned, and the relationship that made the sale</span>
+            </li>
+            <li class="positions__node positions__node--lender">
+              <span class="positions__who">Your institution</span>
+              <span class="positions__holds">Keeps the lending relationship, and the decision that goes with it</span>
+            </li>
+            <li class="positions__node positions__node--credx">
+              <span class="positions__who">CredX</span>
+              <span class="positions__holds">Supplies the origination, the servicing, and the transaction data the decision is made on</span>
+            </li>
+          </ul>
+          <!-- ⚠ Opt-in is stated in the same breath as the data. Never imply
+               consent. And the data is written as SUPPLY, never ownership —
+               the standing client rule (Kyle + Audrey, 2026-08-12) applies to
+               the lender's view exactly as it does to the merchant's. -->
+          <p class="positions__return">Any data used in a lending decision carries the member's explicit opt-in.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         4 · THE ASSET
+         🔴 THE RECEIVABLE CLAIM IS REMOVED, NOT SOFTENED. V1 said "The lender
+         holds the receivable" and "the receivable sits with the lender". That
+         is in unreconciled tension with four merchant-facing statements —
+         /merchants ("CredX funds the credit and carries the risk"), the Home
+         ("the risk stays with CredX, never on your books") and /how-it-works
+         ("the risk stays with CredX and its lending partners").
+         ⚠ THEY ARE NOT NECESSARILY CONTRADICTORY: they reconcile if the lender
+         funds and holds while CredX absorbs loss through a guarantee or a
+         first-loss position. But NOTHING ON FILE STATES THAT STRUCTURE, and
+         this is the page whose reader IS the party it concerns. A
+         credit-union officer reads /lenders and /merchants in the same sitting.
+         🔴 SO THIS SECTION ASSERTS NEITHER SIDE and runs at half power until
+         the client answers: who funds the receivable, who holds it, who takes
+         first loss, and by what instrument. That is the highest-value open
+         item on this page, ahead of SOC 2. DO NOT put the claim back.
+         ⏸ NO RATE, NO YIELD, NO SPREAD, NO TERM — none exists on file, and the
+         Home's "roughly half the rate of a standard card" is a CONSUMER-side
+         rate that says nothing about lender economics. Not in copy, and not in
+         schema: a schema field is a published claim like any other.
+         ============================================================ -->
+    <section id="asset" class="section prose-band" aria-label="The asset">
       <div class="container split__inner split__inner--top">
         <div class="split__media" data-reveal-media>
           <img src="../images/lenders-asset.png" alt="A customer at a shop counter receiving a paper-wrapped parcel from the owner, shelves of ceramics and glassware behind him" width="1122" height="1402" loading="lazy" decoding="async" />
         </div>
         <div class="split__body">
-        <h2 class="prose-band__h2" data-reveal-words>What the asset <em class="accent">is</em>.</h2>
-        <p class="prose-band__body" data-reveal>Credit is extended to a consumer at the moment of a purchase, through a merchant that has an existing relationship with that customer. The lender holds the receivable. CredX originates, services the merchant relationship, and supplies the transaction data the lending decision is made on.</p>
-        <p class="prose-band__body" data-reveal data-reveal-delay="1">The borrower is not anonymous to the merchant, and the merchant has a commercial interest in the relationship continuing. That is the difference from unsecured consumer credit written at arm's length.</p>
-
+          <h2 class="prose-band__h2" data-reveal-words>What the credit <em class="accent">actually is</em>.</h2>
+          <p class="prose-band__body" data-reveal>Consumer credit, extended at the moment of a purchase, through a merchant that has an existing relationship with the buyer. The credit is funded by community lender partners. Underwriting draws on transaction data from that merchant relationship, supplied on the buyer's explicit opt-in.</p>
+          <!-- ⚠ THE STRONGEST SENTENCE ON THE PAGE, and it survives from V1 —
+               a genuine underwriting advantage stated without a single number,
+               which is exactly what a page with every figure blocked needs. -->
+          <p class="prose-band__body" data-reveal data-reveal-delay="1">The borrower is not anonymous here. The merchant knows them, has a commercial interest in the relationship continuing, and has a purchase record that no arm's-length application can produce. That is the difference from unsecured consumer credit written to a stranger.</p>
         </div>
-      </div>
-
-      <!-- Full-width again from here down, for the reason in the note above. -->
-      <div class="container prose-band__inner">
-        <!-- ============================================================
-             THE POSITIONS MAP — added 2026-08-20 (Marcos).
-             🔴 DELIBERATELY NOT A NUMBERED SEQUENCE. /how-it-works already owns
-             the mechanics rail: numbered stations, order-of-events. Repeating
-             that shape here would collapse the two pages, and it would answer
-             the wrong question. An institution does not ask "what happens
-             first" — it asks WHO HOLDS WHAT: who carries the receivable, who
-             carries the risk, who keeps the relationship. So this is a map of
-             positions, not of steps, and it carries no numbers by design.
-             ⚠ If a number ever appears on these nodes, it has drifted into the
-             other page's signature.
-
-             ↩ 2026-08-21 · REBUILT AS A SPINE. Marco named this component first
-             when he called the page bad, and the render says why: it was FOUR
-             COLUMNS OF UPPERCASE LABELS OVER HAIRLINE ROWS, sitting directly
-             above a six-row `.sheet` of uppercase labels over hairline rows.
-             Twelve horizontal rules in one column. The two did not merely
-             compete — the map dissolved into the sheet and read as its header.
-             🔴 AND THERE IS A SPEC CONFLICT UNDERNEATH IT, which is worth
-             stating plainly: §6.9 gives the Institutional type a SIGNATURE
-             BUDGET OF 1, and it is spent on `.sheet`. A second document-register
-             artifact of equal weight is over budget by construction. The
-             resolution here is SUBORDINATION, not deletion — Marco asked for
-             this map, so it stays, but as the section's diagram rather than as a
-             peer of its signature.
-             ⚠ WHAT CHANGED: one continuous hairline with a marker per position,
-             instead of a rule per node. Geometry, not a table. The sheet is rows;
-             this is a line. They can no longer be mistaken for each other.
-             ⚠ The lender marker is the only filled one and the only accent, and
-             that is the §6.9 acceptance test doing its job: crop the nav and the
-             accent still says who this page is addressed to.
-             ============================================================ -->
-        <div class="positions" data-reveal data-reveal-delay="2">
-          <ul class="positions__row">
-            <li class="positions__node">
-              <span class="positions__who">Customer</span>
-              <span class="positions__holds">Takes the credit at the point of purchase</span>
-            </li>
-            <li class="positions__node">
-              <span class="positions__who">Merchant</span>
-              <span class="positions__holds">Keeps the relationship that made the sale</span>
-            </li>
-            <li class="positions__node positions__node--credx">
-              <span class="positions__who">CredX</span>
-              <span class="positions__holds">Originates, services, and supplies the transaction data. Holds no receivable</span>
-            </li>
-            <li class="positions__node positions__node--lender">
-              <span class="positions__who">The lender</span>
-              <span class="positions__holds">Holds the receivable</span>
-            </li>
-          </ul>
-          <p class="positions__return">Repayment support runs back through the same transaction that created the credit.</p>
-        </div>
-
-        <dl class="sheet" data-reveal data-reveal-delay="3">
-          <div class="sheet__row">
-            <dt class="sheet__term">Instrument</dt>
-            <dd class="sheet__value">Merchant-linked consumer credit, originated at the point of purchase.</dd>
-          </div>
-          <div class="sheet__row">
-            <dt class="sheet__term">Held by</dt>
-            <dd class="sheet__value">The lending partner. CredX originates and services; the receivable sits with the lender.</dd>
-          </div>
-          <div class="sheet__row">
-            <dt class="sheet__term">Underwriting input</dt>
-            <dd class="sheet__value">Transaction data from the originating merchant relationship, on explicit consumer opt-in.</dd>
-          </div>
-          <div class="sheet__row">
-            <dt class="sheet__term">Repayment support</dt>
-            <dd class="sheet__value">Structured into the same transaction flow that created the credit. Designed to reduce default rather than to price for it.</dd>
-          </div>
-          <div class="sheet__row">
-            <dt class="sheet__term">Geography</dt>
-            <dd class="sheet__value">Ontario, British Columbia, Alberta, Saskatchewan, Manitoba, and Atlantic Canada.</dd>
-          </div>
-          <!-- ⏸ {{PENDING:community-lender-count}} — owed by Kyle / Kendall. The
-               metric stays generic until supplied. This is the field §6.9 was
-               designed around: a blocked number costs one row here, where it
-               would have cost a headline anywhere else. -->
-          <div class="sheet__row" data-pending="community-lender-count">
-            <dt class="sheet__term">Lending partners</dt>
-            <dd class="sheet__value">Credit unions and community lenders across the regions above.</dd>
-          </div>
-        </dl>
       </div>
     </section>
 
     <!-- ============================================================
-         3 · RISK AND REPAYMENT SUPPORT
-         🔴 HEDGING IS MANDATORY HERE AND IT IS NOT STYLISTIC. "Designed to",
-         "structured to", "may improve". NEVER "reduces defaults by", never a
-         percentage, never a guarantee. This is the section most likely to drift
-         into a claim legal cannot stand behind.
-         ⚠ No performance figure exists on file, and none may be inferred from
-         the merchant-side numbers — they answer a different question.
+         5 · RISK AND REPAYMENT SUPPORT
+         🔴 HEDGING IS MANDATORY AND IT IS NOT STYLISTIC. "Designed to",
+         "structured to". NEVER "reduces defaults by", never a percentage,
+         never a guarantee. ⚠ The marketing reposition RAISES this pressure
+         rather than lowering it — warmer copy is exactly where a claim slips.
+         ⚠ The closing sentence is the Home's approved wording, carried rather
+         than echoed (Marcos: keep the frame as they approved it). "risk stays
+         managed" is the most assertive risk language on the page and it passes
+         ONLY because the client approved that whole sentence. QUOTE IT, DO NOT
+         EXTEND IT — no "reduces delinquency", no figure attached to it, ever.
          ============================================================ -->
+    <!-- ⚠ NOT `--note`. The first pass of this rebuild put §5 and §7 both at
+         clause scale and they became twins again, separated only by §6 — the
+         evenness problem in miniature.
+         🔴 AND THE DEMOTION WAS WRONG ON SUBSTANCE, not just on rhythm: for a
+         credit-union officer, how repayment is supported is one of the two or
+         three things they actually came to read. A small uppercase label is the
+         treatment for a closing footnote, which §7 is and this is not. -->
     <section id="risk" class="section prose-band" aria-label="Risk and repayment support">
       <div class="container prose-band__inner">
         <h2 class="prose-band__h2" data-reveal-words>How repayment <em class="accent">is supported</em>.</h2>
-        <p class="prose-band__body" data-reveal>Repayment support is built into the same transaction flow that created the credit. Because the merchant relationship continues, the structure is designed to reduce default rather than to price for it.</p>
+        <p class="prose-band__body" data-reveal>Repayment support is built into the same transaction flow that created the credit. Because the merchant relationship continues after the sale, the structure is designed to reduce default rather than to price for it. It is an asset class with built-in delinquency controls, so risk stays managed.</p>
       </div>
     </section>
 
     <!-- ============================================================
-         4 · COMMUNITY VALUE — the emotional section of an unemotional page.
-         It stays understated on purpose.
-         ⚠ Quebec is DEFERRED and deliberately absent from the list. Do not add it.
+         6 · WHERE THE LENDING STAYS
+         ✅ THE ELEVATED FRAME FINALLY HAS ITS SECTION. `lenders-region-alt-elevated`
+         was delivered on 2026-08-21 and sat unused because it was treated as an
+         ALTERNATE to the hero. It is not an alternate — it is a different
+         section: this one is literally about a region, and that photograph is
+         literally a region. The street block opens the page; the region closes
+         the argument.
+         🔴 THE PROVINCES ARE NAMED ONCE, HERE. V1 shipped them TWICE — the
+         `.sheet`'s Geography row and this section's paragraph. The sheet is
+         retired and this section owns the list. Anything elsewhere refers to
+         "the regions above".
+         ⚠ QUEBEC IS DEFERRED and deliberately absent. Do not add it.
          ============================================================ -->
-    <section id="community" class="section prose-band" aria-label="Community value">
-      <div class="container prose-band__inner">
-        <h2 class="prose-band__h2" data-reveal-words>Value that stays in <em class="accent">the region that produced it</em>.</h2>
-        <p class="prose-band__body" data-reveal>The lending is placed with institutions in the communities where the transactions happen.</p>
+    <section id="region" class="section prose-band" aria-label="Where the lending stays">
+      <!-- ⚠ A SPLIT, NOT A FULL-WIDTH BAND, and the first draft of this rebuild
+           got it wrong. Marcos: "a gente não tá usando imagem grande mais assim
+           nas páginas, para diferenciar da home" — the full-container 16:9
+           `.section-media` band is the HOME's move and is off the inner pages. I
+           reached for it here out of habit within an hour of recording that rule.
+           ⚠ MEDIA ON THE RIGHT, against §4's media on the LEFT. Alternating is the
+           documented reason `.split--reverse` exists: it is what stops every
+           section reading as prose-then-image. -->
+      <div class="container split__inner split__inner--top">
+        <div class="split__body">
+        <h2 class="prose-band__h2" data-reveal-words>The lending stays in <em class="accent">the region that produced it</em>.</h2>
+        <p class="prose-band__body" data-reveal>Credit originated in a community is placed with an institution in that community. The spending stays in the same economy as the lending.</p>
 
-        <!-- ⚠ THE SENTENCE WAS SPLIT, NOT REWRITTEN. The six provinces were the tail
-             of the paragraph above and every word is unchanged — they are now their
-             own element so the section has a form other than "centred H2 over one
-             paragraph", which §3 and §5 already are.
-             ⚠ Quebec is DEFERRED and deliberately absent. Do not add it.
-             ⚠ `credx-copy`: this list is ALREADY a row of the `.sheet` in §2, and
-             breaking it out makes the repetition more visible. Design flagged it;
-             the call is yours. -->
         <ul class="geo" data-reveal data-reveal-delay="1">
           <li class="geo__item">Ontario</li>
           <li class="geo__item">British Columbia</li>
@@ -397,58 +379,50 @@
           <li class="geo__item">Atlantic Canada</li>
         </ul>
 
-        <!-- ↩ THE FULL-WIDTH IMAGE BAND THAT STOOD HERE WAS REMOVED 2026-08-21.
-             Marcos: *"a gente não tá usando imagem grande mais assim nas páginas,
-             para diferenciar da home."* 🔴 THE FULL-CONTAINER 16:9 `.section-media`
-             BAND IS THE HOME'S MOVE AND IS OFF THE INNER PAGES. The photograph did
-             not go away — it moved into the hero as a small plate. **One photograph
-             on this page, which is what the §4b differentiation audit concluded.**
-             ⚠ So this section is prose again, and that reopens the rhythm problem the
-             2026-08-21 layout pass existed to fix: §3 and §4 are both a centred
-             display H2 over one paragraph, which is two of the three identical bands
-             that made the page read as too EVEN. `.prose-band--geo` is the answer
-             that costs no image: the province list breaks out of the paragraph and
-             sets as a rule-separated run, so the section has a form of its own.
-             ⚠ IT ALSO EXPOSES A COPY DUPLICATION, and it is `credx-copy`'s call, not
-             design's: these six provinces are ALREADY a row of the `.sheet` in §2.
-             Pulling them out of the paragraph makes the repetition more visible, not
-             less. Flagged, not silently rewritten. -->
+        <!-- ⏸ [NUMBER NEEDED — confirmed community-lender partner count, owed
+             by Kyle / Kendall.] ⚠ V1's safe harbour was a field of the
+             `.sheet`, so the page could ship complete and gain a figure later.
+             THE SHEET IS RETIRED, SO THAT HARBOUR IS GONE — when the count
+             arrives it needs a home here that does not require rewriting a
+             headline around it. -->
+        </div>
+        <!-- ✅ THE ELEVATED FRAME FINALLY HAS ITS SECTION. It was delivered on
+             2026-08-21 and sat unused because it was treated as an ALTERNATE to
+             the hero. It is not an alternate — it is a different section: this
+             one is literally about a region and the photograph is literally a
+             region. The street block opens the page; the region closes the
+             argument. Renamed out of the scratch folder to earn its place.
+             ⚠ `--wide` for the same reason as the hero: the master is 16:9 and
+             `.split__media` is 4:5, and cropping an elevated townscape to
+             portrait removes the breadth that IS its subject. -->
+        <div class="split__media split__media--wide" data-reveal-media>
+          <img src="../images/lenders-region-elevated.png" alt="A small Canadian city seen from above its rooflines, the commercial main street running across the frame with tidy residential blocks and mature trees behind it" width="1672" height="941" loading="lazy" decoding="async" />
+        </div>
       </div>
     </section>
 
     <!-- ============================================================
-         5 · COMPLIANCE — ⏸ CONSTRAINED BY AN OPEN HOLD. READ BEFORE EDITING.
-         SOC 2 has THREE PARTS SETTLED AND ONE PENDING (register §1, 2026-08-20):
-         · SETTLED — "Compliant", never "certified". The reason is definitional:
-           SOC 2 produces an auditor's attestation report; there is NO CERTIFICATE
-           TO HOLD. ⚠ The client's own written answer says "SOC2 certified" and it
+         7 · COMPLIANCE — ⏸ CONSTRAINED BY AN OPEN HOLD. READ BEFORE EDITING.
+         SOC 2 has THREE PARTS SETTLED AND ONE PENDING:
+         · SETTLED — "Compliant", never "certified". Definitional: SOC 2
+           produces an auditor's attestation report; THERE IS NO CERTIFICATE TO
+           HOLD. ⚠ The client's own written answer says "SOC2 certified" and it
            is wrong. Do not adopt it back from them.
-         · SETTLED — nothing may imply CredX holds Type II. Type II belongs to the
-           lenders and partners, and on THIS page that audience IS the reader, so
-           the risk of blurring it is higher here than anywhere else on the site.
-         · SETTLED — PIPEDA is confirmed. Canadian law, no certification exists or
-           is required. It is stated affirmatively below, which is why this section
+         · SETTLED — nothing may imply CredX holds Type II. Type II belongs to
+           the lenders and partners, and ON THIS PAGE THAT AUDIENCE IS THE
+           READER, so the risk of blurring it is the highest on the site.
+           ⚠ THE MARKETING REGISTER MAKES THIS WORSE, NOT BETTER: warmer copy
+           is exactly where a compliance implication slips in as reassurance.
+         · SETTLED — PIPEDA is confirmed. Canadian law, no certification exists
+           or is required. Stated affirmatively below, which is why this section
            is not empty.
-         · 🔴 PENDING — that CredX holds Type I. Audrey is double-checking, overdue
-           since 2026-08-17. NOT WRITTEN HERE, BY DECISION, NOT OVERSIGHT. A
-           compliance claim is the one category where being wrong is expensive.
-           When it lands this is a one-sentence addition, not a rewrite.
-         ⚠ OSFI: plan/05:229 asks for an "OSFI alignment" claim. NOTHING ON FILE
-         SOURCES IT, and an alignment claim about a prudential regulator must be
-         sourced. Written below as the partners' own obligations, which is true
-         and unremarkable. Someone should confirm or drop the plan-doc line.
+         · 🔴 PENDING, and it is the only part: that CredX holds Type I. Audrey,
+           overdue since 2026-08-17. NOT WRITTEN HERE, BY DECISION. When it
+           lands it is a one-sentence addition, not a rewrite.
+         ⚠ OSFI: plan/05:229 asks for an "OSFI alignment" claim and NOTHING ON
+         FILE SOURCES IT. Written below as the partners' own obligations, which
+         is true and unremarkable. Confirm it or strike it from the plan doc.
          ============================================================ -->
-    <!-- ↩ 2026-08-21 · `.prose-band--note` — this section drops OUT of the display
-         scale, and the reason is rhythm, not modesty. §3, §4 and §5 were the same
-         object three times: a centred display H2 over one paragraph, measured at
-         387 · 439 · 334px tall. Nothing on the page had rank, which is the "falta
-         de ar" — the page was not too dense, it was too EVEN.
-         Now §3 is the display beat, §4 is the photograph band, and §5 closes at
-         clause scale. An institutional document ends on a compliance paragraph in
-         a quieter register, not on a third headline the size of the first two.
-         ⚠ THE H2 IS STILL AN H2. Only its type scale moved — the heading order on
-         this page stays h1 → h2 ×5 → h3 (footer) with no skips, which is the state
-         the 2026-08-20 audit put eight pages into. Do not "fix" this to an h3. -->
     <section id="compliance" class="section prose-band prose-band--note" aria-label="Regulatory posture">
       <div class="container prose-band__inner">
         <h2 class="prose-band__h2" data-reveal-words>Regulatory <em class="accent">posture</em>.</h2>
@@ -457,27 +431,30 @@
     </section>
 
     <!-- ============================================================
-         6 · SOFT CTA — one low-key invitation. Nothing more.
-         🔴 `.final-cta--plain` REMOVES THE GRADIENT BAND. §6.9 gives the
-         Institutional type a gradient budget of ZERO. Do not "restore" it to
-         match the other pages — matching them is precisely what this page must
-         not do.
-         ⚠ THE DEEPER PATH IS COMMENTED OUT ON PURPOSE — AND THE REASON CHANGED.
-         ↩ 2026-08-20: /lenders/partner NOW EXISTS. The old note said it did not,
-         which is no longer true. What is still missing is the ENDPOINT, and that
-         belongs to CredX IT, not to D&Z (Marco, 2026-08-20).
-         The page fails honestly rather than silently — with nothing wired it tells
-         the visitor the form is not connected instead of thanking them. But an
-         enquiry form that announces it is broken is not something to put in front
-         of a credit-union officer on a credibility page.
-         🔴 UNCOMMENT THIS THE DAY window.credxSubmitPartnerEnquiry IS WIRED. Not
-         before, and there is nothing else blocking it.
+         8 · THE INVITATION
+         🔴 `.final-cta--plain` REMOVES THE GRADIENT. §6.9 gives this page a
+         gradient budget of ZERO and that survived the reposition — it is one of
+         the few things still separating this page from the two Pillar–Sell
+         pages it now shares an opening shell with. Do not "restore" it.
+         ⚠ THE OLD LINE READ "A conversation, not a pitch." Marcos questioned it
+         and the instinct was right for a reason that is not grammar: THE
+         SENTENCE INTRODUCES THE IDEA OF A PITCH IN ORDER TO DENY IT. On the one
+         page that must not read as a sales page, naming what you are not is the
+         most reliable way to put it in the reader's head. The replacement makes
+         the same promise affirmatively, and does it by putting the lender's
+         portfolio ahead of CredX's product.
+         ⚠ `pitch` is not forbidden language — checked against
+         copy/CredX-Forbidden-Language.md. This was rhetoric, not a rule.
+         🔴 THE DEEPER PATH STAYS COMMENTED OUT until CredX IT wires
+         `window.credxSubmitPartnerEnquiry`. The form fails honestly, but a form
+         that announces it is not connected does not go in front of a
+         credit-union officer. Uncomment the day the endpoint exists.
          ============================================================ -->
-    <section id="cta" class="section final-cta final-cta--plain" aria-label="If the asset class is of interest">
+    <section id="cta" class="section final-cta final-cta--plain" aria-label="Worth a conversation">
       <div class="container final-cta__inner">
         <div data-reveal>
-          <h2 class="final-cta__h2">If the asset class is of interest.</h2>
-          <p class="final-cta__body">A conversation, not a pitch.</p>
+          <h2 class="final-cta__h2">Worth a conversation.</h2>
+          <p class="final-cta__body">The first one is about your portfolio and your region, not about our product.</p>
           <div class="hero__ctas final-cta__ctas">
             <a href="../contact/" class="btn btn-secondary">Talk to Us</a>
             <!-- <a href="../lenders/partner/" class="btn btn-secondary">Lender Partner Enquiry</a> -->
