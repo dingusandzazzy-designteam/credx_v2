@@ -161,17 +161,52 @@
       <div class="container hero__inner">
         <div class="hero__copy">
           <h1 class="hero__h1" data-reveal-words>A Merchant-Linked Asset Class for <em class="accent">Community Lenders</em></h1>
+          <!-- ↩ MOVED OUT OF THE RIGHT COLUMN 2026-08-21. With the photograph plate
+               added above the summary, the right column ran ~450px tall against a
+               ~250px headline, leaving 200px of dead left column under the H1 — the
+               same unexplained-space problem this session is fixing everywhere else,
+               reproduced in the hero. The CTA belongs under the headline anyway, and
+               it brings the two columns to a similar depth.
+               ⚠ STILL ONE CTA ONLY. §6.9 allows this page a single quiet action above
+               the fold; moving it did not add one. -->
+          <div class="hero__ctas" data-reveal data-reveal-delay="3">
+            <a href="../contact/" class="btn btn-secondary">Talk to Us</a>
+          </div>
           <!-- The right column of the header. Below 960 it collapses back under
                the headline and the reading order is unchanged — the H1 still
                precedes the paragraph in the DOM, so nothing reorders for
                keyboard or assistive technology at any width. -->
           <div class="hero__ledger">
-            <p class="hero__sub" data-reveal data-reveal-delay="1">
+            <!-- ↩ THE PHOTOGRAPH MOVED HERE FROM §4 ON 2026-08-21 (Marcos), and it is
+                 a REVERSAL OF §6.9 recorded as a decision rather than absorbed.
+                 🔴 §6.9 gave the Institutional type "no photograph at all", and
+                 `prompts-batch2.md` §4 said the placement was the body and NOT the
+                 hero, in these words: "if a later round moves it to the hero, that
+                 is the type going, and it should be a decision rather than a drift."
+                 This is that decision. It is not a drift and it is not an oversight.
+                 ⚠ WHAT SURVIVES THE REVERSAL, and it is what keeps the type alive:
+                 §6.9's actual fear was a FULL-BLEED hero photograph like the Home's
+                 `.hero--full` — the thing that makes a page read as a sales page. This
+                 is a PLATE inside the summary column: it shares the column with the
+                 paragraph, it never sits opposite the headline as a 50% peer, and it
+                 is roughly a quarter of the width the body band was.
+                 🔴 DELIBERATELY NOT `.hero--split`. That shell is /how-it-works,
+                 /merchants and /pos — copy beside a framed photograph at 50/50. Using
+                 it here would make this page identical to the two Pillar–Sell pages it
+                 sits beside in one nav menu, which is the exact failure §6.9 names:
+                 "three audience pages that are each other".
+                 ⚠ ABOVE THE FOLD NOW, so the loading strategy inverts: no `lazy`, and
+                 `fetchpriority="high"` because this is the page's LCP element. It
+                 carried `loading="lazy"` while it was a body band; keeping that here
+                 would have delayed the largest paint on the page. -->
+            <div class="hero__plate" data-reveal data-reveal-delay="1">
+              <img src="../images/lenders-region.png"
+                   alt="A block of independent shops trading on the main street of a small Canadian city — a bakery, a florist, a bicycle shop and a homeware shop side by side, awnings out over the pavement and windows lit."
+                   width="1672" height="941" fetchpriority="high" decoding="async" />
+            </div>
+            <p class="hero__sub" data-reveal data-reveal-delay="2">
               CredX originates consumer credit at the point of purchase and places it with Canadian credit unions and community lenders. The credit is tied to a merchant relationship the borrower already has, and repayment support is structured into the transaction rather than added afterwards.
             </p>
-            <div class="hero__ctas" data-reveal data-reveal-delay="2">
-              <a href="../contact/" class="btn btn-secondary">Talk to Us</a>
-            </div>
           </div>
         </div>
       </div>
@@ -315,58 +350,41 @@
     <section id="community" class="section prose-band" aria-label="Community value">
       <div class="container prose-band__inner">
         <h2 class="prose-band__h2" data-reveal-words>Value that stays in <em class="accent">the region that produced it</em>.</h2>
-        <p class="prose-band__body" data-reveal>The lending is placed with institutions in the communities where the transactions happen. Ontario, British Columbia, Alberta, Saskatchewan, Manitoba, and Atlantic Canada.</p>
+        <p class="prose-band__body" data-reveal>The lending is placed with institutions in the communities where the transactions happen.</p>
 
-        <!-- ============================================================
-             THE ONE PHOTOGRAPH — `lenders-region`, briefed at
-             `prompts-batch2.md` §4. ⏸ NOT DELIVERED YET; Marco is supplying the
-             file (2026-08-21). The slot is built and the swap is one line.
+        <!-- ⚠ THE SENTENCE WAS SPLIT, NOT REWRITTEN. The six provinces were the tail
+             of the paragraph above and every word is unchanged — they are now their
+             own element so the section has a form other than "centred H2 over one
+             paragraph", which §3 and §5 already are.
+             ⚠ Quebec is DEFERRED and deliberately absent. Do not add it.
+             ⚠ `credx-copy`: this list is ALREADY a row of the `.sheet` in §2, and
+             breaking it out makes the repetition more visible. Design flagged it;
+             the call is yours. -->
+        <ul class="geo" data-reveal data-reveal-delay="1">
+          <li class="geo__item">Ontario</li>
+          <li class="geo__item">British Columbia</li>
+          <li class="geo__item">Alberta</li>
+          <li class="geo__item">Saskatchewan</li>
+          <li class="geo__item">Manitoba</li>
+          <li class="geo__item">Atlantic Canada</li>
+        </ul>
 
-             🔴 THIS SLOT REVERSES §6.9, WHICH SAID "no photograph at all", and
-             the reversal is Marco's (2026-08-20). Two things survive it and are
-             NOT open to a later round:
-             · IT IS IN THE BODY, AT §4 — never the hero. A hero photograph is the
-               single change that would make this page read as a sales page, which
-               is the entire reason the Institutional type exists.
-             · IT IS 16:9 AND A BAND, not a `.split`. The brief is explicit about
-               the ratio and the reason: horizontal here, not the 4:5 the other
-               two Batch 2 slots use, because it sits in the body as a
-               `.section-media` rather than in a split hero.
-             ⚠ §4 is the ONLY section on this page whose subject is photographable
-             — the region, with nobody in it. A branch interior depicts the
-             reader's own institution; two people in a meeting is `evp-hero`
-             exactly. Both are in the brief's rejection table with their reasons.
-             ⚠ No card terminal, no card reader, no till — banned on every page of
-             this site, and not applicable here in any case.
-
-             ↩ ROUND 2 IS WIRED, 2026-08-21. ROUND 1 WAS REJECTED — both prompts
-             returned a shuttered street and a dormant town. The post-mortem is
-             standing guidance now at `prompts-reference.md` §2.1; the corrected
-             prompt is `prompts-batch2.md` §4c.
-             🔴 WHY IT MATTERED HERE, AND NOT ONLY AESTHETICALLY: a street of closed
-             shops sat beside §3's copy about repayment support and reducing default,
-             so it did not read as "quiet" — IT READ AS DEFAULTS. The image argued
-             against the section. Weigh a dormancy signal against what the section
-             CLAIMS, not only against the brand register.
-             ⚠ NAMING GUARD VERIFIED, NOT ASSUMED (reference §5): the fascia band and
-             both licence plates were cropped and upscaled 3x. Awnings are completely
-             blank with no lettering anywhere; the plate is present but unresolvable,
-             which is a PASS — that is what the guard is for.
-             ⚠ No `fetchpriority` — below the fold, not the LCP element. No `<picture>`
-             and no WebP twin: the conversion pass is retired (Marcos, 2026-08-11), and
-             a `<picture>` with no `<source>` is identical to a bare `<img>`.
-             ⏸ An alternate elevated frame is on file, untracked and unused, at
-             `images/lenders/lenders-region-alt-elevated.png`.
-             ⚠ THE ALT WAS WRITTEN FROM THE DELIVERED FILE, NOT FROM THE BRIEF. Three
-             alts on the Home were found describing renders that had been
-             replaced. No `fetchpriority` — this is below the fold and the LCP
-             image on this page is not an image.
-             ============================================================ -->
-        <div class="section-media section-media--spaced" data-reveal data-reveal-delay="1">
-          <img src="../images/lenders-region.png"
-               alt="A block of independent shops trading on the main street of a small Canadian city — a bakery, a florist, a bicycle shop and a homeware shop side by side, awnings out over the pavement and windows lit."
-               width="1672" height="941" loading="lazy" decoding="async" />
-        </div>
+        <!-- ↩ THE FULL-WIDTH IMAGE BAND THAT STOOD HERE WAS REMOVED 2026-08-21.
+             Marcos: *"a gente não tá usando imagem grande mais assim nas páginas,
+             para diferenciar da home."* 🔴 THE FULL-CONTAINER 16:9 `.section-media`
+             BAND IS THE HOME'S MOVE AND IS OFF THE INNER PAGES. The photograph did
+             not go away — it moved into the hero as a small plate. **One photograph
+             on this page, which is what the §4b differentiation audit concluded.**
+             ⚠ So this section is prose again, and that reopens the rhythm problem the
+             2026-08-21 layout pass existed to fix: §3 and §4 are both a centred
+             display H2 over one paragraph, which is two of the three identical bands
+             that made the page read as too EVEN. `.prose-band--geo` is the answer
+             that costs no image: the province list breaks out of the paragraph and
+             sets as a rule-separated run, so the section has a form of its own.
+             ⚠ IT ALSO EXPOSES A COPY DUPLICATION, and it is `credx-copy`'s call, not
+             design's: these six provinces are ALREADY a row of the `.sheet` in §2.
+             Pulling them out of the paragraph makes the repetition more visible, not
+             less. Flagged, not silently rewritten. -->
       </div>
     </section>
 
