@@ -5831,3 +5831,163 @@ a.vertical-card:hover .vertical-card__name::after { transform: translateX(4px); 
   margin-bottom: var(--s-5);
 }
 .hero__plate img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+
+/* ===========================================================================
+   TWO SECTIONS ON /evp WERE CONVERTED TO THE TWO-COLUMN READING LAYOUT AND
+   SHOULD NOT HAVE BEEN  ·  2026-08-21
+   Marcos: "evp ficou estranha, Why the saving holds. esse layout aqui nao
+   funciona" / "para The parts that make the rest work. mesma coisa".
+
+   THE CAUSE IS THE MIRROR OF THE ONE FIXED EARLIER THE SAME DAY. Three sections
+   wore `.control` (component-led, centred) with NO component in them, and were
+   reclassed to reading sections. These two are the opposite error: reading
+   sections that DO carry a full-width component, converted anyway. A section
+   with a real figure in it is not a reading section.
+
+   MEASURED, #cost: `.gains__strip` landed in the 595px reading column and went
+   476px TALL, because `--fit` sizes each `.stat` at `clamp(14rem, 22vw, 20rem)`
+   = 317px at 1440, so two of them plus the gap could not sit side by side and
+   wrapped into a tower. A one-line heading ("Why the saving holds.", 53px tall)
+   then sat opposite a 756px stack. That is the "estranha".
+
+   I FLAGGED THIS EXACT RISK WHILE BUILDING THE TWO-COLUMN CHANGE AND WROTE
+   "let me measure it after and only special-case if it breaks" -- and then did
+   not go back and measure it. The note is worth more than the fix: a deferred
+   measurement is an unverified claim, and it shipped as one.
+   =========================================================================== */
+
+@media (min-width: 960px) {
+  /* A full-width component in the section is the opt-out signal, not a page or a
+     section id -- so the next section that grows a figure inherits the right
+     behaviour instead of the next person rediscovering this. */
+  .prose-band__inner:has(> .gains__strip),
+  .prose-band__inner:has(> .parts) {
+    display: block;
+  }
+  .prose-band__inner:has(> .gains__strip) > .prose-band__h2,
+  .prose-band__inner:has(> .parts) > .prose-band__h2 {
+    grid-column: auto;
+    grid-row: auto;
+    /* Still left-hung, still a wide measure. The two-column fix is not being
+       reverted here -- only the column split. The unexplained centred margin
+       does not come back. */
+    text-align: left;
+    margin-inline: 0;
+    max-width: 40rem;
+  }
+  /* The prose keeps a reading measure now that it has the full row. */
+  .prose-band__inner:has(> .gains__strip) > .prose-band__body,
+  .prose-band__inner:has(> .parts) > .prose-band__body,
+  .prose-band__inner:has(> .gains__strip) > .prose-band__aside,
+  .prose-band__inner:has(> .gains__strip) > .figure-note {
+    margin-inline: 0;
+    max-width: 65ch;
+  }
+}
+
+/* ---- .parts · /evp §6, the four components that need more than a line ------
+   Marcos asked for cards here on 2026-08-21 and called it an exception. It is.
+   `.defs` existed because this section WAS a second `.stack` until 2026-08-19
+   and was removed on a measurement: as `.stack__item--mid` it came out at
+   left 120 / width 580 / padding 48 / font-size 16, IDENTICAL to §2's mid tier,
+   so the page's index and its detail were indistinguishable. That is EV-20.
+
+   🔴 SO THESE CARDS ARE BUILT TO MEASURE DIFFERENTLY ON PURPOSE. `.stack__item`
+   is a FILLED tile: `--surface-1`, 1px border all round, `--radius-card`, 48px
+   padding, in UNEQUAL tiers of 2+2+3 with photographs on two of them. `.parts`
+   is OPEN: no fill, no radius, no box, one hairline per cell, in a FLAT 2×2 of
+   four equals. Squinted at, §2 reads as a bento and §6 as a quadrant.
+   🔴 DO NOT ADD A FILL, A RADIUS, AN IMAGE, OR SIZE-RANK. Any one of them walks
+   this straight back into EV-20, which took two attempts to close.
+   ⚠ No icons either — a grid of icon-plus-heading-plus-text cards is the
+   category default this project's design floor refuses outright, and these four
+   are distinguished by what they DO, which is text.
+   ⚠ Name pre-flighted against style.css before use: `.parts`, `.parts__item`,
+   `.parts__term` and `.parts__body` were all unused. `.rail` collided this way
+   once and it is now a standing check.
+   --------------------------------------------------------------------------- */
+.parts {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--s-7);
+  margin-top: var(--s-8);
+}
+
+@media (min-width: 720px) {
+  .parts {
+    /* Flat 2×2. Not 2+2+3, which is §2's silhouette, and not 1×4, which would
+       squeeze a 150-character body into a ~278px column ten lines deep. */
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: var(--s-9);
+    row-gap: var(--s-8);
+  }
+}
+
+.parts__item {
+  /* The hairline IS the card here. Elevation is declared once, and it is
+     declared as a rule rather than as a box. */
+  border-top: 1px solid var(--border-default);
+  padding-top: var(--s-5);
+}
+
+.parts__term {
+  font-family: var(--font-body);
+  font-size: var(--type-h3);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  color: var(--text-primary);
+  margin: 0 0 var(--s-3);
+}
+
+.parts__body {
+  /* ⚠ No `ch` cap. It would resolve against THIS element's size, not the prose
+     column's — the trap that has bitten this project four times. The grid track
+     is the constraint. */
+  max-width: none;
+  margin: 0;
+  font-size: var(--type-body);
+  line-height: 1.65;
+  color: var(--text-secondary);
+  text-wrap: pretty;
+}
+
+
+/* ---- The figure hangs off the same left edge as everything else ------------
+   The `.gains__strip` in /evp #cost was still CENTRED under a left-hung heading:
+   the heading sat at x=128 and the first stat's numerals began at x=316. That is
+   the third time in one session the same defect has been pointed at, and leaving
+   it after fixing the pattern everywhere else would be ignoring the pattern.
+
+   ⚠ COMPATIBLE WITH THE RECORDED REASONING, checked before changing it. The
+   comment on `gains__strip--fit` in evp/index.html calls the modifier
+   load-bearing, and it is — but for the FIT, not the centring: `.gains__strip`
+   is a 3-column grid from 768px and this strip carries two stats, so without the
+   modifier the row left a third column empty and read as a missing item. The
+   modifier still does that. Only the alignment of the fitted row moves.
+
+   ⚠ SCOPED TO `.prose-band__inner >` DELIBERATELY. `.gains__strip` and `.stat`
+   also ship on the HELD Home, on /about and on /how-it-works, and none of those
+   sits inside a `.prose-band__inner` — verified by query, not assumed. A global
+   change here would reach the Home, which is under a "não mexer" hold.
+
+   ⚠ The stats' own text has to move with the container. Left-aligning only the
+   flex row would put the first stat's BOX at 128 while its numerals stayed
+   centred inside a 403px box, landing at ~250 — closer to the edge and still not
+   on it, which is the worst of both.
+   --------------------------------------------------------------------------- */
+@media (min-width: 768px) {
+  .prose-band__inner > .gains__strip {
+    justify-content: flex-start;
+  }
+  .prose-band__inner > .gains__strip > .stat {
+    text-align: left;
+    /* ⚠ `.stat` carries `padding-inline: 16px`, which is invisible while the row
+       is centred and becomes a 16px indent the moment it is left-aligned — the
+       numerals landed at 144 against a heading at 128. Traced with computed
+       style rather than guessed at; the padding stays on the right so the
+       divider between the two stats keeps its breathing room. */
+    padding-left: 0;
+  }
+}

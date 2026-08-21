@@ -604,25 +604,42 @@
         <!-- `<h3>` is deliberate rather than a `<dl>`: the outline and the
              per-component subheading are load-bearing for the page's SEO brief,
              and `<dd>`'s UA `margin-inline-start: 40px` is the same trap that
-             has bitten this project three times. The term is styled as the
-             page's existing bold prose lead-in (body face, 600, primary), not
-             as a card title — §3 already names a component that way. -->
-        <div class="defs">
-          <div class="defs__item" data-reveal>
-            <h3 class="defs__term">BOOST</h3>
-            <p class="defs__body">The reason a customer comes back sooner. Tiers, milestones, and cross-business offers that make the next visit worth making, funded by the value the last one created.</p>
+             has bitten this project three times.
+
+             ↩ `.defs` → `.parts` ON 2026-08-21 (Marcos: *"podemos abrir uma
+             excessão e criar cards para cada um dos 4 elementos"*). He called it
+             an exception himself, and it is one — so the reason `.defs` existed
+             is recorded here rather than lost.
+             🔴 THIS SECTION WAS A SECOND `.stack` UNTIL 2026-08-19 AND IT WAS
+             REMOVED FOR A MEASURED REASON: as two rows of `.stack__item--mid` it
+             came out at left 120 · width 580 · padding 48 · font-size 16 —
+             IDENTICAL to §2's mid tier. The page's index and the page's detail
+             were indistinguishable. That is EV-20, and it closed by moving this
+             to prose.
+             ⚠ SO THE CARDS ARE BACK BUT THEY MUST NOT MEASURE LIKE §2's. `.stack`
+             is FILLED tiles (`--surface-1`, 1px border, `--radius-card`, 48px
+             pad) in UNEQUAL tiers of 2+2+3, two of them carrying photographs,
+             with tier labels. `.parts` is OPEN — no fill, no radius, no box, one
+             hairline per cell — in a FLAT 2×2 of four equals. Squinted at, §2 is
+             a bento silhouette and this is a quadrant.
+             🔴 DO NOT ADD A FILL, A RADIUS, AN IMAGE, OR SIZE-RANK TO THESE FOUR.
+             Any one of them walks this straight back into EV-20. -->
+        <div class="parts">
+          <div class="parts__item" data-reveal>
+            <h3 class="parts__term">BOOST</h3>
+            <p class="parts__body">The reason a customer comes back sooner. Tiers, milestones, and cross-business offers that make the next visit worth making, funded by the value the last one created.</p>
           </div>
-          <div class="defs__item" data-reveal data-reveal-delay="1">
-            <h3 class="defs__term">MarketPlace</h3>
-            <p class="defs__body">A network of businesses that can run offers together. Your customers find reasons to spend beyond your four walls, and other businesses’ customers find you, without new infrastructure or a larger marketing budget.</p>
+          <div class="parts__item" data-reveal data-reveal-delay="1">
+            <h3 class="parts__term">MarketPlace</h3>
+            <p class="parts__body">A network of businesses that can run offers together. Your customers find reasons to spend beyond your four walls, and other businesses’ customers find you, without new infrastructure or a larger marketing budget.</p>
           </div>
-          <div class="defs__item" data-reveal>
-            <h3 class="defs__term">Orchestration</h3>
-            <p class="defs__body">The layer that keeps the other parts in step. Payments, data, offers, and partners coordinated so the customer meets one experience instead of several.</p>
+          <div class="parts__item" data-reveal>
+            <h3 class="parts__term">Orchestration</h3>
+            <p class="parts__body">The layer that keeps the other parts in step. Payments, data, offers, and partners coordinated so the customer meets one experience instead of several.</p>
           </div>
-          <div class="defs__item" data-reveal data-reveal-delay="1">
-            <h3 class="defs__term">Marketing</h3>
-            <p class="defs__body">Every transaction becomes a reason to speak to that customer again. Offers built from what they actually bought, aimed at the next visit and a fuller basket.</p>
+          <div class="parts__item" data-reveal data-reveal-delay="1">
+            <h3 class="parts__term">Marketing</h3>
+            <p class="parts__body">Every transaction becomes a reason to speak to that customer again. Offers built from what they actually bought, aimed at the next visit and a fuller basket.</p>
           </div>
         </div>
 
