@@ -422,11 +422,22 @@
          won it because data is this page's whole subject, and /how-it-works §4
          gave it up. Do not "de-duplicate" it here.
          ============================================================ -->
-    <section id="daap" class="section control" aria-label="DaaP, Data as a Product">
-      <div class="container">
-        <div class="control__header">
-          <h2 class="control__h2" data-reveal-words>What your transaction record <em class="accent">becomes</em>.</h2>
-        </div>
+      <!-- ↩ RECLASSED `.control` -> `.prose-band` ON 2026-08-21.
+           🔴 THIS SECTION WORE THE COMPONENT-LED CLASS AND HAD NO COMPONENT. `.control`
+           centres its heading and intro because a full-width piece sits under them and
+           anchors the symmetry — the fee path, the value stack, the ledger rows. With
+           nothing beneath it, a centred heading over a centred paragraph floats in an
+           1184px container with nothing accounting for the space, which is precisely
+           what Marcos named: "as prosas ficam com uma margem muito grande sem motivo
+           aparente". Found by listing the children of every `.control` section rather
+           than by reading the pages.
+           ⚠ The copy is untouched — only the section's class, its wrapper, and the two
+           element classes changed. `.control__h2` and `.control__intro` are the same
+           roles as `.prose-band__h2` and `.prose-band__body`; the difference was never
+           semantic, only which composition the section opted into. -->
+    <section id="daap" class="section prose-band" aria-label="DaaP, Data as a Product">
+      <div class="container prose-band__inner">
+        <h2 class="prose-band__h2" data-reveal-words>What your transaction record <em class="accent">becomes</em>.</h2>
 
         <!-- ⚠ This prose used to sit in .control__whitelabel — centred at 720px, which
              is right for the Home's short white-label beat and wrong for a

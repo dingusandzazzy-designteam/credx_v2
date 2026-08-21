@@ -295,12 +295,23 @@
          ⚠ HW-20: the contrast set is POINTS and STATEMENT CREDIT — about the
          FORM the value takes and who delivers it, not about portability.
          ============================================================ -->
-    <section id="loop" class="section control" aria-label="The value-back loop">
-      <div class="container">
-        <div class="control__header">
-          <h2 class="control__h2" data-reveal-words>Value that comes back <em class="accent">carrying your name</em>.</h2>
-          <p class="control__intro" data-reveal data-reveal-delay="1">The credit at checkout is branded as the business, not as CredX and not as a competing credit facility. Customers earn value in dollars — not points, and not a statement credit — and the programme runs under the business's own identity.</p>
-        </div>
+      <!-- ↩ RECLASSED `.control` -> `.prose-band` ON 2026-08-21.
+           🔴 THIS SECTION WORE THE COMPONENT-LED CLASS AND HAD NO COMPONENT. `.control`
+           centres its heading and intro because a full-width piece sits under them and
+           anchors the symmetry — the fee path, the value stack, the ledger rows. With
+           nothing beneath it, a centred heading over a centred paragraph floats in an
+           1184px container with nothing accounting for the space, which is precisely
+           what Marcos named: "as prosas ficam com uma margem muito grande sem motivo
+           aparente". Found by listing the children of every `.control` section rather
+           than by reading the pages.
+           ⚠ The copy is untouched — only the section's class, its wrapper, and the two
+           element classes changed. `.control__h2` and `.control__intro` are the same
+           roles as `.prose-band__h2` and `.prose-band__body`; the difference was never
+           semantic, only which composition the section opted into. -->
+    <section id="loop" class="section prose-band" aria-label="The value-back loop">
+      <div class="container prose-band__inner">
+        <h2 class="prose-band__h2" data-reveal-words>Value that comes back <em class="accent">carrying your name</em>.</h2>
+        <p class="prose-band__body" data-reveal data-reveal-delay="1">The credit at checkout is branded as the business, not as CredX and not as a competing credit facility. Customers earn value in dollars — not points, and not a statement credit — and the programme runs under the business's own identity.</p>
       </div>
     </section>
 

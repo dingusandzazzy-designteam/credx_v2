@@ -3574,11 +3574,6 @@ a.vertical-card:hover .vertical-card__name::after { transform: translateX(4px); 
    dashed placeholder rather than a mocked-up player: a fake play button would
    read as a broken video instead of as a slot that is honestly not built yet.
    Marco, 2026-08-18: one placeholder on this page, and it is the video. */
-.media-ph--video {
-  aspect-ratio: 16 / 9;
-  min-height: 0;
-}
-
 .media-ph {
   position: relative;
   min-height: 300px;
@@ -3615,6 +3610,28 @@ a.vertical-card:hover .vertical-card__name::after { transform: translateX(4px); 
    decides. Placed before it, this lost silently and the slot kept saying
    "Image slot". Second time this exact cascade trap bit today. */
 .media-ph--video::after { content: 'Video slot — ' attr(data-img-ph); }
+
+/* 🔴 MOVED BELOW `.media-ph` ON 2026-08-21 — THIS WAS A LIVE MOBILE DEFECT ON
+   `/how-it-works`, NOT A TIDY-UP. `--video` declared `min-height: 0` to cancel
+   the base's `min-height: 300px`, but it sat ABOVE the base at equal
+   specificity (0,1,0), so it LOST and the 300px stood. Combined with
+   `aspect-ratio: 16/9` that resolved the slot to 300 x 16/9 = 533px inside a
+   358px column, and Chrome expanded the layout viewport: `/how-it-works`
+   measured `document.scrollWidth` and `window.innerWidth` at 549 ON A 390px
+   DEVICE — the whole page, nav included, laid out at the wrong width.
+   ⚠ It was found by accident, while measuring the `.prose-band` two-column
+   change across all six pages. It had been shipping since the video slot did.
+   ⚠ THE ORDER WAS THE WHOLE BUG, so reordering is the fix rather than a risk —
+   an earlier pass the same day left it alone out of caution and scoped
+   `min-height: 0` onto `.media-ph--band` instead, which fixed one consumer and
+   left this one broken. A modifier belongs after the base it modifies.
+   ⚠ This is the FOURTH cascade trap in this one component, and every one of
+   them was source order at equal specificity. If a fifth appears, the component
+   wants restructuring, not another patch. */
+.media-ph--video {
+  aspect-ratio: 16 / 9;
+  min-height: 0;
+}
 
 /* --- S2 partnership synthesis line --- */
 .voices__partnership {
@@ -5456,6 +5473,15 @@ a.vertical-card:hover .vertical-card__name::after { transform: translateX(4px); 
     align-items: start;
     gap: 0;
   }
+  /* 🔴 EXPLICIT PLACEMENT, AND IT IS REQUIRED, NOT TIDINESS. Moving the CTA up
+     out of the summary column made `.hero__copy` a THREE-item grid, and auto-flow
+     put the CTA in column two row one — the button landed beside the headline's
+     first line and the whole summary block, photograph included, dropped to row
+     two of column one. Three items, two columns, no assignment: the browser had
+     no way to know. Each item now names its own cell. */
+  .hero--ledger .hero__h1     { grid-column: 1; grid-row: 1; }
+  .hero--ledger .hero__ctas   { grid-column: 1; grid-row: 2; }
+  .hero--ledger .hero__ledger { grid-column: 2; grid-row: 1 / span 2; }
   /* The hairline between the two halves is the page's opening statement of
      register: the Institutional type is hairlines and type, and this is the
      first one the reader meets. */
@@ -5586,4 +5612,199 @@ a.vertical-card:hover .vertical-card__name::after { transform: translateX(4px); 
 }
 .prose-band--note .prose-band__body {
   font-size: var(--type-body);
+}
+
+
+/* ===========================================================================
+   .prose-band -> THE EDITORIAL TWO-COLUMN READING SECTION  ·  2026-08-21
+   Marcos: "as prosas ficam com uma margem muito grande sem motivo aparente,
+   inclusive levando a quebra de titulos h2 maior do que o necessario."
+
+   MEASURED AT 1440 BEFORE CHANGING ANYTHING, because both halves of that are
+   arithmetic, not taste:
+   1. THE HEADING. `.prose-band__h2` capped at `max-width: 30rem` = 480px at a
+      48px type size. `/merchants` #data is 68 characters, so it set in FOUR
+      LINES inside a 480px box that was CENTRED IN AN 1184px CONTAINER -- 704px
+      of the row empty while the headline stacked. Headings of only 33-35
+      characters were going to two lines for the same reason.
+      This was a fix that overshot: DESIGN.md records the measure moving from
+      `34ch` to `30rem` because `34ch` resolved against the heading's own size
+      and swung between ~600 and ~1160px. The rem fixed the swing and then sat
+      too narrow to set a sentence.
+   2. THE PROSE. `.prose-band__body` measured 738px wide at `left: 351` inside
+      the same 1184px container. That is 351px of empty space to the LEFT of a
+      LEFT-ALIGNED paragraph, with nothing in the layout accounting for it.
+      A centred column of left-aligned text has no left edge to explain itself.
+
+   THE FIX IS THE SECOND HALF OF HIS OWN SUGGESTION -- "algum elemento do lado
+   esquerdo para sustentar o alinhamento do texto a esquerda". The heading moves
+   into a column of its own on the left and the prose sits in the column beside
+   it, so the prose's left edge is STRUCTURAL rather than residual.
+
+   WHY NOT "tudo centralizado", the other option he offered: it fixes the
+   heading and it does remove the unexplained margin, but centring the BODY text
+   leaves a ragged left edge, and a ragged left edge breaks the return sweep at
+   the end of every line. Several of these paragraphs run three and four lines.
+   Recommended against and not built.
+
+   SCOPE IS SMALLER THAN IT LOOKS -- 4 pages, 12 sections. `/about` and
+   `/how-it-works` do NOT use `.prose-band__inner`: their headings live inside
+   `.split__body`, already left-aligned against a photograph. Those two pages
+   are the precedent for this direction, not casualties of it. Verified by
+   querying every `.prose-band__inner` on all six pages.
+   EVERY RULE HERE IS SCOPED `.prose-band__inner > ...` ON PURPOSE, so the
+   `.split__body .prose-band__h2` overrides those two pages depend on are
+   untouched.
+   The Home does not use `.prose-band` at all, so the "home nao mexer" hold is
+   not in the way. Checked, not assumed.
+   =========================================================================== */
+
+@media (min-width: 960px) {
+  /* `:has()` guard: a section with no heading has no left column to justify, so
+     it stays full width instead of being pushed into column two with a void
+     beside it. The project already relies on `:has()` for `.section-media`. */
+  .prose-band__inner:has(> .prose-band__h2) {
+    display: grid;
+    /* The right column is wider. `minmax(0, ...)` on both, because a bare `fr`
+       floors at min-content and one long unbroken word in a heading would then
+       widen the whole track. */
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.12fr);
+    column-gap: clamp(var(--s-7), 4vw, var(--s-8));
+    align-items: start;
+    /* The reading column supplies its own inter-paragraph spacing through
+       `.prose-band__body + .prose-band__body`, so the grid must not add a second
+       one on top of it. */
+    row-gap: 0;
+    grid-auto-rows: min-content;
+  }
+
+  /* Everything that is not the heading goes to the reading column. This is a
+     catch-all BY DESIGN: these twelve sections carry nine different child types
+     between them (`__body`, `__aside`, `.figure-note`, `.gains__strip`,
+     `.defs`, `.sub-link`, `.geo`, `.positions`, `.sheet`), and a whitelist
+     would silently drop the next one into column one. */
+  .prose-band__inner:has(> .prose-band__h2) > * {
+    grid-column: 2;
+    margin-inline: 0;
+    max-width: none;
+  }
+
+  .prose-band__inner > .prose-band__h2 {
+    grid-column: 1;
+    /* 🔴 SPANS THE ROWS, and this is not cosmetic. With `grid-row: 1` the
+       heading and the FIRST paragraph shared row one, so the row grew to the
+       taller of the two — and on `/merchants` #data the heading is three lines
+       against a five-line paragraph, which opened a visible dead gap between
+       the first paragraph and the second. Spanning decouples the two columns'
+       heights so the reading column stacks tightly regardless of how the
+       heading breaks. The span is generous on purpose; surplus implicit rows
+       have zero height. */
+    grid-row: 1 / span 30;
+    text-align: left;
+    margin-inline: 0;
+    /* The track is the measure now. The 30rem cap is what caused the four-line
+       break, so it must not be reinstated in any form here. */
+    max-width: none;
+    /* `balance` is right for a heading that now has a real column: it evens the
+       lines instead of leaving one word stranded. */
+    text-wrap: balance;
+  }
+
+  /* THE SUPPORTING ELEMENT, drawn rather than marked up. A short rule above the
+     heading gives the left column a visible top edge, so the column reads as a
+     column and not as an accident of alignment. No markup change across twelve
+     sections, and nothing to keep in sync. */
+  .prose-band__inner > .prose-band__h2::before {
+    content: '';
+    display: block;
+    width: var(--s-7);
+    height: 1px;
+    background: var(--text-accent);
+    margin-bottom: var(--s-5);
+  }
+
+  /* The prose keeps its own comfortable measure INSIDE the column. The column is
+     ~560px at 1440, which is about 49ch at 18px -- inside the 45-75ch band, so
+     the track governs and this is a ceiling for very wide viewports only. */
+  .prose-band__inner:has(> .prose-band__h2) > .prose-band__body { max-width: 65ch; }
+}
+
+/* `.section--doc` OPTS OUT and stays a single left-hung column. `/lenders` #2
+   carries the `.positions` spine and the `.sheet`, and a term sheet squeezed
+   into 55% of the row is unreadable -- the value track would collapse. It was
+   already left-aligned, so it loses nothing, and the contrast between a
+   full-width document section and the two-column reading sections is now doing
+   useful work on that page. */
+@media (min-width: 960px) {
+  .section--doc .prose-band__inner { display: block; }
+  .section--doc .prose-band__inner > .prose-band__h2 { grid-column: auto; }
+  .section--doc .prose-band__inner > .prose-band__h2::before { display: none; }
+  .section--doc .prose-band__body { max-width: 65ch; }
+}
+
+/* Below 960 everything stacks in one column and the heading stays LEFT-aligned
+   rather than reverting to centre -- a centred heading over left-aligned prose
+   on a 358px phone column is the same unexplained-edge problem at small scale. */
+@media (max-width: 959.98px) {
+  .prose-band__inner > .prose-band__h2 {
+    text-align: left;
+    margin-inline: 0;
+    max-width: none;
+  }
+}
+
+
+/* ---- .geo · the province run on /lenders §4 --------------------------------
+   The six regions were the tail of §4's paragraph. Pulled out so the section has
+   a form of its own once the image left for the hero — §3 and §5 are already
+   "heading plus one paragraph", and three of those in a row is the evenness the
+   2026-08-21 layout pass exists to remove.
+   ⚠ SHIPPED BRIEFLY WITH NO CSS AT ALL and rendered as a default UA bulleted
+   list, complete with the 40px `padding-inline-start` that `list-style: none`
+   does NOT remove — the exact trap DESIGN.md records for `.prose-list` and the
+   `.rail` <ol>. Both the marker and the indent are killed explicitly below.
+   Register: a schedule, not a bulleted list. Hairline-separated rows, the same
+   language as `.sheet` one section up, at caption scale so it stays subordinate
+   to the prose it sits under.
+   --------------------------------------------------------------------------- */
+.geo {
+  list-style: none;
+  margin: var(--s-6) 0 0;
+  padding: 0;
+  padding-inline-start: 0;   /* the UA indent; list-style:none does not touch it */
+  border-top: 1px solid var(--border-subtle);
+}
+.geo__item {
+  padding: var(--s-3) 0;
+  border-bottom: 1px solid var(--border-subtle);
+  font-size: var(--type-caption);
+  color: var(--text-secondary);
+}
+
+/* Two columns as soon as the reading column can hold them — six single-word rows
+   stacked vertically is a long thin ladder that out-measures the paragraph above
+   it. ⚠ Not a grid on the <ul>: `columns` keeps the hairlines continuous per
+   item, which a grid would break into a chequerboard. */
+@media (min-width: 720px) {
+  .geo {
+    columns: 2;
+    column-gap: var(--s-7);
+  }
+  /* Chrome breaks a bordered item across the column boundary without this. */
+  .geo__item { break-inside: avoid; }
+}
+
+/* The CTA now lives in the headline column, so its top margin answers to the H1
+   rather than to a paragraph. --s-7 was tuned against `.hero--split`, where a
+   paragraph sits above it; under a 72px headline it reads tight. */
+@media (min-width: 960px) {
+  .hero--ledger .hero__ctas { margin-top: var(--s-8); }
+}
+
+/* ⚠ Clearance measured off the render, not guessed: the third line of the H1
+   ("Community Lenders", the widest at 638px) ended 1px from the ledger's rule.
+   The gap is deliberately on the HEADLINE and not on the rule, so the rule stays
+   on the column boundary where the grid puts it. */
+@media (min-width: 960px) {
+  .hero--ledger .hero__h1 { padding-right: var(--s-7); }
 }

@@ -179,12 +179,23 @@
          2 · THE CHANNEL MODEL — CredX arrives as a value partner, not as a
          competitor for the same seat. Copy: copy/pos.md §2.
          ============================================================ -->
-    <section id="channel" class="section control" aria-label="The channel model">
-      <div class="container">
-        <div class="control__header">
-          <h2 class="control__h2" data-reveal-words>A layer underneath the platform, <em class="accent">not a rival to it</em>.</h2>
-          <p class="control__intro" data-reveal data-reveal-delay="1">CredX does not sell to your merchants and does not stand between you and them. It supplies the credit facility, the capital, and the risk, and the platform keeps the relationship it already owns.</p>
-        </div>
+      <!-- ↩ RECLASSED `.control` -> `.prose-band` ON 2026-08-21.
+           🔴 THIS SECTION WORE THE COMPONENT-LED CLASS AND HAD NO COMPONENT. `.control`
+           centres its heading and intro because a full-width piece sits under them and
+           anchors the symmetry — the fee path, the value stack, the ledger rows. With
+           nothing beneath it, a centred heading over a centred paragraph floats in an
+           1184px container with nothing accounting for the space, which is precisely
+           what Marcos named: "as prosas ficam com uma margem muito grande sem motivo
+           aparente". Found by listing the children of every `.control` section rather
+           than by reading the pages.
+           ⚠ The copy is untouched — only the section's class, its wrapper, and the two
+           element classes changed. `.control__h2` and `.control__intro` are the same
+           roles as `.prose-band__h2` and `.prose-band__body`; the difference was never
+           semantic, only which composition the section opted into. -->
+    <section id="channel" class="section prose-band" aria-label="The channel model">
+      <div class="container prose-band__inner">
+        <h2 class="prose-band__h2" data-reveal-words>A layer underneath the platform, <em class="accent">not a rival to it</em>.</h2>
+        <p class="prose-band__body" data-reveal data-reveal-delay="1">CredX does not sell to your merchants and does not stand between you and them. It supplies the credit facility, the capital, and the risk, and the platform keeps the relationship it already owns.</p>
       </div>
     </section>
 
