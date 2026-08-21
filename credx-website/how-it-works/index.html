@@ -308,6 +308,19 @@
              cards said "item" on a page whose entire subject is "then". The rail
              carries the sequence in the composition. -->
         <ol class="rail">
+          <!-- 🔴 REVEAL ORDER WAS BROKEN AND THIS IS THE FIX. 2026-08-21, Marcos:
+               "animar os steps para aparecerem na ordem correta, 1,2...".
+               The four stations carried delays 0 / 2 / 3 / 0, so STATION 4 FIRED AT
+               THE SAME INSTANT AS STATION 1 and the sequence read 1+4, then 2,
+               then 3. On a page whose whole subject is order-of-events.
+               ⚠ The delays are the only thing sequencing them above 960, and that
+               is why they matter here more than elsewhere: `.rail` is HORIZONTAL
+               from 960px, so all four stations cross the ScrollTrigger threshold
+               in the same frame. Each has its own trigger at `top 88%`, which
+               staggers naturally only in the stacked layout below 960.
+               ⚠ 0 / 1 / 2 / 3 maps onto the existing scale (0 / 90 / 180 / 270ms).
+               Do not invent a delay 4+: nothing on the site needs one, and the
+               scale stops at 3 on purpose. -->
           <li class="rail__station" data-reveal>
             <div class="rail__marker"><span class="rail__num">1</span></div>
             <div class="rail__body">
@@ -315,21 +328,21 @@
               <p class="rail__text">CredX connects to the setup you already run. Your point-of-sale system, your terminals, and your management software stay exactly as they are, with no new hardware. Integration typically runs 4 to 8 weeks.</p>
             </div>
           </li>
-          <li class="rail__station" data-reveal data-reveal-delay="2">
+          <li class="rail__station" data-reveal data-reveal-delay="1">
             <div class="rail__marker"><span class="rail__num">2</span></div>
             <div class="rail__body">
               <h3 class="rail__h3">Your customer is offered credit in your brand.</h3>
               <p class="rail__text">At checkout, the customer sees a credit line and a value-back offer carrying your business’s name. Approval takes about 20 seconds. Every part of what they see is yours.</p>
             </div>
           </li>
-          <li class="rail__station" data-reveal data-reveal-delay="3">
+          <li class="rail__station" data-reveal data-reveal-delay="2">
             <div class="rail__marker"><span class="rail__num">3</span></div>
             <div class="rail__body">
               <h3 class="rail__h3">A community lender funds it, and CredX carries the risk.</h3>
               <p class="rail__text">The credit is funded by community lender partners, and the risk stays with CredX rather than on your books. You are paid in full and upfront, as you are today.</p>
             </div>
           </li>
-          <li class="rail__station" data-reveal>
+          <li class="rail__station" data-reveal data-reveal-delay="3">
             <div class="rail__marker"><span class="rail__num">4</span></div>
             <div class="rail__body">
               <h3 class="rail__h3">You recover on transaction costs and keep the relationship.</h3>

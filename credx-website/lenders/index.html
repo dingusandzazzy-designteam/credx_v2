@@ -157,57 +157,55 @@
          no new content, no photograph, and it reads as a document header rather
          than as a hero with a hole in it.
          ============================================================ -->
-    <section class="hero hero--compact hero--ledger" aria-label="Opening">
+    <section class="hero hero--split" aria-label="Opening">
       <div class="container hero__inner">
         <div class="hero__copy">
           <h1 class="hero__h1" data-reveal-words>A Merchant-Linked Asset Class for <em class="accent">Community Lenders</em></h1>
-          <!-- ↩ MOVED OUT OF THE RIGHT COLUMN 2026-08-21. With the photograph plate
-               added above the summary, the right column ran ~450px tall against a
-               ~250px headline, leaving 200px of dead left column under the H1 — the
-               same unexplained-space problem this session is fixing everywhere else,
-               reproduced in the hero. The CTA belongs under the headline anyway, and
-               it brings the two columns to a similar depth.
-               ⚠ STILL ONE CTA ONLY. §6.9 allows this page a single quiet action above
-               the fold; moving it did not add one. -->
-          <div class="hero__ctas" data-reveal data-reveal-delay="3">
+          <p class="hero__sub" data-reveal data-reveal-delay="1">
+            CredX originates consumer credit at the point of purchase and places it with Canadian credit unions and community lenders. The credit is tied to a merchant relationship the borrower already has, and repayment support is structured into the transaction rather than added afterwards.
+          </p>
+          <!-- ⚠ ONE QUIET CTA ONLY, and it survives every reshuffle of this hero.
+               §6.9 allows this page a single low-key action above the fold: no
+               booking push, no urgency, no second button. The deeper path
+               (/lenders/partner) appears once, in §6, and stays commented out
+               until the endpoint is wired. -->
+          <div class="hero__ctas" data-reveal data-reveal-delay="2">
             <a href="../contact/" class="btn btn-secondary">Talk to Us</a>
           </div>
-          <!-- The right column of the header. Below 960 it collapses back under
-               the headline and the reading order is unchanged — the H1 still
-               precedes the paragraph in the DOM, so nothing reorders for
-               keyboard or assistive technology at any width. -->
-          <div class="hero__ledger">
-            <!-- ↩ THE PHOTOGRAPH MOVED HERE FROM §4 ON 2026-08-21 (Marcos), and it is
-                 a REVERSAL OF §6.9 recorded as a decision rather than absorbed.
-                 🔴 §6.9 gave the Institutional type "no photograph at all", and
-                 `prompts-batch2.md` §4 said the placement was the body and NOT the
-                 hero, in these words: "if a later round moves it to the hero, that
-                 is the type going, and it should be a decision rather than a drift."
-                 This is that decision. It is not a drift and it is not an oversight.
-                 ⚠ WHAT SURVIVES THE REVERSAL, and it is what keeps the type alive:
-                 §6.9's actual fear was a FULL-BLEED hero photograph like the Home's
-                 `.hero--full` — the thing that makes a page read as a sales page. This
-                 is a PLATE inside the summary column: it shares the column with the
-                 paragraph, it never sits opposite the headline as a 50% peer, and it
-                 is roughly a quarter of the width the body band was.
-                 🔴 DELIBERATELY NOT `.hero--split`. That shell is /how-it-works,
-                 /merchants and /pos — copy beside a framed photograph at 50/50. Using
-                 it here would make this page identical to the two Pillar–Sell pages it
-                 sits beside in one nav menu, which is the exact failure §6.9 names:
-                 "three audience pages that are each other".
-                 ⚠ ABOVE THE FOLD NOW, so the loading strategy inverts: no `lazy`, and
-                 `fetchpriority="high"` because this is the page's LCP element. It
-                 carried `loading="lazy"` while it was a body band; keeping that here
-                 would have delayed the largest paint on the page. -->
-            <div class="hero__plate" data-reveal data-reveal-delay="1">
-              <img src="../images/lenders-region.png"
-                   alt="A block of independent shops trading on the main street of a small Canadian city — a bakery, a florist, a bicycle shop and a homeware shop side by side, awnings out over the pavement and windows lit."
-                   width="1672" height="941" fetchpriority="high" decoding="async" />
-            </div>
-            <p class="hero__sub" data-reveal data-reveal-delay="2">
-              CredX originates consumer credit at the point of purchase and places it with Canadian credit unions and community lenders. The credit is tied to a merchant relationship the borrower already has, and repayment support is structured into the transaction rather than added afterwards.
-            </p>
-          </div>
+        </div>
+        <!-- ↩ THIRD POSITION FOR THIS PHOTOGRAPH IN TWO DAYS, and each move was a
+             decision rather than a drift, so the trail is here:
+             §6.9 gave the Institutional type NO PHOTOGRAPH → 2026-08-20 Marcos put
+             one in the BODY at §4 → 2026-08-21 he moved it into the HERO as a small
+             plate beside the summary → same day, "deixar a imagem sozinha a
+             esquerda, como as outras páginas": it is now the standard `.hero--split`
+             frame, alone in its own column.
+
+             🔴 THIS IS THE POINT WHERE §6.9's OWN WARNING COMES TRUE, and it should
+             be recorded rather than smoothed over. Its acceptance test was: crop
+             the nav from /merchants, /pos and /lenders and ask which audience each
+             addresses. This page now opens in the SAME SHELL as both Pillar–Sell
+             pages, so the opening no longer sorts them — that is the "three
+             audience pages that are each other" failure it named, and Marcos chose
+             it knowingly after it was put to him.
+             ✅ WHAT STILL SEPARATES THIS PAGE, and it is now carrying the whole
+             load: the term-sheet register, `.sheet` as the signature, the positions
+             spine, ZERO gradient (`.final-cta--plain`), one quiet CTA, and the
+             province schedule. If any of those go, the type is gone.
+             ⚠ `loading="eager"` + `fetchpriority="high"`, matching /merchants and
+             /pos: this is above the fold and it is the LCP element. -->
+        <!-- 🔴 `--wide` IS NOT DECORATION, IT PROTECTS THE SUBJECT. `.hero__frame` is
+             4:5 on desktop and `lenders-region.png` is a 16:9 master, so `object-fit:
+             cover` cropped the block down to TWO SHOPFRONTS — and the brief for this
+             frame says in as many words that "the BLOCK is the subject, not any one
+             business, because the section is about value staying in a region rather
+             than in a shop". A portrait crop deletes the reason the photograph exists.
+             ✅ It also does one small thing for §6.9's acceptance test, which this
+             page now fails on its opening shell: /merchants and /pos both use the 4:5
+             frame, so a wide one is the only thing left distinguishing the three
+             openings at a glance. -->
+        <div class="hero__frame hero__frame--wide" data-reveal-media>
+          <img src="../images/lenders-region.png" alt="A block of independent shops trading on the main street of a small Canadian city — a bakery, a florist, a bicycle shop and a homeware shop side by side, awnings out over the pavement and windows lit." width="1672" height="941" loading="eager" fetchpriority="high" />
         </div>
       </div>
     </section>
@@ -234,13 +232,43 @@
          ⚠ Only §2 takes this. Applying it to every section would trade three
          alignments for one, which is the sameness problem, not the fix. -->
     <section id="asset" class="section section--doc" aria-label="The asset model">
-      <div class="container prose-band__inner">
+      <!-- ↩ A PHOTOGRAPH ENTERS §2, 2026-08-21 (Marcos: "aqui colocar uma imagem a
+           esquerda What the asset is."). `.split--reverse` puts the frame on the
+           left, which is the position he asked for and the one `/about` §2 already
+           uses — so this is the site's existing composition, not a fourth variant.
+           🔴 TWO THINGS TO RECORD RATHER THAN SMOOTH OVER:
+           · §6.9 gave this page a photograph budget of ZERO. It is now at TWO. Each
+             step was Marcos's call and each is logged, but the count is worth
+             seeing in one place: hero (`lenders-region`) + §2 (`lenders-asset`).
+           · THE SUBJECT COLLIDES WITH `hiw-loop`. A wrapped parcel handed across a
+             counter, no terminal and no money in frame, is that slot's established
+             pattern and it is documented as such. /lenders §2 and /how-it-works now
+             share their subject. Flagged before wiring; his decision.
+           ✅ Casting moves the right way: `prompts-reference.md` §3 records women
+           holding five of seven identifiable operator roles, with "women only
+           emotional, men only decision" as the named failure. A male operator here
+           improves that distribution rather than worsening it.
+           ⚠ Naming guard: no readable text, no brand mark, no card terminal, no
+           till — checked on the delivered file at full size before wiring.
+           ⚠ The spine and the sheet stay FULL WIDTH in their own container below.
+           A term sheet squeezed into half a row is unreadable: the value track
+           collapses. That is why this section has two containers, not one. -->
+      <div class="container split__inner split__inner--top">
+        <div class="split__media" data-reveal-media>
+          <img src="../images/lenders-asset.png" alt="A customer at a shop counter receiving a paper-wrapped parcel from the owner, shelves of ceramics and glassware behind him" width="1122" height="1402" loading="lazy" decoding="async" />
+        </div>
+        <div class="split__body">
         <h2 class="prose-band__h2" data-reveal-words>What the asset <em class="accent">is</em>.</h2>
         <p class="prose-band__body" data-reveal>Credit is extended to a consumer at the moment of a purchase, through a merchant that has an existing relationship with that customer. The lender holds the receivable. CredX originates, services the merchant relationship, and supplies the transaction data the lending decision is made on.</p>
         <p class="prose-band__body" data-reveal data-reveal-delay="1">The borrower is not anonymous to the merchant, and the merchant has a commercial interest in the relationship continuing. That is the difference from unsecured consumer credit written at arm's length.</p>
 
+        </div>
+      </div>
+
+      <!-- Full-width again from here down, for the reason in the note above. -->
+      <div class="container prose-band__inner">
         <!-- ============================================================
-             THE POSITIONS MAP — added 2026-08-20 (Marco).
+             THE POSITIONS MAP — added 2026-08-20 (Marcos).
              🔴 DELIBERATELY NOT A NUMBERED SEQUENCE. /how-it-works already owns
              the mechanics rail: numbered stations, order-of-events. Repeating
              that shape here would collapse the two pages, and it would answer

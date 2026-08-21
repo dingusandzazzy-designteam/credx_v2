@@ -5954,40 +5954,76 @@ a.vertical-card:hover .vertical-card__name::after { transform: translateX(4px); 
 }
 
 
-/* ---- The figure hangs off the same left edge as everything else ------------
-   The `.gains__strip` in /evp #cost was still CENTRED under a left-hung heading:
-   the heading sat at x=128 and the first stat's numerals began at x=316. That is
-   the third time in one session the same defect has been pointed at, and leaving
-   it after fixing the pattern everywhere else would be ignoring the pattern.
+/* ---- The stats figure is CENTRED, and the left-aligned version was wrong ----
+   \u21a9 REVERTED 2026-08-21, same day it was introduced. I left-aligned this strip
+   on the reasoning that the whole page now hangs off one left edge and a centred
+   figure was the one thing breaking the column. Marcos, seeing it rendered:
+   "ainda esta muito ruim, as coisas estao alinhadas para esquerda, muito
+   estranho" \u2014 then, specifically, that the caption under the numeral and the
+   `Results vary...` note both wanted centring.
 
-   ⚠ COMPATIBLE WITH THE RECORDED REASONING, checked before changing it. The
-   comment on `gains__strip--fit` in evp/index.html calls the modifier
-   load-bearing, and it is — but for the FIT, not the centring: `.gains__strip`
-   is a 3-column grid from 768px and this strip carries two stats, so without the
-   modifier the row left a third column empty and read as a missing item. The
-   modifier still does that. Only the alignment of the fitted row moves.
-
-   ⚠ SCOPED TO `.prose-band__inner >` DELIBERATELY. `.gains__strip` and `.stat`
-   also ship on the HELD Home, on /about and on /how-it-works, and none of those
-   sits inside a `.prose-band__inner` — verified by query, not assumed. A global
-   change here would reach the Home, which is under a "não mexer" hold.
-
-   ⚠ The stats' own text has to move with the container. Left-aligning only the
-   flex row would put the first stat's BOX at 128 while its numerals stayed
-   centred inside a 403px box, landing at ~250 — closer to the edge and still not
-   on it, which is the worst of both.
+   \U0001F534 HE IS RIGHT AND THE REASONING WAS THE MISTAKE. The unexplained-margin
+   problem is a PROSE problem: it comes from a left-aligned paragraph floating in
+   a centred column, where the reader's eye returns to an edge that nothing
+   defines. A STATS FIGURE IS NOT READ THAT WAY \u2014 it is read as one composed
+   object, so an axis of symmetry is what holds it together and flushing it left
+   makes it look like a row that failed to fill.
+   \u26a0 It was also visibly broken, not just debatable: `.stat` keeps
+   `text-align: center` on its label, so left-aligning the row put the numeral at
+   x=128 with its own caption indented to x=209. A figure misaligned against its
+   own number.
+   \u26a0 DO NOT "FIX" THIS BACK TO LEFT to match the reading sections. The rule that
+   came out of it: a figure centres on its own axis; prose hangs off the column.
    --------------------------------------------------------------------------- */
-@media (min-width: 768px) {
-  .prose-band__inner > .gains__strip {
-    justify-content: flex-start;
-  }
-  .prose-band__inner > .gains__strip > .stat {
-    text-align: left;
-    /* ⚠ `.stat` carries `padding-inline: 16px`, which is invisible while the row
-       is centred and becomes a 16px indent the moment it is left-aligned — the
-       numerals landed at 144 against a heading at 128. Traced with computed
-       style rather than guessed at; the padding stays on the right so the
-       divider between the two stats keeps its breathing room. */
-    padding-left: 0;
-  }
+
+
+/* ---- `.figure-note` under a figure centres with it ------------------------
+   "Results vary by volume and card mix." belongs to the stats strip above it, not
+   to the paragraph below it, and Marcos asked for it centred with the figure.
+   \u26a0 SCOPED to a `.figure-note` that directly follows a `.gains__strip`. The same
+   class is also used as a trailing note on prose blocks, where left is correct
+   and centring it would be the mistake in the other direction.
+   \u26a0 `margin-inline: auto` as well as `text-align`: the element carries the `ch`
+   conversion measure, so without it the centred text would sit inside a column
+   that is still flush left. Both are needed; one alone looks like a bug.
+   --------------------------------------------------------------------------- */
+/* ⚠ Specificity, measured not assumed: the section opt-out sets
+   `margin-inline: 0` at `.prose-band__inner:has(> .gains__strip) > .figure-note`
+   = (0,3,0), so a (0,2,0) selector lost and the note centred its TEXT inside a
+   box that was still flush left — 574px wide starting at x=128. Half-applied
+   centring reads as a bug, which is the failure mode the comment above predicted
+   one round earlier. Matched at (0,3,0) and placed later in the file. */
+.prose-band__inner .gains__strip + .figure-note {
+  text-align: center;
+  margin-inline: auto;
 }
+
+/* ---- A section that ENDS in a full-width component needs more air below ----
+   Marcos: "o espaco entre a sessao e a cta ficou muito proxima" on /evp #platform.
+   \u26a0 MEASURED FIRST, AND THE VALUE WAS NOT THE PROBLEM: every page carries the
+   same 64px section padding plus the CTA band's own 88px, and /evp measured
+   identically to /merchants, /pos, /about and /how-it-works. So this is not a
+   drifted number.
+   \U0001F534 IT IS A PERCEIVED-WEIGHT PROBLEM AND IT IS REAL. A section ending in prose
+   ends on a ragged part-line, and 64px reads as air. A section ending in a
+   full-width component \u2014 the `.parts` 2x2, or the stats strip \u2014 ends on a
+   straight edge across the whole container, which butts into the band. Same
+   measurement, different terminus.
+   \u26a0 Precedent exists rather than being invented here: `/lenders` \u00a75 already
+   overrides its own block padding to 96px.
+   --------------------------------------------------------------------------- */
+.section:has(> .prose-band__inner > .parts),
+.section:has(> .prose-band__inner > .gains__strip) {
+  padding-bottom: var(--s-9);
+}
+
+/* ---- .hero__frame--wide · a 16:9 master in a split hero --------------------
+   `.hero__frame` is 4:5 on desktop and 16/10 below 960, sized for the 1122×1402
+   portrait masters /merchants and /pos deliver. `/lenders` opens on a 16:9
+   street elevation, and cropping that to 4:5 reduced a block of shops to two
+   shopfronts — deleting the one thing its brief insists on, that the BLOCK is
+   the subject rather than any single business.
+   ⚠ The ratio follows the ASSET, not the page. If a 4:5 master is ever delivered
+   for this slot, drop the modifier rather than re-cropping the frame.
+   --------------------------------------------------------------------------- */
+.hero__frame--wide { aspect-ratio: 16 / 9; }
