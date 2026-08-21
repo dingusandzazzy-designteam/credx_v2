@@ -5739,7 +5739,6 @@ a.vertical-card:hover .vertical-card__name::after { transform: translateX(4px); 
 @media (min-width: 960px) {
   .section--doc .prose-band__inner { display: block; }
   .section--doc .prose-band__inner > .prose-band__h2 { grid-column: auto; }
-  .section--doc .prose-band__inner > .prose-band__h2::before { display: none; }
   .section--doc .prose-band__body { max-width: 65ch; }
 }
 
