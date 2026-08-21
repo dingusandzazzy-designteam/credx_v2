@@ -138,16 +138,40 @@
          Institutional type is the register and what follows, not a new shell.
          ⚠ ONE QUIET CTA ONLY, above the fold. No booking push, no urgency, no
          second CTA. The deeper path appears once, in §6.
+
+         ↩ 2026-08-21 · `.hero--ledger` ADDED, and it fixes a MEASURED defect,
+         not a taste. `.hero--compact` caps the H1 at `15ch` — a measure cut for
+         /about's short manifesto line. This page's H1 is 51 characters, so at
+         1440 it set in FIVE lines (rects 386 · 397 · 270 · 373 · 253 in a 570px
+         box) with two half-length lines in the middle. That is the "quebra
+         estranha".
+         🔴 IT IS NOT `data-reveal-words` AND IT IS NOT THE `<em>`. That was the
+         first hypothesis and it is wrong: the Range rects prove the wrap points
+         come from the 570px cap, and the duplicate rects at the tail are just
+         the `<em>`'s own client rects. Measured before changing anything.
+         ⚠ The second half of the defect is compositional: /about's
+         `.hero--compact` is followed by `.hero-media`, the photograph you scroll
+         INTO. This page has no photograph by type, so the shell left the right
+         half of the opening empty and the ragged column sat alone in it. The
+         ledger split spends that half on the paragraph that was underneath it —
+         no new content, no photograph, and it reads as a document header rather
+         than as a hero with a hole in it.
          ============================================================ -->
-    <section class="hero hero--compact" aria-label="Opening">
+    <section class="hero hero--compact hero--ledger" aria-label="Opening">
       <div class="container hero__inner">
         <div class="hero__copy">
           <h1 class="hero__h1" data-reveal-words>A Merchant-Linked Asset Class for <em class="accent">Community Lenders</em></h1>
-          <p class="hero__sub" data-reveal data-reveal-delay="1">
-            CredX originates consumer credit at the point of purchase and places it with Canadian credit unions and community lenders. The credit is tied to a merchant relationship the borrower already has, and repayment support is structured into the transaction rather than added afterwards.
-          </p>
-          <div class="hero__ctas" data-reveal data-reveal-delay="2">
-            <a href="../contact/" class="btn btn-secondary">Talk to Us</a>
+          <!-- The right column of the header. Below 960 it collapses back under
+               the headline and the reading order is unchanged — the H1 still
+               precedes the paragraph in the DOM, so nothing reorders for
+               keyboard or assistive technology at any width. -->
+          <div class="hero__ledger">
+            <p class="hero__sub" data-reveal data-reveal-delay="1">
+              CredX originates consumer credit at the point of purchase and places it with Canadian credit unions and community lenders. The credit is tied to a merchant relationship the borrower already has, and repayment support is structured into the transaction rather than added afterwards.
+            </p>
+            <div class="hero__ctas" data-reveal data-reveal-delay="2">
+              <a href="../contact/" class="btn btn-secondary">Talk to Us</a>
+            </div>
           </div>
         </div>
       </div>
@@ -164,7 +188,17 @@
          ⚠ `.sheet` was checked against style.css before naming — `.rail` was
          already taken by /how-it-works and collided on 2026-08-20.
          ============================================================ -->
-    <section id="asset" class="section" aria-label="The asset model">
+    <!-- ↩ 2026-08-21 · `.section--doc` — THE SECTION IS NOW LEFT-ALIGNED, and this
+         is the single change that does the most work on the page.
+         🔴 It carried THREE different left edges at once, measured at 1440: the H2
+         centred, the prose column centred at x=176 (65ch inside 1184), and the
+         positions map and sheet spanning the full container at x=128. A document
+         does not have three margins. Everything in this section now hangs off one
+         edge, which is also what separates it at a glance from §3 and §4 — those
+         stay centred, and the alternation is the page's rhythm.
+         ⚠ Only §2 takes this. Applying it to every section would trade three
+         alignments for one, which is the sameness problem, not the fix. -->
+    <section id="asset" class="section section--doc" aria-label="The asset model">
       <div class="container prose-band__inner">
         <h2 class="prose-band__h2" data-reveal-words>What the asset <em class="accent">is</em>.</h2>
         <p class="prose-band__body" data-reveal>Credit is extended to a consumer at the moment of a purchase, through a merchant that has an existing relationship with that customer. The lender holds the receivable. CredX originates, services the merchant relationship, and supplies the transaction data the lending decision is made on.</p>
@@ -181,6 +215,26 @@
              positions, not of steps, and it carries no numbers by design.
              ⚠ If a number ever appears on these nodes, it has drifted into the
              other page's signature.
+
+             ↩ 2026-08-21 · REBUILT AS A SPINE. Marco named this component first
+             when he called the page bad, and the render says why: it was FOUR
+             COLUMNS OF UPPERCASE LABELS OVER HAIRLINE ROWS, sitting directly
+             above a six-row `.sheet` of uppercase labels over hairline rows.
+             Twelve horizontal rules in one column. The two did not merely
+             compete — the map dissolved into the sheet and read as its header.
+             🔴 AND THERE IS A SPEC CONFLICT UNDERNEATH IT, which is worth
+             stating plainly: §6.9 gives the Institutional type a SIGNATURE
+             BUDGET OF 1, and it is spent on `.sheet`. A second document-register
+             artifact of equal weight is over budget by construction. The
+             resolution here is SUBORDINATION, not deletion — Marco asked for
+             this map, so it stays, but as the section's diagram rather than as a
+             peer of its signature.
+             ⚠ WHAT CHANGED: one continuous hairline with a marker per position,
+             instead of a rule per node. Geometry, not a table. The sheet is rows;
+             this is a line. They can no longer be mistaken for each other.
+             ⚠ The lender marker is the only filled one and the only accent, and
+             that is the §6.9 acceptance test doing its job: crop the nav and the
+             accent still says who this page is addressed to.
              ============================================================ -->
         <div class="positions" data-reveal data-reveal-delay="2">
           <ul class="positions__row">
@@ -262,6 +316,57 @@
       <div class="container prose-band__inner">
         <h2 class="prose-band__h2" data-reveal-words>Value that stays in <em class="accent">the region that produced it</em>.</h2>
         <p class="prose-band__body" data-reveal>The lending is placed with institutions in the communities where the transactions happen. Ontario, British Columbia, Alberta, Saskatchewan, Manitoba, and Atlantic Canada.</p>
+
+        <!-- ============================================================
+             THE ONE PHOTOGRAPH — `lenders-region`, briefed at
+             `prompts-batch2.md` §4. ⏸ NOT DELIVERED YET; Marco is supplying the
+             file (2026-08-21). The slot is built and the swap is one line.
+
+             🔴 THIS SLOT REVERSES §6.9, WHICH SAID "no photograph at all", and
+             the reversal is Marco's (2026-08-20). Two things survive it and are
+             NOT open to a later round:
+             · IT IS IN THE BODY, AT §4 — never the hero. A hero photograph is the
+               single change that would make this page read as a sales page, which
+               is the entire reason the Institutional type exists.
+             · IT IS 16:9 AND A BAND, not a `.split`. The brief is explicit about
+               the ratio and the reason: horizontal here, not the 4:5 the other
+               two Batch 2 slots use, because it sits in the body as a
+               `.section-media` rather than in a split hero.
+             ⚠ §4 is the ONLY section on this page whose subject is photographable
+             — the region, with nobody in it. A branch interior depicts the
+             reader's own institution; two people in a meeting is `evp-hero`
+             exactly. Both are in the brief's rejection table with their reasons.
+             ⚠ No card terminal, no card reader, no till — banned on every page of
+             this site, and not applicable here in any case.
+
+             ↩ ROUND 2 IS WIRED, 2026-08-21. ROUND 1 WAS REJECTED — both prompts
+             returned a shuttered street and a dormant town. The post-mortem is
+             standing guidance now at `prompts-reference.md` §2.1; the corrected
+             prompt is `prompts-batch2.md` §4c.
+             🔴 WHY IT MATTERED HERE, AND NOT ONLY AESTHETICALLY: a street of closed
+             shops sat beside §3's copy about repayment support and reducing default,
+             so it did not read as "quiet" — IT READ AS DEFAULTS. The image argued
+             against the section. Weigh a dormancy signal against what the section
+             CLAIMS, not only against the brand register.
+             ⚠ NAMING GUARD VERIFIED, NOT ASSUMED (reference §5): the fascia band and
+             both licence plates were cropped and upscaled 3x. Awnings are completely
+             blank with no lettering anywhere; the plate is present but unresolvable,
+             which is a PASS — that is what the guard is for.
+             ⚠ No `fetchpriority` — below the fold, not the LCP element. No `<picture>`
+             and no WebP twin: the conversion pass is retired (Marcos, 2026-08-11), and
+             a `<picture>` with no `<source>` is identical to a bare `<img>`.
+             ⏸ An alternate elevated frame is on file, untracked and unused, at
+             `images/lenders/lenders-region-alt-elevated.png`.
+             ⚠ THE ALT WAS WRITTEN FROM THE DELIVERED FILE, NOT FROM THE BRIEF. Three
+             alts on the Home were found describing renders that had been
+             replaced. No `fetchpriority` — this is below the fold and the LCP
+             image on this page is not an image.
+             ============================================================ -->
+        <div class="section-media section-media--spaced" data-reveal data-reveal-delay="1">
+          <img src="../images/lenders-region.png"
+               alt="A block of independent shops trading on the main street of a small Canadian city — a bakery, a florist, a bicycle shop and a homeware shop side by side, awnings out over the pavement and windows lit."
+               width="1672" height="941" loading="lazy" decoding="async" />
+        </div>
       </div>
     </section>
 
@@ -287,7 +392,18 @@
          sourced. Written below as the partners' own obligations, which is true
          and unremarkable. Someone should confirm or drop the plan-doc line.
          ============================================================ -->
-    <section id="compliance" class="section prose-band" aria-label="Regulatory posture">
+    <!-- ↩ 2026-08-21 · `.prose-band--note` — this section drops OUT of the display
+         scale, and the reason is rhythm, not modesty. §3, §4 and §5 were the same
+         object three times: a centred display H2 over one paragraph, measured at
+         387 · 439 · 334px tall. Nothing on the page had rank, which is the "falta
+         de ar" — the page was not too dense, it was too EVEN.
+         Now §3 is the display beat, §4 is the photograph band, and §5 closes at
+         clause scale. An institutional document ends on a compliance paragraph in
+         a quieter register, not on a third headline the size of the first two.
+         ⚠ THE H2 IS STILL AN H2. Only its type scale moved — the heading order on
+         this page stays h1 → h2 ×5 → h3 (footer) with no skips, which is the state
+         the 2026-08-20 audit put eight pages into. Do not "fix" this to an h3. -->
+    <section id="compliance" class="section prose-band prose-band--note" aria-label="Regulatory posture">
       <div class="container prose-band__inner">
         <h2 class="prose-band__h2" data-reveal-words>Regulatory <em class="accent">posture</em>.</h2>
         <p class="prose-band__body" data-reveal>CredX operates under PIPEDA, with explicit consumer opt-in on any data used in a lending decision. Lending partners hold their own regulatory obligations, and the structure is built to sit inside them rather than around them.</p>

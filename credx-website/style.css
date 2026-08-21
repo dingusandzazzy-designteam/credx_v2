@@ -3594,7 +3594,18 @@ a.vertical-card:hover .vertical-card__name::after { transform: translateX(4px); 
 .media-ph::after {
   content: 'Image slot — ' attr(data-img-ph);
   display: block;
-  max-width: 42ch;
+  /* 🔴 WAS A FLAT `42ch`, AND IT BLEW THE MOBILE LAYOUT VIEWPORT OPEN. Measured
+     2026-08-21 at 390x844 with real device emulation: the label's min-content is
+     ~533px, `.media-ph` is a flex container, so the slot could not shrink and
+     Chrome expanded `window.innerWidth` from 390 to 549 — the whole page laid out
+     at the wrong width, nav included.
+     ⚠ It was latent, not new: the site's only other `.media-ph` is the wide video
+     slot on /how-it-works, which never gets narrow enough to trip it. The first
+     narrow consumer found it. Fixed in the component, because the next one would
+     find it again.
+     ⚠ `min()` and not a media query — the constraint is the CONTAINER's width, and
+     this component sits in containers of several widths at the same viewport. */
+  max-width: min(42ch, 100%);
   padding: var(--s-5);
   text-align: center;
   font-size: var(--type-caption);
@@ -5232,33 +5243,102 @@ a.vertical-card:hover .vertical-card__name::after { transform: translateX(4px); 
    Tokens only. The accent appears exactly once, on the node that holds the
    asset, because that is the fact the reader came for.
    --------------------------------------------------------------------------- */
-.positions { margin-top: var(--s-7); }
+.positions { margin-top: var(--s-8); }
 
+/* ↩ REBUILT 2026-08-21 · A SPINE, NOT A TABLE.
+   The first version was a 4-column grid, each node carrying its OWN
+   `border-left`, under a `border-top` on the row. Rendered, that is four
+   uppercase labels over hairlines sitting directly above `.sheet` — six MORE
+   uppercase labels over hairlines. Twelve rules in one column, and the map read
+   as the sheet's header rather than as a separate idea. Marco named this
+   component first when he called the page bad.
+   🔴 The fix is that the two components now use DIFFERENT GEOMETRY, not
+   different spacing. The sheet is a stack of rows. This is ONE continuous line
+   with a marker per position. A reader cannot confuse a line with a table.
+   ⚠ §6.9 gives this page a signature budget of 1 and `.sheet` holds it. This is
+   deliberately subordinate — smaller type, no rules of its own, no surface. It
+   is the section's diagram, not a second signature. */
 .positions__row {
   list-style: none;
   margin: 0;
   padding: 0;
   display: grid;
   grid-template-columns: 1fr;
-  gap: var(--s-5);
-  border-top: 1px solid var(--border-default);
-  padding-top: var(--s-5);
+  gap: var(--s-6);
 }
+
+/* ---- The spine, wide: one rule across the top, markers sitting ON it -------- */
 @media (min-width: 860px) {
-  .positions__row { grid-template-columns: repeat(4, 1fr); gap: var(--s-6); }
+  .positions__row {
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--s-7);
+    /* The single continuous hairline. It is on the ROW, never on the node —
+       that is the whole difference from the version this replaces. */
+    border-top: 1px solid var(--border-default);
+    padding-top: var(--s-6);
+  }
+  .positions__node { padding-left: 0; border-left: 0; }
+  /* The marker straddles the spine. 9px on a 1px rule, so it reads as a station
+     on the line rather than as a bullet beside it. */
+  .positions__node::before {
+    content: '';
+    position: absolute;
+    top: calc(-1 * var(--s-6) - 5px);
+    left: 0;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    border: 1px solid var(--border-default);
+    background: var(--surface-0);
+  }
 }
 
 .positions__node {
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: var(--s-2);
-  padding-left: var(--s-4);
-  /* The rule on the left is the only ornament, and it encodes the same thing the
-     accent does: position in the chain, not decoration. */
-  border-left: 1px solid var(--border-default);
 }
-.positions__node--credx { border-left-color: var(--text-secondary); }
-.positions__node--lender { border-left-color: var(--text-accent); }
+
+/* ---- The spine, narrow: the same line, turned vertical ---------------------
+   Below 860 the four positions stack, so the spine runs down the left instead of
+   across the top. ⚠ It is still ONE rule — drawn on the row, not per node — so
+   the geometry argument above holds at every width. */
+@media (max-width: 859.98px) {
+  .positions__row {
+    border-left: 1px solid var(--border-default);
+    padding-left: var(--s-5);
+  }
+  .positions__node::before {
+    content: '';
+    position: absolute;
+    left: calc(-1 * var(--s-5) - 5px);
+    top: 0.45em;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    border: 1px solid var(--border-default);
+    background: var(--surface-0);
+  }
+}
+
+/* 🔴 THE ONE FILLED MARKER AND THE ONE ACCENT ON THE WHOLE COMPONENT. The
+   §6.9 acceptance test is "crop the nav — which audience is this addressed to?"
+   This is the page's answer: the only emphasis on the diagram is on the party
+   holding the asset, which is the reader. */
+/* ⚠ The unfilled markers were drawn at `--border-default` and rendered close to
+   invisible against `--surface-0` — a spine with two of its four stations missing
+   is worse than no spine. `--text-muted` is the readable floor here; the
+   hierarchy between the three states now comes from FILL, not from opacity. */
+.positions__node::before { border-color: var(--text-muted); }
+.positions__node--lender::before {
+  background: var(--text-accent);
+  border-color: var(--text-accent);
+}
+.positions__node--credx::before {
+  border-color: var(--text-secondary);
+  background: var(--text-secondary);
+}
 
 .positions__who {
   font-size: var(--type-eyebrow);
@@ -5274,15 +5354,236 @@ a.vertical-card:hover .vertical-card__name::after { transform: translateX(4px); 
      column's — the trap that has bitten this project three times. The grid track
      is the constraint here. */
   max-width: none;
+  /* One step below the prose so the diagram cannot out-weigh the sheet it now
+     sits under. Subordination is a type decision here, not just a spacing one. */
+  font-size: var(--type-caption);
+  line-height: 1.55;
   color: var(--text-secondary);
 }
 .positions__node--lender .positions__holds { color: var(--text-primary); }
 
+/* The return line. ⚠ NO top border any more — a rule here re-introduced exactly
+   the horizontal-hairline stack this rebuild exists to remove. Space separates it. */
 .positions__return {
-  margin: var(--s-5) 0 0;
-  padding-top: var(--s-5);
-  border-top: 1px solid var(--border-subtle);
-  max-width: none;
+  margin: var(--s-6) 0 0;
+  max-width: 65ch;
   color: var(--text-muted);
   font-size: var(--type-caption);
+  font-style: italic;
+}
+
+
+/* ===========================================================================
+   /lenders · THE INSTITUTIONAL TYPE — the 2026-08-21 layout pass
+   Marco judged the page bad on 2026-08-20 and named four things plus one defect
+   on 2026-08-21: the positions map, the density, the missing photograph, the
+   hierarchy, and a strange break in the H1. Everything below answers one of
+   those, and every claim in these comments was measured in Chrome via Playwright
+   at 1440 and at 390 before it was written.
+
+   🔴 THE ROOT DIAGNOSIS, and it is worth recording because it will recur on the
+   next restrained page: THE PAGE WAS NOT TOO DENSE, IT WAS TOO EVEN. Measured
+   section heights were 844 · 1214 · 387 · 439 · 334 · 381. One section carried
+   60% of the body and the next three were the same object three times — a
+   centred display H2 over one paragraph. §6.9's "restrained" was built as
+   "uniform", and those are not the same instruction. A document register has
+   many austere forms: a header, a schedule, a diagram, a clause. It does not
+   have one form repeated.
+   ⚠ Nothing here touches a token, adds a colour, or introduces a card. §6.9
+   closes §1's tokens and this pass stays inside them.
+   =========================================================================== */
+
+/* ---- .hero--ledger · the opening as a document header ----------------------
+   Two problems, one shell change.
+   🔴 THE H1 MEASURE. `.hero--compact .hero__h1` caps at `15ch`, cut for /about's
+   short manifesto line. This page's H1 is 51 characters, so at 1440 the cap
+   resolved to 570px and the headline set in FIVE lines with rects of
+   386 · 397 · 270 · 373 · 253 — two half-length lines stranded in the middle.
+   ⚠ IT WAS NOT `data-reveal-words` AND NOT THE `<em>`, which was the first
+   hypothesis. The Range rects locate every wrap at the 570px cap, and the
+   duplicated rects at the tail are just the `<em>`'s own client rects.
+   🔴 THE EMPTY HALF. On /about, `.hero--compact` is followed by `.hero-media` —
+   the photograph the reader scrolls into. This page has no photograph by type, so
+   the shell left the right half of the opening blank with a ragged column alone
+   in it. That reads as a hero with a hole, not as restraint.
+   ⚠ The paragraph moving right is a COMPOSITION change, not a content one: same
+   copy, same DOM order, nothing added. Below 960 it collapses back to the stack
+   and the page reads exactly as it did.
+   --------------------------------------------------------------------------- */
+/* 🔴 THE OPENING NEEDED ITS SPACE BACK. Holding the accent pair together took
+   the headline from five stacked lines to three beside a column, which is the
+   point — but it also took the section from 844px to 471px, making the OPENING
+   the shortest major block on the page, and the first line sat close enough to
+   the sticky nav to read as clipped. A document's first page is mostly margin;
+   this restores that deliberately rather than as a side effect of the type fix. */
+.hero--ledger {
+  padding-block: calc(var(--s-section) + var(--s-10)) var(--s-9);
+}
+
+.hero--ledger .hero__h1 {
+  /* Raised from `15ch`. ⚠ Above 960 this is INERT — the grid track is narrower
+     than 20ch and is the real constraint. It governs only the stacked layout
+     below 960, where it is wider than any phone viewport and therefore also
+     inert. It is kept as the stated intent rather than as a working value, and
+     saying so here is the point: the next reader should not "tune" a number that
+     nothing resolves against. */
+  max-width: 20ch;
+  /* `pretty` and not `balance`: measured at 1440, balance produced 386/574/478/253
+     and pretty produced 602/451/638 — a descending-then-full rag that reads as a
+     block. `balance` optimises for even line lengths, which is the wrong goal for
+     a three-line document header. */
+  text-wrap: pretty;
+  margin-bottom: 0;
+}
+
+@media (min-width: 960px) {
+  /* 🔴 `.hero__inner` IS ITSELF A GRID WITH NO DECLARED COLUMNS, so its implicit
+     track auto-sizes to its content — `.hero__copy` measured 587px inside an
+     1184px container and the two-column split resolved to 372px / 214px, which
+     set the H1 in SEVEN lines. Worse than the five it was sent to fix.
+     ⚠ THIS IS THE SAME TRAP DESIGN.md ALREADY RECORDS for `.hero--centred`,
+     where centring took three attempts for exactly this reason. It cost a
+     measurement round here too. Block layout is what gives the copy the
+     container's width; `max-width: none` on the child does nothing about a
+     parent track that is already content-sized. */
+  .hero--ledger .hero__inner { display: block; }
+  .hero--ledger .hero__copy {
+    display: grid;
+    /* Deliberately UNEQUAL. An even 1fr 1fr reads as two columns of a layout;
+       1.05fr / 0.95fr with a rule between reads as a header and its summary,
+       which is what an offering document's first page actually looks like. */
+    grid-template-columns: 1.05fr 0.95fr;
+    align-items: start;
+    gap: 0;
+  }
+  /* The hairline between the two halves is the page's opening statement of
+     register: the Institutional type is hairlines and type, and this is the
+     first one the reader meets. */
+  .hero--ledger .hero__ledger {
+    border-left: 1px solid var(--border-subtle);
+    padding-left: clamp(var(--s-7), 5vw, var(--s-9));
+    /* Optical alignment, corrected against the render rather than computed: the
+       H1's cap height starts below its line box, so a paragraph at y=0 sits
+       visibly high against it. */
+    padding-top: var(--s-2);
+  }
+  /* 🔴 THE ACTUAL CURE FOR THE "QUEBRA ESTRANHA", and it is one line.
+     `Community Lenders` is the accent pair and it was breaking ACROSS lines 3 and
+     4, leaving `Lenders` alone on a 253px line under a 373px one. Measured at
+     1440, 1280, 1024 and 960: holding the pair together takes the headline from
+     four ragged lines to THREE at every one of those widths.
+     ⚠ SCOPED TO >=960 DELIBERATELY. At the stacked width the pair sets ~390px
+     against a 358px column, so an unscoped `nowrap` would trade a bad wrap for a
+     real horizontal overflow on a phone. Verified at 390x844: zero overflowing
+     elements.
+     ⚠ It also widens the left grid track from 622 to 638, because an `fr` track's
+     automatic minimum is its content — expected, not a bug. */
+  .hero--ledger .hero__h1 .accent { white-space: nowrap; }
+
+  .hero--ledger .hero__sub {
+    /* The right column is ~46ch of track, so a 58ch cap does nothing here and
+       the track is the real constraint. Stated so the next reader does not
+       "fix" an inherited number that is already inert. */
+    max-width: none;
+    margin-top: 0;
+  }
+}
+
+/* ---- .media-ph--band · the 16:9 IMAGE slot the component was missing -------
+   ⏸ NO CONSUMER as of 2026-08-21 — `/lenders` §4 now carries the real photograph
+   and uses `.section-media`. KEPT, because the base component still ships only a
+   `--video` ratio variant, and the next narrow image slot will need this one plus
+   the `min-height` fix below. Delete it if a later sweep finds no consumer.
+
+   `--video` was the only ratio variant, and it relabels the slot "Video slot".
+   §4 needs the same 16:9 box with the image label, so this is the missing sibling
+   rather than a page-local one-off.
+
+   🔴 `min-height: 0` IS LOAD-BEARING AND IT IS THE THIRD CASCADE TRAP IN THIS
+   COMPONENT. `.media-ph` sets `min-height: 300px`; `.media-ph--video` sets it to
+   0 to cancel that — but `--video` is written EARLIER in the file at equal
+   specificity (0,1,0), so it LOSES and the 300px stands. Combined with
+   `aspect-ratio`, that resolved the slot to 300 x 16/9 = 533px wide inside a 358px
+   column, and Chrome EXPANDED THE MOBILE LAYOUT VIEWPORT from 390 to 549 — the
+   whole page, nav included, laid out at the wrong width. Measured, not inferred.
+   ⚠ The file already documents this exact trap one property up, on
+   `.media-ph::after`, with the note "second time this cascade trap bit today".
+   This is the third, and the cause is that `--video` sits above `.media-ph`
+   instead of below it. NOT reordered here: the /how-it-works video slot depends on
+   the current order, and moving it to fix a page in Batch 2 is how the one live
+   consumer breaks. `--band` is declared AFTER `.media-ph`, which is where a
+   modifier belongs.
+   --------------------------------------------------------------------------- */
+.media-ph--band {
+  aspect-ratio: 16 / 9;
+  min-height: 0;
+  margin-top: var(--s-8);
+}
+
+/* ---- .section--doc · one left edge, for the section that is a document -----
+   🔴 §2 carried THREE left edges at 1440, measured: the H2 centred, the prose
+   column centred at x=176 (65ch inside an 1184px container), and `.positions`
+   plus `.sheet` spanning the container at x=128. A term sheet does not have
+   three margins, and the 48px step between the prose and the sheet was visible
+   as a silent indent.
+   ⚠ Only §2 takes this. §3 and §4 stay centred on purpose — the alternation
+   between a left-hung document section and centred reading sections IS the
+   page's rhythm. Applying it everywhere would trade three alignments for one and
+   land back on uniformity.
+   --------------------------------------------------------------------------- */
+.section--doc .prose-band__h2 {
+  text-align: left;
+  margin-inline: 0;
+  /* Wider than the centred 30rem: a left-hung heading has the full column to
+     run into and a 30rem cap would break it into a narrow stack. */
+  max-width: 34rem;
+  margin-block-end: var(--s-7);
+}
+.section--doc .prose-band__body {
+  margin-inline: 0;
+}
+/* The generous interval on this page. Prose, then the diagram, then the
+   document — the two gaps that matter are the ones that separate the three, and
+   they are wider than any gap inside them. That contrast is what "air" is; the
+   page had one repeated interval and no contrast at all. */
+.section--doc .sheet {
+  margin-top: var(--s-9);
+  /* The sheet's opening rule is the heaviest on the page, because it is the one
+     place the reader needs told "a document starts here". `.positions` no longer
+     has a rule of its own to compete with it. */
+  border-top-color: var(--border-default);
+}
+
+/* ---- .prose-band--note · the clause scale ---------------------------------
+   §3, §4 and §5 were one object three times — a centred display H2 over a single
+   paragraph, at 387 · 439 · 334px. Three sections of equal weight is why nothing
+   on the page had rank. §5 now closes at clause scale: an institutional document
+   ends on a compliance paragraph in a quieter register, not on a third headline
+   the size of the first two.
+   ⚠ THE HEADING STAYS AN `h2`. Only the type scale moves. The document order is
+   h1 -> h2 x5 -> h3, no skips — the state the 2026-08-20 a11y pass put eight
+   pages into. Do not "correct" this to an h3.
+   --------------------------------------------------------------------------- */
+.prose-band--note {
+  padding-block: var(--s-9);
+}
+.prose-band--note .prose-band__h2 {
+  font-size: var(--type-h3);
+  font-family: var(--font-body);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  max-width: none;
+  margin-block-end: var(--s-6);
+}
+/* ⚠ The accent `<em>` inside the heading is muted WITH the heading. At this size
+   the magenta italic read as a link, and an uppercase label is not the place the
+   page spends its accent — the lender marker in the spine is. */
+.prose-band--note .prose-band__h2 .accent {
+  color: inherit;
+  font-style: normal;
+}
+.prose-band--note .prose-band__body {
+  font-size: var(--type-body);
 }
