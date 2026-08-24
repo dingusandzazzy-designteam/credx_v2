@@ -4482,9 +4482,18 @@ a.vertical-card:hover .vertical-card__name::after { transform: translateX(4px); 
    would each have rendered at H2 scale, which is the "nothing on the page has
    rank" failure `.prose-band--note` was written to fix on the same page. A
    sub-head must be smaller than the head it sits under.
-   ⚠ It follows `.prose-band__body`'s 65ch measure and centring so the whole
-   section hangs off one left edge. Measure lives on the same column, not in ch
-   at a different font-size — that trap has cost this project three times.
+   🔴 IT CARRIES NO MEASURE AND NO CENTRING, AND THAT IS THE WHOLE POINT —
+   THE FIRST VERSION OF THIS RULE, WRITTEN HOURS EARLIER THE SAME DAY, DID.
+   It copied `.prose-band__body`'s `max-width: 65ch; margin-inline: auto`. But
+   65ch resolves against the element's OWN font-size, so at 20–24px it is wider
+   than the body's 65ch at 18px — and two auto-centred blocks of different
+   widths do not share a left edge. It shipped ~4px off, in a section built to
+   hang off ONE edge. **That is the `ch` trap, for the fourth time on this
+   project, in the rule whose own comment warned about it.** The column comes
+   from the parent — `.prose-band__inner`'s two-column grid sets
+   `margin-inline: 0; max-width: none` on every child, and below 960px the
+   container is narrower than either measure anyway. Do not "restore" a measure
+   here.
    --------------------------------------------------------------------------- */
 .prose-band__h3 {
   font-family: var(--font-body);
@@ -4493,8 +4502,6 @@ a.vertical-card:hover .vertical-card__name::after { transform: translateX(4px); 
   line-height: 1.25;
   letter-spacing: -0.01em;
   color: var(--text-primary);
-  max-width: 65ch;
-  margin-inline: auto;
   margin-block: var(--s-7) var(--s-3);
 }
 .prose-band__h3 + .prose-band__body { margin-top: 0; }
