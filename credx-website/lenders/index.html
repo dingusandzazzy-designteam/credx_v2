@@ -137,7 +137,7 @@
           <div class="nav__submenu" id="nav-audiences" data-nav-submenu>
             <a href="../merchants/" class="nav__sublink">For Merchants</a>
             <a href="../lenders/" class="nav__sublink nav__sublink--active" aria-current="page">For Lenders</a>
-            <a href="../pos/" class="nav__sublink">For POS &amp; ISV</a>
+            <a href="../pos-isv/" class="nav__sublink">For POS &amp; ISV</a>
           </div>
         </div>
         <a href="../contact/" class="nav__link">Contact Us</a>
@@ -207,43 +207,48 @@
          aggressive push, and the reposition does not reopen that — a
          leave-behind sent by a colleague does not need to close.
          ============================================================ -->
-    <section class="hero hero--split hero--institutional" aria-label="Opening">
+    <!-- 🔴 THE OPENING IS THE HOME'S, AND ONLY ON THIS PAGE — Marcos,
+         2026-08-24: "como lenders tem um apelo também de marketing, acho que a hero
+         section pode ser a mesma da homepage, somente nesse caso."
+         ⚠ THIS DELIBERATELY REVERSES A RULE HE SET HIMSELF, so it is written down
+         rather than left to look like drift. On 2026-08-21: "a gente não tá usando
+         imagem grande mais assim nas páginas, para diferenciar da home" — the
+         full-bleed band is the Home's move and is off the inner pages. `.hero--full`
+         has been Home-only since the 2026-08-19 rebuild replaced one shared shell
+         with five distinct openings. **The exception is scoped to `/lenders` and to
+         the reason behind it:** this page is a sales asset somebody SENDS, so it
+         opens like a campaign page rather than like an inner page of a site nobody
+         navigated to. Do not read this as permission for `/merchants` or `/pos`.
+         🔴 THE IMAGE IS NOT THE HOME'S, AND THAT IS NOT AN OVERSIGHT. The Home's
+         hero is `hero-dark-2.png`, which shows a customer tapping a phone against a
+         VISIBLE CARD TERMINAL. Marcos, 2026-08-19: a card machine is the
+         competitor's device and never appears in a CredX image. It is live on the
+         Home under the "home não mexer" hold, unfixed, by his call — copying it
+         here would put a banned image on a SECOND page, and on the one page whose
+         reader is a lender rather than a merchant. This uses the page's own
+         photograph instead.
+         ✅ A PENDING ITEM DIES WITH THIS CHANGE: the old split frame was 4:5 while
+         the master is 16:9, so it shipped with `--wide` and a note that Marcos was
+         generating a 4:5 replacement. A full-bleed hero wants 16:9. **The 4:5
+         master is no longer needed.**
+         ⚠ `.hero--institutional` is GONE from this shell. Its only job was sizing
+         the H1 down to 56px for a 544px split column; the copy column here is the
+         Home's, and the H1 is now 44 characters rather than the 51 that rule was
+         measured against. -->
+    <section class="hero hero--full" aria-label="Opening">
+      <picture>
+        <img src="../images/lenders-region.png" alt="A block of independent shops trading on the main street of a small Canadian city — a bakery, a florist, a bicycle shop and a homeware shop side by side, awnings out over the pavement and windows lit." class="hero__bg hero__bg--dark" width="1672" height="941" fetchpriority="high" />
+      </picture>
+      <div class="hero__overlay" aria-hidden="true"></div>
       <div class="container hero__inner">
         <div class="hero__copy">
-          <!-- 🔴 H1 CHANGED 2026-08-24 (Marcos: "h1 pode mudar"). It read
-               "Lend Where Your Members Are Already Buying" and shipped as option A of
-               two, unchosen, on 2026-08-21.
-               ONE WORD, AND IT IS THE PAGE'S OWN CONSTRAINT: `Members` is credit-union
-               vocabulary. The Champion brief's hardest structural rule is GENERIC
-               ACROSS LENDER TYPES — Audrey: "what's important to one lender isn't
-               important to them — it's a complete opposite" — and `Borrowers` is the
-               only word that holds for a credit union, a community FI and a commercial
-               lender at once. The metadata shed the same defect the same day; this was
-               the last place carrying it.
-               ✓ The construction is untouched: it is the reversal the brief asks the
-               hero to make — you are already where the lending decision happens.
-               Budget: 44/≤70. -->
           <h1 class="hero__h1">Lend Where Your Borrowers Are Already Buying</h1>
-          <!-- 🔴 CLIENT-APPROVED, VERBATIM. `index.html:228`. Four sentences,
-               denser than the 10-second target in voice.md — approved copy
-               outranks our own density guideline, and this is the one place on
-               the page where that trade is worth it: the argument, in the
-               client's words, above the fold. It opens on "Community lenders
-               have always been closer…", which IS the valorising line. -->
           <p class="hero__sub" data-reveal data-reveal-delay="1">
             Community lenders have always been closer to their members than the big networks, yet the credit facility network always captured the transaction. CredX changes the rail with fund-embedded, merchant-linked credit at the point of sale. It is a diversified, closed-loop asset class with built-in delinquency controls, so risk stays managed.
           </p>
           <div class="hero__ctas" data-reveal data-reveal-delay="2">
             <a href="../contact/" class="btn btn-secondary">Talk to Us</a>
           </div>
-        </div>
-        <!-- ⏸ `--wide` because the master is 16:9 and `.hero__frame` is 4:5 —
-             the crop reduced a block of shops to two shopfronts, deleting the
-             one thing its brief insists on. Marcos is generating a 4:5
-             replacement; WHEN IT LANDS, DROP `--wide` and the frame returns to
-             the shared ratio. The modifier follows the asset, not the page. -->
-        <div class="hero__frame hero__frame--wide" data-reveal-media>
-          <img src="../images/lenders-region.png" alt="A block of independent shops trading on the main street of a small Canadian city — a bakery, a florist, a bicycle shop and a homeware shop side by side, awnings out over the pavement and windows lit." width="1672" height="941" loading="eager" fetchpriority="high" />
         </div>
       </div>
     </section>
@@ -307,40 +312,61 @@
          breaks `.triad`. Elevating this to a component is a DESIGN pass, not a copy
          decision — until then it reads as what the page is, an institutional document.
          ============================================================ -->
-    <section id="what-you-get" class="section prose-band" aria-label="What you get">
-      <div class="container prose-band__inner">
-        <h2 class="prose-band__h2" data-reveal-words>What <em class="accent">you</em> get.</h2>
-        <p class="prose-band__body" data-reveal>Six things, and each one is yours rather than the arrangement’s.</p>
-
-        <h3 class="prose-band__h3" data-reveal>New borrowers, without new outreach</h3>
-        <p class="prose-band__body" data-reveal>People become borrowers at the counter, in the middle of a purchase they had already decided to make. They arrive because your credit is the one available at that moment, not because a campaign found them first.</p>
-
-        <h3 class="prose-band__h3" data-reveal>A kind of lending you do not have today</h3>
-        <p class="prose-band__body" data-reveal>Small, short, and tied to a purchase you can see, spread across many merchants and many towns rather than concentrated in one. It sits beside what is already on your books instead of competing with it.</p>
-
-        <h3 class="prose-band__h3" data-reveal>A reason for people to come back</h3>
-        <p class="prose-band__body" data-reveal>The credit carries value-back for the buyer, so the reason to come back sits inside the product rather than in a separate program you have to fund and run. People who borrow this way have a reason to stay.</p>
-
-        <h3 class="prose-band__h3" data-reveal>Something to bring the businesses you lend to</h3>
-        <p class="prose-band__body" data-reveal>Merchants on CredX are designed to recover a share of what it costs them to accept cards. That is a conversation you can open with the businesses already on your books.</p>
-
-<!-- 🆕 SIXTH ITEM ADDED 2026-08-24 from the keyword list in ClickUp
-             `86cb3dq9a` comment `90150253687605` — Kyle's two angles that Audrey's five
-             priorities do not cover: DIFFERENTIATION and DIGITAL MODERNIZATION. The brief
-             §5 already sanctions them as "the front-facing pitch".
-             ⚠ REFRAMED, and every change has a rule behind it. The source said
-             "every CU offers the same debit/credit; this is a competitive moat" and
-             "fintech partnership without building from scratch". `moat` is out — MOAT is
-             the client's own acronym (Mutual Ownership Acquisition Technology) and using
-             it loosely reads as a second meaning. `partnership` is out — the brief bars
-             partnership vocabulary on this page. `CU` is out — the page is generic across
-             lender types by the client's own instruction. What survives is the argument
-             itself, which is the part that was worth having. -->
-        <h3 class="prose-band__h3" data-reveal>Something the lender next door does not have</h3>
-        <p class="prose-band__body" data-reveal>A modern lending product you can offer without building it yourself, and without a long technology project. Most lenders in your market offer the same things. This is not one of them.</p>
-
-        <h3 class="prose-band__h3" data-reveal>A clearer view of the person you are lending to</h3>
-        <p class="prose-band__body" data-reveal>The decision draws on the merchant’s record of the purchase, supplied on the buyer’s explicit opt-in. You get access to what the purchase itself shows, at the level of the transaction, which no application form can produce.</p>
+    <!-- ============================================================
+         3 · WHAT YOU GET — ↩ RESTRUCTURED 2026-08-24. Marcos: "vamos trabalhar
+         esse conteúdo de outra forma, ficou muito comprida a seção."
+         🔴 THE CONTENT COULD NOT BE CUT, so the form had to change. The six
+         items are client-mandated — Audrey's five lender priorities plus the
+         differentiation/modernization beat from Kyle's list — and cutting one is
+         a copy decision the client owns, not a layout fix.
+         WHAT CHANGED: the section leaves the two-column reading grid and takes
+         the full container as a 3 × 2 grid. Six stacked beats in a 630px column
+         ran ~1050px tall and read as a wall in the page's LONGEST section. Three
+         across, two rows, lands near 420px with nothing removed.
+         ⚠ NO CARDS, NO SURFACES, NO BORDERS, NO PER-ITEM RULES, and each of
+         those is a decision:
+         · cards would make this the page's second card grid and collide with
+           `.stack`, which is /evp's signature;
+         · per-item hairlines would rebuild exactly what the 2026-08-21
+           `.positions` rebuild removed — "uppercase labels over hairlines" —
+           and this page already owns ONE hairline geometry, the spine below.
+         So the grid is held by type and space only, which is also this page's
+         institutional register.
+         ⚠ It is a `ul`. Six parallel items are a list; `list-style: none` does
+         not remove the UA `padding-inline-start`, so the component zeroes it.
+         ============================================================ -->
+    <section id="what-you-get" class="section benefits-band" aria-label="What you get">
+      <div class="container">
+        <div class="benefits__header">
+          <h2 class="prose-band__h2" data-reveal-words>What <em class="accent">you</em> get.</h2>
+          <p class="benefits__lead" data-reveal>Six things, and each one is yours rather than the arrangement’s.</p>
+        </div>
+        <ul class="benefits">
+          <li class="benefits__item" data-reveal>
+            <h3 class="benefits__title">New borrowers, without new outreach</h3>
+            <p class="benefits__body">People become borrowers at the counter, in the middle of a purchase they had already decided to make. They arrive because your credit is the one available at that moment, not because a campaign found them first.</p>
+          </li>
+          <li class="benefits__item" data-reveal data-reveal-delay="1">
+            <h3 class="benefits__title">A kind of lending you do not have today</h3>
+            <p class="benefits__body">Small, short, and tied to a purchase you can see, spread across many merchants and many towns rather than concentrated in one. It sits beside what is already on your books instead of competing with it.</p>
+          </li>
+          <li class="benefits__item" data-reveal data-reveal-delay="2">
+            <h3 class="benefits__title">A reason for people to come back</h3>
+            <p class="benefits__body">The credit carries value-back for the buyer, so the reason to come back sits inside the product rather than in a separate program you have to fund and run. People who borrow this way have a reason to stay.</p>
+          </li>
+          <li class="benefits__item" data-reveal>
+            <h3 class="benefits__title">Something to bring the businesses you lend to</h3>
+            <p class="benefits__body">Merchants on CredX are designed to recover a share of what it costs them to accept cards. That is a conversation you can open with the businesses already on your books.</p>
+          </li>
+          <li class="benefits__item" data-reveal data-reveal-delay="1">
+            <h3 class="benefits__title">Something the lender next door does not have</h3>
+            <p class="benefits__body">A modern lending product you can offer without building it yourself, and without a long technology project. Most lenders in your market offer the same things. This is not one of them.</p>
+          </li>
+          <li class="benefits__item" data-reveal data-reveal-delay="2">
+            <h3 class="benefits__title">A clearer view of the person you are lending to</h3>
+            <p class="benefits__body">The decision draws on the merchant’s record of the purchase, supplied on the buyer’s explicit opt-in. You get access to what the purchase itself shows, at the level of the transaction, which no application form can produce.</p>
+          </li>
+        </ul>
       </div>
     </section>
 
@@ -391,6 +417,33 @@
       </div>
     </section>
 
+    <!-- 🆕 THE BAND — a breath between the positions map and the asset, added
+         2026-08-24. Marcos: "os fundos de todas as seções ficaram iguais". The plate
+         on §3 answers half of that; this answers the other half, and it is the only
+         place on the page where the reader gets a whole image with nothing to read.
+         ⚠ IT REVERSES A RULE, DELIBERATELY, AND IT IS THE SECOND TIME ON THIS PAGE.
+         The full-container band is the HOME's move and came off the inner pages on
+         2026-08-21 ("para diferenciar da home"); this page also took the Home's
+         `.hero--full` this morning. Both rest on ONE argument: /lenders is a sales
+         asset somebody SENDS, so it is allowed to behave like a campaign page.
+         NOT a precedent for /merchants or /pos.
+         ⚠ SUBJECT CHOSEN AGAINST THE PAGE'S OTHER THREE, not for variety: the hero
+         owns the street elevation, §5 owns the counter, §7 owns the aerial. What the
+         page had never shown is the money STAYING — the evening after, the shops
+         still lit, the street still working. It is §7's argument arriving early, as
+         an image rather than as a sentence.
+         ✓ It also fixes the page's one tonal complaint: the hero is a daylight
+         photograph opening a dark-only page, so the light drained as the reader
+         scrolled. A lit-at-dusk band restores it once, in the middle.
+         ⚠ Alt written from the DELIVERED FILE, not from the brief — three Home alts
+         were once found describing renders that had already been replaced.
+         ============================================================ -->
+    <div class="container">
+      <div class="section-media section-media--panorama" data-reveal-media>
+        <img src="../images/lenders-band.png" alt="A main street in a small city at dusk, shop windows lit and reflected on wet pavement, a few people walking at a distance" width="2172" height="724" loading="lazy" decoding="async" />
+      </div>
+    </div>
+
     <!-- ============================================================
          5 · THE ASSET
          ↩ THE RECEIVABLE CLAIM WAS REMOVED ON 2026-08-21 AND THE CLIENT PUT IT
@@ -416,7 +469,14 @@
          schema: a schema field is a published claim like any other.
          ============================================================ -->
     <section id="asset" class="section prose-band" aria-label="The asset">
-      <div class="container split__inner split__inner--top">
+      <!-- ↩ `--top` REMOVED 2026-08-24 (Marcos: "alinha ao centro"). The base
+           `.split__inner` centres the two columns and the modifier opts out of it.
+           Its own rule says when each is right: centre when the other column is a
+           PHOTOGRAPH of fixed ratio, start-align when it is a component whose height
+           comes from its content. This column is a 4:5 photograph and it was
+           carrying the component modifier — the prose sat pinned to the top of a
+           1402px-tall frame with the dead space collecting under it. -->
+        <div class="container split__inner">
         <div class="split__media" data-reveal-media>
           <img src="../images/lenders-asset.png" alt="A customer at a shop counter receiving a paper-wrapped parcel from the owner, shelves of ceramics and glassware behind him" width="1122" height="1402" loading="lazy" decoding="async" />
         </div>
@@ -554,7 +614,7 @@
              ⚠ `--wide` for the same reason as the hero: the master is 16:9 and
              `.split__media` is 4:5, and cropping an elevated townscape to
              portrait removes the breadth that IS its subject. -->
-        <div class="split__media split__media--wide" data-reveal-media>
+        <div class="split__media split__media--wide split__media--fill" data-reveal-media>
           <img src="../images/lenders-region-elevated.png" alt="A small Canadian city seen from above its rooflines, the commercial main street running across the frame with tidy residential blocks and mature trees behind it" width="1672" height="941" loading="lazy" decoding="async" />
         </div>
       </div>

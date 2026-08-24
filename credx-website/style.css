@@ -732,6 +732,30 @@ p { line-height: 1.6; max-width: 65ch; }
    operator on 2026-08-18. Use this whenever the asset is landscape. */
 .split__media--wide { aspect-ratio: 16 / 9; }
 
+/* ---- --fill · the media takes the row's full height ------------------------
+   Added 2026-08-24 (Marcos, on /lenders §7: "acho que essa imagem pode ocupar a
+   altura toda"). Every other `.split__media` is a FRAME of a fixed ratio, which
+   is right when the photograph is the subject. Here the prose column is the
+   taller of the two — headline, two paragraphs and the province grid — and a
+   16:9 frame beside it left the image floating in the top third with the column
+   empty beneath it.
+   ⚠ `align-self: stretch` is what does the work, not `height: 100%`. The wrapper
+   has no definite height of its own, so a percentage height would resolve
+   against `auto` and collapse; stretch gives it the grid row, and the img's
+   existing `height: 100%` + `object-fit: cover` then fill it.
+   ⚠ `aspect-ratio: auto` is REQUIRED — the base sets 4/5 and `--wide` 16/9, and
+   either one wins over a stretched height and re-collapses the box.
+   ⚠ SCOPED to ≥960 on purpose. Below that the split stacks and the row height is
+   the image's own, so stretch means nothing and the mobile 16/10 ratio from the
+   base component is what should govern. The crop is `cover`, so a landscape
+   master loses width, not height, as the column gets taller. */
+@media (min-width: 960px) {
+  .split__media--fill {
+    aspect-ratio: auto;
+    align-self: stretch;
+  }
+}
+
 /* ---- --focus-top · mobile-crop insurance for both portrait frames ------------
    For a portrait asset whose faces sit high in the frame. `.split__media` AND
    `.hero__frame` are both 4:5 on desktop and **16/10 below 960px**, so a 1122×1402
@@ -4506,6 +4530,116 @@ a.vertical-card:hover .vertical-card__name::after { transform: translateX(4px); 
 }
 .prose-band__h3 + .prose-band__body { margin-top: 0; }
 
+/* ---- .benefits · /lenders §3, the six-up ----------------------------------
+   Added 2026-08-24. Marcos: the section "ficou muito comprida". The six items
+   are client-mandated, so the fix is the form: out of the 630px reading column
+   and across the container as 3 × 2.
+
+   🔴 WHY IT IS NOT CARDS. This page's register is hairlines and type — no
+   fills, no shadow — and /evp already owns the card grid (`.stack`). A second
+   one here would read as the same component twice across two pages. The grid is
+   held by space and a type step, nothing else.
+   🔴 WHY NO PER-ITEM RULE. The 2026-08-21 `.positions` rebuild exists to
+   remove "uppercase labels over hairlines" repeated down a column. Six of them
+   here would rebuild it in a different section of the same page. The page keeps
+   ONE hairline geometry: the spine in §4.
+
+   ⚠ `--benefits-measure` is in `rem`, not `ch`. Each track is ~360px at 1440 and
+   the title face is larger than the body face, so a `ch` cap would resolve
+   differently on the two and stagger the column edges — the trap this file has
+   already recorded four times.
+   --------------------------------------------------------------------------- */
+/* 🔴 THE ONE SURFACE CHANGE ON THE PAGE, 2026-08-24. Marcos: "os fundos de
+   todas as seções ficaram iguais". Everything ran on `--surface-0` and the rhythm
+   came only from type and photographs.
+   ⚠ IT IS NOT ALTERNATION. Striping odd/even sections ignores the content, and on
+   a dark palette the step from #0b0c16 to #13141f is subtle enough to read as
+   stripes that mean nothing. **The plate is assigned by meaning:** this is the only
+   section that leaves the reading column and takes the full container, and the
+   surface makes that structural change legible instead of accidental. It is also
+   the section the client mandated as the heart of the page.
+   ⚠ `--surface-1` is the approved raised-panel token, not a new colour. */
+.benefits-band { background-color: var(--surface-1); }
+
+.benefits__header {
+  max-width: 46rem;
+  margin-bottom: var(--s-8);
+}
+/* The base `.prose-band__h2` centres itself in a 30rem box. Here it opens a
+   full-width section and hangs off the container's left edge, like `.section--doc`
+   does for the same reason. */
+.benefits__header .prose-band__h2 {
+  text-align: left;
+  margin-inline: 0;
+  max-width: 34rem;
+  margin-block-end: var(--s-5);
+}
+.benefits__lead {
+  font-size: var(--type-body-lg);
+  line-height: 1.65;
+  color: var(--text-secondary);
+  max-width: 44rem;
+  margin: 0;
+}
+
+.benefits {
+  list-style: none;
+  /* `list-style: none` does NOT remove the UA `padding-inline-start: 40px`. That
+     has shifted a list on this project before. */
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--s-7);
+}
+
+@media (min-width: 680px) {
+  .benefits { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (min-width: 1024px) {
+  .benefits {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    /* More between rows than between columns: two rows of three need to read as
+       two rows, not as one field of six. */
+    column-gap: clamp(var(--s-6), 3vw, var(--s-8));
+    row-gap: var(--s-9);
+  }
+}
+
+.benefits__item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-3);
+  max-width: 26rem;
+}
+
+.benefits__title {
+  font-family: var(--font-body);
+  font-size: var(--type-h3);
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  color: var(--text-primary);
+  margin: 0;
+  /* The title is the scan layer. `text-wrap: balance` stops a two-line title
+     leaving one orphaned word over the body. */
+  text-wrap: balance;
+}
+
+.benefits__body {
+  font-size: var(--type-body);
+  line-height: 1.6;
+  color: var(--text-secondary);
+  margin: 0;
+  /* The global `p { max-width: 65ch }` would resolve to ~560px here and blow past
+     a 360px track before the grid could constrain it in older engines. The track
+     is the measure. */
+  max-width: none;
+  text-wrap: pretty;
+}
+
+
 /* A cross-link or trailing note under a prose block, held on the same column
    so it reads as part of that block rather than as a new one. */
 .prose-band__aside {
@@ -4646,6 +4780,19 @@ a.vertical-card:hover .vertical-card__name::after { transform: translateX(4px); 
 /* Spacing roles, so the three pages stop carrying hardcoded pixel values in
    style attributes. .section-media already owns its own bottom margin. */
 .section-media--spaced { margin-top: var(--s-7); }
+
+/* ---- --panorama · /lenders, the band between §4 and §5 ---------------------
+   Added 2026-08-24. `.section-media` is 16:9 because every master before this one
+   was; this one was commissioned as a BAND and delivered at 2172 × 724, which is
+   3:1. Forcing it into 16:9 would `cover`-crop the width, and the width is the
+   photograph — a street receding down the frame. The component keeps its ratio
+   from the asset instead of the asset losing its subject to the component.
+   ⚠ Below 680px a 3:1 strip is ~166px tall and stops being a photograph. It opens
+   to 2:1 there, which crops the sides on the axis that has the most redundancy. */
+.section-media--panorama { aspect-ratio: 3 / 1; }
+@media (max-width: 679.98px) {
+  .section-media--panorama { aspect-ratio: 2 / 1; }
+}
 
 /* ---- .photo-band · UNUSED as of 2026-08-19, kept for the measurement it records --
    Built for `/about` §2 and dropped the same hour: Marco saw it rendered and called
@@ -5319,7 +5466,11 @@ a.vertical-card:hover .vertical-card__name::after { transform: translateX(4px); 
 /* ---- The spine, wide: one rule across the top, markers sitting ON it -------- */
 @media (min-width: 860px) {
   .positions__row {
-    grid-template-columns: repeat(4, 1fr);
+    /* ↩ WAS `repeat(4, 1fr)` AND THERE ARE THREE NODES. The customer node was
+       removed on 2026-08-21 and the track count was not, so the spine ran the
+       full width while the last node stopped at 75% — a quarter of the
+       component was empty rule. Found by render 2026-08-24. */
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: var(--s-7);
     /* The single continuous hairline. It is on the ROW, never on the node —
        that is the whole difference from the version this replaces. */
@@ -5332,13 +5483,20 @@ a.vertical-card:hover .vertical-card__name::after { transform: translateX(4px); 
   .positions__node::before {
     content: '';
     position: absolute;
-    top: calc(-1 * var(--s-6) - 5px);
+    top: calc(-1 * var(--s-6) - 6px);
     left: 0;
-    width: 9px;
-    height: 9px;
+    width: 11px;
+    height: 11px;
     border-radius: 50%;
     border: 1px solid var(--border-default);
     background: var(--surface-0);
+  }
+  /* The accent appears ONCE on this page, on the node that holds the asset. It
+     was already carrying it in type; the marker now carries it too, so the
+     station reads before the label does. */
+  .positions__node--lender::before {
+    border-color: var(--text-accent);
+    background: var(--text-accent);
   }
 }
 
@@ -5389,12 +5547,22 @@ a.vertical-card:hover .vertical-card__name::after { transform: translateX(4px); 
   background: var(--text-secondary);
 }
 
+/* ↩ PROMOTED 2026-08-24. Marcos: "podemos valorizar melhor cada item, dar um
+   destaque maior para eles".
+   🔴 THE SUBORDINATION THIS COMPONENT CARRIED WAS INHERITED FROM A COMPONENT
+   THAT NO LONGER EXISTS. The rules above still say "deliberately subordinate —
+   smaller type … it is the section's diagram, not a second signature", because
+   `.sheet` held the page's single signature budget. **`.sheet` was retired from
+   this page on 2026-08-21 and `.positions` BECAME the signature.** The type was
+   never re-weighted to match, so the page's thesis — who holds what — was
+   rendering one step below prose in caption grey. Type steps up; the geometry,
+   the hairline register and the single accent do not change. */
 .positions__who {
-  font-size: var(--type-eyebrow);
+  font-size: var(--type-body);
   font-weight: 600;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: var(--text-muted);
+  color: var(--text-secondary);
 }
 .positions__node--lender .positions__who { color: var(--text-accent); }
 
@@ -5403,10 +5571,10 @@ a.vertical-card:hover .vertical-card__name::after { transform: translateX(4px); 
      column's — the trap that has bitten this project three times. The grid track
      is the constraint here. */
   max-width: none;
-  /* One step below the prose so the diagram cannot out-weigh the sheet it now
-     sits under. Subordination is a type decision here, not just a spacing one. */
-  font-size: var(--type-caption);
-  line-height: 1.55;
+  /* ↩ Was `--type-caption`, one step below prose, to sit under `.sheet`. The
+     sheet is gone; this is the signature now and reads at body size. */
+  font-size: var(--type-body);
+  line-height: 1.6;
   color: var(--text-secondary);
 }
 .positions__node--lender .positions__holds { color: var(--text-primary); }

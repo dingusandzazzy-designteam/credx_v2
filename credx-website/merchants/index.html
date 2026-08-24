@@ -86,39 +86,6 @@
        (`what is point of sale financing` 20/mo, `what is embedded lending` 10/mo),
        so the remaining entries are objections adapted from client-reviewed copy.
        NO PAA WAS FABRICATED. -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "What is interchange, in plain terms?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Interchange is the largest part of what a business pays on a card sale. It is set by the competing credit facility that issued the customer's card and deducted before the sale settles. It funds a programme the business pays for and does not control." }
-      },
-      {
-        "@type": "Question",
-        "name": "Does the checkout change for my customers?",
-        "acceptedAnswer": { "@type": "Answer", "text": "No. The transaction flow the business runs today is unchanged, and no new hardware is required at the counter." }
-      },
-      {
-        "@type": "Question",
-        "name": "Who carries the credit risk?",
-        "acceptedAnswer": { "@type": "Answer", "text": "CredX funds the credit and carries the risk, together with community lender partners. The lending stays off the business's balance sheet." }
-      },
-      {
-        "@type": "Question",
-        "name": "What does it cost to install?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Nothing to install and nothing to run. CredX earns from the lending itself, so the model earns when the business recovers." }
-      },
-      {
-        "@type": "Question",
-        "name": "Does this work with my current point of sale system or software platform?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Yes. CredX integrates with Point of Sale (POS) systems and Independent Software Vendor (ISV) platforms, so the existing transaction flow is preserved." }
-      }
-    ]
-  }
-  </script>
 
   <script type="application/ld+json">
   {
@@ -161,7 +128,7 @@
           <div class="nav__submenu" id="nav-audiences" data-nav-submenu>
             <a href="../merchants/" class="nav__sublink nav__sublink--active" aria-current="page">For Merchants</a>
             <a href="../lenders/" class="nav__sublink">For Lenders</a>
-            <a href="../pos/" class="nav__sublink">For POS &amp; ISV</a>
+            <a href="../pos-isv/" class="nav__sublink">For POS &amp; ISV</a>
           </div>
         </div>
         <a href="../contact/" class="nav__link">Contact Us</a>
@@ -251,7 +218,7 @@
             <ol class="feepath__steps">
               <li class="feepath__step">The customer pays.</li>
               <li class="feepath__step">The transaction clears through an embedded credit facility.</li>
-              <li class="feepath__step">CredX funds the credit and carries the risk.</li>
+              <li class="feepath__step">Community lender partners fund the credit and carry the risk.</li>
               <li class="feepath__step">A share of the recovered value returns to the business.</li>
               <li class="feepath__step feepath__step--end">It arrives in the business's own brand.</li>
             </ol>
@@ -322,9 +289,13 @@
          after. NEVER "ISVs".
          🔴 Never name a POS or ISV brand (CredX-Forbidden-Language.md:37) —
          no Square, Helcim, Clover, or Toast, in copy or in imagery.
-         ⚠ The ../pos/ link assumes the slug. It is NOT ratified; if the client
-         picks /point-of-sale, this href moves with it.
-         ============================================================ -->
+         ✅ RATIFIED 2026-08-24 AND THE SLUG IS NOW `/pos-isv`. The client asked for
+         it themselves — Audrey, in the /pos review: "for the slug do we only have
+         POS? Does it make sense to say POS-ISV?" — and Marcos ruled it. The old
+         `../pos/` link is gone from every page. ⚠ SEO COST, RECORDED: the term
+         carrying the volume is `point of sale lending`, and `/pos-isv` contains
+         none of it. The client naming their own channel outranks that here — the
+         page is a partnership hub, not an organic target. -->
     <section id="fit" class="section prose-band" aria-label="Point of sale and software platform fit">
       <div class="container prose-band__inner">
           <h2 class="prose-band__h2" data-reveal-words>It fits the system <em class="accent">you already run</em>.</h2>
@@ -333,7 +304,7 @@
                does not exist in style.css — shipping a class with no rule is how a
                link silently loses its treatment. .sub-link is the site's existing
                inline forward link (style.css:292) and carries its own arrow. -->
-          <a href="../pos/" class="sub-link" data-reveal data-reveal-delay="1">See How CredX Works With POS and ISV Platforms</a>
+          <a href="../pos-isv/" class="sub-link" data-reveal data-reveal-delay="1">See How CredX Works With POS and ISV Platforms</a>
       </div>
     </section>
 
@@ -349,7 +320,7 @@
     <section id="pricing" class="section prose-band" aria-label="How the model pays for itself">
       <div class="container prose-band__inner">
           <h2 class="prose-band__h2" data-reveal-words>How the model <em class="accent">pays for itself</em>.</h2>
-          <p class="prose-band__body" data-reveal data-pending="lender-rate">CredX funds the credit facility and carries the credit risk. The business pays nothing to install it and nothing to run it. CredX earns from the lending itself, at a rate set with the lending partner, so the model only earns when the business recovers.</p>
+          <p class="prose-band__body" data-reveal data-pending="lender-rate">The credit facility is funded by community lender partners, who carry the credit risk. CredX originates and services it. The business pays nothing to install it and nothing to run it. CredX earns from the lending itself, at a rate set with the lending partner, so the model only earns when the business recovers.</p>
       </div>
     </section>
 
