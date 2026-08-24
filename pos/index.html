@@ -244,8 +244,8 @@
         <div class="gains__list">
           <div class="gain" data-reveal>
             <span class="gain__num">1</span>
-            <h3 class="gain__title">Hand your merchants an estimated 85% interchange recovery</h3>
-            <p class="gain__body">$6,000 per $1M with CredX, against roughly $36,000 with a card network. That is up to $30,000 back for every $1M a merchant processes — a saving you deliver, and a differentiator competing platforms cannot match.</p>
+            <h3 class="gain__title">Hand your merchants 40 to 85% interchange recovery</h3>
+            <p class="gain__body">$6,000 per $1M with CredX, against roughly $36,000 with a card network. That is up to $30,000 back for every $1M a merchant processes, and that example sits at the top of the published range; across the range the same volume returns roughly $14,000 to $30,000, depending on qualifying volume. Results vary by volume and card mix. It is a saving you deliver, and a differentiator competing platforms cannot match.</p>
           </div>
           <div class="gain" data-reveal data-reveal-delay="1">
             <span class="gain__num">2</span>
@@ -260,8 +260,27 @@
         </div>
 
         <div class="gains__benchmark" data-reveal>
-          <p>When your merchants recover up to 85% of their interchange costs, they reinvest. Promotions, VIP packages, seasonal pricing, loyalty programmes — funded not by their marketing budget, but by money that used to leave their business entirely.</p>
-          <p>Add embedded credit at checkout — up to $5,000 per customer, in the merchant's own brand, at roughly half the rate of a standard card — and the effect compounds. Merchants with embedded credit at the point of sale see up to a <em class="accent">321%</em> lift in purchase frequency and <em class="accent">76%</em> larger transactions <span class="gains__benchmark-src">(PayPal embedded credit benchmark)</span>.</p>
+          <p>When your merchants recover 40 to 85% of their interchange costs, depending on qualifying volume, they reinvest. Promotions, VIP packages, seasonal pricing, loyalty programmes — funded not by their marketing budget, but by money that used to leave their business entirely.</p>
+          <!-- 🔴 REPLACED 2026-08-24. The old line claimed "up to a 321% lift in
+               purchase frequency and 76% larger transactions (PayPal embedded credit
+               benchmark)" and the source does not support it: 321% is AVERAGE ORDER
+               VALUE, not purchase frequency, and 76% appears NOWHERE in the document.
+               Source: PayPal UK BRC, "BT Shop increases AOV with PayPal Pay Later
+               solutions", published 2023-10-04, data Q1 2023 — n=1, one market, one
+               quarter, and its own footnote 4 says results "may not be typical".
+               The replacement was ratified 2026-08-12 (Marco) and sat unshipped in all
+               five copy docs because it was parked in the held Webflow batch.
+               ⚠ THE TWO "PayPal" QUALIFIERS ARE LOAD-BEARING. The source compares Pay
+               Later AOV against *standard PayPal transactions*, and the 35% is a share
+               of *PayPal sales* — not of the retailer's total sales. Drop either one as
+               repetition and the denominator silently changes.
+               ⚠ The merchant's name (BT Shop) is deliberately NOT on the page: the
+               attribution exception covers only what a citation requires, and the name
+               is not required. Traceability lives in the copy doc.
+               ⚠ The four per-vertical subject variants ("Businesses" / "Venues" /
+               "Merchants") are gone — the subject is the cited retailer now, so all
+               surfaces carry ONE identical string. -->
+        <p>Add embedded credit at checkout — up to $5,000 per customer, in the merchant's own brand, at roughly half the rate of a standard card — and the effect compounds. A UK retailer saw orders that used embedded lending run <em class="accent">321%</em> larger than its standard PayPal transactions, with <em class="accent">35%</em> of its PayPal sales choosing to pay over time <span class="gains__benchmark-src">(PayPal case study, Q1 2023)</span>.</p>
           <p>Your platform makes both possible. That is a differentiator no competing platform can match.</p>
         </div>
 
@@ -314,7 +333,7 @@
           </div>
         </div>
 
-        <p class="channel__caption" data-reveal>Illustrative. Based on recovering up to 85% of standard interchange — roughly $36K per $1M with a card network, against $6K per $1M with CredX. Your channel's number depends on merchant count, volume, and card mix.</p>
+        <p class="channel__caption" data-reveal>Illustrative. Based on recovering 40 to 85% of standard interchange, depending on qualifying volume — roughly $36K per $1M with a card network, against $6K per $1M with CredX. Results vary, and your channel's number depends on merchant count, volume, and card mix.</p>
 
         <div class="section-ctas" data-reveal>
           <a href="#form" class="btn btn-primary">Explore a Partnership</a>
@@ -389,7 +408,7 @@
               <tr><th scope="row">Collections</th><td class="is-owned">Carries</td><td>—</td><td>—</td></tr>
               <tr><th scope="row">Support</th><td class="is-owned">Carries</td><td>—</td><td>—</td></tr>
               <tr><th scope="row">Risk</th><td class="is-owned">Carries</td><td>—</td><td>—</td></tr>
-              <tr><th scope="row">Compliance (SOC 2, PIPEDA)</th><td class="is-owned">Carries</td><td>—</td><td>—</td></tr>
+              <tr><th scope="row">Regulatory compliance</th><td class="is-owned">Carries</td><td>—</td><td>—</td></tr>
               <tr><th scope="row">Brand and checkout</th><td>Behind the scenes</td><td class="is-owned">Owns (white-label)</td><td class="is-owned">Owns (their customers)</td></tr>
               <tr><th scope="row">Economics</th><td class="is-owned">Credit + servicing margin</td><td class="is-owned">Share of the savings delta</td><td class="is-owned">Lower costs + value-back</td></tr>
             </tbody>
@@ -420,8 +439,14 @@
             <span class="kpi__label">lender partners funding embedded credit</span>
           </div>
           <div class="kpi" data-reveal data-reveal-delay="2">
-            <span class="kpi__value kpi__value--compact">SOC 2 + PIPEDA</span>
-            <span class="kpi__label">compliant. Data de-identified, consent-driven, and held to Canadian privacy law.</span>
+            <!-- 🔴 CHANGED 2026-08-24 — client decision of the 2026-08-21 meeting.
+                 It read "SOC 2 + PIPEDA / compliant." CredX is SOC 1; SOC 2 Type 2
+                 belongs to its lending partners and third parties (Audrey, on the
+                 call), so the old marker asserted a certification CredX does not
+                 hold. Never restore it. PIPEDA survives in the label because it is
+                 Canadian law, not a certification. -->
+            <span class="kpi__value kpi__value--compact">Regulatory compliant</span>
+            <span class="kpi__label">Data de-identified, consent-driven, and held to Canadian privacy law.</span>
           </div>
         </div>
 
@@ -564,8 +589,16 @@
             <p class="faq__answer">CredX and its community lender partners. The merchant is paid in full and upfront, and the credit risk never sits on your platform's books or the merchant's.</p>
           </details>
           <details class="faq__item">
-            <summary class="faq__question">Is this PCI, SOC 2, and privacy compliant?</summary>
-            <p class="faq__answer">Yes. SOC 2 and PIPEDA compliant, data de-identified and consent-driven, and handled under Canadian privacy law. The merchant relationship stays yours, never a card network's.</p>
+            <!-- 🔴 REWRITTEN 2026-08-24. This was the strongest compliance assertion
+                 on the whole property — "Yes. SOC 2 and PIPEDA compliant" — and under
+                 the client's own account of 2026-08-21 it was not CredX's claim to
+                 make: CredX is SOC 1, its lenders and third parties are SOC 2 Type 2.
+                 ⚠ PCI came out of the QUESTION too, deliberately: nothing on file
+                 states a PCI position, and a question naming a standard the answer
+                 never addresses is worse than not asking it. If CredX does hold PCI,
+                 that is a client confirmation, not a copy fix. -->
+            <summary class="faq__question">Is this compliant, and is customer data protected?</summary>
+            <p class="faq__answer">Yes. CredX is regulatory compliant, data is de-identified and consent-driven, and everything is handled under Canadian privacy law. The merchant relationship stays yours, never a card network's.</p>
           </details>
           <details class="faq__item">
             <summary class="faq__question">What about multi-region or large-channel rollouts?</summary>
@@ -606,7 +639,8 @@
           <div class="footer__links">
             <a href="#" class="footer__link">Privacy</a>
             <a href="#" class="footer__link">Terms</a>
-            <a href="#" class="footer__link">SOC 2 attestation</a>
+            <!-- 🗑 "SOC 2 attestation" REMOVED 2026-08-24 — a dead link (href="#")
+                 advertising an attestation CredX does not hold. Do not restore. -->
           </div>
         </div>
       </div>

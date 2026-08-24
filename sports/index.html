@@ -240,8 +240,8 @@
         <div class="gains__list">
           <div class="gain" data-reveal>
             <span class="gain__num">1</span>
-            <h3 class="gain__title">Recover an estimated 85% of interchange</h3>
-            <p class="gain__body">$6,000 per $1M with CredX, against roughly $36,000 with legacy credit networks. On a $60,000 night at the gate, that is most of it staying with your team.</p>
+            <h3 class="gain__title">Recover 40 to 85% of interchange</h3>
+            <p class="gain__body">$6,000 per $1M with CredX, against roughly $36,000 with legacy credit networks. On a $60,000 night at the gate, that is most of it staying with your team. That example sits at the top of the published range; results vary by volume and card mix.</p>
           </div>
           <div class="gain" data-reveal data-reveal-delay="1">
             <span class="gain__num">2</span>
@@ -255,7 +255,26 @@
           </div>
         </div>
 
-        <p class="gains__benchmark" data-reveal>Venues that add embedded credit at the point of sale see up to a <em class="accent">321%</em> lift in purchase frequency and <em class="accent">76%</em> larger transactions <span class="gains__benchmark-src">(PayPal embedded credit benchmark)</span>.</p>
+        <!-- 🔴 REPLACED 2026-08-24. The old line claimed "up to a 321% lift in
+             purchase frequency and 76% larger transactions (PayPal embedded credit
+             benchmark)" and the source does not support it: 321% is AVERAGE ORDER
+             VALUE, not purchase frequency, and 76% appears NOWHERE in the document.
+             Source: PayPal UK BRC, "BT Shop increases AOV with PayPal Pay Later
+             solutions", published 2023-10-04, data Q1 2023 — n=1, one market, one
+             quarter, and its own footnote 4 says results "may not be typical".
+             The replacement was ratified 2026-08-12 (Marco) and sat unshipped in all
+             five copy docs because it was parked in the held Webflow batch.
+             ⚠ THE TWO "PayPal" QUALIFIERS ARE LOAD-BEARING. The source compares Pay
+             Later AOV against *standard PayPal transactions*, and the 35% is a share
+             of *PayPal sales* — not of the retailer's total sales. Drop either one as
+             repetition and the denominator silently changes.
+             ⚠ The merchant's name (BT Shop) is deliberately NOT on the page: the
+             attribution exception covers only what a citation requires, and the name
+             is not required. Traceability lives in the copy doc.
+             ⚠ The four per-vertical subject variants ("Businesses" / "Venues" /
+             "Merchants") are gone — the subject is the cited retailer now, so all
+             surfaces carry ONE identical string. -->
+        <p class="gains__benchmark" data-reveal>A UK retailer saw orders that used embedded lending run <em class="accent">321%</em> larger than its standard PayPal transactions, with <em class="accent">35%</em> of its PayPal sales choosing to pay over time <span class="gains__benchmark-src">(PayPal case study, Q1 2023)</span>.</p>
 
         <div class="gains__strip">
           <div class="stat" data-reveal>
@@ -311,7 +330,7 @@
             <span class="calc__output-number" data-calc-output-yearly>$1,080,000</span>
             <span class="calc__output-yearly"><em class="accent">per year</em></span>
             <p class="calc__hedge">
-              Designed to recover up to 85% of standard interchange. Your number depends on card mix. Based on roughly $36K interchange per $1M with legacy credit networks, against $6K per $1M with CredX.
+              Recovery runs 40 to 85% of standard interchange, depending on qualifying volume, so the figure above is a range rather than a single outcome. Results vary by volume and card mix. Based on roughly $36K interchange per $1M with legacy credit networks, against $6K per $1M with CredX.
             </p>
             <a href="#form" class="btn btn-primary calc__cta">Get my savings estimate</a>
           </div>
@@ -414,8 +433,14 @@
         <!-- Key metrics -->
         <div class="proof__kpis">
           <div class="kpi" data-reveal>
-            <span class="kpi__value kpi__value--compact">SOC 2 + PIPEDA</span>
-            <span class="kpi__label">compliant. Data de-identified, consent-driven, and held to Canadian privacy law.</span>
+            <!-- 🔴 CHANGED 2026-08-24 — client decision of the 2026-08-21 meeting.
+                 It read "SOC 2 + PIPEDA / compliant." CredX is SOC 1; SOC 2 Type 2
+                 belongs to its lending partners and third parties (Audrey, on the
+                 call), so the old marker asserted a certification CredX does not
+                 hold. Never restore it. PIPEDA survives in the label because it is
+                 Canadian law, not a certification. -->
+            <span class="kpi__value kpi__value--compact">Regulatory compliant</span>
+            <span class="kpi__label">Data de-identified, consent-driven, and held to Canadian privacy law.</span>
           </div>
           <div class="kpi" data-reveal data-reveal-delay="1">
             <span class="kpi__value">$500M+</span>
@@ -597,7 +622,10 @@
           <div class="footer__links">
             <a href="#" class="footer__link">Privacy</a>
             <a href="#" class="footer__link">Terms</a>
-            <a href="#" class="footer__link">SOC 2 attestation</a>
+            <!-- 🗑 "SOC 2 attestation" REMOVED 2026-08-24. It was a dead link
+                 (href="#") advertising an attestation CredX does not hold — SOC 2
+                 Type 2 is its lenders'. Both reasons were on file; the 2026-08-21
+                 decision settles it. Do not restore. -->
           </div>
         </div>
       </div>
