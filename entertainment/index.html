@@ -240,7 +240,7 @@
         <div class="gains__list">
           <div class="gain" data-reveal>
             <span class="gain__num">1</span>
-            <h3 class="gain__title">Recover 40 to 85% of interchange</h3>
+            <h3 class="gain__title">Interchange recovery runs from 40% up to 85%</h3>
             <p class="gain__body">$6,000 per $1M with CredX, against roughly $36,000 with competing credit facilities. On a $60,000 night at the gate and the concession, that is most of it staying with your venue. That example sits at the top of the published range; results vary by volume and card mix.</p>
           </div>
           <div class="gain" data-reveal data-reveal-delay="1">
@@ -327,10 +327,19 @@
           </div>
           <div class="calc__output">
             <span class="calc__label">Recovered with CredX</span>
-            <span class="calc__output-number" data-calc-output-yearly>$720,000</span>
+            <!-- ↩ RANGE SET AS A HIERARCHY — ported from the Home, 2026-08-25 (Marcos).
+                 The output used to emit ONE number and that number was the TOP of the
+                 published 40-85% band. The client: "anchoring all the public-facing
+                 examples at the top of that range defeats the purpose of publishing a
+                 range at all." The floor sits above as a small line carrying the
+                 connecting word; the top keeps the display weight so the output still
+                 has one focal figure. Do not delete the low line to "clean up" the
+                 number — it is the whole point of the change. -->
+            <span class="calc__range-low"><span data-calc-low>$345,600</span> to</span>
+            <span class="calc__output-number" data-calc-output-yearly><span data-calc-high>$720,000</span></span>
             <span class="calc__output-yearly"><em class="accent">per year</em></span>
             <p class="calc__hedge">
-              Recovery runs 40 to 85% of standard interchange, depending on qualifying volume, so the figure above is a range rather than a single outcome. Results vary by volume and card mix. Based on roughly $36K interchange per $1M with competing credit facilities, against $6K per $1M with CredX.
+              Recovery runs from 40% up to 85% of standard interchange, depending on qualifying volume, so the figure above is a range rather than a single outcome. Results vary by volume and card mix. Based on roughly $36K interchange per $1M with competing credit facilities, against $6K per $1M with CredX.
             </p>
             <a href="#form" class="btn btn-primary calc__cta">Get my savings estimate</a>
           </div>

@@ -1290,6 +1290,21 @@ p { line-height: 1.6; max-width: 65ch; }
 
 .calc__output .calc__label { margin-bottom: 0; }
 
+/* ---- .calc__range-low — the floor of the recovery range, 2026-08-25 --------
+   Ported from the Home. Both ends at display size wrap to two lines and read as
+   two numbers instead of one range; the floor drops to a small line above,
+   carrying the connecting word, so the output keeps a single focal figure.
+   ⚠ It is a NUMBER, not a label — no uppercase, no letter-spacing. Digits get
+   worse, not better, from eyebrow treatment.
+   --------------------------------------------------------------------------- */
+.calc__range-low {
+  display: block;
+  font-size: var(--type-caption);
+  font-weight: 500;
+  color: var(--text-muted);
+  margin-bottom: var(--s-1);
+}
+
 .calc__output-number {
   font-family: var(--font-display);
   font-size: clamp(2.75rem, 4.5vw + 1rem, 4.25rem);

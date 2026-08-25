@@ -449,15 +449,30 @@
     return '$' + Math.round(value).toLocaleString('en-US');
   }
 
-  // Single output — recovered/year (value-back "Output 2" removed 2026-06-09).
-  //   recovered/year = volume × 0.03 × 12
-  //   ($36K interchange − $6K residual per $1M = $30K/$1M/month → 3% effective).
+  // RANGE output — recovered/year, ported from the Home 2026-08-25.
+  //   high = volume × 0.0300 × 12   ($36K interchange − $6K residual per $1M
+  //                                  = $30K/$1M/month → 3% effective, ≈83% recovery)
+  //   low  = volume × 0.0144 × 12   (40% of the same $36K base = $14.4K/$1M/month)
+  //
+  // ⚠ It used to emit ONE number and that number was the top of the published
+  // 40–85% band. The client's own words: "anchoring all the public-facing examples
+  // at the top of that range defeats the purpose of publishing a range at all. A
+  // regulator or legal reviewer will notice this immediately."
+  // ⚠ THE HIGH RATE DID NOT MOVE. 0.03 is the approved Homepage figure and the
+  // client said the current examples may stay as illustrative benchmarks. Only the
+  // floor was added. Do not round 0.03 up to 0.0306 to make the label read 85% —
+  // that changes a number the client approved.
+  const RATE_HIGH = 0.03;
+  const RATE_LOW = 0.0144;
+  const lowOutput = document.querySelector('[data-calc-low]');
+  const highOutput = document.querySelector('[data-calc-high]');
+
   function updateCalc() {
     if (!slider) return;
     const monthly = parseFloat(slider.value);
-    const yearly = monthly * 0.03 * 12;
     if (volumeDisplay) volumeDisplay.textContent = formatFull(monthly);
-    if (yearlyOutput) yearlyOutput.textContent = formatFull(yearly);
+    if (lowOutput) lowOutput.textContent = formatFull(monthly * RATE_LOW * 12);
+    if (highOutput) highOutput.textContent = formatFull(monthly * RATE_HIGH * 12);
   }
 
   if (slider) {
@@ -468,9 +483,11 @@
   // Count the recovered-per-year figure up from zero the first time the
   // output scrolls into view — the page's one data flourish. After that the
   // slider drives it instantly. Skipped under reduced motion (stays final).
-  if (slider && yearlyOutput && !prefersReducedMotion && window.ScrollTrigger) {
-    const targetVal = parseFloat(slider.value) * 0.03 * 12;
-    yearlyOutput.textContent = formatFull(0);
+  if (slider && highOutput && lowOutput && !prefersReducedMotion && window.ScrollTrigger) {
+    const targetHigh = parseFloat(slider.value) * RATE_HIGH * 12;
+    const targetLow = parseFloat(slider.value) * RATE_LOW * 12;
+    lowOutput.textContent = formatFull(0);
+    highOutput.textContent = formatFull(0);
     let counted = false;
     window.ScrollTrigger.create({
       trigger: yearlyOutput,
@@ -484,7 +501,10 @@
         (function tick(now) {
           const p = Math.min(1, (now - t0) / dur);
           const eased = 1 - Math.pow(1 - p, 4);
-          yearlyOutput.textContent = formatFull(targetVal * eased);
+          // Both ends count together, so the range reads as one figure arriving
+          // rather than two numbers racing.
+          lowOutput.textContent = formatFull(targetLow * eased);
+          highOutput.textContent = formatFull(targetHigh * eased);
           if (p < 1) requestAnimationFrame(tick);
         })(t0);
       },
