@@ -895,7 +895,7 @@ p { line-height: 1.6; max-width: 65ch; }
    larger because the thing is larger, never because the grid had a hole:
      tier 1  MOAT · DaaP                       load-bearing, own sections
      tier 2  Cost Reduction · BoosT            the other two of the four things
-     tier 3  MarketPlace · Orchestration · Marketing   the connective layer
+     tier 3  Marketplace · Orchestration · Marketing   the connective layer
    2 + 2 + 3 = 7. No orphan, and the silhouette reads as a hierarchy rather than
    as the Home's .proof__mosaic, which is a scattered wall of proof. */
 .stack { display: grid; gap: var(--s-5); }
@@ -4401,6 +4401,11 @@ a.vertical-card:hover .vertical-card__name::after { transform: translateX(4px); 
 
 /* ---- 24.10 Footer ---- */
 
+/* 🟠 UNREFERENCED SINCE 2026-08-25. `/join` was its only consumer and now renders the
+   standard site footer like every other page (Marcos: "tornar padrão"). Kept, not deleted,
+   because the funnel argument for a bare footer on an 8-step form is real and this is the
+   rule to restore if it wins. ⚠ If that call goes the other way, delete this block — an
+   orphaned rule with no consumer is the same maintenance liability as `.photo-band`. */
 .join-foot {
   flex: 0 0 auto;
   border-top: 1px solid var(--border-subtle);
@@ -5773,7 +5778,7 @@ a.vertical-card:hover .vertical-card__name::after { transform: translateX(4px); 
   /* `:has()` guard: a section with no heading has no left column to justify, so
      it stays full width instead of being pushed into column two with a void
      beside it. The project already relies on `:has()` for `.section-media`. */
-  .prose-band__inner:has(> .prose-band__h2) {
+  .prose-band__inner:has(> .prose-band__h2, > .prose-band__rail) {
     display: grid;
     /* The right column is wider. `minmax(0, ...)` on both, because a bare `fr`
        floors at min-content and one long unbroken word in a heading would then
@@ -5793,7 +5798,7 @@ a.vertical-card:hover .vertical-card__name::after { transform: translateX(4px); 
      between them (`__body`, `__aside`, `.figure-note`, `.gains__strip`,
      `.defs`, `.sub-link`, `.geo`, `.positions`, `.sheet`), and a whitelist
      would silently drop the next one into column one. */
-  .prose-band__inner:has(> .prose-band__h2) > * {
+  .prose-band__inner:has(> .prose-band__h2, > .prose-band__rail) > * {
     grid-column: 2;
     margin-inline: 0;
     max-width: none;
@@ -5837,7 +5842,7 @@ a.vertical-card:hover .vertical-card__name::after { transform: translateX(4px); 
   /* The prose keeps its own comfortable measure INSIDE the column. The column is
      ~560px at 1440, which is about 49ch at 18px -- inside the 45-75ch band, so
      the track governs and this is a ceiling for very wide viewports only. */
-  .prose-band__inner:has(> .prose-band__h2) > .prose-band__body { max-width: 65ch; }
+  .prose-band__inner:has(> .prose-band__h2, > .prose-band__rail) > .prose-band__body { max-width: 65ch; }
 }
 
 /* `.section--doc` OPTS OUT and stays a single left-hung column. `/lenders` #2
@@ -5849,6 +5854,32 @@ a.vertical-card:hover .vertical-card__name::after { transform: translateX(4px); 
 @media (min-width: 960px) {
   .section--doc .prose-band__inner { display: block; }
   .section--doc .prose-band__inner > .prose-band__h2 { grid-column: auto; }
+
+/* The rail inherits the bare heading's placement verbatim — column 1, spanning rows so
+   the reading column stacks tightly regardless of how tall the rail gets. Added 2026-08-25. */
+/* ⚠ A section with a rail places its heading ACROSS BOTH COLUMNS on row 1, then puts the rail
+   and the reading column side by side on row 2 — so the two start on the same line. This is the
+   opposite of the bare-heading case above, where the heading owns column 1 and spans the rows.
+   Both are correct; they are different compositions. Added 2026-08-25. */
+.prose-band__inner:has(> .prose-band__rail) > .prose-band__h2 {
+  grid-column: 1 / -1;
+  grid-row: 1;
+  text-align: left;
+  margin-inline: 0;
+  /* Wide but not the full 1184px: a heading with no column to run into needs its own measure,
+     and this is the same cap `:has(> .parts)` uses for the identical situation. */
+  max-width: 40rem;
+  margin-block-end: var(--s-8);
+}
+
+.prose-band__inner > .prose-band__rail {
+  grid-column: 1;
+  /* Starts on row 2, under the full-width heading, and spans so the reading column beside it
+     stacks on its own rhythm however tall the frame gets. */
+  grid-row: 2 / span 30;
+  margin-inline: 0;
+  max-width: none;
+}
   .section--doc .prose-band__body { max-width: 65ch; }
 }
 
@@ -6143,4 +6174,112 @@ a.vertical-card:hover .vertical-card__name::after { transform: translateX(4px); 
   /* The column is the measure. Nothing here may be expressed in `ch`. */
   max-width: none;
   font-size: clamp(2.5rem, 4.4vw, 3.5rem);
+}
+
+/* ============================================================
+   .prose-band__rail — an OPTIONAL left rail for a prose-band section
+   ------------------------------------------------------------
+   Added 2026-08-25. `.prose-band__inner` puts the h2 in column 1 and everything
+   else in column 2, and the h2 spans 30 rows so the two columns' heights stay
+   decoupled. That works while the left column holds nothing but the heading.
+   `.prose-band__rail` is the wrapper for when it holds more: it takes exactly the
+   placement the bare h2 had, so anything inside it stacks under the heading in
+   column 1 while the reading column keeps its own rhythm.
+   ⚠ The h2 inside the rail is no longer a direct child of `__inner`, so the grid
+   override that left-aligns it does not match. The rail re-applies it — do not
+   remove those three declarations thinking they are duplicates.
+   ============================================================ */
+/* ⚠ A rule for a heading INSIDE the rail was removed 2026-08-25 when §5's heading moved out
+   to span both columns. It is not "missing" — nothing consumes it, and an orphaned rule is the
+   liability `.photo-band` and `.join-foot` already document. Re-add it if a rail ever carries
+   its own heading again. */
+
+/* ============================================================
+   .tally — the framed pair of figures on /evp §5
+   ------------------------------------------------------------
+   🔴 WHY THIS EXISTS, because "it looked bad" is not a spec and the cause was
+   structural. §5 carried a `.gains__strip`, and `.prose-band__inner:has(> .gains__strip)`
+   sets `display: block` — a deliberate opt-out so a full-width figure is not crushed
+   into one grid column. The side effect was that **§5 was the only detail section on
+   the page with no two-column spine**: §3, §4 and §6 hang their heading left against a
+   reading column, §5 fell back to a left-hung heading over a 65ch column centred in a
+   1184px container, with a centred stat strip and a centred figure-note between them.
+   **Four alignment systems in one section.** Marcos, 2026-08-25: "essa sessão está bem
+   feia, podemos emoldurar ela e trabalhar de forma diferente aqui."
+   THE FIX IS THE FRAME PLUS THE SPINE. The figures become a bordered panel narrow
+   enough to live in the rail, so the section rejoins the grid instead of opting out.
+   ⚠ WHY THE RAIL AND NOT FULL WIDTH: §3, §4 and §6 all leave the left rail empty below
+   the heading. §5 is the only section on the page carrying numbers, so it is the only
+   one with anything to put there — that is what differentiates it, and it is earned by
+   content rather than applied as decoration.
+   ⚠ BOTH FIGURES ARE THE SAME SIZE ON PURPOSE. The 2026-08-18 audit caught the previous
+   version rendering the locked `40 to 85%` phrase at 48px beside `$30,000` at 80px, so
+   the less important number dominated the client-locked claim. One rank, one size.
+   🔒 `white-space: nowrap` on the figure is load-bearing: the string is client-locked
+   and must not break across lines. Every size below is chosen so it fits the rail —
+   re-measure if the copy changes.
+   ============================================================ */
+.tally {
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-card-sm);
+  background-color: var(--surface-1);
+  padding: var(--s-6);
+  /* 🔴 NO TOP MARGIN, AND THAT IS THE WHOLE ALIGNMENT FIX. The frame's top edge has to meet
+     the first line of prose beside it; any gap here reintroduces the step Marcos flagged. The
+     space above the frame is the heading's `margin-block-end`, which the prose column shares. */
+  margin-top: 0;
+}
+
+.tally__row + .tally__row {
+  margin-top: var(--s-6);
+  padding-top: var(--s-6);
+  border-top: 1px solid var(--border-subtle);
+}
+
+.tally__figure {
+  display: block;
+  font-family: var(--font-editorial);
+  /* Tuned to the rail, not to the container: the left track is ~531px at 1440 and the
+     panel spends 64px of it on padding. The locked phrase is the constraint, not the
+     dollar figure. */
+  font-size: clamp(1.75rem, 3.1vw, 2.75rem);
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+  font-variation-settings: 'opsz' 96;
+  font-variant-numeric: lining-nums tabular-nums;
+  white-space: nowrap;
+}
+
+.tally__label {
+  display: block;
+  margin-top: var(--s-4);
+  font-size: var(--type-body);
+  line-height: 1.4;
+  color: var(--text-secondary);
+  text-wrap: pretty;
+}
+
+/* The variance line belongs to the figures, not to the section. Outside the frame it
+   floated centred in dead space attached to nothing. */
+.tally__note {
+  margin-top: var(--s-6);
+  padding-top: var(--s-5);
+  border-top: 1px solid var(--border-subtle);
+  font-size: var(--type-caption);
+  font-style: italic;
+  line-height: 1.4;
+  color: var(--text-muted);
+}
+
+@media (max-width: 959.98px) {
+  /* One column below the grid breakpoint: the rail stops being a rail, so the frame
+     should not keep a rail's width or a rail's top gap — and it needs its own gap
+     underneath, because in the single-column stack the prose follows it directly
+     instead of sitting beside it. */
+  /* Single column: the frame follows the heading directly instead of sitting beside the prose,
+     so the zero top margin that aligns the two columns at desktop is wrong here. */
+  .tally { max-width: 32rem; }
+  .prose-band__rail { margin-bottom: var(--s-7); }
 }

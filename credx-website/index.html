@@ -24,7 +24,7 @@
   <!-- Page metadata (per copy/home.md — INDEXED; SEO budgets bind) -->
   <title>Embedded Lending for Merchants | CredX</title>
   <meta name="description" content="CredX is the embedded lending platform that keeps the customer, the data, and the value your business earns. Recover up to $30,000 per $1M you process." />
-  <link rel="canonical" href="https://credx-tech.com/" />
+  <link rel="canonical" href="https://credxtech.com/" />
 
   <!-- Open Graph -->
   <meta property="og:title" content="Embedded Lending for Merchants | CredX" />
@@ -33,9 +33,9 @@
        resolve a relative one) and points at the FINAL filename. ⚠ `og.jpg` does not
        exist yet — the master is `images/og.png`; the pre-push conversion pass creates
        it. Do not "fix" this back to a relative path or to the .png. -->
-  <meta property="og:image" content="https://credx-tech.com/images/og.jpg" />
+  <meta property="og:image" content="https://credxtech.com/images/og.jpg" />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://credx-tech.com/" />
+  <meta property="og:url" content="https://credxtech.com/" />
   <meta name="twitter:card" content="summary_large_image" />
 
   <link rel="icon" href="assets/logo/credx-shape.svg" type="image/svg+xml" />
@@ -53,8 +53,8 @@
     "@context": "https://schema.org",
     "@type": "Organization",
     "name": "CredX",
-    "url": "https://credx-tech.com",
-    "logo": "https://credx-tech.com/assets/logo/credx-shape.svg",
+    "url": "https://credxtech.com",
+    "logo": "https://credxtech.com/assets/logo/credx-shape.svg",
     "description": "CredX is an embedded lending platform that keeps the customer, the data, and the value a business earns.",
     "areaServed": "CA"
   }
@@ -122,15 +122,36 @@
          Placeholder background (gradient) until the hero render lands (Phase 8).
          ============================================================ -->
     <section class="hero hero--full" aria-label="Hero">
-      <!-- Placeholder render wired per prompts.md; drop-in replace by filename later.
-           Light theme deferred → only hero-dark is wired (add the hero-light <picture>
-           when the toggle returns). -->
-      <!-- ⚠⚠ LOCAL PREVIEW ONLY — raw PNG master (1.6 MB), no <source webp>.
-           The webp source was REMOVED on purpose: leaving it would serve the OLD
-           image and hide this change. Before any push: convert to JPG q82 + WebP q80
-           (pipeline in prompts.md §B-5) and restore the <picture> wrapper. -->
+      <!-- 🆕 `hero-dark-3.png` WIRED 2026-08-25. THIS IS THE FRAME THAT DROPS THE CARD TERMINAL.
+           Brief: `prompts.md` §1b, HERO-DARK REV 4. Delivered by Marcos via ChatGPT at
+           **1672×941, exactly 16:9** — measured off the file, not assumed.
+           🔴 WHAT IT FIXES, and it had been live and indexed since July: `hero-dark-2.png` showed a
+           customer tapping a phone against a visible card-payment terminal, because the original
+           2026-07-24 brief literally asked for "warmly handing a card terminal moment" and was never
+           revised after the hard rule landed on 2026-08-19 (*"máquina de cartão é concorrente"*,
+           `prompts-reference.md` §3.5). It sat unfixed on "the Home is held"; that stopped being true
+           on 2026-08-24, when the hold turned out to be the Webflow publish and not the repo.
+           ⚠ THE TERMINAL WAS ALSO THE WRONG PROP FOR THE COPY ABOVE IT. The H1 says the customer stays
+           *yours* and the sub-copy says every transaction builds a *relationship*. A payment device
+           illustrates the transaction — the thing the page says is not the point. The parcel handover
+           is the moment either side of the payment, which is the moment the copy is about.
+           ✅ CHECKED BEFORE WIRING, not after: no card terminal, reader or POS machine · no till, cash
+           drawer, cash, coins or cards · no phone anywhere in frame · no legible lettering, label or
+           signage (shelving verified at 2× zoom) · no brand or card-network mark · neither figure
+           looking at the camera · no handshake.
+           ✅ COMPOSITION MATCHES THE TWO CROPS `.hero--full` actually has: the left ~37% is near-black
+           for the desktop copy overlay, and the owner sits at 51–78% of frame width with her head in
+           the upper third — clear of the horizontal scrim at desktop, and nothing bright lands in the
+           horizontal centre that the mobile `center center` crop keeps.
+           ⚠ `hero-dark-2.png` STAYS ON DISK, unreferenced and deliberately so. It is a published,
+           client-seen frame.
+           ⚠ ALT TEXT UPDATED WITH THE IMAGE. The old one said "a premium branded checkout" and there is
+           no branding in this frame; it now describes what is actually there. Three Home alt texts once
+           described images that were not there — that is the defect this avoids.
+           Light theme deferred → only hero-dark is wired (add the hero-light <picture> when the toggle
+           returns). The master ships as delivered. -->
       <picture>
-        <img src="images/hero-dark-2.png" alt="A business owner at a premium branded checkout, mid-interaction with a returning customer at dusk" class="hero__bg hero__bg--dark" width="1672" height="941" />
+        <img src="images/hero-dark-3.png" alt="A shop owner handing a wrapped paper parcel across the counter to a returning customer at dusk" class="hero__bg hero__bg--dark" width="1672" height="941" />
       </picture>
       <div class="hero__overlay" aria-hidden="true"></div>
       <div class="container hero__inner">
@@ -358,13 +379,25 @@
         <div class="gains__list">
           <div class="gain" data-reveal>
             <span class="gain__num">1</span>
-            <h3 class="gain__title">Recover 40 to 85% of Interchange</h3>
+            <!-- 🟠 SAME FIX AS /how-it-works, 2026-08-25, and this was the worse case: the
+                 headline shipped with no qualifier at all. "Recovery Runs" replaces "Recover",
+                 and "depending on volume and card mix" is the qualifier the body already
+                 carried. Client objection: Audrey, Batch 1 review 2026-08-24. -->
+            <!-- 🔴 `from 40% up to 85%` IS DELIBERATE AND DEPARTS FROM KYLE'S VERBATIM
+                 STRING "40 to 85%" (2026-08-11). Marcos, 2026-08-25, reconciling that
+                 instruction with Audrey's 2026-08-24 objection that the headline read as a
+                 guaranteed outcome. Her own proposal, "40 to up to 85%", was not grammatical.
+                 The verb also changed, "Recover" -> "Recovery Runs", which is what actually
+                 answers her objection; this headline previously shipped with NO qualifier at
+                 all. Full reasoning, including the floor-vs-band objection that was raised and
+                 overruled: how-it-works/index.html §3 comment. 🔒 Do not drop the 40% floor. -->
+            <h3 class="gain__title">Interchange Recovery Runs from 40% up to 85%</h3>
             <p class="gain__body">Roughly $6,000 per $1M with CredX, against about $36,000 with competing credit facilities. On $1M a month, that is up to $30,000 staying in your business. That example sits at the top of the published range; across the range the same volume returns roughly $14,000 to $30,000, and results vary by volume and card mix.</p>
           </div>
           <div class="gain" data-reveal data-reveal-delay="1">
             <span class="gain__num">2</span>
             <h3 class="gain__title">Earn on the Credit You Used to Give Away</h3>
-            <p class="gain__body">A merchant-linked credit facility in your own brand, approved in about 20 seconds at checkout, at roughly half the rate of a standard card. You are paid in full and upfront, and the risk stays with the community lender partners that fund the credit, never on your books.</p>
+            <p class="gain__body">A merchant-linked credit facility in your own brand, approved in about 20 seconds at checkout, at roughly half the rate of a standard card. You are paid in full and upfront, and repayment risk stays with the community lender partners that fund the credit, never on your books.</p>
           </div>
           <div class="gain" data-reveal data-reveal-delay="2">
             <span class="gain__num">3</span>
@@ -466,7 +499,7 @@
             <span class="calc__output-number" data-calc-output-yearly><span data-calc-high>$360,000</span></span>
             <span class="calc__output-yearly"><em class="accent">per year</em></span>
             <p class="calc__hedge">
-              Recovery runs 40 to 85% of standard interchange, so the figure above is a range rather than a single outcome. Results vary by volume and card mix. Based on roughly $36K interchange per $1M with competing credit facilities, against $6K per $1M with CredX.
+              Recovery runs from 40% up to 85% of standard interchange, so the figure above is a range rather than a single outcome. Results vary by volume and card mix. Based on roughly $36K interchange per $1M with competing credit facilities, against $6K per $1M with CredX.
             </p>
             <a href="contact/" class="btn btn-primary calc__cta">Get My Estimate</a>
           </div>
@@ -622,36 +655,48 @@
     <div class="container">
       <div class="footer__inner footer__inner--sitemap">
         <div class="footer__brand">
-          <img src="assets/logo/Credx-name.svg" alt="CredX" height="32" style="margin-bottom: 20px;" />
+          <img src="./assets/logo/Credx-name.svg" alt="CredX" height="32" style="margin-bottom: 20px;" />
           <p class="footer__movement">A system you belong to, instead of one that owns you.</p>
         </div>
+        <!-- ⚠ COLUMNS AND LABELS MIRROR THE NAV, which is the locked sitemap's own (plan/04).
+             Rebuilt 2026-08-25 on the client's Batch 1 review (Audrey, 2026-08-24): the footer
+             was "missing For Merchants, EVP". Both are now here, and `About` takes the nav's
+             label `The Movement` rather than a second name for the same page.
+             🔴 TWO DESTINATIONS WERE REMOVED, NOT MOVED — `Glossary` (../learn/glossary/) and
+             the whole Legal column (`Privacy` + `Terms`, both pointing at ../legal/). All three
+             404 live, on every page, and they were the links a visitor actually clicks. The
+             pages are roadmap items (Batch 3/4 + track T0); restore the links when they answer
+             200, not before. ⚠ A privacy page is still owed underneath two live forms — that is
+             a real obligation, and deleting a dead link to it does not discharge it.
+             The 4-column grid (2fr 1fr 1fr 1fr, style.css:2825) is why Explore was split in two
+             rather than run to seven items in one column. -->
         <div>
           <h3 class="footer__col-title">Explore</h3>
           <div class="footer__links">
+            <a href="./about/" class="footer__link">The Movement</a>
+            <a href="./evp/" class="footer__link">Embedded Value Platform</a>
             <a href="./how-it-works/" class="footer__link">How It Works</a>
-            <a href="./lenders/" class="footer__link">For Lenders</a>
-            <a href="./about/" class="footer__link">About</a>
-            <a href="contact/" class="footer__link">Contact</a>
-            <a href="./learn/glossary/" class="footer__link">Glossary</a>
           </div>
         </div>
         <div>
-          <h3 class="footer__col-title">Legal</h3>
+          <h3 class="footer__col-title">Who We Serve</h3>
           <div class="footer__links">
-            <a href="./legal/" class="footer__link">Privacy</a>
-            <a href="./legal/" class="footer__link">Terms</a>
+            <a href="./merchants/" class="footer__link">For Merchants</a>
+            <a href="./lenders/" class="footer__link">For Lenders</a>
+            <a href="./pos-isv/" class="footer__link">For POS &amp; ISV</a>
           </div>
         </div>
         <div>
           <h3 class="footer__col-title">Connect</h3>
           <div class="footer__links">
-            <a href="https://www.linkedin.com/" class="footer__link" rel="noopener" target="_blank">LinkedIn</a>
-            <a href="contact/" class="footer__link">Book a meeting</a>
+            <a href="./contact/" class="footer__link">Contact Us</a>
+            <a href="./contact/" class="footer__link" data-pending="booking-url">Book a Meeting</a>
+            <a href="https://www.linkedin.com/" class="footer__link" rel="noopener" target="_blank" data-pending="linkedin-url">LinkedIn</a>
           </div>
         </div>
       </div>
       <div class="footer__bottom">
-        <span>© 2026 CredX Tech Inc. · credx-tech.com</span>
+        <span>© 2026 CredX Tech Inc. · credxtech.com</span>
       </div>
     </div>
   </footer>

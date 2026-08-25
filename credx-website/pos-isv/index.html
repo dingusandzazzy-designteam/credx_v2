@@ -59,13 +59,13 @@
        after indexing costs redirects. -->
   <title>Point of Sale Lending for Software Platforms | CredX</title>
   <meta name="description" content="Add embedded lending to your point of sale system or software platform, under your own brand. Your merchants recover on fees, and you gain the advantage." />
-  <link rel="canonical" href="https://credx-tech.com/pos-isv" />
+  <link rel="canonical" href="https://credxtech.com/pos-isv" />
 
   <meta property="og:title" content="Point of Sale Lending for Software Platforms | CredX" />
   <meta property="og:description" content="Add embedded lending to your point of sale system or software platform, under your own brand. Your merchants recover on fees, and you gain the advantage." />
-  <meta property="og:image" content="https://credx-tech.com/images/og.jpg" />
+  <meta property="og:image" content="https://credxtech.com/images/og.jpg" />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://credx-tech.com/pos-isv" />
+  <meta property="og:url" content="https://credxtech.com/pos-isv" />
 
   <link rel="icon" href="../assets/logo/credx-shape.svg" type="image/svg+xml" />
 
@@ -80,7 +80,7 @@
     "@context": "https://schema.org",
     "@type": "Service",
     "name": "Embedded point of sale lending for software platforms",
-    "provider": { "@type": "Organization", "name": "CredX", "url": "https://credx-tech.com/" },
+    "provider": { "@type": "Organization", "name": "CredX", "url": "https://credxtech.com/" },
     "areaServed": { "@type": "Country", "name": "Canada" },
     "serviceType": "Embedded lending for point of sale and software platforms",
     "audience": { "@type": "Audience", "audienceType": "Point of sale systems and independent software vendor platforms" },
@@ -93,8 +93,8 @@
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     "itemListElement": [
-      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://credx-tech.com/" },
-      { "@type": "ListItem", "position": 2, "name": "For POS & ISV", "item": "https://credx-tech.com/pos-isv" }
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://credxtech.com/" },
+      { "@type": "ListItem", "position": 2, "name": "For POS & ISV", "item": "https://credxtech.com/pos-isv" }
     ]
   }
   </script>
@@ -307,33 +307,45 @@
           <img src="../assets/logo/Credx-name.svg" alt="CredX" height="32" style="margin-bottom: 20px;" />
           <p class="footer__movement">A system you belong to, instead of one that owns you.</p>
         </div>
+        <!-- ⚠ COLUMNS AND LABELS MIRROR THE NAV, which is the locked sitemap's own (plan/04).
+             Rebuilt 2026-08-25 on the client's Batch 1 review (Audrey, 2026-08-24): the footer
+             was "missing For Merchants, EVP". Both are now here, and `About` takes the nav's
+             label `The Movement` rather than a second name for the same page.
+             🔴 TWO DESTINATIONS WERE REMOVED, NOT MOVED — `Glossary` (../learn/glossary/) and
+             the whole Legal column (`Privacy` + `Terms`, both pointing at ../legal/). All three
+             404 live, on every page, and they were the links a visitor actually clicks. The
+             pages are roadmap items (Batch 3/4 + track T0); restore the links when they answer
+             200, not before. ⚠ A privacy page is still owed underneath two live forms — that is
+             a real obligation, and deleting a dead link to it does not discharge it.
+             The 4-column grid (2fr 1fr 1fr 1fr, style.css:2825) is why Explore was split in two
+             rather than run to seven items in one column. -->
         <div>
           <h3 class="footer__col-title">Explore</h3>
           <div class="footer__links">
+            <a href="../about/" class="footer__link">The Movement</a>
+            <a href="../evp/" class="footer__link">Embedded Value Platform</a>
             <a href="../how-it-works/" class="footer__link">How It Works</a>
+          </div>
+        </div>
+        <div>
+          <h3 class="footer__col-title">Who We Serve</h3>
+          <div class="footer__links">
+            <a href="../merchants/" class="footer__link">For Merchants</a>
             <a href="../lenders/" class="footer__link">For Lenders</a>
-            <a href="../about/" class="footer__link">About</a>
-            <a href="../contact/" class="footer__link">Contact</a>
-            <a href="../learn/glossary/" class="footer__link">Glossary</a>
+            <a href="../pos-isv/" class="footer__link">For POS &amp; ISV</a>
           </div>
         </div>
         <div>
           <h3 class="footer__col-title">Connect</h3>
           <div class="footer__links">
-            <a href="https://www.linkedin.com/" class="footer__link" rel="noopener" target="_blank">LinkedIn</a>
-            <a href="../contact/" class="footer__link">Book a Meeting</a>
-          </div>
-        </div>
-        <div>
-          <h3 class="footer__col-title">Legal</h3>
-          <div class="footer__links">
-            <a href="../legal/" class="footer__link">Privacy</a>
-            <a href="../legal/" class="footer__link">Terms</a>
+            <a href="../contact/" class="footer__link">Contact Us</a>
+            <a href="../contact/" class="footer__link" data-pending="booking-url">Book a Meeting</a>
+            <a href="https://www.linkedin.com/" class="footer__link" rel="noopener" target="_blank" data-pending="linkedin-url">LinkedIn</a>
           </div>
         </div>
       </div>
       <div class="footer__bottom">
-        <span>© 2026 CredX Tech Inc. · credx-tech.com</span>
+        <span>© 2026 CredX Tech Inc. · credxtech.com</span>
       </div>
     </div>
   </footer>

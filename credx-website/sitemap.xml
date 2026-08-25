@@ -1,105 +1,63 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- CredX website sitemap — PRE-BUILD DRAFT (Phase 4).
-     Domain https://credx-tech.com is a PROVISIONAL PLACEHOLDER pending client resolution — swap on domain lock.
-     lastmod omitted until pages are built (Phase 9). Regenerate at build/publish. -->
+<!-- CredX website sitemap.
+     Domain CORRECTED 2026-08-25: credxtech.com (no hyphen), per the client's Batch 1
+     review. Every <loc> matches the page's own rel=canonical exactly — no trailing slash.
+
+     ⚠ THIS FILE NOW LISTS ONLY URLS THAT EXIST AND ARE INDEXABLE. It previously declared
+     19 URLs of which 13 returned 404 (/legal and the twelve /learn/glossary/*), and omitted
+     the two that had shipped (/merchants, /pos-isv). Removed 2026-08-25.
+
+     DELIBERATELY ABSENT, not missing:
+       /join            — meta robots noindex,nofollow (onboarding surface)
+       /lenders/partner — meta robots noindex,nofollow (unlinked, awaiting CredX IT)
+
+     TO RE-ADD WHEN BUILT (roadmap, Post-MVP-Roadmap.md Batch 3/4 + track T0):
+       /legal (or the split legal pages) · /learn/glossary/ and its term pages ·
+       /press · /thank-you
+     Do not re-add any of them before the page answers 200. lastmod omitted deliberately;
+     add it only if it can be kept honest at publish time. -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://credx-tech.com/</loc>
+    <loc>https://credxtech.com/</loc>
     <priority>1.0</priority>
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://credx-tech.com/how-it-works</loc>
+    <loc>https://credxtech.com/how-it-works</loc>
     <priority>0.9</priority>
     <changefreq>monthly</changefreq>
   </url>
-  <!-- /evp priority 0.8 is the BRIEF'S RECOMMENDATION, not a lock (open item O4 in
-       copy/evp.md). plan/05:117 says only "index" and 04.Sitemap-Locked.md:25 gives no
-       priority. 0.8 follows from nav position #2 and core-page status; /about is 0.7 and
-       /how-it-works 0.9. Change it freely if the call goes another way. -->
+  <!-- /evp priority 0.8 follows from nav position #2 and core-page status; it was the
+       brief's recommendation, never a lock (open item O4 in copy/evp.md). -->
   <url>
-    <loc>https://credx-tech.com/evp</loc>
+    <loc>https://credxtech.com/evp</loc>
+    <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <!-- The three audience pages sit at one tier: they are siblings under Who We Serve. -->
+  <url>
+    <loc>https://credxtech.com/merchants</loc>
     <priority>0.8</priority>
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://credx-tech.com/lenders</loc>
+    <loc>https://credxtech.com/lenders</loc>
     <priority>0.8</priority>
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://credx-tech.com/about</loc>
+    <loc>https://credxtech.com/pos-isv</loc>
+    <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://credxtech.com/about</loc>
     <priority>0.7</priority>
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://credx-tech.com/contact</loc>
+    <loc>https://credxtech.com/contact</loc>
     <priority>0.6</priority>
-    <changefreq>yearly</changefreq>
-  </url>
-  <url>
-    <loc>https://credx-tech.com/legal</loc>
-    <priority>0.3</priority>
-    <changefreq>yearly</changefreq>
-  </url>
-  <url>
-    <loc>https://credx-tech.com/learn/glossary/</loc>
-    <priority>0.5</priority>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://credx-tech.com/learn/glossary/embedded-lending</loc>
-    <priority>0.4</priority>
-    <changefreq>yearly</changefreq>
-  </url>
-  <url>
-    <loc>https://credx-tech.com/learn/glossary/embedded-value-platform</loc>
-    <priority>0.4</priority>
-    <changefreq>yearly</changefreq>
-  </url>
-  <url>
-    <loc>https://credx-tech.com/learn/glossary/mutual-ownership-acquisition-technology</loc>
-    <priority>0.4</priority>
-    <changefreq>yearly</changefreq>
-  </url>
-  <url>
-    <loc>https://credx-tech.com/learn/glossary/merchant-linked-consumer-credit</loc>
-    <priority>0.4</priority>
-    <changefreq>yearly</changefreq>
-  </url>
-  <url>
-    <loc>https://credx-tech.com/learn/glossary/value-back-programme</loc>
-    <priority>0.4</priority>
-    <changefreq>yearly</changefreq>
-  </url>
-  <url>
-    <loc>https://credx-tech.com/learn/glossary/embedded-credit-facility</loc>
-    <priority>0.4</priority>
-    <changefreq>yearly</changefreq>
-  </url>
-  <url>
-    <loc>https://credx-tech.com/learn/glossary/point-of-sale-lending</loc>
-    <priority>0.4</priority>
-    <changefreq>yearly</changefreq>
-  </url>
-  <url>
-    <loc>https://credx-tech.com/learn/glossary/transaction-data-monetisation</loc>
-    <priority>0.4</priority>
-    <changefreq>yearly</changefreq>
-  </url>
-  <url>
-    <loc>https://credx-tech.com/learn/glossary/open-loop-credit</loc>
-    <priority>0.4</priority>
-    <changefreq>yearly</changefreq>
-  </url>
-  <url>
-    <loc>https://credx-tech.com/learn/glossary/community-lender</loc>
-    <priority>0.4</priority>
-    <changefreq>yearly</changefreq>
-  </url>
-  <url>
-    <loc>https://credx-tech.com/learn/glossary/the-data-economy</loc>
-    <priority>0.4</priority>
     <changefreq>yearly</changefreq>
   </url>
 </urlset>

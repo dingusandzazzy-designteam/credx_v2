@@ -31,14 +31,14 @@
        /pos (Post-MVP-Roadmap.md:38). The strategy doc is stale on this point. -->
   <title>What Is Embedded Lending? How It Works | CredX</title>
   <meta name="description" content="Embedded lending lets a customer take credit at checkout, inside the merchant's own brand. See how the mechanics work, where the fees go, and who funds it." />
-  <link rel="canonical" href="https://credx-tech.com/how-it-works" />
+  <link rel="canonical" href="https://credxtech.com/how-it-works" />
 
   <!-- Open Graph — OG title and description inherit Title/Meta per copy/how-it-works.md. -->
   <meta property="og:title" content="What Is Embedded Lending? How It Works | CredX" />
   <meta property="og:description" content="Embedded lending lets a customer take credit at checkout, inside the merchant's own brand. See how the mechanics work, where the fees go, and who funds it." />
-  <meta property="og:image" content="https://credx-tech.com/images/og.jpg" />
+  <meta property="og:image" content="https://credxtech.com/images/og.jpg" />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://credx-tech.com/how-it-works" />
+  <meta property="og:url" content="https://credxtech.com/how-it-works" />
   <meta name="twitter:card" content="summary_large_image" />
 
   <link rel="icon" href="../assets/logo/credx-shape.svg" type="image/svg+xml" />
@@ -83,7 +83,7 @@
         "@type": "HowToStep",
         "position": 3,
         "name": "A community lender funds it, and carries the risk.",
-        "text": "The credit is funded by community lender partners, and the risk stays with them rather than on your books. You are paid in full and upfront, as you are today."
+        "text": "The credit is funded by community lender partners, and repayment risk stays with the lender, not with your business. CredX manages underwriting, servicing, and collections, so a missed payment never reaches your books."
       },
       {
         "@type": "HowToStep",
@@ -104,7 +104,7 @@
         "name": "Who actually funds the credit?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Community lender partners fund it and carry the credit risk. CredX originates and services the facility, so the lending never sits on your books. You are paid in full and upfront on every sale, exactly as you are today."
+          "text": "Community lender partners fund it and carry the credit risk. CredX manages underwriting, servicing, and collections, so the lending never sits on your books. You are paid in full and upfront on every sale, exactly as you are today."
         }
       },
       {
@@ -120,7 +120,7 @@
         "name": "What happens if a customer does not repay?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "The risk stays with the community lender partners that fund the credit, not with your business. The facility is structured to reduce delinquency through the controls built into it, and a missed payment does not reach your books."
+          "text": "Repayment risk stays with the community lender partners that fund the credit, not with your business. CredX manages underwriting, servicing, and collections, so a missed payment never reaches your books."
         }
       },
       {
@@ -151,13 +151,13 @@
         "@type": "ListItem",
         "position": 1,
         "name": "Home",
-        "item": "https://credx-tech.com/"
+        "item": "https://credxtech.com/"
       },
       {
         "@type": "ListItem",
         "position": 2,
         "name": "How It Works",
-        "item": "https://credx-tech.com/how-it-works"
+        "item": "https://credxtech.com/how-it-works"
       }
     ]
   }
@@ -335,11 +335,25 @@
               <p class="rail__text">At checkout, the customer sees a credit line and a value-back offer carrying your business’s name. Approval takes about 20 seconds. Every part of what they see is yours.</p>
             </div>
           </li>
+          <!-- 🔴 STEP 3 CARRIES CLIENT-APPROVED WORDING VERBATIM. DO NOT PARAPHRASE IT.
+               Source: Audrey Wilson, Batch 1 review 2026-08-24, comment on this page —
+               "This was flagged explicitly on August 14. CredX does not carry the repayment
+               risk, the lender does." Kyle Bunbury: "This is a critical fix... should have
+               been corrected already." Her agreed version is the text below, with one comma
+               added after "the lender" and nothing else changed.
+               ⚠ THE SUBSTANCE WAS ALREADY CORRECTED ON 2026-08-24 across 21 strings in 9
+               files; what landed 2026-08-25 is HER EXACT WORDING, which is not the same job.
+               THE DIVISION OF LABOUR, and it is the whole point of the sentence:
+                 risk → the lender.  underwriting, servicing, collections → CredX.
+               ⚠ "You are paid in full and upfront" left this step deliberately — it is her
+               sentence that replaced it, and the promise still ships in FAQ 1 and on the Home.
+               ⚠ A ten-day gap sits behind this: the 2026-08-14 flag never reached the
+               register. It arrived through the same channel as everything else. -->
           <li class="rail__station" data-reveal data-reveal-delay="2">
             <div class="rail__marker"><span class="rail__num">3</span></div>
             <div class="rail__body">
               <h3 class="rail__h3">A community lender funds it, and carries the risk.</h3>
-              <p class="rail__text">The credit is funded by community lender partners, and the risk stays with them rather than on your books. You are paid in full and upfront, as you are today.</p>
+              <p class="rail__text">The credit is funded by community lender partners, and repayment risk stays with the lender, not with your business. CredX manages underwriting, servicing, and collections, so a missed payment never reaches your books.</p>
             </div>
           </li>
           <li class="rail__station" data-reveal data-reveal-delay="3">
@@ -398,6 +412,28 @@
          still live on the Home and the four published verticals. Do not
          "restore" the single figure, and do not reintroduce "up to 85%" either
          — the range plus the qualifier is the compliant form.
+         🔴 THE RANGE IS WRITTEN `from 40% up to 85%` — MARCOS, 2026-08-25. READ THIS
+         BEFORE "CORRECTING" IT BACK TO KYLE'S STRING, BECAUSE IT LOOKS LIKE A DEFECT.
+         Kyle Bunbury's 2026-08-11 instruction specifies the exact string "40 to 85%
+         depending on qualifying volume" and adds "do not reintroduce 'up to 85%'".
+         **The copy now departs from that verbatim string on purpose.** What happened:
+         Audrey, Batch 1 review 2026-08-24, said the headline "sounds like a guaranteed
+         outcome" and proposed "recover 40 to up to 85%". That exact phrasing stacks
+         "to" and "up to" on one endpoint and is not grammatical. Marcos resolved the
+         two client instructions with `from 40% up to 85%`, which keeps the floor Kyle
+         required (his concern was "not a single figure") and uses the hedge Audrey
+         wanted, without the doubled preposition.
+         ⚠ THE OBJECTION THAT WAS RAISED AND OVERRULED, recorded so it is not re-argued
+         from scratch: "up to" marks 85 as a ceiling and therefore reads 40 as a FLOOR,
+         which is a stronger claim than a band — and the client's own Partner FAQ p7
+         calls the reduction "(directional, based on qualifying volume)", where
+         directional is the opposite of a guaranteed minimum. **Marcos's call, made with
+         that stated.** If a compliance reviewer ever challenges the 40% floor, this is
+         the paragraph that explains where it came from.
+         🔒 STILL LOCKED AND UNCHANGED: both ends of the range, and the qualifier
+         "depending on qualifying volume". Do not restore a single figure, and do not
+         drop the floor back to a bare "up to 85%" — that is the form Kyle banned, and
+         the floor is the only thing separating this wording from it.
          · The $36,000 / $6,000 pair is the VALIDATED HOME's arithmetic
            (copy/home.md §4 gain 1), not new maths. Hedged with "roughly" and
            "in the region of" because the figures are illustrative.
@@ -426,8 +462,25 @@
              .control__whitelabel is the right shell for exactly that. Only the paragraph
              moved out: at four sentences it was centred prose, which is the defect this
              pass exists to fix. -->
+        <!-- 🟠 THE VERB CHANGED 2026-08-25, THE NUMBERS DID NOT. Audrey Wilson, Batch 1
+             review 2026-08-24: "The recover 40-85% headline sounds like a guaranteed outcome."
+             The objection is legitimate — an imperative "Recover X" promises an outcome that
+             depends on qualifying volume. Her suggested fix, "recover 40 to up to 85%", is not
+             grammatical, so the wording is ours.
+             WHAT WAS DONE, and it invents nothing: the descriptive construction was lifted from
+             copy already live on this site — the Home's own `calc__hedge` reads "Recovery RUNS
+             40 to 85% of standard interchange, so the figure above is a range rather than a
+             single outcome." "Runs" describes a range; "Recover" promises one.
+             ⚠ WHAT MUST NOT CHANGE: the figures, and Kyle's mandated qualifier "depending on
+             qualifying volume" (MTG, 2026-08-11). Do NOT restore a single figure, and do NOT
+             use "up to 85%" — both are explicitly forbidden. See the block above. -->
+        <!-- ⚠ THE &nbsp; INSIDE THE ACCENT IS LOAD-BEARING, NOT A TYPO. Without them the
+             phrase wrapped mid-accent at 1440 — "40% up" on one line, "to 85%" on the next —
+             which splits a display beat across a line break and reads as a rendering fault.
+             Caught by rendering it, not by reading it. Keep the figure atomic if the wording
+             changes again. -->
         <div class="control__whitelabel" data-reveal>
-          <h3 class="control__whitelabel-head">Recover <em class="accent">40 to 85%</em> of interchange, depending on qualifying volume.</h3>
+          <h3 class="control__whitelabel-head">Interchange recovery runs from <em class="accent">40%&nbsp;up&nbsp;to&nbsp;85%</em>, depending on qualifying volume.</h3>
         </div>
 
         <p class="prose-band__body section-aside" data-reveal>Every card sale carries interchange. On $1M of monthly volume, that is roughly $36,000 to a competing credit facility. Routed through the value layer instead, the same volume costs in the region of $6,000, and the difference stays where it was earned. That example sits at the top of the published range. Across the range, $1M of monthly volume returns roughly $14,000 to $30,000.</p>
@@ -499,7 +552,7 @@
              versions of it. The Home says "closed-loop … not down the street"
              (index.html:261, approved copy, and closed-loop is a term of art meaning
              redeemable only within the issuer). /evp sells "spend beyond your four walls"
-             (MarketPlace) and "cross-business offers" (BoosT), which is network-wide, not
+             (Marketplace) and "cross-business offers" (BOOST), which is network-wide, not
              merchant-only. And this page used to say merchant-only. Until the client
              settles it, §4 states what is certain — dollars, earned with you — and claims
              nothing about the edge. Do not "improve" this by picking one. -->
@@ -570,7 +623,7 @@
         <div class="faq__list">
           <details class="faq__item" data-reveal data-reveal-delay="1">
             <summary class="faq__question">Who actually funds the credit?</summary>
-            <p class="faq__answer">Community lender partners fund it and carry the credit risk. CredX originates and services the facility, so the lending never sits on your books. You are paid in full and upfront on every sale, exactly as you are today.</p>
+            <p class="faq__answer">Community lender partners fund it and carry the credit risk. CredX manages underwriting, servicing, and collections, so the lending never sits on your books. You are paid in full and upfront on every sale, exactly as you are today.</p>
           </details>
           <details class="faq__item" data-reveal data-reveal-delay="2">
             <summary class="faq__question">What does the credit cost my customer?</summary>
@@ -578,7 +631,7 @@
           </details>
           <details class="faq__item" data-reveal data-reveal-delay="2">
             <summary class="faq__question">What happens if a customer does not repay?</summary>
-            <p class="faq__answer">The risk stays with the community lender partners that fund the credit, not with your business. The facility is structured to reduce delinquency through the controls built into it, and a missed payment does not reach your books.</p>
+            <p class="faq__answer">Repayment risk stays with the community lender partners that fund the credit, not with your business. CredX manages underwriting, servicing, and collections, so a missed payment never reaches your books.</p>
           </details>
           <!-- 🔴 ADDED 2026-08-11 ON A DIRECT CLIENT INSTRUCTION. Kyle Bunbury asked that
                the data-ownership question use his approved sentence: "CredX manages the
@@ -659,33 +712,45 @@
           <img src="../assets/logo/Credx-name.svg" alt="CredX" height="32" style="margin-bottom: 20px;" />
           <p class="footer__movement">A system you belong to, instead of one that owns you.</p>
         </div>
+        <!-- ⚠ COLUMNS AND LABELS MIRROR THE NAV, which is the locked sitemap's own (plan/04).
+             Rebuilt 2026-08-25 on the client's Batch 1 review (Audrey, 2026-08-24): the footer
+             was "missing For Merchants, EVP". Both are now here, and `About` takes the nav's
+             label `The Movement` rather than a second name for the same page.
+             🔴 TWO DESTINATIONS WERE REMOVED, NOT MOVED — `Glossary` (../learn/glossary/) and
+             the whole Legal column (`Privacy` + `Terms`, both pointing at ../legal/). All three
+             404 live, on every page, and they were the links a visitor actually clicks. The
+             pages are roadmap items (Batch 3/4 + track T0); restore the links when they answer
+             200, not before. ⚠ A privacy page is still owed underneath two live forms — that is
+             a real obligation, and deleting a dead link to it does not discharge it.
+             The 4-column grid (2fr 1fr 1fr 1fr, style.css:2825) is why Explore was split in two
+             rather than run to seven items in one column. -->
         <div>
           <h3 class="footer__col-title">Explore</h3>
           <div class="footer__links">
-            <a href="./" class="footer__link">How It Works</a>
+            <a href="../about/" class="footer__link">The Movement</a>
+            <a href="../evp/" class="footer__link">Embedded Value Platform</a>
+            <a href="../how-it-works/" class="footer__link">How It Works</a>
+          </div>
+        </div>
+        <div>
+          <h3 class="footer__col-title">Who We Serve</h3>
+          <div class="footer__links">
+            <a href="../merchants/" class="footer__link">For Merchants</a>
             <a href="../lenders/" class="footer__link">For Lenders</a>
-            <a href="../about/" class="footer__link">About</a>
-            <a href="../contact/" class="footer__link">Contact</a>
-            <a href="../learn/glossary/" class="footer__link">Glossary</a>
+            <a href="../pos-isv/" class="footer__link">For POS &amp; ISV</a>
           </div>
         </div>
         <div>
           <h3 class="footer__col-title">Connect</h3>
           <div class="footer__links">
-            <a href="https://www.linkedin.com/" class="footer__link" rel="noopener" target="_blank">LinkedIn</a>
-            <a href="../contact/" class="footer__link">Book a Meeting</a>
-          </div>
-        </div>
-        <div>
-          <h3 class="footer__col-title">Legal</h3>
-          <div class="footer__links">
-            <a href="../legal/" class="footer__link">Privacy</a>
-            <a href="../legal/" class="footer__link">Terms</a>
+            <a href="../contact/" class="footer__link">Contact Us</a>
+            <a href="../contact/" class="footer__link" data-pending="booking-url">Book a Meeting</a>
+            <a href="https://www.linkedin.com/" class="footer__link" rel="noopener" target="_blank" data-pending="linkedin-url">LinkedIn</a>
           </div>
         </div>
       </div>
       <div class="footer__bottom">
-        <span>© 2026 CredX Tech Inc. · credx-tech.com</span>
+        <span>© 2026 CredX Tech Inc. · credxtech.com</span>
       </div>
     </div>
   </footer>

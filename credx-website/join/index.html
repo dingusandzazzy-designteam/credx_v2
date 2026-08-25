@@ -522,8 +522,55 @@
 
   </main>
 
-  <footer class="join-foot">
-    <span>&copy; 2026 CredX Tech Inc. &middot; credx-tech.com</span>
+  <!-- 🟠 STANDARDISED 2026-08-25 (Marcos: "footer geral revisar, corrigir e tornar padrão
+       para as páginas do credx-website"). This page shipped `.join-foot` — a bare copyright line
+       and nothing else — while `/lenders/partner`, which is also a noindex form page, carried the
+       full sitemap footer. **Two form pages, two footers, was the actual break in the standard**,
+       and it is what "tornar padrão" resolves. All ten pages now render the same markup; only the
+       relative path depth differs.
+       ⚠ THERE IS A REAL ARGUMENT THE OTHER WAY AND IT WAS NOT IGNORED: an 8-step onboarding funnel
+       normally strips exit links, and `.join-foot` looks deliberate rather than accidental — its
+       own rule sits at `style.css:4404`. The footer lands below the entire form, not beside it, so
+       it is not an exit placed in the flow. **If the funnel argument should win, revert this one
+       page and delete the `.join-foot` rule with it** — do not leave the rule orphaned the way
+       `.photo-band` and `.icon` were.
+       ⚠ `.join-foot` IS NOW UNREFERENCED. It is the only consumer that existed. -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__inner footer__inner--sitemap">
+        <div class="footer__brand">
+          <img src="../assets/logo/Credx-name.svg" alt="CredX" height="32" style="margin-bottom: 20px;" />
+          <p class="footer__movement">A system you belong to, instead of one that owns you.</p>
+        </div>
+        <div>
+          <h3 class="footer__col-title">Explore</h3>
+          <div class="footer__links">
+            <a href="../about/" class="footer__link">The Movement</a>
+            <a href="../evp/" class="footer__link">Embedded Value Platform</a>
+            <a href="../how-it-works/" class="footer__link">How It Works</a>
+          </div>
+        </div>
+        <div>
+          <h3 class="footer__col-title">Who We Serve</h3>
+          <div class="footer__links">
+            <a href="../merchants/" class="footer__link">For Merchants</a>
+            <a href="../lenders/" class="footer__link">For Lenders</a>
+            <a href="../pos-isv/" class="footer__link">For POS &amp; ISV</a>
+          </div>
+        </div>
+        <div>
+          <h3 class="footer__col-title">Connect</h3>
+          <div class="footer__links">
+            <a href="../contact/" class="footer__link">Contact Us</a>
+            <a href="../contact/" class="footer__link" data-pending="booking-url">Book a Meeting</a>
+            <a href="https://www.linkedin.com/" class="footer__link" rel="noopener" target="_blank" data-pending="linkedin-url">LinkedIn</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span>© 2026 CredX Tech Inc. · credxtech.com</span>
+      </div>
+    </div>
   </footer>
 
   <script>
