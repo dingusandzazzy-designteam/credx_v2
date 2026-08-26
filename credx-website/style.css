@@ -888,12 +888,12 @@ p { line-height: 1.6; max-width: 65ch; }
 /* ---- .stack · /evp signature (Phase 6 §6.3) ------------------------------
    The seven components were seven equal cards in a 3-column grid, which left
    Marketing orphaned on row three (EV-05) and said nothing about how the parts
-   relate (EV-20). They are not peers, and the page itself proves it: MOAT and
+   relate (EV-20). They are not peers, and the page itself proves it: MoaT and
    DaaP each get a whole section below; the others get a line.
 
    So the tiers ARE the content, which is the bento rule from §6.4 — a tile is
    larger because the thing is larger, never because the grid had a hole:
-     tier 1  MOAT · DaaP                       load-bearing, own sections
+     tier 1  MoaT · DaaP                       load-bearing, own sections
      tier 2  Cost Reduction · BoosT            the other two of the four things
      tier 3  Marketplace · Orchestration · Marketing   the connective layer
    2 + 2 + 3 = 7. No orphan, and the silhouette reads as a hierarchy rather than
@@ -928,7 +928,7 @@ p { line-height: 1.6; max-width: 65ch; }
 }
 
 /* ---- .stack__item--photo · /evp §2 lead tiles, added 2026-08-19 -------------
-   The two --lead tiles (MOAT, DaaP) carry a photograph behind the same
+   The two --lead tiles (MoaT, DaaP) carry a photograph behind the same
    title + body markup instead of a flat surface — bento in the literal
    sense, not just in silhouette. A gradient does the contrast work so the
    source photo only has to be quiet in its lower third, not pre-darkened. */
@@ -1052,7 +1052,7 @@ p { line-height: 1.6; max-width: 65ch; }
 }
 
 /* ---- .triad · /about signature (Phase 6 §6.3) -----------------------------
-   MOAT is the claim that all three parties hold a stake in ONE thing. That was
+   MoaT is the claim that all three parties hold a stake in ONE thing. That was
    rendering as three sentences in a ticked list plus an empty image slot with no
    concept behind it (AB-09) — three separate items, which is the opposite of what
    the section says.
@@ -4704,7 +4704,7 @@ a.vertical-card:hover .vertical-card__name::after { transform: translateX(4px); 
 .defs__term {
   /* Body face at the prose size, not the editorial card title it used to be.
      §3 already names a component inside prose this way ("**Mutual Ownership
-     Acquisition Technology** (MOAT) is…"), and `.prose-band__body strong`
+     Acquisition Technology** (MoaT) is…"), and `.prose-band__body strong`
      resolves to exactly these two declarations. Same idiom, one system.
      ⚠ Not accented: brandguide §7 "Controlled" permits the accent at one
      fragment per section, and four magenta terms would be four accents
@@ -4903,7 +4903,7 @@ a.vertical-card:hover .vertical-card__name::after { transform: translateX(4px); 
 .icon--accent { color: var(--text-accent); }
 .icon--lg { width: 1.5rem; height: 1.5rem; }
 
-/* MTG-05 (Kyle, 2026-08-14): the MOAT expansion is bolded wherever it appears in
+/* MTG-05 (Kyle, 2026-08-14): the MoaT expansion is bolded wherever it appears in
    prose, not just the initials â readers skim "moat" and land on the Berkshire
    economic-moat association, the wrong one. `strong` carried no prose style at all;
    these are the values the two existing uses already set (.voices__partnership
