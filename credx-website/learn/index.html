@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0b0c16" />
+
+  <!-- ============================================================
+       LAYOUT TEMPLATE — BATCH 3, ClickUp `86cb3dq9q`. NOT A FINISHED PAGE.
+       Scope, per Marcos 2026-08-26: the CMS is the devs' job; ours is the
+       template — one screen per page type, for them to approve the layout
+       before they build the Webflow CMS collections. Five screens:
+       /learn/ · /learn/glossary/ · a glossary term · /learn/blog/ · a post.
+       🔴 THREE GUARDRAILS, AND THE FIRST IS WHY THIS FILE IS noindex.
+       1. `credx-website` is the ONLY indexed property. These screens carry
+          approval-grade content, so they must not be crawled. `noindex` comes
+          off when the real content lands, NOT when the layout is approved.
+       2. NOT IN `sitemap.xml`, and the footer's `Glossary` link stays
+          UNWIRED — resolving a dead link with a placeholder page is worse
+          than leaving it dead, which is the ruling already made for the
+          `Regulatory compliant` glossary link (register §3 item 4).
+       3. NO GLOSSARY SLUGS ARE MINTED beyond the one term built here. The
+          other ten wait on the `programme`/`program` decision; a slug change
+          after indexing costs redirects.
+       ⚠ The `Learn` nav group is still NOT added. It ships when all five of
+       its destinations exist (see the nav comment on every page) — and
+       `/learn/data-economy/` + `/learn/case-studies/` are Batch 4.
+       ============================================================ -->
+  <meta name="robots" content="noindex, nofollow" />
+
+  <!-- Metadata is written to the real budgets (Title ≤60 · Meta 150–160 ·
+       H1 ≤70) so the devs approve a template that fits them, even though the
+       page is noindex today. Title 38 · Meta 153 · H1 33 — measured. -->
+  <title>Learn How Embedded Value Works | CredX</title>
+  <meta name="description" content="Definitions, explainers and writing on embedded lending, interchange recovery and the data economy — the reference layer behind how embedded value works." />
+  <link rel="canonical" href="https://credxtech.com/learn" />
+
+  <meta property="og:title" content="Learn How Embedded Value Works | CredX" />
+  <meta property="og:description" content="Definitions, explainers and writing on embedded lending, interchange recovery and the data economy." />
+  <meta property="og:image" content="https://credxtech.com/images/og.jpg" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://credxtech.com/learn" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="icon" href="../assets/logo/credx-shape.svg" type="image/svg+xml" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" />
+
+  <link rel="stylesheet" href="../style.css" />
+
+  <!-- BreadcrumbList — required on every Batch 3 page by the task spec. -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://credxtech.com/" },
+      { "@type": "ListItem", "position": 2, "name": "Learn", "item": "https://credxtech.com/learn" }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <!-- Nav (G1) — identical to every other page. No item is marked active: the
+       `Learn` group is not in the nav yet, so there is nothing to mark. -->
+  <nav class="nav" aria-label="Primary">
+    <div class="container nav__inner">
+      <a href="../" class="nav__logo" aria-label="CredX home">
+        <img src="../assets/logo/Credx-name.svg" alt="CredX" height="28" />
+      </a>
+      <div class="nav__links" data-nav-menu>
+        <a href="../about/" class="nav__link">The Movement</a>
+        <a href="../evp/" class="nav__link">Embedded Value Platform</a>
+        <a href="../how-it-works/" class="nav__link">How It Works</a>
+        <div class="nav__group" data-nav-group>
+          <button type="button" class="nav__link nav__group-toggle" aria-expanded="false" aria-controls="nav-audiences" data-nav-group-toggle>Who We Serve</button>
+          <div class="nav__submenu" id="nav-audiences" data-nav-submenu>
+            <a href="../merchants/" class="nav__sublink">For Merchants</a>
+            <a href="../lenders/" class="nav__sublink">For Lenders</a>
+            <a href="../pos-isv/" class="nav__sublink">For POS &amp; ISV</a>
+          </div>
+        </div>
+        <a href="../contact/" class="nav__link">Contact Us</a>
+      </div>
+      <div class="nav__actions">
+        <a href="../join/" class="nav__join">Join</a>
+        <a href="../contact/" class="btn btn-primary nav__cta" data-pending="booking-url">Book a meeting</a>
+        <button class="nav__toggle" data-nav-toggle type="button" aria-label="Open menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <main id="top">
+
+    <!-- ============================================================
+         1 · HERO — `.hero--compact`, the text-only opening.
+         ⚠ `.hero--compact` already exists at style.css:595 and was UNUSED by
+         any page. It is the right variant here and no new CSS was written:
+         these five screens introduce ZERO new selectors, which is what makes
+         them a layout proof rather than a second design system.
+         The paragraph sits directly under the H1 — mandated placement for the
+         AEO paragraph across this site (style.css:623).
+         ============================================================ -->
+    <section class="hero hero--compact" aria-label="Learn">
+      <div class="container hero__inner">
+        <div class="hero__copy">
+          <p class="eyebrow eyebrow--accent" data-reveal>Learn</p>
+          <h1 class="hero__h1" data-reveal-words>How Embedded Value <em class="accent">Actually Works</em></h1>
+          <p class="hero__sub" data-reveal data-reveal-delay="1">
+            This industry uses a handful of terms loosely, and the difference between them decides who keeps the value in a transaction. What follows defines them, then works through what they mean for a business, a lender and the customer at the counter.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         2 · THE FOUR DESTINATIONS.
+         `.vertical-grid` + `.vertical-card`, reused from the campaign hub at
+         the repo root. `--soon` (style.css:3455) is 0.55 opacity with the
+         arrow suppressed, which is exactly the "coming soon" state the task
+         asks for on Data Economy and Case Studies — both Batch 4.
+         ⚠ Do not add a fifth card for `/press` or `/legal`: different track.
+         ============================================================ -->
+    <section class="section" aria-label="What is here">
+      <div class="container">
+        <div class="control__header">
+          <h2 class="control__h2" data-reveal-words>Four ways in.</h2>
+        </div>
+        <div class="vertical-grid" data-reveal data-reveal-delay="1">
+
+          <a href="./glossary/" class="vertical-card">
+            <span class="vertical-card__name">Glossary</span>
+            <span class="vertical-card__desc">Eleven terms, defined once and precisely — from embedded lending to interchange recovery. Start here if a word on this site is doing more work than it looks.</span>
+          </a>
+
+          <a href="./blog/" class="vertical-card">
+            <span class="vertical-card__name">Blog</span>
+            <span class="vertical-card__desc">Writing on how value moves through a transaction, filtered by who it is for — a business, a lender, or the customer.</span>
+          </a>
+
+          <div class="vertical-card vertical-card--soon">
+            <span class="vertical-card__name">Data Economy</span>
+            <span class="vertical-card__desc">How consumer transaction data is valued today, who is paid for it, and why access on explicit opt-in is a different arrangement.</span>
+            <span class="vertical-card__badge">Coming soon</span>
+          </div>
+
+          <div class="vertical-card vertical-card--soon">
+            <span class="vertical-card__name">Case Studies</span>
+            <span class="vertical-card__desc">What the numbers looked like for businesses already running this, sector by sector. Verified figures only.</span>
+            <span class="vertical-card__badge">Coming soon</span>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         3 · CLOSER. `.final-cta--plain` — no imagery slot, because no render
+         exists for this page and none may be briefed without going through
+         the ChatGPT pipeline: prompts are written here, Marcos runs them.
+         ============================================================ -->
+    <section class="final-cta final-cta--plain" aria-label="Next">
+      <div class="container final-cta__inner">
+        <h2 class="final-cta__h2" data-reveal-words>Rather have the short version?</h2>
+        <p class="final-cta__body" data-reveal data-reveal-delay="1">
+          The mechanics fit on one page, and the numbers are on it too.
+        </p>
+        <div class="hero__ctas final-cta__ctas" data-reveal data-reveal-delay="2">
+          <a href="../how-it-works/" class="btn btn-primary">See How It Works</a>
+          <a href="../contact/" class="btn btn-secondary">Talk to Us</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer (G2) — identical to every other page. ⚠ The `Glossary` link is
+       DELIBERATELY still absent from the Explore column even though
+       `/learn/glossary/` now answers 200: it answers with a layout template,
+       not content. Restore it in the pass that removes `noindex`. -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__inner footer__inner--sitemap">
+        <div class="footer__brand">
+          <img src="../assets/logo/Credx-name.svg" alt="CredX" height="32" style="margin-bottom: 20px;" />
+          <p class="footer__movement">A system you belong to, instead of one that owns you.</p>
+        </div>
+        <div>
+          <h3 class="footer__col-title">Explore</h3>
+          <div class="footer__links">
+            <a href="../about/" class="footer__link">The Movement</a>
+            <a href="../evp/" class="footer__link">Embedded Value Platform</a>
+            <a href="../how-it-works/" class="footer__link">How It Works</a>
+          </div>
+        </div>
+        <div>
+          <h3 class="footer__col-title">Who We Serve</h3>
+          <div class="footer__links">
+            <a href="../merchants/" class="footer__link">For Merchants</a>
+            <a href="../lenders/" class="footer__link">For Lenders</a>
+            <a href="../pos-isv/" class="footer__link">For POS &amp; ISV</a>
+          </div>
+        </div>
+        <div>
+          <h3 class="footer__col-title">Connect</h3>
+          <div class="footer__links">
+            <a href="../contact/" class="footer__link">Contact Us</a>
+            <a href="../contact/" class="footer__link" data-pending="booking-url">Book a Meeting</a>
+            <a href="https://www.linkedin.com/" class="footer__link" rel="noopener" target="_blank" data-pending="linkedin-url">LinkedIn</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span>© 2026 CredX Tech Inc. · credxtech.com</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.0.45/dist/lenis.min.js"></script>
+  <script src="../script.js"></script>
+</body>
+</html>
