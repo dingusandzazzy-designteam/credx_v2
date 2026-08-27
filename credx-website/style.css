@@ -6830,6 +6830,21 @@ a.vertical-card:hover .vertical-card__media { opacity: 0.92; }
   z-index: 1;
 }
 
+/* ---- .final-cta--spaced - the closing band was arriving too soon ----------
+   Marcos, on the Learn hub: "aumentar o espaçamento entre os cards e o CTA."
+   MEASURED: 64px between the last card and the top of the gradient band, against
+   190px between the hero and the cards on the same page.
+   ⚠ THE REASON IT LOOKS TIGHTER THAN IT IS: `.final-cta` spends
+   `calc(--s-section + --s-5)` on its own top padding, but that padding is INSIDE
+   the coloured band — so it buys air under the heading, not before the band. The
+   only gap the reader sees is the preceding section's 64px bottom padding.
+   ✅ 112px total, which is the same interval the hero-to-content boundary now
+   uses, so the page has one opening gap and one closing gap at the same weight.
+   ⚠ Applied as a modifier on the six template screens rather than as
+   `.section + .final-cta`, which would move the closing band on the Home and the
+   three pillar pages — shipped, client-reviewed, and not in scope. */
+.final-cta--spaced { margin-top: var(--s-7); }
+
 /* ---- The blog card: the pill rides the picture, and the card asks ---------
    Marcos: "os cards de blogs deveriam ter um CTA e o pill poderia ir por cima da
    imagem… não ficaria melhor?" Yes on both, with one constraint each.
@@ -6980,6 +6995,11 @@ a.vertical-card:hover .vertical-card__cta::after { transform: translateX(4px); }
    flagged. At `--type-h1` (48px) the same column takes about 22, and it lands
    in three. A term page's title is a long technical phrase; the display face is
    sized for the Home's four-word statement. */
+/* ⚠ ALSO THE HOOK FOR AN AUTHORED-BREAK HEADLINE. The Learn hub sets its own
+   line breaks ("How / Embedded Value / Actually Works", Marcos) and at
+   `--type-display` the longest of those lines is ~570px against a ~544px half
+   column, so it would wrap anyway and the authored breaks would fight the
+   organic ones. At `--type-h1` all three lines clear it. */
 .hero .hero__h1--sentence,
 .hero--split .hero__h1--sentence {
   font-size: var(--type-h1);

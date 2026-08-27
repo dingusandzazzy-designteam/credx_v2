@@ -105,14 +105,36 @@
          The paragraph sits directly under the H1 — mandated placement for the
          AEO paragraph across this site (style.css:623).
          ============================================================ -->
-    <section class="hero hero--compact" aria-label="Learn">
+    <!-- ============================================================
+         ↩ 2026-08-27 · WAS `.hero--compact`, TYPE-LED. Marcos: "podemos
+         adicionar uma imagem em learn, pra não ficar tão vazia a H1."
+         `.hero--split` is the existing 50/50 composition, so this costs no new
+         component.
+         🔴 THE PICTURE IS A SANCTIONED MASTER ALREADY IN THE REPO, NOT A NEW
+         COMMISSION AND NOT A NEW STOCK LICENCE. `hiw-hero-alt.png` was
+         commissioned for `/how-it-works`, superseded there by `hiw-hero-v2`,
+         and has been unreferenced since. It is 1122×1402 — exactly the 4:5 the
+         `.hero__frame` wants, so nothing crops. No card terminal in frame, no
+         vertical casting, and it is the transaction scene this whole hub
+         exists to explain.
+         ⚠ THE LINE BREAKS ARE AUTHORED, NOT ORGANIC — "How / Embedded Value /
+         Actually Works" is Marcos's own break and it does not fall out of any
+         measure: "How Embedded" fits on one line at every width that also fits
+         "Embedded Value". `.hero__h1--sentence` drops the face to `--type-h1`
+         so the longest authored line clears the half column instead of
+         re-wrapping and fighting the `<br>`.
+         ============================================================ -->
+    <section class="hero hero--split" aria-label="Learn">
       <div class="container hero__inner">
         <div class="hero__copy">
           <p class="eyebrow eyebrow--accent" data-reveal>Learn</p>
-          <h1 class="hero__h1" data-reveal-words>How Embedded Value <em class="accent">Actually Works</em></h1>
+          <h1 class="hero__h1 hero__h1--sentence" data-reveal-words>How<br />Embedded Value<br /><em class="accent">Actually Works</em></h1>
           <p class="hero__sub" data-reveal data-reveal-delay="1">
             This industry uses a handful of terms loosely, and the difference between them decides who keeps the value in a transaction. What follows defines them, then works through what they mean for a business, a lender and the customer at the counter.
           </p>
+        </div>
+        <div class="hero__frame" data-reveal data-reveal-delay="1">
+          <img src="../images/hiw-hero-alt.png" alt="A customer checking her phone at the counter of a specialty shop while the owner works behind it" width="1122" height="1402" />
         </div>
       </div>
     </section>
@@ -163,7 +185,7 @@
          exists for this page and none may be briefed without going through
          the ChatGPT pipeline: prompts are written here, Marcos runs them.
          ============================================================ -->
-    <section class="final-cta" aria-label="Next">
+    <section class="final-cta final-cta--spaced" aria-label="Next">
       <div class="container final-cta__inner">
         <h2 class="final-cta__h2" data-reveal-words>Rather have the short version?</h2>
         <p class="final-cta__body" data-reveal data-reveal-delay="1">
