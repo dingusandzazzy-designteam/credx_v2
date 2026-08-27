@@ -208,14 +208,21 @@
          `.prose-band__inner:has(> .gains__strip)` sets `display: block` and
          undoes the two-column spine — the exact defect that made /evp §5
          "bem feia".
-         ↩ 2026-08-27 · NOW `.section--read section--wide`, WHICH DELIBERATELY DROPS THE RAIL
-         COMPOSITION. The rail put the figures in a left column beside the prose
-         at 1184px; the rest of this page is now one 672px reading column, and a
-         single two-column section in the middle of it is exactly the mixed-axis
-         problem Marcos flagged. The `.tally` keeps its frame and sits above the
-         prose, full column width. 🔒 The `.gains__strip` ban below still holds.
+         ↩ 2026-08-27, THIRD STATE, AND THE ROUND TRIP IS THE RECORD. Built with
+         the rail; flattened when the page became a narrow reading column, because
+         one two-column section inside it was a mixed axis; now BACK to the rail,
+         because the page runs at 1184 and Marcos asked for it: "podemos colocar o
+         texto de um lado e o quadro do outro, pro quadro não ficar full width
+         desnecessariamente?"
+         ⚠ THE REASON IT WORKS NOW AND DID NOT BEFORE: the section spans the same
+         1184 as every other block, so the two columns are a split INSIDE the page
+         margin rather than a second margin.
+         ⚠ It is plain `.prose-band` — no `--read`, no `--wide` — so the
+         `:has(> .prose-band__rail)` grid applies and the heading spans both
+         columns. Adding either modifier back flattens it again.
+         🔒 The `.gains__strip` ban below still holds.
          ============================================================ -->
-    <section class="section prose-band section--read section--wide" aria-label="Reducing the cost of every payment">
+    <section class="section prose-band" aria-label="Reducing the cost of every payment">
       <div class="container prose-band__inner">
         <h2 class="prose-band__h2" data-reveal-words>Reducing the cost of every payment.</h2>
         <div class="prose-band__rail" data-reveal>
