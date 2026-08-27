@@ -6576,3 +6576,303 @@ a.vertical-card:hover .vertical-card__media { opacity: 0.92; }
   color: var(--text-muted);
   text-wrap: pretty;
 }
+
+
+/* ============================================================
+   READ MODE — one reading column, centred. NEW 2026-08-27.
+   Marcos, having seen the five template screens live: "prosas de forma geral
+   deveriam nesses casos se comportar como blogs mesmo, com o texto conteúdo
+   todo alinhado ao centro… verificar o tamanho ideal da margem para esse tipo
+   de aplicação, e padronizar tudo."
+
+   🔴 THERE WAS A REAL BUG UNDERNEATH THE COMPLAINT, AND IT EXPLAINS TWO OF HIS
+   FIVE ITEMS AT ONCE. `.prose-band__inner > .prose-band__h2` sets
+   `max-width: none` inside the 960px media query (line ~5804). It has the same
+   specificity as `.section--doc .prose-band__h2 { max-width: 34rem }` and comes
+   LATER, so it wins — every heading on a document-mode section runs to the full
+   container while its own prose stops at 630.7px. MEASURED off the render: the
+   H2 "What changes if the credit is funded differently?" spans 1017px against
+   paragraphs at 735px. That is his "passa da margem do texto" on the blog post
+   and his "muitas quebras nos títulos" on the term page — one cause, four pages.
+
+   🔴 `--measure-read` IS IN rem, AND THAT IS THE POINT. Every other measure on
+   this site is `65ch`, which resolves against the ELEMENT's font-size — the trap
+   that has now bitten this project five times (`.prose-list`, `.triad`,
+   `.consent-note`, `.figure-note`, `.prose-figure`) and needs a
+   `calc(65ch * 18 / 14)` conversion at every new consumer. A rem measure cannot
+   drift: a 48px heading and a 14px caption in this column get the SAME edge,
+   with no conversion and nothing to get wrong. 42rem = 672px, about 72
+   characters at the 18px prose face — inside the 45-75 band, and wide enough
+   that a display H2 stops breaking into a ragged stack.
+
+   ⚠ SCOPE: the five template screens only. `/evp` and `/lenders` keep
+   `.section--doc` — they are shipped, client-reviewed pages, and "padronizar
+   tudo" was said about the templates in front of him. Site-wide is a separate
+   call.
+   ⚠ THE COLUMN IS CENTRED; THE TEXT INSIDE IT IS NOT. That is what a blog does,
+   and centre-aligning body prose would destroy the return sweep. Only the hero
+   centres its text.
+   ============================================================ */
+:root {
+  --measure-read: 42rem;
+}
+
+/* Beats `.prose-band__inner:has(> .prose-band__h2, > .prose-band__rail)` on
+   source order at equal specificity — this block must stay after it. */
+.section--read .prose-band__inner {
+  display: block;
+  /* 🔴 THE PADDING COMPENSATION IS NOT OPTIONAL. This element is `class="container
+     prose-band__inner"` — one element, both roles — and `.container` spends
+     `--container-pad` (48px at 1440) on each side. A bare `max-width:
+     var(--measure-read)` therefore yields 576px of TEXT, not 672: the measure
+     silently shrinks by 96px, and nothing in the render says so. Measured before
+     this line existed: the column read at 432-1004px. */
+  max-width: calc(var(--measure-read) + var(--container-pad) * 2);
+  margin-inline: auto;
+}
+
+/* One edge for everything in the column. The catch-all is deliberate, for the
+   same reason the grid's is: these sections carry headings, paragraphs, figures,
+   captions, definition runs and notes, and a whitelist would silently drop the
+   next component out of alignment. */
+.section--read .prose-band__inner > *,
+.section--read .defs,
+.section--read .prose-figure,
+.section--read .prose-figure__caption,
+.section--read .figure-note,
+.section--read .consent-note {
+  max-width: none;
+  margin-inline: 0;
+}
+
+.section--read .prose-band__h2 {
+  text-align: left;
+  /* A heading with a real column to run into wants its lines evened, not a
+     ragged stack. Same reasoning as the grid variant. */
+  text-wrap: balance;
+  margin-block-end: var(--s-6);
+}
+
+.section--read .prose-band__h3 {
+  text-align: left;
+  margin-inline: 0;
+}
+
+/* ---- .hero--read - the hero on the same axis as the column ----------------
+   "alinhar hero com o conteúdo, pode ser tudo ao centro, assim quebrada está
+   muito estranha." ⚠ THE DEFECT WAS NOT THE ALIGNMENT, IT WAS THE MEASURE.
+   `.hero--compact` sets a narrow per-element measure so the headline gets a
+   ragged column — correct on `/about`, whose H1 is four short words. On the term
+   page it broke "Mutual Ownership Acquisition Technology (MoaT)" into FIVE lines
+   in a rail while the content below sat wider. Same column, centred, three.
+   --------------------------------------------------------------------------- */
+/* 🔴 `display: block` IS THE LOAD-BEARING LINE, AND DESIGN.md ALREADY WARNED
+   ABOUT IT. `.hero__inner` is a grid with no declared columns, so its implicit
+   track is auto-sized to its CONTENT and anchored at the start — the note under
+   `.hero--centred` says this outright, and it was measured three times there
+   before it was right. The consequence here was worse than a centring bug: with
+   the track sized to a short H1, the standfirst wrapped to the HEADLINE's width.
+   "The Blog" collapsed the whole hero to ~230px and broke a two-line paragraph
+   into five. Block layout is what centres this, and what lets each child take
+   the measure. */
+.hero--read .hero__inner {
+  display: block;
+  max-width: calc(var(--measure-read) + var(--container-pad) * 2);
+  margin-inline: auto;
+  text-align: center;
+}
+
+.hero--read .hero__copy {
+  max-width: var(--measure-read);
+  margin-inline: auto;
+  text-align: center;
+}
+
+.hero--read .hero__h1,
+.hero--read .hero__sub,
+.hero--read .eyebrow,
+.hero--read .figure-note {
+  max-width: none;
+  margin-inline: auto;
+  text-align: center;
+}
+
+.hero--read .hero__h1 { text-wrap: balance; }
+.hero--read .hero__sub { text-wrap: pretty; }
+
+/* ---- .hero--feature - copy ON the photograph ------------------------------
+   Marcos: "imagem ao fundo, overlay de cor, título e support text e data.. em
+   cima da imagem."
+
+   🔴 A SCRIM IS MANDATORY HERE AND THE PROJECT ALREADY LEARNED WHY. `.photo-band`
+   carries the only contrast record on this project: overlaid copy was built for
+   `/about` §2, rendered, and rejected the same hour, and it works on exactly one
+   asset — one deliberately rendered with its left third in shadow. The comment
+   there notes `about-data-economy.png` measures 2.24:1 in the same role. A blog
+   featured image is arbitrary CMS content, so it can be trusted even less.
+
+   ✅ THE SCRIM IS SIZED BY ARITHMETIC, NOT BY EYE. Worst case is white pixels
+   under the title. At 0.80 navy (#323665) over #ffffff the composite is
+   rgb(91, 94, 132), which measures 5.8:1 against `--text-primary` (#f8f9fc) —
+   over the 4.5 threshold with margin, on the brightest image anyone could ever
+   upload. Every real photograph does better. Do not lighten these stops without
+   redoing that arithmetic.
+   ⚠ It is a NAVY scrim, not black: Marcos asked for "overlay de cor", and navy
+   is the brand's own dark. It is NOT `--gradient-1`, which is spent once per
+   page on `.final-cta`.
+   ⚠ The last stop is FULL ink, not 0.96. At 0.96 the band ended on a visible
+   seam against the page below it; at 1 the photograph dissolves into the page
+   and the hero has no bottom edge at all. It reaches full ink at 92%, not 100%:
+   landing on it at the last pixel still left a visible transition.
+   --------------------------------------------------------------------------- */
+.hero--feature {
+  position: relative;
+  overflow: hidden;
+  /* The photograph is the surface, so the section's own colour must not show
+     through at the edges. */
+  background-color: var(--ink);
+  padding-block: calc(var(--s-section) + var(--s-9)) var(--s-9);
+}
+
+/* 🔴 THE RESET IS THE WHOLE RULE, AND REUSING THIS CLASS NAME WAS THE TRAP.
+   `.hero__media` (style.css:1494) is NOT a bare wrapper — it is the reserved
+   VIDEO SLOT component, and it ships `aspect-ratio: 16/9`, a border, a card
+   radius and a `::after` reading "Cover animation + explainer video". Setting
+   `position: absolute; inset: 0` overrides none of that. Chrome then resolves
+   the width from the insets and takes the HEIGHT FROM THE ASPECT RATIO, so the
+   photograph became a 16:9 band instead of covering the section: at 500px it
+   ended just under the title and the standfirst fell onto bare page. Caught at
+   500px, INVISIBLE at 1440 — where the hero happens to be near 16:9 anyway,
+   which is exactly how this kind of bug ships. */
+.hero--feature .hero__media {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  aspect-ratio: auto;
+  border: 0;
+  border-radius: 0;
+  background-color: transparent;
+  overflow: hidden;
+}
+
+.hero--feature .hero__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+.hero--feature .hero__media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(50, 54, 101, 0.80) 0%,
+    rgba(11, 12, 22, 0.88) 60%,
+    rgba(11, 12, 22, 1) 92%
+  );
+}
+
+.hero--feature .hero__inner {
+  position: relative;
+  z-index: 1;
+}
+
+/* ---- .vertical-grid--3 - three across, not four --------------------------
+   "3 cards por linha ficaria melhor, assim eles estão espremidos demais, o que
+   gera uma quebra muito grande nas linhas."
+   ⚠ The base grid is `repeat(auto-fit, minmax(248px, 1fr))`, which fits FOUR in
+   an 1184px container and is right for the root hub's five verticals. A blog
+   card carries a picture, a title, a summary and a badge — four times the
+   content in the same track. The modifier is scoped so the hub is untouched. */
+.vertical-grid--3 { grid-template-columns: 1fr; }
+@media (min-width: 680px) { .vertical-grid--3 { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1024px) { .vertical-grid--3 { grid-template-columns: repeat(3, 1fr); } }
+
+/* ---- .filterbar - a filter that does not read as a call to action ---------
+   Marcos: "vamos repensar o filtro? talvez um dropdown aqui faça mais sentido?
+   não sei dizer…"
+   🔴 THE ANSWER IS NOT A DROPDOWN, AND THE REASON IS ON THE PAGE. The hero says
+   "pick the one you are" — the four audiences ARE the proposition, and a select
+   hides them behind a click. The actual defect is that they were built as `.btn`
+   (pill, one filled magenta) on the reasoning that "a filter row IS a row of
+   small buttons, zero new CSS". Rendered, that puts a primary CTA in the reading
+   flow, competing with `Book a meeting` in the nav. A filter should read as a
+   state control: quiet, outlined, one selected.
+   ⚠ Padding is `--s-3 --s-5`, not `--s-2 --s-4`: it puts the control at about
+   44px tall, which is the touch-target floor. */
+.filterbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-3);
+  justify-content: center;
+}
+
+.filterbar__btn {
+  appearance: none;
+  padding: var(--s-3) var(--s-5);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-pill);
+  background-color: transparent;
+  color: var(--text-secondary);
+  font-family: var(--font-body);
+  font-size: var(--type-caption);
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  transition: color var(--duration-fast) var(--ease-out-quart),
+              border-color var(--duration-fast) var(--ease-out-quart),
+              background-color var(--duration-fast) var(--ease-out-quart);
+}
+
+.filterbar__btn:hover {
+  color: var(--text-primary);
+  border-color: var(--soft-lavender);
+}
+
+.filterbar__btn[aria-pressed="true"] {
+  color: var(--text-primary);
+  border-color: var(--text-accent);
+  background-color: var(--surface-1);
+}
+
+/* A read-mode section that is NOT a `.prose-band` — the glossary A-Z run, the
+   related-terms block — takes the measure on its container instead, so the two
+   kinds of section land on the same axis. ⚠ On the term page "Related terms."
+   was a centred `.control__h2` sitting over a `.defs` run at its own centred
+   630.7px: two axes in one block, which is what read as broken. */
+.section--read > .container {
+  /* Same padding compensation as `.prose-band__inner` above — see the note there. */
+  max-width: calc(var(--measure-read) + var(--container-pad) * 2);
+}
+
+.section--read .control__header,
+.section--read .control__h2,
+.section--read .faq__header {
+  text-align: left;
+  margin-inline: 0;
+}
+
+.section--read .defs { margin-inline: 0; }
+
+/* An H1 that is a SENTENCE rather than a statement — it carries figures and
+   clauses, so `--type-display` at the 12ch cap that suits `/how-it-works`
+   ("Your customers already borrow.") breaks it into a ragged tower in a
+   half-width column. Specificity has to beat `.hero--split .hero__h1`, hence
+   the descendant form.
+   ⚠ ALSO THE ANSWER ON THE GLOSSARY TERM PAGE, and the arithmetic is why:
+   "Mutual Ownership Acquisition Technology (MoaT)" at `--type-display` (72px)
+   fits about 15 characters per line in a 672px column, and "Acquisition" alone
+   is 11 — five lines, which is exactly the "muitas quebras nos títulos" Marcos
+   flagged. At `--type-h1` (48px) the same column takes about 22, and it lands
+   in three. A term page's title is a long technical phrase; the display face is
+   sized for the Home's four-word statement. */
+.hero .hero__h1--sentence,
+.hero--split .hero__h1--sentence {
+  font-size: var(--type-h1);
+  max-width: none;
+  text-wrap: balance;
+}

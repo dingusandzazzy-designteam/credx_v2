@@ -157,12 +157,30 @@
   <main id="top">
 
     <!-- ============================================================
-         1 · TITLE + STANDFIRST + THE META ROW.
-         ⚠ The meta row is a `.figure-note`, not a new byline component. A
-         post needs a date and an audience label visible; it does not need an
-         author card this site has no convention for.
+         1 · THE FEATURE HERO — picture, scrim, title, standfirst, date.
+         ↩ REVERSED 2026-08-27, ON MARCOS'S CALL, AND THE REVERSAL IS THE
+         RECORD. This morning the featured image sat BELOW the title on the
+         argument that a full-bleed photo behind the H1 would make this the
+         ninth page opening on the composition DESIGN.md's anti-references name
+         ("nine pages with one opening"). He saw it live and asked for the
+         opposite: "imagem ao fundo, overlay de cor, título e support text e
+         data.. em cima da imagem." ⚠ The anti-reference is about `.hero--full`,
+         a 100vh full-bleed photo used identically on eight pages. This is a
+         shorter band with a navy scrim carrying meta — a genuinely different
+         composition, and a blog post is a distinct page type. It holds.
+         🔴 THE SCRIM IS NOT DECORATION. `.photo-band`'s comment is the only
+         contrast record on this project and it exists because overlaid copy was
+         built for `/about` §2 and rejected the same hour. The scrim here is
+         sized by arithmetic for the worst case — white pixels under the title —
+         and clears 4.5:1 with margin. See the component in style.css.
+         ⚠ The meta row is a `.figure-note`, not a new byline component. A post
+         needs a date and an audience label visible; it does not need an author
+         card this site has no convention for.
          ============================================================ -->
-    <section class="hero hero--compact" aria-label="Where the card fee goes">
+    <section class="hero hero--feature hero--read" aria-label="Where the card fee goes">
+      <div class="hero__media">
+        <img src="../../../images/novas/business-bakery.png" alt="A baker restocking a display case of pastries and bread in a bright bakery" width="1536" height="1024" />
+      </div>
       <div class="container hero__inner">
         <div class="hero__copy">
           <p class="eyebrow eyebrow--accent" data-reveal>Learn · Blog · For Merchants</p>
@@ -178,34 +196,11 @@
     </section>
 
     <!-- ============================================================
-         1b · THE FEATURED IMAGE — ONE CMS FIELD, TWO RENDERINGS. The same
-         field paints the card on `/learn/blog/` and this block. It is
-         OPTIONAL: delete this whole `.container` and the post still reads,
-         which is the point — three of the four seed posts have no picture yet
-         and their topics are owed.
-         ⚠ IT SITS UNDER THE TITLE, NOT BEHIND IT. The reader scrolls INTO the
-         picture instead of landing on it — `/about`'s `.hero-media` logic. A
-         full-bleed photo behind the H1 would make this the ninth page opening
-         on the composition DESIGN.md's anti-references name outright.
-         ⚠ NO NEW COMPONENT: `.section-media` is already the 16:9 framed block
-         and `.section-media img` already covers.
-         🔴 THE PICTURE IS A STAND-IN, AND IT IS SAID ON THE PAGE. It is
-         reused from the Home's sanctioned `images/novas/` set rather than
-         originated here — image generation runs through Marcos in ChatGPT and
-         no post-specific master exists. Each published post gets its own.
-         ============================================================ -->
-    <div class="container">
-      <div class="section-media">
-        <img src="../../../images/novas/business-bakery.png" alt="A baker restocking a display case of pastries and bread in a bright bakery" width="1536" height="1024" />
-      </div>
-    </div>
-
-    <!-- ============================================================
          2 · BODY. `.prose-band` + `.section--doc` for left-hung headings,
          which is the reading treatment already used on `/evp` and `/about`.
          ⚠ H2s are the reader's own questions. First sentence answers.
          ============================================================ -->
-    <section class="section prose-band section--doc" aria-label="What the fee is">
+    <section class="section prose-band section--read" aria-label="What the fee is">
       <div class="container prose-band__inner">
         <h2 class="prose-band__h2" data-reveal-words>What is actually deducted?</h2>
         <p class="prose-band__body" data-reveal>
@@ -217,7 +212,7 @@
       </div>
     </section>
 
-    <section class="section prose-band section--doc" aria-label="Who takes a share">
+    <section class="section prose-band section--read" aria-label="Who takes a share">
       <div class="container prose-band__inner">
         <h2 class="prose-band__h2" data-reveal-words>Who takes a share, and for what?</h2>
         <p class="prose-band__body" data-reveal>
@@ -237,7 +232,7 @@
          ⚠ IT STAYS ON THE PROSE COLUMN. A picture that breaks the reading
          column interrupts the argument it exists to support.
          🔴 STAND-IN, same as above. -->
-    <section class="section prose-band section--doc" aria-label="A figure">
+    <section class="section prose-band section--read" aria-label="A figure">
       <div class="container prose-band__inner">
         <figure class="prose-figure" data-reveal>
           <div class="section-media">
@@ -248,7 +243,7 @@
       </div>
     </section>
 
-    <section class="section prose-band section--doc" aria-label="What changes">
+    <section class="section prose-band section--read" aria-label="What changes">
       <div class="container prose-band__inner">
         <h2 class="prose-band__h2" data-reveal-words>What changes if the credit is funded differently?</h2>
         <p class="prose-band__body" data-reveal>

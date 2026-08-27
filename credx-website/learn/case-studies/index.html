@@ -158,24 +158,43 @@
   <main id="top">
 
     <!-- ============================================================
-         1 · TITLE + STANDFIRST + META ROW.
-         `.hero--compact` — type-led, no photograph.
+         1 · TITLE + STANDFIRST + META ROW + THE PHOTOGRAPH.
+         ↩ 2026-08-27 · WAS `.hero--compact`, TYPE-LED, NO PICTURE. Marcos:
+         "pode colocar uma imagem ao lado na hero, parece que nesse caso pode
+         ser um campo de golf genérico, pegar no adobe stock para testarmos."
+         Now `.hero--split` — the existing 50/50 composition from
+         `/how-it-works`, so this costs no new component.
+         🔴 THE PICTURE IS A LICENSED ADOBE STOCK ASSET, NOT A STAND-IN.
+         AdobeStock #347433847, 5464×3640, licensed 2026-08-27 through the
+         Adobe MCP. ⚠ AN AERIAL WAS CHOSEN OVER THREE ALTERNATIVES FOR TWO
+         REASONS, and both matter if it is ever replaced: it is near-square, so
+         the 4:5 `.hero__frame` crops it without losing its subject (the two
+         runners-up were a 2.3:1 panorama the frame would have destroyed and a
+         Florida course with palms); and an aerial reads as PORTFOLIO, which is
+         what a four-club group is, rather than as one hero golfer. No people at
+         readable scale, no golden-hour beauty register, `isGenTech: false`.
+         ⚠ `.hero__h1--sentence` is required here — `.hero--split .hero__h1`
+         caps at 12ch for `/how-it-works`, and this title is a sentence with two
+         figures in it.
          🔴 THE HEADLINE IS THE OUTCOME, NOT THE CLIENT. That is the client's
          own convention — their hockey deck titles itself "A Major Canadian
          Hockey Organization Identified Up to $2.9M in Recoverable Value",
          naming nobody. This follows it.
          ============================================================ -->
-    <section class="hero hero--compact" aria-label="Case study: a four-club golf group">
+    <section class="hero hero--split" aria-label="Case study: a four-club golf group">
       <div class="container hero__inner">
         <div class="hero__copy">
           <p class="eyebrow eyebrow--accent" data-reveal>Case Study &middot; Golf &amp; Private Clubs</p>
-          <h1 class="hero__h1" data-reveal-words>A Four-Club Golf Group, and <em class="accent">$333K to $895K</em> in Annual Value</h1>
+          <h1 class="hero__h1 hero__h1--sentence" data-reveal-words>A Four-Club Golf Group, and <em class="accent">$333K to $895K</em> in Annual Value</h1>
           <p class="hero__sub" data-reveal data-reveal-delay="1">
             The group runs four clubs across Western Canada and absorbs a card network cost on every dollar its members spend. This is where that money goes, what an embedded value layer returns instead, and what the group gets that it has never had before.
           </p>
           <p class="figure-note" data-reveal data-reveal-delay="2">
             Embedded Value Platform &amp; white-label member revolving credit &middot; All figures estimated from publicly available volume data
           </p>
+        </div>
+        <div class="hero__frame" data-reveal data-reveal-delay="1">
+          <img src="../../images/case-study-golf-aerial.jpg" alt="An aerial view of a golf course, fairways and sand traps laid out between stands of trees" width="5464" height="3640" />
         </div>
       </div>
     </section>
@@ -189,10 +208,14 @@
          `.prose-band__inner:has(> .gains__strip)` sets `display: block` and
          undoes the two-column spine — the exact defect that made /evp §5
          "bem feia".
-         ⚠ NOT `.section--doc` here: that modifier sets the inner to `display:
-         block` at 960px and the rail would lose its column.
+         ↩ 2026-08-27 · NOW `.section--read`, WHICH DELIBERATELY DROPS THE RAIL
+         COMPOSITION. The rail put the figures in a left column beside the prose
+         at 1184px; the rest of this page is now one 672px reading column, and a
+         single two-column section in the middle of it is exactly the mixed-axis
+         problem Marcos flagged. The `.tally` keeps its frame and sits above the
+         prose, full column width. 🔒 The `.gains__strip` ban below still holds.
          ============================================================ -->
-    <section class="section prose-band" aria-label="Reducing the cost of every payment">
+    <section class="section prose-band section--read" aria-label="Reducing the cost of every payment">
       <div class="container prose-band__inner">
         <h2 class="prose-band__h2" data-reveal-words>Reducing the cost of every payment.</h2>
         <div class="prose-band__rail" data-reveal>
@@ -294,7 +317,7 @@
          ⚠ Not `.gains__list` (3 columns, and two cards in it orphans one)
          and not `.control__three` (three).
          ============================================================ -->
-    <section class="section prose-band section--doc" aria-label="The white-label platform">
+    <section class="section prose-band section--read" aria-label="The white-label platform">
       <div class="container prose-band__inner">
         <h2 class="prose-band__h2" data-reveal-words>The group's name. CredX infrastructure.</h2>
         <p class="prose-band__body" data-reveal>
@@ -328,7 +351,7 @@
       </div>
     </section>
 
-    <section class="section prose-band section--doc" aria-label="Making the season count more">
+    <section class="section prose-band section--read" aria-label="Making the season count more">
       <div class="container prose-band__inner">
         <h2 class="prose-band__h2" data-reveal-words>Making the season count more.</h2>
         <p class="prose-band__body" data-reveal>
@@ -402,7 +425,7 @@
          deck prints $51K-$121K. Streams 2 and 3 both reconcile exactly.
          Marked, not corrected.
          ============================================================ -->
-    <section class="section prose-band section--doc" aria-label="Club by club, stream by stream">
+    <section class="section prose-band section--read" aria-label="Club by club, stream by stream">
       <div class="container prose-band__inner">
         <h2 class="prose-band__h2" data-reveal-words>Club by club, stream by stream.</h2>
         <p class="prose-band__body" data-reveal>

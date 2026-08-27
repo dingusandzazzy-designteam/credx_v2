@@ -35,6 +35,13 @@
        ⚠ The one real picture is a STAND-IN reused from the Home's sanctioned
        `images/novas/` set. Image generation runs through Marcos in ChatGPT
        and no post-specific master exists.
+       ↩ 2026-08-27 · THE FILTER IS NO LONGER `.btn`. Marcos: "vamos repensar o
+       filtro? talvez um dropdown aqui faça mais sentido? não sei dizer…" — the
+       answer is not a dropdown, and the reason is this page's own hero: "pick
+       the one you are". The four audiences ARE the proposition and a select
+       hides them behind a click. The real defect was that a filled magenta
+       `.btn-primary` sat in the reading flow competing with `Book a meeting`.
+       `.filterbar` is the same four controls reading as state, not as action.
        ⚠ THE FILTER IS A LAYOUT DEMONSTRATION, NOT THE PRODUCTION FILTER. In
        Webflow this is a CMS collection filter. The inline script at the bottom
        exists so the devs can see the interaction they are approving; it is
@@ -112,7 +119,7 @@
 
   <main id="top">
 
-    <section class="hero hero--compact" aria-label="Blog">
+    <section class="hero hero--read" aria-label="Blog">
       <div class="container hero__inner">
         <div class="hero__copy">
           <p class="eyebrow eyebrow--accent" data-reveal>Learn · Blog</p>
@@ -138,14 +145,14 @@
     <section class="section" aria-label="Posts">
       <div class="container">
 
-        <div class="section-ctas section-ctas--start" style="margin-top: 0;" data-reveal role="group" aria-label="Filter by audience">
-          <button type="button" class="btn btn-primary" data-blog-filter="all" aria-pressed="true">Everything</button>
-          <button type="button" class="btn btn-secondary" data-blog-filter="merchant" aria-pressed="false">For Merchants</button>
-          <button type="button" class="btn btn-secondary" data-blog-filter="consumer" aria-pressed="false">For Consumers</button>
-          <button type="button" class="btn btn-secondary" data-blog-filter="lender" aria-pressed="false">For Lenders</button>
+        <div class="filterbar" data-reveal role="group" aria-label="Filter by audience">
+          <button type="button" class="filterbar__btn" data-blog-filter="all" aria-pressed="true">Everything</button>
+          <button type="button" class="filterbar__btn" data-blog-filter="merchant" aria-pressed="false">For Merchants</button>
+          <button type="button" class="filterbar__btn" data-blog-filter="consumer" aria-pressed="false">For Consumers</button>
+          <button type="button" class="filterbar__btn" data-blog-filter="lender" aria-pressed="false">For Lenders</button>
         </div>
 
-        <div class="vertical-grid" style="margin-top: var(--s-8);" data-blog-grid data-reveal data-reveal-delay="1">
+        <div class="vertical-grid vertical-grid--3" style="margin-top: var(--s-8);" data-blog-grid data-reveal data-reveal-delay="1">
 
           <!-- ✅ THE ONE REAL POST. Topic decided by the 2026-08-20 SEO ruling,
                not chosen here. ⚠ The slug is PROVISIONAL — it is drawn from
@@ -267,8 +274,6 @@
           buttons.forEach(function (b) {
             var on = b === btn;
             b.setAttribute('aria-pressed', String(on));
-            b.classList.toggle('btn-primary', on);
-            b.classList.toggle('btn-secondary', !on);
           });
           cards.forEach(function (card) {
             card.hidden = !(want === 'all' || card.getAttribute('data-audience') === want);
