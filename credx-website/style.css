@@ -6809,6 +6809,16 @@ a.vertical-card:hover .vertical-card__media { opacity: 0.92; }
    and the hero has no bottom edge at all. It reaches full ink at 92%, not 100%:
    landing on it at the last pixel still left a visible transition.
    --------------------------------------------------------------------------- */
+/* ---- .figure-note--start - a caption under a full-width figure ------------
+   `.figure-note` centres itself on the prose measure, which is right under a
+   figure inside a reading column and wrong under something that spans the
+   container. On the case study the three `.datasheet` tables run full width at
+   x=128 while their captions were centring at x=352.
+   ↩ THIS SELECTOR WAS ADDED FOR THE BLOG INDEX, THEN DELETED THE SAME HOUR when
+   its only consumer was removed. It is back because the case study gives it
+   three, which is the difference between a utility and a leftover. */
+.figure-note--start { margin-inline: 0; }
+
 /* ---- .hero--index - a hero that belongs to a grid, not to a column --------
    Marcos, on the blog index: "pode alinhar a hero a esquerda, juntamente com os
    filtros."
@@ -7039,7 +7049,10 @@ a.vertical-card:hover .vertical-card__cta::after { transform: translateX(4px); }
 
 .section--read .control__header,
 .section--read .control__h2,
-.section--read .faq__header {
+.section--read .faq__header,
+.section--read .gains__header,
+.section--read .gains__h2,
+.section--read .gains__benchmark {
   text-align: left;
   margin-inline: 0;
 }
