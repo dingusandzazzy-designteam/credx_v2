@@ -178,6 +178,29 @@
     </section>
 
     <!-- ============================================================
+         1b · THE FEATURED IMAGE — ONE CMS FIELD, TWO RENDERINGS. The same
+         field paints the card on `/learn/blog/` and this block. It is
+         OPTIONAL: delete this whole `.container` and the post still reads,
+         which is the point — three of the four seed posts have no picture yet
+         and their topics are owed.
+         ⚠ IT SITS UNDER THE TITLE, NOT BEHIND IT. The reader scrolls INTO the
+         picture instead of landing on it — `/about`'s `.hero-media` logic. A
+         full-bleed photo behind the H1 would make this the ninth page opening
+         on the composition DESIGN.md's anti-references name outright.
+         ⚠ NO NEW COMPONENT: `.section-media` is already the 16:9 framed block
+         and `.section-media img` already covers.
+         🔴 THE PICTURE IS A STAND-IN, AND IT IS SAID ON THE PAGE. It is
+         reused from the Home's sanctioned `images/novas/` set rather than
+         originated here — image generation runs through Marcos in ChatGPT and
+         no post-specific master exists. Each published post gets its own.
+         ============================================================ -->
+    <div class="container">
+      <div class="section-media">
+        <img src="../../../images/novas/business-bakery.png" alt="A baker restocking a display case of pastries and bread in a bright bakery" width="1536" height="1024" />
+      </div>
+    </div>
+
+    <!-- ============================================================
          2 · BODY. `.prose-band` + `.section--doc` for left-hung headings,
          which is the reading treatment already used on `/evp` and `/about`.
          ⚠ H2s are the reader's own questions. First sentence answers.
@@ -206,6 +229,25 @@
       </div>
     </section>
 
+    <!-- ============================================================
+         2b · AN IN-BODY FIGURE — the third slot, and the one a rich-text CMS
+         field supplies natively. Repeatable: a post can carry none, one, or
+         several. `<figure>` + `<figcaption>` is the semantic form and this is
+         the first instance of either element on the site.
+         ⚠ IT STAYS ON THE PROSE COLUMN. A picture that breaks the reading
+         column interrupts the argument it exists to support.
+         🔴 STAND-IN, same as above. -->
+    <section class="section prose-band section--doc" aria-label="A figure">
+      <div class="container prose-band__inner">
+        <figure class="prose-figure" data-reveal>
+          <div class="section-media">
+            <img src="../../../images/novas/business-sportinggoods.png" alt="A sporting goods shop, an operator restocking apparel between racks of equipment" width="1536" height="1024" loading="lazy" />
+          </div>
+          <figcaption class="prose-figure__caption">The fee is deducted the same way in every one of these rooms, whatever is on the shelves. It is the one cost an operator cannot negotiate and cannot see itemized.</figcaption>
+        </figure>
+      </div>
+    </section>
+
     <section class="section prose-band section--doc" aria-label="What changes">
       <div class="container prose-band__inner">
         <h2 class="prose-band__h2" data-reveal-words>What changes if the credit is funded differently?</h2>
@@ -220,6 +262,10 @@
         </p>
       </div>
     </section>
+
+    <div class="container">
+      <p class="figure-note">Both pictures above are stand-ins, reused from the Home's approved set so the image slots can be seen working. Each published post carries its own master.</p>
+    </div>
 
     <!-- ============================================================
          3 · FAQ — carries the `FAQPage` schema in the head.

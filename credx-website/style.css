@@ -6283,3 +6283,296 @@ a.vertical-card:hover .vertical-card__name::after { transform: translateX(4px); 
   .tally { max-width: 32rem; }
   .prose-band__rail { margin-bottom: var(--s-7); }
 }
+
+
+/* ============================================================
+   .datasheet — the case-study data table. NEW 2026-08-27.
+   ⚠ Name pre-flighted against style.css and every page HTML before use:
+   `.datasheet`, `.datasheet__*` were all unused. `.rail` collided this way
+   once and it is now a standing check. ⚠ NOT `.sheet` — that is /lenders'
+   two-column term/value list and cannot hold four columns.
+
+   🔴 WHY A REAL <table> AND NOT A GRID OF CARDS. A case study's per-club
+   breakdown is tabular data: the reader compares DOWN a column (which club
+   costs most) and ACROSS a row (what one club produces per stream). A card
+   grid supports neither comparison, and the source deck proves it — it
+   repeats the same four-card row three times, once per stream, and the
+   reader has to hold twelve cards in their head to make one comparison.
+   One table says it once. Semantics come free: header association, row
+   scope, and a caption a screen reader announces before the data.
+
+   ⚠ THE WRAPPER SCROLLS, THE PAGE DOES NOT. Four numeric columns do not fit
+   360px and must not be allowed to widen the document — that is a horizontal
+   body scroll on every page of the site, not just this one. `min-width` on
+   the table plus `overflow-x` on the wrapper keeps the overflow local.
+   ============================================================ */
+.datasheet {
+  margin-top: var(--s-8);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-card-sm);
+  background-color: var(--surface-1);
+  overflow-x: auto;
+  /* The scroll container is focusable so a keyboard user can reach the
+     overflow. Without this the columns past the fold are unreachable without
+     a pointer — the defect that makes most responsive tables inaccessible. */
+  -webkit-overflow-scrolling: touch;
+}
+
+.datasheet table {
+  width: 100%;
+  /* Below this the numeric columns collide; the wrapper scrolls instead. */
+  min-width: 40rem;
+  border-collapse: collapse;
+  font-variant-numeric: lining-nums tabular-nums;
+}
+
+/* The caption is the table's title and stays visible: a data table that
+   arrives without saying what it counts is a wall of numbers. */
+.datasheet caption {
+  caption-side: top;
+  text-align: left;
+  padding: var(--s-6) var(--s-6) 0;
+  font-family: var(--font-body);
+  font-size: var(--type-h3);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  color: var(--text-primary);
+}
+
+.datasheet th,
+.datasheet td {
+  padding: var(--s-5) var(--s-6);
+  text-align: left;
+  vertical-align: top;
+}
+
+.datasheet thead th {
+  font-size: var(--type-caption);
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  border-bottom: 1px solid var(--border-default);
+  white-space: nowrap;
+}
+
+/* Numerals right-align so digits stack by place value; the row label does not. */
+.datasheet thead th:not(:first-child),
+.datasheet td:not(:first-child) { text-align: right; }
+
+.datasheet tbody tr + tr th,
+.datasheet tbody tr + tr td { border-top: 1px solid var(--border-subtle); }
+
+.datasheet tbody th {
+  font-family: var(--font-body);
+  font-size: var(--type-body);
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--text-primary);
+}
+
+.datasheet tbody td {
+  font-size: var(--type-body);
+  line-height: 1.4;
+  color: var(--text-primary);
+  white-space: nowrap;
+}
+
+/* The qualifier under a row label — the POS stack, the venue type. Caption
+   scale so it stays subordinate to the name it describes. */
+.datasheet__note {
+  display: block;
+  margin-top: var(--s-2);
+  font-family: var(--font-body);
+  font-size: var(--type-caption);
+  font-weight: 400;
+  font-style: italic;
+  line-height: 1.35;
+  color: var(--text-muted);
+  white-space: normal;
+  text-wrap: pretty;
+}
+
+/* The total row is the one line most readers came for, so it is the one line
+   that gets a surface. The rule above it is the heaviest in the table. */
+.datasheet tfoot th,
+.datasheet tfoot td {
+  border-top: 1px solid var(--border-default);
+  background-color: var(--surface-2);
+  font-size: var(--type-body-lg);
+  font-weight: 600;
+  color: var(--text-primary);
+  white-space: nowrap;
+}
+.datasheet tfoot th { font-family: var(--font-body); text-align: left; }
+.datasheet tfoot tr:first-child th,
+.datasheet tfoot tr:first-child td { border-top-width: 1px; }
+
+/* ---- .datasheet--bars — the chart and the table are the same object -------
+   🔴 THE SOURCE DECK DRAWS THIS AS A GROUPED BAR CHART WITH A Y-AXIS AND A
+   LEGEND. Twelve bars, three colours, an axis to read heights against and a
+   legend to decode the colours — four lookups to answer "what does this club
+   save at 65%". Printing the value next to its own bar answers it in zero,
+   and it retires the axis and the legend together.
+   ⚠ THE BAR IS DECORATION, THE NUMBER IS THE DATA. Every value is written out
+   in text, so the bar carries no information of its own and needs to meet no
+   contrast threshold — which is what makes a three-tone ramp safe here.
+   The ramp encodes adoption: lavender 40% → purple 65% → magenta 85%.
+   --------------------------------------------------------------------------- */
+.datasheet--bars td { white-space: nowrap; }
+
+/* 🔴 A FIXED TRACK, NOT A PERCENTAGE OF THE CELL — and the first version got
+   this wrong in a way only a render caught. With `width: var(--v)` as a
+   percentage, `--v: 100%` filled the entire cell content box and butted the
+   longest bar straight into the previous column's value: "$95K▬▬▬▬$125K", no
+   gap, on the one row that mattered most. It also meant every column had its
+   own silent scale, because cell widths differ. `--v` is now UNITLESS (0-1)
+   against a 7rem track, so all twelve bars share one origin and one scale. */
+.datasheet__bar {
+  display: grid;
+  grid-template-columns: 7rem auto;
+  align-items: center;
+  justify-content: end;
+  gap: var(--s-4);
+}
+
+.datasheet__bar::before {
+  content: '';
+  display: block;
+  width: calc(var(--v, 0) * 7rem);
+  /* A zero-value bar would vanish and read as missing data rather than as a
+     small number, so the track always shows at least a dot. */
+  min-width: 3px;
+  height: 8px;
+  border-radius: var(--radius-pill);
+  background-color: var(--bar-tone, var(--soft-lavender));
+}
+
+.datasheet--bars td:nth-of-type(1) { --bar-tone: var(--soft-lavender); }
+.datasheet--bars td:nth-of-type(2) { --bar-tone: var(--purple); }
+.datasheet--bars td:nth-of-type(3) { --bar-tone: var(--magenta-bright); }
+
+@media (max-width: 719.98px) {
+  .datasheet th,
+  .datasheet td { padding: var(--s-4) var(--s-5); }
+  .datasheet caption { padding: var(--s-5) var(--s-5) 0; }
+  /* The wrapper is already scrolling by this width; a shorter track buys back
+     enough of it that two columns stay on screen at once. */
+  .datasheet__bar { grid-template-columns: 4.5rem auto; gap: var(--s-3); }
+  .datasheet__bar::before { width: calc(var(--v, 0) * 4.5rem); }
+}
+
+
+/* ============================================================
+   BLOG IMAGERY — `.vertical-card__media` + `.prose-figure`. NEW 2026-08-27.
+   ⚠ Names pre-flighted against style.css and every page HTML: both unused,
+   and `<figure>` did not appear anywhere on this site before now.
+
+   🔴 THE STANDARD, AND THE ONE DECISION THAT MATTERS: THE IMAGE IS OPTIONAL.
+   Marcos, 2026-08-27 — "pode ser que eles queiram adicionar alguma postagem
+   com imagem". MAY want. Three of the four seed posts do not exist yet and
+   their topics are owed, so the common production state is a post with NO
+   featured image. A blog template whose layout only holds when an image is
+   present is broken by the first post without one. Every slot below reads
+   correctly filled AND empty, and the index proves both states side by side.
+
+   THE THREE SLOTS A CMS BLOG NEEDS, AND NO MORE:
+   1 · Featured image — ONE field, TWO renderings: the card in the index and
+       the top of the post. That is the whole reason it is one field.
+   2 · In-body figures — repeatable, captioned, inside the rich-text field.
+   3 · The no-image default — not an absence, a designed state. Without it a
+       CMS grid where one post in four has a picture reads as broken.
+
+   ⚠ THE FEATURED IMAGE IS NOT A HERO. It sits BELOW the title, standfirst
+   and meta row, so the reader scrolls INTO it rather than landing on it —
+   `/about`'s `.hero-media` reasoning, same asset, lower rank. A full-bleed
+   photo behind the title would make this the ninth page opening on the
+   composition DESIGN.md's anti-references name outright: "nine pages with
+   one opening". The post keeps `.hero--compact` and gains a picture under it.
+   ⚠ The post's featured image needs NO new component — `.section-media` is
+   already a 16:9 framed block and `.section-media img` already covers.
+   ============================================================ */
+
+/* ---- The card thumbnail ---------------------------------------------------
+   Full-bleed to the card edge, not inset: a thumbnail with a margin inside a
+   bordered card is two frames around one picture. The `:has()` guard scopes
+   the clip to cards that actually carry media, so the root hub's five
+   vertical cards are untouched. */
+.vertical-card:has(> .vertical-card__media) {
+  overflow: hidden;
+  padding-top: 0;
+}
+
+.vertical-card__media {
+  /* Cancels the card's own inline padding so the picture meets the border. */
+  margin: 0 calc(var(--s-6) * -1) var(--s-3);
+  aspect-ratio: 16 / 9;
+  background-color: var(--surface-2);
+  /* 🔴 THE NO-IMAGE DEFAULT LIVES HERE, ON THE CONTAINER, so it needs no
+     markup of its own: a card with no img element inside still paints. The mark
+     sits at 6% — present enough to read as a chosen surface, quiet enough
+     that four of them in a grid do not become a wall of logos. NOT
+     `--gradient-1`: that token is spent once per page on `.final-cta`, and a
+     grid of gradient tiles would break the one rule that keeps it an event. */
+  background-image: url(assets/logo/credx-shape.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 22%;
+  position: relative;
+  overflow: hidden;
+}
+
+/* The img element, when there is one, covers the default rather than replacing
+   the rules — so a broken or slow image degrades to the designed state
+   instead of to a white box. */
+.vertical-card__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* The lift on hover belongs to the card; the picture must not also scale, or
+   two things move at two rates for one pointer gesture. */
+a.vertical-card:hover .vertical-card__media { opacity: 0.92; }
+
+@media (prefers-reduced-motion: reduce) {
+  a.vertical-card:hover .vertical-card__media { opacity: 1; }
+}
+
+/* ---- The in-body figure ---------------------------------------------------
+   A real `<figure>` + `<figcaption>`, which this site had no instance of
+   before. ⚠ IT SITS ON THE PROSE COLUMN, NOT FULL WIDTH. A blog post is one
+   reading column; a picture that breaks out of it interrupts the argument it
+   is meant to support. `.section-media` inside supplies the frame.
+   ⚠ THE CAPTION TAKES THE ch CONVERSION. It is 14px inside an 18px column, so
+   a plain `65ch` would resolve ~107px narrow and indent silently against the
+   prose above it — the trap that has bitten this project four times. This is
+   the same declaration `.figure-note` and `.consent-note` carry. */
+.prose-figure {
+  margin: var(--s-8) 0;
+  /* 🔴 THE ch CONVERSION, AND THE FIRST VERSION SHIPPED WITHOUT IT. The figure
+     inherits the 16px body face while the column it belongs to is set at 18px,
+     so it took the container's full 1184px and left a 630px caption sitting
+     under a 1184px picture, left-aligned — which reads as a mistake, not as a
+     full-bleed choice. Caught by render, not by reading; the comment above
+     already CLAIMED the prose column while the CSS did not deliver it. Both
+     this and `__caption` now resolve to 630.703px, same as `.prose-band__body`,
+     `.figure-note`, `.consent-note`, `.defs` and `.triad`. */
+  max-width: calc(65ch * 18 / 16);
+}
+
+.prose-figure .section-media {
+  margin-bottom: var(--s-4);
+}
+
+.prose-figure__caption {
+  max-width: calc(65ch * 18 / 14);
+  font-size: var(--type-caption);
+  font-style: italic;
+  line-height: 1.5;
+  color: var(--text-muted);
+  text-wrap: pretty;
+}

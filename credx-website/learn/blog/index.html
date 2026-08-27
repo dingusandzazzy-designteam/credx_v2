@@ -24,6 +24,17 @@
        ⚠ THE AUDIENCE AXIS IS THE SPEC'S OWN — Merchant / Consumer / Lender —
        so tagging the three slots by audience is not fabrication. The TOPIC
        axis is deliberately absent: it needs the four topics first.
+       🆕 2026-08-27 · THE FEATURED IMAGE IS NOW A SLOT, AND BOTH STATES ARE
+       ON THIS SCREEN ON PURPOSE. One card carries a picture; three carry the
+       no-image default. That is not a shortcoming of the proof, it IS the
+       proof — the Featured Image field is OPTIONAL, three of the four seed
+       posts have no topic yet let alone a master, and a grid that only holds
+       when every post has a picture breaks on the first post that does not.
+       The default is a designed surface, not an absence: `--surface-2` with
+       the CredX mark at 6%. See the component comment in style.css.
+       ⚠ The one real picture is a STAND-IN reused from the Home's sanctioned
+       `images/novas/` set. Image generation runs through Marcos in ChatGPT
+       and no post-specific master exists.
        ⚠ THE FILTER IS A LAYOUT DEMONSTRATION, NOT THE PRODUCTION FILTER. In
        Webflow this is a CMS collection filter. The inline script at the bottom
        exists so the devs can see the interaction they are approving; it is
@@ -142,24 +153,30 @@
                where it goes next") so it does not invent vocabulary, but the
                devs mint the real one in the CMS. -->
           <a href="./where-the-card-fee-goes/" class="vertical-card" data-audience="merchant">
+            <span class="vertical-card__media">
+              <img src="../../images/novas/business-bakery.png" alt="A baker restocking a display case of pastries and bread in a bright bakery" width="1536" height="1024" loading="lazy" />
+            </span>
             <span class="vertical-card__name">Where the Card Fee Goes</span>
             <span class="vertical-card__desc">Every card sale carries a fee that leaves the business and does not come back. This follows one transaction through, names each party that takes a share, and shows what changes when the credit is funded differently.</span>
             <span class="vertical-card__badge">For Merchants</span>
           </a>
 
           <div class="vertical-card vertical-card--soon" data-audience="consumer">
+            <span class="vertical-card__media"></span>
             <span class="vertical-card__name">Seed post 2</span>
             <span class="vertical-card__desc">Written for the customer at the counter. Audience is set by the spec; the topic is owed by the client and no position is drafted here.</span>
             <span class="vertical-card__badge">Topic pending</span>
           </div>
 
           <div class="vertical-card vertical-card--soon" data-audience="lender">
+            <span class="vertical-card__media"></span>
             <span class="vertical-card__name">Seed post 3</span>
             <span class="vertical-card__desc">Written for the community lender funding the credit. Audience is set by the spec; the topic is owed.</span>
             <span class="vertical-card__badge">Topic pending</span>
           </div>
 
           <div class="vertical-card vertical-card--soon" data-audience="merchant">
+            <span class="vertical-card__media"></span>
             <span class="vertical-card__name">Seed post 4</span>
             <span class="vertical-card__desc">Second merchant-facing post. Audience is set by the spec; the topic is owed.</span>
             <span class="vertical-card__badge">Topic pending</span>
