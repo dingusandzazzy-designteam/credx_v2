@@ -6684,17 +6684,33 @@ a.vertical-card:hover .vertical-card__media { opacity: 0.92; }
    "The Blog" collapsed the whole hero to ~230px and broke a two-line paragraph
    into five. Block layout is what centres this, and what lets each child take
    the measure. */
+/* ↩ 2026-08-27, SECOND PASS: THE HERO IS LEFT-ALIGNED, NOT CENTRED.
+   The first version centred it on Marcos's "pode ser tudo ao centro", and on the
+   glossary index — H1 "The Glossary", two short symmetric lines — it read fine.
+   On the term page it did not, and he called it: "o problema está em margens
+   diferentes ao longo da página."
+   🔴 MEASURED, and the count is the argument: every block below the hero sits at
+   x=280 (279-282 is glyph variation). The hero, being centred, starts its five
+   lines at 655, 387, 510, 284 and 604. FIVE left edges in the first block of the
+   page, then one edge for the remaining forty.
+   ⚠ AND THE STANDFIRST IS WHAT MAKES IT WORST: it measures 870px inside an 880px
+   column, so centred it fills the line and only the last line is short — it reads
+   as left-aligned with a mistake at the end rather than as a centred block.
+   ✅ `.hero--feature` is deliberately NOT changed: on the blog post the copy sits
+   on a photograph with no column beside it to align to, and centred is the
+   convention there. That is one exception, on the one hero that has a picture
+   behind it. */
 .hero--read .hero__inner {
   display: block;
   max-width: calc(var(--measure-read) + var(--container-pad) * 2);
   margin-inline: auto;
-  text-align: center;
+  text-align: left;
 }
 
 .hero--read .hero__copy {
   max-width: var(--measure-read);
-  margin-inline: auto;
-  text-align: center;
+  margin-inline: 0;
+  text-align: left;
 }
 
 .hero--read .hero__h1,
@@ -6702,8 +6718,8 @@ a.vertical-card:hover .vertical-card__media { opacity: 0.92; }
 .hero--read .eyebrow,
 .hero--read .figure-note {
   max-width: none;
-  margin-inline: auto;
-  text-align: center;
+  margin-inline: 0;
+  text-align: left;
 }
 
 .hero--read .hero__h1 { text-wrap: balance; }
@@ -6828,7 +6844,13 @@ a.vertical-card:hover .vertical-card__media { opacity: 0.92; }
 .hero--feature .hero__inner {
   position: relative;
   z-index: 1;
+  /* The centring used to be inherited from `.hero--read`, which now left-aligns.
+     It is declared here because on a photograph there is no column beside the
+     copy to hang it off — see the note under `.hero--read`. */
+  text-align: center;
 }
+
+.hero--feature .hero__copy { margin-inline: auto; }
 
 /* ---- .final-cta--spaced - the closing band was arriving too soon ----------
    Marcos, on the Learn hub: "aumentar o espaçamento entre os cards e o CTA."
