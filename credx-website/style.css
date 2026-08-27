@@ -6809,6 +6809,12 @@ a.vertical-card:hover .vertical-card__media { opacity: 0.92; }
    and the hero has no bottom edge at all. It reaches full ink at 92%, not 100%:
    landing on it at the last pixel still left a visible transition.
    --------------------------------------------------------------------------- */
+/* A caption that belongs to a full-width grid rather than to a reading column.
+   `.figure-note` centres itself on the prose measure, which is right under a
+   figure inside a column and wrong under the blog index's card grid — measured
+   at x=353 while every other block on that page starts at 128. */
+.figure-note--start { margin-inline: 0; }
+
 /* ---- .hero--index - a hero that belongs to a grid, not to a column --------
    Marcos, on the blog index: "pode alinhar a hero a esquerda, juntamente com os
    filtros."
