@@ -6819,6 +6819,43 @@ a.vertical-card:hover .vertical-card__media { opacity: 0.92; }
    three, which is the difference between a utility and a leftover. */
 .figure-note--start { margin-inline: 0; }
 
+/* ---- .section--wide - the case study runs at the container, not the column -
+   Marcos, on the case study: "as tabelas e a hero seguem uma margem, enquanto o
+   corpo do texto/prosa segue outra, não pode ficar assim, pq quebra a leitura…
+   essa página vamos fazer full width, 1184px."
+   🔴 IT IS A PAGE-LEVEL DECISION AND IT ONLY MAKES SENSE ON THIS PAGE TYPE. A
+   case study is evidence-led: three full-width tables and a bar chart, with
+   prose between them. At 880 the reader's left edge moved between 280 and 128
+   five times on the way down. Everything at 1184 gives one edge for the whole
+   document — the nav, the footer, the hero, the tables and the prose.
+   ⚠ THE COST IS REAL AND IS COMPENSATED, NOT IGNORED: 1184px at the 18px prose
+   face is about 128 characters per line, well past the 45-75 comfort band. The
+   line-height goes from 1.6 to 1.75 because on a long measure the return sweep
+   is what fails first — the eye loses which line it came from — and leading is
+   the lever that helps it, not size.
+   ⚠ DO NOT take this to the term pages or the blog post. Those are argument, not
+   evidence: they have no full-width figure to align to, so a wide measure there
+   would buy nothing and cost the same 128 characters. */
+.section--read.section--wide .prose-band__inner,
+.section--read.section--wide > .container {
+  max-width: var(--container-max);
+}
+
+.section--read.section--wide .prose-band__body,
+.section--read.section--wide .defs__body {
+  line-height: 1.75;
+}
+
+/* 🔴 THE RAIL NEEDS ITS OWN GAP ONCE THE SECTION IS A BLOCK. `.prose-band__rail`
+   carries `margin-bottom` only below 960px, because above it the rail sits in a
+   COLUMN beside the prose and a bottom margin would do nothing. `.section--read`
+   makes the section a block at every width, so the prose now follows the panel
+   directly — measured, the first paragraph started on the panel's bottom edge
+   with no gap at all. */
+.section--read .prose-band__rail {
+  margin-bottom: var(--s-7);
+}
+
 /* ---- .hero--index - a hero that belongs to a grid, not to a column --------
    Marcos, on the blog index: "pode alinhar a hero a esquerda, juntamente com os
    filtros."
