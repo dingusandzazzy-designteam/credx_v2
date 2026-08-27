@@ -6654,6 +6654,24 @@ a.vertical-card:hover .vertical-card__media { opacity: 0.92; }
   margin-inline: 0;
 }
 
+/* 🔴 THE PROSE WAS 630px WHILE EVERYTHING AROUND IT WAS 880, AND THE CAUSE IS
+   SPECIFICITY, NOT A MISSING RULE. `.prose-band__inner:has(> .prose-band__h2) >
+   .prose-band__body { max-width: 65ch }` (in the 960px block above) counts THREE
+   classes; the catch-all just above counts two, so the catch-all loses and the
+   body stays at 65ch = 630.703px. Every other block on the page — hero, the
+   related-terms run, the FAQ cards — sits at 880.
+   ⚠ Marcos saw it before any measurement did, twice: "o conteúdo de texto está
+   menor que o restante da página… é pra usar o mesmo tamanho do card de FAQ e
+   Related Terms e Hero." I read it as a request to change the page width and
+   then as a request to change the FAQ card. It was neither: the prose was the
+   only thing out of line, and the fix is to stop it being capped.
+   ⚠ Matching the winning selector's shape is what makes this hold. A
+   `.section--read .prose-band__body` would be two classes and would lose again. */
+.section--read .prose-band__inner > .prose-band__body,
+.section--read .prose-band__inner > .prose-band__aside {
+  max-width: none;
+}
+
 .section--read .prose-band__h2 {
   text-align: left;
   /* A heading with a real column to run into wants its lines evened, not a
