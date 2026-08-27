@@ -6601,9 +6601,8 @@ a.vertical-card:hover .vertical-card__media { opacity: 0.92; }
    `.consent-note`, `.figure-note`, `.prose-figure`) and needs a
    `calc(65ch * 18 / 14)` conversion at every new consumer. A rem measure cannot
    drift: a 48px heading and a 14px caption in this column get the SAME edge,
-   with no conversion and nothing to get wrong. 42rem = 672px, about 72
-   characters at the 18px prose face — inside the 45-75 band, and wide enough
-   that a display H2 stops breaking into a ragged stack.
+   with no conversion and nothing to get wrong. The value is set below and now tracks
+   `.faq__list`, so one page carries one width rather than two.
 
    ⚠ SCOPE: the five template screens only. `/evp` and `/lenders` keep
    `.section--doc` — they are shipped, client-reviewed pages, and "padronizar
@@ -6614,7 +6613,17 @@ a.vertical-card:hover .vertical-card__media { opacity: 0.92; }
    centres its text.
    ============================================================ */
 :root {
-  --measure-read: 42rem;
+  /* ↩ 42rem (672px) UNTIL 2026-08-27. Marcos, reading the blog post: "o FAQ
+     tem tamanho diferente do resto do conteudo, acho ate a largura do faq e boa
+     para usarmos em tudo, em vez de reduzir o faq, aumentar o resto."
+     `.faq__list` is `max-width: 880px` (style.css:2751) and has been since the
+     pillar pages, so the page now lands on ONE width instead of two.
+     ⚠ THE TRADE-OFF IS REAL AND IS HIS CALL, NOT A SILENT ONE: 880px at the
+     18px prose face is about 95 characters per line, above the 45-75 comfort
+     band. If the lines ever read long, the fix is to raise the prose face to
+     20px — which returns the same column to about 85 — NOT to narrow it back
+     and re-introduce the two widths he asked to remove. */
+  --measure-read: 55rem;
 }
 
 /* Beats `.prose-band__inner:has(> .prose-band__h2, > .prose-band__rail)` on
@@ -6700,6 +6709,47 @@ a.vertical-card:hover .vertical-card__media { opacity: 0.92; }
 .hero--read .hero__h1 { text-wrap: balance; }
 .hero--read .hero__sub { text-wrap: pretty; }
 
+/* ---- The hero-to-content interval - ONE gap, not two ----------------------
+   Marcos, on the glossary: "o espaçamento entre o hero e os tópicos ficou muito
+   grande não?" MEASURED, because the eye can be wrong about vertical space and
+   this one was not: 241px between the hero and the first term, against 59-62px
+   between the term groups on the same page. FOUR TIMES the page's own rhythm.
+   ⚠ THE CAUSE IS A STACK, NOT A VALUE. `.hero` closes with `--s-section` and
+   `.section` opens with `--s-section`, so the boundary gets two full intervals
+   where the reader needs one. It is not new and it is not limited to the
+   glossary — MoaT measured 188px and the blog post 201px — it simply became
+   visible once the heroes got shorter and centred, and once the glossary's
+   first element turned out to be a 12px eyebrow letter with nothing above it.
+   ✅ 48 + 48 = 96px, about 1.6x the 59px internal rhythm: enough to say the hero
+   has ended, not enough to read as a hole. `.hero--feature` keeps `--s-9` below
+   the date because that padding is part of the PHOTOGRAPH's proportion, not
+   just space — only the section under it gives ground.
+   --------------------------------------------------------------------------- */
+.hero--read { padding-block-end: var(--s-7); }
+
+.hero--read + .section,
+.hero--feature + .section {
+  padding-block-start: var(--s-7);
+}
+
+/* 🔴 PADDING WAS ONLY 96 OF THE 241, AND TRIMMING IT ALONE MOVED THE GAP TO 209.
+   The other 113px are two trailing/leading margins nobody sees in isolation:
+   `.hero__sub` ships `margin-bottom: var(--s-7)` and the first `.defs` in a
+   section ships `margin-top: var(--s-7)` — both correct in their own component,
+   both dead space at a boundary that already has padding on each side. This is
+   why the gap had to be measured twice: the obvious cause was real and was less
+   than half of it. */
+.hero--read .hero__copy > :last-child,
+.hero--feature .hero__copy > :last-child {
+  margin-bottom: 0;
+}
+
+.hero--read + .section > .container > :first-child,
+.hero--read + .section .prose-band__inner > :first-child,
+.hero--feature + .section .prose-band__inner > :first-child {
+  margin-top: 0;
+}
+
 /* ---- .hero--feature - copy ON the photograph ------------------------------
    Marcos: "imagem ao fundo, overlay de cor, título e support text e data.. em
    cima da imagem."
@@ -6778,6 +6828,66 @@ a.vertical-card:hover .vertical-card__media { opacity: 0.92; }
 .hero--feature .hero__inner {
   position: relative;
   z-index: 1;
+}
+
+/* ---- The blog card: the pill rides the picture, and the card asks ---------
+   Marcos: "os cards de blogs deveriam ter um CTA e o pill poderia ir por cima da
+   imagem… não ficaria melhor?" Yes on both, with one constraint each.
+
+   🔴 THE CTA GOES ON REAL POSTS ONLY. Three of the four cards are slots with no
+   topic and no destination — they are `<div>`, not `<a>`. "Read the post" on a
+   card that goes nowhere is a lie the layout tells, and the whole point of those
+   three is that they hold a slot honestly. The pill still rides their picture,
+   because the no-image default IS a designed surface.
+   ⚠ THE ARROW MOVES FROM THE TITLE TO THE CTA — it does not get added. Two
+   arrows on one card is the `→ →` defect this project already shipped once, on
+   `.sub-link`, and `.vertical-card__name::after` supplies one today. The removal
+   is scoped to `--3` so the root hub's five vertical cards keep theirs.
+   ⚠ The pill is opaque `--surface-3`, so its 5.67:1 is against the pill and not
+   against whatever photograph is behind it. The hairline is what keeps it from
+   dissolving into a busy frame.
+   --------------------------------------------------------------------------- */
+.vertical-card__media .vertical-card__badge {
+  position: absolute;
+  top: var(--s-4);
+  left: var(--s-4);
+  z-index: 1;
+  margin-top: 0;
+  border: 1px solid var(--border-subtle);
+}
+
+.vertical-grid--3 .vertical-card__name::after { content: none; }
+
+.vertical-card__cta {
+  /* Takes over the `margin-top: auto` the badge used to carry, so the card still
+     pins one element to its bottom edge and the grid rows stay even. */
+  margin-top: auto;
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s-2);
+  font-size: var(--type-caption);
+  font-weight: 600;
+  color: var(--text-accent);
+}
+
+.vertical-card__cta::after {
+  /* ⚠ AN ESCAPE, NOT A LITERAL ARROW — and this shipped broken for one
+     render as a control character followed by "92": the sequence was written with a single
+     backslash upstream, so the leading pair was read as an OCTAL escape and CSS
+     received a control character followed by "92". ⚠ IT HAPPENED TWICE: the
+     first FIX was written the same way and shipped the same broken value. Build
+     the sequence without a literal backslash in the source, or copy the working
+     form from `.vertical-card__name::after` — never retype it.
+     the correct form; keep the two identical. */
+  content: '\2192';
+  transition: transform var(--duration-fast) var(--ease-out-quart);
+}
+
+a.vertical-card:hover .vertical-card__cta::after { transform: translateX(4px); }
+
+@media (prefers-reduced-motion: reduce) {
+  a.vertical-card:hover .vertical-card__cta::after { transform: none; }
 }
 
 /* ---- .vertical-grid--3 - three across, not four --------------------------
