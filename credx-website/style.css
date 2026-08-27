@@ -6842,8 +6842,19 @@ a.vertical-card:hover .vertical-card__media { opacity: 0.92; }
 }
 
 .section--read.section--wide .prose-band__body,
-.section--read.section--wide .defs__body {
+.section--read.section--wide .defs__body,
+.section--read.section--wide .gains__benchmark {
   line-height: 1.75;
+}
+
+/* `.gains__benchmark` carries `max-width: 64ch` and `margin-inline: auto` — the
+   right shape for a proof line centred under a stat strip on the Home, and the
+   wrong one here: released from its centring it sat left at 128 but only ~620px
+   wide, a third measure on a page that now has one. Marcos: "deixa o texto The
+   shift is a decision… full width tb." ⚠ Specificity has to beat the base rule,
+   hence both modifiers in the selector. */
+.section--read.section--wide .gains__benchmark {
+  max-width: none;
 }
 
 /* 🔴 THE RAIL NEEDS ITS OWN GAP ONCE THE SECTION IS A BLOCK. `.prose-band__rail`
