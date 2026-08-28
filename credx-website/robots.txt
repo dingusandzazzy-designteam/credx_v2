@@ -5,6 +5,16 @@
 #   serve content, or they become duplicate hosts competing with the canonical.
 #   ⚠ Both domains answer 200 today. The redirect is a DNS/hosting task, not a repo change.
 # ⚠ Still to add before launch: Disallow (or noindex) for the /join onboarding page.
+#   — /join already ships `<meta name="robots" content="noindex, nofollow">`, so the
+#     "or noindex" branch is the one already taken. A Disallow would ADD nothing here.
+#
+# 🔴 NO Disallow FOR /thank-you, AND THAT IS DELIBERATE — 2026-08-27.
+#   The T0 task asks for `noindex` + robots-disallow on that page. The two fight:
+#   Disallow blocks the CRAWL, so the crawler never fetches the page and never reads
+#   the noindex, which leaves the URL eligible to appear as a bare, description-less
+#   result. `noindex` is the directive that actually removes a page from the index,
+#   and it only works if the page stays crawlable. /thank-you ships noindex,follow.
+#   Do not "complete" the task by adding a Disallow line here — it would undo it.
 User-agent: *
 Allow: /
 

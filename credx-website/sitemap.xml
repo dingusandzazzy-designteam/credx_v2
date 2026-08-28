@@ -10,10 +10,17 @@
      DELIBERATELY ABSENT, not missing:
        /join            — meta robots noindex,nofollow (onboarding surface)
        /lenders/partner — meta robots noindex,nofollow (unlinked, awaiting CredX IT)
+       /thank-you       — meta robots noindex,follow (conversion destination)
+                          ⚠ CORRECTED 2026-08-27. This URL was listed below as
+                          "to re-add when built", and that was WRONG: it was
+                          built on 2026-08-27 and it must NEVER be added. A
+                          noindex URL inside a sitemap is a contradictory
+                          signal — the sitemap asks for indexing and the page
+                          refuses it. It belongs in THIS list, permanently.
 
      TO RE-ADD WHEN BUILT (roadmap, Post-MVP-Roadmap.md Batch 3/4 + track T0):
        /legal (or the split legal pages) · /learn/glossary/ and its term pages ·
-       /press · /thank-you
+       /press
      Do not re-add any of them before the page answers 200. lastmod omitted deliberately;
      add it only if it can be kept honest at publish time. -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
