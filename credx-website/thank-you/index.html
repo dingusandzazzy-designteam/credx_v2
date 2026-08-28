@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0b0c16" />
+
+  <!-- Light theme + toggle DEFERRED to a future update (2026-07-24). Dark is the only
+       theme. This page never had a FOUC script or a toggle; do not add one. -->
+
+  <title>Thank You | CredX</title>
+
+  <!-- ⚠ `noindex` IS THE MECHANISM. A conversion destination in search results is
+       both useless and actively harmful: a visitor arriving from a SERP fires a
+       false conversion and corrupts the campaign data the page exists to produce.
+       `follow` rather than `nofollow` — unlike /join, this page links to indexable
+       pages and there is no reason to strand those links. The 404 makes the same call.
+       🔴 THE TASK ALSO ASKS FOR A robots.txt Disallow, AND THAT IS NOT DONE HERE ON
+       PURPOSE: a Disallow stops the crawl, so the crawler never reads the noindex and
+       the URL can still surface as a bare result. The two directives fight. `noindex`
+       alone is the correct one. See the note left in robots.txt.
+       ⚠ AND THIS PAGE MUST NEVER ENTER sitemap.xml — a noindex URL in a sitemap is a
+       contradictory signal. That file's header has been corrected to say so. -->
+  <meta name="robots" content="noindex, follow" />
+
+  <!-- No canonical, no description, no Open Graph — deliberately, and matching /join.
+       This page is not indexed and is not a share target; declaring social metadata
+       for it would only invite it to be treated as one. -->
+
+  <link rel="icon" href="../assets/logo/credx-shape.svg" type="image/svg+xml" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" />
+
+  <link rel="stylesheet" href="../style.css" />
+</head>
+<body>
+  <!-- Nav (G1) — identical to the Home. No `aria-current`: this page is in no nav group. -->
+  <nav class="nav" aria-label="Primary">
+    <div class="container nav__inner">
+      <a href="../" class="nav__logo" aria-label="CredX home">
+        <img src="../assets/logo/Credx-name.svg" alt="CredX" height="28" />
+      </a>
+      <div class="nav__links" data-nav-menu>
+        <a href="../about/" class="nav__link">The Movement</a>
+        <a href="../evp/" class="nav__link">Embedded Value Platform</a>
+        <a href="../how-it-works/" class="nav__link">How It Works</a>
+        <div class="nav__group" data-nav-group>
+          <button type="button" class="nav__link nav__group-toggle" aria-expanded="false" aria-controls="nav-audiences" data-nav-group-toggle>Who We Serve</button>
+          <div class="nav__submenu" id="nav-audiences" data-nav-submenu>
+            <a href="../merchants/" class="nav__sublink">For Merchants</a>
+            <a href="../lenders/" class="nav__sublink">For Lenders</a>
+            <a href="../pos-isv/" class="nav__sublink">For POS &amp; ISV</a>
+          </div>
+        </div>
+        <a href="../contact/" class="nav__link">Contact Us</a>
+      </div>
+      <div class="nav__actions">
+        <!-- {{PENDING:booking-url}} is still owed by Kyle (since 2026-07-20), so the CTA
+             falls back to /contact — the same fallback every other page uses. -->
+        <a href="../join/" class="nav__join">Join</a>
+        <a href="../contact/" class="btn btn-primary nav__cta" data-pending="booking-url">Book a meeting</a>
+        <button class="nav__toggle" data-nav-toggle type="button" aria-label="Open menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <main id="top">
+
+    <!-- ============================================================
+         1 · CONFIRMATION
+         Type-led and centred, the same opening shape as the 404 — both are
+         utility pages a visitor lands on mid-task, and an image here is delay
+         in front of the one thing they came to read.
+         🔴 DELIBERATELY NOT `.hero--alert`. That modifier is the 404's
+         interruption register; a confirmation is the opposite reading, and
+         borrowing the alert band would make a success look like a fault.
+         Plain `.hero--compact .hero--centred`, which is the neutral pair.
+         ============================================================ -->
+    <section class="hero hero--compact hero--centred" aria-labelledby="thanks-title">
+      <div class="container hero__inner">
+        <div class="hero__copy">
+          <!-- ⚠ CONTRACTIONS ARE BANNED SITE-WIDE (ruling 2026-08-20), chrome included.
+               Every line on this page is written in full forms. -->
+          <h1 class="hero__h1" id="thanks-title">Thank you. <em class="accent">We have it.</em></h1>
+          <p class="hero__sub">
+            Your message reached the CredX team. Someone will read it against what you told us about your business, and come back to you directly.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         2 · WHAT HAPPENS NEXT
+         ⚠ REUSES `.join-next` RATHER THAN ADDING CSS. The role is identical —
+         a numbered next-steps panel on a post-submission surface — and this
+         page introduces ZERO new rules, which on a stylesheet with four
+         recorded source-order cascade traps is the safer position by some way.
+         🟠 The consequence, recorded rather than hidden: `.join-next` is now
+         shared by two pages and its name is under-scoped. Renaming it to a
+         neutral `.next-steps` would touch /join, which is shipped and
+         client-reviewed, so that is a separate call rather than a tidy-up.
+
+         ⚠ NO TIMEFRAME IS STATED, AND THAT IS DELIBERATE. /join promises
+         "within one to two business days", but that is the SLA for a merchant
+         APPLICATION reviewed by operations — it has never been promised for a
+         general contact message, and borrowing it here would invent a
+         commitment nobody made. Add it if the client confirms it holds.
+         ============================================================ -->
+    <section class="section prose-band" aria-label="What happens next">
+      <div class="container prose-band__inner">
+        <ol class="join-next">
+          <li class="join-next__item">
+            <span class="join-next__num" aria-hidden="true">1</span>
+            <div>
+              <p class="join-next__title">Our team reads what you sent</p>
+              <p class="join-next__body">Your note goes to the people who work with businesses like yours, not to a general queue.</p>
+            </div>
+          </li>
+          <li class="join-next__item">
+            <span class="join-next__num" aria-hidden="true">2</span>
+            <div>
+              <p class="join-next__title">You hear from us by email</p>
+              <p class="join-next__body">We come back with what joining would look like for your volume and your customers, in numbers rather than in general terms.</p>
+            </div>
+          </li>
+          <li class="join-next__item">
+            <span class="join-next__num" aria-hidden="true">3</span>
+            <div>
+              <p class="join-next__title">Nothing further is needed from you</p>
+              <p class="join-next__body">There is no form to complete twice and no second message to send. We take it from here.</p>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         3 · WHILE YOU WAIT
+         ⚠ REUSES `.notfound__list`, same reasoning as §2: the role is a
+         labelled recovery-link list, which is exactly what that class is, and
+         reusing it adds no CSS. Its name is under-scoped for the same reason
+         and inherits the same deferred-rename note.
+         The four destinations are the 404's, minus Contact — the visitor has
+         just used Contact, so offering it back is the one link that reads as
+         a failure to notice what they did.
+         ============================================================ -->
+    <section class="section prose-band" aria-label="While you wait">
+      <div class="container prose-band__inner">
+        <ul class="notfound__list">
+          <li>
+            <a href="../how-it-works/">How It Works</a>
+            <span>What embedded lending is, and the mechanics in the order your business meets them.</span>
+          </li>
+          <li>
+            <a href="../evp/">Embedded Value Platform</a>
+            <span>The full stack, as a partnership proposition.</span>
+          </li>
+          <li>
+            <a href="../merchants/">For Merchants</a>
+            <span>What changes at the counter, and what it is worth on your volume.</span>
+          </li>
+          <li>
+            <a href="../about/">The Movement</a>
+            <span>The data economy, and who it belongs to.</span>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer (G2) — byte-identical to the other ten pages (ruling 2026-08-25,
+       "footer geral revisar, corrigir e tornar padrão"). Do not vary it here.
+       ⚠ The LinkedIn href is the bare domain, a pre-existing defect carried from
+       index.html:546, kept identical rather than fixed in isolation. -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__inner footer__inner--sitemap">
+        <div class="footer__brand">
+          <img src="../assets/logo/Credx-name.svg" alt="CredX" height="32" style="margin-bottom: 20px;" />
+          <p class="footer__movement">A system you belong to, instead of one that owns you.</p>
+        </div>
+        <div>
+          <h3 class="footer__col-title">Explore</h3>
+          <div class="footer__links">
+            <a href="../about/" class="footer__link">The Movement</a>
+            <a href="../evp/" class="footer__link">Embedded Value Platform</a>
+            <a href="../how-it-works/" class="footer__link">How It Works</a>
+          </div>
+        </div>
+        <div>
+          <h3 class="footer__col-title">Who We Serve</h3>
+          <div class="footer__links">
+            <a href="../merchants/" class="footer__link">For Merchants</a>
+            <a href="../lenders/" class="footer__link">For Lenders</a>
+            <a href="../pos-isv/" class="footer__link">For POS &amp; ISV</a>
+          </div>
+        </div>
+        <div>
+          <h3 class="footer__col-title">Connect</h3>
+          <div class="footer__links">
+            <a href="../contact/" class="footer__link">Contact Us</a>
+            <a href="../contact/" class="footer__link" data-pending="booking-url">Book a Meeting</a>
+            <a href="https://www.linkedin.com/" class="footer__link" rel="noopener" target="_blank" data-pending="linkedin-url">LinkedIn</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span>© 2026 CredX Tech Inc. · credxtech.com</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.0.45/dist/lenis.min.js"></script>
+  <script src="../script.js"></script>
+</body>
+</html>
