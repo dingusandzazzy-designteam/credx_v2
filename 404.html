@@ -23,18 +23,52 @@
 </head>
 <body>
 
+  <!-- ============================================================
+       ↩ 2026-09-07 · NAV AND FOOTER BROUGHT UP TO THE SHIPPED SET. Marcos:
+       "arruma então o 404". The page was built 2026-08-18 and its chrome had
+       not moved since: the nav carried `How It Works · About · Contact Us`
+       with no `Who We Serve` group and no `Join`, and the footer was the
+       brand block alone. Both now mirror `credx-website/learn/index.html`
+       exactly, with absolute `/credx-website/…` paths — this file is served
+       from the ROOT, so relative links would resolve one level too high.
+       ✅ Also corrected: the footer read `credx-tech.com`; every other page
+       ships `credxtech.com`, which is the host the canonicals were repointed
+       at on 2026-08-25. The hyphenated form was the stale one.
+       ⚠ CTA CASING IS MIRRORED, NOT FIXED — nav says "Book a meeting" and the
+       footer "Book a Meeting", because that is the split every shipped page
+       carries and it is an open item in the register (§3, 2026-08-28).
+       Normalising it here would make the 404 the only page that disagrees.
+       🔴 NO `LEARN` LINK, AND THAT IS DELIBERATE. The six Learn pages ship
+       `noindex` with ZERO inbound links by guardrail, and the `Learn` nav
+       group does not ship until all five destinations hold real content.
+       A link from here would be the first inbound link and would break both.
+       ⚠ A 404 IS SERVED, NOT LINKED: the remaining check is that Vercel
+       returns this file for unmatched `/credx-website/*` paths, which needs a
+       deploy to confirm and no further edit.
+       ============================================================ -->
+
   <nav class="nav" data-nav>
     <div class="container nav__inner">
       <a href="/credx-website/" class="nav__logo" aria-label="CredX home">
         <img src="/credx-website/assets/logo/Credx-name.svg" alt="CredX" height="28" />
       </a>
       <div class="nav__links" data-nav-menu>
+        <a href="/credx-website/about/" class="nav__link">The Movement</a>
+        <a href="/credx-website/evp/" class="nav__link">Embedded Value Platform</a>
         <a href="/credx-website/how-it-works/" class="nav__link">How It Works</a>
-        <a href="/credx-website/about/" class="nav__link">About</a>
+        <div class="nav__group" data-nav-group>
+          <button type="button" class="nav__link nav__group-toggle" aria-expanded="false" aria-controls="nav-audiences" data-nav-group-toggle>Who We Serve</button>
+          <div class="nav__submenu" id="nav-audiences" data-nav-submenu>
+            <a href="/credx-website/merchants/" class="nav__sublink">For Merchants</a>
+            <a href="/credx-website/lenders/" class="nav__sublink">For Lenders</a>
+            <a href="/credx-website/pos-isv/" class="nav__sublink">For POS &amp; ISV</a>
+          </div>
+        </div>
         <a href="/credx-website/contact/" class="nav__link">Contact Us</a>
       </div>
       <div class="nav__actions">
-        <a href="/credx-website/contact/" class="btn btn-primary nav__cta">Book a Meeting</a>
+        <a href="/credx-website/join/" class="nav__join">Join</a>
+        <a href="/credx-website/contact/" class="btn btn-primary nav__cta" data-pending="booking-url">Book a meeting</a>
         <button class="nav__toggle" data-nav-toggle type="button" aria-label="Open menu" aria-expanded="false">
           <span></span><span></span><span></span>
         </button>
@@ -90,14 +124,38 @@
 
   <footer class="footer">
     <div class="container">
-      <div class="footer__inner">
+      <div class="footer__inner footer__inner--sitemap">
         <div class="footer__brand">
           <img src="/credx-website/assets/logo/Credx-name.svg" alt="CredX" height="32" style="margin-bottom: 20px;" />
           <p class="footer__movement">A system you belong to, instead of one that owns you.</p>
         </div>
+        <div>
+          <h3 class="footer__col-title">Explore</h3>
+          <div class="footer__links">
+            <a href="/credx-website/about/" class="footer__link">The Movement</a>
+            <a href="/credx-website/evp/" class="footer__link">Embedded Value Platform</a>
+            <a href="/credx-website/how-it-works/" class="footer__link">How It Works</a>
+          </div>
+        </div>
+        <div>
+          <h3 class="footer__col-title">Who We Serve</h3>
+          <div class="footer__links">
+            <a href="/credx-website/merchants/" class="footer__link">For Merchants</a>
+            <a href="/credx-website/lenders/" class="footer__link">For Lenders</a>
+            <a href="/credx-website/pos-isv/" class="footer__link">For POS &amp; ISV</a>
+          </div>
+        </div>
+        <div>
+          <h3 class="footer__col-title">Connect</h3>
+          <div class="footer__links">
+            <a href="/credx-website/contact/" class="footer__link">Contact Us</a>
+            <a href="/credx-website/contact/" class="footer__link" data-pending="booking-url">Book a Meeting</a>
+            <a href="https://www.linkedin.com/" class="footer__link" rel="noopener" target="_blank" data-pending="linkedin-url">LinkedIn</a>
+          </div>
+        </div>
       </div>
       <div class="footer__bottom">
-        <p>&copy; 2026 CredX Tech Inc. &middot; credx-tech.com</p>
+        <span>&copy; 2026 CredX Tech Inc. &middot; credxtech.com</span>
       </div>
     </div>
   </footer>
