@@ -44,17 +44,23 @@
   // The qualification floor. The only place in the funnel where it is applied.
   var THRESHOLD = 250000;
 
-  /* 🔴 WHY THE BAND IS APPLIED TO THE GAP AND NOT TO VOLUME.
-     The slider on the Home computes `volume × 0.0144` to `volume × 0.03`
-     (script.js:545-546) — anchored to VOLUME, which silently assumes the
-     merchant pays 3.6%. The slider can afford that because it never learns what
-     the merchant actually pays. This page does.
-     A merchant whose statement shows 2.4% effective has a real gap of $9,000 on
-     $500,000. The volume-anchored model would still show $15,000 at the top —
-     a promised saving LARGER THAN THE TOTAL FEES THEY PAY, in writing, with
-     their name on it. So the band scales the merchant's own gap instead.
-     ⚠ O1 is open: range against one exact figure is Mauricio's call. Built as a
-     range because that is the position consistent with what is already live. */
+  /* 🔴 WHAT THE 40-85% BAND ACTUALLY IS, AND WHY ONLY ONE MODE USES IT.
+     SETTLED BY MARCOS, 2026-09-10. The band is not a spread of outcomes for a
+     given merchant — it is the spread of GAPS across merchants, measured against
+     the standard $36,000 per $1M interchange, and it exists only because we do
+     not know the rate a given merchant pays.
+     The arithmetic confirms it: 0.036 x 0.40 = 0.0144, which is RATE_LOW in
+     script.js exactly, and 0.036 x 0.85 = 0.0306 against the shipped RATE_HIGH
+     of 0.03 — the register's August note not to round 0.03 up to 0.0306 just to
+     make the label read 85% is the same relationship seen from the other side.
+     The 40% floor is not a merchant who recovers badly; it is a merchant who
+     already pays ~2.04% and therefore has a small gap.
+     CONSEQUENCE, AND IT IS THE WHOLE DESIGN OF THIS FILE:
+     · KNOWN-COST — the merchant tells us the rate, so the gap is exact and
+       recovery is the whole of it. One figure. No band, no hedge.
+     · ESTIMATE — we do not know the rate, so the band is the honest output.
+     ⚠ THIS DOES NOT REOPEN CL-04. That ruling forbade publishing a single
+     top-of-band figure WITHOUT knowing the merchant's rate. Here we know it. */
 
   /* --------------------------------------------------------------------------
      HELPERS
@@ -72,6 +78,11 @@
   function fmt(n) { return money0.format(Math.floor(n)); }
   function fmt2(n) { return money2.format(Math.floor(n * 100) / 100); }
   function pct(n) { return (Math.round(n * 1000) / 10) + '%'; }
+
+  // One figure when the band has collapsed (known-cost), a range when it has not.
+  function pair(low, high) {
+    return fmt(low) === fmt(high) ? fmt(low) : fmt(low) + ' to ' + fmt(high);
+  }
 
   function el(sel) { return root.querySelector(sel); }
   function all(sel) { return Array.prototype.slice.call(root.querySelectorAll(sel)); }
@@ -164,12 +175,14 @@
       effectiveRate: effectiveRate,
       credxCost: credxCost,
       grossGap: grossGap,
-      monthlyLow: grossGap * BAND_LOW,
-      monthlyHigh: grossGap * BAND_HIGH,
-      annualLow: grossGap * BAND_LOW * 12,
-      annualHigh: grossGap * BAND_HIGH * 12,
-      threeYearLow: grossGap * BAND_LOW * 36,
-      threeYearHigh: grossGap * BAND_HIGH * 36,
+      // Known-cost: the gap is exact, and recovery is the whole of it, so low
+      // and high are the same number and every display collapses to one figure.
+      monthlyLow: known ? grossGap : grossGap * BAND_LOW,
+      monthlyHigh: known ? grossGap : grossGap * BAND_HIGH,
+      annualLow: (known ? grossGap : grossGap * BAND_LOW) * 12,
+      annualHigh: (known ? grossGap : grossGap * BAND_HIGH) * 12,
+      threeYearLow: (known ? grossGap : grossGap * BAND_LOW) * 36,
+      threeYearHigh: (known ? grossGap : grossGap * BAND_HIGH) * 36,
       locations: Math.max(1, parseInt(field('locations').value, 10) || 1),
       vertical: field('vertical').value,
       aboveThreshold: volume >= THRESHOLD
@@ -236,14 +249,27 @@
        not their resulting bill. ⚠ If O1 ever lands on Treatment B (one exact
        figure, full gap), the old wording becomes correct again and this comes
        back. Do not "simplify" it before then. */
-    el('[data-fa-credx]').textContent = 'At roughly $6,000 per $1M, CredX on ' + fmt(r.volume) + ' is about ' + fmt(r.credxCost) + '.';
+    /* ↩ THE ORIGINAL WORDING IS CORRECT AGAIN, and the reason it was ever
+       changed is now dead. It was softened twice on 2026-09-10 — once because it
+       appeared to promise an outcome the band ruled out, once to drop a bare
+       "0.6%" that no approved copy carries. The first reason went away when
+       Marcos settled that the CredX rate IS fixed and the band is about the gap;
+       the second still holds, so the percentage stays out and the sentence says
+       the dollar figure rather than the rate. */
+    el('[data-fa-credx]').textContent = 'Through CredX, that same month costs ' + fmt(r.credxCost) + '.';
 
-    el('[data-fa-monthly]').textContent = fmt(r.monthlyLow) + ' to ' + fmt(r.monthlyHigh);
-    el('[data-fa-annual]').textContent = fmt(r.annualLow) + ' to ' + fmt(r.annualHigh) + ' a year';
+    el('[data-fa-monthly]').textContent = pair(r.monthlyLow, r.monthlyHigh);
+    el('[data-fa-annual]').textContent = pair(r.annualLow, r.annualHigh) + ' a year';
 
-    el('[data-fa-hedge]').textContent = known
-      ? 'Recovery runs from 40% up to 85% of standard interchange, so the figure above is a range rather than a single outcome. Results vary by volume and card mix.'
+    /* ⚠ NO 40-85% HEDGE IN KNOWN-COST MODE, AND THAT IS THE POINT OF THE MODE.
+       The band describes not knowing the merchant's rate. Here they told us. A
+       hedge about a range, printed under a figure that is not a range, would be
+       the page contradicting itself in the other direction. */
+    var hedge = el('[data-fa-hedge]');
+    hedge.textContent = known
+      ? ''
       : 'This is an estimate. Recovery runs from 40% up to 85% of standard interchange, and results vary by volume and card mix.';
+    hedge.hidden = known;
 
     el('[data-fa-note]').textContent = known
       ? 'This is your own arithmetic. We did not add anything to it.'
@@ -376,8 +402,8 @@
     el('[data-fa-per-sale]').textContent = fmt2(r.fees / transactions);
     el('[data-fa-avg-ticket]').textContent = fmt2(r.volume / transactions);
     el('[data-fa-per-location]').textContent =
-      fmt(r.monthlyLow / r.locations) + ' to ' + fmt(r.monthlyHigh / r.locations);
-    el('[data-fa-three-year]').textContent = fmt(r.threeYearLow) + ' to ' + fmt(r.threeYearHigh);
+      pair(r.monthlyLow / r.locations, r.monthlyHigh / r.locations);
+    el('[data-fa-three-year]').textContent = pair(r.threeYearLow, r.threeYearHigh);
 
     var contract = field('contract_end').value;
     var timing = el('[data-fa-timing]');
