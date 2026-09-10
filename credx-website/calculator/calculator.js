@@ -20,8 +20,15 @@
      CONSTANTS
      -------------------------------------------------------------------------- */
 
-  // 0.6% · $6,000 per $1M. Locked, and the figure in the live copy
-  // (automotive/index.html:245, and the Home's calculator hedge).
+  // ⚠ THE APPROVED FORM OF THIS FIGURE IS "roughly $6,000 per $1M", NOT "0.6%".
+  // The percentage is arithmetic on the approved figure and appears in no client-
+  // facing copy anywhere on either property — checked across every .html. The
+  // Home, which is the content authority, also carries "Roughly"
+  // (credx-website/index.html:395); the verticals drop it. Keeping the hedge is
+  // the safer of the two, and converting an approved dollar figure into a bare
+  // percentage made the claim FIRMER than its source, which is the direction
+  // CL-04 was corrected away from. 0.006 is the machine value; the string the
+  // merchant reads uses the approved wording.
   var CREDX_RATE = 0.006;
 
   // 3.6% · $36,000 per $1M. ⚠ O3 — this is approved as a COMPARATIVE EXAMPLE in
@@ -229,7 +236,7 @@
        not their resulting bill. ⚠ If O1 ever lands on Treatment B (one exact
        figure, full gap), the old wording becomes correct again and this comes
        back. Do not "simplify" it before then. */
-    el('[data-fa-credx]').textContent = 'The CredX rate is 0.6%. On ' + fmt(r.volume) + ', that is ' + fmt(r.credxCost) + '.';
+    el('[data-fa-credx]').textContent = 'At roughly $6,000 per $1M, CredX on ' + fmt(r.volume) + ' is about ' + fmt(r.credxCost) + '.';
 
     el('[data-fa-monthly]').textContent = fmt(r.monthlyLow) + ' to ' + fmt(r.monthlyHigh);
     el('[data-fa-annual]').textContent = fmt(r.annualLow) + ' to ' + fmt(r.annualHigh) + ' a year';
