@@ -221,7 +221,15 @@
       ? 'You paid ' + fmt(r.fees) + ' on ' + fmt(r.volume) + ' in card volume. That is ' + pct(r.effectiveRate) + ' of every sale.'
       : 'You run about ' + fmt(r.volume) + ' a month in card volume. At the rates most businesses your size pay, that works out to roughly ' + fmt(r.fees) + ' a month in card fees.';
 
-    el('[data-fa-credx]').textContent = 'Through CredX, that same month costs ' + fmt(r.credxCost) + '.';
+    /* 🔴 THIS LINE USED TO READ "Through CredX, that same month costs $X." IT WAS
+       WRONG, AND IT CONTRADICTED THE HEDGE THREE LINES BELOW IT. A merchant only
+       lands at 0.6% if recovery is 100%, and the published range is 40 to 85% —
+       so the old wording promised, as their outcome, the one figure the range
+       exists to rule out. It is the CredX RATE, stated as the comparison point,
+       not their resulting bill. ⚠ If O1 ever lands on Treatment B (one exact
+       figure, full gap), the old wording becomes correct again and this comes
+       back. Do not "simplify" it before then. */
+    el('[data-fa-credx]').textContent = 'The CredX rate is 0.6%. On ' + fmt(r.volume) + ', that is ' + fmt(r.credxCost) + '.';
 
     el('[data-fa-monthly]').textContent = fmt(r.monthlyLow) + ' to ' + fmt(r.monthlyHigh);
     el('[data-fa-annual]').textContent = fmt(r.annualLow) + ' to ' + fmt(r.annualHigh) + ' a year';
