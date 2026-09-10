@@ -7201,6 +7201,24 @@ a.vertical-card:hover .vertical-card__cta::after { transform: translateX(4px); }
 .fa__mode-title { color: var(--text-primary); font-weight: 600; }
 .fa__mode-helper { color: var(--text-muted); font-size: var(--type-caption); }
 
+/* ⚠ TWO FIELDS SIDE BY SIDE ONLY LINE UP IF THEIR LABELS ARE THE SAME HEIGHT.
+   "What do most of your customers pay with?" wraps to two lines while "Card volume
+   in a normal month" fits on one, so the two inputs sat at different heights — the
+   same thing happens in the gate between the sales-count and the provider fields.
+   Each `.form__field` is its own flex column, so nothing was aligning them.
+   Reserving two lines of label above 640px fixes every pair on the page at once.
+   ⚠ SCOPED TO `.fa` AND TO THE TWO-COLUMN BREAKPOINT. Below 640px the grid is a
+   single column, where a reserved second line is just a gap, and `.form__label`
+   is shared with /join and /contact, which must not move. */
+@media (min-width: 640px) {
+  .fa .form__label {
+    display: flex;
+    align-items: flex-end;
+    line-height: 1.4;
+    min-height: 2.8em;
+  }
+}
+
 /* ---- field support text ---- */
 .fa__helper { color: var(--text-muted); font-size: var(--type-caption); }
 .fa__error { color: var(--magenta-bright); font-size: var(--type-caption); font-weight: 500; }
