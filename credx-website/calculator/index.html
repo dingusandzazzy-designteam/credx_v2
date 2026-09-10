@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0b0c16" />
+
+  <!-- Light theme + toggle DEFERRED to a future update (2026-07-24). Dark is the only
+       theme. Do not add a FOUC script or a toggle here. -->
+
+  <title>Fee Analyzer | CredX</title>
+
+  <!-- ⚠ `noindex` IS THE POSTURE, not an oversight. `/calculator` is a campaign
+       surface (Track T1, lock of 2026-07-17): reachable by direct link only — BDR
+       connector kit, paid campaigns, direct-mail QR — each with its own UTM.
+       `follow` rather than `nofollow`, matching /thank-you and the 404: the page
+       links to indexable pages and there is no reason to strand those links.
+       🔴 NO robots.txt Disallow. A Disallow stops the crawl, so the crawler never
+       reads the noindex and the URL can still surface as a bare result. The two
+       directives fight; `noindex` alone is the correct one.
+       ⚠ AND THIS PAGE MUST NEVER ENTER sitemap.xml — a noindex URL in a sitemap is
+       a contradictory signal, and the campaign lock also says do not advertise the
+       path. sitemap.xml was NOT touched when this page was built. -->
+  <meta name="robots" content="noindex, follow" />
+
+  <!-- No canonical, no description, no Open Graph — deliberately, matching /join and
+       /thank-you. Not indexed, not a share target. -->
+
+  <link rel="icon" href="../assets/logo/credx-shape.svg" type="image/svg+xml" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" />
+
+  <link rel="stylesheet" href="../style.css" />
+</head>
+<body>
+  <!-- Nav (G1) — identical to the other pages. No `aria-current`: this page is in no
+       nav group, and nothing in the nav points at it. That is the campaign lock, not
+       an omission. -->
+  <nav class="nav" aria-label="Primary">
+    <div class="container nav__inner">
+      <a href="../" class="nav__logo" aria-label="CredX home">
+        <img src="../assets/logo/Credx-name.svg" alt="CredX" height="28" />
+      </a>
+      <div class="nav__links" data-nav-menu>
+        <a href="../about/" class="nav__link">The Movement</a>
+        <a href="../evp/" class="nav__link">Embedded Value Platform</a>
+        <a href="../how-it-works/" class="nav__link">How It Works</a>
+        <div class="nav__group" data-nav-group>
+          <button type="button" class="nav__link nav__group-toggle" aria-expanded="false" aria-controls="nav-audiences" data-nav-group-toggle>Who We Serve</button>
+          <div class="nav__submenu" id="nav-audiences" data-nav-submenu>
+            <a href="../merchants/" class="nav__sublink">For Merchants</a>
+            <a href="../lenders/" class="nav__sublink">For Lenders</a>
+            <a href="../pos-isv/" class="nav__sublink">For POS &amp; ISV</a>
+          </div>
+        </div>
+        <a href="../contact/" class="nav__link">Contact Us</a>
+      </div>
+      <div class="nav__actions">
+        <a href="../join/" class="nav__join">Join</a>
+        <a href="../contact/" class="btn btn-primary nav__cta" data-pending="booking-url">Book a meeting</a>
+        <button class="nav__toggle" data-nav-toggle type="button" aria-label="Open menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <main id="top">
+
+    <!-- ============================================================
+         1 · PAGE SHELL
+         Type-led and centred, the same opening as /thank-you and the 404 — a
+         visitor lands here mid-task, from a QR code or an outreach link, and a
+         photograph in front of the tool is delay in front of the one thing they
+         came for.
+         ⚠ THE TRUST LINE IS LOAD-BEARING. "You get your result before you tell us
+         who you are" is the answer to the reflex the brief names: every merchant
+         in North America has been trained to refuse "send us your statement". It
+         is also the reason the gate sits after the value rather than in front of
+         it. Do not cut it for length.
+         ============================================================ -->
+    <section class="hero hero--compact hero--centred" aria-labelledby="fa-title">
+      <div class="container hero__inner">
+        <div class="hero__copy">
+          <span class="eyebrow">Fee analyzer</span>
+          <!-- ⚠ CONTRACTIONS ARE BANNED SITE-WIDE (ruling 2026-08-20). Every string
+               on this page, chrome and tool alike, is in full forms. -->
+          <h1 class="hero__h1" id="fa-title">See what your card fees <em class="accent">really cost you.</em></h1>
+          <p class="hero__sub">Two numbers off one page of your statement. No upload, and no cost.</p>
+          <p class="fa__trust">You get your result before you tell us who you are.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         2 · THE TOOL
+         Three steps in one section. STEP 1 → free result → GATE → breakdown.
+         ⚠ THE ORDER IS DELIBERATELY THE REVERSE OF THE LANDING-PAGE FORMS, where
+         contact is Step 1 and company data is Step 2. Decided by Mauricio. It is
+         an exception, not drift — do not "correct" it back.
+
+         🔴 NOTHING ON THIS PAGE SUBMITS ANYWHERE. The CRM integration spec —
+         endpoint, auth, payload shape — is owed by the client's IT team and has
+         not arrived. The gate computes and renders locally. Do NOT invent the
+         transport, and do not build Vercel-specific technology into it (standing
+         ruling, 2026-08-03, same as /join).
+         ============================================================ -->
+    <section class="section fa-section" aria-label="Fee analyzer">
+      <div class="container">
+        <div class="fa" data-fa>
+
+          <!-- ---------- STEP 1 ---------- -->
+          <div class="fa__step" data-fa-step="1">
+            <span class="signup__step-label">Step 1 — Your numbers</span>
+
+            <fieldset class="fa__modes">
+              <legend class="fa__legend">Do you have last month's card statement handy?</legend>
+
+              <label class="fa__mode">
+                <input type="radio" name="mode" value="known_cost" checked data-fa-mode />
+                <span class="fa__mode-body">
+                  <span class="fa__mode-title">Yes — I have my numbers</span>
+                  <span class="fa__mode-helper">Two figures off one page. You get an exact answer.</span>
+                </span>
+              </label>
+
+              <label class="fa__mode">
+                <input type="radio" name="mode" value="estimate" data-fa-mode />
+                <span class="fa__mode-body">
+                  <span class="fa__mode-title">No — estimate it for me</span>
+                  <span class="fa__mode-helper">We work from your volume instead. The answer comes back as a range.</span>
+                </span>
+              </label>
+            </fieldset>
+
+            <!-- Known-cost fields (default) -->
+            <div class="signup__grid" data-fa-fields="known_cost">
+              <div class="form__field">
+                <label class="form__label" for="fa-fees">Total card fees you paid last month</label>
+                <input class="form__input" id="fa-fees" type="text" inputmode="decimal" autocomplete="off" data-fa-currency data-fa-field="fees" />
+                <!-- ⚠ THE HELPER IS THE WHOLE POINT OF THIS FIELD. Merchants know the
+                     rate they were sold ("2.6% + 10¢") and almost nobody knows the rate
+                     they actually paid. A merchant typing the sold rate understates
+                     their own cost, and so understates ours. Never ask for a rate. -->
+                <span class="fa__helper">The all-in total at the bottom of your statement, not your rate.</span>
+                <span class="fa__error" data-fa-error="fees" hidden>Enter the total fees you paid last month.</span>
+              </div>
+              <div class="form__field">
+                <label class="form__label" for="fa-volume">Total card volume you ran last month</label>
+                <input class="form__input" id="fa-volume" type="text" inputmode="decimal" autocomplete="off" data-fa-currency data-fa-field="volume" />
+                <span class="fa__helper">Everything your customers paid you by card.</span>
+                <span class="fa__error" data-fa-error="volume" hidden>Enter your total card volume for last month.</span>
+              </div>
+            </div>
+
+            <!-- Estimate fields -->
+            <div class="signup__grid" data-fa-fields="estimate" hidden>
+              <div class="form__field">
+                <label class="form__label" for="fa-volume-est">Card volume in a normal month</label>
+                <input class="form__input" id="fa-volume-est" type="text" inputmode="decimal" autocomplete="off" data-fa-currency data-fa-field="volume_est" />
+                <span class="fa__helper">A round number is fine.</span>
+                <span class="fa__error" data-fa-error="volume_est" hidden>Enter roughly what you run in a month.</span>
+              </div>
+              <div class="form__field">
+                <label class="form__label" for="fa-mix">What do most of your customers pay with?</label>
+                <!-- ⚠ THE BRIEF'S LABELS ARE Consumer / Commercial / Premium. Those are
+                     the internal set and they fail the grade-5 rule — "commercial" is
+                     not a word a shop owner uses about a card in their till.
+                     ⚠ "Not sure" exists because forcing a guess poisons the estimate
+                     silently. O9: this field currently changes NO arithmetic, because no
+                     sourced multiplier exists for the three mixes. Collected, not used. -->
+                <select class="form__select" id="fa-mix" data-fa-field="card_mix">
+                  <option value="">Select…</option>
+                  <option value="everyday">Mostly everyday cards</option>
+                  <option value="business">Mostly business cards</option>
+                  <option value="premium">Mostly premium cards</option>
+                  <option value="unsure">Not sure</option>
+                </select>
+                <span class="fa__helper">Best guess. It changes the answer a little.</span>
+                <span class="fa__error" data-fa-error="card_mix" hidden>Pick the closest match.</span>
+              </div>
+            </div>
+
+            <!-- Shared fields, both modes -->
+            <div class="signup__grid">
+              <div class="form__field">
+                <label class="form__label" for="fa-vertical">Your line of work</label>
+                <!-- ⚠ O6 — THIS LIST IS PROPOSED AND NOT RATIFIED. -->
+                <select class="form__select" id="fa-vertical" data-fa-field="vertical">
+                  <option value="">Select…</option>
+                  <option>Automotive aftermarket</option>
+                  <option>Sports and venues</option>
+                  <option>Entertainment</option>
+                  <option>Restaurants and bars</option>
+                  <option>Retail</option>
+                  <option>Health and wellness</option>
+                  <option>Something else</option>
+                </select>
+                <span class="fa__error" data-fa-error="vertical" hidden>Pick the closest match.</span>
+              </div>
+              <div class="form__field">
+                <label class="form__label" for="fa-locations">How many locations?</label>
+                <input class="form__input" id="fa-locations" type="number" min="1" max="999" step="1" value="1" data-fa-field="locations" />
+                <span class="fa__error" data-fa-error="locations" hidden>Enter at least 1.</span>
+              </div>
+            </div>
+
+            <span class="fa__error fa__error--form" data-fa-error="cross" hidden></span>
+            <span class="fa__warn" data-fa-warn hidden>That works out higher than we usually see. Worth a second look at the two figures.</span>
+
+            <!-- ⚠ NOT `Get my estimate`. That is the locked CTA and it belongs on the
+                 ENTRY to the tool — the slider on the Home and the verticals — not on
+                 the button inside it. In known-cost mode nothing about the result is
+                 an estimate. O2, flagged for Mauricio. -->
+            <button type="button" class="btn btn-primary fa__submit" data-fa-run>Show me my number</button>
+          </div>
+
+          <!-- ---------- STEP 2 · THE FREE RESULT ---------- -->
+          <div class="fa__result" data-fa-step="2" hidden aria-live="polite">
+            <span class="signup__step-label" data-fa-result-label>Your result</span>
+
+            <p class="fa__readback" data-fa-readback></p>
+            <p class="fa__readback" data-fa-credx></p>
+
+            <div class="fa__figure">
+              <span class="fa__figure-label">Back in your business</span>
+              <span class="fa__figure-value" data-fa-monthly></span>
+              <span class="fa__figure-unit">every month</span>
+              <span class="fa__figure-annual" data-fa-annual></span>
+            </div>
+
+            <!-- 🔴 THE HEDGE IS NOT DECORATION AND IT IS NOT OPTIONAL. The Home and
+                 three verticals were changed on 2026-08-20 and again on 2026-08-25
+                 precisely to stop a single top-of-band figure going out — the client's
+                 own words were "a regulator or legal reviewer will notice this
+                 immediately". A calculator that hands a merchant ONE exact number, in
+                 writing, personalised to them, is a stronger version of the thing that
+                 was walked back. Legal review is this tool's ship gate.
+                 ⚠ O1 IS STILL OPEN: whether the result is a range at all is Mauricio's
+                 call. Built as a range because that is the position consistent with
+                 what is live. -->
+            <p class="fa__hedge" data-fa-hedge></p>
+            <p class="fa__note" data-fa-note></p>
+
+            <p class="fa__switch" data-fa-switch hidden>
+              Found your statement? <button type="button" class="fa__link" data-fa-switch-back>Use your real numbers instead.</button>
+            </p>
+
+            <div class="fa__gate-intro">
+              <h2 class="fa__h2">Want the full picture?</h2>
+              <p class="fa__sub">Answer four quick questions and we will show you what this costs you per sale, per location, and per year, plus when you could move.</p>
+            </div>
+
+            <button type="button" class="btn btn-primary fa__submit" data-fa-open-gate>See my full breakdown</button>
+            <button type="button" class="fa__link fa__link--block" data-fa-restart>Change my numbers</button>
+          </div>
+
+          <!-- ---------- GATE ---------- -->
+          <div class="fa__step" data-fa-step="gate" hidden>
+            <span class="signup__step-label">Who are we sending it to?</span>
+
+            <div class="signup__grid">
+              <div class="form__field">
+                <label class="form__label" for="fa-name">Your name</label>
+                <input class="form__input" id="fa-name" type="text" autocomplete="name" data-fa-field="full_name" />
+                <span class="fa__error" data-fa-error="full_name" hidden>We need a name.</span>
+              </div>
+              <div class="form__field">
+                <label class="form__label" for="fa-email">Work email</label>
+                <!-- ⚠ NO FREE-MAIL BLOCK. An independent shop owner legitimately runs
+                     the business off a free address; blocking it drops real leads. -->
+                <input class="form__input" id="fa-email" type="email" autocomplete="email" data-fa-field="work_email" />
+                <span class="fa__error" data-fa-error="work_email" hidden>That email does not look right.</span>
+              </div>
+              <div class="form__field">
+                <label class="form__label" for="fa-phone">Phone</label>
+                <input class="form__input" id="fa-phone" type="tel" autocomplete="tel" data-fa-field="phone" />
+                <span class="fa__error" data-fa-error="phone" hidden>We need a number we can reach you on.</span>
+              </div>
+              <div class="form__field">
+                <label class="form__label" for="fa-business">Business name</label>
+                <input class="form__input" id="fa-business" type="text" autocomplete="organization" data-fa-field="business_name" />
+                <span class="fa__error" data-fa-error="business_name" hidden>What is the business called?</span>
+              </div>
+            </div>
+
+            <p class="fa__step-note">Four quick questions and we go deeper on your numbers.</p>
+
+            <div class="signup__grid">
+              <div class="form__field">
+                <label class="form__label" for="fa-transactions">How many card sales did you take last month?</label>
+                <input class="form__input" id="fa-transactions" type="number" min="1" step="1" data-fa-field="transactions" />
+                <span class="fa__helper">A count, not a dollar figure. Close is fine.</span>
+                <span class="fa__error" data-fa-error="transactions" hidden>We need a rough count of sales.</span>
+              </div>
+              <div class="form__field">
+                <label class="form__label" for="fa-provider">Who handles your card payments today?</label>
+                <!-- 🔴 CATEGORIES, NEVER NAMES. Listing providers would turn the page
+                     into a comparison, and the never-name-a-competitor rule holds here
+                     exactly as it does in body copy. -->
+                <select class="form__select" id="fa-provider" data-fa-field="provider_type">
+                  <option value="">Select…</option>
+                  <option value="bank">My bank</option>
+                  <option value="independent">An independent provider</option>
+                  <option value="via_pos">Through my POS or shop software</option>
+                  <option value="multiple">More than one</option>
+                  <option value="unsure">Not sure</option>
+                </select>
+                <span class="fa__error" data-fa-error="provider_type" hidden>Pick the closest match.</span>
+              </div>
+              <div class="form__field">
+                <label class="form__label" for="fa-contract">When does your current agreement end?</label>
+                <!-- ⚠ "Already free to move" IS FIRST ON PURPOSE. The brief calls this
+                     the most sales-critical field on the page, and this is the answer
+                     worth the most — buried at the bottom it is the one a merchant
+                     scrolls past. -->
+                <select class="form__select" id="fa-contract" data-fa-field="contract_end">
+                  <option value="">Select…</option>
+                  <option value="free_now">Already free to move</option>
+                  <option value="lt_3m">Within 3 months</option>
+                  <option value="3_6m">3 to 6 months</option>
+                  <option value="6_12m">6 to 12 months</option>
+                  <option value="gt_12m">More than a year</option>
+                  <option value="unsure">Not sure</option>
+                </select>
+                <span class="fa__helper">Month and year is enough. Pick "not sure" if you do not know.</span>
+                <span class="fa__error" data-fa-error="contract_end" hidden>Pick the closest match, or "not sure".</span>
+              </div>
+              <div class="form__field">
+                <label class="form__label" for="fa-pos">What system do you run your sales on?</label>
+                <!-- ⚠ FREE TEXT UNTIL THE SUPPORTED POS/DMS LIST ARRIVES. It is owed by
+                     the client and it is what turns this into a select and turns the
+                     integration line in the breakdown into a real sentence. -->
+                <input class="form__input" id="fa-pos" type="text" autocomplete="off" data-fa-field="pos_system" />
+                <span class="fa__helper">Your till, POS, or shop software.</span>
+                <span class="fa__error" data-fa-error="pos_system" hidden>Tell us what you run your sales on.</span>
+              </div>
+            </div>
+
+            <button type="button" class="btn btn-primary fa__submit" data-fa-gate-submit>See my full breakdown</button>
+
+            <!-- 🔴 THIS LINE HAS NOWHERE TO LINK. /legal/privacy does not exist, and
+                 /contact and /join have been collecting business contact data with no
+                 notice since July (T0 item 2). This page would be the third, and it
+                 asks for considerably more. The link is deliberately absent rather
+                 than dead — restore it when /legal/privacy ships.
+                 ⚠ "Canadian privacy law" rather than PIPEDA, and "Regulatory
+                 compliant" rather than SOC 2: the brief bans naming either on this
+                 page. -->
+            <p class="fa__consent">We use what you send here to prepare your breakdown and to contact you about it. Sharing is opt-in, anything we use for analytics is de-identified, and your information is handled under Canadian privacy law.</p>
+          </div>
+
+          <!-- ---------- STEP 3 · THE FULL BREAKDOWN ---------- -->
+          <div class="fa__result" data-fa-step="3" hidden aria-live="polite">
+            <span class="signup__step-label">Your full breakdown</span>
+            <h2 class="fa__h2">Here is what card fees cost your business.</h2>
+
+            <div class="fa__stats">
+              <div class="fa__stat">
+                <span class="fa__stat-value" data-fa-per-sale></span>
+                <span class="fa__stat-label">Every sale costs you this before you keep a cent</span>
+              </div>
+              <div class="fa__stat">
+                <span class="fa__stat-value" data-fa-avg-ticket></span>
+                <span class="fa__stat-label">Your average sale</span>
+              </div>
+              <div class="fa__stat">
+                <span class="fa__stat-value" data-fa-per-location></span>
+                <span class="fa__stat-label">Back each month, per location</span>
+              </div>
+              <div class="fa__stat">
+                <span class="fa__stat-value" data-fa-three-year></span>
+                <span class="fa__stat-label">Over three years</span>
+              </div>
+            </div>
+
+            <p class="fa__readback" data-fa-timing></p>
+
+            <!-- ⚠ TWO PLACEHOLDERS BELOW ARE HARD CLIENT DEPENDENCIES, both named in
+                 the brief, and neither is fillable by inference:
+                 · the supported POS/DMS integration list
+                 · the per-vertical "what the saving buys" values — the loaded cost of
+                   a technician, revenue per bay, per chair, per event night. Real
+                   research, not invention.
+                 They render as nothing at all rather than as a hedge. A missing line
+                 is honest; a vague line is a claim. -->
+            <p class="fa__readback" data-fa-integration hidden></p>
+
+            <div class="fa__close" data-fa-close></div>
+
+            <button type="button" class="fa__link fa__link--block" data-fa-restart>Change my numbers</button>
+          </div>
+
+          <!-- ---------- SENT (below-threshold confirmation) ---------- -->
+          <div class="fa__result" data-fa-step="sent" hidden aria-live="polite">
+            <span class="signup__step-label">Sent</span>
+            <p class="fa__readback" data-fa-sent></p>
+            <p class="fa__note">We will check back when your volume has grown.</p>
+          </div>
+
+        </div>
+
+        <p class="fa__compliance">Regulatory compliant.</p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer (G2) — byte-identical to the other pages (ruling 2026-08-25). Do not
+       vary it here. The LinkedIn href is the bare domain, a pre-existing defect
+       carried from index.html:546, kept identical rather than fixed in isolation. -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__inner footer__inner--sitemap">
+        <div class="footer__brand">
+          <img src="../assets/logo/Credx-name.svg" alt="CredX" height="32" style="margin-bottom: 20px;" />
+          <p class="footer__movement">A system you belong to, instead of one that owns you.</p>
+        </div>
+        <div>
+          <h3 class="footer__col-title">Explore</h3>
+          <div class="footer__links">
+            <a href="../about/" class="footer__link">The Movement</a>
+            <a href="../evp/" class="footer__link">Embedded Value Platform</a>
+            <a href="../how-it-works/" class="footer__link">How It Works</a>
+          </div>
+        </div>
+        <div>
+          <h3 class="footer__col-title">Who We Serve</h3>
+          <div class="footer__links">
+            <a href="../merchants/" class="footer__link">For Merchants</a>
+            <a href="../lenders/" class="footer__link">For Lenders</a>
+            <a href="../pos-isv/" class="footer__link">For POS &amp; ISV</a>
+          </div>
+        </div>
+        <div>
+          <h3 class="footer__col-title">Connect</h3>
+          <div class="footer__links">
+            <a href="../contact/" class="footer__link">Contact Us</a>
+            <a href="../contact/" class="footer__link" data-pending="booking-url">Book a Meeting</a>
+            <a href="https://www.linkedin.com/" class="footer__link" rel="noopener" target="_blank" data-pending="linkedin-url">LinkedIn</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span>© 2026 CredX Tech Inc. · credxtech.com</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.0.45/dist/lenis.min.js"></script>
+  <script src="../script.js"></script>
+  <!-- ⚠ A PAGE-LOCAL SCRIPT, WHICH IS A DEVIATION FROM THE SITE'S ONE-SHARED-SCRIPT
+       PATTERN, AND IT IS DELIBERATE. Every other page loads only ../script.js. The
+       Fee Analyzer is ~200 lines of logic used by exactly one page, and putting it in
+       the shared file would parse it on all eleven. The guard pattern in script.js
+       (run only if the element exists) would have worked; the cost is the parse and
+       the growth of a file that is already the site's largest. Recorded here so the
+       next person reads it as a choice rather than a mistake. -->
+  <script src="calculator.js"></script>
+</body>
+</html>

@@ -7130,3 +7130,202 @@ a.vertical-card:hover .vertical-card__cta::after { transform: translateX(4px); }
   max-width: none;
   text-wrap: balance;
 }
+
+/* ---- 25. Fee Analyzer (`/calculator`) — page-scoped ----
+   ⚠ EVERY RULE HERE IS PREFIXED `.fa`. This page is a campaign surface reachable
+   by direct link only, and nothing else on the site uses these classes. Scoping
+   them is what keeps a tool built under an open decision (O1) from reaching the
+   eleven indexed pages if it has to change.
+   ⚠ It reuses `.signup__grid`, `.signup__step-label`, `.form__field`, `.form__input`,
+   `.form__select` and `.btn` rather than restating them — the roles are identical
+   and this stylesheet has four recorded source-order cascade traps. */
+
+.fa__trust {
+  color: var(--text-accent);
+  font-size: var(--type-body);
+  margin-top: var(--s-4);
+}
+
+.fa-section { background-color: var(--surface-0); padding-top: 0; }
+
+.fa {
+  max-width: 760px;
+  margin-inline: auto;
+}
+
+.fa__step,
+.fa__result {
+  background-color: var(--surface-1);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-card);
+  padding: var(--s-7);
+}
+
+/* The steps are swapped with the `hidden` attribute. Without this the panels'
+   own `display` would win and every step would render at once. */
+.fa__step[hidden],
+.fa__result[hidden],
+.fa [hidden] { display: none; }
+
+.fa .signup__grid { margin-bottom: var(--s-5); }
+
+/* ---- mode chooser ---- */
+.fa__modes {
+  border: 0;
+  padding: 0;
+  margin: 0 0 var(--s-6);
+  display: grid;
+  gap: var(--s-3);
+}
+.fa__legend {
+  font-size: var(--type-body-lg);
+  color: var(--text-primary);
+  margin-bottom: var(--s-4);
+  padding: 0;
+}
+.fa__mode {
+  display: flex;
+  gap: var(--s-4);
+  align-items: flex-start;
+  padding: var(--s-4);
+  background-color: var(--surface-2);
+  border: 1px solid var(--surface-3);
+  border-radius: var(--radius-card-sm);
+  cursor: pointer;
+  transition: border-color var(--duration-fast) var(--ease-out-quart);
+}
+.fa__mode:hover { border-color: var(--border-strong); }
+.fa__mode:has(input:checked) { border-color: var(--text-accent); }
+.fa__mode input { margin-top: 3px; accent-color: var(--magenta); }
+.fa__mode-body { display: flex; flex-direction: column; gap: var(--s-1); }
+.fa__mode-title { color: var(--text-primary); font-weight: 600; }
+.fa__mode-helper { color: var(--text-muted); font-size: var(--type-caption); }
+
+/* ---- field support text ---- */
+.fa__helper { color: var(--text-muted); font-size: var(--type-caption); }
+.fa__error { color: var(--magenta-bright); font-size: var(--type-caption); font-weight: 500; }
+.fa__error--form { display: block; margin-bottom: var(--s-4); }
+.fa__warn {
+  display: block;
+  color: var(--text-secondary);
+  font-size: var(--type-caption);
+  margin-bottom: var(--s-4);
+}
+
+.fa__submit { width: 100%; margin-top: var(--s-2); }
+.fa__step-note {
+  color: var(--text-muted);
+  font-size: var(--type-caption);
+  margin: var(--s-6) 0 var(--s-4);
+}
+
+/* ---- the result ---- */
+.fa__readback {
+  color: var(--text-secondary);
+  font-size: var(--type-body-lg);
+  margin-bottom: var(--s-3);
+}
+
+.fa__figure {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-1);
+  margin: var(--s-6) 0;
+  padding: var(--s-6);
+  background-color: var(--surface-2);
+  border-radius: var(--radius-card-sm);
+}
+.fa__figure-label {
+  font-size: var(--type-eyebrow);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-secondary);
+}
+/* ⚠ NOT `--type-data-callout`. A range is two figures and a word, and at 48–80px
+   it wraps into a tower on a phone. `--type-h1` keeps it on one or two lines and
+   still reads as the page's largest thing. */
+.fa__figure-value {
+  font-size: var(--type-h1);
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.1;
+}
+.fa__figure-unit { color: var(--text-accent); font-weight: 600; }
+.fa__figure-annual { color: var(--text-secondary); margin-top: var(--s-2); }
+
+.fa__hedge {
+  color: var(--text-muted);
+  font-size: var(--type-caption);
+  line-height: 1.6;
+  margin-bottom: var(--s-3);
+}
+.fa__note { color: var(--text-secondary); font-size: var(--type-caption); }
+
+.fa__switch { margin-top: var(--s-4); font-size: var(--type-caption); color: var(--text-muted); }
+.fa__link {
+  background: none;
+  border: 0;
+  padding: 0;
+  font: inherit;
+  color: var(--text-accent);
+  text-decoration: underline;
+  cursor: pointer;
+}
+.fa__link--block {
+  display: block;
+  margin: var(--s-5) auto 0;
+  font-size: var(--type-caption);
+}
+
+.fa__gate-intro { margin-top: var(--s-8); }
+.fa__h2 { font-size: var(--type-h2); margin-bottom: var(--s-3); }
+.fa__h3 { font-size: var(--type-h3); margin-bottom: var(--s-2); }
+.fa__sub { color: var(--text-secondary); margin-bottom: var(--s-5); }
+
+/* ---- the full breakdown ---- */
+.fa__stats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--s-4);
+  margin: var(--s-6) 0;
+}
+.fa__stat {
+  padding: var(--s-5);
+  background-color: var(--surface-2);
+  border-radius: var(--radius-card-sm);
+}
+.fa__stat-value {
+  display: block;
+  font-size: var(--type-h3);
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: var(--s-2);
+}
+.fa__stat-label { color: var(--text-muted); font-size: var(--type-caption); line-height: 1.5; }
+
+.fa__close {
+  margin-top: var(--s-7);
+  padding-top: var(--s-6);
+  border-top: 1px solid var(--border-subtle);
+}
+
+.fa__consent {
+  margin-top: var(--s-5);
+  color: var(--text-muted);
+  font-size: var(--type-caption);
+  line-height: 1.6;
+}
+
+.fa__compliance {
+  max-width: 760px;
+  margin: var(--s-6) auto 0;
+  color: var(--text-muted);
+  font-size: var(--type-caption);
+}
+
+@media (max-width: 640px) {
+  .fa__step,
+  .fa__result { padding: var(--s-5); }
+  .fa__stats { grid-template-columns: 1fr; }
+}
