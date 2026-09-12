@@ -128,11 +128,20 @@
 
   <main id="top">
 
+    <!-- NOTE 2026-09-11: the six H2s and the H1 carry NO data-reveal-words.
+         The word-reveal hides a title behind an overflow mask and relies on a
+         ScrollTrigger to bring it back; on this page the trigger did not fire
+         and the titles rendered blank. The content was always in the HTML.
+         Dropping the hook makes the titles render statically - the paragraphs
+         keep their data-reveal fade, which is CSS-driven and never hides text
+         permanently. If the same blank-title symptom appears on the other
+         /learn/ pages, it is the shared mechanism and not this page. -->
+
     <section class="hero hero--read" aria-label="The data economy">
       <div class="container hero__inner">
         <div class="hero__copy">
           <p class="eyebrow eyebrow--accent" data-reveal>Learn &middot; Data Economy</p>
-          <h1 class="hero__h1" data-reveal-words>The Data Economy Runs on <em class="accent">Your Customers&rsquo; Data</em></h1>
+          <h1 class="hero__h1">The Data Economy Runs on <em class="accent">Your Customers&rsquo; Data</em></h1>
           <p class="hero__sub" data-reveal data-reveal-delay="1">
             Every time a customer pays, the transaction leaves a record behind. That record is the raw material of the data economy, and today it is captured, priced and resold by parties that never met the customer who created it.
           </p>
@@ -142,7 +151,7 @@
 
     <section class="section prose-band section--read" aria-label="Where the record goes">
       <div class="container prose-band__inner">
-        <h2 class="prose-band__h2" data-reveal-words>Where the record goes today</h2>
+        <h2 class="prose-band__h2">Where the record goes today</h2>
         <p class="prose-band__body" data-reveal>
           The sale happens inside the business. The point-of-sale system records it, the payment processor clears it, the card network routes it, and the institution behind the customer&rsquo;s card settles it. Each party keeps what it needs to do its job, and several of them keep rather more than that.
         </p>
@@ -154,7 +163,7 @@
 
     <section class="section prose-band section--read" aria-label="What a transaction produces">
       <div class="container prose-band__inner">
-        <h2 class="prose-band__h2" data-reveal-words>What a single transaction actually produces</h2>
+        <h2 class="prose-band__h2">What a single transaction actually produces</h2>
         <p class="prose-band__body" data-reveal>
           A payment is not one fact. It produces several, and they fall into five categories: <strong>transaction</strong>, what was bought and for how much; <strong>demographic</strong>, who the buyer is in broad terms; <strong>behavioural</strong>, how they buy and how often they return; <strong>credit and financial</strong>, what they can responsibly afford; and <strong>lifestyle</strong>, the pattern the other four make together.
         </p>
@@ -166,7 +175,7 @@
 
     <section class="section prose-band section--read" aria-label="Consent">
       <div class="container prose-band__inner">
-        <h2 class="prose-band__h2" data-reveal-words>Consent is the line that actually matters</h2>
+        <h2 class="prose-band__h2">Consent is the line that actually matters</h2>
         <p class="prose-band__body" data-reveal>
           There is a difference between data a customer agreed to share and data collected because they happened to pay. The first is a relationship. The second is a by-product, and most of the data economy runs on the second.
         </p>
@@ -182,7 +191,7 @@
          deliberately not defined here. -->
     <section class="section prose-band section--read" aria-label="Who controls the record">
       <div class="container prose-band__inner">
-        <h2 class="prose-band__h2" data-reveal-words>Open loop, closed loop, and who holds the record</h2>
+        <h2 class="prose-band__h2">Open loop, closed loop, and who holds the record</h2>
         <p class="prose-band__body" data-reveal>
           In an open loop, the record resolves outward. The transaction is routed through a network that sits above every business it touches, and the intelligence it produces belongs to that network rather than to the counter where the sale happened.
         </p>
@@ -194,7 +203,7 @@
 
     <section class="section prose-band section--read" aria-label="What changes">
       <div class="container prose-band__inner">
-        <h2 class="prose-band__h2" data-reveal-words>What changes when the record stays with you</h2>
+        <h2 class="prose-band__h2">What changes when the record stays with you</h2>
         <p class="prose-band__body" data-reveal>
           Three things, and none of them is a report you have to read. You can see which buyers return and which do not, which is a staffing and stock decision before it is a marketing one. You stop paying a third party for access to a picture your own counter produced. And the picture compounds, because every month adds to it rather than renting it back to you.
         </p>
@@ -206,7 +215,7 @@
 
     <section class="final-cta final-cta--spaced" aria-label="Next">
       <div class="container final-cta__inner">
-        <h2 class="final-cta__h2" data-reveal-words>See what your data is worth.</h2>
+        <h2 class="final-cta__h2">See what your data is worth.</h2>
         <p class="final-cta__body" data-reveal data-reveal-delay="1">
           A short conversation about your own counter, and what the record it produces is already telling someone else.
         </p>
