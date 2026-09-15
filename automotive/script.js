@@ -1,17 +1,10 @@
-/* ============================================================
-   CredX v2 — Automotive landing page
-   Motion: Lenis smooth scroll + GSAP ScrollTrigger reveals + subtle parallax
-   Interaction: calculator widget · modal open/close · nav scroll state
-   Respects prefers-reduced-motion.
-   ============================================================ */
+
 
 (function () {
   'use strict';
 
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const isPointerFine = window.matchMedia('(pointer: fine)').matches;
-
-  /* ---- 1. Lenis smooth scroll ---- */
 
   let lenis = null;
   if (!prefersReducedMotion && window.Lenis) {
@@ -28,7 +21,6 @@
     }
     requestAnimationFrame(raf);
 
-    // Sync GSAP ScrollTrigger with Lenis
     if (window.gsap && window.ScrollTrigger) {
       lenis.on('scroll', window.ScrollTrigger.update);
       window.gsap.ticker.add((time) => lenis.raf(time * 1000));
@@ -36,13 +28,10 @@
     }
   }
 
-  /* ---- 2. Nav scroll state ---- */
-
   const nav = document.querySelector('.nav');
   function updateNavOnScroll() {
     if (!nav) return;
-    // Theme-aware bg is driven by --nav-bg / --nav-bg-scrolled tokens; JS only
-    // toggles the scrolled state so it works in both light and dark themes.
+
     nav.classList.toggle('is-scrolled', window.scrollY > 24);
   }
   if (lenis) {
@@ -51,8 +40,6 @@
     window.addEventListener('scroll', updateNavOnScroll, { passive: true });
   }
   updateNavOnScroll();
-
-  /* ---- 3. Reveal-on-scroll ---- */
 
   if (!prefersReducedMotion && window.gsap && window.ScrollTrigger) {
     window.gsap.registerPlugin(window.ScrollTrigger);
@@ -69,7 +56,7 @@
   } else if (prefersReducedMotion) {
     document.querySelectorAll('[data-reveal]').forEach((el) => el.classList.add('is-revealed'));
   } else {
-    // Fallback IntersectionObserver if GSAP is unavailable
+
     const io = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -84,18 +71,9 @@
     document.querySelectorAll('[data-reveal]').forEach((el) => io.observe(el));
   }
 
-  /* ---- 3b. Editorial word-reveal (titles) + cinematic media wipe ----
-     Signature motion. Fraunces section titles rise word-by-word from behind a
-     mask; the wide photos reveal with a left-to-right clip + slow zoom-out.
-     GSAP-driven, so the hidden state only exists when we will actually animate
-     — no-JS and reduced-motion keep everything visible (see CSS §18 fallback). */
-
   if (!prefersReducedMotion && window.gsap && window.ScrollTrigger) {
     const _gsap = window.gsap;
 
-    // Split text into word spans, each in an overflow-clip mask. Inline tags
-    // (e.g. <em class="accent">) are kept as a single word unit so their style
-    // and wrapping survive intact.
     function wordSplit(el) {
       const words = [];
       const frag = document.createDocumentFragment();
@@ -114,7 +92,7 @@
             words.push(word);
           });
         } else if (node.nodeType === 1) {
-          // Preserve hard line breaks as real <br> (not a word unit).
+
           if (node.tagName === 'BR') { frag.appendChild(document.createElement('br')); return; }
           const mask = document.createElement('span');
           mask.className = 'reveal-word-mask';
@@ -145,7 +123,7 @@
           scrollTrigger: { trigger: title, start: 'top 88%', once: true },
         });
       } catch (e) {
-        // Never leave a title hidden — snap words back to visible.
+
         if (words.length) { try { _gsap.set(words, { yPercent: 0 }); } catch (_) {} }
       }
     });
@@ -161,19 +139,11 @@
         tl.to(media, { clipPath: 'inset(0 0 0 0%)', duration: 1.0, ease: 'power3.out' }, 0);
         if (img) tl.to(img, { scale: 1, duration: 1.15, ease: 'power3.out' }, 0);
       } catch (e) {
-        // Never leave media hidden — clear the clip + scale.
+
         try { _gsap.set(media, { clipPath: 'none' }); if (img) _gsap.set(img, { scale: 1 }); } catch (_) {}
       }
     });
   }
-
-  /* ---- 4a. Cover scrub (Trilha B — video scrubbed by scroll) ----
-     Source timecodes provided by edit (24 fps, HH:MM:SS:FF):
-       00:00:00:00  Intro   → 0.000s
-       00:00:04:10  Cena 1  → 4.417s
-       00:00:10:04  Cena 2  → 10.167s
-       00:00:13:22  Final   → 13.917s
-     Beats are switched when currentTime crosses each marker. */
 
   if (!prefersReducedMotion && window.gsap && window.ScrollTrigger) {
     const cover = document.querySelector('.cover-scrub');
@@ -182,10 +152,8 @@
       const beats = Array.from(cover.querySelectorAll('.cover-scrub__beat'));
       const dots = cover.querySelectorAll('.cover-scrub__progress-dot');
 
-      // Beat boundaries (seconds) — one entry per beat = start time.
       const BEAT_STARTS = [0, 4.417, 10.167, 13.917];
-      // Per-beat fade tuning (seconds). GAP = time of "video only, no copy"
-      // before the next beat enters.
+
       const FADE_IN = 0.45;
       const FADE_OUT = 0.45;
       const GAP = 0.55;
@@ -212,12 +180,10 @@
       const updateBeats = (t, duration) => {
         const lastIdx = beats.length - 1;
         for (let i = 0; i < beats.length; i++) {
-          // Beat 0 starts fully visible at t=0 (no entry fade) by virtually
-          // shifting its window to the left.
+
           const visStart = (i === 0) ? -FADE_IN : BEAT_STARTS[i];
           const nextStart = (i + 1 < BEAT_STARTS.length) ? BEAT_STARTS[i + 1] : duration;
-          // Last beat: no fade-out — title stays on screen until the next
-          // section scrolls in (pin release).
+
           const isLast = (i === lastIdx);
           const visEnd = isLast
             ? Number.POSITIVE_INFINITY
@@ -239,18 +205,11 @@
         }
       };
 
-      // Progress → video-time anchors. One anchor per source keyframe.
-      // The intro is no longer auto-played: each user scroll-intent advances
-      // the video from the current keyframe to the next one and stops there,
-      // waiting for the next action. Title fade-in offsets (+0.45s) on B2/B3
-      // ensure the title is fully on at each stop.
-      // Source keyframes (24fps): 0.000 / 4.417 / 10.167 / 13.917.
-      // -1 in t means "clamp to video duration at runtime".
       const ANCHORS = [
-        { p: 0.000, t: 0.000  },  // Step 0 — B1 keyframe
-        { p: 0.333, t: 4.867  },  // Step 1 — B2 keyframe (+ fade-in offset)
-        { p: 0.667, t: 10.617 },  // Step 2 — B3 keyframe (+ fade-in offset)
-        { p: 1.000, t: -1     },  // Step 3 — B4 final frame
+        { p: 0.000, t: 0.000  },
+        { p: 0.333, t: 4.867  },
+        { p: 0.667, t: 10.617 },
+        { p: 1.000, t: -1     },
       ];
 
       const progressToTime = (p, duration) => {
@@ -261,9 +220,7 @@
           if (clamped >= a.p && clamped <= b.p) {
             const span = b.p - a.p;
             const local = span === 0 ? 0 : (clamped - a.p) / span;
-            // Smoothstep eases entry/exit of each anchor segment so the
-            // video doesn't jolt when crossing between a hold (zero slope)
-            // and a transition (high slope) — and back.
+
             const eased = smoothstep(local);
             const tA = a.t < 0 ? duration : a.t;
             const tB = b.t < 0 ? duration : b.t;
@@ -279,7 +236,7 @@
         rafId = null;
         if (!isFinite(video.duration) || video.duration <= 0) return;
         const t = Math.max(0, Math.min(video.duration, progressToTime(pendingProgress, video.duration)));
-        // Setting currentTime triggers an async seek; we don't await it.
+
         try { video.currentTime = t; } catch (_) {}
         updateBeats(t, video.duration);
         setActiveDot(beatFromTime(t));
@@ -289,15 +246,11 @@
         if (rafId == null) rafId = requestAnimationFrame(applyScrub);
       };
 
-      // Step-driven intro: page is locked while the cover holds focus. Each
-      // scroll/touch/key intent advances the video from one keyframe to the
-      // next over STEP_DURATION seconds, then stops and waits. After the
-      // last keyframe a final intent releases scroll and glides to the hero.
-      const STEP_DURATION = 3.0; // seconds per keyframe-to-keyframe transition
-      const COOLDOWN_MS = 350;   // ignore residual scroll inertia after a step
+      const STEP_DURATION = 3.0;
+      const COOLDOWN_MS = 350;
 
-      let currentStep = 0;       // index into ANCHORS — last keyframe reached
-      let introState = 'idle';   // 'idle' | 'playing' | 'awaiting' | 'done'
+      let currentStep = 0;
+      let introState = 'idle';
       let cooldown = false;
       const intentEvents = ['wheel', 'touchmove', 'keydown'];
       const KEY_INTENT = new Set(['ArrowDown', 'PageDown', 'Space', ' ', 'End']);
@@ -369,14 +322,14 @@
         introState = 'done';
         intentEvents.forEach((ev) => window.removeEventListener(ev, onIntent));
         unlockScroll();
-        // Give Lenis a tick to resume, then glide to the hero section.
+
         requestAnimationFrame(scrollToHero);
       };
 
       const onIntent = (e) => {
         if (introState === 'playing' || cooldown) return;
         if (e.type === 'keydown' && !KEY_INTENT.has(e.key)) return;
-        // Lock applies once intro starts; before that, only respond when at top.
+
         if (introState === 'idle' && window.scrollY > 4) return;
         e.preventDefault();
         if (currentStep < ANCHORS.length - 1) {
@@ -403,11 +356,6 @@
     }
   }
 
-  /* ---- 4a2. Hero entrance — slow scale-in on the background image ----
-     Brand signature load moment. Composes with the parallax y-tween below
-     (GSAP merges scale + y on the same target). The CSS `heroIn` keyframe is
-     the no-JS fallback; GSAP overrides transform when present. */
-
   if (!prefersReducedMotion && window.gsap) {
     window.gsap.fromTo(
       '.hero__bg',
@@ -415,8 +363,6 @@
       { scale: 1, duration: 1.5, ease: 'expo.out' }
     );
   }
-
-  /* ---- 4b. Subtle parallax on hero bg + pain media ---- */
 
   if (!prefersReducedMotion && isPointerFine && window.gsap && window.ScrollTrigger) {
     const parallaxTargets = [
@@ -439,8 +385,6 @@
     });
   }
 
-  /* ---- 5. Calculator widget ---- */
-
   const slider = document.querySelector('[data-calc-input]');
   const volumeDisplay = document.querySelector('[data-calc-volume-display]');
   const yearlyOutput = document.querySelector('[data-calc-output-yearly]');
@@ -449,19 +393,6 @@
     return '$' + Math.round(value).toLocaleString('en-US');
   }
 
-  // RANGE output — recovered/year, ported from the Home 2026-08-25.
-  //   high = volume × 0.0300 × 12   ($36K interchange − $6K residual per $1M
-  //                                  = $30K/$1M/month → 3% effective, ≈83% recovery)
-  //   low  = volume × 0.0144 × 12   (40% of the same $36K base = $14.4K/$1M/month)
-  //
-  // ⚠ It used to emit ONE number and that number was the top of the published
-  // 40–85% band. The client's own words: "anchoring all the public-facing examples
-  // at the top of that range defeats the purpose of publishing a range at all. A
-  // regulator or legal reviewer will notice this immediately."
-  // ⚠ THE HIGH RATE DID NOT MOVE. 0.03 is the approved Homepage figure and the
-  // client said the current examples may stay as illustrative benchmarks. Only the
-  // floor was added. Do not round 0.03 up to 0.0306 to make the label read 85% —
-  // that changes a number the client approved.
   const RATE_HIGH = 0.03;
   const RATE_LOW = 0.0144;
   const lowOutput = document.querySelector('[data-calc-low]');
@@ -480,9 +411,6 @@
     updateCalc();
   }
 
-  // Count the recovered-per-year figure up from zero the first time the
-  // output scrolls into view — the page's one data flourish. After that the
-  // slider drives it instantly. Skipped under reduced motion (stays final).
   if (slider && highOutput && lowOutput && !prefersReducedMotion && window.ScrollTrigger) {
     const targetHigh = parseFloat(slider.value) * RATE_HIGH * 12;
     const targetLow = parseFloat(slider.value) * RATE_LOW * 12;
@@ -501,8 +429,7 @@
         (function tick(now) {
           const p = Math.min(1, (now - t0) / dur);
           const eased = 1 - Math.pow(1 - p, 4);
-          // Both ends count together, so the range reads as one figure arriving
-          // rather than two numbers racing.
+
           lowOutput.textContent = formatFull(targetLow * eased);
           highOutput.textContent = formatFull(targetHigh * eased);
           if (p < 1) requestAnimationFrame(tick);
@@ -510,28 +437,6 @@
       },
     });
   }
-
-  /* ---- 6. Theme toggle DISABLED — light theme deferred to a future update.
-     Un-comment this block (plus the head FOUC script and the nav <template>) to restore.
-
-  const themeToggle = document.querySelector('[data-theme-toggle]');
-  if (themeToggle) {
-    themeToggle.addEventListener('click', () => {
-      const isLight = document.documentElement.getAttribute('data-theme') === 'light';
-      const next = isLight ? 'dark' : 'light';
-      if (next === 'light') {
-        document.documentElement.setAttribute('data-theme', 'light');
-      } else {
-        document.documentElement.removeAttribute('data-theme');
-      }
-      try { localStorage.setItem('credx-theme', next); } catch (e) {}
-      const meta = document.querySelector('meta[name="theme-color"]');
-      if (meta) meta.setAttribute('content', next === 'light' ? '#f4f5f9' : '#0b0c16');
-    });
-  }
-  */
-
-  /* ---- 7. Signup — 2-step progressive form (placeholder → CRM in Phase 7) ---- */
 
   const signupForm = document.querySelector('[data-signup-form]');
   if (signupForm) {
@@ -543,12 +448,12 @@
 
     if (step1Btn && step1) {
       step1Btn.addEventListener('click', () => {
-        // Validate step 1 required fields only.
+
         const fields = step1.querySelectorAll('input[required]');
         for (let i = 0; i < fields.length; i++) {
           if (!fields[i].checkValidity()) { fields[i].reportValidity(); return; }
         }
-        // Phase 7: push step 1 to Kyle's CRM here — fires even if step 2 is skipped.
+
         console.log('Signup step 1 (placeholder → CRM):', Object.fromEntries(new FormData(signupForm).entries()));
         if (reward) {
           reward.textContent = 'You are in. Based on your volume, you could be keeping up to $30,000 per $1M. Two more questions and we will build your real number.';
@@ -566,15 +471,13 @@
 
     signupForm.addEventListener('submit', (e) => {
       e.preventDefault();
-      // Phase 7: push the full (step 1 + step 2) payload to CRM here.
+
       console.log('Signup step 2 (placeholder → CRM):', Object.fromEntries(new FormData(signupForm).entries()));
       if (step2) step2.hidden = true;
       if (reward) reward.hidden = true;
       if (done) done.hidden = false;
     });
   }
-
-  /* ---- 8. Smooth in-page nav scroll ---- */
 
   document.querySelectorAll('a[href^="#"]').forEach((link) => {
     link.addEventListener('click', (e) => {

@@ -1,13 +1,7 @@
-/* ============================================================
-   CredX v2 — Design Tokens + Base + Components
-   Source: design/tokens-from-brandguide-v2.md (Phase 3 locks)
-   Surface: dark navy enterprise (primary). Light surface variant supported.
-   ============================================================ */
 
-/* ---- 1. Tokens ---- */
 
 :root {
-  /* Brand colors (Moodboard p8 — locked) */
+
   --navy: #323665;
   --magenta: #943f78;
   --purple: #6d5ea4;
@@ -15,35 +9,27 @@
   --ink: #0b0c16;
   --cloud-white: #f8f9fc;
 
-  /* Surface system (dark — primary v2 per §0) */
-  --surface-0: var(--ink);           /* Primary page surface */
-  --surface-1: #13141f;              /* Card surface, raised panel */
-  --surface-2: #1a1c2c;              /* Hover / selected */
-  --surface-3: #23253a;              /* Divider / outline */
-  --surface-navy: var(--navy);       /* Strong navy accent surface */
-  --surface-light: var(--cloud-white); /* Light variant for occasional cards */
+  --surface-0: var(--ink);
+  --surface-1: #13141f;
+  --surface-2: #1a1c2c;
+  --surface-3: #23253a;
+  --surface-navy: var(--navy);
+  --surface-light: var(--cloud-white);
 
-  /* Type-on-dark accent — brighter than --magenta so it passes AA when
-     used as text on --ink. --magenta stays for surfaces (button bg, slider
-     thumb, gradient stop) where it carries text contrast on top of itself. */
   --magenta-bright: #d667ad;
 
-  /* Text colors on dark surface */
   --text-primary: var(--cloud-white);
   --text-secondary: var(--soft-lavender);
   --text-muted: rgba(167, 154, 180, 0.85);
   --text-accent: var(--magenta-bright);
 
-  /* Text colors on light surface (variant) */
   --text-primary-light: var(--ink);
   --text-secondary-light: var(--navy);
 
-  /* Borders & dividers */
   --border-subtle: rgba(167, 154, 180, 0.15);
   --border-default: var(--surface-3);
   --border-strong: var(--navy);
 
-  /* Gradient (cinematic retune per D5 — softer stops, atmospheric) */
   --gradient-1: linear-gradient(
     135deg,
     var(--navy) 0%,
@@ -52,26 +38,20 @@
     var(--magenta) 95%
   );
 
-  /* Typography — locked to 2 families 2026-05-28 (drop Poppins). Inter
-     covers display + body; Fraunces is editorial accent only at exactly
-     4 selectors (S1 cover title · S3 movement H2 · S6 KPI values · S6
-     quote text). See memories project_typography_v2_lock + project_fraunces_reopened. */
   --font-display: 'Inter', 'Inter Display', system-ui, -apple-system, sans-serif;
   --font-body: 'Inter', 'Inter Display', system-ui, -apple-system, sans-serif;
   --font-editorial: 'Fraunces', Georgia, 'Times New Roman', serif;
 
-  /* Type scale (D2 — clamp() responsive) */
-  --type-display: clamp(2.5rem, 5.5vw + 1rem, 4.5rem);   /* 40–72px */
-  --type-h1: clamp(2rem, 3vw + 1rem, 3rem);              /* 32–48px */
-  --type-h2: clamp(1.5rem, 2vw + 0.75rem, 2.25rem);      /* 24–36px */
-  --type-h3: clamp(1.25rem, 0.75vw + 1rem, 1.5rem);      /* 20–24px */
-  --type-body-lg: 1.125rem;                              /* 18px */
-  --type-body: 1rem;                                     /* 16px */
-  --type-caption: 0.875rem;                              /* 14px */
-  --type-eyebrow: 0.75rem;                               /* 12px */
-  --type-data-callout: clamp(3rem, 5vw + 1rem, 5rem);    /* 48–80px */
+  --type-display: clamp(2.5rem, 5.5vw + 1rem, 4.5rem);
+  --type-h1: clamp(2rem, 3vw + 1rem, 3rem);
+  --type-h2: clamp(1.5rem, 2vw + 0.75rem, 2.25rem);
+  --type-h3: clamp(1.25rem, 0.75vw + 1rem, 1.5rem);
+  --type-body-lg: 1.125rem;
+  --type-body: 1rem;
+  --type-caption: 0.875rem;
+  --type-eyebrow: 0.75rem;
+  --type-data-callout: clamp(3rem, 5vw + 1rem, 5rem);
 
-  /* Spacing (4px base — D6) */
   --s-1: 4px;
   --s-2: 8px;
   --s-3: 12px;
@@ -84,54 +64,43 @@
   --s-10: 128px;
   --s-section: clamp(64px, 10vh, 128px);
 
-  /* Container */
   --container-max: 1280px;
   --container-pad: clamp(16px, 4vw, 48px);
 
-  /* Border radius */
   --radius-pill: 999px;
   --radius-card: 24px;
   --radius-card-sm: 16px;
   --radius-small: 8px;
 
-  /* Shadow (subtle — measured/structural per Moodboard p24) */
   --shadow-1: 0 1px 2px rgba(0, 0, 0, 0.2);
   --shadow-2: 0 4px 12px rgba(0, 0, 0, 0.25);
   --shadow-3: 0 12px 32px rgba(0, 0, 0, 0.35);
 
-  /* Motion */
   --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
   --duration-fast: 200ms;
   --duration-base: 400ms;
   --duration-slow: 800ms;
 
-  /* Z-index scale */
   --z-base: 0;
   --z-elevated: 10;
   --z-nav: 50;
   --z-modal: 100;
 
-  /* Nav surface (theme-aware) */
   --nav-bg: rgba(11, 12, 22, 0.7);
   --nav-bg-scrolled: rgba(11, 12, 22, 0.92);
 }
 
-/* ---- 1b. Light theme overrides (dark is the default above) ----
-   Toggle adds [data-theme="light"] on <html>. Surfaces + text flip; the
-   two cinematic bands (.movement, .final-cta) stay dark in BOTH themes by
-   design — they are the page's dark punctuation. Buttons use the
-   surface-aware mapping below. */
 [data-theme="light"] {
-  --surface-0: #f4f5f9;              /* Primary page surface */
-  --surface-1: #ffffff;              /* Card surface, raised panel */
-  --surface-2: #eceef4;              /* Hover / selected */
-  --surface-3: #dce0ea;              /* Divider / outline */
+  --surface-0: #f4f5f9;
+  --surface-1: #ffffff;
+  --surface-2: #eceef4;
+  --surface-3: #dce0ea;
 
   --text-primary: var(--ink);
-  --text-secondary: #4a4f73;         /* navy-slate, ~7:1 on white */
+  --text-secondary: #4a4f73;
   --text-muted: rgba(40, 44, 80, 0.62);
-  /* Accent on light must be the darker magenta (bright fails AA on white) */
+
   --text-accent: var(--magenta);
 
   --border-subtle: rgba(40, 44, 80, 0.12);
@@ -147,8 +116,6 @@
 
   color-scheme: light;
 }
-
-/* ---- 2. Reset + base ---- */
 
 *,
 *::before,
@@ -183,8 +150,6 @@ svg {
   height: auto;
 }
 
-/* <picture> is just a container — make it transparent to layout so the
-   inner <img> inherits the slot sizing rules. */
 picture { display: contents; }
 
 a {
@@ -200,10 +165,6 @@ button {
   color: inherit;
 }
 
-/* Headings — editorial serif (Fraunces) for all narrative titles. Data
-   callouts (.stat__number, .pain__callout-number, .calc__*-number etc.)
-   override back to Inter via their own font-family rule. Sentence/Title
-   case enforced editorially per the copy proof. */
 h1, h2, h3, h4 {
   font-family: var(--font-editorial);
   font-weight: 500;
@@ -221,24 +182,16 @@ h4 { font-size: var(--type-h3); font-weight: 500; }
 
 p { line-height: 1.6; max-width: 65ch; }
 
-/* ---- 3. Accent (color-only magenta per B1 v2 lock — no italic) ---- */
-
 .accent {
   color: var(--text-accent);
   font-style: normal;
 }
 
-/* On gradient surfaces the accent magenta competes with the gradient's own
-   magenta end-stop and disappears. Switch to cloud-white inside gradient
-   bands; emphasis stays via the fact that the surrounding type is dimmer
-   cloud-white at 92% opacity, while accent is full opacity. */
 .movement .accent,
 .final-cta .accent {
   color: var(--cloud-white);
   opacity: 1;
 }
-
-/* ---- 4. Layout primitives ---- */
 
 .container {
   width: 100%;
@@ -278,8 +231,6 @@ p { line-height: 1.6; max-width: 65ch; }
 .sub-link:hover { gap: var(--s-3); }
 .sub-link::after { content: '→'; transition: transform var(--duration-fast) var(--ease-out-quart); }
 
-/* ---- 5. Buttons (D3 surface-aware mapping) ---- */
-
 .btn {
   display: inline-flex;
   align-items: center;
@@ -300,7 +251,6 @@ p { line-height: 1.6; max-width: 65ch; }
 .btn:hover { transform: translateY(-1px); }
 .btn:active { transform: translateY(0); }
 
-/* On dark surface (default v2) */
 .btn-primary {
   background-color: var(--magenta);
   color: var(--cloud-white);
@@ -321,7 +271,6 @@ p { line-height: 1.6; max-width: 65ch; }
 }
 .btn-text:hover { color: var(--purple); }
 
-/* On light surface (theme toggle) */
 [data-theme="light"] .btn-primary {
   background-color: var(--navy);
   color: var(--cloud-white);
@@ -335,14 +284,9 @@ p { line-height: 1.6; max-width: 65ch; }
 }
 [data-theme="light"] .btn-secondary:hover { background-color: var(--navy); color: var(--cloud-white); }
 
-/* The .hero--full keeps its dark cinematic treatment in both themes (the hero
-   image is dark-graded until a light hero render lands), so its overlaid
-   secondary button stays light-on-dark regardless of theme. */
-/* Hero primary keeps brand magenta in both themes for punch on the photo. */
 [data-theme="light"] .hero--full .btn-primary { background-color: var(--magenta); }
 [data-theme="light"] .hero--full .btn-primary:hover { background-color: var(--purple); }
 
-/* Reusable centered CTA row (Movement §2, Gains §4 — more CTA touchpoints per Audrey) */
 .section-ctas {
   display: flex;
   flex-wrap: wrap;
@@ -351,12 +295,7 @@ p { line-height: 1.6; max-width: 65ch; }
   margin-top: var(--s-8);
 }
 
-
-/* Keep the nav uncrowded on small screens — drop the secondary demo button there
-   (Book a Demo still appears in the Movement, Gains, and footer touchpoints). */
 @media (max-width: 640px) { .nav__cta--demo { display: none; } }
-
-/* ---- 5b. Theme toggle ---- */
 
 .nav__actions {
   display: flex;
@@ -379,12 +318,10 @@ p { line-height: 1.6; max-width: 65ch; }
 }
 .theme-toggle:hover { color: var(--text-primary); border-color: var(--border-default); }
 .theme-toggle__icon { display: none; }
-/* Dark theme shows the sun (offer to brighten); light shows the moon. */
+
 .theme-toggle__icon--sun { display: block; }
 [data-theme="light"] .theme-toggle__icon--sun { display: none; }
 [data-theme="light"] .theme-toggle__icon--moon { display: block; }
-
-/* ---- 6. Navigation ---- */
 
 .nav {
   position: fixed;
@@ -415,11 +352,6 @@ p { line-height: 1.6; max-width: 65ch; }
   width: auto;
 }
 
-/* The CredX wordmark SVG has only a viewBox (no width/height), so the global
-   `img { height: auto }` reset above collapses it to zero — set an explicit
-   size. It also ships a fixed dark-navy fill (#062641) invisible on dark
-   surfaces, so recolor per theme: white on dark (default), navy on light.
-   Covers nav + footer (both flip with the theme). */
 .nav__logo img,
 .footer img[src$="Credx-name.svg"] {
   width: auto;
@@ -458,8 +390,6 @@ p { line-height: 1.6; max-width: 65ch; }
   .nav__links { display: inline-flex; }
 }
 
-/* ---- 7. Hero (S1) ---- */
-
 .hero {
   padding-block: calc(var(--s-section) + var(--s-7)) var(--s-section);
   background-color: var(--surface-0);
@@ -480,16 +410,12 @@ p { line-height: 1.6; max-width: 65ch; }
   }
 }
 
-/* Full-bleed hero variant (image carries the entire section, copy overlaid left).
-   Follows the cover scrub prologue as the formal lead-form moment. */
 .hero--full {
   min-height: 100vh;
   min-height: 100dvh;
   display: flex;
   align-items: center;
-  /* Reserve the fixed-nav height so the longer POS hero copy centres in the
-     area BELOW the nav instead of riding up under it on shorter viewports.
-     (POS has the longest H1 + subhead of the verticals.) */
+
   padding-block: var(--s-9) 0;
 }
 
@@ -525,10 +451,6 @@ p { line-height: 1.6; max-width: 65ch; }
 
 .hero--full .hero__copy { max-width: 560px; }
 
-/* Hero background swaps by theme: dark dusk image (default) / light daylight
-   image. h1, eyebrow and accent follow theme tokens (cloud-white/bright-magenta
-   on dark; ink/magenta on light). The sub gets an explicit tone per theme so
-   it stays legible over the photo's negative-space side. */
 .hero__bg--light { display: none; }
 [data-theme="light"] .hero__bg--dark { display: none; }
 [data-theme="light"] .hero__bg--light { display: block; }
@@ -536,7 +458,6 @@ p { line-height: 1.6; max-width: 65ch; }
 .hero--full .hero__sub { color: rgba(248, 249, 252, 0.92); }
 [data-theme="light"] .hero--full .hero__sub { color: #2a2e4a; }
 
-/* Light-theme hero overlay: pale wash on the left for ink copy. */
 [data-theme="light"] .hero--full .hero__overlay {
   background: linear-gradient(90deg,
     var(--cloud-white) 0%,
@@ -561,11 +482,6 @@ p { line-height: 1.6; max-width: 65ch; }
   .hero--full .hero__bg { object-position: center center; }
   .hero--full .hero__inner { display: flex; align-items: flex-end; min-height: inherit; }
 }
-
-/* ---- 7b. Cover scrub (Trilha B) ----
-   4-frame cross-fade hero, pinned via ScrollTrigger. Each beat overlays in
-   a distinct quadrant per its prompt-carved negative space. Mobile collapses
-   beat positions to bottom-aligned stack for portrait viewports. */
 
 .cover-scrub {
   position: relative;
@@ -592,8 +508,6 @@ p { line-height: 1.6; max-width: 65ch; }
   will-change: transform;
 }
 
-/* Poster sits beneath the video and is revealed only when the video is not
-   yet ready (or reduced motion). Once metadata loads the video covers it. */
 .cover-scrub__poster {
   z-index: 0;
   opacity: 1;
@@ -633,41 +547,36 @@ p { line-height: 1.6; max-width: 65ch; }
 }
 
 .cover-scrub__beat {
-  /* Opacity + transform are driven frame-by-frame from JS during the scroll
-     scrub, so no CSS transition here (it would fight the per-frame writes).
-     Reduced-motion path below still uses the static opacity rule. */
+
   opacity: 0;
   transform: translateY(8px);
   will-change: opacity, transform;
   pointer-events: none;
 }
 
-/* Quadrant placement per prompt-carved negative space. Beats span wider
-   columns now to give bigger titles room to breathe without awkward wraps. */
-.cover-scrub__beat[data-frame="1"] { /* bottom-left */
+.cover-scrub__beat[data-frame="1"] {
   grid-column: 1 / span 8;
   grid-row: 7 / span 6;
   align-self: end;
   text-align: left;
 }
-.cover-scrub__beat[data-frame="2"] { /* right, vertically centered */
+.cover-scrub__beat[data-frame="2"] {
   grid-column: 5 / span 8;
   grid-row: 4 / span 6;
   align-self: center;
   text-align: right;
 }
 
-/* F2 eyebrow stays cloud-white instead of magenta accent (per design call) */
 .cover-scrub__beat[data-frame="2"] .eyebrow {
   color: var(--cloud-white);
 }
-.cover-scrub__beat[data-frame="3"] { /* bottom-right */
+.cover-scrub__beat[data-frame="3"] {
   grid-column: 5 / span 8;
   grid-row: 7 / span 6;
   align-self: end;
   text-align: right;
 }
-.cover-scrub__beat[data-frame="4"] { /* centered, lower-middle */
+.cover-scrub__beat[data-frame="4"] {
   grid-column: 2 / span 10;
   grid-row: 5 / span 6;
   align-self: center;
@@ -747,10 +656,6 @@ p { line-height: 1.6; max-width: 65ch; }
   width: 44px;
 }
 
-/* Mobile portrait: collapse all beat positions to bottom-aligned stack.
-   Image subject placement won't reliably survive narrow crops, so we drop
-   the per-quadrant geometry and let the title always live in the bottom
-   third with a stronger scrim above it. */
 @media (max-width: 768px) {
   .cover-scrub__scrim {
     background: linear-gradient(180deg,
@@ -772,7 +677,6 @@ p { line-height: 1.6; max-width: 65ch; }
   .cover-scrub__progress { bottom: var(--s-4); }
 }
 
-/* Reduced motion: skip pin/scrub, show only F1 statically */
 @media (prefers-reduced-motion: reduce) {
   .cover-scrub__video { display: none; }
   .cover-scrub__poster { opacity: 1; }
@@ -841,8 +745,6 @@ p { line-height: 1.6; max-width: 65ch; }
   object-fit: cover;
   display: block;
 }
-
-/* ---- 8. Pain (S2) ---- */
 
 .pain {
   background-color: var(--surface-0);
@@ -918,19 +820,6 @@ p { line-height: 1.6; max-width: 65ch; }
   display: block;
 }
 
-/* ---- 9. Opportunity / Movement (S3) — gradient band ---- */
-
-/* S3 Movement — editorial spread (gradient removed per /impeccable audit
-   register-fix). Full-bleed photograph carries the surface; scrim guarantees
-   text contrast; a single radial magenta atmospheric trace keeps brand color
-   present without the gradient-band cliché. S7 is now the only gradient
-   moment, paired with the conversion ask. */
-/* Token-based dark band (photo retired per prompts §A3). Stays dark in BOTH
-   themes by design — the page's manifesto punctuation. */
-/* ============================================================
-   THE MOVEMENT STATEMENT — manifesto beat between hero and §2
-   Theme-aware surface; editorial type. Generic across verticals.
-   ============================================================ */
 .statement {
   text-align: center;
 }
@@ -986,7 +875,7 @@ p { line-height: 1.6; max-width: 65ch; }
 }
 
 .movement::before {
-  /* Subtle magenta + purple atmospheric traces — brand presence, no photo */
+
   content: '';
   position: absolute;
   inset: 0;
@@ -996,7 +885,6 @@ p { line-height: 1.6; max-width: 65ch; }
   pointer-events: none;
 }
 
-/* Movement h2 follows the page theme. */
 .movement .movement__h2 { color: var(--text-primary); }
 
 .movement__inner {
@@ -1052,7 +940,6 @@ p { line-height: 1.6; max-width: 65ch; }
   letter-spacing: 0.08em;
 }
 
-/* Three Voices, One Direction */
 .voices {
   margin-top: var(--s-8);
   padding-top: var(--s-6);
@@ -1127,8 +1014,6 @@ p { line-height: 1.6; max-width: 65ch; }
   margin-top: var(--s-5);
 }
 
-/* ---- 10. Outcome (S4) — stat strip + calculator ---- */
-
 .outcome {
   background-color: var(--surface-0);
 }
@@ -1191,7 +1076,6 @@ p { line-height: 1.6; max-width: 65ch; }
   line-height: 1.4;
 }
 
-/* Calculator widget */
 .calc {
   background-color: var(--surface-1);
   border: 1px solid var(--border-subtle);
@@ -1336,8 +1220,6 @@ p { line-height: 1.6; max-width: 65ch; }
   align-self: start;
 }
 
-/* ---- 11. Process (S5) ---- */
-
 .process {
   background-color: var(--surface-0);
 }
@@ -1373,9 +1255,6 @@ p { line-height: 1.6; max-width: 65ch; }
 .process__image:has(img)::after { content: none; }
 .process__image img { width: 100%; height: 100%; object-fit: cover; }
 
-/* New framed media slots (Control editorial + Built For scene trio). Placeholder
-   boxes with a label until the aftermarket renders land (prompts in
-   prompts/automotive-v2.md). Drop in an <img> and the label auto-hides. */
 .section-media {
   aspect-ratio: 16 / 9;
   border-radius: var(--radius-card);
@@ -1467,8 +1346,6 @@ p { line-height: 1.6; max-width: 65ch; }
   line-height: 1.5;
 }
 
-/* ---- 12. Proof (S6) ---- */
-
 .proof {
   background-color: var(--surface-0);
 }
@@ -1507,8 +1384,6 @@ p { line-height: 1.6; max-width: 65ch; }
   line-height: 1.3;
 }
 
-/* Logo placeholder slots — dashed border + muted sub-label read clearly as
-   "real logo coming here", not as a finished client tile. Swap on approval. */
 .emblem--placeholder {
   border-style: dashed;
   border-color: var(--border-default);
@@ -1607,7 +1482,6 @@ p { line-height: 1.6; max-width: 65ch; }
 .proof__wide:has(img)::after { content: none; }
 .proof__wide img { width: 100%; height: 100%; object-fit: cover; }
 
-/* Built For — audience list (replaces the social-proof emblems + quote) */
 .builtfor__list {
   list-style: none;
   display: grid;
@@ -1657,8 +1531,7 @@ p { line-height: 1.6; max-width: 65ch; }
   text-wrap: balance;
   font-variation-settings: 'opsz' 96;
 }
-/* The compliance KPI is a text badge, not a number — sized down so it sits on
-   one line and the three KPI captions stay aligned (no dangling "+"). */
+
 .kpi__value--compact {
   font-size: clamp(1.75rem, 1.6vw + 1rem, 2.4rem);
   letter-spacing: -0.01em;
@@ -1674,10 +1547,7 @@ p { line-height: 1.6; max-width: 65ch; }
   text-wrap: balance;
 }
 
-/* Keep the KPI columns top-aligned so captions line up across all three. */
 .proof__kpis { align-items: start; }
-
-/* ---- 13. Final CTA (S7) — gradient band ---- */
 
 .final-cta {
   background: var(--gradient-1);
@@ -1725,8 +1595,6 @@ p { line-height: 1.6; max-width: 65ch; }
   gap: var(--s-4);
   justify-content: center;
 }
-
-/* ---- 14. FAQ ---- */
 
 .faq {
   background-color: var(--surface-0);
@@ -1785,8 +1653,6 @@ p { line-height: 1.6; max-width: 65ch; }
   color: var(--text-secondary);
   line-height: 1.6;
 }
-
-/* ---- 15. Footer ---- */
 
 .footer {
   background-color: var(--surface-0);
@@ -1855,8 +1721,6 @@ p { line-height: 1.6; max-width: 65ch; }
   font-size: var(--type-eyebrow);
   color: var(--text-muted);
 }
-
-/* ---- 16. Modal (Lead form + Video) ---- */
 
 .modal {
   position: fixed;
@@ -1945,10 +1809,6 @@ p { line-height: 1.6; max-width: 65ch; }
 
 .form__textarea { resize: vertical; min-height: 96px; }
 
-/* ---- 17. Reveal animation hook (used by script.js) ---- */
-
-/* Baseline reveal — confident rise + subtle scale (bolder than the old 24px
-   fade so entrances read with presence). */
 [data-reveal] {
   opacity: 0;
   transform: translateY(48px) scale(0.96);
@@ -1965,24 +1825,17 @@ p { line-height: 1.6; max-width: 65ch; }
 [data-reveal-delay='2'] { transition-delay: 180ms; }
 [data-reveal-delay='3'] { transition-delay: 270ms; }
 
-/* Editorial word-reveal — section titles rise word-by-word from behind a mask.
-   Hidden state + animation are JS-driven (GSAP) so no-JS / reduced-motion keep
-   the text fully visible. These rules only provide the clip structure. */
 .reveal-word-mask {
   display: inline-block;
   overflow: hidden;
   vertical-align: top;
-  padding-bottom: 0.08em;   /* room for descenders inside the clip */
+  padding-bottom: 0.08em;
   margin-bottom: -0.08em;
 }
 .reveal-word { display: inline-block; will-change: transform; }
 
-/* Cinematic media wipe — wide photos reveal left-to-right with a slow zoom-out.
-   JS sets the hidden state; container already clips via overflow:hidden. */
 [data-reveal-media] { will-change: clip-path; }
 [data-reveal-media] img { will-change: transform; }
-
-/* ---- 18. Reduced motion ---- */
 
 @media (prefers-reduced-motion: reduce) {
   *,
@@ -1999,8 +1852,6 @@ p { line-height: 1.6; max-width: 65ch; }
   [data-reveal-media] { clip-path: none; }
   [data-reveal-media] img { transform: none; }
 }
-
-/* ---- 19. Accessibility helpers ---- */
 
 .sr-only {
   position: absolute;
@@ -2025,11 +1876,6 @@ p { line-height: 1.6; max-width: 65ch; }
   box-shadow: 0 0 0 4px rgba(11, 12, 22, 0.18);
 }
 
-/* ============================================================
-   20. V3.1 sections — Control · Gains · Calculator · Signup
-   ============================================================ */
-
-/* ---- Control (S3) ---- */
 .control { background-color: var(--surface-0); }
 .control__header { text-align: center; max-width: 760px; margin: 0 auto var(--s-9); }
 .control__h2 { margin-bottom: var(--s-4); }
@@ -2080,7 +1926,6 @@ p { line-height: 1.6; max-width: 65ch; }
   margin-inline: auto;
 }
 
-/* ---- Gains (S4) ---- */
 .gains { background-color: var(--surface-0); }
 .gains__header { text-align: center; max-width: 760px; margin: 0 auto var(--s-9); }
 .gains__h2 { margin-bottom: var(--s-4); }
@@ -2093,8 +1938,6 @@ p { line-height: 1.6; max-width: 65ch; }
 }
 @media (min-width: 1024px) { .gains__list { grid-template-columns: repeat(3, 1fr); } }
 
-/* Benchmark proof line — relocated out of gain 2 so the cards stay at parity.
-   A quiet centered statement of evidence; the % figures carry the accent. */
 .gains__benchmark {
   max-width: 64ch;
   margin-inline: auto;
@@ -2142,8 +1985,6 @@ p { line-height: 1.6; max-width: 65ch; }
   .gains__strip { grid-template-columns: repeat(3, 1fr); gap: var(--s-7); }
 }
 
-/* Editorial Fraunces on the big values (scoped to this strip — overrides the
-   Inter data-callout default here only). Tidy, balanced captions with air. */
 .gains__strip .stat__number {
   font-family: var(--font-editorial);
   font-weight: 500;
@@ -2157,10 +1998,8 @@ p { line-height: 1.6; max-width: 65ch; }
   text-wrap: balance;
 }
 
-/* ---- Calculator section (S5) ---- */
 .calc-section { background-color: var(--surface-0); }
 
-/* ---- Signup (S8) — 2-step progressive form ---- */
 .signup { background-color: var(--surface-1); }
 .signup__inner { max-width: 760px; margin-inline: auto; }
 .signup__intro { text-align: center; margin-bottom: var(--s-8); }
@@ -2213,16 +2052,6 @@ p { line-height: 1.6; max-width: 65ch; }
   color: var(--text-primary);
 }
 
-/* ============================================================
-   21. Motion + micro-interactions (/impeccable enhance pass)
-   One coherent feedback language: hover lift on cards, shadow on
-   primary CTAs, icon feedback on the toggle, smooth disclosure on
-   FAQ, a condensing nav, and a slow hero entrance. All bounded to
-   pointer:fine where it's a hover, and disabled under reduced-motion
-   by the global cap in §18.
-   ============================================================ */
-
-/* Hover lift — content cards. Steps keep their bg shift and gain a lift. */
 .control-card,
 .gain,
 .emblem,
@@ -2242,13 +2071,12 @@ p { line-height: 1.6; max-width: 65ch; }
     border-color: var(--text-accent);
     box-shadow: var(--shadow-3), 0 10px 30px rgba(148, 63, 120, 0.18);
   }
-  /* The gain numeral pops when its card lifts. */
+
   .gain:hover .gain__num { transform: scale(1.14); }
 }
 
 .gain__num { transition: transform 250ms var(--ease-out-quart); }
 
-/* Primary CTA — confident lift + scale + a stronger magenta glow on hover. */
 .btn-primary {
   transition: transform var(--duration-fast) var(--ease-out-quart),
               background-color var(--duration-fast) var(--ease-out-quart),
@@ -2262,7 +2090,6 @@ p { line-height: 1.6; max-width: 65ch; }
   .btn-primary:active { transform: translateY(0) scale(0.99); }
 }
 
-/* Nav links — magenta underline grows from the left on hover. */
 .nav__link { position: relative; }
 .nav__link::after {
   content: '';
@@ -2276,29 +2103,25 @@ p { line-height: 1.6; max-width: 65ch; }
 }
 .nav__link:hover::after { width: 100%; }
 
-/* FAQ — the + grows and the question brightens on hover (closed items). */
 .faq__question { transition: color var(--duration-fast) var(--ease-out-quart); }
 @media (hover: hover) {
   .faq__item:not([open]) .faq__question:hover { color: var(--text-primary); }
-  /* Scope the + scale to closed items so it never fights the [open] × rotate. */
+
   .faq__item:not([open]) .faq__question:hover::after { transform: scale(1.25); }
 }
 
-/* Theme toggle — icon nudges on hover, spins on press. */
 .theme-toggle__icon {
   transition: transform var(--duration-base) var(--ease-out-quart);
 }
 .theme-toggle:hover .theme-toggle__icon { transform: rotate(18deg); }
 .theme-toggle:active .theme-toggle__icon { transform: rotate(180deg); }
 
-/* Nav condenses slightly once scrolled. */
 .nav {
   transition: background-color var(--duration-base) var(--ease-out-quart),
               padding-block var(--duration-base) var(--ease-out-quart);
 }
 .nav.is-scrolled { padding-block: var(--s-3); }
 
-/* FAQ — fade + slide the answer in on open (native <details> snaps otherwise). */
 .faq__item[open] .faq__answer {
   animation: faqReveal var(--duration-base) var(--ease-out-quart);
 }
@@ -2307,8 +2130,6 @@ p { line-height: 1.6; max-width: 65ch; }
   to   { opacity: 1; transform: translateY(0); }
 }
 
-/* Hero bg scale-in is GSAP-driven (composes with parallax). CSS fallback for
-   no-JS: a one-shot scale on load. GSAP overrides transform when present. */
 @media (prefers-reduced-motion: no-preference) {
   .hero__bg { animation: heroIn 1.5s var(--ease-out-expo) both; }
 }
@@ -2317,18 +2138,8 @@ p { line-height: 1.6; max-width: 65ch; }
   to   { transform: scale(1); }
 }
 
-/* Slightly more separation before the gains stat strip + control white-label,
-   so the "summary" beats read as their own moment, not another card row. */
 .gains__strip { margin-top: var(--s-9); }
 .control__whitelabel { margin-top: var(--s-8); }
-
-/* ============================================================
-   HUB — root index.html. Industry chooser for the 5 verticals.
-   Shares this design system. Introduces hub→vertical navigation:
-   the hub is the single entry point; the verticals themselves still
-   never cross-link to each other (supersedes the v1 "no `/` content"
-   standalone rule for the root only).
-   ============================================================ */
 
 .hub-main { min-height: 100vh; display: flex; flex-direction: column; }
 
@@ -2440,11 +2251,6 @@ a.vertical-card:hover .vertical-card__name::after { transform: translateX(4px); 
   font-size: var(--type-caption);
 }
 
-/* ============================================================
-   SPORTS — image-light placeholders (no Sports renders yet; Phase 5).
-   The hero + section media slots use a branded gradient/box treatment
-   instead of photos so the page reads intentional, not broken.
-   ============================================================ */
 .hero--placeholder { background: var(--gradient-1); }
 .hero--placeholder .hero__overlay {
   background: linear-gradient(90deg, rgba(11,12,22,0.92) 0%, rgba(11,12,22,0.65) 45%, rgba(11,12,22,0.35) 100%);
@@ -2463,14 +2269,6 @@ a.vertical-card:hover .vertical-card__name::after { transform: translateX(4px); 
   text-transform: uppercase;
 }
 
-/* ============================================================
-   POS (Template B) — channel-page components
-   Added on top of the cloned base: Channel Multiplier stats,
-   the Operating Model table, the "built for" sub-head, the
-   process intro line, and the Tier 3 disclaimer.
-   ============================================================ */
-
-/* ---- Channel Multiplier (S5 — swaps the calculator) ---- */
 .channel { background-color: var(--surface-0); }
 .channel__header {
   text-align: center;
@@ -2491,7 +2289,7 @@ a.vertical-card:hover .vertical-card__name::after { transform: translateX(4px); 
 @media (min-width: 768px) {
   .channel__stats { grid-template-columns: repeat(3, 1fr); gap: var(--s-5); }
 }
-/* The × and = operators between the three channel stats — quiet, accent-toned. */
+
 .channel__op {
   color: var(--text-accent);
   font-weight: 500;
@@ -2507,7 +2305,6 @@ a.vertical-card:hover .vertical-card__name::after { transform: translateX(4px); 
   font-style: italic;
 }
 
-/* ---- Process intro line (S6 — Template B integration centrepiece) ---- */
 .process__intro {
   font-size: var(--type-body-lg);
   color: var(--text-secondary);
@@ -2515,14 +2312,13 @@ a.vertical-card:hover .vertical-card__name::after { transform: translateX(4px); 
   text-wrap: balance;
 }
 
-/* ---- Operating Model table (S7 — swaps Built-For) ---- */
 .opmodel__intro {
   font-size: var(--type-body-lg);
   color: var(--text-secondary);
   margin-top: var(--s-4);
   text-wrap: balance;
 }
-/* Horizontal scroll affordance on narrow viewports — the table never crushes. */
+
 .opmodel__wrap {
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
@@ -2553,7 +2349,7 @@ a.vertical-card:hover .vertical-card__name::after { transform: translateX(4px); 
   background-color: var(--surface-2);
   white-space: nowrap;
 }
-/* The first column (function names) reads as a row header. */
+
 .opmodel tbody th[scope="row"] {
   font-weight: 600;
   color: var(--text-primary);
@@ -2562,7 +2358,7 @@ a.vertical-card:hover .vertical-card__name::after { transform: translateX(4px); 
 .opmodel tbody td {
   color: var(--text-muted);
 }
-/* Cells where a party actually owns the function read in primary + accent. */
+
 .opmodel td.is-owned {
   color: var(--text-primary);
   font-weight: 500;
@@ -2572,7 +2368,6 @@ a.vertical-card:hover .vertical-card__name::after { transform: translateX(4px); 
 .opmodel tbody tr:hover td,
 .opmodel tbody tr:hover th { background-color: var(--surface-2); }
 
-/* ---- Built-for sub-head (sits under the operating-model table) ---- */
 .builtfor { margin-bottom: var(--s-8); }
 .builtfor__head {
   font-family: var(--font-editorial);
@@ -2584,7 +2379,6 @@ a.vertical-card:hover .vertical-card__name::after { transform: translateX(4px); 
   letter-spacing: -0.01em;
 }
 
-/* ---- Tier 3 disclaimer (legal — verbatim) ---- */
 .params {
   text-align: center;
   max-width: 60ch;

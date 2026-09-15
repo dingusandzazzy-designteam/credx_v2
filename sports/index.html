@@ -5,27 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#0b0c16" />
 
-  <!-- Light theme + toggle DEFERRED to a future update. Dark is the only theme now.
-       The FOUC script below is disabled; the [data-theme="light"] CSS stays but never
-       activates. To restore: un-comment this script, unwrap the theme-toggle <template>
-       in the nav, and un-comment script.js section 6.
-  <script>
-    (function () {
-      try {
-        var stored = localStorage.getItem('credx-theme');
-        var useLight = stored === 'light' ||
-          (!stored && window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches);
-        if (useLight) document.documentElement.setAttribute('data-theme', 'light');
-      } catch (e) {}
-    })();
-  </script>
-  -->
-
-  <!-- Campaign metadata (per sports/copy.md §Page metadata — SEO dropped, not indexed) -->
   <title>CredX for Teams &amp; Venues — Keep the Loyalty Your Fans Give You</title>
   <meta name="description" content="Your fans are the most loyal customers on earth. Keep the loyalty, the value their spending creates, and access to the data — in your team's brand, not a legacy credit network's. CredX is the embedded value platform for teams, stadiums, and leagues." />
 
-  <!-- Open Graph -->
   <meta property="og:title" content="CredX for Teams &amp; Venues — Keep the Loyalty Your Fans Give You" />
   <meta property="og:description" content="Keep the loyalty, the value your fans' spending creates, and access to the data. Recover up to $30,000 for every $1M you process." />
   <meta property="og:image" content="images/og.png" />
@@ -34,7 +16,6 @@
 
   <link rel="icon" href="../assets/logo/credx-shape.svg" type="image/svg+xml" />
 
-  <!-- Fonts: Inter (display + body) + Fraunces (editorial accent). Locked to 2 families. -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" />
@@ -42,14 +23,14 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <!-- Nav (G1) — minimalist per A4 lock (no cross-vertical switcher). In-page anchors + theme toggle + primary CTA. -->
+
   <nav class="nav" aria-label="Primary">
     <div class="container nav__inner">
       <a href="../" class="nav__logo" aria-label="CredX home">
         <img src="../assets/logo/Credx-name.svg" alt="CredX" height="28" />
       </a>
       <div class="nav__actions">
-        <!-- Theme toggle deferred to a future update; markup preserved inert in the template below. Restore: unwrap it, then un-comment the head FOUC script and script.js section 6. -->
+
         <template data-deferred="theme-toggle">
         <button class="theme-toggle" data-theme-toggle type="button" aria-label="Toggle light and dark theme">
           <svg class="theme-toggle__icon theme-toggle__icon--sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -60,7 +41,7 @@
           </svg>
         </button>
         </template>
-        <!-- Book a Demo = secondary, distinct destination (Calendly, pending Kyle); falls back to #form for now. Join the Movement stays dominant (Change Log #02). -->
+
         <a href="#form" class="btn btn-secondary nav__cta nav__cta--demo" data-book-demo>Book a Demo</a>
         <a href="#form" class="btn btn-primary nav__cta">Join the Movement</a>
       </div>
@@ -68,12 +49,7 @@
   </nav>
 
   <main id="top">
-    <!-- ============================================================
-         S1 — HERO · The Movement
-         Two-version hero (theme swap): hero-dark for dark theme (deep navy
-         left third), hero-light for light theme (bright left third). The
-         left third is intentional negative space that carries the copy.
-         ============================================================ -->
+
     <section class="hero hero--full" aria-label="Hero">
       <picture>
         <source srcset="images/hero-dark.webp" type="image/webp" />
@@ -101,10 +77,6 @@
       </div>
     </section>
 
-    <!-- ============================================================
-         THE MOVEMENT STATEMENT — manifesto beat (after hero, before §2)
-         Generic copy, identical across all verticals.
-         ============================================================ -->
     <section class="section statement" aria-label="The movement statement">
       <div class="container statement__inner">
         <span class="eyebrow eyebrow--accent" data-reveal>A Movement, Not a Product</span>
@@ -121,9 +93,6 @@
       </div>
     </section>
 
-    <!-- ============================================================
-         S2 — THE MOVEMENT (one-liner + Three Voices accordion + founder quote)
-         ============================================================ -->
     <section id="movement" class="section movement" aria-label="The movement">
       <div class="container movement__inner">
         <h2 class="movement__h2" data-reveal-words>
@@ -133,7 +102,6 @@
           Right now your payment processor runs the transaction, and the legacy credit network keeps everything that comes after: who your fan is, what they spend, and when they will come back. CredX puts that back in your hands. Your credit facility, your brand, your fans.
         </p>
 
-        <!-- Three Voices, One Direction — collapsed expanders (native <details>) -->
         <div class="voices" data-reveal data-reveal-delay="1">
           <span class="voices__eyebrow">Three Voices, One Direction</span>
           <details class="voices__item">
@@ -182,9 +150,6 @@
       </div>
     </section>
 
-    <!-- ============================================================
-         S3 — CONTROL · What You Get Back
-         ============================================================ -->
     <section id="control" class="section control" aria-label="Take control">
       <div class="container">
         <div class="control__header">
@@ -195,7 +160,6 @@
           <p class="control__intro" data-reveal data-reveal-delay="2">Three things become yours the day you sign:</p>
         </div>
 
-        <!-- Editorial media slot (front office) -->
         <div class="section-media" data-reveal-media>
           <picture>
             <source srcset="images/control-frontoffice.webp" type="image/webp" />
@@ -225,9 +189,6 @@
       </div>
     </section>
 
-    <!-- ============================================================
-         S4 — THE GAINS · The returns
-         ============================================================ -->
     <section id="gains" class="section gains" aria-label="The gains">
       <div class="container">
         <div class="gains__header">
@@ -255,25 +216,6 @@
           </div>
         </div>
 
-        <!-- 🔴 REPLACED 2026-08-24. The old line claimed "up to a 321% lift in
-             purchase frequency and 76% larger transactions (PayPal embedded credit
-             benchmark)" and the source does not support it: 321% is AVERAGE ORDER
-             VALUE, not purchase frequency, and 76% appears NOWHERE in the document.
-             Source: PayPal UK BRC, "BT Shop increases AOV with PayPal Pay Later
-             solutions", published 2023-10-04, data Q1 2023 — n=1, one market, one
-             quarter, and its own footnote 4 says results "may not be typical".
-             The replacement was ratified 2026-08-12 (Marco) and sat unshipped in all
-             five copy docs because it was parked in the held Webflow batch.
-             ⚠ THE TWO "PayPal" QUALIFIERS ARE LOAD-BEARING. The source compares Pay
-             Later AOV against *standard PayPal transactions*, and the 35% is a share
-             of *PayPal sales* — not of the retailer's total sales. Drop either one as
-             repetition and the denominator silently changes.
-             ⚠ The merchant's name (BT Shop) is deliberately NOT on the page: the
-             attribution exception covers only what a citation requires, and the name
-             is not required. Traceability lives in the copy doc.
-             ⚠ The four per-vertical subject variants ("Businesses" / "Venues" /
-             "Merchants") are gone — the subject is the cited retailer now, so all
-             surfaces carry ONE identical string. -->
         <p class="gains__benchmark" data-reveal>A UK retailer saw orders that used embedded lending run <em class="accent">321%</em> larger than its standard PayPal transactions, with <em class="accent">35%</em> of its PayPal sales choosing to pay over time <span class="gains__benchmark-src">(PayPal case study, Q1 2023)</span>.</p>
 
         <div class="gains__strip">
@@ -298,9 +240,6 @@
       </div>
     </section>
 
-    <!-- ============================================================
-         S5 — SAVINGS CALCULATOR (single output — recovered/year)
-         ============================================================ -->
     <section id="savings" class="section calc-section" aria-label="Savings calculator">
       <div class="container">
         <div class="calc" data-reveal>
@@ -327,14 +266,7 @@
           </div>
           <div class="calc__output">
             <span class="calc__label">Recovered with CredX</span>
-            <!-- ↩ RANGE SET AS A HIERARCHY — ported from the Home, 2026-08-25 (Marcos).
-                 The output used to emit ONE number and that number was the TOP of the
-                 published 40-85% band. The client: "anchoring all the public-facing
-                 examples at the top of that range defeats the purpose of publishing a
-                 range at all." The floor sits above as a small line carrying the
-                 connecting word; the top keeps the display weight so the output still
-                 has one focal figure. Do not delete the low line to "clean up" the
-                 number — it is the whole point of the change. -->
+
             <span class="calc__range-low"><span data-calc-low>$518,400</span> to</span>
             <span class="calc__output-number" data-calc-output-yearly><span data-calc-high>$1,080,000</span></span>
             <span class="calc__output-yearly"><em class="accent">per year</em></span>
@@ -347,9 +279,6 @@
       </div>
     </section>
 
-    <!-- ============================================================
-         S6 — HOW IT WORKS (4 steps)
-         ============================================================ -->
     <section id="how" class="section process" aria-label="How it works">
       <div class="container">
         <div class="process__header">
@@ -391,9 +320,6 @@
       </div>
     </section>
 
-    <!-- ============================================================
-         S7 — BUILT FOR (replaces social proof — no real proof / personas yet)
-         ============================================================ -->
     <section id="proof" class="section proof" aria-label="Who CredX is for">
       <div class="container">
         <div class="proof__header">
@@ -403,7 +329,6 @@
           </h2>
         </div>
 
-        <!-- Scene trio — breadth of the sports world (environment-led, logo-free) -->
         <div class="builtfor__scenes" data-reveal>
           <div class="builtfor__scene">
             <picture>
@@ -425,7 +350,6 @@
           </div>
         </div>
 
-        <!-- Built-for audience list -->
         <ul class="builtfor__list" data-reveal>
           <li class="builtfor__item">Professional sports teams (NHL, CFL, MLS, WHL and equivalents)</li>
           <li class="builtfor__item">Stadiums and arenas</li>
@@ -439,15 +363,9 @@
           If your fans come back and pay by card, CredX is built for you. <em class="accent">$250K or more per month</em> in card volume and the savings and data benefits scale with you.
         </p>
 
-        <!-- Key metrics -->
         <div class="proof__kpis">
           <div class="kpi" data-reveal>
-            <!-- 🔴 CHANGED 2026-08-24 — client decision of the 2026-08-21 meeting.
-                 It read "SOC 2 + PIPEDA / compliant." CredX is SOC 1; SOC 2 Type 2
-                 belongs to its lending partners and third parties (Audrey, on the
-                 call), so the old marker asserted a certification CredX does not
-                 hold. Never restore it. PIPEDA survives in the label because it is
-                 Canadian law, not a certification. -->
+
             <span class="kpi__value kpi__value--compact">Regulatory compliant</span>
             <span class="kpi__label">Data de-identified, consent-driven, and held to Canadian privacy law.</span>
           </div>
@@ -463,10 +381,6 @@
       </div>
     </section>
 
-    <!-- ============================================================
-         S8 — BE PART OF THE MOVEMENT (2-step progressive form)
-         Every CTA on the page anchors here.
-         ============================================================ -->
     <section id="form" class="section signup" aria-label="Be part of the movement">
       <div class="container signup__inner">
         <div class="signup__intro" data-reveal>
@@ -476,7 +390,7 @@
         </div>
 
         <form class="signup__form" data-signup-form novalidate>
-          <!-- Step 1 -->
+
           <div class="signup__step" data-step="1">
             <span class="signup__step-label">Step 1 — Tell us who you are</span>
             <p class="signup__step-note">This is all we need to reach you.</p>
@@ -509,10 +423,8 @@
             <button type="button" class="btn btn-primary" data-step1-next>Join the Movement</button>
           </div>
 
-          <!-- Micro-reward (revealed after Step 1) -->
           <p class="signup__reward" data-signup-reward hidden></p>
 
-          <!-- Step 2 (optional) -->
           <div class="signup__step signup__step--2" data-step="2" hidden>
             <span class="signup__step-label">Step 2 — Tell us about your organization <em class="signup__optional">(optional)</em></span>
             <p class="signup__step-note">Helps us tailor your savings and check fit with our lenders.</p>
@@ -555,15 +467,11 @@
             <button type="submit" class="btn btn-primary">See my full breakdown</button>
           </div>
 
-          <!-- Final confirmation -->
           <p class="signup__done" data-signup-done hidden>Thank you. Our team will reach out within one business day with your full breakdown.</p>
         </form>
       </div>
     </section>
 
-    <!-- ============================================================
-         S9 — FAQ (operator-framed, 6 items)
-         ============================================================ -->
     <section id="faq" class="section faq" aria-label="Frequently asked questions">
       <div class="container">
         <div class="faq__header">
@@ -604,7 +512,6 @@
     </section>
   </main>
 
-  <!-- Footer (G2) -->
   <footer class="footer">
     <div class="container">
       <div class="footer__inner">
@@ -612,7 +519,7 @@
           <img src="../assets/logo/Credx-name.svg" alt="CredX" height="32" style="margin-bottom: 24px;" />
           <p class="footer__cta-line">Still have questions? Talk to our team.</p>
           <div class="footer__ctas">
-            <!-- Book a Demo opens a calendar booking once the Calendly URL lands (pending Kyle); falls back to the form for now. -->
+
             <a href="#form" class="btn btn-secondary" data-book-demo>Book a Demo</a>
             <a href="#form" class="btn btn-primary">Join the Network</a>
           </div>
@@ -631,10 +538,7 @@
           <div class="footer__links">
             <a href="#" class="footer__link">Privacy</a>
             <a href="#" class="footer__link">Terms</a>
-            <!-- 🗑 "SOC 2 attestation" REMOVED 2026-08-24. It was a dead link
-                 (href="#") advertising an attestation CredX does not hold — SOC 2
-                 Type 2 is its lenders'. Both reasons were on file; the 2026-08-21
-                 decision settles it. Do not restore. -->
+
           </div>
         </div>
       </div>

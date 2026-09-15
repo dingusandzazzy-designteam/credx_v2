@@ -24,19 +24,11 @@
         <img src="../assets/logo/Credx-name.svg" alt="CredX" height="28" />
       </a>
       <div class="nav__links" data-nav-menu>
-        <!-- ⚠ ORDER AND LABELS ARE THE LOCKED SITEMAP'S OWN (plan/04), not a preference.
-             Rebuilt 2026-08-20: /evp enters the nav after being navigationally orphaned
-             since it shipped — its only inbound link on the whole site was one mid-body
-             button on /about. `For Lenders` moves OUT of the top level and into the
-             group below; it was a top-level item only because /evp had no slot.
-             ⚠ The `Learn` group (hub · blog · glossary · data-economy · case studies)
-             is NOT here: all of its destinations are still 404. It ships when they exist. -->
+
         <a href="../about/" class="nav__link">The Movement</a>
         <a href="../evp/" class="nav__link">Embedded Value Platform</a>
         <a href="../how-it-works/" class="nav__link">How It Works</a>
-        <!-- Audience group. Ships now because all three destinations exist as of
-             `62a5f9e`; it could not ship before, which is why the nav stayed at four
-             items through Batch 1. -->
+
         <div class="nav__group" data-nav-group>
           <button type="button" class="nav__link nav__group-toggle" aria-expanded="false" aria-controls="nav-audiences" data-nav-group-toggle>Who We Serve</button>
           <div class="nav__submenu" id="nav-audiences" data-nav-submenu>
@@ -522,19 +514,6 @@
 
   </main>
 
-  <!-- 🟠 STANDARDISED 2026-08-25 (Marcos: "footer geral revisar, corrigir e tornar padrão
-       para as páginas do credx-website"). This page shipped `.join-foot` — a bare copyright line
-       and nothing else — while `/lenders/partner`, which is also a noindex form page, carried the
-       full sitemap footer. **Two form pages, two footers, was the actual break in the standard**,
-       and it is what "tornar padrão" resolves. All ten pages now render the same markup; only the
-       relative path depth differs.
-       ⚠ THERE IS A REAL ARGUMENT THE OTHER WAY AND IT WAS NOT IGNORED: an 8-step onboarding funnel
-       normally strips exit links, and `.join-foot` looks deliberate rather than accidental — its
-       own rule sits at `style.css:4404`. The footer lands below the entire form, not beside it, so
-       it is not an exit placed in the flow. **If the funnel argument should win, revert this one
-       page and delete the `.join-foot` rule with it** — do not leave the rule orphaned the way
-       `.photo-band` and `.icon` were.
-       ⚠ `.join-foot` IS NOW UNREFERENCED. It is the only consumer that existed. -->
   <footer class="footer">
     <div class="container">
       <div class="footer__inner footer__inner--sitemap">

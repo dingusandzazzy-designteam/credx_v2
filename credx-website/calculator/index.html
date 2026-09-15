@@ -5,26 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#0b0c16" />
 
-  <!-- Light theme + toggle DEFERRED to a future update (2026-07-24). Dark is the only
-       theme. Do not add a FOUC script or a toggle here. -->
-
   <title>Fee Analyzer | CredX</title>
 
-  <!-- ⚠ `noindex` IS THE POSTURE, not an oversight. `/calculator` is a campaign
-       surface (Track T1, lock of 2026-07-17): reachable by direct link only — BDR
-       connector kit, paid campaigns, direct-mail QR — each with its own UTM.
-       `follow` rather than `nofollow`, matching /thank-you and the 404: the page
-       links to indexable pages and there is no reason to strand those links.
-       🔴 NO robots.txt Disallow. A Disallow stops the crawl, so the crawler never
-       reads the noindex and the URL can still surface as a bare result. The two
-       directives fight; `noindex` alone is the correct one.
-       ⚠ AND THIS PAGE MUST NEVER ENTER sitemap.xml — a noindex URL in a sitemap is
-       a contradictory signal, and the campaign lock also says do not advertise the
-       path. sitemap.xml was NOT touched when this page was built. -->
   <meta name="robots" content="noindex, follow" />
-
-  <!-- No canonical, no description, no Open Graph — deliberately, matching /join and
-       /thank-you. Not indexed, not a share target. -->
 
   <link rel="icon" href="../assets/logo/credx-shape.svg" type="image/svg+xml" />
 
@@ -35,9 +18,7 @@
   <link rel="stylesheet" href="../style.css" />
 </head>
 <body>
-  <!-- Nav (G1) — identical to the other pages. No `aria-current`: this page is in no
-       nav group, and nothing in the nav points at it. That is the campaign lock, not
-       an omission. -->
+
   <nav class="nav" aria-label="Primary">
     <div class="container nav__inner">
       <a href="../" class="nav__logo" aria-label="CredX home">
@@ -69,24 +50,11 @@
 
   <main id="top">
 
-    <!-- ============================================================
-         1 · PAGE SHELL
-         Type-led and centred, the same opening as /thank-you and the 404 — a
-         visitor lands here mid-task, from a QR code or an outreach link, and a
-         photograph in front of the tool is delay in front of the one thing they
-         came for.
-         ⚠ THE TRUST LINE IS LOAD-BEARING. "You get your result before you tell us
-         who you are" is the answer to the reflex the brief names: every merchant
-         in North America has been trained to refuse "send us your statement". It
-         is also the reason the gate sits after the value rather than in front of
-         it. Do not cut it for length.
-         ============================================================ -->
     <section class="hero hero--compact hero--centred" aria-labelledby="fa-title">
       <div class="container hero__inner">
         <div class="hero__copy">
           <span class="eyebrow">Fee analyzer</span>
-          <!-- ⚠ CONTRACTIONS ARE BANNED SITE-WIDE (ruling 2026-08-20). Every string
-               on this page, chrome and tool alike, is in full forms. -->
+
           <h1 class="hero__h1" id="fa-title">See what your card fees <em class="accent">really cost you.</em></h1>
           <p class="hero__sub">Two numbers off one page of your statement. No upload, and no cost.</p>
           <p class="fa__trust">You get your result before you tell us who you are.</p>
@@ -94,24 +62,10 @@
       </div>
     </section>
 
-    <!-- ============================================================
-         2 · THE TOOL
-         Three steps in one section. STEP 1 → free result → GATE → breakdown.
-         ⚠ THE ORDER IS DELIBERATELY THE REVERSE OF THE LANDING-PAGE FORMS, where
-         contact is Step 1 and company data is Step 2. Decided by Mauricio. It is
-         an exception, not drift — do not "correct" it back.
-
-         🔴 NOTHING ON THIS PAGE SUBMITS ANYWHERE. The CRM integration spec —
-         endpoint, auth, payload shape — is owed by the client's IT team and has
-         not arrived. The gate computes and renders locally. Do NOT invent the
-         transport, and do not build Vercel-specific technology into it (standing
-         ruling, 2026-08-03, same as /join).
-         ============================================================ -->
     <section class="section fa-section" aria-label="Fee analyzer">
       <div class="container">
         <div class="fa" data-fa>
 
-          <!-- ---------- STEP 1 ---------- -->
           <div class="fa__step" data-fa-step="1">
             <span class="signup__step-label">Step 1 — Your numbers</span>
 
@@ -135,15 +89,11 @@
               </label>
             </fieldset>
 
-            <!-- Known-cost fields (default) -->
             <div class="signup__grid" data-fa-fields="known_cost">
               <div class="form__field">
                 <label class="form__label" for="fa-fees">Total card fees you paid last month</label>
                 <input class="form__input" id="fa-fees" type="text" inputmode="decimal" autocomplete="off" data-fa-currency data-fa-field="fees" />
-                <!-- ⚠ THE HELPER IS THE WHOLE POINT OF THIS FIELD. Merchants know the
-                     rate they were sold ("2.6% + 10¢") and almost nobody knows the rate
-                     they actually paid. A merchant typing the sold rate understates
-                     their own cost, and so understates ours. Never ask for a rate. -->
+
                 <span class="fa__helper">The all-in total at the bottom of your statement, not your rate.</span>
                 <span class="fa__error" data-fa-error="fees" hidden>Enter the total fees you paid last month.</span>
               </div>
@@ -155,7 +105,6 @@
               </div>
             </div>
 
-            <!-- Estimate fields -->
             <div class="signup__grid" data-fa-fields="estimate" hidden>
               <div class="form__field">
                 <label class="form__label" for="fa-volume-est">Card volume in a normal month</label>
@@ -165,12 +114,7 @@
               </div>
               <div class="form__field">
                 <label class="form__label" for="fa-mix">What do most of your customers pay with?</label>
-                <!-- ⚠ THE BRIEF'S LABELS ARE Consumer / Commercial / Premium. Those are
-                     the internal set and they fail the grade-5 rule — "commercial" is
-                     not a word a shop owner uses about a card in their till.
-                     ⚠ "Not sure" exists because forcing a guess poisons the estimate
-                     silently. O9: this field currently changes NO arithmetic, because no
-                     sourced multiplier exists for the three mixes. Collected, not used. -->
+
                 <select class="form__select" id="fa-mix" data-fa-field="card_mix">
                   <option value="">Select…</option>
                   <option value="everyday">Mostly everyday cards</option>
@@ -183,11 +127,10 @@
               </div>
             </div>
 
-            <!-- Shared fields, both modes -->
             <div class="signup__grid">
               <div class="form__field">
                 <label class="form__label" for="fa-vertical">Your line of work</label>
-                <!-- ⚠ O6 — THIS LIST IS PROPOSED AND NOT RATIFIED. -->
+
                 <select class="form__select" id="fa-vertical" data-fa-field="vertical">
                   <option value="">Select…</option>
                   <option>Automotive aftermarket</option>
@@ -210,14 +153,9 @@
             <span class="fa__error fa__error--form" data-fa-error="cross" hidden></span>
             <span class="fa__warn" data-fa-warn hidden>That works out higher than we usually see. Worth a second look at the two figures.</span>
 
-            <!-- ⚠ NOT `Get my estimate`. That is the locked CTA and it belongs on the
-                 ENTRY to the tool — the slider on the Home and the verticals — not on
-                 the button inside it. In known-cost mode nothing about the result is
-                 an estimate. O2, flagged for Mauricio. -->
             <button type="button" class="btn btn-primary fa__submit" data-fa-run>Show me my number</button>
           </div>
 
-          <!-- ---------- STEP 2 · THE FREE RESULT ---------- -->
           <div class="fa__result" data-fa-step="2" hidden aria-live="polite">
             <span class="signup__step-label" data-fa-result-label>Your result</span>
 
@@ -231,16 +169,6 @@
               <span class="fa__figure-annual" data-fa-annual></span>
             </div>
 
-            <!-- 🔴 THE HEDGE IS NOT DECORATION AND IT IS NOT OPTIONAL. The Home and
-                 three verticals were changed on 2026-08-20 and again on 2026-08-25
-                 precisely to stop a single top-of-band figure going out — the client's
-                 own words were "a regulator or legal reviewer will notice this
-                 immediately". A calculator that hands a merchant ONE exact number, in
-                 writing, personalised to them, is a stronger version of the thing that
-                 was walked back. Legal review is this tool's ship gate.
-                 ⚠ O1 IS STILL OPEN: whether the result is a range at all is Mauricio's
-                 call. Built as a range because that is the position consistent with
-                 what is live. -->
             <p class="fa__hedge" data-fa-hedge></p>
             <p class="fa__note" data-fa-note></p>
 
@@ -257,7 +185,6 @@
             <button type="button" class="fa__link fa__link--block" data-fa-restart>Change my numbers</button>
           </div>
 
-          <!-- ---------- GATE ---------- -->
           <div class="fa__step" data-fa-step="gate" hidden>
             <span class="signup__step-label">Who are we sending it to?</span>
 
@@ -269,8 +196,7 @@
               </div>
               <div class="form__field">
                 <label class="form__label" for="fa-email">Work email</label>
-                <!-- ⚠ NO FREE-MAIL BLOCK. An independent shop owner legitimately runs
-                     the business off a free address; blocking it drops real leads. -->
+
                 <input class="form__input" id="fa-email" type="email" autocomplete="email" data-fa-field="work_email" />
                 <span class="fa__error" data-fa-error="work_email" hidden>That email does not look right.</span>
               </div>
@@ -297,9 +223,7 @@
               </div>
               <div class="form__field">
                 <label class="form__label" for="fa-provider">Who handles your card payments today?</label>
-                <!-- 🔴 CATEGORIES, NEVER NAMES. Listing providers would turn the page
-                     into a comparison, and the never-name-a-competitor rule holds here
-                     exactly as it does in body copy. -->
+
                 <select class="form__select" id="fa-provider" data-fa-field="provider_type">
                   <option value="">Select…</option>
                   <option value="bank">My bank</option>
@@ -312,10 +236,7 @@
               </div>
               <div class="form__field">
                 <label class="form__label" for="fa-contract">When does your current agreement end?</label>
-                <!-- ⚠ "Already free to move" IS FIRST ON PURPOSE. The brief calls this
-                     the most sales-critical field on the page, and this is the answer
-                     worth the most — buried at the bottom it is the one a merchant
-                     scrolls past. -->
+
                 <select class="form__select" id="fa-contract" data-fa-field="contract_end">
                   <option value="">Select…</option>
                   <option value="free_now">Already free to move</option>
@@ -330,9 +251,7 @@
               </div>
               <div class="form__field">
                 <label class="form__label" for="fa-pos">What system do you run your sales on?</label>
-                <!-- ⚠ FREE TEXT UNTIL THE SUPPORTED POS/DMS LIST ARRIVES. It is owed by
-                     the client and it is what turns this into a select and turns the
-                     integration line in the breakdown into a real sentence. -->
+
                 <input class="form__input" id="fa-pos" type="text" autocomplete="off" data-fa-field="pos_system" />
                 <span class="fa__helper">Your till, POS, or shop software.</span>
                 <span class="fa__error" data-fa-error="pos_system" hidden>Tell us what you run your sales on.</span>
@@ -341,18 +260,9 @@
 
             <button type="button" class="btn btn-primary fa__submit" data-fa-gate-submit>See my full breakdown</button>
 
-            <!-- 🔴 THIS LINE HAS NOWHERE TO LINK. /legal/privacy does not exist, and
-                 /contact and /join have been collecting business contact data with no
-                 notice since July (T0 item 2). This page would be the third, and it
-                 asks for considerably more. The link is deliberately absent rather
-                 than dead — restore it when /legal/privacy ships.
-                 ⚠ "Canadian privacy law" rather than PIPEDA, and "Regulatory
-                 compliant" rather than SOC 2: the brief bans naming either on this
-                 page. -->
             <p class="fa__consent">We use what you send here to prepare your breakdown and to contact you about it. Sharing is opt-in, anything we use for analytics is de-identified, and your information is handled under Canadian privacy law.</p>
           </div>
 
-          <!-- ---------- STEP 3 · THE FULL BREAKDOWN ---------- -->
           <div class="fa__result" data-fa-step="3" hidden aria-live="polite">
             <span class="signup__step-label">Your full breakdown</span>
             <h2 class="fa__h2">Here is what card fees cost your business.</h2>
@@ -378,14 +288,6 @@
 
             <p class="fa__readback" data-fa-timing></p>
 
-            <!-- ⚠ TWO PLACEHOLDERS BELOW ARE HARD CLIENT DEPENDENCIES, both named in
-                 the brief, and neither is fillable by inference:
-                 · the supported POS/DMS integration list
-                 · the per-vertical "what the saving buys" values — the loaded cost of
-                   a technician, revenue per bay, per chair, per event night. Real
-                   research, not invention.
-                 They render as nothing at all rather than as a hedge. A missing line
-                 is honest; a vague line is a claim. -->
             <p class="fa__readback" data-fa-integration hidden></p>
 
             <div class="fa__close" data-fa-close></div>
@@ -393,7 +295,6 @@
             <button type="button" class="fa__link fa__link--block" data-fa-restart>Change my numbers</button>
           </div>
 
-          <!-- ---------- SENT (below-threshold confirmation) ---------- -->
           <div class="fa__result" data-fa-step="sent" hidden aria-live="polite">
             <span class="signup__step-label">Sent</span>
             <p class="fa__readback" data-fa-sent></p>
@@ -408,9 +309,6 @@
 
   </main>
 
-  <!-- Footer (G2) — byte-identical to the other pages (ruling 2026-08-25). Do not
-       vary it here. The LinkedIn href is the bare domain, a pre-existing defect
-       carried from index.html:546, kept identical rather than fixed in isolation. -->
   <footer class="footer">
     <div class="container">
       <div class="footer__inner footer__inner--sitemap">
@@ -453,13 +351,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/lenis@1.0.45/dist/lenis.min.js"></script>
   <script src="../script.js"></script>
-  <!-- ⚠ A PAGE-LOCAL SCRIPT, WHICH IS A DEVIATION FROM THE SITE'S ONE-SHARED-SCRIPT
-       PATTERN, AND IT IS DELIBERATE. Every other page loads only ../script.js. The
-       Fee Analyzer is ~200 lines of logic used by exactly one page, and putting it in
-       the shared file would parse it on all eleven. The guard pattern in script.js
-       (run only if the element exists) would have worked; the cost is the parse and
-       the growth of a file that is already the site's largest. Recorded here so the
-       next person reads it as a choice rather than a mistake. -->
+
   <script src="calculator.js"></script>
 </body>
 </html>

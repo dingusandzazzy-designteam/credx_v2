@@ -5,27 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#0b0c16" />
 
-  <!-- Light theme + toggle DEFERRED to a future update (2026-07-24). Dark is the only
-       theme. This page never had a FOUC script or a toggle; do not add one. -->
-
   <title>Thank You | CredX</title>
 
-  <!-- ⚠ `noindex` IS THE MECHANISM. A conversion destination in search results is
-       both useless and actively harmful: a visitor arriving from a SERP fires a
-       false conversion and corrupts the campaign data the page exists to produce.
-       `follow` rather than `nofollow` — unlike /join, this page links to indexable
-       pages and there is no reason to strand those links. The 404 makes the same call.
-       🔴 THE TASK ALSO ASKS FOR A robots.txt Disallow, AND THAT IS NOT DONE HERE ON
-       PURPOSE: a Disallow stops the crawl, so the crawler never reads the noindex and
-       the URL can still surface as a bare result. The two directives fight. `noindex`
-       alone is the correct one. See the note left in robots.txt.
-       ⚠ AND THIS PAGE MUST NEVER ENTER sitemap.xml — a noindex URL in a sitemap is a
-       contradictory signal. That file's header has been corrected to say so. -->
   <meta name="robots" content="noindex, follow" />
-
-  <!-- No canonical, no description, no Open Graph — deliberately, and matching /join.
-       This page is not indexed and is not a share target; declaring social metadata
-       for it would only invite it to be treated as one. -->
 
   <link rel="icon" href="../assets/logo/credx-shape.svg" type="image/svg+xml" />
 
@@ -36,7 +18,7 @@
   <link rel="stylesheet" href="../style.css" />
 </head>
 <body>
-  <!-- Nav (G1) — identical to the Home. No `aria-current`: this page is in no nav group. -->
+
   <nav class="nav" aria-label="Primary">
     <div class="container nav__inner">
       <a href="../" class="nav__logo" aria-label="CredX home">
@@ -57,8 +39,7 @@
         <a href="../contact/" class="nav__link">Contact Us</a>
       </div>
       <div class="nav__actions">
-        <!-- {{PENDING:booking-url}} is still owed by Kyle (since 2026-07-20), so the CTA
-             falls back to /contact — the same fallback every other page uses. -->
+
         <a href="../join/" class="nav__join">Join</a>
         <a href="../contact/" class="btn btn-primary nav__cta" data-pending="booking-url">Book a meeting</a>
         <button class="nav__toggle" data-nav-toggle type="button" aria-label="Open menu" aria-expanded="false">
@@ -70,21 +51,10 @@
 
   <main id="top">
 
-    <!-- ============================================================
-         1 · CONFIRMATION
-         Type-led and centred, the same opening shape as the 404 — both are
-         utility pages a visitor lands on mid-task, and an image here is delay
-         in front of the one thing they came to read.
-         🔴 DELIBERATELY NOT `.hero--alert`. That modifier is the 404's
-         interruption register; a confirmation is the opposite reading, and
-         borrowing the alert band would make a success look like a fault.
-         Plain `.hero--compact .hero--centred`, which is the neutral pair.
-         ============================================================ -->
     <section class="hero hero--compact hero--centred" aria-labelledby="thanks-title">
       <div class="container hero__inner">
         <div class="hero__copy">
-          <!-- ⚠ CONTRACTIONS ARE BANNED SITE-WIDE (ruling 2026-08-20), chrome included.
-               Every line on this page is written in full forms. -->
+
           <h1 class="hero__h1" id="thanks-title">Thank you. <em class="accent">We have it.</em></h1>
           <p class="hero__sub">
             Your message reached the CredX team. Someone will read it against what you told us about your business, and come back to you directly.
@@ -93,23 +63,6 @@
       </div>
     </section>
 
-    <!-- ============================================================
-         2 · WHAT HAPPENS NEXT
-         ⚠ REUSES `.join-next` RATHER THAN ADDING CSS. The role is identical —
-         a numbered next-steps panel on a post-submission surface — and this
-         page introduces ZERO new rules, which on a stylesheet with four
-         recorded source-order cascade traps is the safer position by some way.
-         🟠 The consequence, recorded rather than hidden: `.join-next` is now
-         shared by two pages and its name is under-scoped. Renaming it to a
-         neutral `.next-steps` would touch /join, which is shipped and
-         client-reviewed, so that is a separate call rather than a tidy-up.
-
-         ⚠ NO TIMEFRAME IS STATED, AND THAT IS DELIBERATE. /join promises
-         "within one to two business days", but that is the SLA for a merchant
-         APPLICATION reviewed by operations — it has never been promised for a
-         general contact message, and borrowing it here would invent a
-         commitment nobody made. Add it if the client confirms it holds.
-         ============================================================ -->
     <section class="section prose-band" aria-label="What happens next">
       <div class="container prose-band__inner">
         <ol class="join-next">
@@ -138,16 +91,6 @@
       </div>
     </section>
 
-    <!-- ============================================================
-         3 · WHILE YOU WAIT
-         ⚠ REUSES `.notfound__list`, same reasoning as §2: the role is a
-         labelled recovery-link list, which is exactly what that class is, and
-         reusing it adds no CSS. Its name is under-scoped for the same reason
-         and inherits the same deferred-rename note.
-         The four destinations are the 404's, minus Contact — the visitor has
-         just used Contact, so offering it back is the one link that reads as
-         a failure to notice what they did.
-         ============================================================ -->
     <section class="section prose-band" aria-label="While you wait">
       <div class="container prose-band__inner">
         <ul class="notfound__list">
@@ -173,10 +116,6 @@
 
   </main>
 
-  <!-- Footer (G2) — byte-identical to the other ten pages (ruling 2026-08-25,
-       "footer geral revisar, corrigir e tornar padrão"). Do not vary it here.
-       ⚠ The LinkedIn href is the bare domain, a pre-existing defect carried from
-       index.html:546, kept identical rather than fixed in isolation. -->
   <footer class="footer">
     <div class="container">
       <div class="footer__inner footer__inner--sitemap">

@@ -5,35 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#0b0c16" />
 
-  <!-- Light theme + toggle DEFERRED to a future update (2026-07-24). Dark is the only
-       theme. This page never had a FOUC script or a toggle; do not add one. -->
-
-  <!-- Page metadata (per copy/how-it-works.md — INDEXED; SEO budgets bind)
-       Title 46/≤60 · Meta 155/150–160 · H1 25/≤70 — RE-MEASURED against the rendered
-       strings at build time (2026-08-11). The strings are the APPROVED brief's verbatim
-       (seo/SEO-Briefs-Batch1.md, 2026-08-10); it records Meta 153, a hand-count off by
-       two. In band either way, so no copy moved.
-       Primary keyword `embedded lending` (1000/mo, KD 27, CPC $5.79), targeted through
-       its question form `what is embedded lending` (10/mo). SITEMAP PRIORITY 0.9 — the
-       highest on the site.
-
-       🔴 SERP CONTEXT THAT SHAPES THIS WHOLE PAGE. `embedded lending` in Canada returns
-       a top 10 that is 100% EDITORIAL — Stripe/Plaid/TreviPay/Alloy resource centres,
-       blogs, a video page, a glossary entry. No product or landing page ranks. So:
-         · AI Overview is live  → the §1 snippet paragraph is MANDATORY, not optional.
-         · Video carousel + Image pack are live → a text-only page ranks below the
-           carousel. The §2 video slot is reserved and marked pending production.
-         · Ads middle + $5.79 CPC → organic CTR is depressed, so the Meta earns the
-           click on the mechanics promise rather than on brand.
-
-       ⚠ `what is point of sale lending` is NOT targeted here. §13 of the approved
-       strategy still lists it as a secondary for this page, but it is REASSIGNED to
-       /pos (Post-MVP-Roadmap.md:38). The strategy doc is stale on this point. -->
   <title>What Is Embedded Lending? How It Works | CredX</title>
   <meta name="description" content="Embedded lending lets a customer take credit at checkout, inside the merchant's own brand. See how the mechanics work, where the fees go, and who funds it." />
   <link rel="canonical" href="https://credxtech.com/how-it-works" />
 
-  <!-- Open Graph — OG title and description inherit Title/Meta per copy/how-it-works.md. -->
   <meta property="og:title" content="What Is Embedded Lending? How It Works | CredX" />
   <meta property="og:description" content="Embedded lending lets a customer take credit at checkout, inside the merchant's own brand. See how the mechanics work, where the fees go, and who funds it." />
   <meta property="og:image" content="https://credxtech.com/images/og.jpg" />
@@ -49,17 +24,6 @@
 
   <link rel="stylesheet" href="../style.css" />
 
-  <!-- ⚠⚠ THESE ARE THE FIRST `HowTo` AND `FAQPage` BLOCKS ANYWHERE IN credx-website/.
-       Open item O2 in copy/how-it-works.md recorded that neither schema existed on this
-       site; this page is the first that requires both. Three rules if you edit them:
-       1. The HowTo `step` text must stay in sync with the §2 .step cards, and the
-          FAQPage answers with the §5 .faq__answer prose. Schema that disagrees with
-          visible copy is a structured-data violation, not a shortcut.
-       2. `HowTo` carries NO `totalTime`, `estimatedCost` or `supply` — inventing them
-          would be fabricating claims. The 4-to-8-week integration figure appears in
-          step 1's text because it is client-reviewed copy, not as a totalTime property.
-       3. The FAQ deliberately does NOT repeat the Home's four §3.5 questions. Adding
-          them here would duplicate an indexed answer set across two URLs. -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -164,29 +128,18 @@
   </script>
 </head>
 <body>
-  <!-- Nav (G1) — same IA as the Home and /contact. `aria-current` marks How It Works.
-       ⚠ PATHS ARE RELATIVE, DELIBERATELY — both live surfaces serve the REPO ROOT, so
-       credx-website sits at /credx-website/ and an absolute `/how-it-works` resolves
-       off-site. See the note in about/index.html. Do not normalise these to absolute. -->
+
   <nav class="nav" aria-label="Primary">
     <div class="container nav__inner">
       <a href="../" class="nav__logo" aria-label="CredX home">
         <img src="../assets/logo/Credx-name.svg" alt="CredX" height="28" />
       </a>
       <div class="nav__links" data-nav-menu>
-        <!-- ⚠ ORDER AND LABELS ARE THE LOCKED SITEMAP'S OWN (plan/04), not a preference.
-             Rebuilt 2026-08-20: /evp enters the nav after being navigationally orphaned
-             since it shipped — its only inbound link on the whole site was one mid-body
-             button on /about. `For Lenders` moves OUT of the top level and into the
-             group below; it was a top-level item only because /evp had no slot.
-             ⚠ The `Learn` group (hub · blog · glossary · data-economy · case studies)
-             is NOT here: all of its destinations are still 404. It ships when they exist. -->
+
         <a href="../about/" class="nav__link">The Movement</a>
         <a href="../evp/" class="nav__link">Embedded Value Platform</a>
         <a href="../how-it-works/" class="nav__link nav__link--active" aria-current="page">How It Works</a>
-        <!-- Audience group. Ships now because all three destinations exist as of
-             `62a5f9e`; it could not ship before, which is why the nav stayed at four
-             items through Batch 1. -->
+
         <div class="nav__group" data-nav-group>
           <button type="button" class="nav__link nav__group-toggle" aria-expanded="false" aria-controls="nav-audiences" data-nav-group-toggle>Who We Serve</button>
           <div class="nav__submenu" id="nav-audiences" data-nav-submenu>
@@ -198,8 +151,7 @@
         <a href="../contact/" class="nav__link">Contact Us</a>
       </div>
       <div class="nav__actions">
-        <!-- ⚠ {{PENDING:booking-url}} owed by Kyle since 2026-07-20; falls back to
-             /contact meanwhile, as on every other page. -->
+
         <a href="../join/" class="nav__join">Join</a>
         <a href="../contact/" class="btn btn-primary nav__cta" data-pending="booking-url">Book a Meeting</a>
         <button class="nav__toggle" data-nav-toggle type="button" aria-label="Open menu" aria-expanded="false">
@@ -211,45 +163,11 @@
 
   <main id="top">
 
-    <!-- ============================================================
-         1 · HERO — THE QUESTION, ANSWERED
-         Copy: copy/how-it-works.md §1. Beat = the question as H1, then the
-         answer immediately. No preamble; this page answers before it
-         persuades.
-
-         ⚠ THE H1 IS A QUESTION ON PURPOSE, and this was a contested call.
-         The generic brief template bans interrogative H1s; plan/05:130 and
-         :132 REQUIRE one ("H1 as an AEO question"). The spec wins — this is
-         an informational page, not a landing page, and the template's own
-         intent table permits the question form for informational pages.
-         Decided 2026-08-10, reversible.
-
-         ✅ IMAGE RE-WIRED 2026-08-19 — `hiw-hero.png` (1122×1402, 4:5, ChatGPT/
-         gpt-image, run by Marco from the prompt in `prompts-batch1.md` §7.6).
-         Fixes the lost-operator defect: the 2026-08-11 master was graded and
-         composed for the OLD full-bleed hero and lost the operator entirely
-         under this page's `hero--split` 4:5 crop. Same apothecary sector, both
-         figures composed inside the vertical frame directly, no crop step.
-         A second candidate from the same batch is kept, unwired, at
-         `../images/hiw-hero-alt.png` if Marco ever wants to swap it in.
-         ⚠ THE CUSTOMER IS STILL THE SUBJECT AND THE OPERATOR IS STILL SECONDARY —
-         that is what separates this hero from the Home's, where the owner leads.
-         ⚠ No `<picture>` and no WebP (Marco, 2026-08-11) — Webflow optimises, and a
-         `<picture>` with no `<source>` is noise. Re-renders drop in under the same
-         filename with no markup change.
-         ============================================================ -->
     <section class="hero hero--split" aria-label="Hero">
       <div class="container hero__inner">
         <div class="hero__copy">
           <h1 class="hero__h1" data-reveal-words>What Is <em class="accent">Embedded Lending</em>?</h1>
 
-          <!-- AEO SNIPPET — 49 words (budget 40–60). MANDATORY, because AI Overview is a
-               live SERP feature on this keyword. It opens on the exact query form
-               ("Embedded lending is…"), makes one factual claim per sentence, names
-               CredX once, and every constrained term is the cleared one:
-               "about 20 seconds" is the CONFIRMED claim · "transaction costs", never
-               "payment processing" · no card brand named · "recovers a share" is hedged.
-               Placement directly below the H1 is mandated. Do not move, split or pad it. -->
           <p class="hero__sub" data-reveal data-reveal-delay="1">
             Embedded lending is consumer credit offered inside a merchant’s own checkout, under the merchant’s brand, funded by a lending partner rather than the merchant. The customer is approved in about 20 seconds. CredX structures it so the merchant keeps the customer relationship and recovers a share of transaction costs.
           </p>
@@ -260,43 +178,13 @@
           </div>
         </div>
 
-        <!-- The photograph returns to the hero, framed and beside the copy rather
-             than behind it. It was a full-bleed band below; the band is gone. -->
-        <!-- `--focus-top` is mobile-crop insurance, measured not styled: this frame drops
-             to 16/10 below 960px, and the default centred crop sliced the tops off BOTH
-             heads — her hair above the eyebrows, his forehead. See style.css. No effect
-             at desktop, where the frame ratio equals the asset ratio. -->
         <div class="hero__frame hero__frame--focus-top" data-reveal-media>
-          <!-- `hiw-hero-v2.png` replaces `hiw-hero.png` (Marco, 2026-08-19: "essa tá ruim").
-               Brief and the five specific failures it fixes: prompts-batch1.md §9.
-               Short version — the old frame had the two people IGNORING each other in a
-               period apothecary set, full-length, with dozens of labelled bottles behind
-               them. This one is a contemporary joinery showroom, both leaning into the
-               same phone, mid-shot. Alt is UNCHANGED: it is indexed copy. -->
+
           <img src="../images/hiw-hero-v2.png" alt="A customer approved for embedded lending at a merchant’s own checkout" width="1122" height="1402" loading="eager" />
         </div>
       </div>
     </section>
 
-    <!-- ============================================================
-         2 · THE MECHANICS  ·  `HowTo`
-         Copy: copy/how-it-works.md §2. Four steps, non-technical, in the
-         order the merchant experiences them.
-
-         Reuses the existing .process / .process__steps / .step components —
-         a 4-column grid at 1024, 2 at 768, 1 below. No new CSS.
-
-         ⚠ Step 1 is ADAPTED FROM CLIENT-REVIEWED vertical copy
-         (automotive/index.html:542, which ships on four pages and the Home),
-         so the 4-to-8-week figure and the no-new-hardware claim are NOT new.
-         ⚠ POS/ISV TERMINOLOGY, open item O6: the client mandates the full
-         expansion "Point of Sale (POS) systems and Independent Software
-         Vendor (ISV) platforms" on FIRST USE on any page referring to POS
-         integrations. Step 1 says "point-of-sale system" descriptively,
-         which reads as outside the standard — but that is a judgement call.
-         If this page ever names POS/ISV as a CATEGORY, the full expansion
-         becomes required here.
-         ============================================================ -->
     <section id="mechanics" class="section process" aria-label="The mechanics">
       <div class="container">
         <div class="process__header">
@@ -304,23 +192,8 @@
           <p class="control__intro" data-reveal data-reveal-delay="1">Four steps, and only the first one asks anything of your business.</p>
         </div>
 
-        <!-- ⚠ STRUCTURE CHANGED 2026-08-18, COPY UNTOUCHED. Four identical stacked
-             cards said "item" on a page whose entire subject is "then". The rail
-             carries the sequence in the composition. -->
         <ol class="rail">
-          <!-- 🔴 REVEAL ORDER WAS BROKEN AND THIS IS THE FIX. 2026-08-21, Marcos:
-               "animar os steps para aparecerem na ordem correta, 1,2...".
-               The four stations carried delays 0 / 2 / 3 / 0, so STATION 4 FIRED AT
-               THE SAME INSTANT AS STATION 1 and the sequence read 1+4, then 2,
-               then 3. On a page whose whole subject is order-of-events.
-               ⚠ The delays are the only thing sequencing them above 960, and that
-               is why they matter here more than elsewhere: `.rail` is HORIZONTAL
-               from 960px, so all four stations cross the ScrollTrigger threshold
-               in the same frame. Each has its own trigger at `top 88%`, which
-               staggers naturally only in the stacked layout below 960.
-               ⚠ 0 / 1 / 2 / 3 maps onto the existing scale (0 / 90 / 180 / 270ms).
-               Do not invent a delay 4+: nothing on the site needs one, and the
-               scale stops at 3 on purpose. -->
+
           <li class="rail__station" data-reveal>
             <div class="rail__marker"><span class="rail__num">1</span></div>
             <div class="rail__body">
@@ -335,20 +208,7 @@
               <p class="rail__text">At checkout, the customer sees a credit line and a value-back offer carrying your business’s name. Approval takes about 20 seconds. Every part of what they see is yours.</p>
             </div>
           </li>
-          <!-- 🔴 STEP 3 CARRIES CLIENT-APPROVED WORDING VERBATIM. DO NOT PARAPHRASE IT.
-               Source: Audrey Wilson, Batch 1 review 2026-08-24, comment on this page —
-               "This was flagged explicitly on August 14. CredX does not carry the repayment
-               risk, the lender does." Kyle Bunbury: "This is a critical fix... should have
-               been corrected already." Her agreed version is the text below, with one comma
-               added after "the lender" and nothing else changed.
-               ⚠ THE SUBSTANCE WAS ALREADY CORRECTED ON 2026-08-24 across 21 strings in 9
-               files; what landed 2026-08-25 is HER EXACT WORDING, which is not the same job.
-               THE DIVISION OF LABOUR, and it is the whole point of the sentence:
-                 risk → the lender.  underwriting, servicing, collections → CredX.
-               ⚠ "You are paid in full and upfront" left this step deliberately — it is her
-               sentence that replaced it, and the promise still ships in FAQ 1 and on the Home.
-               ⚠ A ten-day gap sits behind this: the 2026-08-14 flag never reached the
-               register. It arrived through the same channel as everything else. -->
+
           <li class="rail__station" data-reveal data-reveal-delay="2">
             <div class="rail__marker"><span class="rail__num">3</span></div>
             <div class="rail__body">
@@ -365,120 +225,17 @@
           </li>
         </ol>
 
-        <!-- ⏳ EXPLAINER VIDEO SLOT — RESERVED, NOT SCOPED. Marco's call, 2026-08-10.
-             `Video carousel` is a live SERP feature on this page's primary keyword and a
-             text-only page ranks below it, so the video is a RANKING INPUT rather than a
-             nice-to-have. It is also a production ask nobody has costed.
-             The decision was to reserve a specified slot marked pending production, so
-             the page publishes without it and the SEO gap stays VISIBLE instead of being
-             quietly dropped. That is why this renders as a labelled box rather than
-             being omitted — deleting it would erase the gap from the record.
-             What it shows: the four steps above, non-technical, merchant's point of
-             view, suggested 60–90 seconds. The section is complete without it. -->
         <div class="media-ph media-ph--video section-media--spaced" data-img-ph="hiw-explainer-video — RESERVED, pending production. 60–90s explainer of the four steps above, from the merchant's point of view." data-reveal></div>
 
       </div>
     </section>
 
-    <!-- ============================================================
-         3 · WHERE THE MONEY GOES
-         Copy: copy/how-it-works.md §3. The fee story, gain-framed. This is
-         the section most exposed to the forbidden-language rules, and every
-         constraint below is load-bearing.
-
-         🔴 NO FIGURE FOR THE CONSUMER RATE — AND THE PLACEHOLDER IS NOW RETIRED.
-         This used to read "roughly half the rate of a standard card", a hedge
-         standing in for an unconfirmed 11%. Kyle raised the problem live in the
-         11 Aug meeting: his benchmark is 22.97%, but a cardholder can sit near
-         19% APR, so "half the rate" is falsifiable against a real customer.
-         His Partner FAQ solves it with no number at all; Marco took the idea and
-         asked for better wording. It is now "below the average credit card rate",
-         in THREE places on this page — §3's customer-side line, §5 Q2, and the
-         FAQPage JSON-LD in the head, which must stay in sync with the visible
-         answer. ⚠ "average" is the load-bearing word: it is what holds the claim
-         up against the 19% APR case. Do not narrow it back to "a standard card",
-         and do not reintroduce a percentage (locked no-percentages rule).
-
-         🔴 THE PERCENTAGE CLAIM CHANGED 2026-08-11 — CLIENT INSTRUCTION, NOT A
-         STYLE CHOICE. Kyle Bunbury (VP Sales), via Mau in ClickUp `86camz57g`
-         comment `90150250053993`: "make sure the transaction cost savings
-         language uses '40 to 85% depending on qualifying volume' throughout.
-         Not a single figure. This is critical for compliance and consistency
-         with everything else we've put out." The Partner FAQ (p7) agrees:
-         "a 40% to 85% cost reduction (directional, based on qualifying volume)".
-         Marco ruled 2026-08-11 that a direct client instruction outranks the
-         Home: "decisão do cliente, vamos acatar."
-         ⚠ THIS SUPERSEDES the 2026-07-27 "an estimated 85%" reframe, which is
-         still live on the Home and the four published verticals. Do not
-         "restore" the single figure, and do not reintroduce "up to 85%" either
-         — the range plus the qualifier is the compliant form.
-         🔴 THE RANGE IS WRITTEN `from 40% up to 85%` — MARCOS, 2026-08-25. READ THIS
-         BEFORE "CORRECTING" IT BACK TO KYLE'S STRING, BECAUSE IT LOOKS LIKE A DEFECT.
-         Kyle Bunbury's 2026-08-11 instruction specifies the exact string "40 to 85%
-         depending on qualifying volume" and adds "do not reintroduce 'up to 85%'".
-         **The copy now departs from that verbatim string on purpose.** What happened:
-         Audrey, Batch 1 review 2026-08-24, said the headline "sounds like a guaranteed
-         outcome" and proposed "recover 40 to up to 85%". That exact phrasing stacks
-         "to" and "up to" on one endpoint and is not grammatical. Marcos resolved the
-         two client instructions with `from 40% up to 85%`, which keeps the floor Kyle
-         required (his concern was "not a single figure") and uses the hedge Audrey
-         wanted, without the doubled preposition.
-         ⚠ THE OBJECTION THAT WAS RAISED AND OVERRULED, recorded so it is not re-argued
-         from scratch: "up to" marks 85 as a ceiling and therefore reads 40 as a FLOOR,
-         which is a stronger claim than a band — and the client's own Partner FAQ p7
-         calls the reduction "(directional, based on qualifying volume)", where
-         directional is the opposite of a guaranteed minimum. **Marcos's call, made with
-         that stated.** If a compliance reviewer ever challenges the 40% floor, this is
-         the paragraph that explains where it came from.
-         🔒 STILL LOCKED AND UNCHANGED: both ends of the range, and the qualifier
-         "depending on qualifying volume". Do not restore a single figure, and do not
-         drop the floor back to a bare "up to 85%" — that is the form Kyle banned, and
-         the floor is the only thing separating this wording from it.
-         · The $36,000 / $6,000 pair is the VALIDATED HOME's arithmetic
-           (copy/home.md §4 gain 1), not new maths. Hedged with "roughly" and
-           "in the region of" because the figures are illustrative.
-         · "interchange" and "transaction costs", never "payment processing"
-           as the cost line.
-         · No card brand named — the incumbent is "a competing credit
-           facility". ("legacy credit network" is a SPORTS-ONLY override.)
-         · A loss-framing clause was STRUCK from the draft here: "Every card
-           sale carries interchange, and it leaves your business permanently."
-           The ban is absolute. "Permanently" was the word doing the damage.
-           Do not restore it.
-
-         ⚠ Cross-page split, decided: this section keeps the TRANSACTION-LEVEL
-         ARITHMETIC. /evp §5 carries the partnership-level argument (why the
-         saving is structural rather than promotional). They cross-link and do
-         not repeat — the draft of /evp §5 was once verbatim identical to this
-         section but for five words, and that was caught and fixed.
-         ============================================================ -->
     <section id="fees" class="section control" aria-label="Where the money goes">
       <div class="container">
         <div class="control__header">
           <h2 class="control__h2" data-reveal-words>Where your transaction costs land, <em class="accent">before and after</em>.</h2>
         </div>
 
-        <!-- The headline figure STAYS CENTRED — it is a display beat, not prose, and
-             .control__whitelabel is the right shell for exactly that. Only the paragraph
-             moved out: at four sentences it was centred prose, which is the defect this
-             pass exists to fix. -->
-        <!-- 🟠 THE VERB CHANGED 2026-08-25, THE NUMBERS DID NOT. Audrey Wilson, Batch 1
-             review 2026-08-24: "The recover 40-85% headline sounds like a guaranteed outcome."
-             The objection is legitimate — an imperative "Recover X" promises an outcome that
-             depends on qualifying volume. Her suggested fix, "recover 40 to up to 85%", is not
-             grammatical, so the wording is ours.
-             WHAT WAS DONE, and it invents nothing: the descriptive construction was lifted from
-             copy already live on this site — the Home's own `calc__hedge` reads "Recovery RUNS
-             40 to 85% of standard interchange, so the figure above is a range rather than a
-             single outcome." "Runs" describes a range; "Recover" promises one.
-             ⚠ WHAT MUST NOT CHANGE: the figures, and Kyle's mandated qualifier "depending on
-             qualifying volume" (MTG, 2026-08-11). Do NOT restore a single figure, and do NOT
-             use "up to 85%" — both are explicitly forbidden. See the block above. -->
-        <!-- ⚠ THE &nbsp; INSIDE THE ACCENT IS LOAD-BEARING, NOT A TYPO. Without them the
-             phrase wrapped mid-accent at 1440 — "40% up" on one line, "to 85%" on the next —
-             which splits a display beat across a line break and reads as a rendering fault.
-             Caught by rendering it, not by reading it. Keep the figure atomic if the wording
-             changes again. -->
         <div class="control__whitelabel" data-reveal>
           <h3 class="control__whitelabel-head">Interchange recovery runs from <em class="accent">40%&nbsp;up&nbsp;to&nbsp;85%</em>, depending on qualifying volume.</h3>
         </div>
@@ -500,15 +257,8 @@
           </div>
         </div>
 
-        <!-- CL-04 (client, 2026-08-14): the worked examples compute to ~83% recovery,
-             the very top of the published 40 to 85% range. Their words: "a regulator or
-             legal reviewer will notice this immediately." Every page carrying the
-             figures states the variance. ⚠ Their draft said "each year"; the figures are
-             MONTHLY, so the range below is monthly too. Do not restore "each year". -->
         <p class="figure-note" data-reveal>Results vary by volume and card mix.</p>
 
-        <!-- The customer-side line. ⚠ THIS IS ONE OF THE TWO PLACEHOLDER LOCATIONS for
-             the unconfirmed lender rate. The other is §5 Q2. -->
         <p class="gains__benchmark section-aside" data-reveal>
           The credit your customer uses is priced <em class="accent">below the average credit card rate</em>, so the offer stands on its own without a discount funding it.
         </p>
@@ -516,51 +266,15 @@
       </div>
     </section>
 
-    <!-- ============================================================
-         4 · THE VALUE-BACK LOOP
-         Copy: copy/how-it-works.md §4.
-
-         · `value-back`, NEVER "rewards" or "loyalty" for CredX's own
-           offering.
-         · Consent is stated INLINE — the voice rule is that opt-in appears
-           wherever data-sharing is mentioned, and this section mentions it.
-
-         ⚠ The data line here was DIFFERENTIATED on purpose. It originally
-         reused the validated Home's enumeration verbatim ("which buyers
-         return, which segments spend the most, and when demand peaks"),
-         which by then appeared on FOUR pages, three of them indexed. A
-         cross-page audit assigned that sentence to /evp §4 — whose whole
-         subject is data — and this section gave it up for a narrower claim.
-         Do not re-import the Home's enumeration here.
-         ============================================================ -->
     <section id="value-back" class="section split split--reverse" aria-label="The value-back loop">
       <div class="container split__inner">
         <div class="split__body">
         <h2 class="prose-band__h2" data-reveal-words>The loop that sends value <em class="accent">back instead of out</em>.</h2>
-        <!-- ⚠ HW-20 / 2026-08-18. READ THIS BEFORE RESTORING ANYTHING HERE.
-             Andrea's HW-11 rewrite (2026-08-13) read "that value is only redeemable with
-             you". It is gone, and it is NOT coming back — but not for the reason first
-             recorded here.
-             The 2026-08-14 call asked us to say the customer receives "real money, not
-             points and not a statement credit". That was first read as CASH, and §4 was
-             briefly written that way. Marco corrected it the same day: the contrast set is
-             POINTS and STATEMENT CREDIT, which are about the FORM the value takes and WHO
-             delivers it — not about where it can be spent. A statement credit IS money, so
-             contrasting against one only makes sense if the subject is form, not
-             portability. The copy says dollars, and asserts no redemption boundary.
-             ⚠ WHY THE BOUNDARY IS ASSERTED NOWHERE: the site holds three incompatible
-             versions of it. The Home says "closed-loop … not down the street"
-             (index.html:261, approved copy, and closed-loop is a term of art meaning
-             redeemable only within the issuer). /evp sells "spend beyond your four walls"
-             (Marketplace) and "cross-business offers" (BoosT), which is network-wide, not
-             merchant-only. And this page used to say merchant-only. Until the client
-             settles it, §4 states what is certain — dollars, earned with you — and claims
-             nothing about the edge. Do not "improve" this by picking one. -->
+
         <p class="prose-band__body" data-reveal>
           Spending at your business earns value back under your brand. The customer builds it up with you, which gives them a reason to return, and your business keeps both the margin and the visit.
         </p>
 
-        <!-- HW-20 — the line the 2026-08-14 call asked for and no document carried. -->
         <p class="prose-band__body" data-reveal data-reveal-delay="1">
           What the customer earns is counted in dollars, not points, and a dollar earned is worth a dollar spent. Their own spending produced it, and it reaches them through your business rather than through someone else’s statement.
         </p>
@@ -569,52 +283,12 @@
         </p>
         </div>
 
-        <!-- ✅ IMAGE RE-WIRED 2026-08-19 — `hiw-loop.png` (1122×1402, 4:5,
-             ChatGPT/gpt-image, run by Marco from `prompts-batch1.md` §7.6).
-             Fixes the decapitation defect: the 2026-08-11 master framed the
-             two people at opposite far edges, which lost one of them under
-             `.split__media`'s 4:5 crop. Same butcher-counter handover, now a
-             genuinely tight two-shot composed directly for the vertical frame.
-             ⚠ THE SUBJECT IS STILL THE HANDOVER OF GOODS, NOT THE PAYMENT — no
-             terminal, no till, no money in frame, on purpose. Do not "improve" it
-             by adding a payment moment. -->
         <div class="split__media" data-reveal-media>
           <img src="../images/hiw-loop.png" alt="Value-back earned in a merchant’s own brand returning to the same business" width="1122" height="1402" loading="lazy" />
         </div>
       </div>
     </section>
 
-    <!-- ============================================================
-         5 · FAQ  ·  `FAQPage`
-         Copy: copy/how-it-works.md §5. Each question an H3 (the .faq
-         component's <summary> is styled as one); the answer's FIRST sentence
-         answers it.
-
-         ⚠⚠ THIS FAQ DELIBERATELY EXCLUDES ALL FOUR OF THE HOME'S §3.5
-         QUESTIONS — definition, POS/processor, customer ownership, and data.
-         The Home owns those. Duplicating them across two indexed pages is
-         the same thin-content trap caught on /about. This block covers only
-         what the Home does not: funding, cost to the customer, default risk,
-         and timing. It CROSS-LINKS to the Home instead of restating.
-
-         ⚠⚠ `Who qualifies?` IS EXCLUDED ON PURPOSE. It exists as a
-         client-reviewed question on the verticals, but it carries the
-         $250K/month volume floor, and the Home decision of 2026-07-27 kept
-         that figure OFF the indexed site (copy/home.md:147). Adding it here
-         would reintroduce the first qualifying figure through a side door.
-         That is a decision to make openly, not by inheritance.
-
-         ⚠ Q4 is CLIENT-REVIEWED, VERBATIM from the automotive FAQ. Unchanged.
-         Q1–Q3 are AUTHORED from approved Home material. Q2 carries the rate
-         placeholder. Q3 is hedged deliberately — "structured to reduce",
-         never a guarantee — and never blames the consumer.
-
-         ⚠ Unlike the Home's §3.5 block, no item is `open` by default here.
-         The Home keeps its definition open because it is the featured-snippet
-         target; this page's snippet target is the §1 AEO paragraph, which is
-         already visible prose. The FAQPage JSON-LD in the head carries the
-         answers for crawlers regardless of the <details> state.
-         ============================================================ -->
     <section id="faq" class="section faq" aria-label="Frequently asked questions">
       <div class="container">
         <div class="faq__header">
@@ -633,19 +307,7 @@
             <summary class="faq__question">What happens if a customer does not repay?</summary>
             <p class="faq__answer">Repayment risk stays with the community lender partners that fund the credit, not with your business. CredX manages underwriting, servicing, and collections, so a missed payment never reaches your books.</p>
           </details>
-          <!-- 🔴 ADDED 2026-08-11 ON A DIRECT CLIENT INSTRUCTION. Kyle Bunbury asked that
-               the data-ownership question use his approved sentence: "CredX manages the
-               data infrastructure; merchants access structured intelligence from their
-               own customer base." Marco chose option C — this question here AND a
-               reworded Home §3.5 Q4, deliberately different from each other.
-               ⚠ THIS PARTLY REVERSES THE EXCLUSION NOTED ABOVE, ON PURPOSE. The two
-               answers must stay genuinely different, not paraphrases: the Home's Q4 asks
-               what an operator can DO with the intelligence; this one answers WHO HOLDS
-               it and who reaches it. If either is ever rewritten, re-check the pair — two
-               indexed pages answering the same question the same way is the thin-content
-               trap this batch spent a session removing.
-               ⚠ The client's framing is "Intelligence Is Made Available, Not Transferred".
-               Do not let this drift back toward an ownership claim. -->
+
           <details class="faq__item" data-reveal data-reveal-delay="3">
             <summary class="faq__question">Who has access to the customer data?</summary>
             <p class="faq__answer">CredX manages the data infrastructure, and merchants access structured intelligence from their own customer base. Today, that intelligence sits with a competing credit facility, and the merchant sees none of it. Access is opt-in and de-identified at every step.</p>
@@ -656,39 +318,16 @@
           </details>
         </div>
 
-        <!-- The cross-link that replaces duplication. Points at the Home's §3.5 block. -->
         <p class="gains__benchmark section-aside" data-reveal>
           <a href="../#what-is-embedded-lending" class="sub-link">Read the Short Answers</a>
         </p>
       </div>
     </section>
 
-    <!-- ============================================================
-         6 · CTA
-         Copy: copy/how-it-works.md §6. The primary CTA label is plan/05:137's,
-         verbatim. The primary keyword is NOT repeated here — stuffing it into
-         a CTA gains nothing.
-
-         The secondary link to /about is the reciprocal of /about's cross-link
-         to /evp, which keeps the Batch 1 pages connected rather than orphaned:
-         /about → /evp → /how-it-works → /about.
-         ✅ Open item O5 in copy/how-it-works.md warned that this link could not
-         ship because /about was not built. /about IS built now (same batch), so
-         the link resolves.
-
-         ⚠ The headline was replaced during the copy pass — the draft opened
-         "See what… returns", duplicating its own CTA label almost word for
-         word. Do not restore it.
-         ============================================================ -->
     <section id="cta" class="section final-cta" aria-label="See what CredX could return">
       <div class="container final-cta__inner">
         <div data-reveal>
-          <!-- ⚠ NO EYEBROW HERE, DELIBERATELY. This block carried "The Number Is Yours
-               to Find Out" directly above a headline whose second clause is
-               "The number is yours to find out." — the same words twice, three lines
-               apart. The eyebrow was mine, not the copy's; copy/how-it-works.md §6
-               specifies a headline, a body and two CTAs, no eyebrow. Removed rather than
-               reworded, because a replacement line is credx-copy's call. -->
+
           <h2 class="final-cta__h2">The mechanics are settled. The number is yours to find out.</h2>
           <p class="final-cta__body">They work the same way for any business with recurring customers and card volume. What changes from one business to the next is the amount that stays.</p>
           <div class="hero__ctas final-cta__ctas">
@@ -701,10 +340,6 @@
 
   </main>
 
-  <!-- Footer (G2) — same IA as the Home and /contact, paths made relative.
-       ⚠ ../lenders/, ../learn/glossary/ and ../legal/ do not exist yet; kept because
-       every other page carries them. LinkedIn href is the bare domain, carried from
-       index.html:570. Both tracked as the dead-link cluster, neither new here. -->
   <footer class="footer">
     <div class="container">
       <div class="footer__inner footer__inner--sitemap">
@@ -712,18 +347,7 @@
           <img src="../assets/logo/Credx-name.svg" alt="CredX" height="32" style="margin-bottom: 20px;" />
           <p class="footer__movement">A system you belong to, instead of one that owns you.</p>
         </div>
-        <!-- ⚠ COLUMNS AND LABELS MIRROR THE NAV, which is the locked sitemap's own (plan/04).
-             Rebuilt 2026-08-25 on the client's Batch 1 review (Audrey, 2026-08-24): the footer
-             was "missing For Merchants, EVP". Both are now here, and `About` takes the nav's
-             label `The Movement` rather than a second name for the same page.
-             🔴 TWO DESTINATIONS WERE REMOVED, NOT MOVED — `Glossary` (../learn/glossary/) and
-             the whole Legal column (`Privacy` + `Terms`, both pointing at ../legal/). All three
-             404 live, on every page, and they were the links a visitor actually clicks. The
-             pages are roadmap items (Batch 3/4 + track T0); restore the links when they answer
-             200, not before. ⚠ A privacy page is still owed underneath two live forms — that is
-             a real obligation, and deleting a dead link to it does not discharge it.
-             The 4-column grid (2fr 1fr 1fr 1fr, style.css:2825) is why Explore was split in two
-             rather than run to seven items in one column. -->
+
         <div>
           <h3 class="footer__col-title">Explore</h3>
           <div class="footer__links">

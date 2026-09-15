@@ -5,27 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#0b0c16" />
 
-  <!-- Light theme + toggle DEFERRED to a future update. Dark is the only theme now.
-       The FOUC script below is disabled; the [data-theme="light"] CSS stays but never
-       activates. To restore: un-comment this script, unwrap the theme-toggle <template>
-       in the nav, and un-comment script.js section 6.
-  <script>
-    (function () {
-      try {
-        var stored = localStorage.getItem('credx-theme');
-        var useLight = stored === 'light' ||
-          (!stored && window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches);
-        if (useLight) document.documentElement.setAttribute('data-theme', 'light');
-      } catch (e) {}
-    })();
-  </script>
-  -->
-
-  <!-- Campaign metadata (per pos/copy.md §Page metadata — SEO dropped, not indexed) -->
   <title>CredX for POS Platforms — Give Your Merchants the Offer No Competing Platform Can Match</title>
   <meta name="description" content="Add embedded credit and value-back to your POS with one API. Your merchants save up to $30K for every $1M they process — and they stay on your platform because the value is built in. The embedded value layer for POS platforms and ISVs." />
 
-  <!-- Open Graph -->
   <meta property="og:title" content="CredX for POS Platforms — The Embedded Value Layer for Your Channel" />
   <meta property="og:description" content="One API. Embedded credit and value-back, white-labelled under your brand. Your merchants save up to $30K per $1M — and stay on your platform." />
   <meta property="og:image" content="images/og.png" />
@@ -34,7 +16,6 @@
 
   <link rel="icon" href="../assets/logo/credx-shape.svg" type="image/svg+xml" />
 
-  <!-- Fonts: Inter (display + body) + Fraunces (editorial accent). Locked to 2 families. -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" />
@@ -42,15 +23,14 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <!-- Nav (G1) — minimalist per A4 lock (no cross-vertical switcher). In-page anchors + theme toggle + primary CTA.
-       POS is a channel page: NO "Book a Demo" — primary is "Explore a Partnership". -->
+
   <nav class="nav" aria-label="Primary">
     <div class="container nav__inner">
       <a href="../" class="nav__logo" aria-label="CredX home">
         <img src="../assets/logo/Credx-name.svg" alt="CredX" height="28" />
       </a>
       <div class="nav__actions">
-        <!-- Theme toggle deferred to a future update; markup preserved inert in the template below. Restore: unwrap it, then un-comment the head FOUC script and script.js section 6. -->
+
         <template data-deferred="theme-toggle">
         <button class="theme-toggle" data-theme-toggle type="button" aria-label="Toggle light and dark theme">
           <svg class="theme-toggle__icon theme-toggle__icon--sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -68,12 +48,7 @@
   </nav>
 
   <main id="top">
-    <!-- ============================================================
-         S1 — HERO · The Movement (partnership pivot, not pain)
-         Two-version hero (theme swap): hero-dark for dark theme (deep navy
-         left third), hero-light for light theme (bright left third). The
-         left third is intentional negative space that carries the copy.
-         ============================================================ -->
+
     <section class="hero hero--full" aria-label="Hero">
       <picture>
         <source srcset="images/hero-dark.webp" type="image/webp" />
@@ -104,10 +79,6 @@
       </div>
     </section>
 
-    <!-- ============================================================
-         THE MOVEMENT STATEMENT — manifesto beat (after hero, before §2)
-         Generic copy, identical across all verticals.
-         ============================================================ -->
     <section class="section statement" aria-label="The movement statement">
       <div class="container statement__inner">
         <span class="eyebrow eyebrow--accent" data-reveal>A Movement, Not a Product</span>
@@ -124,10 +95,6 @@
       </div>
     </section>
 
-    <!-- ============================================================
-         S2 — THE MOVEMENT (one-liner + Three Voices accordion + founder quote)
-         Voices remapped to the channel: Platform / Merchant / Lender.
-         ============================================================ -->
     <section id="movement" class="section movement" aria-label="The movement">
       <div class="container movement__inner">
         <h2 class="movement__h2" data-reveal-words>
@@ -137,7 +104,6 @@
           Right now you run the transaction, and the card network keeps everything that comes after: the merchant's customer, access to the data, and the loyalty. CredX puts that back on your platform. Your value layer, your brand, your merchants.
         </p>
 
-        <!-- Three Voices, One Direction — collapsed expanders (native <details>) -->
         <div class="voices" data-reveal data-reveal-delay="1">
           <span class="voices__eyebrow">Three Voices, One Direction</span>
           <details class="voices__item">
@@ -186,9 +152,6 @@
       </div>
     </section>
 
-    <!-- ============================================================
-         S3 — CONTROL · What Your Platform Gets Back
-         ============================================================ -->
     <section id="control" class="section control" aria-label="Take control">
       <div class="container">
         <div class="control__header">
@@ -199,7 +162,6 @@
           <p class="control__intro" data-reveal data-reveal-delay="2">Three things become yours the day you integrate:</p>
         </div>
 
-        <!-- Editorial media slot (channel) -->
         <div class="section-media" data-reveal-media>
           <picture>
             <source srcset="images/control-channel.webp" type="image/webp" />
@@ -229,9 +191,6 @@
       </div>
     </section>
 
-    <!-- ============================================================
-         S4 — THE GAINS · The cherry on the cake
-         ============================================================ -->
     <section id="gains" class="section gains" aria-label="The gains">
       <div class="container">
         <div class="gains__header">
@@ -261,25 +220,7 @@
 
         <div class="gains__benchmark" data-reveal>
           <p>When your merchants recover from 40% up to 85% of their interchange costs, depending on qualifying volume, they reinvest. Promotions, VIP packages, seasonal pricing, loyalty programs — funded not by their marketing budget, but by money that used to leave their business entirely.</p>
-          <!-- 🔴 REPLACED 2026-08-24. The old line claimed "up to a 321% lift in
-               purchase frequency and 76% larger transactions (PayPal embedded credit
-               benchmark)" and the source does not support it: 321% is AVERAGE ORDER
-               VALUE, not purchase frequency, and 76% appears NOWHERE in the document.
-               Source: PayPal UK BRC, "BT Shop increases AOV with PayPal Pay Later
-               solutions", published 2023-10-04, data Q1 2023 — n=1, one market, one
-               quarter, and its own footnote 4 says results "may not be typical".
-               The replacement was ratified 2026-08-12 (Marco) and sat unshipped in all
-               five copy docs because it was parked in the held Webflow batch.
-               ⚠ THE TWO "PayPal" QUALIFIERS ARE LOAD-BEARING. The source compares Pay
-               Later AOV against *standard PayPal transactions*, and the 35% is a share
-               of *PayPal sales* — not of the retailer's total sales. Drop either one as
-               repetition and the denominator silently changes.
-               ⚠ The merchant's name (BT Shop) is deliberately NOT on the page: the
-               attribution exception covers only what a citation requires, and the name
-               is not required. Traceability lives in the copy doc.
-               ⚠ The four per-vertical subject variants ("Businesses" / "Venues" /
-               "Merchants") are gone — the subject is the cited retailer now, so all
-               surfaces carry ONE identical string. -->
+
         <p>Add embedded credit at checkout — up to $5,000 per customer, in the merchant's own brand, at roughly half the rate of a standard card — and the effect compounds. A UK retailer saw orders that used embedded lending run <em class="accent">321%</em> larger than its standard PayPal transactions, with <em class="accent">35%</em> of its PayPal sales choosing to pay over time <span class="gains__benchmark-src">(PayPal case study, Q1 2023)</span>.</p>
           <p>Your platform makes both possible. That is a differentiator no competing platform can match.</p>
         </div>
@@ -306,10 +247,6 @@
       </div>
     </section>
 
-    <!-- ============================================================
-         S5 — CHANNEL MULTIPLIER (swaps the calculator — is_channel_page)
-         No slider: the savings are the merchant's, rolled up to channel scale.
-         ============================================================ -->
     <section id="numbers" class="section channel" aria-label="Channel multiplier">
       <div class="container">
         <div class="channel__header">
@@ -341,9 +278,6 @@
       </div>
     </section>
 
-    <!-- ============================================================
-         S6 — HOW IT INTEGRATES (integration is the centrepiece — Template B)
-         ============================================================ -->
     <section id="how" class="section process" aria-label="How it integrates">
       <div class="container">
         <div class="process__header">
@@ -379,10 +313,6 @@
       </div>
     </section>
 
-    <!-- ============================================================
-         S7 — CHANNEL OPERATING MODEL (swaps Built-For — is_channel_page)
-         Table + built-for list + KPIs + Tier 3 disclaimer.
-         ============================================================ -->
     <section id="opmodel" class="section proof" aria-label="Channel operating model">
       <div class="container">
         <div class="proof__header">
@@ -428,7 +358,6 @@
           </p>
         </div>
 
-        <!-- Key metrics -->
         <div class="proof__kpis">
           <div class="kpi" data-reveal>
             <span class="kpi__value">$500M+</span>
@@ -439,26 +368,16 @@
             <span class="kpi__label">lender partners funding embedded credit</span>
           </div>
           <div class="kpi" data-reveal data-reveal-delay="2">
-            <!-- 🔴 CHANGED 2026-08-24 — client decision of the 2026-08-21 meeting.
-                 It read "SOC 2 + PIPEDA / compliant." CredX is SOC 1; SOC 2 Type 2
-                 belongs to its lending partners and third parties (Audrey, on the
-                 call), so the old marker asserted a certification CredX does not
-                 hold. Never restore it. PIPEDA survives in the label because it is
-                 Canadian law, not a certification. -->
+
             <span class="kpi__value kpi__value--compact">Regulatory compliant</span>
             <span class="kpi__label">Data de-identified, consent-driven, and held to Canadian privacy law.</span>
           </div>
         </div>
 
-        <!-- Tier 3 disclaimer — verbatim, legal-owned. Do not paraphrase. -->
         <p class="params" data-reveal>For discussion purposes only; not a commitment or offer.</p>
       </div>
     </section>
 
-    <!-- ============================================================
-         S8 — EXPLORE A PARTNERSHIP (2-step partner application)
-         Every CTA on the page anchors here.
-         ============================================================ -->
     <section id="form" class="section signup" aria-label="Explore a partnership">
       <div class="container signup__inner">
         <div class="signup__intro" data-reveal>
@@ -468,7 +387,7 @@
         </div>
 
         <form class="signup__form" data-signup-form novalidate>
-          <!-- Step 1 -->
+
           <div class="signup__step" data-step="1">
             <span class="signup__step-label">Step 1 — Tell us about you</span>
             <p class="signup__step-note">This is all we need to reach you.</p>
@@ -501,10 +420,8 @@
             <button type="button" class="btn btn-primary" data-step1-next>Explore a Partnership</button>
           </div>
 
-          <!-- Micro-reward (revealed after Step 1) -->
           <p class="signup__reward" data-signup-reward hidden></p>
 
-          <!-- Step 2 (optional) -->
           <div class="signup__step signup__step--2" data-step="2" hidden>
             <span class="signup__step-label">Step 2 — Tell us about your platform <em class="signup__optional">(optional)</em></span>
             <p class="signup__step-note">Helps us scope the integration and the channel economics.</p>
@@ -552,15 +469,11 @@
             <button type="submit" class="btn btn-primary">Send my channel details</button>
           </div>
 
-          <!-- Final confirmation -->
           <p class="signup__done" data-signup-done hidden>Thank you. Our partnerships team will reach out within one business day to scope your channel.</p>
         </form>
       </div>
     </section>
 
-    <!-- ============================================================
-         S9 — FAQ (channel + technical, 8 items)
-         ============================================================ -->
     <section id="faq" class="section faq" aria-label="Frequently asked questions">
       <div class="container">
         <div class="faq__header">
@@ -589,14 +502,7 @@
             <p class="faq__answer">CredX and its community lender partners. The merchant is paid in full and upfront, and the credit risk never sits on your platform's books or the merchant's.</p>
           </details>
           <details class="faq__item">
-            <!-- 🔴 REWRITTEN 2026-08-24. This was the strongest compliance assertion
-                 on the whole property — "Yes. SOC 2 and PIPEDA compliant" — and under
-                 the client's own account of 2026-08-21 it was not CredX's claim to
-                 make: CredX is SOC 1, its lenders and third parties are SOC 2 Type 2.
-                 ⚠ PCI came out of the QUESTION too, deliberately: nothing on file
-                 states a PCI position, and a question naming a standard the answer
-                 never addresses is worse than not asking it. If CredX does hold PCI,
-                 that is a client confirmation, not a copy fix. -->
+
             <summary class="faq__question">Is this compliant, and is customer data protected?</summary>
             <p class="faq__answer">Yes. CredX is regulatory compliant, data is de-identified and consent-driven, and everything is handled under Canadian privacy law. The merchant relationship stays yours, never a card network's.</p>
           </details>
@@ -613,7 +519,6 @@
     </section>
   </main>
 
-  <!-- Footer (G2) -->
   <footer class="footer">
     <div class="container">
       <div class="footer__inner">
@@ -639,8 +544,7 @@
           <div class="footer__links">
             <a href="#" class="footer__link">Privacy</a>
             <a href="#" class="footer__link">Terms</a>
-            <!-- 🗑 "SOC 2 attestation" REMOVED 2026-08-24 — a dead link (href="#")
-                 advertising an attestation CredX does not hold. Do not restore. -->
+
           </div>
         </div>
       </div>

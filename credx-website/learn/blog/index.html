@@ -5,53 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#0b0c16" />
 
-  <!-- ============================================================
-       LAYOUT TEMPLATE — BATCH 3, ClickUp `86cb3dq9q`. NOT A FINISHED PAGE.
-       Type: the BLOG INDEX, filterable. One of five screens; see `/learn/`'s
-       head comment for the scope and the three guardrails, all of which apply.
-       🔴 ONLY ONE OF THE FOUR POSTS HAS A TOPIC, AND THAT IS THE HONEST STATE.
-       The task's own blocker — "4 seed-post topics confirmed before writing" —
-       has never been answered, and it is owed by Mau or the client. So this
-       screen ships ONE real card and THREE marked slots. It does not invent
-       three editorial positions to fill a grid, which is the failure a layout
-       template invites.
-       ✅ THE ONE REAL TOPIC WAS ALREADY DECIDED, NOT CHOSEN HERE. The
-       2026-08-20 SEO ruling moved the interchange-fee explainer off
-       `/merchants` and into "a `/learn/` article entered on the roadmap now".
-       That ruling also warned that if step two never ships, the decision
-       "silently becomes 'absorb and hope', which was the option not chosen."
-       This card is step two becoming visible.
-       ⚠ THE AUDIENCE AXIS IS THE SPEC'S OWN — Merchant / Consumer / Lender —
-       so tagging the three slots by audience is not fabrication. The TOPIC
-       axis is deliberately absent: it needs the four topics first.
-       🆕 2026-08-27 · THE FEATURED IMAGE IS NOW A SLOT, AND BOTH STATES ARE
-       ON THIS SCREEN ON PURPOSE. One card carries a picture; three carry the
-       no-image default. That is not a shortcoming of the proof, it IS the
-       proof — the Featured Image field is OPTIONAL, three of the four seed
-       posts have no topic yet let alone a master, and a grid that only holds
-       when every post has a picture breaks on the first post that does not.
-       The default is a designed surface, not an absence: `--surface-2` with
-       the CredX mark at 6%. See the component comment in style.css.
-       ⚠ The one real picture is a STAND-IN reused from the Home's sanctioned
-       `images/novas/` set. Image generation runs through Marcos in ChatGPT
-       and no post-specific master exists.
-       ↩ 2026-08-27 · THE FILTER IS NO LONGER `.btn`. Marcos: "vamos repensar o
-       filtro? talvez um dropdown aqui faça mais sentido? não sei dizer…" — the
-       answer is not a dropdown, and the reason is this page's own hero: "pick
-       the one you are". The four audiences ARE the proposition and a select
-       hides them behind a click. The real defect was that a filled magenta
-       `.btn-primary` sat in the reading flow competing with `Book a meeting`.
-       `.filterbar` is the same four controls reading as state, not as action.
-       ⚠ THE FILTER IS A LAYOUT DEMONSTRATION, NOT THE PRODUCTION FILTER. In
-       Webflow this is a CMS collection filter. The inline script at the bottom
-       exists so the devs can see the interaction they are approving; it is
-       ~20 lines, it touches nothing else, and it is NOT in `script.js` —
-       shared motion code stays shared. Delete it at CMS build.
-       ============================================================ -->
   <meta name="robots" content="noindex, nofollow" />
 
-  <!-- Title 31 · Meta 156 · H1 8 — measured. Same two-word H1 as the
-       glossary hub, for the same reason: the grid is the page. -->
   <title>The CredX Blog | Embedded Value</title>
   <meta name="description" content="Writing on embedded lending, interchange recovery and the data economy, filtered by whether you run the business, fund the credit, or use it at the counter." />
   <link rel="canonical" href="https://credxtech.com/learn/blog" />
@@ -83,9 +38,6 @@
   }
   </script>
 
-  <!-- ⚠ NO `ItemList` schema. It would enumerate four posts when one exists,
-       which is a claim about content rather than a description of it. Add it
-       when the four are real. -->
 </head>
 <body>
   <nav class="nav" aria-label="Primary">
@@ -131,17 +83,6 @@
       </div>
     </section>
 
-    <!-- ============================================================
-         2 · THE FILTER + THE GRID.
-         ⚠ THE FILTER USES `.section-ctas--start` AND `.btn`, NOT A NEW CHIP
-         COMPONENT. There is no chip class in this system, and inventing one
-         for a layout proof would leave a selector behind that the CMS build
-         does not need. A filter row IS a row of small buttons; the active
-         state is `btn-primary`, the rest are `btn-secondary`. Zero new CSS.
-         ⚠ TOPIC FILTERING IS NOT HERE. The spec asks for audience AND topic;
-         the topic axis needs the four topics, which are owed. Adding an empty
-         topic control would read as broken rather than as pending.
-         ============================================================ -->
     <section class="section" aria-label="Posts">
       <div class="container">
 
@@ -154,11 +95,6 @@
 
         <div class="vertical-grid vertical-grid--3" style="margin-top: var(--s-8);" data-blog-grid data-reveal data-reveal-delay="1">
 
-          <!-- ✅ THE ONE REAL POST. Topic decided by the 2026-08-20 SEO ruling,
-               not chosen here. ⚠ The slug is PROVISIONAL — it is drawn from
-               `/merchants` §2's own heading ("Where the fee goes today, and
-               where it goes next") so it does not invent vocabulary, but the
-               devs mint the real one in the CMS. -->
           <a href="./where-the-card-fee-goes/" class="vertical-card" data-audience="merchant">
             <span class="vertical-card__media">
               <img src="../../images/novas/business-bakery.png" alt="A baker restocking a display case of pastries and bread in a bright bakery" width="1536" height="1024" loading="lazy" />
@@ -169,18 +105,6 @@
             <span class="vertical-card__cta">Read the post</span>
           </a>
 
-          <!-- ⚠ THE FIVE PLACEHOLDER CARDS WERE REWORDED 2026-09-07, NOT HIDDEN.
-               The client's Sep 4 blog-index review offered two options: hide the
-               five, or replace the internal-facing descriptions. 🔴 HIDING THEM
-               LEAVES A ONE-CARD GRID on a page whose whole design argument is two
-               full rows and a filter that splits 2/2/2 — so Marcos took option 2.
-               ✅ What came off the page: the names ("Seed post 2"…) and the spec
-               language ("Audience is set by the spec; the topic is owed by the
-               client"), which is project vocabulary and had no business being
-               public. ⚠ WHAT IS STILL TRUE AND MUST STAY IN THE SAY-BACK: the
-               batch is FOUR seed posts, three topics are owed by the client, and
-               cards 5 and 6 exist to fill the grid. Six cards are not six
-               approved posts. -->
           <div class="vertical-card vertical-card--soon" data-audience="consumer">
             <span class="vertical-card__media">
               <span class="vertical-card__badge">Topic pending</span>
@@ -205,20 +129,6 @@
             <span class="vertical-card__desc">A second post written for merchants.</span>
           </div>
 
-          <!-- ⚠ CARDS 5 AND 6 ARE GRID-FILLERS, NOT SCOPE. The batch is FOUR seed
-               posts and that has not changed. Marcos: "coloca mais 2 cards, só
-               pra deixar 3x3" — four cards in a three-column grid leave the
-               fourth alone on row two, and a template should be approved on a
-               full grid rather than on a ragged one. ✅ They also make the
-               filter demonstrable: at four cards the audiences split 2/1/1 and
-               two of the four filter states render a single card; at six they
-               split 2/2/2.
-               ⚠ THIS USED TO BE STATED ON THE PAGE, IN A NOTE UNDER THE GRID.
-               Marcos removed it 2026-08-27. The record now lives only here, so
-               it has to be said in the say-back instead: the batch is FOUR seed
-               posts, three topics are still owed by the client, and cards 5 and
-               6 exist to fill the grid. Do not let six cards read as six
-               approved posts. -->
           <div class="vertical-card vertical-card--soon" data-audience="consumer">
             <span class="vertical-card__media">
               <span class="vertical-card__badge">Topic pending</span>
@@ -298,12 +208,6 @@
   <script src="https://cdn.jsdelivr.net/npm/lenis@1.0.45/dist/lenis.min.js"></script>
   <script src="../../script.js"></script>
 
-  <!-- ⚠ LAYOUT-DEMO FILTER ONLY. Page-local on purpose: `script.js` is shared
-       by every page and this behaviour belongs to one. In Webflow this is a
-       CMS collection filter and this block is deleted. It sets `hidden`
-       rather than touching `display`, because `.vertical-card` is a flex
-       container and a display override would fight it — the same defect that
-       once kept the modal and cookie banner from closing. -->
   <script>
     (function () {
       var grid = document.querySelector('[data-blog-grid]');

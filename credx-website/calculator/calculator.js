@@ -1,70 +1,18 @@
-/* ============================================================================
-   CredX — Fee Analyzer (`/calculator`)
-   Spec: credx-website/plan/Calculator-Fee-Analyzer-Spec.md
-   Copy: credx-website/copy/calculator.md
-   ClickUp: 86cb9amqa
 
-   🔴 NOTHING HERE SUBMITS ANYWHERE. The CRM integration spec — endpoint, auth,
-   payload shape — is owed by the client's IT team and has not arrived. The gate
-   computes and renders locally, and `buildPayload()` assembles the object that
-   WILL be sent so the shape is reviewable now. Do not invent the transport, and
-   do not build Vercel-specific technology into it (standing ruling 2026-08-03).
-   ========================================================================== */
 (function () {
   'use strict';
 
   var root = document.querySelector('[data-fa]');
   if (!root) return;
 
-  /* --------------------------------------------------------------------------
-     CONSTANTS
-     -------------------------------------------------------------------------- */
-
-  // ⚠ THE APPROVED FORM OF THIS FIGURE IS "roughly $6,000 per $1M", NOT "0.6%".
-  // The percentage is arithmetic on the approved figure and appears in no client-
-  // facing copy anywhere on either property — checked across every .html. The
-  // Home, which is the content authority, also carries "Roughly"
-  // (credx-website/index.html:395); the verticals drop it. Keeping the hedge is
-  // the safer of the two, and converting an approved dollar figure into a bare
-  // percentage made the claim FIRMER than its source, which is the direction
-  // CL-04 was corrected away from. 0.006 is the machine value; the string the
-  // merchant reads uses the approved wording.
   var CREDX_RATE = 0.006;
 
-  // 3.6% · $36,000 per $1M. ⚠ O3 — this is approved as a COMPARATIVE EXAMPLE in
-  // live copy, which is not the same as approved as a CALCULATION BASELINE.
-  // Estimate mode is the only thing that reads it. If Mauricio rules against it,
-  // estimate mode cannot output dollars at all and this constant comes out.
   var BASELINE_RATE = 0.036;
 
-  // The published recovery range.
   var BAND_LOW = 0.40;
   var BAND_HIGH = 0.85;
 
-  // The qualification floor. The only place in the funnel where it is applied.
   var THRESHOLD = 250000;
-
-  /* 🔴 WHAT THE 40-85% BAND ACTUALLY IS, AND WHY ONLY ONE MODE USES IT.
-     SETTLED BY MARCOS, 2026-09-10. The band is not a spread of outcomes for a
-     given merchant — it is the spread of GAPS across merchants, measured against
-     the standard $36,000 per $1M interchange, and it exists only because we do
-     not know the rate a given merchant pays.
-     The arithmetic confirms it: 0.036 x 0.40 = 0.0144, which is RATE_LOW in
-     script.js exactly, and 0.036 x 0.85 = 0.0306 against the shipped RATE_HIGH
-     of 0.03 — the register's August note not to round 0.03 up to 0.0306 just to
-     make the label read 85% is the same relationship seen from the other side.
-     The 40% floor is not a merchant who recovers badly; it is a merchant who
-     already pays ~2.04% and therefore has a small gap.
-     CONSEQUENCE, AND IT IS THE WHOLE DESIGN OF THIS FILE:
-     · KNOWN-COST — the merchant tells us the rate, so the gap is exact and
-       recovery is the whole of it. One figure. No band, no hedge.
-     · ESTIMATE — we do not know the rate, so the band is the honest output.
-     ⚠ THIS DOES NOT REOPEN CL-04. That ruling forbade publishing a single
-     top-of-band figure WITHOUT knowing the merchant's rate. Here we know it. */
-
-  /* --------------------------------------------------------------------------
-     HELPERS
-     -------------------------------------------------------------------------- */
 
   var money0 = new Intl.NumberFormat('en-CA', {
     style: 'currency', currency: 'CAD', maximumFractionDigits: 0
@@ -73,13 +21,10 @@
     style: 'currency', currency: 'CAD', minimumFractionDigits: 2, maximumFractionDigits: 2
   });
 
-  // Round half DOWN on anything shown, so the figure on screen is never larger
-  // than the figure computed.
   function fmt(n) { return money0.format(Math.floor(n)); }
   function fmt2(n) { return money2.format(Math.floor(n * 100) / 100); }
   function pct(n) { return (Math.round(n * 1000) / 10) + '%'; }
 
-  // One figure when the band has collapsed (known-cost), a range when it has not.
   function pair(low, high) {
     return fmt(low) === fmt(high) ? fmt(low) : fmt(low) + ' to ' + fmt(high);
   }
@@ -88,7 +33,6 @@
   function all(sel) { return Array.prototype.slice.call(root.querySelectorAll(sel)); }
   function field(name) { return el('[data-fa-field="' + name + '"]'); }
 
-  // Accepts "$18,000", "18 000", "18000.00". Rejects everything else as 0.
   function parseMoney(value) {
     if (!value) return 0;
     var cleaned = String(value).replace(/[^0-9.]/g, '');
@@ -107,25 +51,12 @@
     return !on;
   }
 
-  /* ⚠ EVENTS ARE A STUB, ON PURPOSE. No analytics tag and no pixel exist on this
-     site yet, and the consent banner is still owed (T0 items 3 and 5). Anything
-     that fires must fire AFTER consent, never before. Until then the events are
-     queued on `window.credxEvents` so the list in the spec can be verified in a
-     browser console without shipping a tag nobody consented to. */
   window.credxEvents = window.credxEvents || [];
   function track(name, props) {
     window.credxEvents.push({ event: name, props: props || {}, at: new Date().toISOString() });
   }
 
-  /* --------------------------------------------------------------------------
-     STATE
-     -------------------------------------------------------------------------- */
-
   var state = { mode: 'known_cost' };
-
-  /* --------------------------------------------------------------------------
-     MODE CHOOSER
-     -------------------------------------------------------------------------- */
 
   function applyMode(mode) {
     state.mode = mode;
@@ -140,10 +71,6 @@
     radio.addEventListener('change', function () { applyMode(radio.value); });
   });
 
-  /* --------------------------------------------------------------------------
-     CURRENCY FIELDS — format on blur, never mid-keystroke
-     -------------------------------------------------------------------------- */
-
   all('[data-fa-currency]').forEach(function (input) {
     input.addEventListener('blur', function () {
       var n = parseMoney(input.value);
@@ -154,10 +81,6 @@
       input.value = String(parseMoney(input.value) || '');
     });
   });
-
-  /* --------------------------------------------------------------------------
-     THE MATH
-     -------------------------------------------------------------------------- */
 
   function compute() {
     var known = state.mode === 'known_cost';
@@ -175,8 +98,7 @@
       effectiveRate: effectiveRate,
       credxCost: credxCost,
       grossGap: grossGap,
-      // Known-cost: the gap is exact, and recovery is the whole of it, so low
-      // and high are the same number and every display collapses to one figure.
+
       monthlyLow: known ? grossGap : grossGap * BAND_LOW,
       monthlyHigh: known ? grossGap : grossGap * BAND_HIGH,
       annualLow: (known ? grossGap : grossGap * BAND_LOW) * 12,
@@ -189,10 +111,6 @@
     };
   }
 
-  /* --------------------------------------------------------------------------
-     STEP 1 → RESULT
-     -------------------------------------------------------------------------- */
-
   function validateStep1() {
     var ok = true;
     var known = state.mode === 'known_cost';
@@ -203,7 +121,6 @@
       ok = setError('fees', fees <= 0) && ok;
       ok = setError('volume', volume <= 0) && ok;
 
-      // Cross-field: the two figures swapped is the most likely real mistake.
       if (fees > 0 && volume > 0 && fees >= volume) {
         var cross = el('[data-fa-error="cross"]');
         cross.textContent = 'Those numbers look swapped. Fees are the smaller figure.';
@@ -213,9 +130,6 @@
         setError('cross', false);
       }
 
-      // Soft warning only — it never blocks. A merchant genuinely paying over
-      // 10% exists, and refusing their numbers would be telling them they are
-      // wrong about their own statement.
       el('[data-fa-warn]').hidden = !(fees > 0 && volume > 0 && fees < volume && (fees / volume) > 0.10);
     } else {
       ok = setError('volume_est', parseMoney(field('volume_est').value) <= 0) && ok;
@@ -241,30 +155,11 @@
       ? 'You paid ' + fmt(r.fees) + ' on ' + fmt(r.volume) + ' in card volume. That is ' + pct(r.effectiveRate) + ' of every sale.'
       : 'You run about ' + fmt(r.volume) + ' a month in card volume. At the rates most businesses your size pay, that works out to roughly ' + fmt(r.fees) + ' a month in card fees.';
 
-    /* 🔴 THIS LINE USED TO READ "Through CredX, that same month costs $X." IT WAS
-       WRONG, AND IT CONTRADICTED THE HEDGE THREE LINES BELOW IT. A merchant only
-       lands at 0.6% if recovery is 100%, and the published range is 40 to 85% —
-       so the old wording promised, as their outcome, the one figure the range
-       exists to rule out. It is the CredX RATE, stated as the comparison point,
-       not their resulting bill. ⚠ If O1 ever lands on Treatment B (one exact
-       figure, full gap), the old wording becomes correct again and this comes
-       back. Do not "simplify" it before then. */
-    /* ↩ THE ORIGINAL WORDING IS CORRECT AGAIN, and the reason it was ever
-       changed is now dead. It was softened twice on 2026-09-10 — once because it
-       appeared to promise an outcome the band ruled out, once to drop a bare
-       "0.6%" that no approved copy carries. The first reason went away when
-       Marcos settled that the CredX rate IS fixed and the band is about the gap;
-       the second still holds, so the percentage stays out and the sentence says
-       the dollar figure rather than the rate. */
     el('[data-fa-credx]').textContent = 'Through CredX, that same month costs ' + fmt(r.credxCost) + '.';
 
     el('[data-fa-monthly]').textContent = pair(r.monthlyLow, r.monthlyHigh);
     el('[data-fa-annual]').textContent = pair(r.annualLow, r.annualHigh) + ' a year';
 
-    /* ⚠ NO 40-85% HEDGE IN KNOWN-COST MODE, AND THAT IS THE POINT OF THE MODE.
-       The band describes not knowing the merchant's rate. Here they told us. A
-       hedge about a range, printed under a figure that is not a range, would be
-       the page contradicting itself in the other direction. */
     var hedge = el('[data-fa-hedge]');
     hedge.textContent = known
       ? ''
@@ -301,10 +196,6 @@
     el('[data-fa-step="1"]').scrollIntoView({ behavior: 'smooth', block: 'start' });
   });
 
-  /* --------------------------------------------------------------------------
-     GATE
-     -------------------------------------------------------------------------- */
-
   el('[data-fa-open-gate]').addEventListener('click', function () {
     hide('2');
     show('gate');
@@ -329,16 +220,13 @@
     return ok;
   }
 
-  /* The payload the CRM will receive. Assembled but NOT sent — see the header.
-     Kept as one flat object so the field list in the spec can be checked against
-     it line by line. */
   function buildPayload() {
     var r = state.result;
     var params = new URLSearchParams(window.location.search);
     var transactions = parseInt(field('transactions').value, 10);
 
     return {
-      // inputs
+
       mode: r.mode,
       fees_last_month: r.mode === 'known_cost' ? r.fees : null,
       volume_last_month: r.mode === 'known_cost' ? r.volume : null,
@@ -355,7 +243,6 @@
       contract_end: field('contract_end').value,
       pos_system: field('pos_system').value.trim(),
 
-      // computed
       effective_rate: r.effectiveRate,
       credx_cost_monthly: r.credxCost,
       gross_gap_monthly: r.grossGap,
@@ -370,15 +257,11 @@
       saving_per_location_low: r.monthlyLow / r.locations,
       saving_per_location_high: r.monthlyHigh / r.locations,
 
-      // flags
       above_threshold: r.aboveThreshold,
       gate_completed: true,
-      // ⚠ THE FIGURE THE MERCHANT ACTUALLY SAW, stored verbatim. The sales call
-      // opens on this number, and re-deriving it later from the stored inputs
-      // risks a mismatch if a constant ever moves.
+
       figure_shown: el('[data-fa-monthly]').textContent,
 
-      // attribution
       utm_source: params.get('utm_source'),
       utm_medium: params.get('utm_medium'),
       utm_campaign: params.get('utm_campaign'),
@@ -388,7 +271,6 @@
       page_path: window.location.pathname,
       referrer: document.referrer || null,
 
-      // meta
       timestamp_iso: new Date().toISOString(),
       consent_flag: true,
       language_version: 'en_CA'
@@ -419,28 +301,16 @@
       timing.textContent = 'Your agreement ends ' + when + '. You could move then.';
     }
 
-    /* ⚠ THE INTEGRATION LINE STAYS HIDDEN until the supported POS/DMS list
-       arrives. Naming their system back to them without knowing whether we
-       integrate with it is a claim, not a courtesy.
-       The per-vertical "what the saving buys" block is absent for the same
-       reason — those figures need real research and have not been sourced. */
-
     var close = el('[data-fa-close]');
     if (r.aboveThreshold) {
       close.innerHTML =
         '<h3 class="fa__h3">Worth a proper conversation.</h3>' +
         '<p class="fa__sub">Book a call and we will walk through your numbers together.</p>' +
-        // {{PENDING:booking-url}} — owed by the client. Falls back to /contact,
-        // the same fallback every other page on the site uses.
+
         '<a href="../contact/" class="btn btn-primary fa__submit" data-pending="booking-url">Book a call</a>';
       close.querySelector('a').addEventListener('click', function () { track('calc_booking_click', {}); });
     } else {
-      /* 🔴 NO CALENDAR IS RENDERED FOR BELOW-THRESHOLD MERCHANTS. Not hidden with
-         CSS, not present and disabled. Absent. They still see the full result and
-         they are still captured — what they never see is a sales calendar.
-         ⚠ The copy says why without saying "you do not qualify". Empowering,
-         never attacking, applies hardest on the one screen where we turn someone
-         down. */
+
       close.innerHTML =
         '<h3 class="fa__h3">Keep this handy.</h3>' +
         '<p class="fa__sub">CredX is built for businesses running $250,000 or more a month in card volume. You are not there yet, so we will send your breakdown by email and check back when the timing is better.</p>' +
@@ -466,8 +336,7 @@
     if (!validateGate()) return;
 
     var payload = buildPayload();
-    // 🔴 The one line that is missing a destination. When the CRM spec lands,
-    // this is where it goes — and nowhere else on the page.
+
     track('calc_gate_completed', {
       mode: payload.mode,
       above_threshold: payload.above_threshold,
@@ -477,10 +346,6 @@
 
     renderBreakdown();
   });
-
-  /* --------------------------------------------------------------------------
-     RESTART
-     -------------------------------------------------------------------------- */
 
   all('[data-fa-restart]').forEach(function (button) {
     button.addEventListener('click', function () {

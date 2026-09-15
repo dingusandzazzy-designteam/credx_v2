@@ -6,15 +6,6 @@
   <title>Page Not Found | CredX</title>
   <meta name="robots" content="noindex, follow" />
 
-  <!-- ⚠ EVERY PATH ON THIS PAGE IS ABSOLUTE, ON PURPOSE.
-       Vercel serves this file for ANY unmatched route, so it can render at
-       /nonsense, at /credx-website/nonsense, or three levels deep. A relative
-       path would resolve differently each time and the recovery links — the
-       entire reason this page exists — would break exactly when they are
-       needed. Do not "tidy" these into relative paths.
-       It lives at the REPO ROOT because that is Vercel's output root here;
-       moving it under credx-website/ would stop it being served. -->
-
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
@@ -22,30 +13,6 @@
   <link rel="icon" href="/credx-website/assets/logo/credx-shape.svg" type="image/svg+xml" />
 </head>
 <body>
-
-  <!-- ============================================================
-       ↩ 2026-09-07 · NAV AND FOOTER BROUGHT UP TO THE SHIPPED SET. Marcos:
-       "arruma então o 404". The page was built 2026-08-18 and its chrome had
-       not moved since: the nav carried `How It Works · About · Contact Us`
-       with no `Who We Serve` group and no `Join`, and the footer was the
-       brand block alone. Both now mirror `credx-website/learn/index.html`
-       exactly, with absolute `/credx-website/…` paths — this file is served
-       from the ROOT, so relative links would resolve one level too high.
-       ✅ Also corrected: the footer read `credx-tech.com`; every other page
-       ships `credxtech.com`, which is the host the canonicals were repointed
-       at on 2026-08-25. The hyphenated form was the stale one.
-       ⚠ CTA CASING IS MIRRORED, NOT FIXED — nav says "Book a meeting" and the
-       footer "Book a Meeting", because that is the split every shipped page
-       carries and it is an open item in the register (§3, 2026-08-28).
-       Normalising it here would make the 404 the only page that disagrees.
-       🔴 NO `LEARN` LINK, AND THAT IS DELIBERATE. The six Learn pages ship
-       `noindex` with ZERO inbound links by guardrail, and the `Learn` nav
-       group does not ship until all five destinations hold real content.
-       A link from here would be the first inbound link and would break both.
-       ⚠ A 404 IS SERVED, NOT LINKED: the remaining check is that Vercel
-       returns this file for unmatched `/credx-website/*` paths, which needs a
-       deploy to confirm and no further edit.
-       ============================================================ -->
 
   <nav class="nav" data-nav>
     <div class="container nav__inner">
@@ -77,12 +44,7 @@
   </nav>
 
   <main>
-    <!-- Type-led like the Pillar–Read opening — an image here would be delay in
-         front of the one thing the visitor wants, which is a way out — but on the
-         GRADIENT band, which Phase 6 §1.5 reserves for punctuation and which no
-         other page opens on. That is what makes it read as an interruption
-         instead of as another content page, without inventing an alert colour
-         the token system does not have. -->
+
     <section class="hero hero--compact hero--centred hero--alert" aria-label="Page not found">
       <div class="container hero__inner">
         <div class="hero__copy">

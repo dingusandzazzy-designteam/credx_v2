@@ -5,32 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#0b0c16" />
 
-  <!-- ============================================================
-       LAYOUT TEMPLATE — BATCH 3, ClickUp `86cb3dq9q`. NOT A FINISHED PAGE.
-       Scope, per Marcos 2026-08-26: the CMS is the devs' job; ours is the
-       template — one screen per page type, for them to approve the layout
-       before they build the Webflow CMS collections. Five screens:
-       /learn/ · /learn/glossary/ · a glossary term · /learn/blog/ · a post.
-       🔴 THREE GUARDRAILS, AND THE FIRST IS WHY THIS FILE IS noindex.
-       1. `credx-website` is the ONLY indexed property. These screens carry
-          approval-grade content, so they must not be crawled. `noindex` comes
-          off when the real content lands, NOT when the layout is approved.
-       2. NOT IN `sitemap.xml`, and the footer's `Glossary` link stays
-          UNWIRED — resolving a dead link with a placeholder page is worse
-          than leaving it dead, which is the ruling already made for the
-          `Regulatory compliant` glossary link (register §3 item 4).
-       3. NO GLOSSARY SLUGS ARE MINTED beyond the one term built here. The
-          other ten wait on the `programme`/`program` decision; a slug change
-          after indexing costs redirects.
-       ⚠ The `Learn` nav group is still NOT added. It ships when all five of
-       its destinations exist (see the nav comment on every page) — and
-       `/learn/data-economy/` + `/learn/case-studies/` are Batch 4.
-       ============================================================ -->
   <meta name="robots" content="noindex, nofollow" />
 
-  <!-- Metadata is written to the real budgets (Title ≤60 · Meta 150–160 ·
-       H1 ≤70) so the devs approve a template that fits them, even though the
-       page is noindex today. Title 38 · Meta 153 · H1 33 — measured. -->
   <title>Learn How Embedded Value Works | CredX</title>
   <meta name="description" content="Definitions, explainers and writing on embedded lending, interchange recovery and the data economy — the reference layer behind how embedded value works." />
   <link rel="canonical" href="https://credxtech.com/learn" />
@@ -50,7 +26,6 @@
 
   <link rel="stylesheet" href="../style.css" />
 
-  <!-- BreadcrumbList — required on every Batch 3 page by the task spec. -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -63,8 +38,7 @@
   </script>
 </head>
 <body>
-  <!-- Nav (G1) — identical to every other page. No item is marked active: the
-       `Learn` group is not in the nav yet, so there is nothing to mark. -->
+
   <nav class="nav" aria-label="Primary">
     <div class="container nav__inner">
       <a href="../" class="nav__logo" aria-label="CredX home">
@@ -96,34 +70,6 @@
 
   <main id="top">
 
-    <!-- ============================================================
-         1 · HERO — `.hero--compact`, the text-only opening.
-         ⚠ `.hero--compact` already exists at style.css:595 and was UNUSED by
-         any page. It is the right variant here and no new CSS was written:
-         these five screens introduce ZERO new selectors, which is what makes
-         them a layout proof rather than a second design system.
-         The paragraph sits directly under the H1 — mandated placement for the
-         AEO paragraph across this site (style.css:623).
-         ============================================================ -->
-    <!-- ============================================================
-         ↩ 2026-08-27 · WAS `.hero--compact`, TYPE-LED. Marcos: "podemos
-         adicionar uma imagem em learn, pra não ficar tão vazia a H1."
-         `.hero--split` is the existing 50/50 composition, so this costs no new
-         component.
-         🔴 THE PICTURE IS A SANCTIONED MASTER ALREADY IN THE REPO, NOT A NEW
-         COMMISSION AND NOT A NEW STOCK LICENCE. `hiw-hero-alt.png` was
-         commissioned for `/how-it-works`, superseded there by `hiw-hero-v2`,
-         and has been unreferenced since. It is 1122×1402 — exactly the 4:5 the
-         `.hero__frame` wants, so nothing crops. No card terminal in frame, no
-         vertical casting, and it is the transaction scene this whole hub
-         exists to explain.
-         ⚠ THE LINE BREAKS ARE AUTHORED, NOT ORGANIC — "How / Embedded Value /
-         Actually Works" is Marcos's own break and it does not fall out of any
-         measure: "How Embedded" fits on one line at every width that also fits
-         "Embedded Value". `.hero__h1--sentence` drops the face to `--type-h1`
-         so the longest authored line clears the half column instead of
-         re-wrapping and fighting the `<br>`.
-         ============================================================ -->
     <section class="hero hero--split" aria-label="Learn">
       <div class="container hero__inner">
         <div class="hero__copy">
@@ -139,14 +85,6 @@
       </div>
     </section>
 
-    <!-- ============================================================
-         2 · THE FOUR DESTINATIONS.
-         `.vertical-grid` + `.vertical-card`, reused from the campaign hub at
-         the repo root. `--soon` (style.css:3455) is 0.55 opacity with the
-         arrow suppressed, which is exactly the "coming soon" state the task
-         asks for on Data Economy and Case Studies — both Batch 4.
-         ⚠ Do not add a fifth card for `/press` or `/legal`: different track.
-         ============================================================ -->
     <section class="section" aria-label="What is here">
       <div class="container">
         <div class="control__header">
@@ -180,11 +118,6 @@
       </div>
     </section>
 
-    <!-- ============================================================
-         3 · CLOSER. `.final-cta--plain` — no imagery slot, because no render
-         exists for this page and none may be briefed without going through
-         the ChatGPT pipeline: prompts are written here, Marcos runs them.
-         ============================================================ -->
     <section class="final-cta final-cta--spaced" aria-label="Next">
       <div class="container final-cta__inner">
         <h2 class="final-cta__h2" data-reveal-words>Rather have the short version?</h2>
@@ -200,10 +133,6 @@
 
   </main>
 
-  <!-- Footer (G2) — identical to every other page. ⚠ The `Glossary` link is
-       DELIBERATELY still absent from the Explore column even though
-       `/learn/glossary/` now answers 200: it answers with a layout template,
-       not content. Restore it in the pass that removes `noindex`. -->
   <footer class="footer">
     <div class="container">
       <div class="footer__inner footer__inner--sitemap">

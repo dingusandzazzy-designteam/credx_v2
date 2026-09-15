@@ -5,9 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#0b0c16" />
 
-  <!-- Set theme before paint to avoid FOUC. A saved toggle preference always
-       wins; with no saved preference we follow the OS (prefers-color-scheme),
-       falling back to the dark brand default. -->
   <script>
     (function () {
       try {
@@ -22,7 +19,6 @@
   <title>CredX — Choose your industry</title>
   <meta name="description" content="CredX is the embedded value platform that lets operators own the customer, the data, and the loyalty their business earns. Choose your industry to see how." />
 
-  <!-- Open Graph -->
   <meta property="og:title" content="CredX — Choose your industry" />
   <meta property="og:description" content="Software should pay for people, not people for software. Choose your industry to see how CredX works for you." />
   <meta property="og:type" content="website" />
@@ -30,7 +26,6 @@
 
   <link rel="icon" href="assets/logo/credx-shape.svg" type="image/svg+xml" />
 
-  <!-- Fonts: Inter (display + body) + Fraunces (editorial accent). -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" />
@@ -40,7 +35,6 @@
 <body>
   <a id="top"></a>
 
-  <!-- Nav — hub is the single brand-level entry point: logo + theme toggle only. -->
   <nav class="nav" aria-label="Primary">
     <div class="container nav__inner">
       <a href="#top" class="nav__logo" aria-label="CredX home">
@@ -72,7 +66,6 @@
         <p class="hub-chooser__label">Choose your industry</p>
         <div class="vertical-grid">
 
-          <!-- The ex-"Generic" is now credx-website (the indexed main site). Relinked 2026-07-15 — Home built (Phase 9 slice). -->
           <a class="vertical-card" href="credx-website/">
             <span class="vertical-card__name">Every business</span>
             <span class="vertical-card__desc">The main CredX site — for any business that processes payments and wants to keep the value it creates.</span>
@@ -109,7 +102,6 @@
     </footer>
   </main>
 
-  <!-- Shared motion stack (theme toggle + Lenis live here; per-element fail-safes no-op on the hub). -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/lenis@1.0.45/dist/lenis.min.js"></script>

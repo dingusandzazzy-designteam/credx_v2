@@ -5,57 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#0b0c16" />
 
-  <!-- ============================================================
-       /merchants — For Merchants · Batch 2 · built 2026-08-20
-       Copy: copy/merchants.md · Brief: seo/SEO-Delta-Batch2.md (Approved 2026-08-20)
-       Design: plan/06.Design-Direction.md §6.9 — Pillar–Sell, .hero--split shell
-       shared with /evp, separated by hero content architecture and by the
-       signature component below.
-
-       🔴 THE THREE RULES THAT BIND THIS PAGE HARDER THAN ANY OTHER.
-
-       1 · THE FEE PHRASE IS ALLOWED, CONDITIONALLY.
-       CredX-Forbidden-Language.md:34 bans "payment processing" as the operator's
-       cost line. Marco ruled 2026-08-20 that the §3 exception covers it HERE,
-       because the fee is what the merchant's EXISTING processor charges — their
-       stack, not ours. THE CONDITION IS BINDING: the phrase may appear only
-       naming that existing charge, and always in a gain frame. "Recover what you
-       pay" is compliant. "You lose 3% to processing fees" is not.
-       ⚠ It cannot be quarantined in metadata either — §5 of that file puts
-       titles, metas, alt text and schema inside scope.
-
-       2 · THE PAGE OPENS BY EXPLAINING, NOT BY PITCHING.
-       The target's Canadian SERP is ~90% editorial — canada.ca #1, Retail
-       Council #2, Reddit, Forbes, Lightspeed. A conversion page enters that SERP
-       only if it answers the question first. §2's fee path IS that answer, which
-       is why the signature component and the ranking requirement are the same
-       object. Cutting the explanation to reach the pitch faster removes the only
-       reason this page can rank.
-
-       3 · NO CLAIM ABOUT WHERE VALUE MAY BE REDEEMED.
-       The redemption boundary is unsettled and only the client can settle it —
-       the Home says "closed-loop", /evp sells "spend beyond your four walls".
-       This page asserts no edge at all, exactly as /how-it-works §4 does.
-       ============================================================ -->
-
-  <!-- Light theme + toggle DEFERRED to a future update (2026-07-24). Dark is the only
-       theme. This page never had a FOUC script or a toggle; do not add one. -->
-
-  <!-- SEO budgets, measured against these exact strings, not re-derived:
-       Title 46/≤60 · Meta 152/150–160 · H1 51/≤70.
-       ⚠ Primary is `credit card processing rates and fees` — 170/mo, KD 23,
-       COMMERCIAL intent. It replaced `credit card processing fees` (210/mo,
-       KD 40, informational) on 2026-08-20: near-identical demand at roughly
-       half the difficulty, with the intent a conversion page wants.
-       🔴 DO NOT chase `merchant account canada` (70/mo, CPC $33.76, KD 13) or
-       `merchant services canada` (140/mo, CPC $19.78). They are the best numbers
-       in the whole study and they are MERCHANT-ACQUIRING queries — ranking there
-       presents CredX as a payments provider, banned by :31 and untrue besides. -->
   <title>Credit Card Processing Fees, Recovered | CredX</title>
   <meta name="description" content="Canadian merchants pay to reach their own customers. See how embedded lending turns credit card processing fees into value that returns to the business." />
   <link rel="canonical" href="https://credxtech.com/merchants" />
 
-  <!-- Open Graph — OG inherits Title/Meta, kept in parity as on /evp. -->
   <meta property="og:title" content="Credit Card Processing Fees, Recovered | CredX" />
   <meta property="og:description" content="Canadian merchants pay to reach their own customers. See how embedded lending turns credit card processing fees into value that returns to the business." />
   <meta property="og:image" content="https://credxtech.com/images/og.jpg" />
@@ -82,11 +35,6 @@
   }
   </script>
 
-  <!-- FAQPage — method per the Batch-1 precedent. Real question volume is thin
-       (`what is point of sale financing` 20/mo, `what is embedded lending` 10/mo),
-       so the remaining entries are objections adapted from client-reviewed copy.
-       NO PAA WAS FABRICATED. -->
-
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -99,30 +47,18 @@
   </script>
 </head>
 <body>
-  <!-- Nav (G1) — REBUILT 2026-08-20, identical on all nine pages.
-       ⚠ The comment that stood here said this page "IS NOT IN THE NAV". That was
-       true when the page was built this morning and is false now: the audience
-       group ships because all three of its destinations exist. Corrected rather
-       than left to mislead the next reader. -->
+
   <nav class="nav" aria-label="Primary">
     <div class="container nav__inner">
       <a href="../" class="nav__logo" aria-label="CredX home">
         <img src="../assets/logo/Credx-name.svg" alt="CredX" height="28" />
       </a>
       <div class="nav__links" data-nav-menu>
-        <!-- ⚠ ORDER AND LABELS ARE THE LOCKED SITEMAP'S OWN (plan/04), not a preference.
-             Rebuilt 2026-08-20: /evp enters the nav after being navigationally orphaned
-             since it shipped — its only inbound link on the whole site was one mid-body
-             button on /about. `For Lenders` moves OUT of the top level and into the
-             group below; it was a top-level item only because /evp had no slot.
-             ⚠ The `Learn` group (hub · blog · glossary · data-economy · case studies)
-             is NOT here: all of its destinations are still 404. It ships when they exist. -->
+
         <a href="../about/" class="nav__link">The Movement</a>
         <a href="../evp/" class="nav__link">Embedded Value Platform</a>
         <a href="../how-it-works/" class="nav__link">How It Works</a>
-        <!-- Audience group. Ships now because all three destinations exist as of
-             `62a5f9e`; it could not ship before, which is why the nav stayed at four
-             items through Batch 1. -->
+
         <div class="nav__group" data-nav-group>
           <button type="button" class="nav__link nav__group-toggle nav__link--active" aria-expanded="false" aria-controls="nav-audiences" data-nav-group-toggle>Who We Serve</button>
           <div class="nav__submenu" id="nav-audiences" data-nav-submenu>
@@ -134,8 +70,7 @@
         <a href="../contact/" class="nav__link">Contact Us</a>
       </div>
       <div class="nav__actions">
-        <!-- ⚠ {{PENDING:booking-url}} owed by Kyle since 2026-07-20; falls back to
-             /contact meanwhile, as on every other page. -->
+
         <a href="../join/" class="nav__join">Join</a>
         <a href="../contact/" class="btn btn-primary nav__cta" data-pending="booking-url">Book a Meeting</a>
         <button class="nav__toggle" data-nav-toggle type="button" aria-label="Open menu" aria-expanded="false">
@@ -147,16 +82,6 @@
 
   <main id="top">
 
-    <!-- ============================================================
-         1 · HERO — Pillar–Sell, .hero--split, CTA above the fold.
-         Copy: copy/merchants.md §1.
-         ⚠ The H1 carries the keyword and the sub carries the belief. The
-         stronger opening sentence ("stop paying to reach the customers you
-         already earned") contains no query; the Home already runs this split.
-         🔴 IMAGE IS A PLACEHOLDER SLOT — no render exists and none may be
-         commissioned without clearing the no-card-terminal rule (Marco,
-         2026-08-19: a card machine is the competitor's device, no page).
-         ============================================================ -->
     <section class="hero hero--split" aria-label="Hero">
       <div class="container hero__inner">
         <div class="hero__copy">
@@ -169,31 +94,13 @@
             <a href="../how-it-works/" class="btn btn-secondary">See How It Works</a>
           </div>
         </div>
-        <!-- ✅ RENDER LANDED 2026-08-20. Brief: prompts-batch2.md §1.
-             Naming guard VERIFIED, not assumed (prompts-reference.md §5): the plant
-             tags were cropped and upscaled 2.6× and are blank cards — no lettering
-             resolves anywhere. Card-terminal sweep: clean, foreground and background.
-             ⚠ The constraint that must survive any re-render: THE ROOM IS THE
-             SUBJECT and the operator is small in frame. It is a wide establishing
-             shot precisely because five slots on this site are already counters. -->
+
         <div class="hero__frame" data-reveal-media>
           <img src="../images/merchants-hero.png" alt="An independent garden centre in mid-morning trade, the owner moving a loaded stock trolley down an aisle of potted plants" width="1122" height="1402" loading="eager" fetchpriority="high" />
         </div>
       </div>
     </section>
 
-    <!-- ============================================================
-         2 · THE FEE PATH — THE SIGNATURE COMPONENT, AND THE PAGE'S SEO ENGINE.
-         Copy: copy/merchants.md §2.
-         Two routes through one transaction, the second one returning. Static,
-         no input control.
-         🔴 IT IS NOT THE HOME'S .calc__ — that is an interactive slider
-         producing a single figure. It is NOT A BENTO; §6.4 caps bento at one
-         per page and this page's budget is spent on this component.
-         ⚠ Built from the shared grid kit (§6.5), never a page-local grid.
-         ⚠ This section is why the page can rank. Do not shorten it to reach
-         the pitch faster.
-         ============================================================ -->
     <section id="fee-path" class="section feepath" aria-label="Where the fee goes">
       <div class="container">
         <div class="control__header">
@@ -229,20 +136,6 @@
       </div>
     </section>
 
-    <!-- ============================================================
-         3 · ACCESS TO YOUR CUSTOMER DATA
-         Copy: copy/merchants.md §3.
-         🔴 RETITLED FROM plan/05:210's "Own your customer data", which is the
-         OWNERSHIP framing Kyle and Audrey retired 2026-08-12 (ClickUp
-         86camz57g). Access language, never ownership. Standing QA item on all
-         copy, including already-approved pages. The plan doc was corrected in
-         place on 2026-08-20.
-         ✅ The 186 line lands here. It was client-ratified 2026-08-14 and then
-         ORPHANED — Mau parked it "outside Batch 1" and no batch picked it up;
-         verified 2026-08-20 that it appeared on no page of the site.
-         🔴 Never reintroduce the 5 C's (Ownest's framing, and the client
-         explicitly retired it). Never write "data points".
-         ============================================================ -->
     <section id="data" class="section prose-band" aria-label="Access to your customer data">
       <div class="container prose-band__inner">
         <h2 class="prose-band__h2" data-reveal-words>The intelligence from your own customer base, <em class="accent">back where it belongs</em>.</h2>
@@ -252,29 +145,6 @@
       </div>
     </section>
 
-    <!-- ============================================================
-         4 · THE VALUE-BACK LOOP
-         Copy: copy/merchants.md §4.
-         🔴 ASSERTS NO REDEMPTION BOUNDARY. Do not write "only with you" and do
-         not write "anywhere". /how-it-works §4 sets the precedent and claims
-         nothing about the edge. Andrea's "only redeemable with you" was removed
-         on 2026-08-18 and does not come back.
-         ⚠ HW-20: the contrast set is POINTS and STATEMENT CREDIT — about the
-         FORM the value takes and who delivers it, not about portability.
-         ============================================================ -->
-      <!-- ↩ RECLASSED `.control` -> `.prose-band` ON 2026-08-21.
-           🔴 THIS SECTION WORE THE COMPONENT-LED CLASS AND HAD NO COMPONENT. `.control`
-           centres its heading and intro because a full-width piece sits under them and
-           anchors the symmetry — the fee path, the value stack, the ledger rows. With
-           nothing beneath it, a centred heading over a centred paragraph floats in an
-           1184px container with nothing accounting for the space, which is precisely
-           what Marcos named: "as prosas ficam com uma margem muito grande sem motivo
-           aparente". Found by listing the children of every `.control` section rather
-           than by reading the pages.
-           ⚠ The copy is untouched — only the section's class, its wrapper, and the two
-           element classes changed. `.control__h2` and `.control__intro` are the same
-           roles as `.prose-band__h2` and `.prose-band__body`; the difference was never
-           semantic, only which composition the section opted into. -->
     <section id="loop" class="section prose-band" aria-label="The value-back loop">
       <div class="container prose-band__inner">
         <h2 class="prose-band__h2" data-reveal-words>Value that comes back <em class="accent">carrying your name</em>.</h2>
@@ -282,41 +152,15 @@
       </div>
     </section>
 
-    <!-- ============================================================
-         5 · POS AND ISV FIT
-         Copy: copy/merchants.md §5.
-         ⚠ EXPANSION RULE: full expansion on first use per page, short form
-         after. NEVER "ISVs".
-         🔴 Never name a POS or ISV brand (CredX-Forbidden-Language.md:37) —
-         no Square, Helcim, Clover, or Toast, in copy or in imagery.
-         ✅ RATIFIED 2026-08-24 AND THE SLUG IS NOW `/pos-isv`. The client asked for
-         it themselves — Audrey, in the /pos review: "for the slug do we only have
-         POS? Does it make sense to say POS-ISV?" — and Marcos ruled it. The old
-         `../pos/` link is gone from every page. ⚠ SEO COST, RECORDED: the term
-         carrying the volume is `point of sale lending`, and `/pos-isv` contains
-         none of it. The client naming their own channel outranks that here — the
-         page is a partnership hub, not an organic target. -->
     <section id="fit" class="section prose-band" aria-label="Point of sale and software platform fit">
       <div class="container prose-band__inner">
           <h2 class="prose-band__h2" data-reveal-words>It fits the system <em class="accent">you already run</em>.</h2>
           <p class="prose-band__body" data-reveal>CredX integrates with <strong>Point of Sale (POS)</strong> systems and <strong>Independent Software Vendor (ISV)</strong> platforms, so the transaction flow the business runs today does not change. POS and ISV partners carry the integration; the operator carries nothing new.</p>
-          <!-- ⚠ .sub-link, not an invented class. `.text-link` was drafted here and
-               does not exist in style.css — shipping a class with no rule is how a
-               link silently loses its treatment. .sub-link is the site's existing
-               inline forward link (style.css:292) and carries its own arrow. -->
+
           <a href="../pos-isv/" class="sub-link" data-reveal data-reveal-delay="1">See How CredX Works With POS and ISV Platforms</a>
       </div>
     </section>
 
-    <!-- ============================================================
-         6 · PRICING — ⏸ BLOCKED ON ONE NUMBER, AND IT SHIPS ANYWAY.
-         Copy: copy/merchants.md §6.
-         🔴 {{PENDING:lender-rate}} — owed by the client. DO NOT HARDCODE "11%".
-         The copy below states the STRUCTURE without the rate, so the section is
-         honest today and gains one sentence later rather than being rewritten.
-         ⚠ Do not substitute the 85% interchange figure here — it is an estimate,
-         headline-only, and it answers a different question.
-         ============================================================ -->
     <section id="pricing" class="section prose-band" aria-label="How the model pays for itself">
       <div class="container prose-band__inner">
           <h2 class="prose-band__h2" data-reveal-words>How the model <em class="accent">pays for itself</em>.</h2>
@@ -324,16 +168,6 @@
       </div>
     </section>
 
-    <!-- ============================================================
-         7 · CTA
-         Copy: copy/merchants.md §7.
-         ⚠ CTA LABEL CHANGED FROM THE SPEC, DELIBERATELY. plan/05:214 and the
-         ClickUp task both give "See what you'd recover" — a contraction, banned
-         in customer-facing copy. The house already solved this sentence:
-         /how-it-works ships "See What CredX Could Return for Your Business".
-         Same construction applied. ⚠ If the CLIENT wrote that string verbatim,
-         the swap needs their nod.
-         ============================================================ -->
     <section id="cta" class="section final-cta" aria-label="See what the transaction could return">
       <div class="container final-cta__inner">
         <div data-reveal>
@@ -349,9 +183,6 @@
 
   </main>
 
-  <!-- Footer (G2) — identical IA to every other page, paths relative.
-       ⚠ ../learn/glossary/ and ../legal/ do not exist yet; kept because every
-       other page carries them. ../lenders/ resolves once this batch ships. -->
   <footer class="footer">
     <div class="container">
       <div class="footer__inner footer__inner--sitemap">
@@ -359,18 +190,7 @@
           <img src="../assets/logo/Credx-name.svg" alt="CredX" height="32" style="margin-bottom: 20px;" />
           <p class="footer__movement">A system you belong to, instead of one that owns you.</p>
         </div>
-        <!-- ⚠ COLUMNS AND LABELS MIRROR THE NAV, which is the locked sitemap's own (plan/04).
-             Rebuilt 2026-08-25 on the client's Batch 1 review (Audrey, 2026-08-24): the footer
-             was "missing For Merchants, EVP". Both are now here, and `About` takes the nav's
-             label `The Movement` rather than a second name for the same page.
-             🔴 TWO DESTINATIONS WERE REMOVED, NOT MOVED — `Glossary` (../learn/glossary/) and
-             the whole Legal column (`Privacy` + `Terms`, both pointing at ../legal/). All three
-             404 live, on every page, and they were the links a visitor actually clicks. The
-             pages are roadmap items (Batch 3/4 + track T0); restore the links when they answer
-             200, not before. ⚠ A privacy page is still owed underneath two live forms — that is
-             a real obligation, and deleting a dead link to it does not discharge it.
-             The 4-column grid (2fr 1fr 1fr 1fr, style.css:2825) is why Explore was split in two
-             rather than run to seven items in one column. -->
+
         <div>
           <h3 class="footer__col-title">Explore</h3>
           <div class="footer__links">

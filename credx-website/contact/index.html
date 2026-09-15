@@ -5,19 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#0b0c16" />
 
-  <!-- Light theme + toggle DEFERRED to a future update (2026-07-24). Dark is the only
-       theme. This page never had a FOUC script or a toggle; do not add one. -->
-
-  <!-- Page metadata (per copy/contact.md — INDEXED; SEO budgets bind)
-       Title 30/≤60 · Meta 158/150–160 · H1 35/≤70 — measured, not estimated.
-       The Title is deliberately short: demand on this URL is branded/navigational
-       ("credx contact"), so padding it with "embedded lending" would only compete
-       with the Home's own 1,000/mo anchor. See copy/contact.md §metadata. -->
   <title>Contact CredX | Talk to Our Team</title>
   <meta name="description" content="Talk to the CredX team about embedded lending for your business. Tell us who you are and what you run, and we will come back with the numbers. Get in touch." />
   <link rel="canonical" href="https://credxtech.com/contact" />
 
-  <!-- Open Graph -->
   <meta property="og:title" content="Contact CredX | Talk to Our Team" />
   <meta property="og:description" content="Tell us who you are and what you run. We will come back with what joining would look like for your business." />
   <meta property="og:image" content="https://credxtech.com/images/og.jpg" />
@@ -33,9 +24,6 @@
 
   <link rel="stylesheet" href="../style.css" />
 
-  <!-- ContactPage schema. ⚠ `contactPoint` is deliberately ABSENT: no email or phone
-       exists yet (see {{PENDING:email-general}} in §4). Declaring an empty or invented
-       contactPoint would be worse than omitting it. Add it with the real values. -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -58,26 +46,18 @@
   </script>
 </head>
 <body>
-  <!-- Nav (G1) — identical to the Home. `aria-current` marks Contact as the current page. -->
+
   <nav class="nav" aria-label="Primary">
     <div class="container nav__inner">
       <a href="../" class="nav__logo" aria-label="CredX home">
         <img src="../assets/logo/Credx-name.svg" alt="CredX" height="28" />
       </a>
       <div class="nav__links" data-nav-menu>
-        <!-- ⚠ ORDER AND LABELS ARE THE LOCKED SITEMAP'S OWN (plan/04), not a preference.
-             Rebuilt 2026-08-20: /evp enters the nav after being navigationally orphaned
-             since it shipped — its only inbound link on the whole site was one mid-body
-             button on /about. `For Lenders` moves OUT of the top level and into the
-             group below; it was a top-level item only because /evp had no slot.
-             ⚠ The `Learn` group (hub · blog · glossary · data-economy · case studies)
-             is NOT here: all of its destinations are still 404. It ships when they exist. -->
+
         <a href="../about/" class="nav__link">The Movement</a>
         <a href="../evp/" class="nav__link">Embedded Value Platform</a>
         <a href="../how-it-works/" class="nav__link">How It Works</a>
-        <!-- Audience group. Ships now because all three destinations exist as of
-             `62a5f9e`; it could not ship before, which is why the nav stayed at four
-             items through Batch 1. -->
+
         <div class="nav__group" data-nav-group>
           <button type="button" class="nav__link nav__group-toggle" aria-expanded="false" aria-controls="nav-audiences" data-nav-group-toggle>Who We Serve</button>
           <div class="nav__submenu" id="nav-audiences" data-nav-submenu>
@@ -89,15 +69,7 @@
         <a href="../contact/" class="nav__link nav__link--active" aria-current="page">Contact Us</a>
       </div>
       <div class="nav__actions">
-        <!-- `Book a meeting` is the CALENDAR path and a DIFFERENT destination from the
-             Contact Us link above (Marco, 2026-07-31). ⚠ {{PENDING:booking-url}} is still
-             owed by Kyle (since 2026-07-20), so it falls back to /contact meanwhile —
-             the same fallback the four vertical pages have used for `Book a Demo` since
-             Feedback-04. Swap the href when the URL lands; do not leave it dead, the nav
-             is on every page. -->
-        <!-- ⚠ The bulk nav rewrite of 2026-08-20 skipped this page: its CTA href is
-             `./` (it IS /contact), not `../contact/`, so the pattern the script
-             matched on eight other pages did not match here. Added by hand. -->
+
         <a href="../join/" class="nav__join">Join</a>
         <a href="./" class="btn btn-primary nav__cta" data-pending="booking-url">Book a meeting</a>
         <button class="nav__toggle" data-nav-toggle type="button" aria-label="Open menu" aria-expanded="false">
@@ -109,45 +81,18 @@
 
   <main id="top">
 
-    <!-- ============================================================
-         1 · INTRO — THE INVITATION
-         ⚠ Reframed 2026-07-31: this is the GENERAL contact page reached
-         from the `Contact Us` nav item, NOT the booking funnel. Booking
-         moved out to the nav CTA. The H1 survived the reframe unchanged
-         because it never mentioned meetings — it invites a conversation,
-         which is what a contact page is for. Only the eyebrow and the
-         submit label carried the old framing.
-         ============================================================ -->
     <section class="section contact-intro">
       <div class="container contact-intro__inner">
         <span class="eyebrow eyebrow--accent">Contact Us</span>
         <h1 class="contact-intro__title" data-reveal-words>Talk it through with the CredX team</h1>
         <p class="contact-intro__body">Tell us who you are and what you run. We will come back with what joining would look like for your business, and the numbers behind it.</p>
-        <!-- The anti-cannibalisation line: /join and /contact are both MVP conversion
-             surfaces and the difference is warmth. Text link, NOT a second button —
-             a competing CTA here would undo the point. -->
+
         <p class="contact-intro__alt">Already spoke with someone on our team? <a href="../join/" class="btn-text">Join the movement</a> and finish on your own time.</p>
       </div>
     </section>
 
-    <!-- ============================================================
-         2 · THE FORM
-         ⚠⚠ NO BACKEND IS WIRED. The submit handler shows the inline
-         success state and logs to the console. Nothing is delivered
-         anywhere. This is {{PENDING:form-endpoint}} — the single most
-         dangerous placeholder on the page, because the visitor is told
-         "thank you" either way. See copy/contact.md §Placeholder register.
-         ============================================================ -->
     <section class="section signup" id="form">
       <div class="container signup__inner">
-
-        <!-- ⚠⚠ {{PENDING:form-endpoint}} — THE FORM IS STILL NOT CONNECTED TO ANYTHING.
-             The visible warning banner that used to sit here was removed for the Vercel
-             deploy (Marco, 2026-07-31). The defect it warned about is unchanged: every
-             submission is logged to the console and discarded, and the visitor is shown
-             "Thank you… someone will be in touch" regardless.
-             Removing the banner did not fix it — it made it invisible. Wire the endpoint
-             (and the fbq / gtag conversion event) before anyone is sent to this page. -->
 
         <div class="signup__step">
           <span class="signup__step-label">Tell us who you are</span>
@@ -180,9 +125,6 @@
                 <input class="form__input" id="contact-business" name="business" type="text" autocomplete="organization" required />
               </div>
 
-              <!-- Optional volume band. Bands are the client-reviewed set from
-                   automotive/copy.md:309 — not invented. Full-width because the
-                   reviewed label is a full question. -->
               <div class="form__field form__field--full">
                 <label class="form__label" for="contact-volume">Roughly what do you process in card volume each month? <span class="signup__optional">(optional)</span></label>
                 <select class="form__select" id="contact-volume" name="volume">
@@ -201,21 +143,8 @@
 
             </div>
 
-            <!-- `Send message`, not `Request a meeting` (reframed 2026-07-31): this is
-                 the general contact page, and booking now lives on the nav CTA. The label
-                 also stays honest about the mechanism — a message is sent, nothing is booked. -->
             <button class="btn btn-primary" type="submit">Send message</button>
 
-            <!-- Deliberately NOT "we never share your details" — submissions land in a
-                 CRM, which is a third party, and an unverifiable promise does not belong
-                 on an indexed page from a company claiming PIPEDA compliance. -->
-            <!-- The second half of this line used to read "Read how we handle them in our
-                 Privacy notice" and linked to {{PENDING:privacy-url}}. Both the link and the
-                 visible token were cut for the Vercel deploy: /legal/privacy is post-MVP and
-                 does not exist, and a dead privacy link on a form that collects business
-                 details is worse than no link at all. The remaining sentence is factual and
-                 claims nothing. ⚠ Restore the link — do not restore the sentence alone —
-                 once /legal/privacy exists. -->
             <p class="form__note">Your details reach our team so we can reply.</p>
           </form>
 
@@ -226,35 +155,8 @@
       </div>
     </section>
 
-    <!-- ============================================================
-         3 · BOOK A TIME — REMOVED 2026-07-31 (Marco).
-         Booking is now a separate destination reached from the `Book a
-         meeting` nav CTA, not a block on this page. The copy is parked in
-         copy/contact.md §3 rather than deleted, in case booking is ever
-         wanted back on-page. Do not re-add it without that decision — two
-         booking entry points would compete.
-         ============================================================ -->
-
-    <!-- ============================================================
-         4 · ALTERNATIVE CONTACT — REMOVED FOR THE VERCEL DEPLOY (2026-07-31)
-         The block was placeholders and nothing else: general email, press
-         email, LinkedIn URL and location were ALL unknown to us, not merely
-         unwritten — the repo contains no email, no phone and no address
-         anywhere. With the visible tokens gone the section had no content
-         left, and an empty "Other ways to reach us" heading is worse than
-         no heading at all.
-         Markup and copy are parked in copy/contact.md §4, same as §3.
-         Still owed by the client, tracked in that file's register:
-           {{PENDING:email-general}}  {{PENDING:email-press}}
-           {{PENDING:linkedin-url}}   {{PENDING:location-line}}
-         ⚠ Do NOT restore this block with a guessed address. An unmonitored
-         inbox on a conversion page loses leads in silence.
-         ============================================================ -->
-
   </main>
 
-  <!-- Footer (G2) — identical to the Home. ⚠ The LinkedIn href is the bare domain here
-       too; that is a pre-existing defect carried from index.html:546, not a new one. -->
   <footer class="footer">
     <div class="container">
       <div class="footer__inner footer__inner--sitemap">
@@ -262,18 +164,7 @@
           <img src="../assets/logo/Credx-name.svg" alt="CredX" height="32" style="margin-bottom: 20px;" />
           <p class="footer__movement">A system you belong to, instead of one that owns you.</p>
         </div>
-        <!-- ⚠ COLUMNS AND LABELS MIRROR THE NAV, which is the locked sitemap's own (plan/04).
-             Rebuilt 2026-08-25 on the client's Batch 1 review (Audrey, 2026-08-24): the footer
-             was "missing For Merchants, EVP". Both are now here, and `About` takes the nav's
-             label `The Movement` rather than a second name for the same page.
-             🔴 TWO DESTINATIONS WERE REMOVED, NOT MOVED — `Glossary` (../learn/glossary/) and
-             the whole Legal column (`Privacy` + `Terms`, both pointing at ../legal/). All three
-             404 live, on every page, and they were the links a visitor actually clicks. The
-             pages are roadmap items (Batch 3/4 + track T0); restore the links when they answer
-             200, not before. ⚠ A privacy page is still owed underneath two live forms — that is
-             a real obligation, and deleting a dead link to it does not discharge it.
-             The 4-column grid (2fr 1fr 1fr 1fr, style.css:2825) is why Explore was split in two
-             rather than run to seven items in one column. -->
+
         <div>
           <h3 class="footer__col-title">Explore</h3>
           <div class="footer__links">

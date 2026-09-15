@@ -5,74 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#0b0c16" />
 
-  <!-- ============================================================
-       LAYOUT TEMPLATE — THE CASE STUDY. NOT A FINISHED PAGE.
-       Built 2026-08-27 from `documents/08. case studies/Case Study #0
-       Revamp - White Version.pdf`, the only deck left in that folder after
-       Marcos pulled the other four to confirm they are closed.
-
-       ⚠ THIS FILE IS THE **DETAIL** TEMPLATE, PARKED AT THE INDEX URL. The
-       location is LOCKED: `plan/04.Sitemap-Locked.md` rows 13 and 14 give
-       `/learn/case-studies/` for the index and `/learn/case-studies/[slug]`
-       for this template, both scheduled Week 2-4. ⚠ The repo-root
-       `plan/02.Architecture.md:273` says `/cases/*` and its A8 lock says
-       "not in v2 launch" — that file is the v2 VERTICAL architecture, not
-       this surface, and it does not govern here. Do not move this page to
-       `/cases/` on the strength of it.
-       It is parked at the index URL so that NO SLUG IS MINTED — the same
-       discipline Batch 3 held for the glossary, and the reason the
-       `Value-Back Program` spelling fix cost one string and no redirect. The
-       devs mint the real slug in the CMS.
-
-       🔴 THREE GUARDRAILS, ALL LIVE.
-       1 · `noindex, nofollow`, not in `sitemap.xml`, linked from nothing.
-           ⚠ The `Learn` nav group still does not ship — it waits on all five
-           destinations existing, and this is one of the two Batch 4 ones.
-       2 · **"VERIFIED FIGURES ONLY" IS THE STANDING CONSTRAINT ON THIS PAGE
-           TYPE** — `plan/Post-MVP-Roadmap.md:182`, and `05.Content-Architecture.md:304`
-           repeats it. Five figures on this page are NOT verified: four totals
-           that do not reconcile with their own columns, and the 76%. Marked
-           on the page, every one. **This template cannot go live carrying
-           them**, which is a content blocker, not a layout one.
-       3 · **THE CLIENT IS ANONYMISED AND THAT WAS A DELIBERATE CALL.** The
-           deck names the group and its four clubs 17 times. Every tracked
-           file in this repo is served as public plain text and a push to
-           `main` publishes to Vercel with no gate, so a named client's
-           volumes would be public the moment this lands. That is exactly
-           what the register already requires of the hockey deck (§2: "the
-           corrected case study PDF with the Saddle Dome identifiers removed",
-           owed by Gaetan) — a named client's identifiers come out before the
-           material is used, and no public-use approval has been recorded for
-           this group. The layout is identical either way. Restoring the names
-           is a find-replace, and it is Marcos's call, not this pass's.
-
-       ⚠ IT IS A DARK PAGE AND THE SOURCE DECK IS WHITE. The light theme was
-       removed from render on 2026-07-24 and is deferred, not deleted. A
-       template that matched the PDF would be the one page on the site that
-       cannot ship. The deck's structure is carried; its palette is not.
-
-       🔴 FOUR TOTALS IN THE SOURCE DO NOT RECONCILE WITH THEIR OWN COLUMNS.
-       Computed, not assumed — see the note under each table. Nothing here is
-       silently corrected except one transcription slip that was visibly
-       broken (a total lower than a cell in its own column). The rest ship
-       verbatim with the discrepancy marked, because a layout proof must not
-       quietly rewrite the client's numbers.
-
-       ⚠ NO EYEBROWS ABOVE THE SECTION HEADINGS. `style.css:5836` states the
-       ban outright — "no kicker or eyebrow above a heading, not a default, no
-       brief earns it back" — and it is why the 1px accent rules came off the
-       `/merchants` headings on 2026-08-21. The deck labels its sections
-       01–06; those labels are not carried. The H2s do that work.
-
-       ⚠ NO PHOTOGRAPHY. The deck carries three images (two course shots, one
-       of people). No master is sanctioned for this page, image generation
-       runs through Marcos in ChatGPT, and an unfilled `.media-ph` is a
-       component this site has been retiring. The template reads without them;
-       where a photograph belongs is a separate call.
-       ============================================================ -->
   <meta name="robots" content="noindex, nofollow" />
 
-  <!-- Title 42 · Meta 156 · H1 58 — measured. -->
   <title>Case Study: A Four-Club Golf Group | CredX</title>
   <meta name="description" content="A four-club golf group absorbs $300K to $714K a year in card network costs. Here is where that money goes, and what an embedded value platform returns instead." />
   <link rel="canonical" href="https://credxtech.com/learn/case-studies" />
@@ -92,9 +26,6 @@
 
   <link rel="stylesheet" href="../../style.css" />
 
-  <!-- Article. ⚠ `author` is the Organization — this site has no byline
-       convention and no author page, and schema.org has no CaseStudy type.
-       Article is the honest nearest fit; do not invent a Person. -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -157,30 +88,6 @@
 
   <main id="top">
 
-    <!-- ============================================================
-         1 · TITLE + STANDFIRST + META ROW + THE PHOTOGRAPH.
-         ↩ 2026-08-27 · WAS `.hero--compact`, TYPE-LED, NO PICTURE. Marcos:
-         "pode colocar uma imagem ao lado na hero, parece que nesse caso pode
-         ser um campo de golf genérico, pegar no adobe stock para testarmos."
-         Now `.hero--split` — the existing 50/50 composition from
-         `/how-it-works`, so this costs no new component.
-         🔴 THE PICTURE IS A LICENSED ADOBE STOCK ASSET, NOT A STAND-IN.
-         AdobeStock #347433847, 5464×3640, licensed 2026-08-27 through the
-         Adobe MCP. ⚠ AN AERIAL WAS CHOSEN OVER THREE ALTERNATIVES FOR TWO
-         REASONS, and both matter if it is ever replaced: it is near-square, so
-         the 4:5 `.hero__frame` crops it without losing its subject (the two
-         runners-up were a 2.3:1 panorama the frame would have destroyed and a
-         Florida course with palms); and an aerial reads as PORTFOLIO, which is
-         what a four-club group is, rather than as one hero golfer. No people at
-         readable scale, no golden-hour beauty register, `isGenTech: false`.
-         ⚠ `.hero__h1--sentence` is required here — `.hero--split .hero__h1`
-         caps at 12ch for `/how-it-works`, and this title is a sentence with two
-         figures in it.
-         🔴 THE HEADLINE IS THE OUTCOME, NOT THE CLIENT. That is the client's
-         own convention — their hockey deck titles itself "A Major Canadian
-         Hockey Organization Identified Up to $2.9M in Recoverable Value",
-         naming nobody. This follows it.
-         ============================================================ -->
     <section class="hero hero--split" aria-label="Case study: a four-club golf group">
       <div class="container hero__inner">
         <div class="hero__copy">
@@ -199,29 +106,6 @@
       </div>
     </section>
 
-    <!-- ============================================================
-         2 · THE COST. `.prose-band` with a `.prose-band__rail` holding a
-         `.tally` — the /evp §5 composition, rebuilt on 2026-08-25 precisely
-         so a section carrying numbers has somewhere to put them without
-         opting out of the page grid.
-         🔒 DO NOT put a `.gains__strip` in this section.
-         `.prose-band__inner:has(> .gains__strip)` sets `display: block` and
-         undoes the two-column spine — the exact defect that made /evp §5
-         "bem feia".
-         ↩ 2026-08-27, THIRD STATE, AND THE ROUND TRIP IS THE RECORD. Built with
-         the rail; flattened when the page became a narrow reading column, because
-         one two-column section inside it was a mixed axis; now BACK to the rail,
-         because the page runs at 1184 and Marcos asked for it: "podemos colocar o
-         texto de um lado e o quadro do outro, pro quadro não ficar full width
-         desnecessariamente?"
-         ⚠ THE REASON IT WORKS NOW AND DID NOT BEFORE: the section spans the same
-         1184 as every other block, so the two columns are a split INSIDE the page
-         margin rather than a second margin.
-         ⚠ It is plain `.prose-band` — no `--read`, no `--wide` — so the
-         `:has(> .prose-band__rail)` grid applies and the heading spans both
-         columns. Adding either modifier back flattens it again.
-         🔒 The `.gains__strip` ban below still holds.
-         ============================================================ -->
     <section class="section prose-band" aria-label="Reducing the cost of every payment">
       <div class="container prose-band__inner">
         <h2 class="prose-band__h2" data-reveal-words>Reducing the cost of every payment.</h2>
@@ -247,29 +131,6 @@
       </div>
     </section>
 
-    <!-- ============================================================
-         3 · THE CLUB-BY-CLUB TABLE. First of three `.datasheet` instances.
-         ✅ THE TOTALS NOW RECONCILE, 2026-09-07 — the client's own Sep 1
-         action brief supplied the corrected figures (items 1-5), and each
-         was re-derived from the columns on this page before it was applied.
-         ⚠ THE BRIEF IS NAMED FOR THE GROUP AND ITS TITLE IS NOT REPEATED
-         HERE — every tracked file is served as public plain text, and this
-         page carries zero client identifiers by rule:
-           · Annual Volume        $15.0M-$35.7M  = the deck's total ✅
-           · Current Fee Exposure $300K-$714K    104+48+110+38 = 300 ✅
-                                                 216+156+240+102 = 714 ✅
-             ⚠ The deck printed "$38K-$714K" here — a total lower than a
-             cell in its own column. Corrected at build, 2026-08-27, before
-             the brief arrived; the brief then confirmed the same value.
-           · Estimated saving      $212K-$491K   68+31+88+25 = 212 ✅
-                                                 140+101+184+66 = 491 ✅
-             ⚠ The deck printed $255K-$608K and carried that into its own
-             combined-value table. Both corrected, per brief items 4 and 15.
-           · The deck's COVER says $320K-$744K for the same quantity, which
-             matches neither the column nor its own total row. ⚠ NOT ours to
-             fix — the deck is the client's artifact and brief item 1 already
-             corrects it there. This page never carried the cover figure.
-         ============================================================ -->
     <section class="section" aria-label="Fee exposure by club">
       <div class="container">
         <div class="datasheet" tabindex="0" role="region" aria-label="Fee exposure by club, scrollable table" data-reveal>
@@ -322,12 +183,6 @@
       </div>
     </section>
 
-    <!-- ============================================================
-         4 · THE WHITE-LABEL PLATFORM. `.parts` — a flat 2x2 hairline grid,
-         which is exactly two items wide at 720px and needs no new component.
-         ⚠ Not `.gains__list` (3 columns, and two cards in it orphans one)
-         and not `.control__three` (three).
-         ============================================================ -->
     <section class="section prose-band section--read section--wide" aria-label="The white-label platform">
       <div class="container prose-band__inner">
         <h2 class="prose-band__h2" data-reveal-words>The group's name. CredX infrastructure.</h2>
@@ -350,12 +205,6 @@
       </div>
     </section>
 
-    <!-- ============================================================
-         5 · THE SEASONALITY QUOTE. `.pullquote` — the deck sets this line in
-         a full-width gradient band, and `.pullquote` is the site's existing
-         answer to the same job. The city is dropped along with the client's
-         name; it is the only geographic identifier in the deck.
-         ============================================================ -->
     <section class="section pullquote" aria-label="Seasonality">
       <div class="container pullquote__inner">
         <p class="pullquote__text" data-reveal-words>Golf revenue here is compressed into roughly five months. Every dollar captured in season matters more.</p>
@@ -377,26 +226,6 @@
       </div>
     </section>
 
-    <!-- ============================================================
-         6 · THE BEHAVIOUR STRIP. `.gains__strip` + `.stat`, three up.
-         🔴 THE 321% IS THE HOME'S WORDING, NOT THE DECK'S, AND THAT IS A
-         CORRECTION. The deck reads 321% as "increase in purchase FREQUENCY"
-         (and, two lines later, "spend frequency increase"). The Home ships it
-         as orders that ran "321% LARGER" — order SIZE, not frequency — with
-         its source named. The Home is the governing content authority, so its
-         reading wins and the deck's does not ship. ⚠ The two cannot both be
-         true and the client should be asked which they meant.
-         ⚠ THE 76% ORIGINATES HERE AND IS MARKED. It appears in no shipped
-         copy and in no approved source on this project. A case study is the
-         last place a new figure should first appear.
-         ⚠ The deck's fourth figure, "2-4x revenue lift on premium upsells",
-         is NOT carried: the strip is three wide, and of the four it is the
-         least supported. Dropping it is a call, not an oversight.
-         🔴 NAMING THE BRAND HERE IS THE ATTRIBUTION EXCEPTION, NOT A BREACH
-         of the never-name-a-payment-brand rule. That rule governs body copy;
-         a source citation is exempt. `index.html:429` already ships this
-         exact benchmark, named, inside `.gains__benchmark-src`.
-         ============================================================ -->
     <section class="section gains section--read section--wide" aria-label="What changes at the point of sale">
       <div class="container">
         <div class="gains__header">
@@ -422,22 +251,6 @@
       </div>
     </section>
 
-    <!-- ============================================================
-         7 · STREAM BY STREAM. Prose for the three streams, then ONE table.
-         🔴 THIS IS A DELIBERATE DEPARTURE FROM THE DECK AND IT IS THE MAIN
-         DESIGN ARGUMENT OF THE PAGE. The deck prints the same four-card row
-         three times, once per stream — twelve cards. A reader comparing one
-         club across the three streams has to hold twelve cards in their head
-         and cross-reference by position. Consolidated, that comparison is a
-         row, and the cross-stream comparison the deck cannot support at all
-         becomes a column. The three streams keep their own prose, because
-         what each one IS still needs explaining; only the numbers merge.
-         ✅ STREAM 1'S SUBTOTAL CORRECTED 2026-09-07 to $39K-$92K, per the
-         client's Sep 1 brief item 10, and re-derived here first:
-         14+6+14+5 = 39 ✅ · 28+20+31+13 = 92 ✅. The deck printed
-         $51K-$121K. Streams 2 and 3 always reconciled exactly:
-         18+10+22+8 = 58 · 72+48+90+35 = 245 · 5+5+6+4 = 20 · 12+10+13+7 = 42.
-         ============================================================ -->
     <section class="section prose-band section--read section--wide" aria-label="Club by club, stream by stream">
       <div class="container prose-band__inner">
         <h2 class="prose-band__h2" data-reveal-words>Club by club, stream by stream.</h2>
@@ -513,13 +326,6 @@
       </div>
     </section>
 
-    <!-- ============================================================
-         8 · THE COMBINED TABLE. Three components and the total. Restated
-         2026-09-07 on the corrected transaction-fee row, per the client's
-         Sep 1 brief item 15, and re-derived here first:
-         $212K + $58K + $20K = $290K ✅ · $491K + $245K + $42K = $778K ✅.
-         The former $333K/$895K inherited the deck's $255K/$608K row.
-         ============================================================ -->
     <section class="section" aria-label="Combined portfolio value">
       <div class="container">
         <div class="datasheet" tabindex="0" role="region" aria-label="Combined portfolio value, scrollable table" data-reveal>
@@ -561,21 +367,6 @@
       </div>
     </section>
 
-    <!-- ============================================================
-         9 · ADOPTION SCENARIOS. `.datasheet--bars` — the table IS the chart.
-         🔴 THE VALUES WERE MEASURED OFF THE DECK'S OWN BARS, NOT INVENTED and
-         not re-derived: the bar rectangles were read out of the PDF vector
-         data against its $0/$120K axis (25.6pt per $20K), then rounded to the
-         nearest $1K. ⚠ AND THE DECK'S FOOTNOTE DOES NOT REPRODUCE THEM —
-         "blended interchange 2.0%, volume midpoints per club" yields figures
-         about 20% higher than the bars it sits under, consistently across all
-         twelve. Internally consistent, wrong against its own stated method. A
-         fifth reconciliation item, and the reason nothing here was
-         recalculated from the footnote.
-         `--v` is each value as a FRACTION (0-1) of $125K, the largest figure,
-         against a fixed 7rem track — not a percentage of its cell. See the
-         component comment in style.css for why that distinction is load-bearing.
-         ============================================================ -->
     <section class="section" aria-label="Savings potential by member adoption">
       <div class="container">
         <div class="datasheet datasheet--bars" tabindex="0" role="region" aria-label="Annual fee savings per club by adoption scenario, scrollable table" data-reveal>

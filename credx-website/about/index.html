@@ -5,26 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#0b0c16" />
 
-  <!-- Light theme + toggle DEFERRED to a future update (2026-07-24). Dark is the only
-       theme. This page never had a FOUC script or a toggle; do not add one. -->
-
-  <!-- Page metadata (per copy/about.md — INDEXED; SEO budgets bind)
-       Title 46/≤60 · Meta 160/150–160 · H1 52/≤70 — RE-MEASURED against the rendered
-       strings at build time (2026-08-11). The strings are the APPROVED brief's verbatim
-       (seo/SEO-Briefs-Batch1.md, Marco 2026-08-10); only its hand counts were slightly
-       off — it records Meta 158 and H1 51. Nothing breaches a budget, so no copy moved.
-       ⚠ THE META IS AT 160, THE EXACT CEILING of the 150–160 band. Any future edit that
-       adds a character pushes it out of band. Re-count before touching it.
-       Primary keyword `the data economy` (50/mo, database Canada) leads the Title
-       at chars 1–16 and the H1 at chars 1–16.
-       ⚠ NOT a traffic page: 50/mo, and phrase_organic returns no tracked organic
-       SERP for the query in Canada. The job here is brand, narrative and the
-       Organization entity. Do not resource it as an acquisition page. -->
   <title>The Data Economy and Who It Belongs To | CredX</title>
   <meta name="description" content="The data economy runs on data that merchants and customers create. CredX is the movement built on one belief: that value belongs to them. See what we stand for." />
   <link rel="canonical" href="https://credxtech.com/about" />
 
-  <!-- Open Graph — OG title and description inherit Title/Meta per copy/about.md §metadata. -->
   <meta property="og:title" content="The Data Economy and Who It Belongs To | CredX" />
   <meta property="og:description" content="The data economy runs on data that merchants and customers create. CredX is the movement built on one belief: that value belongs to them. See what we stand for." />
   <meta property="og:image" content="https://credxtech.com/images/og.jpg" />
@@ -40,14 +24,6 @@
 
   <link rel="stylesheet" href="../style.css" />
 
-  <!-- Organization + BreadcrumbList per the brief. ⚠ NO FAQPage on this page — there is
-       no PAA-box evidence for `data economy` in Canada, and inventing one is forbidden.
-       ⚠ `contactPoint` is deliberately ABSENT here for the same reason it is absent on
-       /contact: no email or phone exists anywhere in the repo. Declaring an invented one
-       would be worse than omitting it. Add it with real values when they land.
-       E-E-A-T note: this page carries NO founder attribution (Discovery Q6 is LOCKED —
-       no names, photos or bios), so authority rests on the entity and the named
-       frameworks. That is an accepted structural weakness, recorded in the brief. -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -82,36 +58,18 @@
   </script>
 </head>
 <body>
-  <!-- Nav (G1) — same IA as the Home and /contact. `aria-current` marks About.
-       ⚠ PATHS ARE RELATIVE, DELIBERATELY. Both live surfaces serve the REPO ROOT
-       (there is no vercel.json and the root carries its own index.html + .nojekyll),
-       so credx-website sits at /credx-website/. An absolute `/about` therefore
-       resolves off-site. The Home and /contact still use absolute hrefs for
-       How It Works · For Lenders · About · Glossary · Legal and `href="/"` on the
-       logo — those are the known dead-link items, and they are NOT fixed here.
-       Do not "normalise" these back to absolute paths.
-       ⚠ `/lenders` does not exist yet (Batch 2). It is kept in the nav because all
-       three existing pages carry it and a nav that jumps between pages is worse than
-       one dead item. Tracked as part of the dead-link cluster, not introduced here. -->
+
   <nav class="nav" aria-label="Primary">
     <div class="container nav__inner">
       <a href="../" class="nav__logo" aria-label="CredX home">
         <img src="../assets/logo/Credx-name.svg" alt="CredX" height="28" />
       </a>
       <div class="nav__links" data-nav-menu>
-        <!-- ⚠ ORDER AND LABELS ARE THE LOCKED SITEMAP'S OWN (plan/04), not a preference.
-             Rebuilt 2026-08-20: /evp enters the nav after being navigationally orphaned
-             since it shipped — its only inbound link on the whole site was one mid-body
-             button on /about. `For Lenders` moves OUT of the top level and into the
-             group below; it was a top-level item only because /evp had no slot.
-             ⚠ The `Learn` group (hub · blog · glossary · data-economy · case studies)
-             is NOT here: all of its destinations are still 404. It ships when they exist. -->
+
         <a href="../about/" class="nav__link nav__link--active" aria-current="page">The Movement</a>
         <a href="../evp/" class="nav__link">Embedded Value Platform</a>
         <a href="../how-it-works/" class="nav__link">How It Works</a>
-        <!-- Audience group. Ships now because all three destinations exist as of
-             `62a5f9e`; it could not ship before, which is why the nav stayed at four
-             items through Batch 1. -->
+
         <div class="nav__group" data-nav-group>
           <button type="button" class="nav__link nav__group-toggle" aria-expanded="false" aria-controls="nav-audiences" data-nav-group-toggle>Who We Serve</button>
           <div class="nav__submenu" id="nav-audiences" data-nav-submenu>
@@ -123,10 +81,7 @@
         <a href="../contact/" class="nav__link">Contact Us</a>
       </div>
       <div class="nav__actions">
-        <!-- `Book a meeting` is the CALENDAR path and a DIFFERENT destination from the
-             Contact Us link above (Marco, 2026-07-31). ⚠ {{PENDING:booking-url}} is still
-             owed by Kyle (since 2026-07-20), so it falls back to /contact meanwhile —
-             the same fallback every other page uses. Swap the href when the URL lands. -->
+
         <a href="../join/" class="nav__join">Join</a>
         <a href="../contact/" class="btn btn-primary nav__cta" data-pending="booking-url">Book a Meeting</a>
         <button class="nav__toggle" data-nav-toggle type="button" aria-label="Open menu" aria-expanded="false">
@@ -138,54 +93,6 @@
 
   <main id="top">
 
-    <!-- ============================================================
-         1 · HERO — THE MOVEMENT
-         Copy: copy/about.md §1. Beat = movement hook, belief stated
-         plainly, then the definition handoff into §2.
-
-         ✅ IMAGE WIRED 2026-08-11 — `about-hero.png` (1672×941, optician
-         studio at dusk, left third in deep shadow so the overlaid copy
-         stays legible). Brief and delivery record: prompts-batch1.md.
-         ⚠ NO `<picture>` WRAPPER AND NO WEBP, deliberately (Marco,
-         2026-08-11): Webflow does the image optimisation and this build is
-         a layout-validation surface, so a `<picture>` with no `<source>`
-         would be pure noise. Do not "restore" one.
-         ⚠ Re-renders drop in UNDER THE SAME FILENAME — no markup change.
-         The alt deliberately carries NO keyword — the single keyword-bearing
-         alt on this page is reserved for §2 (practice #8).
-         ============================================================ -->
-    <!-- ⚠ OPENING CHANGED 2026-08-19 (Marco): `.hero--compact` → `.hero--split`, and
-         `about-data-economy.png` moved up here from §2, MIRRORED.
-         ------------------------------------------------------------------------
-         WHY MIRRORED, because it is not decoration: in the source she is turned to
-         her left and her gaze leaves the frame to the RIGHT. With the copy in the
-         left column that pointed her away from the headline, at the outer edge of
-         the page. Flipped, the gaze runs back into the H1. Marco: "quero a mulher
-         olhando pro título."
-
-         ⚠ WHY NOT A FULL-BLEED PHOTO WITH THE COPY OVER IT — measured, not a
-         preference. The asset is high-key (greenhouse glass, pale concrete): mean
-         luminance 168/255 across the top half, which is where an H1 sits. Against
-         `--text-primary` (#f8f9fc) that is **2.24:1**, failing even the 3:1 large-text
-         floor, and it needs ~40% of black over it to clear 4.5:1 — which erases the
-         airy quality that makes the shot worth using. She is also dead centre, where
-         a centred headline would go. So the photograph sits BESIDE the copy, never
-         under it.
-
-         ⚠ WHAT THIS COSTS, recorded because it is the third page-type reversal in two
-         days. `plan/06.Design-Direction.md` §6.2 assigns `/about` a **type-led opening
-         with no photograph** as its signature, and that is now spent: `/about`,
-         `/how-it-works` and `/evp` all open with copy beside a framed photograph, so
-         the *"no two pages open the same way"* rule is down to the Home and the
-         functional pages. Marco's call, made knowingly. The plan doc is stale on this
-         line — a third ↩ entry.
-
-         ⚠ AND §2 LOST ITS IMAGE. It was a `.split` (copy beside photograph); with the
-         photograph up here it would have rendered as half an empty section, so it is
-         PROVISIONALLY prose. Marco: "depois vamos pensar nessa sessão sobre o que
-         vamos fazer com ela." That decision is still owed — see the note on §2.
-         The asset is NOT duplicated: it appears once, here.
-         ============================================================ -->
     <section class="hero hero--split" aria-label="Hero">
       <div class="container hero__inner">
         <div class="hero__copy">
@@ -196,39 +103,16 @@
           <p class="hero__sub" data-reveal data-reveal-delay="1">
             Every card transaction leaves a record behind. In the data economy, that record is an asset, and CredX is built so its value reaches the business that earned the sale and the customer who made it.
           </p>
-          <!-- §1's movement line. ⚠ This is NOT the Home's line. `05:99` originally
-               assigned /about "A system you belong to, instead of one that owns you.",
-               but the Home already ships that sentence and it is LOCKED there
-               (Gaetan's formulation, Kendall-approved 2026-06-23, Discovery Q4).
-               Marco resolved O1 on 2026-08-10: /about gets a fresh line, and
-               plan/05.Content-Architecture.md:99 was updated to match. -->
+
           <p class="hero__movement" data-reveal data-reveal-delay="2">You belong in the system you help build.</p>
           <div class="hero__ctas" data-reveal data-reveal-delay="3">
             <a href="../contact/" class="btn btn-primary">Book a Meeting</a>
             <a href="../how-it-works/" class="btn btn-secondary">See How It Works</a>
           </div>
         </div>
-        <!-- `loading="eager"`, not lazy: it is above the fold now, where it was a
-             lazy §2 image before. ⚠ The alt is unchanged and still the ONE
-             keyword-bearing alt on the page (on-page practice #8) — mirroring the
-             pixels does not change what the photograph shows. -->
+
         <div class="hero__frame hero__frame--mirrored" data-reveal-media>
-          <!-- ⚠ THE SPAN IS LOAD-BEARING. DO NOT FLATTEN IT.
-               The mirror cannot live on the <img>, because `transform` on a
-               `[data-reveal-media] img` is owned by the reveal system in TWO places
-               that both beat a stylesheet rule:
-                 · `style.css:2909` — `[data-reveal-media] img { transform: none }`
-                   inside `prefers-reduced-motion`. Equal specificity to any
-                   `.class img` rule and later in the file, so it wins.
-                 · `script.js:184/189` — GSAP `set(img, {scale: 1.25})` then animates
-                   to `scale: 1`, written as an INLINE transform, which beats
-                   everything in the stylesheet.
-               The first flip attempt did live on the img and was silently dead: it
-               would have shown only to a visitor with JS disabled AND no
-               reduced-motion preference. Caught by cropping the rendered head and
-               comparing it to the source, not by reading the CSS.
-               GSAP finds the image with `media.querySelector('img')`, a descendant
-               lookup, so this wrapper does not break the reveal or the wipe. -->
+
           <span class="hero__frame-flip">
             <img src="../images/about-data-economy.png" alt="A merchant reviewing purchase patterns from the data economy on a tablet" width="1672" height="941" loading="eager" />
           </span>
@@ -236,86 +120,10 @@
       </div>
     </section>
 
-    <!-- ============================================================
-         2 · THE DATA ECONOMY
-         Copy: copy/about.md §2. This is the section the primary keyword
-         belongs to — it carries the keyword in the H2 and opens the AEO
-         snippet on the exact term.
-
-         Reuses the .movement component shell (surface-0 section, editorial
-         H2, prose body) rather than introducing new CSS — the same reuse
-         idiom the Home applies when its §3.5 AEO block borrows .faq.
-
-         ⚠ The word "rigged" is DELIBERATELY ABSENT. plan/05:100 labels this
-         narrative "the 'financial system is rigged' narrative" and §13 lists
-         `financial system rigged` as a secondary keyword, but attack framing
-         is banned outright (forbidden-language list: "Reframe every truth as
-         a gain. Surface = empowerment, never attack"), and the keyword has
-         ZERO search volume (confirmed 2026-08-10). The narrative's substance
-         is written in full without the word. Nothing is lost on either side.
-         ============================================================ -->
-    <!-- ⚠ RESHAPED 2026-08-19 (Marco) — this section lost its photograph to the hero
-         and got a different one, in a different shape. Read the reasoning; it is a
-         rhythm decision, not a slot to be refilled.
-         ------------------------------------------------------------------------
-         WHY NOT ANOTHER `.split`. With the hero now `.hero--split`, §3 rebuilt on the
-         same grid and §4 already `.split--reverse`, making §2 a split too would give
-         the page FOUR consecutive copy-beside-picture sections. That is the exact
-         sameness `plan/06.Design-Direction.md` §6 exists to fight — a page where
-         every section has one silhouette. §2 is prose on the centred column with a
-         FULL-WIDTH 16:9 band under it, so the page alternates: split · band · split ·
-         split-reverse · cards.
-
-         WHY `about-hero.png`, and why not the image just removed from §5:
-         · It is the ONE unused asset that was made for this page. It was `/about`'s
-           original full-bleed hero and went orphan when the opening became type-led;
-           it has been sitting unreferenced since. Nothing was commissioned.
-         · It is a merchant and a customer completing a purchase at a counter, which
-           IS this section's subject — "every purchase records who bought, what they
-           spent, and when". `about-partnership.png` (Marco's other suggestion) is two
-           people reading a CONTRACT: that is the partnership beat, not the data
-           economy one, and its faces are deliberately cropped out. Wrong section.
-         · It is 1672×941, exactly the 16:9 this band expects, so it renders with
-           **zero crop** — the defect class that lost an operator from `hiw-hero` and
-           decapitated someone in `hiw-loop` on 2026-08-18 came from feeding 16:9 into
-           narrower frames. Not possible here.
-         · It is dark, warm and low-key against the bright high-key greenhouse in the
-           hero above. Two photographs on one page that do not compete.
-         · No card-payment terminal anywhere in it (rule of 2026-08-19). A tray of
-           frames and a cloth, nothing else on the counter.
-         · It matches the merchant-conversation direction Audrey approved under GL-06
-           — it reads as a merchant with a customer, which is the ambiguity she wanted.
-
-         ⚠ THE ALT IS THE ORIGINAL, recovered from `7d741d1` rather than rewritten:
-         "A Canadian business owner at the counter serving a returning customer". It
-         deliberately carries NO keyword — the page's single keyword-bearing alt is
-         the one that travelled up to the hero with `about-data-economy.png`.
-
-         ⚠ The AEO paragraph's mandated placement directly under the H2 is preserved,
-         and the consent line is still present — both are non-negotiable here.
-         ============================================================ -->
     <section id="data-economy" class="section split split--reverse" aria-label="data economy">
-      <!-- Same treatment as §4 "What the movement is for" (Marco, 2026-08-19): the
-           default 4:5 `.split__media`, centred, in the reversed position. Both
-           modifiers this section briefly carried — `--wide` and `--top` — are gone,
-           and so is the reason they existed.
-           ⚠ THE HISTORY IS WORTH ONE PARAGRAPH, because it is the same trap twice.
-           §2 lost its own photograph to the hero and was given `about-hero.png` as a
-           stopgap. That asset is a 1672×941 16:9 master, and `cover` into a 544×680
-           4:5 frame shows only source x 459→1213 — which crops the male customer out
-           entirely (he sits at x≈1280→1672). Forcing the frame to 16:9 with `--wide`
-           kept both people but left 380px of empty column beside 686px of copy, and
-           `--top` only made the imbalance tidy rather than absent. Marco called it:
-           "a imagem ficou estranha, quero igual a What the movement is for."
-           **The fix was a render, not a modifier.** `about-record.png` is composed
-           natively at 4:5 (1122×1402), so the default frame crops nothing at desktop
-           and the section is shape-identical to §4 as asked.
-           ⚠ Do not reintroduce `--wide` here. It exists for genuinely landscape
-           assets; this one is portrait. -->
+
       <div class="container split__inner">
-        <!-- `--focus-top` is mobile-crop insurance, not styling: this frame drops to
-             16/10 below 960px and the default centred crop cut the operator's head
-             just below the eyes. Measured, see the CSS. No effect at desktop. -->
+
         <div class="split__media split__media--focus-top" data-reveal-media>
           <img src="../images/about-record.png" alt="A business owner greeting a returning customer at the counter" width="1122" height="1402" loading="lazy" />
         </div>
@@ -324,11 +132,6 @@
           What the data economy is, and <em class="accent">who it pays today</em>.
         </h2>
 
-        <!-- AEO snippet — 51 words (budget 40–60), opens literally "The data economy
-             is…" per the brief, one factual claim per sentence, CredX named once.
-             Placement directly below the H2 is mandated by the brief. Do not split
-             it, pad it, or move it below the body: this is the string an answer
-             engine lifts. -->
         <p class="prose-band__body" data-reveal>
           The data economy is the market for information created by everyday transactions. Every purchase records who bought, what they spent, and when they returned. That record has value. Today, it accrues to a competing credit facility rather than to the business that earned the sale. CredX is built to give that business access to it.
         </p>
@@ -337,107 +140,14 @@
           Your payment processor runs the transaction, and that part works. What happens after is where the value sits. The purchase record becomes an asset held by a competing credit facility, one with no relationship to your customer and no stake in whether they come back. CredX is structured so that the business that built the relationship gets access to it.
         </p>
 
-        <!-- Consent line — REQUIRED, not optional. Voice rule: "Never imply consent.
-             When data-sharing is mentioned, opt-in is stated." This section mentions
-             data, so the line stays wherever this copy renders.
-             ⚠ It used to carry .calc__hedge, which is an ITALIC DISCLAIMER class — the
-             wrong register for a statement the voice rules require to be present. Now
-             .consent-note: muted caption on a 1px rule, left-aligned, no italics. -->
         <p class="consent-note" data-reveal data-reveal-delay="2">
           Merchant and customer data is de-identified and shared only on explicit opt-in. Participation is a choice at every step.
         </p>
 
-        <!-- ✅ WIRED 2026-08-11 — `about-data-economy.png` (garden centre under glass,
-             bright cool overcast, owner with a tablet held low). The ONE keyword-bearing
-             alt on this page (practice #8).
-             ✅ CASTING BREACH RESOLVED — re-rendered 2026-08-11 17:16, this slot now
-             carries a WOMAN operator. The first render set had a man in every
-             identifiable operator role across all eight images, including both of the
-             site's only two solo decision frames (this one and `hiw-fees`), which
-             breached `prompts.md` §A's casting table — "women lead operator/decision
-             scenes as much as men". Both were re-rendered. Do not swap this back to a
-             male operator without checking the balance across the whole set first.
-             ⚠ THAT IMAGE IS NO LONGER HERE — it is the hero's, as of 2026-08-19. The
-             casting note above is kept because it governs the asset wherever it sits:
-             do not swap it back to a male operator without re-checking the balance
-             across the whole set. -->
         </div>
       </div>
     </section>
 
-    <!-- ============================================================
-         3 · MoaT — ✅ CASING SETTLED 2026-08-26 BY THE CLIENT: MIXED CASE SHIPS.
-         MoaT · BoosT · DaaP. Marcos: "vamos acatar." The decision had flipped four times
-         (our mixed case → MTG-05 all-caps 2026-08-14 → the client's Batch 1 review asking for
-         MoaT 2026-08-24 → all-caps parked for one day 2026-08-25 → mixed case, with the
-         client's answer behind it). **Full history is in the equivalent comment on `/evp` §3.**
-         🔴 It is a CLIENT DECISION now, not a house preference — do not flip it without one.
-         ✅ WHAT SURVIVES EVERY FLIP: the FULL EXPANSION IS STILL BOLDED wherever it appears in
-         prose, not just the initials — that half of MTG-05 was never contested, and the
-         Berkshire-association reason still holds for the expansion.
-         ✅ `copy/about.md` already read `MoaT` throughout, so the copy doc and the HTML agree
-         again with no edit — this revert SHRINKS the ~30-string debt deferred to the single
-         copy-docs sync pass (Marco, 2026-08-18) instead of adding to it.
-         3 · MoaT — MUTUAL OWNERSHIP ACQUISITION TECHNOLOGY
-         Copy: copy/about.md §3. Beat = MoaT as the movement's PHILOSOPHY
-         of ownership, deliberately NOT the mechanism.
-
-         ⚠ TWO THINGS TO KNOW BEFORE EDITING THIS SECTION.
-         1. This is MoaT's FIRST appearance in validated public copy. The
-            validated Home contains ZERO hits for MoaT, DaaP, BoosT,
-            Marketplace or Orchestration — it speaks operationally and
-            never names a framework. So this section sets the precedent for
-            how CredX names an internal framework on an indexed page.
-         2. The /about ↔ /evp MoaT split is WRITTEN TO BUT UNRATIFIED
-            (open item O2; Post-MVP-Roadmap.md:71). /about takes MoaT as
-            movement and philosophy, /evp §3 takes it as mechanism in the
-            value stack, and they cross-link instead of repeating. If the
-            split is rejected, BOTH §3s change together.
-         The full expansion is spelled out on first mention, `MoaT` after —
-         mandated by the brief's H2/H3 outline.
-         ============================================================ -->
-    <!-- ⚠ STRUCTURE CHANGED 2026-08-19 (Marco), COPY UNTOUCHED — SECOND time this
-         section has been restructured without a single word moving. Read both notes.
-         ------------------------------------------------------------------------
-         2026-08-18 (AB-09): it was a ticked list of three sentences plus an empty
-         image slot with no concept behind it. A list says "three items"; the section
-         says the three hold ONE thing. They were given a single shared rule, and the
-         shared rule IS the shared stake — which also answered the image slot, so the
-         commission was never owed.
-
-         2026-08-19 (Marco): the section was centred H2 → prose → three parties
-         side by side → prose → centred CTA, i.e. five stacked centred bands that
-         used the full width for nothing. It is now the page's `.split` primitive:
-         **the argument on the left, the structure on the right.** The three parties
-         run vertically (`.triad--stack`), one above the other, each on its own rule
-         — merchant, customer, community lender — so the shared-rule idea from 08-18
-         survives and reads *more* like a stake than three columns did.
-
-         Why `.split` and not a new grid: `/about` §2 and §4 are already `.split`, so
-         §3 now joins the page's own rhythm instead of inventing a third shape, and
-         it comes from the shared kit per `plan/06.Design-Direction.md` §6.5. The only
-         difference from §2/§4 is what occupies the right column — a component here,
-         a photograph there.
-
-         ⚠ COPY REDUNDANCY THIS LAYOUT EXPOSES, flagged not fixed. The left column's
-         first sentence ("…all three parties to a transaction hold a stake in what it
-         produces") and `.triad__stake` ("All three hold a stake in what the
-         transaction produces") are the same claim. Stacked vertically they were
-         far apart; side by side they are visible at once. **Copy is owned by
-         `credx-copy` and is not editable during design work** (PRODUCT.md), so both
-         still ship. One of them should go — that is a copy call, not a layout one.
-
-         "hold a stake", not "should all hold a stake" — the `should` was removed on
-         Marco's instruction, 2026-08-10 (O4, per Audrey C12). ⚠ This does NOT touch
-         the two held canonical lines (Kendall's anchor and the core belief); those
-         still contain "should", are still unresolved with the client, and are still
-         not ours to rewrite (voice.md:130-140).
-
-         The CTA is a cross-link, not a repeat: the mechanism lives on /evp §3. It was
-         a `.prose-band__aside` sub-link until Andrea's review asked for a button
-         (AB-07); it is now left-aligned at the foot of the argument rather than
-         centred under the whole section, because it closes the left column.
-         ============================================================ -->
     <section id="moat" class="section split" aria-label="Mutual Ownership Acquisition Technology">
       <div class="container split__inner split__inner--top">
         <div class="split__body">
@@ -468,13 +178,6 @@
           <p class="triad__stake">All three hold a stake in what the transaction produces.</p>
         </div>
 
-        <!-- ⚠ The CTA is a THIRD grid child, deliberately not the last thing inside
-             `.split__body`. Found by render at 390: in one column the section read
-             *argument → CTA → the three parties*, so the button offering the reader
-             a way to /evp appeared before the section had delivered its payload.
-             As a sibling it lands by plain auto-placement — row 2 / column 1 at
-             ≥960px, exactly where it was visually, and dead last on mobile. No
-             page-specific grid rules, no `order`, nothing to maintain. -->
         <div class="section-ctas section-ctas--start" data-reveal data-reveal-delay="2">
           <a href="../evp/" class="btn btn-secondary">See How MoaT Works Inside the Value Stack</a>
         </div>
@@ -482,29 +185,6 @@
       </div>
     </section>
 
-    <!-- ============================================================
-         4 · MISSION
-         Copy: copy/about.md §4. Beat = the shared-value model as mission.
-         Movement, not product pitch.
-
-         ⚠ The H2 here was changed during the copy pass because the original
-         ("A system where the value returns to the people inside it.")
-         near-duplicated §1's movement line. And a sentence was CUT rather
-         than reworded — "Not a feature added to the existing arrangement,
-         but a different arrangement." was a confirmed "not just X, but Y"
-         anti-pattern that restated the sentence before it. Do not restore
-         either; both were deliberate removals, logged in copy/about.md §4.
-         ============================================================ -->
-    <!-- ✅ MISSION BODY REPLACED VERBATIM 2026-08-25 ON THE CLIENT'S OWN COPY.
-         Audrey Wilson, Batch 1 review 2026-08-24: "The mission body is slightly underselling
-         the community lender angle. Maybe we replace it with: ..." The replacement she supplied
-         differs from what shipped by three words — "the businesses, customers, and communities
-         who generate it" where we had "the businesses and customers". Nothing else moved, and
-         the second sentence is unchanged.
-         ⚠ This is one of the few strings on the site where the client wrote the copy. Do not
-         smooth the serial comma or tighten the list; it is theirs. `copy/about.md` §4 was
-         updated in the same pass — an exception to the deferred copy-docs sync, because a
-         client-authored string lagging its own source is a different kind of stale. -->
     <section id="mission" class="section split split--reverse" aria-label="mission">
       <div class="container split__inner">
         <div class="split__body">
@@ -512,14 +192,7 @@
         <p class="prose-band__body" data-reveal>
           The mission is narrow and it does not change: build the infrastructure that lets value stay with the businesses, customers, and communities who generate it. Any business with recurring customers and card volume has a place in it.
         </p>
-        <!-- ✅ IMAGE RE-WIRED 2026-08-19 — `about-mission.png` (1122×1402, 4:5,
-             ChatGPT/gpt-image, run by Marco from `prompts-batch1.md` §7.6).
-             The 2026-08-11 master cropped the awning corners at the frame edge
-             under `.split__media`'s 4:5 crop; this re-render has both full
-             awnings inside the frame with clear headroom above.
-             ⚠ Neither looks at the camera, still deliberate: the stock cliché
-             this slot was written against is "owners arms-folded smiling at
-             lens". Do not swap in a posed frame. -->
+
         </div>
 
         <div class="split__media" data-reveal-media>
@@ -528,49 +201,12 @@
       </div>
     </section>
 
-    <!-- ============================================================
-         5 · NO FOUNDERS SECTION — DELIBERATE, NOT AN OMISSION.
-
-         Discovery Q6 is LOCKED: no founder names, no photos, no bios on
-         this page. plan/05:103 states it explicitly — "deliberately no
-         team/founder section; brand and movement carry the page."
-
-         ⚠ If anyone proposes adding a founder block, Q6 has to be RE-OPENED
-         first. The structural consequence is recorded in the head comment:
-         this page's E-E-A-T cannot rest on a named expert, and that is an
-         accepted weakness rather than a gap to quietly fill.
-         ============================================================ -->
-
-    <!-- ============================================================
-         6 · THE PARTNERSHIP
-         Copy: copy/about.md §6.
-
-         🔴 THIS SECTION IS INDICATIVE, NOT SETTLED. plan/05:104 marks it
-         "indicative — pending the partnership meeting" and carries an
-         unresolved doc note, "NEW – add community?". Open item O3, blocked
-         on that meeting. The copy below is a first pass and must not be
-         treated as approved. It does NOT assume the community angle.
-
-         Proof discipline that is load-bearing here:
-         · Community lender count stays GENERIC — no number. Swept
-           number-free across all five existing pages; this page holds it.
-         · "Compliant", NEVER "certified". SOC 2 produces an attestation
-           report, not a certification, so "SOC 2 certified" would be wrong
-           even though the client confirmed on 2026-07-30 that they hold it.
-           Do not "upgrade" this wording on the strength of that answer.
-         · No dollar figures imported. $500M+ and the 5 C's / 186 sources are
-           confirmed but belong to other pages. This page carries no figures
-           at all.
-         ============================================================ -->
     <section id="partnership" class="section control" aria-label="The partnership">
       <div class="container">
         <div class="control__header">
           <h2 class="control__h2" data-reveal-words>Who holds what in a <em class="accent">CredX partnership</em>.</h2>
         </div>
 
-        <!-- The two mirrored lists (what CredX holds vs what the merchant keeps) are
-             one of the three deliberate three-part constructions kept on this page —
-             the contrast IS the point here. See copy/about.md §Constraint self-check. -->
         <div class="control__three">
           <div class="control-card" data-reveal>
             <span class="control-card__title">CredX carries</span>
@@ -586,100 +222,23 @@
           </div>
         </div>
 
-        <!-- ⚠ THIS BLOCK WAS REBUILT 2026-08-11 AFTER SEEING IT RENDERED. It first used
-             .gains__strip + .stat with a --fit modifier. The centring was correct, but
-             `.stat__number` is the 48–80px NUMERAL face, so "SOC 2 + PIPEDA" came out as a
-             masthead broken across two lines ("SOC 2 +" / "PIPEDA") with its caption
-             squeezed into a 20rem column. A numeral treatment on a text string.
-             Now .trust__lead + .trust__body — the components the Home already uses for
-             this exact marker in its proof mosaic — inside a plain centred wrapper.
-             ⚠ Do not put this back in a .stat. It is a marker, not a figure. -->
         <div class="trust-note" data-reveal>
-          <!-- 🔴 COMPLIANCE LINE CHANGED 2026-08-24 — client decision of the
-               2026-08-21 meeting, relayed in ClickUp `86cb3dq9a` comment
-               `90150253169595` and confirmed in the transcript at [10:30]–[11:14]:
-               Kyle proposed branding it "as a regulatory compliance piece as a
-               larger scale", Audrey agreed — "we could do it generic, that we are
-               regulatory compliant" — and Mauricio closed it: "regulatory
-               compliance is perfect. So let's do it."
-               ⚠ IT IS NOT A WORDING PREFERENCE. Audrey, same meeting: "the lenders
-               are SOC2 type 2, we're SOC1." SOC 2 Type 2 belongs to CredX's LENDING
-               PARTNERS and third parties, not to CredX — Type 2 is deferred on cost
-               ("$200,000"). So the old marker asserted a certification CredX does not
-               hold. DO NOT RESTORE IT, on any page, in any form.
-               ⏸ The term is meant to HYPERLINK to a glossary entry that explains the
-               split (Gaetan's proposal, agreed on the call). The glossary does not
-               exist yet and Audrey owes the detail — plain text until it does.
-               ✓ PIPEDA survives in the supporting text on purpose: it is Canadian
-               privacy law, not a certification ("there's no seals of approval"),
-               so stating it is accurate. -->
+
           <span class="trust__lead">Regulatory compliant</span>
           <p class="trust__body">Data is de-identified, consent-driven, and held to Canadian privacy law.</p>
         </div>
 
-        <!-- 🗑 IMAGE REMOVED 2026-08-19 (Marco): "a ultima imagem de about, tá
-             sobrando tb, pode retirar."
-             ------------------------------------------------------------------
-             It was `about-partnership.png` — a thick open agreement on a timber
-             table, both people chest-down and three-quarter, no handshake — wired
-             2026-08-11 and verified at 2.5× against the naming guard.
-
-             Two things this closes as a side effect, so nobody goes looking for them:
-             · The `/about` §6 partnership image was **blocked by the client** until
-               after their partnership meeting. There is no image here now, so that
-               dependency is dead rather than pending.
-             · `/about` is down to two photographs (§2 and §4, both in `.split`
-               frames). Every remaining image slot on the page is filled; there is
-               no placeholder left anywhere on it.
-
-             ⚠ The asset stays on disk at `images/about-partnership.png` — unreferenced,
-             not deleted. If §6's copy changes after the partnership meeting and the
-             section wants a picture again, it is right there.
-             ⚠ §6's copy is still INDICATIVE pending that meeting (copy/about.md §6,
-             open item O3). Removing the image does not settle the copy. -->
-
       </div>
     </section>
 
-    <!-- ============================================================
-         7 · CTA — JOIN THE MOVEMENT
-         Copy: copy/about.md §7. Both labels are plan/05:105's.
-
-         `Join the Movement` keeps TITLE CASE — it is the locked brand label
-         (Audrey C15), not a generic action, matching the deliberate
-         exception documented at copy/home.md:41.
-
-         ⚠ OPEN ITEM O5, unresolved and visible here: both CTAs resolve to
-         /contact, which makes the secondary redundant. The larger question
-         behind it — the Home moved its primary CTA to /join on 2026-07-27
-         while plan/05:96 still routes /about to /contact. Audrey's C15
-         reasoning (a cold audience is not warmed for a join-first ask)
-         argues for /contact on a brand page, so /contact is what ships
-         until someone decides otherwise.
-
-         The primary keyword is NOT repeated here: at 50/mo it would gain
-         nothing and would breach the stuffing ban.
-         ============================================================ -->
     <section id="join" class="section final-cta" aria-label="Be part of the movement">
       <div class="container final-cta__inner">
         <div data-reveal>
-          <!-- ⚠ NO EYEBROW HERE, DELIBERATELY. This block carried
-               "Be Part of the Movement" over the headline "Be part of the movement." —
-               the same sentence twice, differing only in case. The eyebrow was mine, not
-               the copy's: copy/about.md §7 specifies a headline, a body and two CTAs, and
-               no eyebrow. Removed rather than reworded, because writing a new one is
-               credx-copy's call, not a design fix.
-               ⚠ The Home DOES carry an eyebrow in its final-cta, and its text differs
-               from its headline — so if the pattern is wanted back here, the ask is one
-               non-duplicating line from credx-copy, not a markup change. -->
+
           <h2 class="final-cta__h2">Be part of the movement.</h2>
           <p class="final-cta__body">The businesses joining CredX have one thing in common: they earned their customers and intend to keep what those relationships produce.</p>
           <div class="hero__ctas final-cta__ctas">
-            <!-- ✅ O5 CLOSED 2026-08-20. This button read `Join the Movement` and
-                 pointed at /contact, while the Home's IDENTICAL button pointed at
-                 /join — same words, two destinations, on the same site. Marco ruled
-                 the principle on 2026-08-19 (the meeting leads, /join stays
-                 secondary); what was never applied was this href. Now it is. -->
+
             <a href="../join/" class="btn btn-primary">Join the Movement</a>
             <a href="../contact/" class="btn btn-secondary">Book a Meeting</a>
           </div>
@@ -689,11 +248,6 @@
 
   </main>
 
-  <!-- Footer (G2) — same IA as the Home and /contact, paths made relative.
-       ⚠ The LinkedIn href is the bare domain, carried from index.html:570 — a
-       pre-existing defect, not a new one. ⚠ ../lenders/, ../learn/glossary/ and
-       ../legal/ do not exist yet; they are kept because every other page carries
-       them. Tracked as the dead-link cluster. -->
   <footer class="footer">
     <div class="container">
       <div class="footer__inner footer__inner--sitemap">
@@ -701,18 +255,7 @@
           <img src="../assets/logo/Credx-name.svg" alt="CredX" height="32" style="margin-bottom: 20px;" />
           <p class="footer__movement">A system you belong to, instead of one that owns you.</p>
         </div>
-        <!-- ⚠ COLUMNS AND LABELS MIRROR THE NAV, which is the locked sitemap's own (plan/04).
-             Rebuilt 2026-08-25 on the client's Batch 1 review (Audrey, 2026-08-24): the footer
-             was "missing For Merchants, EVP". Both are now here, and `About` takes the nav's
-             label `The Movement` rather than a second name for the same page.
-             🔴 TWO DESTINATIONS WERE REMOVED, NOT MOVED — `Glossary` (../learn/glossary/) and
-             the whole Legal column (`Privacy` + `Terms`, both pointing at ../legal/). All three
-             404 live, on every page, and they were the links a visitor actually clicks. The
-             pages are roadmap items (Batch 3/4 + track T0); restore the links when they answer
-             200, not before. ⚠ A privacy page is still owed underneath two live forms — that is
-             a real obligation, and deleting a dead link to it does not discharge it.
-             The 4-column grid (2fr 1fr 1fr 1fr, style.css:2825) is why Explore was split in two
-             rather than run to seven items in one column. -->
+
         <div>
           <h3 class="footer__col-title">Explore</h3>
           <div class="footer__links">

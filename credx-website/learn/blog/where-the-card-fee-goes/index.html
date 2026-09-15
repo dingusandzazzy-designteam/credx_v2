@@ -5,41 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#0b0c16" />
 
-  <!-- ============================================================
-       LAYOUT TEMPLATE — BATCH 3, ClickUp `86cb3dq9q`. NOT A FINISHED PAGE.
-       Type: the BLOG POST template. This is the shape every post takes;
-       see `/learn/`'s head comment for the scope and the three guardrails.
-       ✅ THE TOPIC WAS DECIDED, NOT CHOSEN HERE. The 2026-08-20 SEO ruling
-       moved the interchange-fee explainer off `/merchants` and into "a
-       `/learn/` article entered on the roadmap now" — because the CA SERP for
-       the fee term is ~90% editorial and a pitch page cannot hold it. That
-       ruling warned that if step two never shipped, the decision "silently
-       becomes 'absorb and hope', which was the option not chosen." This is
-       step two, in draft.
-       ⚠ THE SLUG IS PROVISIONAL. It is drawn from `/merchants` §2's own
-       heading so it invents no vocabulary, but the devs mint the real one in
-       the CMS. No glossary slug is minted anywhere in this batch.
-       🔴 EVERY FIGURE HERE IS QUOTED FROM SHIPPED, CLIENT-APPROVED COPY, WITH
-       ITS HEDGES INTACT — $36,000 per $1M and $6,000 per $1M from the Home's
-       outcomes strip and calculator note, $30,000 at the top of the range and
-       $14,000 at the lower end from `/evp` §3, and "40% up to 85%" which is
-       the range the Home, `/evp`, `/how-it-works` and all four verticals
-       carry. ⚠ NOTHING HERE ORIGINATES A NUMBER. A blog post is the last
-       place a new figure should first appear; any country-level rate figure
-       goes back to the client for citation approval before use.
-       🔴 NO PAYMENT BRAND IS NAMED, ANY FORM. The site's own term for the
-       card issuer is "competing credit facility" and this post uses it.
-       🔴 NO REDEMPTION BOUNDARY IS ASSERTED. Where the customer may spend
-       value back is under an active hold (register §1) — this post stops at
-       "it returns to the business", which is what the site already claims.
-       ⚠ AEO: the H2s are written as the questions a reader actually asks, and
-       the paragraph under each answers it in the first sentence. That is the
-       on-page shape that gets a passage lifted, and it is the reason this is
-       a post rather than a section on a pillar page.
-       ============================================================ -->
   <meta name="robots" content="noindex, nofollow" />
 
-  <!-- Title 45 · Meta 158 · H1 37 — measured. -->
   <title>Where the Card Fee Goes on Every Sale | CredX</title>
   <meta name="description" content="Every card sale carries a fee that leaves the business and does not come back. Here is each party that takes a share, and what it costs per million in volume." />
   <link rel="canonical" href="https://credxtech.com/learn/blog/where-the-card-fee-goes" />
@@ -59,11 +26,6 @@
 
   <link rel="stylesheet" href="../../../style.css" />
 
-  <!-- Article — one of the two schemas the task specifies per post.
-       ⚠ `author` is the Organization, not a person. This site has no byline
-       convention and no author page; inventing one would create an entity
-       with nothing behind it. Add a Person only when there is a real
-       `/about` bio to point `url` at. -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -82,10 +44,6 @@
   }
   </script>
 
-  <!-- FAQPage — the second schema the task specifies per post.
-       🔴 `text` VALUES ARE BYTE-IDENTICAL TO THE VISIBLE ANSWERS. Zero drift
-       between schema and rendered copy is a standing requirement on this
-       site. Change one, change both. -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -156,27 +114,6 @@
 
   <main id="top">
 
-    <!-- ============================================================
-         1 · THE FEATURE HERO — picture, scrim, title, standfirst, date.
-         ↩ REVERSED 2026-08-27, ON MARCOS'S CALL, AND THE REVERSAL IS THE
-         RECORD. This morning the featured image sat BELOW the title on the
-         argument that a full-bleed photo behind the H1 would make this the
-         ninth page opening on the composition DESIGN.md's anti-references name
-         ("nine pages with one opening"). He saw it live and asked for the
-         opposite: "imagem ao fundo, overlay de cor, título e support text e
-         data.. em cima da imagem." ⚠ The anti-reference is about `.hero--full`,
-         a 100vh full-bleed photo used identically on eight pages. This is a
-         shorter band with a navy scrim carrying meta — a genuinely different
-         composition, and a blog post is a distinct page type. It holds.
-         🔴 THE SCRIM IS NOT DECORATION. `.photo-band`'s comment is the only
-         contrast record on this project and it exists because overlaid copy was
-         built for `/about` §2 and rejected the same hour. The scrim here is
-         sized by arithmetic for the worst case — white pixels under the title —
-         and clears 4.5:1 with margin. See the component in style.css.
-         ⚠ The meta row is a `.figure-note`, not a new byline component. A post
-         needs a date and an audience label visible; it does not need an author
-         card this site has no convention for.
-         ============================================================ -->
     <section class="hero hero--feature hero--read" aria-label="Where the card fee goes">
       <div class="hero__media">
         <img src="../../../images/novas/business-bakery.png" alt="A baker restocking a display case of pastries and bread in a bright bakery" width="1536" height="1024" />
@@ -195,11 +132,6 @@
       </div>
     </section>
 
-    <!-- ============================================================
-         2 · BODY. `.prose-band` + `.section--doc` for left-hung headings,
-         which is the reading treatment already used on `/evp` and `/about`.
-         ⚠ H2s are the reader's own questions. First sentence answers.
-         ============================================================ -->
     <section class="section prose-band section--read" aria-label="What the fee is">
       <div class="container prose-band__inner">
         <h2 class="prose-band__h2" data-reveal-words>What is actually deducted?</h2>
@@ -224,14 +156,6 @@
       </div>
     </section>
 
-    <!-- ============================================================
-         2b · AN IN-BODY FIGURE — the third slot, and the one a rich-text CMS
-         field supplies natively. Repeatable: a post can carry none, one, or
-         several. `<figure>` + `<figcaption>` is the semantic form and this is
-         the first instance of either element on the site.
-         ⚠ IT STAYS ON THE PROSE COLUMN. A picture that breaks the reading
-         column interrupts the argument it exists to support.
-         🔴 STAND-IN, same as above. -->
     <section class="section prose-band section--read" aria-label="A figure">
       <div class="container prose-band__inner">
         <figure class="prose-figure" data-reveal>
@@ -261,20 +185,6 @@
       </div>
     </section>
 
-    <!-- ⚠ THE VISIBLE STAND-IN NOTE WAS REMOVED 2026-09-07 — the client's
-         Sep 4 blog-post review flagged it as an internal production note on
-         a public page, and it is the one finding in that review marked a
-         genuine fail. 🔴 THE FACT IT RECORDED IS STILL TRUE: both pictures
-         are reused from the Home's approved set, and this post has no master
-         of its own. Owed before the post ships as content rather than as a
-         layout proof. -->
-
-    <!-- ============================================================
-         3 · FAQ — carries the `FAQPage` schema in the head.
-         🔴 ANSWERS ARE BYTE-IDENTICAL TO THE SCHEMA'S `text` VALUES.
-         ⚠ The second question exists because it is the objection every
-         merchant raises first, and answering it late loses the reader.
-         ============================================================ -->
     <section class="faq section--read" aria-label="Questions">
       <div class="container">
         <div class="faq__header">

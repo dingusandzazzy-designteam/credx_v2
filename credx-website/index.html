@@ -5,34 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#0b0c16" />
 
-  <!-- Light theme + toggle DEFERRED to a future update. Dark is the only theme now.
-       The FOUC script below is disabled; the [data-theme="light"] CSS stays but never
-       activates. To restore: un-comment this script, unwrap the theme-toggle <template>
-       in the nav, and un-comment script.js section 6.
-  <script>
-    (function () {
-      try {
-        var stored = localStorage.getItem('credx-theme');
-        var useLight = stored === 'light' ||
-          (!stored && window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches);
-        if (useLight) document.documentElement.setAttribute('data-theme', 'light');
-      } catch (e) {}
-    })();
-  </script>
-  -->
-
-  <!-- Page metadata (per copy/home.md — INDEXED; SEO budgets bind) -->
   <title>Embedded Lending for Merchants | CredX</title>
   <meta name="description" content="CredX is the embedded lending platform that keeps the customer, the data, and the value your business earns. Recover up to $30,000 per $1M you process." />
   <link rel="canonical" href="https://credxtech.com/" />
 
-  <!-- Open Graph -->
   <meta property="og:title" content="Embedded Lending for Merchants | CredX" />
   <meta property="og:description" content="Keep the customer, the data, and the value your business earns. Recover up to $30,000 for every $1M you process." />
-  <!-- og:image is now an ABSOLUTE URL on the primary domain (most platforms will not
-       resolve a relative one) and points at the FINAL filename. ⚠ `og.jpg` does not
-       exist yet — the master is `images/og.png`; the pre-push conversion pass creates
-       it. Do not "fix" this back to a relative path or to the .png. -->
+
   <meta property="og:image" content="https://credxtech.com/images/og.jpg" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://credxtech.com/" />
@@ -40,14 +19,12 @@
 
   <link rel="icon" href="assets/logo/credx-shape.svg" type="image/svg+xml" />
 
-  <!-- Fonts: Inter (display + body) + Fraunces (editorial accent). Locked to 2 families. -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" />
 
   <link rel="stylesheet" href="style.css" />
 
-  <!-- Organization schema (per plan §6/§7 — homepage) -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -61,26 +38,18 @@
   </script>
 </head>
 <body>
-  <!-- Nav (G1) — multi-page header: How It Works · For Lenders · About · [Book a meeting] + theme toggle -->
+
   <nav class="nav" aria-label="Primary">
     <div class="container nav__inner">
       <a href="./" class="nav__logo" aria-label="CredX home">
         <img src="assets/logo/Credx-name.svg" alt="CredX" height="28" />
       </a>
       <div class="nav__links" data-nav-menu>
-        <!-- ⚠ ORDER AND LABELS ARE THE LOCKED SITEMAP'S OWN (plan/04), not a preference.
-             Rebuilt 2026-08-20: /evp enters the nav after being navigationally orphaned
-             since it shipped — its only inbound link on the whole site was one mid-body
-             button on /about. `For Lenders` moves OUT of the top level and into the
-             group below; it was a top-level item only because /evp had no slot.
-             ⚠ The `Learn` group (hub · blog · glossary · data-economy · case studies)
-             is NOT here: all of its destinations are still 404. It ships when they exist. -->
+
         <a href="about/" class="nav__link">The Movement</a>
         <a href="evp/" class="nav__link">Embedded Value Platform</a>
         <a href="how-it-works/" class="nav__link">How It Works</a>
-        <!-- Audience group. Ships now because all three destinations exist as of
-             `62a5f9e`; it could not ship before, which is why the nav stayed at four
-             items through Batch 1. -->
+
         <div class="nav__group" data-nav-group>
           <button type="button" class="nav__link nav__group-toggle" aria-expanded="false" aria-controls="nav-audiences" data-nav-group-toggle>Who We Serve</button>
           <div class="nav__submenu" id="nav-audiences" data-nav-submenu>
@@ -92,7 +61,7 @@
         <a href="contact/" class="nav__link">Contact Us</a>
       </div>
       <div class="nav__actions">
-        <!-- Theme toggle deferred to a future update; markup preserved inert in the template below. Restore: unwrap it, then un-comment the head FOUC script and script.js section 6. -->
+
         <template data-deferred="theme-toggle">
         <button class="theme-toggle" data-theme-toggle type="button" aria-label="Toggle light and dark theme">
           <svg class="theme-toggle__icon theme-toggle__icon--sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -103,10 +72,7 @@
           </svg>
         </button>
         </template>
-        <!-- CALENDAR path — a different destination from the Contact Us link above.
-             ⚠ {{PENDING:booking-url}} owed by Kyle since 2026-07-20; falls back to
-             /contact until it lands, mirroring the verticals' `Book a Demo` fallback
-             (Feedback-04). Swap the href when the URL arrives. -->
+
         <a href="join/" class="nav__join">Join</a>
         <a href="contact/" class="btn btn-primary nav__cta" data-pending="booking-url">Book a meeting</a>
         <button class="nav__toggle" data-nav-toggle type="button" aria-label="Open menu" aria-expanded="false">
@@ -117,39 +83,9 @@
   </nav>
 
   <main id="top">
-    <!-- ============================================================
-         S1 — HERO · The Movement
-         Placeholder background (gradient) until the hero render lands (Phase 8).
-         ============================================================ -->
+
     <section class="hero hero--full" aria-label="Hero">
-      <!-- 🆕 `hero-dark-3.png` WIRED 2026-08-25. THIS IS THE FRAME THAT DROPS THE CARD TERMINAL.
-           Brief: `prompts.md` §1b, HERO-DARK REV 4. Delivered by Marcos via ChatGPT at
-           **1672×941, exactly 16:9** — measured off the file, not assumed.
-           🔴 WHAT IT FIXES, and it had been live and indexed since July: `hero-dark-2.png` showed a
-           customer tapping a phone against a visible card-payment terminal, because the original
-           2026-07-24 brief literally asked for "warmly handing a card terminal moment" and was never
-           revised after the hard rule landed on 2026-08-19 (*"máquina de cartão é concorrente"*,
-           `prompts-reference.md` §3.5). It sat unfixed on "the Home is held"; that stopped being true
-           on 2026-08-24, when the hold turned out to be the Webflow publish and not the repo.
-           ⚠ THE TERMINAL WAS ALSO THE WRONG PROP FOR THE COPY ABOVE IT. The H1 says the customer stays
-           *yours* and the sub-copy says every transaction builds a *relationship*. A payment device
-           illustrates the transaction — the thing the page says is not the point. The parcel handover
-           is the moment either side of the payment, which is the moment the copy is about.
-           ✅ CHECKED BEFORE WIRING, not after: no card terminal, reader or POS machine · no till, cash
-           drawer, cash, coins or cards · no phone anywhere in frame · no legible lettering, label or
-           signage (shelving verified at 2× zoom) · no brand or card-network mark · neither figure
-           looking at the camera · no handshake.
-           ✅ COMPOSITION MATCHES THE TWO CROPS `.hero--full` actually has: the left ~37% is near-black
-           for the desktop copy overlay, and the owner sits at 51–78% of frame width with her head in
-           the upper third — clear of the horizontal scrim at desktop, and nothing bright lands in the
-           horizontal centre that the mobile `center center` crop keeps.
-           ⚠ `hero-dark-2.png` STAYS ON DISK, unreferenced and deliberately so. It is a published,
-           client-seen frame.
-           ⚠ ALT TEXT UPDATED WITH THE IMAGE. The old one said "a premium branded checkout" and there is
-           no branding in this frame; it now describes what is actually there. Three Home alt texts once
-           described images that were not there — that is the defect this avoids.
-           Light theme deferred → only hero-dark is wired (add the hero-light <picture> when the toggle
-           returns). The master ships as delivered. -->
+
       <picture>
         <img src="images/hero-dark-3.png" alt="A shop owner handing a wrapped paper parcel across the counter to a returning customer at dusk" class="hero__bg hero__bg--dark" width="1672" height="941" />
       </picture>
@@ -164,10 +100,7 @@
             Embedded lending puts credit and value back inside your own checkout. Every transaction builds a relationship, and CredX keeps it yours: the customer, the data, and the loyalty.
           </p>
           <p class="hero__movement" data-reveal data-reveal-delay="3">A system you belong to, instead of one that owns you.</p>
-          <!-- Hero primary CTA = Join the Movement → /join (Marco, 2026-07-27), matching
-               §8. Note the casing: the hero's other CTAs are deliberately lowercase per
-               the 2026-07-15 proofing decision, but "Join the Movement" is the locked
-               brand label (Audrey C15), not a generic action, so it keeps Title Case. -->
+
           <div class="hero__ctas" data-reveal data-reveal-delay="4">
             <a href="join/" class="btn btn-primary">Join the Movement</a>
             <a href="./how-it-works/" class="btn btn-secondary">See how it works</a>
@@ -176,9 +109,6 @@
       </div>
     </section>
 
-    <!-- ============================================================
-         S2 — THE MOVEMENT (one-liner + Three Voices accordion + partnership synthesis)
-         ============================================================ -->
     <section id="movement" class="section movement" aria-label="The movement">
       <div class="container movement__inner">
         <h2 class="movement__h2" data-reveal-words>
@@ -188,12 +118,6 @@
           Today, your payment processor runs the transaction, and a competing credit facility keeps everything that comes after: who your customer is, what they spend, and when they return. Embedded lending puts that back in your hands. Your credit facility, your brand, your customer.
         </p>
 
-        <!-- Three Voices, One Direction — full-image cards. The voice's LINE is
-             visible by default over the image; on fine-pointer devices the
-             supporting text reveals on hover / keyboard focus, on touch it stays
-             visible (no hover dependency). Layout-only — IA unchanged (still
-             Merchant · Customer · Lender). Media = dark brand placeholder until
-             Phase-8 imagery lands (casting still pending Audrey sign-off). -->
         <div class="voices" data-reveal data-reveal-delay="1">
           <span class="voices__eyebrow">Three Voices, One Direction</span>
           <ul class="voices__grid" role="list">
@@ -201,7 +125,7 @@
               <article class="voice-card" tabindex="0" data-reveal data-reveal-delay="1">
                 <span class="voice-card__media" aria-hidden="true">
                   <picture>
-                    <!-- ⚠ LOCAL PREVIEW ONLY — raw PNG master, webp source removed. -->
+
                     <img src="images/novas/voice-merchant.png" alt="" width="1122" height="1402" loading="lazy" />
                   </picture>
                 </span>
@@ -219,7 +143,7 @@
               <article class="voice-card" tabindex="0" data-reveal data-reveal-delay="2">
                 <span class="voice-card__media" aria-hidden="true">
                   <picture>
-                    <!-- ⚠ LOCAL PREVIEW ONLY — raw PNG master, webp source removed. -->
+
                     <img src="images/novas/voice-customer.png" alt="" width="1122" height="1402" loading="lazy" />
                   </picture>
                 </span>
@@ -237,7 +161,7 @@
               <article class="voice-card" tabindex="0" data-reveal data-reveal-delay="3">
                 <span class="voice-card__media" aria-hidden="true">
                   <picture>
-                    <!-- ⚠ LOCAL PREVIEW ONLY — raw PNG master, webp source removed. -->
+
                     <img src="images/novas/voice-lender.png" alt="" width="1122" height="1402" loading="lazy" />
                   </picture>
                 </span>
@@ -263,9 +187,6 @@
       </div>
     </section>
 
-    <!-- ============================================================
-         S3 — CONTROL · What You Get Back
-         ============================================================ -->
     <section id="control" class="section control" aria-label="Take control">
       <div class="container">
         <div class="control__header">
@@ -276,9 +197,8 @@
           <p class="control__intro" data-reveal data-reveal-delay="2">Three things become yours the day you sign a Merchant Network Agreement:</p>
         </div>
 
-        <!-- Editorial media (placeholder render wired per prompts.md; drop-in replace later) -->
         <div class="section-media" data-reveal-media>
-          <!-- ⚠ LOCAL PREVIEW ONLY — raw PNG master, webp source removed (see hero note). -->
+
           <picture>
             <img src="images/control.png" alt="A composed business owner reviewing a simple customer-insights dashboard on a tablet at their counter" width="1672" height="941" loading="lazy" />
           </picture>
@@ -306,43 +226,13 @@
       </div>
     </section>
 
-    <!-- ============================================================
-         S3.5 — AEO DEFINITION BLOCK (Audrey C5, 2026-07-24)
-         FAQ format, open by default so the answer is visible to crawlers
-         and answer engines. Bridges Control → The Gains. Answer is 50
-         words (spec: 40 min / 60 max) and opens on the primary keyword.
-         Reuses the existing .faq component — no new CSS.
-         ============================================================ -->
     <section id="what-is-embedded-lending" class="section faq" aria-label="What is embedded lending">
       <div class="container">
         <div class="faq__header">
           <span class="eyebrow" data-reveal>The Short Answers</span>
           <h2 data-reveal data-reveal-delay="1">Plain language, before <em class="accent">the numbers</em>.</h2>
         </div>
-        <!-- Four Q&As in ONE block (Marco, 2026-07-27: the FAQ he asked for belongs
-             here, so the section is not a single question). Structure is deliberate:
-             the definition stays OPEN because it is the featured-snippet target and
-             answer engines lift visible prose; the three objections sit collapsed
-             beneath it. That also retires the earlier one-item-accordion problem —
-             with four items the component is doing what an accordion is for.
-             Sources cited per row in copy/home.md §3.5.
-             Objection order: mechanics → ownership → data.
 
-             PROVENANCE, per item (Marco 2026-08-06 — read before editing):
-             · Q2 (POS) is ADAPTED FROM CLIENT-REVIEWED VERTICAL COPY, verbatim;
-               the same question ships on all four vertical pages.
-             · Q3 was that too, until 2026-08-06: it read "Is my customer DATA
-               really mine?" with a privacy/PIPEDA answer. Marco asked for the
-               fidelity + movement angle instead, so the answer is now AUTHORED and
-               the question dropped "data". ⚠ The four verticals still ship the old
-               privacy answer under the old question — this is a DELIBERATE Home-only
-               divergence, not drift. Do not "resync" it without asking.
-             · Q4 is AUTHORED 2026-08-06, built from the §3 Control data card above
-               (:257) so it adds no claim the page does not already make.
-             Privacy assurance was NOT lost with the Q3 rewrite: consent + opt-in
-             stay on the §3 card and in Q4, and the compliance marker stays in the Proof
-             block. ⚠ THAT MARKER IS NO LONGER "SOC 2 + PIPEDA" — changed to
-             "Regulatory compliant" 2026-08-24; see the Proof block itself. -->
         <div class="faq__list">
           <details class="faq__item" open data-reveal data-reveal-delay="2">
             <summary class="faq__question">What is embedded lending?</summary>
@@ -364,9 +254,6 @@
       </div>
     </section>
 
-    <!-- ============================================================
-         S4 — THE GAINS · The cherry on the cake
-         ============================================================ -->
     <section id="gains" class="section gains" aria-label="The gains">
       <div class="container">
         <div class="gains__header">
@@ -379,18 +266,7 @@
         <div class="gains__list">
           <div class="gain" data-reveal>
             <span class="gain__num">1</span>
-            <!-- 🟠 SAME FIX AS /how-it-works, 2026-08-25, and this was the worse case: the
-                 headline shipped with no qualifier at all. "Recovery Runs" replaces "Recover",
-                 and "depending on volume and card mix" is the qualifier the body already
-                 carried. Client objection: Audrey, Batch 1 review 2026-08-24. -->
-            <!-- 🔴 `from 40% up to 85%` IS DELIBERATE AND DEPARTS FROM KYLE'S VERBATIM
-                 STRING "40 to 85%" (2026-08-11). Marcos, 2026-08-25, reconciling that
-                 instruction with Audrey's 2026-08-24 objection that the headline read as a
-                 guaranteed outcome. Her own proposal, "40 to up to 85%", was not grammatical.
-                 The verb also changed, "Recover" -> "Recovery Runs", which is what actually
-                 answers her objection; this headline previously shipped with NO qualifier at
-                 all. Full reasoning, including the floor-vs-band objection that was raised and
-                 overruled: how-it-works/index.html §3 comment. 🔒 Do not drop the 40% floor. -->
+
             <h3 class="gain__title">Interchange Recovery Runs from 40% up to 85%</h3>
             <p class="gain__body">Roughly $6,000 per $1M with CredX, against about $36,000 with competing credit facilities. On $1M a month, that is up to $30,000 staying in your business. That example sits at the top of the published range; across the range the same volume returns roughly $14,000 to $30,000, and results vary by volume and card mix.</p>
           </div>
@@ -406,26 +282,6 @@
           </div>
         </div>
 
-        <!-- 🔴 REPLACED 2026-08-24. THE HOME IS HELD ("home não mexer", §1) AND
-             MARCOS RELEASED THIS LINE SPECIFICALLY — "pode trocar na home também".
-             The old line claimed "up to a 321% lift in purchase frequency and 76%
-             larger transactions (PayPal embedded credit benchmark)" and the source
-             does not support it: 321% is AVERAGE ORDER VALUE, not purchase frequency,
-             and 76% appears NOWHERE in the document. Source: PayPal UK BRC, "BT Shop
-             increases AOV with PayPal Pay Later solutions", 2023-10-04, data Q1 2023
-             — n=1, one market, one quarter, footnote 4 says results "may not be
-             typical". Replacement ratified 2026-08-12 (Marco); identical string now
-             on the Home and all four verticals.
-             ⚠ THE TWO "PayPal" QUALIFIERS ARE LOAD-BEARING — the source compares Pay
-             Later AOV against *standard PayPal transactions*, and the 35% is a share
-             of *PayPal sales*, not of total sales. Dropping either as repetition
-             silently changes the denominator.
-             ⚠ BT Shop is deliberately unnamed on the page: the attribution exception
-             covers only what a citation requires. Traceability is in copy/home.md.
-             ⚠ A1 (the 40-to-85 range) was ALREADY applied here on 2026-08-13. What
-             remains of the reverted A1/C4 set is C4 — "roughly half the rate of a
-             standard card" — which Marco ruled STAYS on the Home. Do not "finish"
-             the set. -->
         <p class="gains__benchmark" data-reveal>A UK retailer saw orders that used embedded lending run <em class="accent">321%</em> larger than its standard PayPal transactions, with <em class="accent">35%</em> of its PayPal sales choosing to pay over time <span class="gains__benchmark-src">(PayPal case study, Q1 2023)</span>.</p>
 
         <div class="gains__strip">
@@ -445,9 +301,6 @@
       </div>
     </section>
 
-    <!-- ============================================================
-         S5 — RECOVERY CALCULATOR (single output — recovered/year)
-         ============================================================ -->
     <section id="calc" class="section calc-section" aria-label="Recovery calculator">
       <div class="container">
         <div class="calc" data-reveal>
@@ -474,27 +327,7 @@
           </div>
           <div class="calc__output">
             <span class="calc__label">Recovered with CredX</span>
-            <!-- ↩ RANGE OUTPUT, 2026-08-20. This showed ONE number and that number was
-                 the top of the published 40–85% band, which is the exact thing the
-                 client flagged: "anchoring all the public-facing examples at the top of
-                 that range defeats the purpose of publishing a range at all. A regulator
-                 or legal reviewer will notice this immediately."
-                 ⚠ THE TOP NUMBER DID NOT MOVE. $30K per $1M per month (3% of volume) is
-                 the approved Homepage figure and the client said the current examples
-                 "can stay as illustrative benchmarks" — so it stays, and the FLOOR is
-                 added beside it. The floor is 40% of the same $36K interchange base =
-                 $14.4K per $1M per month.
-                 ⚠ Note the top is arithmetically 83%, not 85%. That is inherited from the
-                 approved figures; do not "fix" it to 85% without the client, because that
-                 would move a number they approved. -->
-            <!-- ↩ RANGE SET AS A HIERARCHY, 2026-08-20 (Marco). The first attempt put
-                 both ends at display size on one line; at 1440 it wrapped to two lines
-                 and stopped reading as one figure. The floor now sits above as a small
-                 line with the connecting word, and the top keeps the display weight.
-                 ⚠ Known trade, made deliberately: this re-anchors the EYE on the top of
-                 the band. What the client objected to was the floor being ABSENT — it is
-                 present and legible now. Do not delete the low line to "clean up" the
-                 number; it is the whole point of the change. -->
+
             <span class="calc__range-low"><span data-calc-low>$172,800</span> to</span>
             <span class="calc__output-number" data-calc-output-yearly><span data-calc-high>$360,000</span></span>
             <span class="calc__output-yearly"><em class="accent">per year</em></span>
@@ -507,9 +340,6 @@
       </div>
     </section>
 
-    <!-- ============================================================
-         S6 — PROOF (benchmark + trust markers)
-         ============================================================ -->
     <section id="proof" class="section proof" aria-label="Proof">
       <div class="container">
         <div class="proof__header">
@@ -519,36 +349,6 @@
           </h2>
         </div>
 
-        <!-- Built For MOSAIC — breadth of "any business with recurring customers".
-             Replaced the 3-up portrait trio of people (2026-07-27, Marco): these are
-             BUSINESSES, not portraits. People appear only as incidental presence —
-             hands, a figure at depth, backs turned. Never a face in the proof block.
-
-             UNIFIED 2026-07-27 (Marco): the three trust markers were a separate
-             card row below. They are now tiles in the same grid — images and proof
-             interleaved, one section instead of two stacked blocks. Same tile shell,
-             different content: that is what makes the bento a bento rather than a
-             photo grid with a footer.
-
-             7 tiles, deliberately unequal:
-               A  anchor  the business as a place in the world (exterior, dusk)
-               B  wide    the counter at the moment of transaction
-               C  small   hospitality — service in motion
-               D  small   service — bench or front desk
-               + $500M+ · Lender-funded · Regulatory compliant (the longest body sits in
-                 the wide slot so it never has to squeeze into a narrow column)
-
-             The anchor carries the section's one authored motion moment, reusing the
-             site's existing media reveal (clip wipe + inner scale, same as §3). The
-             three supporting tiles use the ordinary staggered reveal.
-
-             ⚠ RENDERS PENDING (Marco re-shooting). Tiles ship as labelled empty boxes
-             on purpose — a broken image tag looks like a bug, an empty tile looks
-             intended. To wire one: nest the same picture/source/img structure used in
-             the §3 Control media block above, pointing at the filename in the tile's
-             data-ph label. The label hides itself once an img is present.
-             Prompts, filenames and target crops: prompts.md §B-5.
-             ⚠ A header/context line for this block is still owned by credx-copy. -->
         <div class="proof__mosaic">
           <div class="proof__tile proof__tile--anchor" data-reveal-media>
             <picture>
@@ -582,24 +382,7 @@
           </div>
 
           <div class="proof__tile proof__tile--stat proof__tile--stat-c" data-reveal data-reveal-delay="3">
-            <!-- 🔴 COMPLIANCE LINE CHANGED 2026-08-24 — client decision of the
-                 2026-08-21 meeting, relayed in ClickUp `86cb3dq9a` comment
-                 `90150253169595` and confirmed in the transcript at [10:30]–[11:14]:
-                 Kyle proposed branding it "as a regulatory compliance piece as a
-                 larger scale", Audrey agreed — "we could do it generic, that we are
-                 regulatory compliant" — and Mauricio closed it: "regulatory
-                 compliance is perfect. So let's do it."
-                 ⚠ IT IS NOT A WORDING PREFERENCE. Audrey, same meeting: "the lenders
-                 are SOC2 type 2, we're SOC1." SOC 2 Type 2 belongs to CredX's LENDING
-                 PARTNERS and third parties, not to CredX — Type 2 is deferred on cost
-                 ("$200,000"). So the old marker asserted a certification CredX does not
-                 hold. DO NOT RESTORE IT, on any page, in any form.
-                 ⏸ The term is meant to HYPERLINK to a glossary entry that explains the
-                 split (Gaetan's proposal, agreed on the call). The glossary does not
-                 exist yet and Audrey owes the detail — plain text until it does.
-                 ✓ PIPEDA survives in the supporting text on purpose: it is Canadian
-                 privacy law, not a certification ("there's no seals of approval"),
-                 so stating it is accurate. -->
+
             <span class="trust__lead">Regulatory compliant</span>
             <span class="trust__body">Data is de-identified, consent-driven, and held to Canadian privacy law.</span>
           </div>
@@ -607,9 +390,6 @@
       </div>
     </section>
 
-    <!-- ============================================================
-         S7 — FOUNDER PULL-QUOTE (D&Z-authored; approved as final 2026-07-27)
-         ============================================================ -->
     <section id="quote" class="section pullquote" aria-label="Founder pull-quote">
       <div class="container pullquote__inner">
         <blockquote class="pullquote__text" data-reveal>
@@ -619,21 +399,6 @@
       </div>
     </section>
 
-    <!-- ============================================================
-         S8 — ONBOARDING + FINAL CTA
-         Rewritten 2026-07-27: the onboarding treatment is a DEDICATED PAGE
-         (not a popup — Marco). This section is the on-page teaser; the
-         secondary CTA links straight to it. `Join the Movement` alone is
-         Audrey's C15 call ("get onboarded" is transactional for a cold
-         audience).
-         Slug DECIDED 2026-07-27 = `/join` — it echoes the button, it is short
-         enough to dictate on a call, and it carries the movement register.
-         The page is `noindex` on evidence: in the `ca` database the whole
-         merchant-onboarding cluster is 0–40/mo, and indexing it against
-         "embedded lending" would cannibalise the Home's own 1,000/mo anchor.
-         So the slug has no keyword duty — do not stuff one in.
-         Primary stays /contact until Kyle's calendar URL lands.
-         ============================================================ -->
     <section id="join" class="section final-cta" aria-label="Ready to keep your customer">
       <div class="container final-cta__inner">
         <div data-reveal>
@@ -650,7 +415,6 @@
 
   </main>
 
-  <!-- Footer (G2) — footer-sitemap -->
   <footer class="footer">
     <div class="container">
       <div class="footer__inner footer__inner--sitemap">
@@ -658,18 +422,7 @@
           <img src="./assets/logo/Credx-name.svg" alt="CredX" height="32" style="margin-bottom: 20px;" />
           <p class="footer__movement">A system you belong to, instead of one that owns you.</p>
         </div>
-        <!-- ⚠ COLUMNS AND LABELS MIRROR THE NAV, which is the locked sitemap's own (plan/04).
-             Rebuilt 2026-08-25 on the client's Batch 1 review (Audrey, 2026-08-24): the footer
-             was "missing For Merchants, EVP". Both are now here, and `About` takes the nav's
-             label `The Movement` rather than a second name for the same page.
-             🔴 TWO DESTINATIONS WERE REMOVED, NOT MOVED — `Glossary` (../learn/glossary/) and
-             the whole Legal column (`Privacy` + `Terms`, both pointing at ../legal/). All three
-             404 live, on every page, and they were the links a visitor actually clicks. The
-             pages are roadmap items (Batch 3/4 + track T0); restore the links when they answer
-             200, not before. ⚠ A privacy page is still owed underneath two live forms — that is
-             a real obligation, and deleting a dead link to it does not discharge it.
-             The 4-column grid (2fr 1fr 1fr 1fr, style.css:2825) is why Explore was split in two
-             rather than run to seven items in one column. -->
+
         <div>
           <h3 class="footer__col-title">Explore</h3>
           <div class="footer__links">
