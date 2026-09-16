@@ -27,6 +27,8 @@ assets/images/automotive/automotive_images_final_named.zip
 # Per-vertical local-only artifacts (co-located with each vertical)
 **/images/_masters/
 **/prompts*.md
+**/images/_archive/
+credx-website/images/README.txt
 generic/seo/
 
 # credx-website working copy docs — internal. They carry client quotes, open
@@ -90,3 +92,10 @@ webflow.config.json
 #    being served as public plain text. `**/` matches at any depth.
 #    Moving a directory can silently unprotect what was ignored inside it.
 #    Re-run `git check-ignore -v` after any move.
+
+# ⚠ 2026-09-16 — `_archive/` joins `_masters/`, and the reason is the handover.
+#    26 superseded render versions were tracked under automotive/images/_archive/.
+#    Nothing in any HTML or CSS references one. The folder name already said they
+#    were archive; the ignore list had never been told. images/README.txt goes for
+#    the same reason plus one worse: it is served as public plain text and it
+#    documents a JPG/WebP asset spec the live PNG set no longer matches.
