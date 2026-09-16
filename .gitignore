@@ -75,9 +75,17 @@ scripts/
 # Internal design working docs: brandguide token extraction, per-vertical
 # accent proposal, type-scale notes, references.
 design/
-# Stale: describes the Automotive vertical, names internal skill paths, and
-# documents a known production bug publicly.
+# README.md stays ignored everywhere EXCEPT the repository root.
+# The root one was stale — it described the Automotive vertical, named internal
+# skill paths and documented a production bug publicly. It was REPLACED on
+# 2026-09-16 by a handover README written for the client's developer, and that
+# one is meant to be public and tracked. It sits at the repository ROOT on
+# purpose: the root is no longer published, so the file reaches GitHub without
+# ever being served by the host.
+# The other README.md files on disk live under seo/ and workflow/, which are
+# excluded as whole directories, so the negation below cannot reach them.
 README.md
+!/README.md
 # Webflow CLI deploy config; exposes the Webflow siteId. The four verticals are
 # closed and client-owned, so this is historical tooling, not a live build.
 webflow.config.json
