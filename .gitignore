@@ -25,8 +25,8 @@ assets/images/automotive/automotive_images_final_named/
 assets/images/automotive/automotive_images_final_named.zip
 
 # Per-vertical local-only artifacts (co-located with each vertical)
-*/images/_masters/
-*/prompts*.md
+**/images/_masters/
+**/prompts*.md
 generic/seo/
 
 # credx-website working copy docs — internal. They carry client quotes, open
@@ -39,15 +39,15 @@ credx-website/copy/
 #    items and the internal forbidden-language list.
 #    Added 2026-08-18 when the four verticals were closed and handed over.
 copy/
-*/copy.md
+**/copy.md
 *.docx
 
 # Impeccable working context. Internal: client quotes, anti-references, brand
 # strategy. Same treatment as copy/ and workflow/ — never served publicly.
 PRODUCT.md
 DESIGN.md
-*/PRODUCT.md
-*/DESIGN.md
+**/PRODUCT.md
+**/DESIGN.md
 # ⚠ The comment above stated the intent from the start, but the patterns only
 #    ever covered PRODUCT/DESIGN — the skill's OWN output directory was never
 #    listed. Result: on 2026-08-19 `.impeccable/critique/*.md` was committed and
@@ -79,3 +79,14 @@ README.md
 # Webflow CLI deploy config; exposes the Webflow siteId. The four verticals are
 # closed and client-owned, so this is historical tooling, not a live build.
 webflow.config.json
+
+# ⚠ 2026-09-16 — WHY THESE READ `**/` AND NOT `*/`. The four verticals moved
+#    from the repo root into credx-website/, one level deeper. A gitignore
+#    pattern containing a slash is anchored to this file's directory, so
+#    `*/copy.md` matched automotive/copy.md and stopped matching
+#    credx-website/automotive/copy.md the moment the folders moved. For one
+#    commit, four copy.md, four prompts*.md and four images/_masters/ were
+#    unignored — client quotes and render briefs, one `git add -A` away from
+#    being served as public plain text. `**/` matches at any depth.
+#    Moving a directory can silently unprotect what was ignored inside it.
+#    Re-run `git check-ignore -v` after any move.
