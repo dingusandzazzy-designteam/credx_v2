@@ -22,6 +22,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" />
 
   <link rel="stylesheet" href="../automotive/style.css" />
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
@@ -80,6 +81,35 @@
 
     <section id="savings" class="section calc-section" aria-label="Savings calculator">
       <div class="container">
+        <div class="finder" data-reveal>
+          <span class="eyebrow eyebrow--accent">Find your business</span>
+          <h2 class="finder__h2">Start with your name. <em class="accent">See your own number.</em></h2>
+          <p class="finder__body">No sign-up, and nothing is stored unless you ask us to be in touch.</p>
+          <form class="finder__form" data-finder novalidate>
+            <div class="finder__field">
+              <label class="finder__label" for="finder-name">Business name</label>
+              <input class="finder__input" type="text" id="finder-name" name="business_name" autocomplete="organization" placeholder="Your business" required />
+            </div>
+            <div class="finder__field">
+              <label class="finder__label" for="finder-place">City and province</label>
+              <input class="finder__input" type="text" id="finder-place" name="business_place" autocomplete="address-level2" placeholder="City, province" />
+            </div>
+            <button class="btn btn-primary finder__submit" type="submit">Show me my number</button>
+          </form>
+          <p class="finder__error" data-finder-error hidden>Enter your business name to carry on.</p>
+
+          <div class="finder__result" data-finder-result hidden>
+            <span class="finder__result-label">Your profile</span>
+            <p class="finder__result-name" data-finder-name></p>
+            <ul class="finder__facts">
+              <li><span>What card fees take today</span><strong>About 3.6% of your card volume</strong></li>
+              <li><span>What CredX costs</span><strong>0.6% of the same volume</strong></li>
+              <li><span>What comes back</span><strong>40% up to 85% of standard interchange</strong></li>
+            </ul>
+            <p class="finder__note">These are the published rates, not a reading of your account. Set your volume below and the figure is yours.</p>
+          </div>
+        </div>
+
         <div class="calc" data-reveal>
           <div>
             <h3 class="calc__h3">Move the slider. <em class="accent">See what stays</em> in your business.</h3>
@@ -103,7 +133,7 @@
             </div>
           </div>
           <div class="calc__output">
-            <span class="calc__label">Recovered with CredX</span>
+            <span class="calc__label" data-calc-owner>Recovered with CredX</span>
 
             <span class="calc__range-low"><span data-calc-low>$172,800</span> to</span>
             <span class="calc__output-number" data-calc-output-yearly><span data-calc-high>$360,000</span></span>
@@ -115,6 +145,45 @@
             <p class="calc__hedge">Have last month&#39;s statement? <a href="../calculator/" class="accent">Get your exact figure</a>.</p>
           </div>
         </div>
+      </div>
+    </section>
+
+    <section id="rails" class="section rails" aria-label="Interchange, before and after">
+      <div class="container">
+        <span class="eyebrow eyebrow--accent" data-reveal>Interchange, Before and After</span>
+        <h2 class="rails__h2" data-reveal-words>Same $1M a month.<br /><em class="accent">A different destination.</em></h2>
+        <p class="rails__body" data-reveal data-reveal-delay="1">Switch between the two to see where the same monthly card volume actually goes.</p>
+
+        <div class="rails__panel" data-reveal data-reveal-delay="1">
+          <div class="rails__toggle" role="tablist" aria-label="Choose a rail">
+            <button class="rails__tab is-active" type="button" role="tab" id="rail-tab-legacy" aria-selected="true" aria-controls="rail-panel" data-rail="legacy">Competing credit facility</button>
+            <button class="rails__tab" type="button" role="tab" id="rail-tab-credx" aria-selected="false" aria-controls="rail-panel" data-rail="credx">With CredX</button>
+          </div>
+
+          <div class="rails__body-panel" id="rail-panel" role="tabpanel" aria-labelledby="rail-tab-legacy">
+            <div class="rails__row">
+              <div class="rails__row-head">
+                <span class="rails__row-label">Paid out, per month</span>
+                <span class="rails__row-value" data-rail-out>$36,000</span>
+              </div>
+              <div class="rails__bar"><span class="rails__bar-fill rails__bar-fill--out" data-rail-out-bar style="width: 100%;"></span></div>
+              <p class="rails__caption" data-rail-out-caption>What card fees take out of $1M in card volume</p>
+            </div>
+
+            <div class="rails__row">
+              <div class="rails__row-head">
+                <span class="rails__row-label">Kept in your business, per month</span>
+                <span class="rails__row-value rails__row-value--kept" data-rail-kept>$0</span>
+              </div>
+              <div class="rails__bar"><span class="rails__bar-fill rails__bar-fill--kept" data-rail-kept-bar style="width: 0%;"></span></div>
+              <p class="rails__caption" data-rail-kept-caption>Nothing comes back on the old rail</p>
+            </div>
+
+            <p class="rails__hedge">Recovery runs from 40% up to 85% of standard interchange, depending on qualifying volume, so $30,000 is the top of that range on $1M a month. Results vary by volume and card mix.</p>
+          </div>
+        </div>
+
+        <p class="rails__closer" data-reveal data-reveal-delay="2">Same customers, same volume, same checkout. The difference is where the value ends up.</p>
       </div>
     </section>
 
@@ -281,6 +350,67 @@
       </div>
     </section>
 
+
+    <section id="profiles" class="section profiles" aria-label="What recovery looks like at real volumes">
+      <div class="container">
+        <span class="eyebrow eyebrow--accent" data-reveal>Built for These Operators</span>
+        <h2 class="profiles__h2" data-reveal-words>What this looks like at <em class="accent">real volumes</em>.</h2>
+        <p class="profiles__body" data-reveal data-reveal-delay="1">Illustrative profiles across the automotive aftermarket. Each figure is the published range applied to the volume shown, and no profile describes a named business.</p>
+
+        <div class="profiles__grid">
+          <div class="profile" data-reveal data-reveal-delay="0">
+            <span class="profile__tag">Four bays, recurring service visits</span>
+            <h3 class="profile__name">Independent service centre</h3>
+            <dl class="profile__figures">
+              <div><dt>Card volume</dt><dd>$500,000 a month</dd></div>
+              <div><dt>Kept with CredX</dt><dd class="profile__kept">$7,200 to $15,000 a month</dd></div>
+            </dl>
+          </div>
+          <div class="profile" data-reveal data-reveal-delay="1">
+            <span class="profile__tag">Six locations, high visit frequency</span>
+            <h3 class="profile__name">Tire and quick-lube chain</h3>
+            <dl class="profile__figures">
+              <div><dt>Card volume</dt><dd>$1,400,000 a month</dd></div>
+              <div><dt>Kept with CredX</dt><dd class="profile__kept">$20,160 to $42,000 a month</dd></div>
+            </dl>
+          </div>
+          <div class="profile" data-reveal data-reveal-delay="2">
+            <span class="profile__tag">Regional, trade and retail counters</span>
+            <h3 class="profile__name">Parts distributor</h3>
+            <dl class="profile__figures">
+              <div><dt>Card volume</dt><dd>$2,500,000 a month</dd></div>
+              <div><dt>Kept with CredX</dt><dd class="profile__kept">$36,000 to $75,000 a month</dd></div>
+            </dl>
+          </div>
+          <div class="profile" data-reveal data-reveal-delay="3">
+            <span class="profile__tag">High ticket, low frequency</span>
+            <h3 class="profile__name">Collision and body shop</h3>
+            <dl class="profile__figures">
+              <div><dt>Card volume</dt><dd>$750,000 a month</dd></div>
+              <div><dt>Kept with CredX</dt><dd class="profile__kept">$10,800 to $22,500 a month</dd></div>
+            </dl>
+          </div>
+          <div class="profile" data-reveal data-reveal-delay="3">
+            <span class="profile__tag">Seasonal peaks, accessory attach</span>
+            <h3 class="profile__name">Powersports and RV group</h3>
+            <dl class="profile__figures">
+              <div><dt>Card volume</dt><dd>$1,900,000 a month</dd></div>
+              <div><dt>Kept with CredX</dt><dd class="profile__kept">$27,360 to $57,000 a month</dd></div>
+            </dl>
+          </div>
+          <div class="profile" data-reveal data-reveal-delay="3">
+            <span class="profile__tag">Contract accounts, steady volume</span>
+            <h3 class="profile__name">Fleet service provider</h3>
+            <dl class="profile__figures">
+              <div><dt>Card volume</dt><dd>$920,000 a month</dd></div>
+              <div><dt>Kept with CredX</dt><dd class="profile__kept">$13,248 to $27,600 a month</dd></div>
+            </dl>
+          </div>
+        </div>
+
+        <p class="profiles__hedge" data-reveal>Recovery runs from 40% up to 85% of standard interchange, depending on qualifying volume. Results vary by volume and card mix.</p>
+      </div>
+    </section>
 
     <section id="how" class="section process" aria-label="How it works">
       <div class="container">
@@ -551,5 +681,6 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/lenis@1.0.45/dist/lenis.min.js"></script>
   <script src="../automotive/script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
