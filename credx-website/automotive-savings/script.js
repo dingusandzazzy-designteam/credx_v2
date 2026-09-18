@@ -224,25 +224,18 @@
 
   var wall = document.querySelector('[data-wall]');
 
-  if (wall && !reduceMotion) {
-    for (var i = 0; i < 36; i += 1) {
-      var brick = document.createElement('span');
-      brick.className = 'wall__brick';
-      brick.style.setProperty('--brick-i', String(i % 12 + Math.floor(i / 12)));
-      wall.appendChild(brick);
-    }
-
-    if ('IntersectionObserver' in window) {
+  if (wall) {
+    if (!('IntersectionObserver' in window)) {
+      wall.classList.add('is-breaking');
+    } else {
       var wallObserver = new IntersectionObserver(function (entries) {
         entries.forEach(function (entry) {
-          if (!entry.isIntersecting) return;
+          if (!entry.isIntersecting || entry.intersectionRatio <= 0.55) return;
           entry.target.classList.add('is-breaking');
           wallObserver.unobserve(entry.target);
         });
-      }, { threshold: 0.4 });
+      }, { threshold: [0, 0.3, 0.55, 0.8] });
       wallObserver.observe(wall);
-    } else {
-      wall.classList.add('is-breaking');
     }
   }
 })();
