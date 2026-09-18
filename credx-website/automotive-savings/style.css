@@ -788,3 +788,28 @@
   margin-inline: 0;
   margin-bottom: var(--s-7);
 }
+
+/* ── One track, one exception ───────────────────────────────────────────
+   Measured at 1440: the page ran four widths. Everything now sits on the
+   1264px container track, left edge 73. The hero is the only full bleed.
+   The form keeps a usable measure but starts on the track rather than
+   floating in the middle of it — a 1264px-wide text input is not a form. */
+
+.v-savings .builtfor__scenes,
+.v-savings .faq__list,
+.v-savings .proof__emblems {
+  max-width: none;
+  margin-inline: 0;
+}
+
+.v-savings .signup__form {
+  max-width: 760px;
+  margin-inline: 0;
+}
+
+/* `.signup__inner` is the container element too — the same trap as
+   `.statement__inner`, caught the same way, by measuring. */
+.v-savings .signup__inner {
+  max-width: var(--container-max);
+  margin-inline: auto;
+}
