@@ -446,5 +446,292 @@
 @media (prefers-reduced-motion: reduce) {
   [data-drop] { opacity: 1; transform: none; transition: none; }
   .wall__brick { transition: none; }
-  .wall.is-breaking .wall__brick { opacity: 0.12; transform: none; }
+}
+
+/* ══════════════════════════════════════════════════════════════════════
+   VARIANT DESIGN LAYER — 2026-09-18
+
+   This page is an A/B test, not a page of the approved site, so it does
+   not inherit the approved composition. It keeps the tokens, the nav and
+   the footer; everything below re-sets rhythm, measure, alignment and
+   width for this page only. Scoped to body.v-savings so nothing here can
+   reach ../automotive/.
+
+   The thesis: the prototype under test is LEFT-ALIGNED and WIDE. The
+   approved page centres almost every section inside 720–880px, which is
+   what made this page read as a column of announcements with dead air
+   between them. One alignment, one display voice, one rhythm, and the
+   components that carry data run the full width.
+   ══════════════════════════════════════════════════════════════════════ */
+
+.v-savings {
+  --container-max: 1360px;
+  --s-section: clamp(72px, 6.5vw, 112px);
+  --v-h2: clamp(2rem, 2.6vw + 1rem, 3.25rem);
+  --v-lede: clamp(1.0625rem, 0.35vw + 1rem, 1.1875rem);
+  --v-measure: 62ch;
+}
+
+/* ── One alignment ──────────────────────────────────────────────────── */
+
+.v-savings .statement__inner,
+.v-savings .movement__inner,
+.v-savings .control__header,
+.v-savings .gains__header,
+.v-savings .proof__header,
+.v-savings .faq__header,
+.v-savings .signup__intro,
+.v-savings .finder {
+  max-width: none;
+  margin-inline: 0;
+  text-align: left;
+}
+
+.v-savings .control__header,
+.v-savings .gains__header,
+.v-savings .proof__header,
+.v-savings .faq__header,
+.v-savings .signup__intro {
+  margin-bottom: var(--s-7);
+}
+
+/* Paragraphs keep a reading measure even though their section does not. */
+.v-savings .statement__lead,
+.v-savings .statement__body,
+.v-savings .movement__body,
+.v-savings .control__intro,
+.v-savings .rails__body,
+.v-savings .profiles__body,
+.v-savings .finder__body,
+.v-savings .signup__sub,
+.v-savings .builtfor__qualifier,
+.v-savings .gains__benchmark {
+  max-width: var(--v-measure);
+  margin-inline: 0;
+}
+
+/* The founder quote is the one deliberate centred moment. */
+.v-savings .voices__closer,
+.v-savings .pullquote,
+.v-savings .pullquote__text,
+.v-savings .pullquote__attrib {
+  text-align: center;
+}
+
+/* ── One display voice, one step ────────────────────────────────────── */
+
+.v-savings .statement__h2,
+.v-savings .movement__h2,
+.v-savings .control__h2,
+.v-savings .gains__h2,
+.v-savings .rails__h2,
+.v-savings .profiles__h2,
+.v-savings .finder__h2,
+.v-savings .calc__h3,
+.v-savings .process__header h2,
+.v-savings .proof__header h2,
+.v-savings .faq__header h2,
+.v-savings .signup__h2 {
+  font-family: var(--font-editorial);
+  font-size: var(--v-h2);
+  font-weight: 500;
+  line-height: 1.06;
+  letter-spacing: -0.015em;
+  font-variation-settings: 'opsz' 96;
+  margin-bottom: var(--s-5);
+  text-wrap: balance;
+}
+
+.v-savings .statement__lead,
+.v-savings .rails__body,
+.v-savings .profiles__body,
+.v-savings .finder__body,
+.v-savings .control__intro,
+.v-savings .signup__sub {
+  font-size: var(--v-lede);
+  line-height: 1.5;
+  color: var(--text-secondary);
+}
+
+/* ── The prospector and the calculator: one band, no nested cards ───── */
+
+.v-savings .finder {
+  margin-bottom: var(--s-8);
+  padding-bottom: var(--s-8);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.v-savings .finder__form {
+  justify-content: flex-start;
+  max-width: 760px;
+}
+
+.v-savings .finder__result { max-width: 760px; }
+
+.v-savings .calc {
+  background-color: transparent;
+  border: 0;
+  border-radius: 0;
+  padding: 0;
+}
+
+@media (min-width: 1024px) {
+  .v-savings .calc {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--s-9);
+    align-items: start;
+    padding: 0;
+  }
+}
+
+.v-savings .calc__input { margin-top: var(--s-7); }
+.v-savings .calc__slider { width: 100%; }
+
+.v-savings .calc__output {
+  padding: var(--s-7);
+  background-color: var(--surface-1);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-card);
+}
+
+/* The range read as an orphan above the figure. It is one value. */
+.v-savings .calc__range-low {
+  display: block;
+  font-size: var(--type-h3);
+  color: var(--text-secondary);
+  margin-top: var(--s-3);
+}
+
+.v-savings .calc__output-number { line-height: 1; }
+
+/* ── Interchange, before and after: the panel runs the width ────────── */
+
+.v-savings .rails__panel { max-width: none; }
+
+@media (min-width: 900px) {
+  .v-savings .rails__body-panel {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--s-9);
+    padding: var(--s-8);
+  }
+
+  .v-savings .rails__row + .rails__row { margin-top: 0; }
+
+  .v-savings .rails__hedge {
+    grid-column: 1 / -1;
+    margin-top: var(--s-4);
+  }
+}
+
+.v-savings .rails__closer {
+  max-width: var(--v-measure);
+  margin-top: var(--s-7);
+}
+
+/* ── The Wall of Extraction: full bleed inside a narrow section ─────── */
+
+.v-savings .wall {
+  max-width: none;
+  margin-inline: 0;
+  margin-block: var(--s-7) var(--s-8);
+}
+
+/* ── Gains: no ordinals on three things that are not a sequence ─────── */
+
+.v-savings .gain__num { display: none; }
+
+/* ── Profiles: two clean rows, and names on one baseline ────────────── */
+
+.v-savings .profiles__grid { grid-template-columns: repeat(2, 1fr); }
+
+@media (min-width: 900px) {
+  .v-savings .profiles__grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+.v-savings .profile {
+  display: flex;
+  flex-direction: column;
+}
+
+.v-savings .profile__tag {
+  min-height: 2.4em;
+  line-height: 1.2;
+}
+
+.v-savings .profile__figures { margin-top: auto; }
+
+/* ── Motion repair ──────────────────────────────────────────────────── */
+
+/* The wall held at 12% under reduced motion, so its twelve lines of copy
+   were unreadable for anyone who asks for less motion. It now simply
+   does not break. */
+@media (prefers-reduced-motion: reduce) {
+  .v-savings .wall.is-breaking .wall__brick {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ── Second pass, from the rendered page ────────────────────────────── */
+
+/* `.statement__inner` and `.movement__inner` ARE the container element:
+   killing their max-width put those two sections' left edge at 48px while
+   every other section sat at 88px. Measured, not guessed. */
+.v-savings .statement__inner,
+.v-savings .movement__inner {
+  max-width: var(--container-max);
+  margin-inline: auto;
+}
+
+/* In the two-column rail panel, label and value were thrown to opposite
+   ends of a half-width column. They belong together. */
+@media (min-width: 900px) {
+  .v-savings .rails__row-head {
+    display: block;
+    margin-bottom: var(--s-4);
+  }
+
+  .v-savings .rails__row-label {
+    display: block;
+    margin-bottom: var(--s-2);
+  }
+}
+
+.v-savings .calc__range-low {
+  margin-top: 0;
+  margin-bottom: var(--s-1);
+  line-height: 1.2;
+}
+
+/* One alignment inside the gains section too: the header was left and
+   everything under it stayed centred. */
+.v-savings .gains__benchmark {
+  text-align: left;
+  margin-inline: 0;
+}
+
+.v-savings .gains__strip {
+  margin-block: var(--s-8);
+}
+
+.v-savings .gains__strip .stat,
+.v-savings .proof__kpis .kpi {
+  text-align: left;
+}
+
+.v-savings .section-ctas {
+  justify-content: flex-start;
+  margin-top: var(--s-7);
+}
+
+@media (max-width: 640px) {
+  .v-savings .profiles__grid { grid-template-columns: 1fr; }
+}
+
+.v-savings .gains__strip .stat__number,
+.v-savings .gains__strip .stat__label,
+.v-savings .proof__kpis .kpi__value,
+.v-savings .proof__kpis .kpi__label {
+  text-align: left;
 }
