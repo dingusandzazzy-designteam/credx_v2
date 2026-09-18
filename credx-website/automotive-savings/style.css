@@ -813,3 +813,30 @@
   max-width: var(--container-max);
   margin-inline: auto;
 }
+
+/* ── One picture format ─────────────────────────────────────────────────
+   The Built For frames were 4:5 portrait while the six profile cards are
+   16:9. Two picture formats on one page, and the portrait frames grew
+   tall once the grid took the full track. The three images were re-cropped
+   to 16:9 into this page's own folder; automotive/ keeps its originals. */
+
+.v-savings .builtfor__scene { aspect-ratio: 16 / 9; }
+
+/* The audience chips and the qualifier were the last two still centred
+   inside their own section. Both now start on the track. */
+
+.v-savings .builtfor__list {
+  max-width: none;
+  margin-inline: 0;
+}
+
+.v-savings .builtfor__qualifier {
+  text-align: left;
+  margin-inline: 0;
+}
+
+.v-savings .proof__kpis .kpi__label,
+.v-savings .gains__strip .stat__label {
+  margin-inline: 0;
+  max-width: none;
+}
