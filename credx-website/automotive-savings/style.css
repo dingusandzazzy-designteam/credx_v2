@@ -381,3 +381,57 @@
   font-family: var(--font-body);
   letter-spacing: 0.04em;
 }
+
+/* ── Drop-in cards ──────────────────────────────────────────────────────
+   The prototype's entrance: a short travel on a long-tail ease, staggered
+   per card. Its own reveal runs 0.6s on cubic-bezier(.22, 1, .36, 1).
+   Elements carrying data-drop do NOT carry data-reveal: one system each. */
+
+[data-drop] {
+  opacity: 0;
+  transform: translateY(-34px) scale(0.985);
+  transition: opacity 600ms cubic-bezier(0.22, 1, 0.36, 1),
+              transform 600ms cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: calc(var(--drop-i, 0) * 90ms);
+}
+
+[data-drop].is-dropped {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* ── The wall that breaks ───────────────────────────────────────────────
+   Their `shatter` keyframes, on the section whose closing line says it. */
+
+.wall {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 6px;
+  max-width: 620px;
+  margin: var(--s-7) auto var(--s-6);
+}
+
+.wall__brick {
+  height: 22px;
+  background-color: var(--surface-3);
+  border: 1px solid var(--border-subtle);
+  border-radius: 3px;
+  transform-origin: center;
+}
+
+.wall.is-breaking .wall__brick {
+  animation: shatter 900ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation-delay: calc(var(--brick-i, 0) * 28ms);
+}
+
+@keyframes shatter {
+  0% { opacity: 1; transform: scale(1) translateY(0); }
+  40% { opacity: 0.9; transform: scale(1.04) translateY(-4px); }
+  100% { opacity: 0; filter: blur(4px); transform: scale(0.6) translateY(40px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-drop] { opacity: 1; transform: none; transition: none; }
+  .wall { display: none; }
+  .wall.is-breaking .wall__brick { animation: none; opacity: 0; }
+}

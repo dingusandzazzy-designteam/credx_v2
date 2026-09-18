@@ -188,4 +188,61 @@
       showRail(next.getAttribute('data-rail'), next);
     });
   });
+  /* ── Drop-in cards ──────────────────────────────────────────────
+     Cards land in sequence as their group comes into view. The shared
+     script never sees these: they carry data-drop instead of data-reveal. */
+
+  var dropped = document.querySelectorAll('[data-drop]');
+
+  if (dropped.length) {
+    if (reduceMotion || !('IntersectionObserver' in window)) {
+      Array.prototype.forEach.call(dropped, function (el) { el.classList.add('is-dropped'); });
+    } else {
+      var groups = [];
+      Array.prototype.forEach.call(dropped, function (el) {
+        var parent = el.parentNode;
+        if (groups.indexOf(parent) === -1) groups.push(parent);
+        el.style.setProperty('--drop-i', String(
+          Array.prototype.indexOf.call(parent.children, el)
+        ));
+      });
+
+      var dropObserver = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add('is-dropped');
+          dropObserver.unobserve(entry.target);
+        });
+      }, { threshold: 0.15, rootMargin: '0px 0px -8% 0px' });
+
+      Array.prototype.forEach.call(dropped, function (el) { dropObserver.observe(el); });
+    }
+  }
+
+  /* ── The wall that breaks ────────────────────────────────────
+     36 bricks that break away where the section's closing line says so. */
+
+  var wall = document.querySelector('[data-wall]');
+
+  if (wall && !reduceMotion) {
+    for (var i = 0; i < 36; i += 1) {
+      var brick = document.createElement('span');
+      brick.className = 'wall__brick';
+      brick.style.setProperty('--brick-i', String(i % 12 + Math.floor(i / 12)));
+      wall.appendChild(brick);
+    }
+
+    if ('IntersectionObserver' in window) {
+      var wallObserver = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add('is-breaking');
+          wallObserver.unobserve(entry.target);
+        });
+      }, { threshold: 0.4 });
+      wallObserver.observe(wall);
+    } else {
+      wall.classList.add('is-breaking');
+    }
+  }
 })();
