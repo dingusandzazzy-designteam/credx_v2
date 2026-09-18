@@ -5,12 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#0b0c16" />
 
-  <title>CredX for Automotive Operators — Keep $30,000 for Every $1M in Card Volume</title>
+  <title>CredX for Automotive Operators — Visa &amp; Mastercard Take 3%. We Give It Back.</title>
   <meta name="robots" content="noindex, follow" />
-  <meta name="description" content="Card fees take about 3.6% of your card volume. CredX costs 0.6% of the same volume. On $1M a month, that gap is about $30,000 staying in your business." />
+  <meta name="description" content="Visa and Mastercard take 3%. We give it back. Embedded lending that returns the customer, the data, and the value to your business." />
 
-  <meta property="og:title" content="CredX for Automotive Operators — Keep $30,000 for Every $1M in Card Volume" />
-  <meta property="og:description" content="Card fees take about 3.6% of your card volume. CredX costs 0.6% of the same volume. On $1M a month, that gap is about $30,000 staying in your business." />
+  <meta property="og:title" content="CredX — The value belongs to the businesses who create it" />
+  <meta property="og:description" content="Visa and Mastercard take 3%. We give it back. Embedded lending, AI merchant prospecting, and a system you belong to instead of one that owns you." />
   <meta property="og:image" content="../automotive/images/og.png" />
   <meta property="og:type" content="website" />
   <meta name="twitter:card" content="summary_large_image" />
@@ -66,13 +66,13 @@
         <div class="hero__copy">
           <span class="eyebrow eyebrow--accent" data-reveal>For Automotive Service, Parts &amp; Aftermarket Operators</span>
           <h1 class="hero__h1" data-reveal-words>
-            Keep <em class="accent">$30,000</em> for Every $1M You Run on Cards
+            Visa &amp; Mastercard take 3%.<br /><em class="accent">We give it back.</em>
           </h1>
           <p class="hero__sub" data-reveal data-reveal-delay="2">
-            Card fees take about 3.6% of your card volume today. CredX costs 0.6% of the same volume. On $1M a month, that gap is about $30,000 staying in your business.
+            Every card sale ships your margin to the networks — roughly $36,000 per $1M processed, every year, with nothing coming back. CredX reverses the flow: an embedded lending layer that recovers 40–85% of interchange and returns it to the business that earned it.
           </p>
           <div class="hero__ctas" data-reveal data-reveal-delay="3">
-            <a href="#savings" class="btn btn-primary">See what stays in your business</a>
+            <a href="#savings" class="btn btn-primary">Scan Rails</a>
             <a href="#form" class="btn btn-secondary">Join the Movement</a>
           </div>
         </div>
@@ -82,40 +82,47 @@
     <section id="savings" class="section calc-section" aria-label="Savings calculator">
       <div class="container">
         <div class="finder" data-reveal>
-          <span class="eyebrow eyebrow--accent">Find your business</span>
-          <h2 class="finder__h2">Start with your name. <em class="accent">See your own number.</em></h2>
-          <p class="finder__body">No sign-up, and nothing is stored unless you ask us to be in touch.</p>
+          <span class="eyebrow eyebrow--accent">AI Prospector</span>
+          <h2 class="finder__h2">The AI finds your business <em class="accent">and qualifies it.</em></h2>
+          <p class="finder__body">Type your business name. The CredX AI scans the global rails, reads your interchange drain, and tells you exactly what you lose to Visa &amp; Mastercard — and what comes back.</p>
           <form class="finder__form" data-finder novalidate>
             <div class="finder__field">
-              <label class="finder__label" for="finder-name">Business name</label>
+              <label class="finder__label" for="finder-name">Business name to scan</label>
               <input class="finder__input" type="text" id="finder-name" name="business_name" autocomplete="organization" placeholder="Your business" required />
             </div>
             <div class="finder__field">
               <label class="finder__label" for="finder-place">City and province</label>
               <input class="finder__input" type="text" id="finder-place" name="business_place" autocomplete="address-level2" placeholder="City, province" />
             </div>
-            <button class="btn btn-primary finder__submit" type="submit">Show me my number</button>
+            <button class="btn btn-primary finder__submit" type="submit">Scan Rails</button>
           </form>
-          <p class="finder__error" data-finder-error hidden>Enter your business name to carry on.</p>
+          <p class="finder__error" data-finder-error hidden>Scan failed. Try again.</p>
+          <p class="finder__body finder__body--small">No signup required. Your name is not stored.</p>
 
           <div class="finder__result" data-finder-result hidden>
-            <span class="finder__result-label">Your profile</span>
+            <span class="finder__result-label">Is this your business?</span>
             <p class="finder__result-name" data-finder-name></p>
+            <p class="finder__lede">The AI pulled these numbers for this business. Edit anything that looks wrong — your savings estimate follows the numbers.</p>
             <ul class="finder__facts">
-              <li><span>What card fees take today</span><strong>About 3.6% of your card volume</strong></li>
-              <li><span>What CredX costs</span><strong>0.6% of the same volume</strong></li>
-              <li><span>What comes back</span><strong>40% up to 85% of standard interchange</strong></li>
+              <li><label for="pf-vol">Monthly card volume ($ / month)</label><input class="finder__cell" type="text" id="pf-vol" inputmode="numeric" placeholder="1,000,000" data-finder-volume /></li>
+              <li><label for="pf-pos">POS vendor</label><input class="finder__cell" type="text" id="pf-pos" placeholder="—" /></li>
+              <li><label for="pf-ticket">Avg ticket</label><input class="finder__cell" type="text" id="pf-ticket" placeholder="—" /></li>
+              <li><label for="pf-return">Return rate</label><input class="finder__cell" type="text" id="pf-return" placeholder="—" /></li>
+              <li><label for="pf-drain">Interchange drain</label><input class="finder__cell" type="text" id="pf-drain" placeholder="—" /></li>
+              <li><label for="pf-charge">Chargeback ratio</label><input class="finder__cell" type="text" id="pf-charge" placeholder="—" /></li>
+              <li><label for="pf-loyalty">Loyalty gap</label><input class="finder__cell" type="text" id="pf-loyalty" placeholder="—" /></li>
             </ul>
-            <p class="finder__note">These are the published rates, not a reading of your account. Set your volume below and the figure is yours.</p>
+            <p class="finder__note">Lost to Visa/MC / yr: <strong class="accent" data-finder-lost>—</strong></p>
+            <a href="#savings-output" class="btn btn-primary finder__confirm">Confirm &amp; show my savings</a>
           </div>
         </div>
 
         <div class="calc" data-reveal>
           <div>
-            <h3 class="calc__h3">Move the slider. <em class="accent">See what stays</em> in your business.</h3>
-            <p class="calc__body">Set your real monthly card volume and watch the recovery add up across twelve months.</p>
+            <h3 class="calc__h3">Recover what you pay in <em class="accent">credit card processing fees.</em></h3>
+            <p class="calc__body">Every card sale carries a fee that leaves the business and does not come back. CredX puts an embedded lending layer underneath the same transaction, so a share of that value returns to the business that earned it.</p>
             <div class="calc__input">
-              <label class="calc__label" for="calc-slider">Monthly processing volume</label>
+              <label class="calc__label" for="calc-slider">Monthly card volume ($ / month)</label>
               <input
                 type="range"
                 id="calc-slider"
@@ -132,17 +139,17 @@
               </div>
             </div>
           </div>
-          <div class="calc__output">
-            <span class="calc__label" data-calc-owner>Recovered with CredX</span>
+          <div class="calc__output" id="savings-output">
+            <span class="calc__label" data-calc-owner>Recovered and staying in your business</span>
 
             <span class="calc__range-low"><span data-calc-low>$172,800</span> to</span>
             <span class="calc__output-number" data-calc-output-yearly><span data-calc-high>$360,000</span></span>
             <span class="calc__output-yearly"><em class="accent">per year</em></span>
             <p class="calc__hedge">
-              Recovery runs from 40% up to 85% of standard interchange, depending on qualifying volume, so the figure above is a range rather than a single outcome. Results vary by volume and card mix. Based on roughly $36K interchange per $1M with competing credit facilities, against $6K per $1M with CredX.
+              Illustrative: ~$36K per $1M/mo with competing credit facilities vs ~$6K per $1M/mo with CredX. Recovery runs 40–85% and varies by volume and card mix.
             </p>
-            <a href="#form" class="btn btn-primary calc__cta">Get my savings estimate</a>
-            <p class="calc__hedge">Have last month&#39;s statement? <a href="../calculator/" class="accent">Get your exact figure</a>.</p>
+            <a href="#form" class="btn btn-primary calc__cta">Confirm &amp; show my savings</a>
+            <p class="calc__hedge">Prefer to work from your statement? <a href="../calculator/" class="accent">Get your exact figure</a>.</p>
           </div>
         </div>
       </div>
@@ -152,7 +159,7 @@
       <div class="container">
         <span class="eyebrow eyebrow--accent" data-reveal>Interchange, Before and After</span>
         <h2 class="rails__h2" data-reveal-words>Same $1M a month.<br /><em class="accent">A different destination.</em></h2>
-        <p class="rails__body" data-reveal data-reveal-delay="1">Switch between the two to see where the same monthly card volume actually goes.</p>
+        <p class="rails__body" data-reveal data-reveal-delay="1">Toggle between the rails to see where the same monthly card volume actually goes over a year.</p>
 
         <div class="rails__panel" data-reveal data-reveal-delay="1">
           <div class="rails__toggle" role="tablist" aria-label="Choose a rail">
@@ -163,27 +170,27 @@
           <div class="rails__body-panel" id="rail-panel" role="tabpanel" aria-labelledby="rail-tab-legacy">
             <div class="rails__row">
               <div class="rails__row-head">
-                <span class="rails__row-label">Paid out, per month</span>
-                <span class="rails__row-value" data-rail-out>$36,000</span>
+                <span class="rails__row-label">Paid out / yr</span>
+                <span class="rails__row-value" data-rail-out>$432,000</span>
               </div>
               <div class="rails__bar"><span class="rails__bar-fill rails__bar-fill--out" data-rail-out-bar style="width: 100%;"></span></div>
-              <p class="rails__caption" data-rail-out-caption>What card fees take out of $1M in card volume</p>
+              <p class="rails__caption" data-rail-out-caption>Interchange and network fees — gone, permanently</p>
             </div>
 
             <div class="rails__row">
               <div class="rails__row-head">
-                <span class="rails__row-label">Kept in your business, per month</span>
+                <span class="rails__row-label">Returned to you / yr</span>
                 <span class="rails__row-value rails__row-value--kept" data-rail-kept>$0</span>
               </div>
               <div class="rails__bar"><span class="rails__bar-fill rails__bar-fill--kept" data-rail-kept-bar style="width: 0%;"></span></div>
-              <p class="rails__caption" data-rail-kept-caption>Nothing comes back on the old rail</p>
+              <p class="rails__caption" data-rail-kept-caption>Nothing comes back on the legacy rail</p>
             </div>
 
-            <p class="rails__hedge">Recovery runs from 40% up to 85% of standard interchange, depending on qualifying volume, so $30,000 is the top of that range on $1M a month. Results vary by volume and card mix.</p>
+            <p class="rails__hedge">Illustrative: ~$36K per $1M/mo with competing credit facilities vs ~$6K per $1M/mo with CredX. Recovery runs 40–85% and varies by volume and card mix.</p>
           </div>
         </div>
 
-        <p class="rails__closer" data-reveal data-reveal-delay="2">Same customers, same volume, same checkout. The difference is where the value ends up.</p>
+        <p class="rails__closer" data-reveal data-reveal-delay="2">Same customers, same volume, same checkout — the value stops flowing out and starts compounding where it was earned.</p>
       </div>
     </section>
 
@@ -191,25 +198,25 @@
       <div class="container statement__inner">
         <span class="eyebrow eyebrow--accent" data-reveal>A Movement, Not a Product</span>
         <h2 class="statement__h2" data-reveal-words>
-          Forget the old system.<br /><em class="accent">Here is a new one.</em>
+          The rail was one-way.<br /><em class="accent">This one loops.</em>
         </h2>
         <p class="statement__lead" data-reveal data-reveal-delay="1">
-          One that you belong to, instead of one that owns you.
+          A system you belong to, instead of one that owns you.
         </p>
         <p class="statement__body" data-reveal data-reveal-delay="2">
-          The value your business creates belongs to your business. CredX is how that happens. This is not another product to buy. It is a movement to join, built so the people and businesses who create the value are the ones who keep it. Your customers stay where they started, and so does your access to the data they create.
+          For merchants, consumers, and lenders, the legacy rail was a one-way drain. CredX reverses the flow: the margin stays where it was earned, the customer stays yours, and the credit funds where the spending already happens.
         </p>
-        <p class="statement__closer" data-reveal data-reveal-delay="3">That is the real switch.</p>
+        <p class="statement__closer" data-reveal data-reveal-delay="3">The wall breaks. Your value comes back.</p>
       </div>
     </section>
 
     <section id="movement" class="section movement" aria-label="The movement">
       <div class="container movement__inner">
         <h2 class="movement__h2" data-reveal-words>
-          The business that earns the customer<br /><em class="accent">keeps the customer</em>.
+          It started with <em class="accent">3% of every sale</em>.
         </h2>
         <p class="movement__body" data-reveal data-reveal-delay="1">
-          Right now your payment processor runs the transaction, and the credit facility network keeps everything that comes after: who your customer is, what they spend, and when they will come back. CredX puts that back in your hands. Your credit facility, your brand, your customer.
+          Our founder spent years watching community businesses hand 3% of every sale to card networks that never met a single one of their customers. The loyalty funded a stranger’s margin. The credit pushed customers toward competing facilities. The data went into someone else’s vault. And the merchant got a receipt. CredX puts that back in your hands. Your credit facility, your brand, your customer.
         </p>
 
         <div class="voices" data-reveal data-reveal-delay="1">
@@ -243,7 +250,7 @@
               <p>Community lenders have always been closer to their members than the big networks, but the credit facility network always captured the transaction. CredX changes the rail: fund embedded credit directly at the point of service, a diversified, closed-loop asset class, with delinquency controls built in so risk stays managed.</p>
             </div>
           </details>
-          <p class="voices__closer">The old system extracted value from all three. <em class="accent">CredX returns it.</em></p>
+          <p class="voices__closer">Every business we sign is a business that stops feeding a network and starts feeding its own community. That is the whole movement.</p>
         </div>
 
         <div class="movement__quote" data-reveal data-reveal-delay="2">
@@ -263,11 +270,11 @@
     <section id="control" class="section control" aria-label="Take control">
       <div class="container">
         <div class="control__header">
-          <span class="eyebrow" data-reveal>Take Control of Your Business</span>
+          <span class="eyebrow" data-reveal>Merchant Sovereignty</span>
           <h2 class="control__h2" data-reveal-words>
-            Your access to the data is the asset no one gave back. <em class="accent">Until now.</em>
+            The value belongs<br /><em class="accent">to the businesses who create it.</em>
           </h2>
-          <p class="control__intro" data-reveal data-reveal-delay="2">Three things become yours the day you sign:</p>
+          <p class="control__intro" data-reveal data-reveal-delay="2">CredX is not a payments company. It is a correction — a system built so the margin, the credit, and the customer stay with the people who earned them.</p>
         </div>
 
         <div class="section-media" data-reveal-media>
@@ -279,22 +286,22 @@
 
         <div class="control__three">
           <div class="control-card" data-reveal>
-            <span class="control-card__title">Your customer.</span>
-            <p class="control-card__body">The relationship stays in your business's name, not a competing credit facility's. The customer who came in for a tune-up last Tuesday belongs to you.</p>
+            <span class="control-card__title">The customer stays yours.</span>
+            <p class="control-card__body">The customer is yours. The data is yours. The relationship is carried in your brand, never a network’s or a competing credit facility’s.</p>
           </div>
           <div class="control-card" data-reveal data-reveal-delay="1">
-            <span class="control-card__title">Your access to data.</span>
-            <p class="control-card__body">Consent-driven and de-identified: which buyers come back, which segments spend the most, and when demand peaks.</p>
+            <span class="control-card__title">Value flows back to where it is created.</span>
+            <p class="control-card__body">Merchants recover interchange, customers earn value-back in dollars, and lenders earn where spending already happens.</p>
           </div>
           <div class="control-card" data-reveal data-reveal-delay="2">
-            <span class="control-card__title">Keep the fence.</span>
-            <p class="control-card__body">A closed-loop value-back program in your own brand that keeps the customer from driving to the shop down the street.</p>
+            <span class="control-card__title">Compliance is not a checkbox here.</span>
+            <p class="control-card__body">Data is de-identified, consent-driven, and held to Canadian privacy law. Nothing is imported or shared without an explicit opt-in.</p>
           </div>
         </div>
 
         <div class="control__whitelabel" data-reveal>
-          <h3 class="control__whitelabel-head">Your business name. <em class="accent">Our infrastructure.</em></h3>
-          <p class="control__whitelabel-body">Everything the customer sees carries your brand. The technology, compliance, and credit run behind the scenes. The relationship is yours.</p>
+          <h3 class="control__whitelabel-head">Value that comes back <em class="accent">carrying your name.</em></h3>
+          <p class="control__whitelabel-body">The credit at checkout is branded as the business, not as CredX and not as a competing credit facility. Customers earn value in dollars — not points, and not a statement credit — and the program runs under the business’s own identity.</p>
         </div>
       </div>
     </section>
@@ -302,27 +309,27 @@
     <section id="gains" class="section gains" aria-label="The gains">
       <div class="container">
         <div class="gains__header">
-          <span class="eyebrow" data-reveal>And Here Is What It Pays You Back</span>
+          <span class="eyebrow" data-reveal>The Interchange Recovery Protocol</span>
           <h2 class="gains__h2" data-reveal-words>
-            Three ways CredX puts <em class="accent">money back</em> in your business.
+            How the model <em class="accent">pays for itself.</em>
           </h2>
         </div>
 
         <div class="gains__list">
           <div class="gain" data-reveal>
             <span class="gain__num">1</span>
-            <h3 class="gain__title">Here is where the $30,000 comes from</h3>
-            <p class="gain__body">$6,000 per $1M with CredX, against roughly $36,000 with competing credit facilities. On $1M a month, that is up to $30,000 staying in your business. That example sits at the top of the published range; across the range the same volume returns roughly $14,000 to $30,000, and results vary by volume and card mix.</p>
+            <h3 class="gain__title">Up to 85% of interchange returns to your business.</h3>
+            <p class="gain__body">Instead of 3%+ draining to the networks, CredX runs on a fraction of that cost and returns the difference. Merchants recover 40–85% of standard interchange, customers earn value-back in dollars, and the data shows you who is about to lapse.</p>
           </div>
           <div class="gain" data-reveal data-reveal-delay="1">
             <span class="gain__num">2</span>
-            <h3 class="gain__title">Earn on the credit you used to give away</h3>
-            <p class="gain__body">A credit facility in your own brand, approved in about 20 seconds at checkout, at roughly half the rate of a standard card. You are paid in full and upfront, and the risk stays with the community lender partners that fund the credit, never on your books.</p>
+            <h3 class="gain__title">Your customer taps once. Approval lands in ~20 seconds.</h3>
+            <p class="gain__body">At checkout, the customer confirms with a single tap. CredX underwriting returns a real-time decision in about twenty seconds — pay in full or pay over time at roughly half the standard card rate, under your brand, not a network’s.</p>
           </div>
           <div class="gain" data-reveal data-reveal-delay="2">
             <span class="gain__num">3</span>
-            <h3 class="gain__title">See your business in real time</h3>
-            <p class="gain__body">A monthly dashboard in plain language, not raw numbers: which location peaks in July, which segment drives revenue, and who is about to lapse. The intelligence your current setup never handed you.</p>
+            <h3 class="gain__title">The lender of record holds the risk. Not you.</h3>
+            <p class="gain__body">Embedded credit is funded by community lender partners — not a competing credit facility. You are paid in full and upfront, repayment risk stays with the lender, and credit earns where the spending already happens.</p>
           </div>
         </div>
 
@@ -330,16 +337,16 @@
 
         <div class="gains__strip">
           <div class="stat" data-reveal>
-            <span class="stat__number">$30K</span>
-            <span class="stat__label">Recovered per $1M, month one.</span>
+            <span class="stat__number">40–85%</span>
+            <span class="stat__label">of interchange recovered</span>
           </div>
           <div class="stat" data-reveal data-reveal-delay="1">
-            <span class="stat__number">Yours</span>
-            <span class="stat__label">The customer, access to the data, and the loyalty. Not a competing credit facility's.</span>
+            <span class="stat__number">$30K</span>
+            <span class="stat__label">back in your business, month one</span>
           </div>
           <div class="stat" data-reveal data-reveal-delay="2">
-            <span class="stat__number">20 sec</span>
-            <span class="stat__label">Credit approved at checkout.</span>
+            <span class="stat__number">Seconds</span>
+            <span class="stat__label">AI-scored at the counter</span>
           </div>
         </div>
 
@@ -353,13 +360,13 @@
 
     <section id="profiles" class="section profiles" aria-label="What recovery looks like at real volumes">
       <div class="container">
-        <span class="eyebrow eyebrow--accent" data-reveal>Built for These Operators</span>
-        <h2 class="profiles__h2" data-reveal-words>What this looks like at <em class="accent">real volumes</em>.</h2>
-        <p class="profiles__body" data-reveal data-reveal-delay="1">Illustrative profiles across the automotive aftermarket. Each figure is the published range applied to the volume shown, and no profile describes a named business.</p>
+        <span class="eyebrow eyebrow--accent" data-reveal>Merchant Sovereignty · The Model</span>
+        <h2 class="profiles__h2" data-reveal-words>Built for the businesses<br />the network drains <em class="accent">the most.</em></h2>
+        <p class="profiles__body" data-reveal data-reveal-delay="1">Illustrative merchant profiles showing what recovery looks like at real volumes — the margin every founding merchant keeps once the value layer is live.</p>
 
         <div class="profiles__grid">
           <div class="profile" data-reveal data-reveal-delay="0">
-            <span class="profile__tag">Four bays, recurring service visits</span>
+            <span class="profile__tag">High return-rate, prime prospect</span>
             <h3 class="profile__name">Independent service centre</h3>
             <dl class="profile__figures">
               <div><dt>Card volume</dt><dd>$500,000 a month</dd></div>
@@ -367,7 +374,7 @@
             </dl>
           </div>
           <div class="profile" data-reveal data-reveal-delay="1">
-            <span class="profile__tag">Six locations, high visit frequency</span>
+            <span class="profile__tag">Ready for Lender Expansion</span>
             <h3 class="profile__name">Tire and quick-lube chain</h3>
             <dl class="profile__figures">
               <div><dt>Card volume</dt><dd>$1,400,000 a month</dd></div>
@@ -375,7 +382,7 @@
             </dl>
           </div>
           <div class="profile" data-reveal data-reveal-delay="2">
-            <span class="profile__tag">Regional, trade and retail counters</span>
+            <span class="profile__tag">Interchange drain above network avg</span>
             <h3 class="profile__name">Parts distributor</h3>
             <dl class="profile__figures">
               <div><dt>Card volume</dt><dd>$2,500,000 a month</dd></div>
@@ -383,7 +390,7 @@
             </dl>
           </div>
           <div class="profile" data-reveal data-reveal-delay="3">
-            <span class="profile__tag">High ticket, low frequency</span>
+            <span class="profile__tag">Recovery range: top quartile</span>
             <h3 class="profile__name">Collision and body shop</h3>
             <dl class="profile__figures">
               <div><dt>Card volume</dt><dd>$750,000 a month</dd></div>
@@ -391,7 +398,7 @@
             </dl>
           </div>
           <div class="profile" data-reveal data-reveal-delay="3">
-            <span class="profile__tag">Seasonal peaks, accessory attach</span>
+            <span class="profile__tag">Loyalty gap — strong fit</span>
             <h3 class="profile__name">Powersports and RV group</h3>
             <dl class="profile__figures">
               <div><dt>Card volume</dt><dd>$1,900,000 a month</dd></div>
@@ -399,7 +406,7 @@
             </dl>
           </div>
           <div class="profile" data-reveal data-reveal-delay="3">
-            <span class="profile__tag">Contract accounts, steady volume</span>
+            <span class="profile__tag">Ready for Lender Expansion</span>
             <h3 class="profile__name">Fleet service provider</h3>
             <dl class="profile__figures">
               <div><dt>Card volume</dt><dd>$920,000 a month</dd></div>
@@ -408,16 +415,16 @@
           </div>
         </div>
 
-        <p class="profiles__hedge" data-reveal>Recovery runs from 40% up to 85% of standard interchange, depending on qualifying volume. Results vary by volume and card mix.</p>
+        <p class="profiles__hedge" data-reveal>Profiles shown are illustrative examples of the model — not current customers. CredX is pre-launch: founding merchants are onboarding now. Each figure is the published range applied to the volume shown, and no profile describes a named business.</p>
       </div>
     </section>
 
     <section id="how" class="section process" aria-label="How it works">
       <div class="container">
         <div class="process__header">
-          <span class="eyebrow" data-reveal>How It Works</span>
+          <span class="eyebrow" data-reveal>The Four-Step Flow</span>
           <h2 data-reveal-words>
-            Four steps. Your POS and payment stack <em class="accent">stay exactly as they are.</em>
+            From card tap<br />to <em class="accent">sovereign exchange.</em>
           </h2>
         </div>
 
@@ -431,23 +438,23 @@
         <div class="process__steps">
           <div class="step" data-reveal>
             <span class="step__eyebrow">Step 1</span>
-            <h3 class="step__h3">Sign a Merchant Network Agreement</h3>
-            <p class="step__body">Onboarding runs about 4 to 8 weeks. Your POS, payment processor, and management software all stay in place.</p>
+            <h3 class="step__h3">The customer pays.</h3>
+            <p class="step__body">One tap at your checkout. No card, no network, no plastic. Approval lands in about twenty seconds, in your brand.</p>
           </div>
           <div class="step" data-reveal data-reveal-delay="1">
             <span class="step__eyebrow">Step 2</span>
-            <h3 class="step__h3">CredX activates on your transaction flow</h3>
-            <p class="step__body">Your checkout is unchanged, with no new terminals or hardware to install. CredX runs underneath, capturing the interchange value and customer data your current setup leaves behind across every transaction type.</p>
+            <h3 class="step__h3">The transaction clears.</h3>
+            <p class="step__body">You are paid in full and upfront. The interchange that used to drain to the networks stays in your business — 40–85% of it recovered.</p>
           </div>
           <div class="step" data-reveal data-reveal-delay="2">
             <span class="step__eyebrow">Step 3</span>
-            <h3 class="step__h3">Your monthly report arrives</h3>
-            <p class="step__body">Interchange recovered and value-back earned, broken out per location and in aggregate.</p>
+            <h3 class="step__h3">The credit is funded, and the risk is not yours.</h3>
+            <p class="step__body">A community lender partner — the lender of record — funds the pay-over-time plan and holds the repayment risk. Never you.</p>
           </div>
           <div class="step" data-reveal data-reveal-delay="3">
             <span class="step__eyebrow">Step 4</span>
-            <h3 class="step__h3">Customers get branded credit and value-back</h3>
-            <p class="step__body">Lower-rate credit issued in your business's name, approved in about 20 seconds at checkout, with value-back accruing in your program. The relationship stays yours.</p>
+            <h3 class="step__h3">The loop closes.</h3>
+            <p class="step__body">The customer earns value-back in real dollars at your business. The loop closes: loyalty, credit, and margin all point back at you.</p>
           </div>
         </div>
       </div>
@@ -456,9 +463,9 @@
     <section id="proof" class="section proof" aria-label="Who CredX is for">
       <div class="container">
         <div class="proof__header">
-          <span class="eyebrow" data-reveal>Built For</span>
+          <span class="eyebrow" data-reveal>Built on Trust</span>
           <h2 data-reveal-words>
-            Built for any automotive business with <em class="accent">recurring customers</em> and card volume.
+            An embedded value platform <em class="accent">enterprises can stand behind.</em>
           </h2>
         </div>
 
@@ -499,7 +506,7 @@
         <div class="proof__kpis">
           <div class="kpi" data-reveal>
             <span class="kpi__value">$500M+</span>
-            <span class="kpi__label">in Merchant Network Agreements signed</span>
+            <span class="kpi__label">Founding merchants and lenders shaping the rail now</span>
           </div>
           <div class="kpi" data-reveal data-reveal-delay="1">
             <span class="kpi__value kpi__value--compact">Community</span>
@@ -507,8 +514,8 @@
           </div>
           <div class="kpi" data-reveal data-reveal-delay="2">
 
-            <span class="kpi__value kpi__value--compact">Regulatory compliant</span>
-            <span class="kpi__label">Data de-identified, consent-driven, and held to Canadian privacy law.</span>
+            <span class="kpi__value kpi__value--compact">Held in Canada</span>
+            <span class="kpi__label">Data is stored and processed to Canadian privacy law — PIPEDA-aligned by design, not by policy patch.</span>
           </div>
         </div>
       </div>
@@ -518,8 +525,8 @@
       <div class="container signup__inner">
         <div class="signup__intro" data-reveal>
           <span class="eyebrow eyebrow--accent">Be Part of the Movement</span>
-          <h2 class="signup__h2">Ready to keep your customer?</h2>
-          <p class="signup__sub">Two quick steps. Start with the basics — we will take it from there.</p>
+          <h2 class="signup__h2">Ready to keep what you earn?</h2>
+          <p class="signup__sub">Join now and finish on your own time: one link, a guided form, and no back and forth. If you would rather talk it through first, book a meeting.</p>
         </div>
 
         <form class="signup__form" data-signup-form novalidate>
@@ -609,32 +616,36 @@
       <div class="container">
         <div class="faq__header">
           <span class="eyebrow">FAQ</span>
-          <h2>Questions operators ask before signing</h2>
+          <h2>The answers your operations team will ask for first.</h2>
         </div>
         <div class="faq__list">
           <details class="faq__item">
-            <summary class="faq__question">Does CredX replace my existing POS or payment processor?</summary>
-            <p class="faq__answer">No. CredX runs on the value layer underneath your existing setup. Your POS, payment terminals, and management software all stay in place, and it requires no new hardware at the counter. Typical integration runs 4 to 8 weeks.</p>
+            <summary class="faq__question">Does CredX replace my POS or payment processor?</summary>
+            <p class="faq__answer">No. CredX runs on the value layer underneath your existing setup. Your POS, terminals, and management software all stay in place. No new hardware at the counter. Typical integration runs 4 to 8 weeks.</p>
           </details>
           <details class="faq__item">
-            <summary class="faq__question">What types of automotive businesses does this work for?</summary>
-            <p class="faq__answer">Any automotive operator with recurring customers and meaningful card volume: service and repair shops, parts retailers, accessories and aftermarket businesses, tire chains, quick-lube operators, fleet service providers, and powersports or RV operators. If your customers come back and pay by card, CredX applies.</p>
+            <summary class="faq__question">Is my customer really mine?</summary>
+            <p class="faq__answer">Yes. The relationship stays in your business’s name, never a competing credit facility’s. The credit and the value-back carry your brand, so the reason they come back belongs to you.</p>
           </details>
           <details class="faq__item">
-            <summary class="faq__question">What about a multi-location rollout?</summary>
-            <p class="faq__answer">One master account, individual location branding if needed, and consolidated reporting. Each location sees its own interchange recovery and value-back numbers.</p>
+            <summary class="faq__question">What can I do with the data?</summary>
+            <p class="faq__answer">Opt-in and de-identified, it shows which buyers return, which segments spend the most, and when demand peaks. That turns into staffing and stock decisions you no longer guess at.</p>
           </details>
           <details class="faq__item">
-            <summary class="faq__question">Is my customer data really mine?</summary>
-            <p class="faq__answer">Yes. Consent-driven, opt-in by default, de-identified for analytics, and handled under Canadian privacy law, including PIPEDA. The customer relationship stays yours, never a competing credit facility's.</p>
+            <summary class="faq__question">How does settlement work?</summary>
+            <p class="faq__answer">Funds settle straight to your own bank account, on your existing cadence. CredX never holds merchant money. The recovery shows up as a lower effective cost, not as a rebate you have to chase.</p>
           </details>
           <details class="faq__item">
-            <summary class="faq__question">How soon do I see savings?</summary>
-            <p class="faq__answer">Interchange recovery starts the month after activation, reported per location and in aggregate.</p>
+            <summary class="faq__question">Who handles refunds and chargebacks?</summary>
+            <p class="faq__answer">Tier-1 stays with your team, exactly as it works today. CredX operates the value-back and credit programs end to end, with a defined escalation path so your staff never debugs our systems.</p>
           </details>
           <details class="faq__item">
-            <summary class="faq__question">Who qualifies?</summary>
-            <p class="faq__answer">Automotive operators processing $250K or more per month in card volume. Single-location and multi-location businesses both qualify — the savings and data benefits are proportional to your volume.</p>
+            <summary class="faq__question">What does the 4–8 week integration involve?</summary>
+            <p class="faq__answer">A kickoff, transaction-field mapping, a sandbox test, a pilot at one or two locations, then rollout. If historical data helps, we import it — only after you opt in. Most merchants touch nothing at the counter.</p>
+          </details>
+          <details class="faq__item">
+            <summary class="faq__question">What happens if a customer misses a payment?</summary>
+            <p class="faq__answer">The community lender of record holds the repayment risk — not your business. You were already paid in full and upfront, so a missed payment never touches your books or your staff’s time.</p>
           </details>
         </div>
       </div>

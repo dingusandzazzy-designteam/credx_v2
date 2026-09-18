@@ -334,3 +334,50 @@
   .rails__toggle { grid-template-columns: 1fr; }
   .rails__tab + .rails__tab { border-left: 0; }
 }
+
+/* ── Prospector profile (editable fields) ───────────────────────────── */
+
+.finder__body--small {
+  font-size: var(--type-caption);
+  color: var(--text-muted);
+  margin-top: var(--s-3);
+}
+
+.finder__lede {
+  font-size: var(--type-caption);
+  color: var(--text-secondary);
+  line-height: 1.5;
+  margin: 0 0 var(--s-4);
+}
+
+.finder__facts li label {
+  font-size: var(--type-caption);
+  color: var(--text-secondary);
+}
+
+.finder__cell {
+  width: 140px;
+  padding: var(--s-2) var(--s-3);
+  font-family: var(--font-body);
+  font-size: var(--type-caption);
+  font-weight: 600;
+  text-align: right;
+  color: var(--text-primary);
+  background-color: var(--surface-2);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-small);
+}
+
+.finder__cell::placeholder { color: rgba(167, 154, 180, 0.5); font-weight: 400; }
+
+.finder__cell:focus-visible {
+  outline: none;
+  border-color: var(--text-accent);
+}
+
+.finder__confirm { margin-top: var(--s-4); }
+
+.finder__error {
+  font-family: var(--font-body);
+  letter-spacing: 0.04em;
+}
