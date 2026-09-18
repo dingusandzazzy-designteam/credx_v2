@@ -735,3 +735,56 @@
 .v-savings .proof__kpis .kpi__label {
   text-align: left;
 }
+
+/* ── Profile cards carry their trade ────────────────────────────────── */
+
+.v-savings .profile {
+  padding: 0;
+  overflow: hidden;
+}
+
+.v-savings .profile__media {
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background-color: var(--surface-2);
+}
+
+.v-savings .profile__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: saturate(0.85) contrast(1.05) brightness(0.92);
+  transition: transform var(--duration-slow) var(--ease-out-expo);
+}
+
+.v-savings .profile:hover .profile__media img { transform: scale(1.03); }
+
+.v-savings .profile__tag,
+.v-savings .profile__name,
+.v-savings .profile__figures {
+  padding-inline: var(--s-5);
+}
+
+.v-savings .profile__tag {
+  display: block;
+  padding-top: var(--s-5);
+}
+
+.v-savings .profile__figures { padding-bottom: var(--s-5); }
+
+@media (prefers-reduced-motion: reduce) {
+  .v-savings .profile:hover .profile__media img { transform: none; }
+}
+
+.v-savings .process__header,
+.v-savings .builtfor__scenes + *,
+.v-savings .voices__eyebrow {
+  text-align: left;
+}
+
+.v-savings .process__header {
+  max-width: none;
+  margin-inline: 0;
+  margin-bottom: var(--s-7);
+}
