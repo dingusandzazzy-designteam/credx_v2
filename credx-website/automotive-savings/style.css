@@ -1058,3 +1058,19 @@
     align-items: center;
   }
 }
+
+/* The Three Voices accordions had the FAQ's defect: the list spans the
+   track, their paragraphs kept the global 65ch cap. Same treatment. */
+.v-savings .voices__body p {
+  max-width: none;
+  font-size: var(--v-lede);
+  line-height: 1.55;
+}
+
+@media (max-width: 600px) {
+  .v-savings .voices__summary { padding: var(--s-4) 20px; }
+  .v-savings .voices__body { padding: 0 20px var(--s-4); }
+}
+
+/* The closer is centred text in a left-anchored 65ch box: centre the box too. */
+.v-savings .voices__closer { margin-inline: auto; }
