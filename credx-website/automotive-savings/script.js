@@ -287,22 +287,142 @@
   }
 
   /* ── The wall that breaks ────────────────────────────────────
-     36 bricks that break away where the section's closing line says so. */
+     Three beats, once, when the wall is well inside the viewport:
+     strain (the wall tightens, edges go magenta) → crack (a line of light
+     runs down the centre) → break (every brick is thrown outward from the
+     centre along its own vector, measured from the live grid so it holds at
+     2, 3 and 4 columns, and settles as debris at low opacity).
+     transform + opacity only. Reduced motion: the wall does not break.
+     Without GSAP the CSS fallback (.is-breaking) still runs. */
 
   var wall = document.querySelector('[data-wall]');
 
-  if (wall) {
-    if (!('IntersectionObserver' in window)) {
-      wall.classList.add('is-breaking');
-    } else {
-      var wallObserver = new IntersectionObserver(function (entries) {
+  function breakWithGsap(wallEl) {
+    var gsap = window.gsap;
+    var bricks = Array.prototype.slice.call(wallEl.querySelectorAll('.wall__brick'));
+    if (!bricks.length) return;
+
+    wallEl.classList.add('wall--gsap');
+
+    var crack = document.createElement('span');
+    crack.className = 'wall__crack';
+    crack.setAttribute('aria-hidden', 'true');
+    var glow = document.createElement('span');
+    glow.className = 'wall__glow';
+    glow.setAttribute('aria-hidden', 'true');
+    wallEl.appendChild(glow);
+    wallEl.appendChild(crack);
+
+    gsap.set(crack, { scaleY: 0, opacity: 1 });
+    gsap.set(glow, { opacity: 0, scale: 0.6 });
+
+    /* A fixed pseudo-random per brick, so every visit breaks the same way. */
+    function jitter(i, salt) {
+      var x = Math.sin((i + 1) * 12.9898 + salt * 78.233) * 43758.5453;
+      return x - Math.floor(x);
+    }
+
+    function vectors() {
+      var box = wallEl.getBoundingClientRect();
+      var cx = box.left + box.width / 2;
+      var cy = box.top + box.height / 2;
+      var reach = Math.min(window.innerWidth * 0.22, 280);
+      return bricks.map(function (brick, i) {
+        var b = brick.getBoundingClientRect();
+        var dx = (b.left + b.width / 2) - cx;
+        var dy = (b.top + b.height / 2) - cy;
+        var len = Math.sqrt(dx * dx + dy * dy) || 1;
+        var push = reach * (0.55 + jitter(i, 1) * 0.6);
+        return {
+          x: (dx / len) * push,
+          y: (dy / len) * push * 0.7 + 10 + jitter(i, 2) * 35,
+          r: (jitter(i, 3) - 0.5) * 50,
+          d: len
+        };
+      });
+    }
+
+    var played = false;
+
+    function play() {
+      if (played) return;
+      played = true;
+
+      var v = vectors();
+      var maxD = Math.max.apply(null, v.map(function (o) { return o.d; })) || 1;
+      var tl = gsap.timeline();
+
+      /* 1 · strain */
+      tl.add(function () { wallEl.classList.add('is-straining'); })
+        .to(bricks, { scale: 0.97, duration: 0.45, ease: 'power2.in' }, 0)
+
+      /* 2 · crack */
+        .to(crack, { scaleY: 1, duration: 0.35, ease: 'power3.in' }, 0.3)
+        .to(glow, { opacity: 1, scale: 1, duration: 0.3, ease: 'power2.out' }, 0.55)
+
+      /* 3 · break, from the centre out */
+        .add('break', 0.68)
+        .add(function () { wallEl.classList.add('is-broken'); }, 'break');
+
+      bricks.forEach(function (brick, i) {
+        tl.to(brick, {
+          x: v[i].x,
+          y: v[i].y,
+          rotation: v[i].r,
+          scale: 0.9,
+          opacity: 0.1,
+          duration: 1.25,
+          ease: 'power3.out'
+        }, 'break+=' + ((v[i].d / maxD) * 0.12).toFixed(3));
+      });
+
+      tl.to(crack, { opacity: 0, scaleX: 6, duration: 0.5, ease: 'power2.out' }, 'break')
+        .to(glow, { opacity: 0, scale: 1.6, duration: 1.1, ease: 'power2.out' }, 'break+=0.05');
+    }
+
+    if (window.ScrollTrigger) {
+      window.ScrollTrigger.create({
+        trigger: wallEl,
+        start: 'center 62%',
+        once: true,
+        onEnter: play
+      });
+    } else if ('IntersectionObserver' in window) {
+      var io = new IntersectionObserver(function (entries) {
         entries.forEach(function (entry) {
-          if (!entry.isIntersecting || entry.intersectionRatio <= 0.55) return;
-          entry.target.classList.add('is-breaking');
-          wallObserver.unobserve(entry.target);
+          if (entry.isIntersecting && entry.intersectionRatio > 0.6) { play(); io.disconnect(); }
         });
-      }, { threshold: [0, 0.3, 0.55, 0.8] });
-      wallObserver.observe(wall);
+      }, { threshold: [0, 0.6, 0.9] });
+      io.observe(wallEl);
+    } else {
+      play();
+    }
+  }
+
+  if (wall && !reduceMotion) {
+    var usedGsap = false;
+    if (window.gsap) {
+      try { breakWithGsap(wall); usedGsap = true; }
+      catch (err) {
+        /* Never leave the wall half-broken: fall back to the CSS version. */
+        wall.classList.remove('wall--gsap');
+        usedGsap = false;
+      }
+    }
+
+    if (!usedGsap) {
+      if (!('IntersectionObserver' in window)) {
+        wall.classList.add('is-breaking');
+      } else {
+        var wallObserver = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (!entry.isIntersecting || entry.intersectionRatio <= 0.55) return;
+            entry.target.classList.add('is-breaking');
+            wallObserver.unobserve(entry.target);
+          });
+        }, { threshold: [0, 0.3, 0.55, 0.8] });
+        wallObserver.observe(wall);
+      }
     }
   }
 })();

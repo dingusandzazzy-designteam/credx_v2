@@ -977,3 +977,50 @@
 @media (max-width: 899px) {
   .v-savings .finder__cell { width: 100%; text-align: left; }
 }
+
+/* ── The wall breaks, in three beats (GSAP, script.js) ─────────────────
+   strain → crack → break. JS adds .wall--gsap, which hands transform and
+   opacity to GSAP; the CSS .is-breaking fallback above stays for no-GSAP. */
+
+.v-savings .statement { overflow: clip; }
+
+.v-savings .wall { position: relative; isolation: isolate; }
+
+.wall--gsap .wall__brick {
+  transition: border-color 300ms var(--ease-out-quart),
+              color 300ms var(--ease-out-quart);
+  transition-delay: 0ms;
+  will-change: transform, opacity;
+}
+
+.wall.is-straining .wall__brick {
+  border-color: var(--text-accent);
+  color: var(--text-primary);
+}
+
+.wall.is-broken .wall__brick {
+  border-color: var(--border-subtle);
+  color: var(--text-secondary);
+}
+
+.wall__crack {
+  position: absolute;
+  top: -6%;
+  bottom: -6%;
+  left: 50%;
+  width: 2px;
+  margin-left: -1px;
+  background: linear-gradient(to bottom, transparent, var(--text-accent) 18%, #fff 50%, var(--text-accent) 82%, transparent);
+  box-shadow: 0 0 18px 2px var(--text-accent);
+  transform-origin: 50% 0;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.wall__glow {
+  position: absolute;
+  inset: -20% 10%;
+  background: radial-gradient(closest-side, color-mix(in srgb, var(--text-accent) 45%, transparent), transparent);
+  pointer-events: none;
+  z-index: -1;
+}
