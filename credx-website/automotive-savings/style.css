@@ -927,3 +927,6 @@
 /* The two-paragraph hero is taller than the approved one: clear the nav. */
 .v-savings .hero--full { padding-block: 96px var(--s-7); }
 .v-savings .hero__h1 .nowrap { white-space: nowrap; }
+
+/* One figure, not a range: the page now states more than 80% kept. */
+.v-savings .calc__range-low[hidden] { display: none; }
