@@ -5,12 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#0b0c16" />
 
-  <title>CredX for Automotive Operators — Visa and Mastercard Take 3%. We Give It Back.</title>
+  <title>CredX for Automotive Operators — Visa and Mastercard Take 3.6%. We Charge Less Than 1%.</title>
   <meta name="robots" content="noindex, follow" />
-  <meta name="description" content="Visa and Mastercard take 3%. We give it back. Embedded lending that returns the customer, the data, and the value to your business." />
+  <meta name="description" content="Visa and Mastercard take 3.6%. We charge less than 1%. Same customers, same counter, no new hardware, and you are paid in full, upfront." />
 
   <meta property="og:title" content="CredX — The value belongs to the businesses who create it" />
-  <meta property="og:description" content="Visa and Mastercard take 3%. We give it back. Embedded lending, AI merchant prospecting, and a system you belong to instead of one that owns you." />
+  <meta property="og:description" content="Visa and Mastercard take 3.6%. We charge less than 1%. Get your rate in under a minute." />
   <meta property="og:image" content="../automotive/images/og.png" />
   <meta property="og:type" content="website" />
   <meta name="twitter:card" content="summary_large_image" />
@@ -45,7 +45,7 @@
         </template>
 
         <a href="#form" class="btn btn-secondary nav__cta nav__cta--demo" data-book-demo>Book a Demo</a>
-        <a href="#form" class="btn btn-primary nav__cta">Join the Movement</a>
+        <a href="#savings" class="btn btn-primary nav__cta">Get Your Rate</a>
       </div>
     </div>
   </nav>
@@ -66,14 +66,17 @@
         <div class="hero__copy">
           <span class="eyebrow eyebrow--accent" data-reveal>For Automotive Service, Parts and Aftermarket Operators</span>
           <h1 class="hero__h1" data-reveal-words>
-            Visa and Mastercard take 3%.<br /><em class="accent">We give it back.</em>
+            Visa and Mastercard take 3.6%!<br /><em class="accent">We charge <span class="nowrap">less than 1%.</span></em>
           </h1>
           <p class="hero__sub" data-reveal data-reveal-delay="2">
-            Every card sale ships your margin to the networks — roughly $36,000 per $1M processed, every month, with nothing coming back. CredX reverses the flow: an embedded lending layer that recovers 40–85% of interchange and returns it to the business that earned it.
+            On $350K a month in card sales, that’s about $151,000 lost annually. Every card payment runs on rails — the network that carries money from your customer to you. Visa and Mastercard own theirs, and it costs you 3.6% to use. We built our own, with credit built in, so more than 80% of that fee stays in your business.
+          </p>
+          <p class="hero__sub hero__sub--kicker" data-reveal data-reveal-delay="2">
+            No new terminal. No new hardware. Same customers, same counter — and you’re paid in full, upfront.
           </p>
           <div class="hero__ctas" data-reveal data-reveal-delay="3">
-            <a href="#savings" class="btn btn-primary">Scan Rails</a>
-            <a href="#form" class="btn btn-secondary">Join the Movement</a>
+            <a href="#savings" class="btn btn-primary">Get Your Rate</a>
+            <a href="#form" class="btn btn-secondary" data-book-demo>Book a Demo</a>
           </div>
         </div>
       </div>
@@ -82,38 +85,82 @@
     <section id="savings" class="section calc-section" aria-label="Savings calculator">
       <div class="container">
         <div class="finder" data-reveal>
-          <span class="eyebrow eyebrow--accent">AI Prospector</span>
-          <h2 class="finder__h2">The AI finds your business <em class="accent">and qualifies it.</em></h2>
-          <p class="finder__body">Type your business name. The CredX AI scans the global rails, reads your interchange drain, and tells you exactly what you lose to Visa and Mastercard — and what comes back.</p>
+          <span class="eyebrow eyebrow--accent">Get Your Rate</span>
+          <h2 class="finder__h2">What you pay today, <em class="accent">and what you could pay.</em></h2>
+          <p class="finder__body">Tell us your business name and what you do. We fill in the numbers for a business like yours, you correct anything that’s off, and we show you your rate.</p>
           <form class="finder__form" data-finder novalidate>
             <div class="finder__field">
-              <label class="finder__label" for="finder-name">Business name to scan</label>
+              <label class="finder__label" for="finder-name">Business name</label>
               <input class="finder__input" type="text" id="finder-name" name="business_name" autocomplete="organization" placeholder="Your business" required />
             </div>
             <div class="finder__field">
-              <label class="finder__label" for="finder-place">City and province</label>
-              <input class="finder__input" type="text" id="finder-place" name="business_place" autocomplete="address-level2" placeholder="City, province" />
+              <label class="finder__label" for="finder-industry">Industry</label>
+              <select class="finder__input finder__select" id="finder-industry" name="industry" required>
+                <option value="">Select…</option>
+                <option value="repair">Service and repair</option>
+                <option value="parts">Parts and accessories</option>
+                <option value="tire">Tire and quick-lube</option>
+                <option value="body">Body and collision</option>
+                <option value="powersports">Powersports and RV</option>
+                <option value="fleet">Fleet service</option>
+                <option value="other">Other automotive</option>
+              </select>
             </div>
-            <button class="btn btn-primary finder__submit" type="submit">Scan Rails</button>
+            <button class="btn btn-primary finder__submit" type="submit">Get Your Rate</button>
           </form>
-          <p class="finder__error" data-finder-error hidden>Scan failed. Try again.</p>
-          <p class="finder__body finder__body--small">No signup required. Your name is not stored.</p>
+          <p class="finder__error" data-finder-error role="status" hidden></p>
 
           <div class="finder__result" data-finder-result hidden>
-            <span class="finder__result-label">Is this your business?</span>
+            <span class="finder__result-label">Step 2 — Check the numbers</span>
             <p class="finder__result-name" data-finder-name></p>
-            <p class="finder__lede">Check these numbers for your business. Edit anything that looks wrong — your savings estimate follows the numbers.</p>
+            <p class="finder__lede">This is our estimate for a business like yours. It doesn’t need to be exact. Correct anything that’s off and your rate follows the numbers.</p>
             <ul class="finder__facts">
-              <li><label for="pf-vol">Monthly card volume ($ / month)</label><input class="finder__cell" type="text" id="pf-vol" inputmode="numeric" placeholder="1,000,000" data-finder-volume /></li>
-              <li><label for="pf-pos">POS vendor</label><input class="finder__cell" type="text" id="pf-pos" placeholder="—" /></li>
-              <li><label for="pf-ticket">Avg ticket</label><input class="finder__cell" type="text" id="pf-ticket" placeholder="—" /></li>
-              <li><label for="pf-return">Return rate</label><input class="finder__cell" type="text" id="pf-return" placeholder="—" /></li>
-              <li><label for="pf-drain">Interchange drain</label><input class="finder__cell" type="text" id="pf-drain" placeholder="—" /></li>
-              <li><label for="pf-charge">Chargeback ratio</label><input class="finder__cell" type="text" id="pf-charge" placeholder="—" /></li>
-              <li><label for="pf-loyalty">Loyalty gap</label><input class="finder__cell" type="text" id="pf-loyalty" placeholder="—" /></li>
+              <li><label for="pf-vol">Monthly card volume ($ / month)</label><input class="finder__cell" type="text" id="pf-vol" inputmode="numeric" data-finder-volume /></li>
+              <li><label for="pf-pos">POS system</label><input class="finder__cell" type="text" id="pf-pos" data-finder-pos /></li>
+              <li><label for="pf-ticket">Average ticket ($)</label><input class="finder__cell" type="text" id="pf-ticket" inputmode="numeric" data-finder-ticket /></li>
             </ul>
-            <p class="finder__note">Lost to Visa/MC / yr: <strong class="accent" data-finder-lost>—</strong></p>
-            <a href="#savings-output" class="btn btn-primary finder__confirm">Confirm and show my savings</a>
+            <p class="finder__note">Card fees today, per year: <strong class="accent" data-finder-lost>—</strong></p>
+
+            <form class="finder__gate" data-finder-gate novalidate>
+              <span class="finder__result-label">Step 3 — Where should we send your rate?</span>
+              <div class="finder__form">
+                <div class="finder__field">
+                  <label class="finder__label" for="gate-name">Your name</label>
+                  <input class="finder__input" type="text" id="gate-name" name="name" autocomplete="name" required />
+                </div>
+                <div class="finder__field">
+                  <label class="finder__label" for="gate-email">Work email</label>
+                  <input class="finder__input" type="email" id="gate-email" name="email" autocomplete="email" required />
+                </div>
+                <button class="btn btn-primary finder__submit" type="submit">Show My Rate</button>
+              </div>
+            </form>
+          </div>
+
+          <div class="finder__rate" data-finder-rate hidden>
+            <span class="finder__result-label">Your rate</span>
+            <p class="finder__result-name" data-rate-name></p>
+            <div class="rate">
+              <div class="rate__cell">
+                <span class="rate__label">What you pay today</span>
+                <span class="rate__pct">3.6%</span>
+                <span class="rate__money" data-rate-today>—</span>
+              </div>
+              <div class="rate__cell rate__cell--credx">
+                <span class="rate__label">What you could pay with CredX</span>
+                <span class="rate__pct accent" data-rate-pct>0.6%</span>
+                <span class="rate__money" data-rate-credx>—</span>
+              </div>
+              <div class="rate__cell">
+                <span class="rate__label">Staying in your business</span>
+                <span class="rate__pct" data-rate-share>83%</span>
+                <span class="rate__money accent" data-rate-kept>—</span>
+              </div>
+            </div>
+            <p class="finder__note">Per year, estimated from the numbers above. Your rate is confirmed on a short call with our team.</p>
+            <div class="hero__ctas">
+              <a href="#form" class="btn btn-primary" data-book-demo>Book a Demo to Confirm Your Rate</a>
+            </div>
           </div>
         </div>
 

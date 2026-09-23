@@ -6,31 +6,42 @@
 
   var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  /* ── Prospector ───────────────────────────────────────────────────────
-     Runs the scan sequence, then opens an editable profile. Nothing is
-     looked up: the merchant supplies the volume, and the yearly figure is
-     that volume at the published 3.6% of card volume. */
+  /* ── Get your rate ─────────────────────────────────────────────────────
+     Business name + industry → three numbers pre-filled for a typical
+     business in that industry → the merchant corrects them → name and email
+     → today's cost against the CredX rate. Nothing is looked up: the site is
+     static, so the pre-fill is a per-industry typical, not a search. The
+     rate is the page's own model — 3.6% of card volume today, 0.6% with
+     CredX (the $36K vs $6K per $1M/mo stated in the rails section). */
 
   var finder = document.querySelector('[data-finder]');
   var result = document.querySelector('[data-finder-result]');
+  var gate = document.querySelector('[data-finder-gate]');
+  var rateBox = document.querySelector('[data-finder-rate]');
   var nameOut = document.querySelector('[data-finder-name]');
   var statusOut = document.querySelector('[data-finder-error]');
   var lostOut = document.querySelector('[data-finder-lost]');
   var volumeField = document.querySelector('[data-finder-volume]');
+  var posField = document.querySelector('[data-finder-pos]');
+  var ticketField = document.querySelector('[data-finder-ticket]');
   var ownerLabel = document.querySelector('[data-calc-owner]');
   var slider = document.querySelector('[data-calc-input]');
 
-  var SCAN = [
-    'Connecting to global rails…',
-    'Scanning global rails…',
-    'Parsing POS metadata…',
-    'Reading interchange drain…',
-    'Mapping return rate…',
-    'Qualifying lender fit…',
-    'Compiling prospect profile…'
-  ];
+  var CARD_COST = 0.036;  /* what card fees take today, as a share of card volume */
+  var CREDX_RATE = 0.006; /* what CredX costs on the same volume */
 
-  var CARD_COST = 0.036; /* what card fees take, as a share of card volume */
+  /* Plausible, not measured: the merchant corrects them in step 2. */
+  var TYPICAL = {
+    repair:      { label: 'service and repair', volume: 350000, pos: 'Shop management system', ticket: 450 },
+    parts:       { label: 'parts and accessories', volume: 500000, pos: 'Parts counter POS', ticket: 120 },
+    tire:        { label: 'tire and quick-lube', volume: 300000, pos: 'Shop management system', ticket: 180 },
+    body:        { label: 'body and collision', volume: 400000, pos: 'Estimating system', ticket: 2800 },
+    powersports: { label: 'powersports and RV', volume: 750000, pos: 'Dealer management system', ticket: 6500 },
+    fleet:       { label: 'fleet service', volume: 600000, pos: 'Fleet management system', ticket: 900 },
+    other:       { label: 'automotive', volume: 350000, pos: 'POS system', ticket: 400 }
+  };
+
+  var business = '';
 
   function money(value) {
     return '$' + Math.round(value).toLocaleString('en-US');
@@ -42,47 +53,66 @@
     return isFinite(value) && value > 0 ? value : 0;
   }
 
+  function monthlyVolume() {
+    return parseAmount(volumeField && volumeField.value) ||
+           (slider ? parseFloat(slider.value) : 0);
+  }
+
   function updateLost() {
     if (!lostOut) return;
-    var monthly = parseAmount(volumeField && volumeField.value) ||
-                  (slider ? parseFloat(slider.value) : 0);
+    var monthly = monthlyVolume();
     lostOut.textContent = monthly ? money(monthly * CARD_COST * 12) : '—';
   }
 
-  function revealProfile(name, place) {
-    if (nameOut) nameOut.textContent = place ? name + ' · ' + place : name;
-    if (result) result.hidden = false;
-    if (statusOut) statusOut.hidden = true;
-    if (ownerLabel) ownerLabel.textContent = 'Recovered and staying at ' + name;
-    if (volumeField && !volumeField.value && slider) {
-      volumeField.value = parseFloat(slider.value).toLocaleString('en-US');
-    }
-    updateLost();
+  function setText(selector, text) {
+    var el = document.querySelector(selector);
+    if (el) el.textContent = text;
   }
 
-  function runScan(name, place) {
-    if (!statusOut) return revealProfile(name, place);
+  function updateRate() {
+    var yearly = monthlyVolume() * 12;
+    if (!yearly) return;
+    setText('[data-rate-today]', money(yearly * CARD_COST) + ' / yr');
+    setText('[data-rate-credx]', money(yearly * CREDX_RATE) + ' / yr');
+    setText('[data-rate-kept]', money(yearly * (CARD_COST - CREDX_RATE)) + ' / yr');
+    setText('[data-rate-pct]', (CREDX_RATE * 100).toFixed(1) + '%');
+    setText('[data-rate-share]', Math.round((1 - CREDX_RATE / CARD_COST) * 100) + '%');
+  }
 
-    if (reduceMotion) {
-      statusOut.hidden = false;
-      statusOut.textContent = SCAN[SCAN.length - 1];
-      revealProfile(name, place);
-      return;
-    }
+  function scrollToEl(el) {
+    if (!el || reduceMotion) return;
+    el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
 
-    var step = 0;
-    statusOut.hidden = false;
-    statusOut.textContent = SCAN[0];
+  /* Carry what the merchant already told us into the signup form below. */
+  function prefill(id, value) {
+    var el = document.getElementById(id);
+    if (el && !el.value && value) el.value = value;
+  }
 
-    var timer = window.setInterval(function () {
-      step += 1;
-      if (step < SCAN.length) {
-        statusOut.textContent = SCAN[step];
-        return;
-      }
-      window.clearInterval(timer);
-      revealProfile(name, place);
-    }, 420);
+  function revealProfile(industryKey) {
+    var typical = TYPICAL[industryKey] || TYPICAL.other;
+    if (nameOut) nameOut.textContent = business;
+    if (volumeField) volumeField.value = typical.volume.toLocaleString('en-US');
+    if (posField) posField.value = typical.pos;
+    if (ticketField) ticketField.value = typical.ticket.toLocaleString('en-US');
+    if (statusOut) statusOut.hidden = true;
+    if (result) result.hidden = false;
+    if (rateBox) rateBox.hidden = true;
+    if (ownerLabel) ownerLabel.textContent = 'Recovered and staying at ' + business;
+    syncSlider();
+    updateLost();
+    updateRate();
+    scrollToEl(result);
+  }
+
+  function syncSlider() {
+    var monthly = parseAmount(volumeField && volumeField.value);
+    if (!slider || !monthly) return;
+    var min = parseFloat(slider.min);
+    var max = parseFloat(slider.max);
+    slider.value = String(Math.min(Math.max(monthly, min), max));
+    slider.dispatchEvent(new Event('input', { bubbles: true }));
   }
 
   if (finder) {
@@ -90,33 +120,70 @@
       event.preventDefault();
 
       var nameField = finder.querySelector('#finder-name');
-      var placeField = finder.querySelector('#finder-place');
+      var industryField = finder.querySelector('#finder-industry');
       var name = nameField ? nameField.value.trim() : '';
-      var place = placeField ? placeField.value.trim() : '';
+      var industry = industryField ? industryField.value : '';
 
-      if (!name) {
+      if (!name || !industry) {
         if (statusOut) {
           statusOut.hidden = false;
-          statusOut.textContent = 'Scan failed. Try again.';
+          statusOut.textContent = !name ? 'Add your business name to get your rate.' : 'Pick your industry to get your rate.';
         }
-        if (nameField) nameField.focus();
+        (!name ? nameField : industryField).focus();
         return;
       }
 
-      runScan(name, place);
+      business = name;
+      var typical = TYPICAL[industry] || TYPICAL.other;
+      if (statusOut) {
+        statusOut.hidden = false;
+        statusOut.textContent = 'Estimating the numbers for a typical ' + typical.label + ' business…';
+      }
+      window.setTimeout(function () { revealProfile(industry); }, reduceMotion ? 0 : 900);
     });
   }
 
   if (volumeField) {
     volumeField.addEventListener('input', function () {
-      var monthly = parseAmount(volumeField.value);
-      if (slider && monthly) {
-        var min = parseFloat(slider.min);
-        var max = parseFloat(slider.max);
-        slider.value = String(Math.min(Math.max(monthly, min), max));
-        slider.dispatchEvent(new Event('input', { bubbles: true }));
-      }
+      syncSlider();
       updateLost();
+      updateRate();
+    });
+  }
+
+  if (gate) {
+    gate.addEventListener('submit', function (event) {
+      event.preventDefault();
+      var fields = gate.querySelectorAll('input[required]');
+      for (var i = 0; i < fields.length; i++) {
+        if (!fields[i].checkValidity()) { fields[i].reportValidity(); return; }
+      }
+
+      var gName = gate.querySelector('#gate-name').value.trim();
+      var gEmail = gate.querySelector('#gate-email').value.trim();
+      var industryField = finder && finder.querySelector('#finder-industry');
+
+      /* Placeholder → CRM. The lead goes nowhere until CredX IT wires it. */
+      console.log('Get your rate (placeholder → CRM):', {
+        business: business,
+        industry: industryField ? industryField.value : '',
+        monthly_volume: monthlyVolume(),
+        pos: posField ? posField.value : '',
+        average_ticket: ticketField ? parseAmount(ticketField.value) : 0,
+        name: gName,
+        email: gEmail
+      });
+
+      prefill('su-name', gName);
+      prefill('su-email', gEmail);
+      prefill('su-company', business);
+      prefill('su-pos', posField ? posField.value : '');
+
+      updateRate();
+      setText('[data-rate-name]', business);
+      if (result) result.hidden = true;
+      if (rateBox) rateBox.hidden = false;
+      scrollToEl(rateBox);
     });
   }
 
