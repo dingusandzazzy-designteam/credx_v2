@@ -1074,3 +1074,18 @@
 
 /* The closer is centred text in a left-anchored 65ch box: centre the box too. */
 .v-savings .voices__closer { margin-inline: auto; }
+
+/* The founder quote: two balanced lines, centred, with its attribution
+   and the section's two CTAs centred under it. */
+.v-savings .movement__quote { text-align: center; }
+
+.v-savings .movement__quote-text {
+  max-width: 1080px;
+  margin-inline: auto;
+  text-align: center;
+  text-wrap: balance;
+}
+
+.v-savings .movement__quote-attribution { text-align: center; }
+
+.v-savings .movement .section-ctas { justify-content: center; }
