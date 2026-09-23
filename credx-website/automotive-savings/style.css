@@ -1089,3 +1089,64 @@
 .v-savings .movement__quote-attribution { text-align: center; }
 
 .v-savings .movement .section-ctas { justify-content: center; }
+
+/* ── Centred section headers (Marcos, 2026-09-23) ───────────────────────
+   Reverses the 2026-09-18 single left axis. The whole header block
+   centres — eyebrow, H2, lede — never the H2 alone, which would leave two
+   axes in one section. Grids, cards and panels keep the full track; the
+   hero stays left against its photograph. */
+
+.v-savings .control__header,
+.v-savings .gains__header,
+.v-savings .process__header,
+.v-savings .proof__header,
+.v-savings .signup__intro,
+.v-savings .faq__header {
+  text-align: center;
+}
+
+.v-savings .finder > .eyebrow,
+.v-savings .rails > .container > .eyebrow,
+.v-savings .profiles > .container > .eyebrow,
+.v-savings .statement__inner > .eyebrow {
+  display: block;
+  text-align: center;
+}
+
+.v-savings .finder__h2,
+.v-savings .finder__body,
+.v-savings .rails__h2,
+.v-savings .rails__body,
+.v-savings .rails__closer,
+.v-savings .statement__h2,
+.v-savings .statement__lead,
+.v-savings .statement__body,
+.v-savings .statement__closer,
+.v-savings .movement__h2,
+.v-savings .movement__body,
+.v-savings .profiles__h2,
+.v-savings .profiles__body,
+.v-savings .profiles__hedge,
+.v-savings .control__intro,
+.v-savings .signup__sub,
+.v-savings .builtfor__qualifier,
+.v-savings .gains__benchmark {
+  text-align: center;
+  margin-inline: auto;
+}
+
+.v-savings .section-ctas { justify-content: center; }
+
+/* The signup form keeps its 760px measure, now centred under its header. */
+.v-savings .signup__form { margin-inline: auto; }
+
+.v-savings .voices__eyebrow { display: block; text-align: center; }
+
+.v-savings .gains__strip .stat,
+.v-savings .gains__strip .stat__number,
+.v-savings .gains__strip .stat__label,
+.v-savings .proof__kpis .kpi,
+.v-savings .proof__kpis .kpi__value,
+.v-savings .proof__kpis .kpi__label {
+  text-align: center;
+}
