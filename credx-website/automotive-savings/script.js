@@ -226,10 +226,10 @@
     if (!state) return;
 
     if (outValue) outValue.textContent = state.out;
-    if (outBar) outBar.style.width = state.outBar;
+    if (outBar) outBar.style.transform = 'scaleX(' + parseFloat(state.outBar) / 100 + ')';
     if (outCaption) outCaption.textContent = state.outCaption;
     if (keptValue) keptValue.textContent = state.kept;
-    if (keptBar) keptBar.style.width = state.keptBar;
+    if (keptBar) keptBar.style.transform = 'scaleX(' + parseFloat(state.keptBar) / 100 + ')';
     if (keptCaption) keptCaption.textContent = state.keptCaption;
 
     Array.prototype.forEach.call(tabs, function (el) {

@@ -227,8 +227,10 @@
 
 .rails__bar-fill {
   display: block;
+  width: 100%;
   height: 100%;
-  transition: width var(--duration-slow) var(--ease-out-expo);
+  transform-origin: left center;
+  transition: transform var(--duration-slow) var(--ease-out-expo);
 }
 
 .rails__bar-fill--out { background-color: var(--soft-lavender); }
@@ -1037,4 +1039,22 @@
 @media (max-width: 600px) {
   .v-savings .faq__question { padding: var(--s-4) 20px; }
   .v-savings .faq__answer { padding: 0 20px var(--s-4); }
+}
+
+/* ── Audit fixes, 2026-09-23 ────────────────────────────────────────── */
+
+/* Stats stacked on phones carried the desktop gap plus their own padding:
+   ~170px per figure. */
+@media (max-width: 767px) {
+  .v-savings .gains__strip { gap: var(--s-4); }
+  .v-savings .gains__strip .stat { padding: var(--s-3) 0; }
+}
+
+/* Nav CTAs were 30px tall: under the 44px touch minimum on phones. */
+@media (max-width: 767px) {
+  .v-savings .nav__cta {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+  }
 }
